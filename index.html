@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d13" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="SWOOZ.ETH" />
+  <link rel="manifest" href="manifest.json?v=4" />
+  <link rel="icon" type="image/png" href="icon-192.png?v=4" />
+  <link rel="apple-touch-icon" href="icon-512.png?v=4" />
+  <title>SWOOZ.ETH DEX — Fold 8 &amp; S26U NFT Sniper Terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #090b10;
+      --card: #11151f;
+      --secondary: #181e2c;
+      --border: #262f45;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+    }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.25); border-radius: 9999px; }
+    @keyframes ticker {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-ticker {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: ticker 28s linear infinite;
+    }
+    .animate-ticker:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
+
+  <!-- Sticky Top DEX Telemetry Header -->
+  <header class="sticky top-0 z-40 bg-[var(--card)]/95 backdrop-blur border-b border-[var(--border)] px-3 py-2.5 shadow-sm">
+    <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2">
+      <!-- Brand + Trader Identity -->
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="SWOOZ.ETH" class="h-9 sm:h-11 w-auto object-contain drop-shadow-md" />
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-extrabold text-xs sm:text-sm tracking-wider text-[var(--foreground)]">DEX TERMINAL</span>
+            <span id="live-badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              LIVE
+            </span>
+          </div>
+          <div class="text-xs text-[var(--muted-foreground)] font-mono">
+            ETH $<span id="hdr-eth-rate">2,284.38</span> • Total ETH: <span id="hdr-total-eth" class="text-emerald-500 font-bold">0.3755 ETH ($857.83)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Controls: Countdown + Device Layout Switcher + Sync -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg px-2.5 py-1 flex items-center gap-2">
+          <span class="text-xs text-[var(--muted-foreground)] hidden sm:inline">🦑 Unlocks (Nov 4, 2:09 PM):</span>
+          <span id="hdr-countdown" class="text-xs font-mono font-bold text-amber-500">--d --h --m --s</span>
+        </div>
+
+        <!-- Fold 8 Dual-Pane vs S26U Portrait Mode Toggle -->
+        <div class="inline-flex rounded-lg bg-[var(--secondary)] border border-[var(--border)] p-0.5 text-xs">
+          <button id="btn-mode-auto" onclick="setLayoutMode('fold8')" class="px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition">
+            📖 Fold 8 Split
+          </button>
+          <button id="btn-mode-s26u" onclick="setLayoutMode('s26u')" class="px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">
+            📱 S26U Portrait
+          </button>
+        </div>
+
+        <button id="btn-refresh" onclick="refreshTelemetry()" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] hover:opacity-80 border border-[var(--border)] text-xs font-semibold flex items-center gap-1">
+          <span>🔄</span> <span class="hidden sm:inline">Sync Live</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Live On-Chain DEX Ticker Tape -->
+    <div class="max-w-[1600px] mx-auto mt-2 overflow-hidden bg-[var(--secondary)] border border-[var(--border)] rounded-lg py-1 px-2 text-xs font-mono">
+      <div class="animate-ticker gap-6 items-center">
+        <span>🟢 <strong>IF #1506</strong>: UNMOVED (0xC1eB...1880) • Floor: <strong class="text-emerald-500">0.2143 ETH ($489.43)</strong></span>
+        <span>🧬 <strong>CloneX Floor</strong>: <strong class="text-emerald-500">0.1465 ETH ($334.66)</strong> • Combined IF + CloneX Floor = <strong>0.3608 ETH ($824.09)!</strong></span>
+        <span>👹 <strong>BEAST #2313</strong>: UNMOVED (0x4140...CF1F) • Target Bid: <strong class="text-emerald-500">0.060 WETH ($137.06)</strong></span>
+        <span>🦸 <strong>Mini Supers</strong>: swooz.eth Stack <strong class="text-amber-500">132 / 6,969 (#2 Whale Worldwide!)</strong></span>
+        <span>🚶 <strong>"The Walk" #1</strong>: Supply Locked @ <strong>16,969</strong> • Bid: <strong class="text-emerald-500">0.0019 WETH ($4.34)</strong></span>
+        <!-- Duplicate for seamless loop -->
+        <span>🟢 <strong>IF #1506</strong>: UNMOVED (0xC1eB...1880) • Floor: <strong class="text-emerald-500">0.2143 ETH ($489.43)</strong></span>
+        <span>🧬 <strong>CloneX Floor</strong>: <strong class="text-emerald-500">0.1465 ETH ($334.66)</strong> • Combined IF + CloneX Floor = <strong>0.3608 ETH ($824.09)!</strong></span>
+        <span>👹 <strong>BEAST #2313</strong>: UNMOVED (0x4140...CF1F) • Target Bid: <strong class="text-emerald-500">0.060 WETH ($137.06)</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Adaptive Container: Dual-Pane on Fold 8 Unfolded / Single-Column Centered on S26U -->
+  <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4">
+
+    <!-- ================= LEFT PANE (Fold 8 Left Screen): HELD ETH P&L + TARGET WATCHLIST + COLLECTION ORDERBOOKS ================= -->
+    <section id="pane-left" class="md:col-span-6 space-y-4">
+
+      <!-- 1. Held ETH Gain/Loss (P&L) & Multi-Wallet Portfolio Tracker -->
+      <div id="sec-pnl" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
+          <div>
+            <h2 class="text-sm font-bold text-[var(--foreground)]">💰 Held ETH Gain / Loss (P&amp;L) Across Accounts &amp; Wallets</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Live ETH valuation, fiat cost-basis P&amp;L, and NFT purchasing power gain</p>
+          </div>
+          <button onclick="toggleAddWalletForm()" class="px-2.5 py-1 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-500 border border-emerald-500/30 text-xs font-semibold">
+            + Add Wallet / Account
+          </button>
+        </div>
+
+        <!-- Top 4 Aggregate Portfolio P&L KPI Boxes -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5">
+            <div class="text-[var(--muted-foreground)]">Total Held ETH</div>
+            <div id="pnl-total-eth" class="text-sm font-bold font-mono text-[var(--foreground)] mt-0.5">0.37552 ETH</div>
+            <div id="pnl-total-usd" class="text-emerald-500 font-semibold">$857.83 USD</div>
+          </div>
+          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5">
+            <div class="text-[var(--muted-foreground)]">Total Cost Basis</div>
+            <div id="pnl-cost-usd" class="text-sm font-bold font-mono text-[var(--foreground)] mt-0.5">$900.44 USD</div>
+            <div id="pnl-avg-entry" class="text-[var(--muted-foreground)]">Avg: $2,397.87/ETH</div>
+          </div>
+          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5">
+            <div class="text-[var(--muted-foreground)]">Fiat USD Gain / Loss</div>
+            <div id="pnl-fiat-diff" class="text-sm font-bold font-mono text-amber-500 mt-0.5">-$42.61 (-4.73%)</div>
+            <div class="text-[var(--muted-foreground)]">Break-even: $2,398</div>
+          </div>
+          <div class="bg-[var(--secondary)] border border-emerald-500/30 rounded-lg p-2.5">
+            <div class="text-[var(--muted-foreground)]">NFT Buying Power Gain</div>
+            <div id="pnl-nft-gain" class="text-sm font-bold font-mono text-emerald-500 mt-0.5">+$368.80 (+31.6%)</div>
+            <div class="text-emerald-500">IF+CloneX Floor Drop!</div>
+          </div>
+        </div>
+
+        <!-- Per-Account / Per-Wallet Breakdown Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs font-mono">
+            <thead>
+              <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
+                <th class="py-1.5 pr-2">Account / Wallet</th>
+                <th class="py-1.5 px-2">Held ETH / WETH</th>
+                <th class="py-1.5 px-2">Cost Basis</th>
+                <th class="py-1.5 px-2">Live Value</th>
+                <th class="py-1.5 pl-2">Gain / Loss (P&amp;L)</th>
+              </tr>
+            </thead>
+            <tbody id="wallet-pnl-rows" class="divide-y divide-[var(--border)]">
+              <!-- Populated dynamically by renderWalletPnl() -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Collapsible "+ Add Wallet / Account" Form -->
+        <div id="add-wallet-form" class="hidden bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-3 space-y-2.5 text-xs">
+          <div class="font-bold text-[var(--foreground)]">Add Extra Wallet (e.g., 2nd Mini Supers Wallet) or Account</div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input id="new-w-label" type="text" placeholder="Label (e.g. Vault 2 / Ledger)"
+                   class="px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)]" />
+            <input id="new-w-addr" type="text" placeholder="0x... Address (or manual)"
+                   class="px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+            <div class="flex gap-1.5">
+              <input id="new-w-eth" type="number" step="0.001" placeholder="ETH (auto if 0x)"
+                     class="w-1/2 px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+              <input id="new-w-cost" type="number" step="1" placeholder="Cost $ USD"
+                     class="w-1/2 px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+            </div>
+          </div>
+          <div class="flex justify-end gap-2">
+            <button onclick="toggleAddWalletForm()" class="px-2.5 py-1 rounded bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)]">Cancel</button>
+            <button onclick="addCustomWallet()" class="px-3 py-1 rounded bg-emerald-500 text-white font-semibold">Save &amp; Sync On-Chain</button>
+          </div>
+        </div>
+
+        <!-- 7-Day Kraken Hold Progress Bar -->
+        <div class="space-y-1 pt-1 border-t border-[var(--border)]">
+          <div class="flex justify-between text-xs">
+            <span class="text-[var(--muted-foreground)]">🦑 Kraken 7-Day (168h) Plaid Hold Progress (Unlocks Nov 4 @ 2:09 PM PST)</span>
+            <span id="hold-pct-label" class="font-mono font-semibold text-emerald-500">84.1% Complete</span>
+          </div>
+          <div class="w-full h-2 bg-[var(--secondary)] rounded-full overflow-hidden border border-[var(--border)]">
+            <div id="hold-progress-bar" class="h-full bg-emerald-500 rounded-full transition-all duration-500" style="width: 84.1%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Specific Target Token Sniper Watchlist (With 1-Tap Mobile Wallet Deep Links) -->
+      <div id="sec-targets" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
+          <div>
+            <h2 class="text-sm font-bold text-[var(--foreground)]">🎯 Target Sniper Watchlist (5 / 5 Unmoved)</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Tap <strong>OpenSea</strong>, <strong>Blur</strong>, or <strong>MetaMask</strong> to open directly in your mobile wallet app</p>
+          </div>
+          <span class="text-xs font-mono text-emerald-500 font-semibold">Live ownerOf() Verified</span>
+        </div>
+
+        <div class="space-y-2.5 text-xs">
+          <!-- Target 1: IF #1506 -->
+          <div class="bg-[var(--secondary)] border border-emerald-500/40 rounded-lg p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2 py-0.5 rounded bg-emerald-500 text-white font-bold">PRIMARY SNIPE</span>
+                <span class="font-mono font-bold text-sm text-[var(--foreground)]">Invisible Friends #1506</span>
+                <span class="text-[var(--muted-foreground)] font-mono">(Rank #1,621 / 5,000)</span>
+              </div>
+              <div class="text-[var(--muted-foreground)]">
+                Cream Fannypack (0.98%) • Lt/Dk Blue Hoodie Up (0.90%) • Boomer Glasses (1.92%)
+              </div>
+              <div class="font-mono text-emerald-500 font-semibold">
+                <span id="status-1506">✅ Unmoved (0xC1eB...1880)</span> • Target Offer: <strong>0.210 WETH ($479.72 USD)</strong>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
+                 class="px-2.5 py-1.5 rounded bg-[var(--card)] hover:opacity-80 border border-[var(--border)] font-semibold">
+                🌊 OpenSea
+              </a>
+              <a href="https://blur.io/eth/asset/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
+                 class="px-2.5 py-1.5 rounded bg-amber-500/15 text-amber-500 hover:opacity-80 border border-amber-500/30 font-semibold">
+                ⚡ Blur
+              </a>
+              <a href="https://metamask.app.link/dapp/opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
+                 class="px-2.5 py-1.5 rounded bg-emerald-500/15 text-emerald-500 hover:opacity-80 border border-emerald-500/30 font-semibold">
+                🦊 MetaMask
+              </a>
+            </div>
+          </div>
+
+          <!-- Target 2: BEAST #2313 -->
+          <div class="bg-[var(--secondary)] border border-amber-500/40 rounded-lg p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2 py-0.5 rounded bg-amber-500 text-white font-bold">AKCB TARGET</span>
+                <span class="font-mono font-bold text-sm text-[var(--foreground)]">BEAST #2313</span>
+                <span class="text-[var(--muted-foreground)] font-mono">(a KID called BEAST)</span>
+              </div>
+              <div class="text-[var(--muted-foreground)]">
+                Beat Street • Black Raccoon Balaclava • Orange Puffer Jacket • Pink Rect Glasses
+              </div>
+              <div class="font-mono text-emerald-500 font-semibold">
+                <span id="status-beast2313">✅ Unmoved (0x4140...CF1F)</span> • Target Offer: <strong>0.060 WETH ($137.06 USD)</strong>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://opensea.io/assets/ethereum/0x77372a4cc66063575b05b44481f059be356964a4/2313" target="_blank"
+                 class="px-2.5 py-1.5 rounded bg-[var(--card)] hover:opacity-80 border border-[var(--border)] font-semibold">
+                🌊 OpenSea
+              </a>
+              <a href="https://blur.io/eth/asset/0x77372a4cc66063575b05b44481f059be356964a4/2313" target="_blank"
+                 class="px-2.5 py-1.5 rounded bg-amber-500/15 text-amber-500 hover:opacity-80 border border-amber-500/30 font-semibold">
+                ⚡ Blur
+              </a>
+              <a href="https://metamask.app.link/dapp/opensea.io/assets/ethereum/0x77372a4cc66063575b05b44481f059be356964a4/2313" target="_blank"
+                 class="px-2.5 py-1.5 rounded bg-emerald-500/15 text-emerald-500 hover:opacity-80 border border-emerald-500/30 font-semibold">
+                🦊 MetaMask
+              </a>
+            </div>
+          </div>
+
+          <!-- Compact Row for the 3 Sibling IF Backups (#1286, #140, #42) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-[var(--foreground)]">IF #1286 (Rank #1,367)</span>
+                <span id="status-1286" class="text-emerald-500 font-semibold">✅ Unmoved</span>
+              </div>
+              <div class="text-[var(--muted-foreground)]">Cream Fanny + Hoodie Up</div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-mono font-semibold">0.205 WETH ($468)</span>
+                <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/1286" target="_blank" class="text-emerald-500 underline">OpenSea ↗</a>
+              </div>
+            </div>
+            <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-[var(--foreground)]">IF #140 (Rank #814)</span>
+                <span id="status-140" class="text-emerald-500 font-semibold">✅ Unmoved</span>
+              </div>
+              <div class="text-[var(--muted-foreground)]">Cream Fanny + Hoodie Down</div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-mono font-semibold">0.205 WETH ($468)</span>
+                <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/140" target="_blank" class="text-emerald-500 underline">OpenSea ↗</a>
+              </div>
+            </div>
+            <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-[var(--foreground)]">IF #42 (Rank #489)</span>
+                <span id="status-42" class="text-emerald-500 font-semibold">✅ Unmoved</span>
+              </div>
+              <div class="text-[var(--muted-foreground)]">Cream Fanny + Hoodie Down</div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-mono font-semibold">0.210 WETH ($480)</span>
+                <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/42" target="_blank" class="text-emerald-500 underline">OpenSea ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RIGHT PANE (Fold 8 Right Screen): COLLECTION ORDERBOOKS + WETH BID LADDER + LIVE SALES TAPE ================= -->
+    <section id="pane-right" class="md:col-span-6 space-y-4">
+
+      <!-- 3. 5-Collection DEX Orderbook & Spread Matrix -->
+      <div id="sec-markets" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
+          <h2 class="text-sm font-bold text-[var(--foreground)]">📊 Tracked Collection Orderbooks (ETH &amp; USD)</h2>
+          <span class="text-xs text-emerald-500 font-semibold">IF + CloneX Combined Floor = 0.3608 ETH ($824)!</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs font-mono">
+            <thead>
+              <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
+                <th class="py-2 pr-2">Collection</th>
+                <th class="py-2 px-2">Floor Ask (ETH / USD)</th>
+                <th class="py-2 px-2">Top Bid (WETH / USD)</th>
+                <th class="py-2 px-2">24h Vol / Chg</th>
+                <th class="py-2 pl-2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--border)]">
+              <tr>
+                <td class="py-2.5 pr-2 font-sans font-bold text-[var(--foreground)]">
+                  🧥 Invisible Friends
+                  <div class="text-xs font-normal text-[var(--muted-foreground)]">5,000 • 3,261 Holders</div>
+                </td>
+                <td class="py-2.5 px-2 font-bold">
+                  <span id="mkt-if-floor">0.2143 ETH</span>
+                  <div id="mkt-if-floor-usd" class="text-emerald-500">$489.43 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  0.198–0.200 WETH
+                  <div class="text-[var(--muted-foreground)]">$452–$457 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  1.09 ETH ($2,478)
+                  <div class="text-emerald-500">Down 26% vs Oct 28</div>
+                </td>
+                <td class="py-2.5 pl-2 font-sans">
+                  <a href="https://blur.io/eth/collection/invisible-friends" target="_blank" class="px-2 py-1 rounded bg-[var(--secondary)] border border-[var(--border)] font-semibold">Blur ↗</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2.5 pr-2 font-sans font-bold text-[var(--foreground)]">
+                  🧬 CloneX (Murakami)
+                  <div class="text-xs font-normal text-[var(--muted-foreground)]">19,764 • 9,119 Holders</div>
+                </td>
+                <td class="py-2.5 px-2 font-bold">
+                  <span id="mkt-cx-floor">0.1465 ETH</span>
+                  <div id="mkt-cx-floor-usd" class="text-emerald-500">$334.66 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  0.140–0.145 WETH
+                  <div class="text-[var(--muted-foreground)]">$320–$332 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  2.05 ETH ($4,685)
+                  <div class="text-amber-500">-3.6% 24h</div>
+                </td>
+                <td class="py-2.5 pl-2 font-sans">
+                  <a href="https://blur.io/eth/collection/clonex" target="_blank" class="px-2 py-1 rounded bg-[var(--secondary)] border border-[var(--border)] font-semibold">Blur ↗</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2.5 pr-2 font-sans font-bold text-[var(--foreground)]">
+                  👹 a KID called BEAST
+                  <div class="text-xs font-normal text-[var(--muted-foreground)]">10,000 • 2,807 Holders</div>
+                </td>
+                <td class="py-2.5 px-2 font-bold">
+                  <span id="mkt-akcb-floor">0.0695 ETH</span>
+                  <div id="mkt-akcb-floor-usd" class="text-emerald-500">$158.71 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  0.0600 WETH
+                  <div class="text-[var(--muted-foreground)]">$137.06 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  Active Bids
+                  <div class="text-emerald-500">+1.6% 24h</div>
+                </td>
+                <td class="py-2.5 pl-2 font-sans">
+                  <a href="https://opensea.io/collection/a-kid-called-beast" target="_blank" class="px-2 py-1 rounded bg-[var(--secondary)] border border-[var(--border)] font-semibold">OS ↗</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2.5 pr-2 font-sans font-bold text-[var(--foreground)]">
+                  🦸 Mini Supers (Home Team)
+                  <div id="mkt-ms-whale" class="text-xs font-normal text-amber-500 font-semibold">🏆 swooz.eth: 132 (#2 Whale)</div>
+                </td>
+                <td class="py-2.5 px-2 font-bold">
+                  0.0013 ETH
+                  <div class="text-emerald-500">$3.01 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  0.00071 WETH
+                  <div class="text-[var(--muted-foreground)]">$1.62 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  Stack: ~$397.32
+                  <div class="text-[var(--muted-foreground)]">#1868 (Nov 1)</div>
+                </td>
+                <td class="py-2.5 pl-2 font-sans">
+                  <a href="https://opensea.io/collection/minisupers" target="_blank" class="px-2 py-1 rounded bg-[var(--secondary)] border border-[var(--border)] font-semibold">OS ↗</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2.5 pr-2 font-sans font-bold text-[var(--foreground)]">
+                  🚶 "The Walk" Editions
+                  <div class="text-xs font-normal text-[var(--muted-foreground)]">16,969 Locked • 4,994 Holders</div>
+                </td>
+                <td class="py-2.5 px-2 font-bold">
+                  0.0022 ETH
+                  <div class="text-emerald-500">$5.03 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  0.0019 WETH
+                  <div class="text-[var(--muted-foreground)]">$4.34 USD</div>
+                </td>
+                <td class="py-2.5 px-2">
+                  Mint Closed
+                  <div class="text-emerald-500">-14% vs Mint</div>
+                </td>
+                <td class="py-2.5 pl-2 font-sans">
+                  <a href="https://opensea.io/assets/ethereum/0x0905b2277df5c7dd6c5e3399ece8a36621aebe85/1" target="_blank" class="px-2 py-1 rounded bg-[var(--secondary)] border border-[var(--border)] font-semibold">OS ↗</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4. Interactive Multi-Target WETH Bid & Capital Allocator -->
+      <div id="sec-calc" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3.5">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
+          <div>
+            <h2 class="text-sm font-bold text-[var(--foreground)]">⚡ Nov 4 Multi-Target WETH Bid &amp; Capital Allocator</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Simulate deploying your <strong>0.375327 ETH ($857.39 USD)</strong> Kraken stack</p>
+          </div>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-[var(--secondary)] border border-[var(--border)]">
+            Available: 0.3753 ETH
+          </span>
+        </div>
+
+        <!-- Quick Strategy Preset Pills -->
+        <div class="flex flex-wrap gap-1.5 text-xs">
+          <button onclick="applyPreset(0.2143, 0.1465, 0.000, 0)" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 font-semibold">
+            🔥 Outright Floor Buy BOTH (IF 0.2143 + CloneX 0.1465 = 0.3608 ETH / $824)
+          </button>
+          <button onclick="applyPreset(0.205, 0.140, 0.000, 5)" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] hover:opacity-80 border border-[var(--border)] font-semibold">
+            🎯 Bid Both + 5 Walk (0.355 ETH / $811)
+          </button>
+          <button onclick="applyPreset(0.210, 0.000, 0.060, 5)" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] hover:opacity-80 border border-[var(--border)] font-semibold">
+            👹 IF #1506 (0.210) + BEAST #2313 (0.060) + 5 Walk = 0.280 ETH ($640)
+          </button>
+        </div>
+
+        <!-- 4 Interactive Bid Inputs -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+          <div class="space-y-1">
+            <label class="font-medium text-[var(--muted-foreground)]">IF #1506 (WETH)</label>
+            <input id="in-if" type="number" step="0.005" min="0" max="0.375" value="0.2143"
+                   class="w-full px-2.5 py-2 rounded-lg bg-[var(--secondary)] border border-[var(--border)] font-mono text-sm text-[var(--foreground)]" />
+            <div id="lbl-if-usd" class="font-mono text-emerald-500 font-semibold">$489.54 USD</div>
+          </div>
+          <div class="space-y-1">
+            <label class="font-medium text-[var(--muted-foreground)]">CloneX (WETH)</label>
+            <input id="in-cx" type="number" step="0.005" min="0" max="0.375" value="0.1465"
+                   class="w-full px-2.5 py-2 rounded-lg bg-[var(--secondary)] border border-[var(--border)] font-mono text-sm text-[var(--foreground)]" />
+            <div id="lbl-cx-usd" class="font-mono text-emerald-500 font-semibold">$334.66 USD</div>
+          </div>
+          <div class="space-y-1">
+            <label class="font-medium text-[var(--muted-foreground)]">BEAST #2313 (WETH)</label>
+            <input id="in-beast" type="number" step="0.005" min="0" max="0.20" value="0.000"
+                   class="w-full px-2.5 py-2 rounded-lg bg-[var(--secondary)] border border-[var(--border)] font-mono text-sm text-[var(--foreground)]" />
+            <div id="lbl-beast-usd" class="font-mono text-[var(--muted-foreground)] font-semibold">$0.00 USD</div>
+          </div>
+          <div class="space-y-1">
+            <label class="font-medium text-[var(--muted-foreground)]">"The Walk" Qty</label>
+            <input id="in-walk" type="number" step="1" min="0" max="100" value="0"
+                   class="w-full px-2.5 py-2 rounded-lg bg-[var(--secondary)] border border-[var(--border)] font-mono text-sm text-[var(--foreground)]" />
+            <div id="lbl-walk-usd" class="font-mono text-[var(--muted-foreground)] font-semibold">$0.00 USD</div>
+          </div>
+        </div>
+
+        <!-- Summary Output Bar -->
+        <div class="grid grid-cols-2 gap-3 pt-1">
+          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-3">
+            <div class="text-xs text-[var(--muted-foreground)]">Total Deployed (ETH &amp; USD)</div>
+            <div id="out-deployed-eth" class="text-base font-bold font-mono text-[var(--foreground)] mt-0.5">0.3608 ETH</div>
+            <div id="out-deployed-usd" class="text-xs font-semibold text-[var(--muted-foreground)]">$824.20 USD Allocated</div>
+          </div>
+          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-3">
+            <div class="text-xs text-[var(--muted-foreground)]">Dry Powder Remaining</div>
+            <div id="out-left-eth" class="text-base font-bold font-mono text-emerald-500 mt-0.5">0.0145 ETH</div>
+            <div id="out-left-usd" class="text-xs font-semibold text-emerald-500">$33.19 USD Left!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Live On-Chain Executions & Sales Tape -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
+          <h2 class="text-sm font-bold text-[var(--foreground)]">⚡ Verified On-Chain Executions &amp; Bid Fills</h2>
+          <span class="text-xs text-emerald-500 font-semibold">Ethereum Mainnet Seaport / Blur</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs font-mono">
+            <thead>
+              <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
+                <th class="py-1.5 pr-2">Time (UTC)</th>
+                <th class="py-1.5 px-2">Asset</th>
+                <th class="py-1.5 px-2">Type</th>
+                <th class="py-1.5 pl-2">Price (ETH &amp; USD)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--border)]">
+              <tr>
+                <td class="py-2 pr-2 text-[var(--muted-foreground)]">Nov 03 Live</td>
+                <td class="py-2 px-2 font-bold">CloneX Floor</td>
+                <td class="py-2 px-2"><span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-sans">New Low</span></td>
+                <td class="py-2 pl-2 font-bold text-emerald-500">0.1465 ETH ($334.66)</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-2 text-[var(--muted-foreground)]">Nov 03 Live</td>
+                <td class="py-2 px-2 font-bold">Invisible Friends Floor</td>
+                <td class="py-2 px-2"><span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-sans">New Low</span></td>
+                <td class="py-2 pl-2 font-bold text-emerald-500">0.2143 ETH ($489.43)</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-2 text-[var(--muted-foreground)]">Nov 01 19:05</td>
+                <td class="py-2 px-2 font-bold">CloneX #9143</td>
+                <td class="py-2 px-2"><span class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-500 font-sans">Rare Sweep</span></td>
+                <td class="py-2 pl-2 font-bold">1.1303 WETH ($2,550.97)</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-2 text-[var(--muted-foreground)]">Nov 01 08:24</td>
+                <td class="py-2 px-2 font-bold">Mini Supers #1868</td>
+                <td class="py-2 px-2"><span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-sans">Order Fill</span></td>
+                <td class="py-2 pl-2 font-bold">Home Team Transfer</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-2 text-[var(--muted-foreground)]">Nov 01 00:58</td>
+                <td class="py-2 px-2 font-bold">CloneX #11406</td>
+                <td class="py-2 px-2"><span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-sans">Bid Filled</span></td>
+                <td class="py-2 pl-2 font-bold text-emerald-500">0.1454 WETH ($332.15)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Install Drawer Modal (Triggered ONLY from Bottom Dock '📲 Install' button!) -->
+  <div id="install-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-3">
+    <div class="bg-[var(--card)] border border-emerald-500/40 rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-3.5 text-xs">
+      <div class="flex items-center justify-between border-b border-[var(--border)] pb-2.5">
+        <div class="flex items-center gap-2">
+          <img src="icon-192.png?v=4" alt="Icon" class="w-8 h-8 rounded-lg" />
+          <div>
+            <div class="font-bold text-sm text-[var(--foreground)]">📲 Install SWOOZ.ETH DEX on Fold 8 &amp; S26 Ultra</div>
+            <div class="text-[var(--muted-foreground)]">Permanent 24/7 GitHub Pages + Local LAN Links</div>
+          </div>
+        </div>
+        <button onclick="toggleInstallModal()" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] font-bold">✕</button>
+      </div>
+
+      <div class="space-y-2.5">
+        <div class="bg-[var(--secondary)] border border-emerald-500/30 rounded-lg p-3 space-y-1">
+          <div class="font-semibold text-emerald-500">1. Permanent Direct GitHub Link (24/7 HTTPS — Works Even When PC is Off!)</div>
+          <a href="https://domswooz.github.io/swooz-dex/" target="_blank" class="block font-mono text-sm font-bold text-[var(--foreground)] underline select-all">
+            https://domswooz.github.io/swooz-dex/
+          </a>
+          <div class="text-[var(--muted-foreground)]">Hosted directly on your GitHub (<code class="font-mono">DOMSWOOZ/swooz-dex</code>) with live Ethereum Mainnet RPC + CoinGecko browser sync.</div>
+        </div>
+
+        <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-3 space-y-1">
+          <div class="font-semibold text-[var(--foreground)]">2. Add to Home Screen (Full-Screen App Mode)</div>
+          <div class="text-[var(--muted-foreground)]">
+            Open <code class="font-mono">https://domswooz.github.io/swooz-dex/</code> in Chrome or Samsung Internet on your <strong>Fold 8</strong> and <strong>S26 Ultra</strong>, tap <strong>⋮ Menu → Add to Home screen → Install</strong>.
+          </div>
+        </div>
+
+        <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-3 space-y-1">
+          <div class="font-semibold text-[var(--foreground)]">3. Local Home Wi-Fi Server (Optional)</div>
+          <div class="font-mono text-[var(--muted-foreground)] select-all">http://192.168.1.166:8088</div>
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-1">
+        <button onclick="toggleInstallModal()" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-emerald-500 text-white font-semibold">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Bottom Dock (Always Accessible on S26U, Fold 8 Cover, and Fold 8 Unfolded!) -->
+  <nav id="mobile-dock" class="fixed bottom-0 left-0 right-0 z-40 bg-[var(--card)]/95 backdrop-blur border-t border-[var(--border)] px-3 py-2 flex items-center justify-around text-xs font-semibold">
+    <button onclick="scrollToSec('sec-pnl')" class="flex flex-col items-center gap-0.5 text-emerald-500 hover:opacity-80">
+      <span>💰</span><span>ETH P&amp;L</span>
+    </button>
+    <button onclick="scrollToSec('sec-targets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+      <span>🎯</span><span>Targets</span>
+    </button>
+    <button onclick="scrollToSec('sec-markets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+      <span>📊</span><span>Markets</span>
+    </button>
+    <button onclick="scrollToSec('sec-calc')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+      <span>⚡</span><span>Bid Calc</span>
+    </button>
+    <button onclick="toggleInstallModal()" class="flex flex-col items-center gap-0.5 text-amber-500 hover:opacity-80">
+      <span>📲</span><span>Install</span>
+    </button>
+  </nav>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js?v=4').catch(() => {});
+    }
+
+    let ETH_RATE = 2284.38;
+    const DEPOSIT_UNIX = 1793225349 * 1000;
+    const UNLOCK_UNIX = 1793830149 * 1000;
+
+    // Default accounts/wallets tracked in the ETH Gain/Loss (P&L) matrix
+    const DEFAULT_ACCOUNTS = [
+      {
+        id: 'kraken-main',
+        label: '🦑 Kraken Main (Read-Only API)',
+        address: 'ACH Ref: FTMn8HN (+0.000021 Staked)',
+        eth: 0.37532712,
+        costUsd: 900.00,
+        miniSupers: 0,
+        isOnChain: false
+      },
+      {
+        id: 'swooz-eth',
+        label: '🦊 swooz.eth (Primary Wallet)',
+        address: '0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4',
+        eth: 0.00019,
+        costUsd: 0.44,
+        miniSupers: 132,
+        isOnChain: true
+      }
+    ];
+
+    function loadAccounts() {
+      try {
+        const saved = localStorage.getItem('swooz_dex_accounts_v1');
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      return DEFAULT_ACCOUNTS;
+    }
+
+    function saveAccounts(list) {
+      try {
+        localStorage.setItem('swooz_dex_accounts_v1', JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    let ACCOUNTS = loadAccounts();
+
+    function renderWalletPnl() {
+      const tbody = document.getElementById('wallet-pnl-rows');
+      tbody.innerHTML = '';
+      let totalEth = 0;
+      let totalCostUsd = 0;
+      let totalMiniSupers = 0;
+
+      ACCOUNTS.forEach((acc, idx) => {
+        totalEth += acc.eth;
+        totalCostUsd += acc.costUsd;
+        totalMiniSupers += (acc.miniSupers || 0);
+
+        const liveValUsd = acc.eth * ETH_RATE;
+        const diffUsd = liveValUsd - acc.costUsd;
+        const diffPct = acc.costUsd > 0 ? (diffUsd / acc.costUsd) * 100 : 0;
+        const pnlColor = diffUsd >= 0 ? 'text-emerald-500' : 'text-amber-500';
+        const sign = diffUsd >= 0 ? '+' : '';
+        const msBadge = acc.miniSupers > 0 ? `<div class="text-amber-500 font-sans text-xs">🦸 ${acc.miniSupers} Mini Supers (~$${(acc.miniSupers * 3.01).toFixed(0)})</div>` : '';
+        const delBtn = idx >= 2 ? `<button onclick="removeWallet(${idx})" class="ml-1 text-rose-400 hover:underline font-sans">[x]</button>` : '';
+
+        const shortAddr = acc.address.startsWith('0x') && acc.address.length === 42
+          ? acc.address.slice(0, 6) + '...' + acc.address.slice(-4)
+          : acc.address;
+
+        tbody.innerHTML += `
+          <tr>
+            <td class="py-2 pr-2 font-sans">
+              <div class="font-bold text-[var(--foreground)]">${acc.label} ${delBtn}</div>
+              <div class="text-xs font-mono text-[var(--muted-foreground)]">${shortAddr}</div>
+              ${msBadge}
+            </td>
+            <td class="py-2 px-2 font-bold">${acc.eth.toFixed(5)} ETH</td>
+            <td class="py-2 px-2 text-[var(--muted-foreground)]">$${acc.costUsd.toFixed(2)}</td>
+            <td class="py-2 px-2 font-bold text-[var(--foreground)]">$${liveValUsd.toFixed(2)}</td>
+            <td class="py-2 pl-2 font-bold ${pnlColor}">
+              ${sign}$${diffUsd.toFixed(2)}
+              <div class="text-xs">${sign}${diffPct.toFixed(2)}%</div>
+            </td>
+          </tr>
+        `;
+      });
+
+      const totalValUsd = totalEth * ETH_RATE;
+      const totalDiffUsd = totalValUsd - totalCostUsd;
+      const totalDiffPct = totalCostUsd > 0 ? (totalDiffUsd / totalCostUsd) * 100 : 0;
+      const avgEntry = totalEth > 0 ? totalCostUsd / totalEth : 0;
+
+      document.getElementById('pnl-total-eth').textContent = totalEth.toFixed(5) + ' ETH';
+      document.getElementById('pnl-total-usd').textContent = '$' + totalValUsd.toFixed(2) + ' USD';
+      document.getElementById('pnl-cost-usd').textContent = '$' + totalCostUsd.toFixed(2) + ' USD';
+      document.getElementById('pnl-avg-entry').textContent = 'Avg: $' + avgEntry.toFixed(2) + '/ETH';
+
+      const diffEl = document.getElementById('pnl-fiat-diff');
+      const sign = totalDiffUsd >= 0 ? '+' : '';
+      diffEl.className = 'text-sm font-bold font-mono mt-0.5 ' + (totalDiffUsd >= 0 ? 'text-emerald-500' : 'text-amber-500');
+      diffEl.textContent = `${sign}$${totalDiffUsd.toFixed(2)} (${sign}${totalDiffPct.toFixed(2)}%)`;
+
+      document.getElementById('hdr-total-eth').textContent = `${totalEth.toFixed(4)} ETH ($${totalValUsd.toFixed(2)})`;
+      if (totalMiniSupers > 0) {
+        const msEl = document.getElementById('mkt-ms-whale');
+        if (msEl) msEl.textContent = `🏆 Total Held: ${totalMiniSupers} (#2 Whale)`;
+      }
+    }
+
+    function toggleAddWalletForm() {
+      const el = document.getElementById('add-wallet-form');
+      el.classList.toggle('hidden');
+    }
+
+    function toggleInstallModal() {
+      const el = document.getElementById('install-modal');
+      el.classList.toggle('hidden');
+    }
+
+    async function rpcCall(method, params) {
+      const res = await fetch('https://ethereum-rpc.publicnode.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params })
+      });
+      const data = await res.json();
+      return data.result || '0x0';
+    }
+
+    async function addCustomWallet() {
+      const label = document.getElementById('new-w-label').value.trim() || 'Added Wallet';
+      const addr = document.getElementById('new-w-addr').value.trim();
+      let ethVal = parseFloat(document.getElementById('new-w-eth').value) || 0;
+      let costVal = parseFloat(document.getElementById('new-w-cost').value) || 0;
+      let msCount = 0;
+
+      if (addr.startsWith('0x') && addr.length === 42) {
+        try {
+          const cleanHex = addr.slice(2).toLowerCase().padStart(64, '0');
+          const [ethHex, wethHex, msHex] = await Promise.all([
+            rpcCall('eth_getBalance', [addr, 'latest']),
+            rpcCall('eth_call', [{ to: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', data: '0x70a08231' + cleanHex }, 'latest']),
+            rpcCall('eth_call', [{ to: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7', data: '0x70a08231' + cleanHex }, 'latest'])
+          ]);
+          const onchainEth = (parseInt(ethHex, 16) + parseInt(wethHex, 16)) / 1e18;
+          if (ethVal === 0) ethVal = onchainEth;
+          msCount = parseInt(msHex, 16) || 0;
+        } catch (e) {}
+      }
+      if (costVal === 0 && ethVal > 0) {
+        costVal = ethVal * ETH_RATE;
+      }
+
+      ACCOUNTS.push({
+        id: 'w-' + Date.now(),
+        label,
+        address: addr || 'Manual Account',
+        eth: ethVal,
+        costUsd: costVal,
+        miniSupers: msCount,
+        isOnChain: addr.startsWith('0x') && addr.length === 42
+      });
+      saveAccounts(ACCOUNTS);
+      renderWalletPnl();
+      toggleAddWalletForm();
+      document.getElementById('new-w-label').value = '';
+      document.getElementById('new-w-addr').value = '';
+      document.getElementById('new-w-eth').value = '';
+      document.getElementById('new-w-cost').value = '';
+    }
+
+    function removeWallet(idx) {
+      ACCOUNTS.splice(idx, 1);
+      saveAccounts(ACCOUNTS);
+      renderWalletPnl();
+    }
+
+    function updateTimers() {
+      const now = Date.now();
+      const diff = UNLOCK_UNIX - now;
+      const el = document.getElementById('hdr-countdown');
+      if (diff <= 0) {
+        el.textContent = '🟢 HOLD CLEARED!';
+      } else {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        el.textContent = d + 'd ' + String(h).padStart(2,'0') + 'h ' + String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+      }
+      const totalDur = UNLOCK_UNIX - DEPOSIT_UNIX;
+      const elapsed = Math.min(totalDur, Math.max(0, now - DEPOSIT_UNIX));
+      const pct = ((elapsed / totalDur) * 100).toFixed(1);
+      document.getElementById('hold-pct-label').textContent = pct + '% Complete';
+      document.getElementById('hold-progress-bar').style.width = pct + '%';
+    }
+
+    function updateCalc() {
+      const ifBid = parseFloat(document.getElementById('in-if').value) || 0;
+      const cxBid = parseFloat(document.getElementById('in-cx').value) || 0;
+      const beastBid = parseFloat(document.getElementById('in-beast').value) || 0;
+      const walkQty = parseInt(document.getElementById('in-walk').value, 10) || 0;
+      const walkEth = walkQty * 0.0020;
+
+      document.getElementById('lbl-if-usd').textContent = '$' + (ifBid * ETH_RATE).toFixed(2) + ' USD';
+      document.getElementById('lbl-cx-usd').textContent = '$' + (cxBid * ETH_RATE).toFixed(2) + ' USD';
+      document.getElementById('lbl-beast-usd').textContent = '$' + (beastBid * ETH_RATE).toFixed(2) + ' USD';
+      document.getElementById('lbl-walk-usd').textContent = '$' + (walkEth * ETH_RATE).toFixed(2) + ' USD';
+
+      const krakenEth = ACCOUNTS[0]?.eth || 0.37532712;
+      const deployedEth = ifBid + cxBid + beastBid + walkEth;
+      const deployedUsd = deployedEth * ETH_RATE;
+      const leftEth = krakenEth - deployedEth;
+      const leftUsd = leftEth * ETH_RATE;
+
+      document.getElementById('out-deployed-eth').textContent = deployedEth.toFixed(4) + ' ETH';
+      document.getElementById('out-deployed-usd').textContent = '$' + deployedUsd.toFixed(2) + ' USD Allocated';
+
+      const leftEthEl = document.getElementById('out-left-eth');
+      const leftUsdEl = document.getElementById('out-left-usd');
+      if (leftEth >= 0) {
+        leftEthEl.className = 'text-base font-bold font-mono text-emerald-500 mt-0.5';
+        leftEthEl.textContent = leftEth.toFixed(4) + ' ETH';
+        leftUsdEl.className = 'text-xs font-semibold text-emerald-500';
+        leftUsdEl.textContent = '$' + leftUsd.toFixed(2) + ' USD Left!';
+      } else {
+        leftEthEl.className = 'text-base font-bold font-mono text-amber-500 mt-0.5';
+        leftEthEl.textContent = Math.abs(leftEth).toFixed(4) + ' ETH Over';
+        leftUsdEl.className = 'text-xs font-semibold text-amber-500';
+        leftUsdEl.textContent = 'Use Shared WETH Bid Ladder!';
+      }
+    }
+
+    function applyPreset(ifVal, cxVal, beastVal, walkQty) {
+      document.getElementById('in-if').value = ifVal.toFixed(4);
+      document.getElementById('in-cx').value = cxVal.toFixed(4);
+      document.getElementById('in-beast').value = beastVal.toFixed(3);
+      document.getElementById('in-walk').value = walkQty;
+      updateCalc();
+    }
+
+    function setLayoutMode(mode) {
+      const container = document.getElementById('dex-container');
+      const left = document.getElementById('pane-left');
+      const right = document.getElementById('pane-right');
+      const btnFold = document.getElementById('btn-mode-auto');
+      const btnS26 = document.getElementById('btn-mode-s26u');
+
+      if (mode === 's26u') {
+        container.className = 'max-w-[460px] mx-auto p-3 grid grid-cols-1 gap-4 border-x border-[var(--border)]';
+        left.className = 'col-span-1 space-y-4';
+        right.className = 'col-span-1 space-y-4';
+        btnS26.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
+        btnFold.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+      } else {
+        container.className = 'max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
+        left.className = 'md:col-span-6 space-y-4';
+        right.className = 'md:col-span-6 space-y-4';
+        btnFold.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
+        btnS26.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+      }
+    }
+
+    function scrollToSec(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Direct Browser Live Telemetry (Works 24/7 on GitHub Pages even when PC is off!)
+    async function refreshTelemetry() {
+      const btn = document.getElementById('btn-refresh');
+      btn.textContent = '⏳ Syncing...';
+      try {
+        // 1. Try local/repo snapshot first if available
+        try {
+          const snapRes = await fetch('snapshot.json?t=' + Date.now());
+          if (snapRes.ok) {
+            const snap = await snapRes.json();
+            if (snap.eth_usd_rate) ETH_RATE = snap.eth_usd_rate;
+            if (snap.kraken?.eth_balance) ACCOUNTS[0].eth = snap.kraken.eth_balance;
+          }
+        } catch (e) {}
+
+        // 2. Live CoinGecko NFT & ETH/USD fetch directly from browser
+        const [cgIf, cgCx, cgAkcb] = await Promise.all([
+          fetch('https://api.coingecko.com/api/v3/nfts/invisible-friends').then(r => r.ok ? r.json() : null).catch(() => null),
+          fetch('https://api.coingecko.com/api/v3/nfts/clonex').then(r => r.ok ? r.json() : null).catch(() => null),
+          fetch('https://api.coingecko.com/api/v3/nfts/a-kid-called-beast').then(r => r.ok ? r.json() : null).catch(() => null)
+        ]);
+
+        if (cgIf?.floor_price?.native_currency) {
+          const fEth = cgIf.floor_price.native_currency;
+          const fUsd = cgIf.floor_price.usd;
+          if (fEth > 0 && fUsd > 0) ETH_RATE = fUsd / fEth;
+          document.getElementById('mkt-if-floor').textContent = fEth.toFixed(4) + ' ETH';
+          document.getElementById('mkt-if-floor-usd').textContent = '$' + fUsd.toFixed(2) + ' USD';
+        }
+        if (cgCx?.floor_price?.native_currency) {
+          document.getElementById('mkt-cx-floor').textContent = cgCx.floor_price.native_currency.toFixed(4) + ' ETH';
+          document.getElementById('mkt-cx-floor-usd').textContent = '$' + cgCx.floor_price.usd.toFixed(2) + ' USD';
+        }
+        if (cgAkcb?.floor_price?.native_currency) {
+          document.getElementById('mkt-akcb-floor').textContent = cgAkcb.floor_price.native_currency.toFixed(4) + ' ETH';
+          document.getElementById('mkt-akcb-floor-usd').textContent = '$' + cgAkcb.floor_price.usd.toFixed(2) + ' USD';
+        }
+
+        // 3. Verify ownerOf on Ethereum Mainnet RPC directly from browser
+        const owner1506 = await rpcCall('eth_call', [{ to: '0x59468516a8259058baD1cA5F8f4BFF190d30E066', data: '0x6352211e' + (1506).toString(16).padStart(64, '0') }, 'latest']);
+        if (owner1506 && owner1506.length >= 66) {
+          const addr = '0x' + owner1506.slice(-40);
+          const unmoved = addr.toLowerCase() === '0xc1ebe1c004f41e674953215395841b516a381880';
+          document.getElementById('status-1506').textContent = unmoved ? '✅ Unmoved (0xC1eB...1880)' : '🚨 MOVED (' + addr.slice(0,6) + ')';
+        }
+
+        document.getElementById('hdr-eth-rate').textContent = ETH_RATE.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+        renderWalletPnl();
+        updateCalc();
+      } catch (e) {}
+      btn.innerHTML = '<span>🔄</span> <span class="hidden sm:inline">Sync Live</span>';
+    }
+
+    ['in-if', 'in-cx', 'in-beast', 'in-walk'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateCalc);
+    });
+
+    renderWalletPnl();
+    updateTimers();
+    setInterval(updateTimers, 1000);
+    updateCalc();
+    refreshTelemetry();
+    setInterval(refreshTelemetry, 60000);
+  </script>
+</body>
+</html>

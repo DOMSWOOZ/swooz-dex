@@ -1,0 +1,126 @@
+{
+  "timestamp_utc": "2026-11-03 20:48 UTC",
+  "eth_usd_rate": 2284.38,
+  "kraken": {
+    "connected": true,
+    "eth_balance": 0.3753271228,
+    "eth_hold_trade": 0.0,
+    "usd_balance": 0.0,
+    "equity_usd": 858.6816,
+    "staking_earned_eth": 2.08e-05,
+    "recent_eth_withdrawal": null
+  },
+  "kraken_eth": 0.375327,
+  "kraken_usd": 857.39,
+  "swooz_onchain": {
+    "eth": 9e-05,
+    "eth_usd": 0.21,
+    "weth": 0.0001,
+    "weth_usd": 0.23
+  },
+  "eth_pnl": {
+    "total_held_eth": 0.375517,
+    "total_cost_usd": 900.44,
+    "total_live_usd": 857.82,
+    "fiat_pnl_usd": -42.62,
+    "fiat_pnl_pct": -4.73,
+    "breakeven_eth_usd": 2397.91
+  },
+  "unlock_countdown": "1d 1h 20m",
+  "unlock_utc": "2026-11-04 22:09:09 UTC (2:09 PM PST)",
+  "hold_cleared": false,
+  "any_target_moved": false,
+  "og_collection": {
+    "contract": "0x59468516a8259058baD1cA5F8f4BFF190d30E066",
+    "floor_eth": 0.214251,
+    "floor_usd": 489.43,
+    "top_bid_eth_low": 0.198,
+    "top_bid_eth_high": 0.2,
+    "top_bid_usd_low": 452.31,
+    "top_bid_usd_high": 456.88,
+    "target_1506_bid_eth": 0.21,
+    "target_1506_bid_usd": 479.72,
+    "change_24h_pct": 10.900351388331538,
+    "volume_24h_eth": 1.085,
+    "volume_24h_usd": 2478.07,
+    "unique_holders": 3261
+  },
+  "target_tokens_status": {
+    "1506": {
+      "label": "Primary \u2014 Rank #1,621",
+      "current_owner": "0xC1eBE1C004F41E674953215395841b516A381880",
+      "expected_owner": "0xC1eBE1C004F41E674953215395841b516A381880",
+      "moved_or_sold": false
+    },
+    "1286": {
+      "label": "Backup #1 \u2014 Rank #1,367",
+      "current_owner": "0xDf0fCfC1405d21723D3bcE5A05ABc59f55a06Bd4",
+      "expected_owner": "0xDf0fCfC1405d21723D3bcE5A05ABc59f55a06Bd4",
+      "moved_or_sold": false
+    },
+    "140": {
+      "label": "Backup #2 \u2014 Rank #814",
+      "current_owner": "0x9a90b0B430acC2Aa6B9ffD442ED2D9BbF30E2e14",
+      "expected_owner": "0x9a90b0B430acC2Aa6B9ffD442ED2D9BbF30E2e14",
+      "moved_or_sold": false
+    },
+    "42": {
+      "label": "Backup #3 \u2014 Rank #489",
+      "current_owner": "0x93971b710bc2b1A0978802B9d5887df9b832F266",
+      "expected_owner": "0x93971b710bc2b1A0978802B9d5887df9b832F266",
+      "moved_or_sold": false
+    }
+  },
+  "the_walk_editions": {
+    "contract": "0x0905b2277Df5c7dD6C5e3399Ece8a36621aebE85",
+    "total_supply": 16969,
+    "unique_holders": 4994,
+    "bid_eth": 0.0019,
+    "bid_usd": 4.34,
+    "floor_eth": 0.0022,
+    "floor_usd": 5.03
+  },
+  "akcb": {
+    "contract": "0x77372a4cc66063575b05b44481f059be356964a4",
+    "floor_eth": 0.0695,
+    "floor_usd": 158.71,
+    "change_24h_pct": 1.6405934021544937,
+    "unique_holders": 2807,
+    "beast_2313": {
+      "token_id": 2313,
+      "traits": "Beat Street \u2022 Black Raccoon Balaclava \u2022 Orange Puffer \u2022 Pink Rect Glasses",
+      "current_owner": "0x4140DB722AABeC52C0d2b28d27d838BB3F25CF1F",
+      "expected_owner": "0x4140DB722AABeC52C0d2b28d27d838BB3F25CF1F",
+      "moved_or_sold": false,
+      "target_bid_eth": 0.06,
+      "target_bid_usd": 137.06
+    }
+  },
+  "clonex": {
+    "contract": "0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B",
+    "total_supply": 19764,
+    "unique_holders": 9119,
+    "floor_eth": 0.146511,
+    "floor_usd": 334.66,
+    "top_bid_eth_low": 0.14,
+    "top_bid_eth_high": 0.1454,
+    "top_bid_usd_low": 319.81,
+    "top_bid_usd_high": 332.15,
+    "change_24h_pct": -3.5950258924711154,
+    "volume_24h_eth": 2.05,
+    "volume_24h_usd": 4684.6,
+    "recent_high_sale": "CloneX #9143 @ 1.1303 WETH ($2,550.97 USD)"
+  },
+  "mini_supers": {
+    "contract": "0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7",
+    "total_supply": 6969,
+    "unique_holders": 2335,
+    "swooz_held": 132,
+    "swooz_rank": 2,
+    "floor_eth": 0.0013,
+    "floor_usd": 3.01,
+    "last_bid_eth": 0.00071,
+    "last_bid_usd": 1.62,
+    "last_activity": "Token #1868 (2026-11-01)"
+  }
+}
