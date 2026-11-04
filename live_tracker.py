@@ -307,10 +307,11 @@ def get_snapshot() -> dict:
     clonex_vol_eth = cg_clonex.get("volume_24h", {}).get("native_currency") or 2.05
     clonex_vol_usd = cg_clonex.get("volume_24h", {}).get("usd") or round(clonex_vol_eth * eth_usd_rate, 2)
 
-    # Calculate Held ETH Gain/Loss (P&L) across Kraken + swooz.eth
+    # Calculate Held ETH + ZUSD Dip-Ammo Gain/Loss (P&L) across Kraken + swooz.eth
+    kraken_zusd = float(kraken.get("usd_balance") or 0.0)
     total_held_eth = kraken["eth_balance"] + swooz_onchain["eth"] + swooz_onchain["weth"]
     total_cost_usd = KRAKEN_INITIAL_COST_USD + 0.44
-    total_live_usd = total_held_eth * eth_usd_rate
+    total_live_usd = (total_held_eth * eth_usd_rate) + kraken_zusd
     fiat_pnl_usd = total_live_usd - total_cost_usd
     fiat_pnl_pct = (fiat_pnl_usd / total_cost_usd) * 100 if total_cost_usd > 0 else 0.0
 
@@ -319,15 +320,16 @@ def get_snapshot() -> dict:
         "eth_usd_rate": round(eth_usd_rate, 2),
         "kraken": kraken,
         "kraken_eth": round(kraken["eth_balance"], 6),
-        "kraken_usd": round(kraken["eth_balance"] * eth_usd_rate, 2),
+        "kraken_usd": round(kraken["eth_balance"] * eth_usd_rate + kraken_zusd, 2),
         "swooz_onchain": swooz_onchain,
         "eth_pnl": {
             "total_held_eth": round(total_held_eth, 6),
+            "kraken_zusd_ammo": round(kraken_zusd, 2),
             "total_cost_usd": round(total_cost_usd, 2),
             "total_live_usd": round(total_live_usd, 2),
             "fiat_pnl_usd": round(fiat_pnl_usd, 2),
             "fiat_pnl_pct": round(fiat_pnl_pct, 2),
-            "breakeven_eth_usd": round(KRAKEN_INITIAL_COST_USD / kraken["eth_balance"], 2),
+            "breakeven_eth_usd": 2398.03,
         },
         "unlock_countdown": f"{days}d {hours}h {mins}m",
         "unlock_utc": "2026-11-04 22:09:09 UTC (2:09 PM PST)",
@@ -420,9 +422,9 @@ def get_snapshot() -> dict:
         "hold_cleared": snap["hold_cleared"],
         "mini_supers_held": swooz_ms_count,
         "mini_supers_rank": swooz_ms_rank,
-        "active_order_id": "OV57WW-IWDWQ-D5XSSX",
-        "active_order_desc": "sell 0.37532712 ETHUSD @ limit 2434.30 (Post-Only 0.40% -> $910.00 Net)",
-        "re_buy_target": "$900.00 @ $2,365.00/ETH (0.37903 ETH) + $10.00 SOLUSD @ $93.50 -> $97.80",
+        "active_order_id": "OQZFZ5-JE7VA-XL4ICG / O2M55I-TTRGZ-JHPZLG / OXHR5G-7XDXV-JDJ77G",
+        "active_order_desc": "3-Leg Straddle: 0.32 ETH @ $2,434.30 | $120 ETH Buy @ $2,350 | $12.51 SOL Buy @ $93.50",
+        "re_buy_target": "Playing Both Sides: Upside ($2,434.30) + ETH Dip ($2,350.00) + SOL Dip ($93.50)",
     }
     vault_cipher = encrypt_owner_vault(private_vault_payload, vault_pin)
 

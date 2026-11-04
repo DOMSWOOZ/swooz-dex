@@ -268,9 +268,9 @@
               <div id="chart-kpi-dist" class="text-[11px] text-amber-400">$20.81 away (99.1%)</div>
             </div>
             <div class="bg-[var(--card)] border border-amber-500/40 rounded-lg p-2">
-              <div id="chart-kpi-rebuy-lbl" class="text-[10px] text-amber-400 font-sans font-bold">AUTO DIP RE-BUY</div>
-              <div id="chart-kpi-rebuy" class="text-sm font-bold text-amber-400">$2,365.00</div>
-              <div id="chart-kpi-rebuy-note" class="text-[11px] text-emerald-400">→ 0.37903 ETH (+Free ETH)</div>
+              <div id="chart-kpi-rebuy-lbl" class="text-[10px] text-amber-400 font-sans font-bold">LIVE DIP BUY ORDER</div>
+              <div id="chart-kpi-rebuy" class="text-sm font-bold text-amber-400">$2,350.00</div>
+              <div id="chart-kpi-rebuy-note" class="text-[11px] text-emerald-400">🟢 $120 Live (0.05086 ETH)</div>
             </div>
           </div>
 
@@ -278,53 +278,53 @@
           <div class="relative w-full bg-[#090c14] border border-[var(--border)] rounded-xl overflow-hidden p-2">
             <canvas id="kraken-ohlc-canvas" width="820" height="290" class="w-full h-[240px] sm:h-[280px] block"></canvas>
             <div class="flex items-center justify-between text-[10px] font-mono text-[var(--muted-foreground)] pt-1 px-1 border-t border-[var(--border)]/60">
-              <span>🟢 Green Dashed = Target Sell ($2,434.30 ETH / $97.80 SOL)</span>
-              <span>🟠 Amber Dashed = Auto Dip Buy ($2,365.00 ETH / $93.50 SOL)</span>
+              <span>🟢 Green Dashed = Live Sell ($2,434.30 ETH / $97.80 SOL)</span>
+              <span>🟠 Amber Dashed = Live Dip Buy ($2,350.00 ETH / $93.50 SOL)</span>
             </div>
           </div>
 
-          <!-- 🎯 Automated Dual-Bucket Pipeline Tracker (Owner Vault Details Unlocked w/ PIN) -->
+          <!-- 🎯 Automated 3-Leg Dual-Sided Straddle Tracker (Owner Vault Details Unlocked w/ PIN) -->
           <div class="owner-only hidden bg-[var(--card)] border border-emerald-500/40 rounded-lg p-2.5 space-y-2">
             <div class="flex items-center justify-between flex-wrap gap-1">
-              <span class="font-bold text-[var(--foreground)]">🤖 Active Automated Dual-Bucket Pipeline (Post-Only Maker 0.40%)</span>
-              <span id="ladder-summary-badge" class="text-emerald-500 font-mono font-semibold">🟢 LIVE ON BOOK: txid OV57WW-IWDWQ-D5XSSX</span>
+              <span class="font-bold text-[var(--foreground)]">🤖 Active 3-Leg Dual-Sided Straddle (Playing Both Pump &amp; Dip — 0.40% Maker)</span>
+              <span id="ladder-summary-badge" class="text-emerald-500 font-mono font-semibold">🟢 3 LIVE ORDERS ON KRAKEN BOOK</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left border-collapse text-[11px] font-mono">
                 <thead>
                   <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
-                    <th class="py-1 pr-2">Stage</th>
-                    <th class="py-1 px-2">Trigger Price</th>
+                    <th class="py-1 pr-2">Active Leg</th>
+                    <th class="py-1 px-2">Limit Price</th>
                     <th class="py-1 px-2">Order Size</th>
                     <th class="py-1 px-2">Maker Fee (0.40%)</th>
-                    <th class="py-1 px-2">Target Outcome</th>
-                    <th class="py-1 pl-2">Live Status / Order ID</th>
+                    <th class="py-1 px-2">Auto-Flip Target</th>
+                    <th class="py-1 pl-2">Live Kraken Order ID</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-[var(--border)]">
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">1. Full-Stack Profit Lock</td>
-                    <td class="py-1.5 px-2 font-bold">$2,434.30 / ETH</td>
-                    <td class="py-1.5 px-2 font-bold">0.37532712 ETH (100%)</td>
-                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$913.66 (-$3.65 Fee)</td>
-                    <td class="py-1.5 px-2 font-bold text-emerald-500">$910.00 USD (+$10.00 Net)</td>
-                    <td id="rung-status-1" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OV57WW-IWDWQ-D5XSSX)</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">1. ETH Upside Sell (85%)</td>
+                    <td class="py-1.5 px-2 font-bold">Sell @ $2,434.30</td>
+                    <td class="py-1.5 px-2 font-bold">0.32000000 ETH</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$778.98 (-$3.12 Fee)</td>
+                    <td class="py-1.5 px-2 font-bold text-emerald-500">$775.86 → Re-Buy @ $2,365</td>
+                    <td id="rung-status-1" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OQZFZ5-JE7VA-XL4ICG)</td>
                   </tr>
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-amber-500">2A. Core ETH Dip Re-Buy</td>
-                    <td class="py-1.5 px-2 font-bold">$2,365.00 / ETH</td>
-                    <td class="py-1.5 px-2 font-bold">$900.00 Principal</td>
-                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">0.40% Maker ($3.59)</td>
-                    <td class="py-1.5 px-2 font-bold text-emerald-500">0.37903 ETH (+0.0037 Free ETH!)</td>
-                    <td class="py-1.5 pl-2 font-sans text-emerald-500 font-semibold">🤖 Auto-Fires on Step 1 Fill</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-amber-500">2. ETH Dip-Catcher ($120)</td>
+                    <td class="py-1.5 px-2 font-bold">Buy @ $2,350.00</td>
+                    <td class="py-1.5 px-2 font-bold">0.05085957 ETH</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$119.52 (+$0.48 Fee)</td>
+                    <td class="py-1.5 px-2 font-bold text-amber-400">Auto-Sells @ $2,434.30</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (O2M55I-TTRGZ-JHPZLG)</td>
                   </tr>
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">2B. SOL/USD Profit Scraper</td>
-                    <td class="py-1.5 px-2 font-bold">Buy $93.50 → Sell $97.80</td>
-                    <td class="py-1.5 px-2 font-bold">+$10.00 Profit (~0.1065 SOL)</td>
-                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">House Money Loop</td>
-                    <td class="py-1.5 px-2 font-bold text-purple-400">$10.00 → $10.38 → $10.78+</td>
-                    <td class="py-1.5 pl-2 font-sans text-emerald-500 font-semibold">🤖 Auto-Loops on Step 1 Fill</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">3. SOL Dip Scraper ($12.51)</td>
+                    <td class="py-1.5 px-2 font-bold">Buy @ $93.50</td>
+                    <td class="py-1.5 px-2 font-bold">0.13324064 SOL</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$12.46 (+$0.05 Fee)</td>
+                    <td class="py-1.5 px-2 font-bold text-purple-400">Auto-Sells @ $97.80 Loop</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OXHR5G-7XDXV-JDJ77G)</td>
                   </tr>
                 </tbody>
               </table>
@@ -1708,17 +1708,20 @@
           ok: 'SWOOZ_VAULT_OK',
           owner_ens: 'swooz.eth',
           owner_wallet: '0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4',
-          kraken_eth: 0.37532712,
+          kraken_eth: 0.32000000,
+          kraken: { eth_balance: 0.32000000, usd_balance: 132.51 },
           swooz_onchain: { eth: 0.00019, weth: 0 },
           mini_supers_held: 132,
-          active_order_id: 'OV57WW-IWDWQ-D5XSSX'
+          active_order_id: 'OQZFZ5 / O2M55I / OXHR5G'
         };
       }
 
       if (decrypted) {
         VAULT_UNLOCKED = true;
         UNLOCKED_VAULT_DATA = decrypted;
-        const kEth = decrypted.kraken?.eth_balance || decrypted.kraken_eth || 0.37532712;
+        const kEth = decrypted.kraken?.eth_balance || decrypted.kraken_eth || 0.32000000;
+        const kZusd = decrypted.kraken?.usd_balance || decrypted.eth_pnl?.kraken_zusd_ammo || 132.51;
+        const kTotalEthEquiv = kEth + (ETH_RATE > 0 ? kZusd / ETH_RATE : 0);
         const wAddr = decrypted.owner_wallet || '';
         const wEth = (decrypted.swooz_onchain?.eth || 0) + (decrypted.swooz_onchain?.weth || 0) || 0.00019;
         const msCount = decrypted.mini_supers_held || 132;
@@ -1726,9 +1729,9 @@
         ACCOUNTS = [
           {
             id: 'kraken-main',
-            label: '🦑 Kraken Pro Main (Unlocked Vault)',
-            address: decrypted.active_order_id ? `Active Limit Sell: ${decrypted.active_order_id}` : 'Kraken Pro Spot Account',
-            eth: kEth,
+            label: '🦑 Kraken Pro Straddle (85% ETH + $132.51 Dip Ammo)',
+            address: `0.3200 ETH @ $2,434.30 | $120 ETH Buy @ $2,350 | $12.51 SOL Buy @ $93.50`,
+            eth: kTotalEthEquiv,
             costUsd: 900.00,
             miniSupers: 0,
             isOnChain: false
@@ -2181,7 +2184,7 @@
 
       // Target order levels for overlay lines
       const targetSell = CHART_PAIR === 'ETHUSD' ? 2434.30 : 97.80;
-      const targetBuy = CHART_PAIR === 'ETHUSD' ? 2365.00 : 93.50;
+      const targetBuy = CHART_PAIR === 'ETHUSD' ? 2350.00 : 93.50;
 
       let minP = Math.min(...LAST_CANDLES.map(c => c.low), targetBuy * 0.996);
       let maxP = Math.max(...LAST_CANDLES.map(c => c.high), targetSell * 1.004);
@@ -2208,11 +2211,11 @@
         ? `$${distUsd.toFixed(2)} away (${pctToTarget.toFixed(1)}%)`
         : `🎯 ABOVE TARGET ($${Math.abs(distUsd).toFixed(2)})`;
 
-      document.getElementById('chart-kpi-rebuy-lbl').textContent = CHART_PAIR === 'ETHUSD' ? 'AUTO DIP RE-BUY ($900)' : 'SOL DIP ENTRY ($10)';
+      document.getElementById('chart-kpi-rebuy-lbl').textContent = CHART_PAIR === 'ETHUSD' ? 'LIVE ETH DIP BUY ($120)' : 'LIVE SOL DIP BUY ($12.51)';
       document.getElementById('chart-kpi-rebuy').textContent = '$' + targetBuy.toFixed(2);
       document.getElementById('chart-kpi-rebuy-note').textContent = CHART_PAIR === 'ETHUSD'
-        ? '→ 0.37903 ETH (+Free ETH)'
-        : '→ ~0.1065 SOL House Loop';
+        ? '🟢 Open: 0.05086 ETH'
+        : '🟢 Open: 0.13324 SOL';
 
       const badge = document.getElementById('chart-live-spread-badge');
       if (badge) {
