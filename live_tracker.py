@@ -30,6 +30,26 @@ SWOOZ_WALLET = "0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4"
 
 ENV_PATH = os.path.expanduser("~/.env")
 SNAPSHOT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pwa", "snapshot.json")
+ROOT_SNAPSHOT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "snapshot.json")
+DEFAULT_VAULT_PIN = "1506"
+VAULT_SALT = "swooz-dex-v6-vault"
+
+
+def encrypt_owner_vault(private_dict: dict, pin: str) -> str:
+    """Encrypts the owner's private Kraken & wallet telemetry using SHA-256 stream cipher so public snapshot.json never exposes plaintext private data."""
+    raw_bytes = json.dumps(private_dict, separators=(",", ":")).encode("utf-8")
+    out = bytearray(len(raw_bytes))
+    block_idx = 0
+    pos = 0
+    while pos < len(raw_bytes):
+        key_block = hashlib.sha256(f"{pin}:{VAULT_SALT}:{block_idx}".encode("utf-8")).digest()
+        for b in key_block:
+            if pos >= len(raw_bytes):
+                break
+            out[pos] = raw_bytes[pos] ^ b
+            pos += 1
+        block_idx += 1
+    return base64.b64encode(bytes(out)).decode("ascii")
 
 # Exact ACH Plaid deposit ledger timestamp from Kraken: 2026-10-28 22:09:09 UTC + 7 days
 EXACT_ACH_DEPOSIT_TS = 1793225349
@@ -383,10 +403,59 @@ def get_snapshot() -> dict:
         },
     }
 
+    # Encrypt personal/private telemetry with VAULT_PIN before writing snapshot.json for GitHub Pages
+    env_vars = load_env()
+    vault_pin = env_vars.get("VAULT_PIN", DEFAULT_VAULT_PIN)
+    private_vault_payload = {
+        "ok": "SWOOZ_VAULT_OK",
+        "owner_ens": "swooz.eth",
+        "owner_wallet": SWOOZ_WALLET,
+        "kraken": kraken,
+        "kraken_eth": round(kraken["eth_balance"], 6),
+        "kraken_usd": round(kraken["eth_balance"] * eth_usd_rate, 2),
+        "swooz_onchain": swooz_onchain,
+        "eth_pnl": snap["eth_pnl"],
+        "unlock_countdown": snap["unlock_countdown"],
+        "unlock_utc": snap["unlock_utc"],
+        "hold_cleared": snap["hold_cleared"],
+        "mini_supers_held": swooz_ms_count,
+        "mini_supers_rank": swooz_ms_rank,
+        "active_order_id": "OV57WW-IWDWQ-D5XSSX",
+        "active_order_desc": "sell 0.37532712 ETHUSD @ limit 2434.30 (Post-Only 0.40% -> $910.00 Net)",
+        "re_buy_target": "$900.00 @ $2,365.00/ETH (0.37903 ETH) + $10.00 SOLUSD @ $93.50 -> $97.80",
+    }
+    vault_cipher = encrypt_owner_vault(private_vault_payload, vault_pin)
+
+    public_snap = {
+        "timestamp_utc": snap["timestamp_utc"],
+        "eth_usd_rate": snap["eth_usd_rate"],
+        "vault_locked": True,
+        "vault_salt": VAULT_SALT,
+        "vault_cipher": vault_cipher,
+        "any_target_moved": snap["any_target_moved"],
+        "og_collection": snap["og_collection"],
+        "target_tokens_status": snap["target_tokens_status"],
+        "the_walk_editions": snap["the_walk_editions"],
+        "akcb": snap["akcb"],
+        "clonex": snap["clonex"],
+        "mini_supers": {
+            "contract": MINI_SUPERS_CONTRACT,
+            "total_supply": int(ms_tok.get("total_supply") or 6969),
+            "unique_holders": int(ms_tok.get("holders_count") or 2335),
+            "floor_eth": round(3.01 / eth_usd_rate, 4),
+            "floor_usd": 3.01,
+            "last_bid_eth": 0.00071,
+            "last_bid_usd": round(0.00071 * eth_usd_rate, 2),
+            "last_activity": f"Token #{last_ms_token} ({last_ms_date})",
+        },
+    }
+
     try:
         os.makedirs(os.path.dirname(SNAPSHOT_PATH), exist_ok=True)
         with open(SNAPSHOT_PATH, "w", encoding="utf-8") as f:
-            json.dump(snap, f, indent=2)
+            json.dump(public_snap, f, indent=2)
+        with open(ROOT_SNAPSHOT_PATH, "w", encoding="utf-8") as f:
+            json.dump(public_snap, f, indent=2)
     except Exception:
         pass
 
