@@ -1,12 +1,16 @@
-"""Automated Kraken Pro ETH Profit-Lock & Dip Re-Buy Watcher Daemon.
+"""Automated Kraken Pro Dual-Bucket Auto-Flipper Daemon (Scenario A: $900 ETH + $10 SOL).
 
 Watches the active Full-Stack Profit-Lock Sell Order (OV57WW-IWDWQ-D5XSSX @ $2,434.30).
-The moment it fills and Kraken ZUSD balance reaches >= $900.00:
-  1. Keeps all profit above $900.00 (~+$10.00 USD) permanently locked in ZUSD cash.
-  2. Automatically places a Post-Only Limit Buy (0.40% Maker fee) using only the
-     $900.00 principal ($896.41 order value + $3.59 Maker fee = $900.00 total)
+The exact moment it fills and Kraken ZUSD balance reaches >= $900.00:
+  1. BUCKET 1 ($900.00 ZUSD Core Principal -> ETH/USD Dip Re-Buy):
+     Places a Post-Only Limit Buy (0.40% Maker fee) using $900.00 ($896.41 order + $3.59 fee)
      at $2,365.00 / ETH -> buying back 0.37903171 ETH (+0.00370 Free ETH gain!).
-  3. Sends an instant Discord webhook notification and updates snapshot.json.
+  2. BUCKET 2 (+$10.00 ZUSD House-Money Profit -> SOL/USD Perpetual Range Scraper):
+     Takes the remaining ~$10.00 ZUSD locked profit and places a Post-Only Limit Buy on
+     SOLUSD at $93.50 / SOL (~0.1065 SOL, >2x Kraken's 0.05 SOL minimum).
+     Whenever the SOL Dip Buy fills, it automatically places a Post-Only Limit Sell on
+     SOLUSD at $97.80 / SOL (near the $98.01 24h high) and compounds in a continuous loop!
+  3. Sends instant Discord webhook notifications and syncs snapshot.json on every fill.
 """
 
 import json
@@ -17,14 +21,20 @@ from live_tracker import get_snapshot, kraken_post, load_env
 SELL_TXID = "OV57WW-IWDWQ-D5XSSX"
 PROTECTED_PRINCIPAL_USD = 900.00
 MAKER_FEE_RATE = 0.004  # 0.40% Kraken Pro Maker Fee
-DIP_REBUY_PRICE_USD = 2365.00  # Yields 0.37903 ETH (+0.00370 Free ETH) while keeping +$10.00 USD cash!
+
+# Bucket 1: ETH Core Stack Dip Re-Buy Target
+ETH_DIP_BUY_PRICE = 2365.00
+
+# Bucket 2: SOL House-Money Range Scraper Targets
+SOL_DIP_BUY_PRICE = 93.50
+SOL_TOP_SELL_PRICE = 97.80
 
 
 def send_discord_alert(webhook_url: str, title: str, description: str, color: int = 0x00F5A0) -> None:
     if not webhook_url:
         return
     payload = {
-        "username": "SWOOZ.ETH Auto-Flipper",
+        "username": "SWOOZ.ETH Dual Auto-Flipper (ETH + SOL)",
         "content": f"🚨 **{title}**",
         "embeds": [
             {
@@ -38,7 +48,7 @@ def send_discord_alert(webhook_url: str, title: str, description: str, color: in
         req = urllib.request.Request(
             webhook_url,
             data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json", "User-Agent": "SwoozAutoFlip/1.0"},
+            headers={"Content-Type": "application/json", "User-Agent": "SwoozAutoFlip/2.0"},
             method="POST",
         )
         urllib.request.urlopen(req, timeout=10)
@@ -49,11 +59,15 @@ def send_discord_alert(webhook_url: str, title: str, description: str, color: in
 def main() -> None:
     env = load_env()
     webhook = env.get("DISCORD_WEBHOOK_URL", "")
-    rebuy_placed = False
-    rebuy_txid = None
+    eth_rebuy_placed = False
+    eth_rebuy_txid = None
+    eth_rebuy_done = False
+
+    sol_state = "IDLE"  # IDLE -> BUYING_DIP -> SELLING_TOP
+    sol_order_txid = None
 
     print(
-        f"[Auto-Flipper Started] Watching Sell Order {SELL_TXID} ($2,434.30 -> $910.00 Net Cash)...",
+        f"[Dual Auto-Flipper Started] Watching {SELL_TXID} ($2,434.30 -> $900 ETH Re-Buy + $10 SOL Scraper)...",
         flush=True,
     )
 
@@ -65,63 +79,154 @@ def main() -> None:
 
             zusd_total = float(bal.get("ZUSD", {}).get("balance", 0.0) or 0.0)
             zusd_hold = float(bal.get("ZUSD", {}).get("hold_trade", 0.0) or 0.0)
-            zusd_avail = zusd_total - zusd_hold
+            zusd_avail = max(0.0, zusd_total - zusd_hold)
+
             xeth_total = float(bal.get("XETH", {}).get("balance", 0.0) or 0.0)
+            sol_total = float(bal.get("SOL", {}).get("balance", 0.0) or 0.0)
+            sol_hold = float(bal.get("SOL", {}).get("hold_trade", 0.0) or 0.0)
+            sol_avail = max(0.0, sol_total - sol_hold)
 
-            # Check if Sell Order filled and ZUSD is available for the $900 Re-Buy
-            if not rebuy_placed and (SELL_TXID not in oo) and zusd_avail >= 895.0:
-                locked_profit = max(0.0, zusd_total - PROTECTED_PRINCIPAL_USD)
-                deploy_usd = min(zusd_avail, PROTECTED_PRINCIPAL_USD)
-                # Account for 0.40% Maker fee so total cost (order value + fee) <= $900.00
-                net_order_usd = deploy_usd / (1.0 + MAKER_FEE_RATE)
-                buy_vol_eth = round(net_order_usd / DIP_REBUY_PRICE_USD, 8)
+            # STEP 1 -> STEP 2A & 2B: When $2,434.30 ETH Sell fills and ~$910 ZUSD lands
+            if not eth_rebuy_placed and (SELL_TXID not in oo) and zusd_avail >= 895.0:
+                profit_bucket_usd = max(0.0, zusd_avail - PROTECTED_PRINCIPAL_USD)
+                eth_deploy_usd = min(zusd_avail, PROTECTED_PRINCIPAL_USD)
 
-                res = kraken_post(
+                # 2A. Place $900.00 ETH Dip Re-Buy @ $2,365.00
+                net_eth_order_usd = eth_deploy_usd / (1.0 + MAKER_FEE_RATE)
+                buy_vol_eth = round(net_eth_order_usd / ETH_DIP_BUY_PRICE, 8)
+
+                res_eth = kraken_post(
                     "/0/private/AddOrder",
                     {
                         "pair": "XETHZUSD",
                         "type": "buy",
                         "ordertype": "limit",
-                        "price": f"{DIP_REBUY_PRICE_USD:.2f}",
+                        "price": f"{ETH_DIP_BUY_PRICE:.2f}",
                         "volume": f"{buy_vol_eth:.8f}",
                         "oflags": "post,fciq",
                     },
                     env_vars=env,
                 )
-                errs = res.get("error", [])
-                if not errs:
-                    txids = res.get("result", {}).get("txid", [])
-                    rebuy_txid = txids[0] if txids else "PLACED"
-                    rebuy_placed = True
-                    msg = (
-                        f"✅ **Step 1 Sell Filled (`{SELL_TXID}`)**: Your `0.37532712 ETH` sold at **`$2,434.30 / ETH`**!\n"
-                        f"💰 **Total Cash Received**: **`${zusd_total:.2f} USD`** (**`+${locked_profit:.2f} USD` profit permanently locked in cash!**)\n\n"
-                        f"🎯 **Step 2 Auto-Placed (`{rebuy_txid}`)**:\n"
-                        f"• **Order**: `buy {buy_vol_eth:.6f} ETHUSD @ limit ${DIP_REBUY_PRICE_USD:.2f}` (`Post-Only` 0.40% Maker)\n"
-                        f"• **Capital Deployed**: **`${deploy_usd:.2f} USD`** (leaving **`+${locked_profit:.2f} USD`** untouched in cash!)\n"
-                        f"• **Result When Filled**: **`{buy_vol_eth:.5f} ETH`** (**`+{buy_vol_eth - 0.37532712:.5f} Free ETH`** + **`+${locked_profit:.2f} USD`** cash!)"
-                    )
-                    print(msg, flush=True)
-                    send_discord_alert(
-                        webhook,
-                        f"💰 $910.00 PROFIT LOCKED! Auto-Placed $900 Dip Re-Buy @ ${DIP_REBUY_PRICE_USD:.2f}",
-                        msg,
-                    )
-                    get_snapshot()
-                else:
-                    print("Re-buy AddOrder error:", errs, flush=True)
+                if not res_eth.get("error"):
+                    txids = res_eth.get("result", {}).get("txid", [])
+                    eth_rebuy_txid = txids[0] if txids else "PLACED"
+                    eth_rebuy_placed = True
 
-            # If Step 2 Re-Buy was placed and has now filled
-            elif rebuy_placed and rebuy_txid and (rebuy_txid not in oo) and xeth_total >= 0.375:
+                time.sleep(0.5)
+
+                # 2B. Place +$10.00 House-Money Profit Bucket into SOL/USD Dip Buy @ $93.50
+                sol_msg_line = "⏳ Waiting for >= $5.00 ZUSD surplus for SOL order."
+                if profit_bucket_usd >= 5.0:
+                    net_sol_order_usd = profit_bucket_usd / (1.0 + MAKER_FEE_RATE)
+                    buy_vol_sol = round(net_sol_order_usd / SOL_DIP_BUY_PRICE, 6)
+                    if buy_vol_sol >= 0.05:
+                        res_sol = kraken_post(
+                            "/0/private/AddOrder",
+                            {
+                                "pair": "SOLUSD",
+                                "type": "buy",
+                                "ordertype": "limit",
+                                "price": f"{SOL_DIP_BUY_PRICE:.2f}",
+                                "volume": f"{buy_vol_sol:.6f}",
+                                "oflags": "post,fciq",
+                            },
+                            env_vars=env,
+                        )
+                        if not res_sol.get("error"):
+                            s_txids = res_sol.get("result", {}).get("txid", [])
+                            sol_order_txid = s_txids[0] if s_txids else "PLACED"
+                            sol_state = "BUYING_DIP"
+                            sol_msg_line = (
+                                f"🟢 **Bucket 2 (`SOL/USD` House-Money Scraper Placed — `{sol_order_txid}`)**:\n"
+                                f"• `buy {buy_vol_sol:.5f} SOLUSD @ limit ${SOL_DIP_BUY_PRICE:.2f}` (`${profit_bucket_usd:.2f} USD` profit deployed)\n"
+                                f"• Auto-flips to `sell @ ${SOL_TOP_SELL_PRICE:.2f}` once filled!"
+                            )
+
                 msg = (
-                    f"🎉 **Step 2 Dip Re-Buy (`{rebuy_txid}`) FILLED at `${DIP_REBUY_PRICE_USD:.2f}`!**\n"
-                    f"• **New Kraken ETH Stack**: **`{xeth_total:.6f} ETH`** (`+{xeth_total - 0.37532712:.6f} Free ETH` gained!)\n"
-                    f"• **Locked Cash Profit Remaining**: **`${zusd_total:.2f} USD`**"
+                    f"✅ **Step 1 Full-Stack ETH Sell Filled (`{SELL_TXID}`) at `$2,434.30 / ETH`!**\n"
+                    f"💰 **Total Cash Locked**: **`${zusd_total:.2f} USD`** (`$900.00` Principal + **`+${profit_bucket_usd:.2f} USD` Profit!**)\n\n"
+                    f"🟢 **Bucket 1 (`ETH/USD` Core Dip Re-Buy Placed — `{eth_rebuy_txid}`)**:\n"
+                    f"• `buy {buy_vol_eth:.6f} ETHUSD @ limit ${ETH_DIP_BUY_PRICE:.2f}` (`$900.00 USD` deployed → **`+{buy_vol_eth - 0.37532712:.5f} Free ETH`**)\n\n"
+                    f"{sol_msg_line}"
                 )
                 print(msg, flush=True)
-                send_discord_alert(webhook, "🎉 FULL CYCLE COMPLETE: Free ETH + Locked USD Profit!", msg)
+                send_discord_alert(
+                    webhook,
+                    "💰 $910 LOCKED! Auto-Deployed $900 ETH Re-Buy + $10 SOL Scraper!",
+                    msg,
+                )
                 get_snapshot()
-                break
+
+            # Check if Bucket 1 ($900 ETH Re-Buy) filled
+            if eth_rebuy_placed and not eth_rebuy_done and eth_rebuy_txid and (eth_rebuy_txid not in oo) and xeth_total >= 0.375:
+                eth_rebuy_done = True
+                msg = (
+                    f"🎉 **Bucket 1 (`$900 ETH Dip Re-Buy`) FILLED at `${ETH_DIP_BUY_PRICE:.2f}`!**\n"
+                    f"• **New Kraken ETH Stack**: **`{xeth_total:.6f} ETH`** (**`+{xeth_total - 0.37532712:.6f} Free ETH` gained!**)"
+                )
+                print(msg, flush=True)
+                send_discord_alert(webhook, "🎉 $900 ETH DIP RE-BUY FILLED (+0.0037 Free ETH)!", msg)
+                get_snapshot()
+
+            # Check Bucket 2 (SOL/USD Perpetual Range Scraper Loop)
+            if sol_state == "BUYING_DIP" and sol_order_txid and (sol_order_txid not in oo) and sol_avail >= 0.05:
+                # SOL Dip Buy filled! Automatically flip to Top Sell @ $97.80
+                sell_vol_sol = round(sol_avail, 6)
+                res_sol_sell = kraken_post(
+                    "/0/private/AddOrder",
+                    {
+                        "pair": "SOLUSD",
+                        "type": "sell",
+                        "ordertype": "limit",
+                        "price": f"{SOL_TOP_SELL_PRICE:.2f}",
+                        "volume": f"{sell_vol_sol:.6f}",
+                        "oflags": "post,fciq",
+                    },
+                    env_vars=env,
+                )
+                if not res_sol_sell.get("error"):
+                    s_txids = res_sol_sell.get("result", {}).get("txid", [])
+                    sol_order_txid = s_txids[0] if s_txids else "PLACED"
+                    sol_state = "SELLING_TOP"
+                    est_usd = sell_vol_sol * SOL_TOP_SELL_PRICE * (1.0 - MAKER_FEE_RATE)
+                    msg = (
+                        f"⚡ **SOL Dip Buy Filled (`@ ${SOL_DIP_BUY_PRICE:.2f}`)!**\n"
+                        f"• Auto-placed Top Sell (`{sol_order_txid}`): `sell {sell_vol_sol:.5f} SOLUSD @ limit ${SOL_TOP_SELL_PRICE:.2f}`\n"
+                        f"• Target Payout: **`${est_usd:.2f} USD` Net Cash**"
+                    )
+                    print(msg, flush=True)
+                    send_discord_alert(webhook, f"⚡ SOL Dip Bought! Auto-Set Sell @ ${SOL_TOP_SELL_PRICE:.2f}", msg)
+                    get_snapshot()
+
+            elif sol_state == "SELLING_TOP" and sol_order_txid and (sol_order_txid not in oo) and zusd_avail >= 9.50:
+                # SOL Top Sell filled! Re-deploy compounded SOL profit back into $93.50 Dip Buy!
+                sol_budget_usd = zusd_avail if eth_rebuy_placed else max(0.0, zusd_avail - PROTECTED_PRINCIPAL_USD)
+                if sol_budget_usd >= 5.0:
+                    net_sol_usd = sol_budget_usd / (1.0 + MAKER_FEE_RATE)
+                    buy_vol_sol = round(net_sol_usd / SOL_DIP_BUY_PRICE, 6)
+                    res_sol_rebuy = kraken_post(
+                        "/0/private/AddOrder",
+                        {
+                            "pair": "SOLUSD",
+                            "type": "buy",
+                            "ordertype": "limit",
+                            "price": f"{SOL_DIP_BUY_PRICE:.2f}",
+                            "volume": f"{buy_vol_sol:.6f}",
+                            "oflags": "post,fciq",
+                        },
+                        env_vars=env,
+                    )
+                    if not res_sol_rebuy.get("error"):
+                        s_txids = res_sol_rebuy.get("result", {}).get("txid", [])
+                        sol_order_txid = s_txids[0] if s_txids else "PLACED"
+                        sol_state = "BUYING_DIP"
+                        msg = (
+                            f"💰 **SOL Top Sell Filled (`@ ${SOL_TOP_SELL_PRICE:.2f}`)! Profit Compounded to `${sol_budget_usd:.2f} USD`!**\n"
+                            f"• Auto-placed next Dip Buy (`{sol_order_txid}`): `buy {buy_vol_sol:.5f} SOLUSD @ limit ${SOL_DIP_BUY_PRICE:.2f}`"
+                        )
+                        print(msg, flush=True)
+                        send_discord_alert(webhook, f"💰 SOL Top Scraped (${sol_budget_usd:.2f})! Re-Set Buy @ ${SOL_DIP_BUY_PRICE:.2f}", msg)
+                        get_snapshot()
 
         except Exception as e:
             print("Watcher loop error:", e, flush=True)
