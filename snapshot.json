@@ -1,55 +1,28 @@
 {
-  "timestamp_utc": "2026-11-04 18:35 UTC",
-  "eth_usd_rate": 2430.91,
+  "timestamp_utc": "2026-11-04 18:44 UTC",
+  "eth_usd_rate": 2432.37,
   "kraken": {
     "connected": true,
     "eth_balance": 0.3753271228,
-    "eth_hold_trade": 0.0153,
+    "eth_hold_trade": 0.37532712,
     "usd_balance": 0.0,
-    "equity_usd": 912.1582,
+    "equity_usd": 908.2285,
     "staking_earned_eth": 2.08e-05,
     "open_orders": [
       {
-        "txid": "OTDMVI-J25FQ-CKAZ5W",
+        "txid": "OV57WW-IWDWQ-D5XSSX",
         "pair": "ETHUSD",
         "type": "sell",
         "ordertype": "limit",
-        "price": 2510.0,
-        "vol": 0.0036,
-        "order": "sell 0.00360000 ETHUSD @ limit 2510.00"
-      },
-      {
-        "txid": "O2R7X4-XZOWF-7SK2NB",
-        "pair": "ETHUSD",
-        "type": "sell",
-        "ordertype": "limit",
-        "price": 2480.0,
-        "vol": 0.0035,
-        "order": "sell 0.00350000 ETHUSD @ limit 2480.00"
-      },
-      {
-        "txid": "OI4O3D-JBH5Z-K4BME7",
-        "pair": "ETHUSD",
-        "type": "sell",
-        "ordertype": "limit",
-        "price": 2455.0,
-        "vol": 0.003,
-        "order": "sell 0.00300000 ETHUSD @ limit 2455.00"
-      },
-      {
-        "txid": "OAQXJY-WDGCN-RY3Z7W",
-        "pair": "ETHUSD",
-        "type": "sell",
-        "ordertype": "limit",
-        "price": 2435.0,
-        "vol": 0.0052,
-        "order": "sell 0.00520000 ETHUSD @ limit 2435.00"
+        "price": 2434.3,
+        "vol": 0.37532712,
+        "order": "sell 0.37532712 ETHUSD @ limit 2434.30"
       }
     ],
     "recent_eth_withdrawal": null
   },
   "kraken_eth": 0.375327,
-  "kraken_usd": 912.39,
+  "kraken_usd": 912.93,
   "swooz_onchain": {
     "eth": 9e-05,
     "eth_usd": 0.22,
@@ -59,28 +32,28 @@
   "eth_pnl": {
     "total_held_eth": 0.375517,
     "total_cost_usd": 900.44,
-    "total_live_usd": 912.85,
-    "fiat_pnl_usd": 12.41,
-    "fiat_pnl_pct": 1.38,
+    "total_live_usd": 913.4,
+    "fiat_pnl_usd": 12.96,
+    "fiat_pnl_pct": 1.44,
     "breakeven_eth_usd": 2397.91
   },
-  "unlock_countdown": "0d 3h 33m",
+  "unlock_countdown": "0d 3h 24m",
   "unlock_utc": "2026-11-04 22:09:09 UTC (2:09 PM PST)",
   "hold_cleared": false,
   "any_target_moved": false,
   "og_collection": {
     "contract": "0x59468516a8259058baD1cA5F8f4BFF190d30E066",
     "floor_eth": 0.232999,
-    "floor_usd": 566.4,
+    "floor_usd": 566.74,
     "top_bid_eth_low": 0.198,
     "top_bid_eth_high": 0.2,
-    "top_bid_usd_low": 481.32,
-    "top_bid_usd_high": 486.18,
+    "top_bid_usd_low": 481.61,
+    "top_bid_usd_high": 486.47,
     "target_1506_bid_eth": 0.21,
-    "target_1506_bid_usd": 510.49,
-    "change_24h_pct": -0.1757819815184695,
-    "volume_24h_eth": 1.7,
-    "volume_24h_usd": 4139.02,
+    "target_1506_bid_usd": 510.8,
+    "change_24h_pct": 12.828002527641743,
+    "volume_24h_eth": 1.74,
+    "volume_24h_usd": 4238.79,
     "unique_holders": 3260
   },
   "target_tokens_status": {
@@ -121,8 +94,8 @@
   "akcb": {
     "contract": "0x77372a4cc66063575b05b44481f059be356964a4",
     "floor_eth": 0.0695,
-    "floor_usd": 168.95,
-    "change_24h_pct": null,
+    "floor_usd": 168.76,
+    "change_24h_pct": 5.463710151745337,
     "unique_holders": 2807,
     "beast_2313": {
       "token_id": 2313,
@@ -131,7 +104,7 @@
       "expected_owner": "0x4140DB722AABeC52C0d2b28d27d838BB3F25CF1F",
       "moved_or_sold": false,
       "target_bid_eth": 0.06,
-      "target_bid_usd": 145.85
+      "target_bid_usd": 145.94
     }
   },
   "clonex": {
@@ -139,14 +112,14 @@
     "total_supply": 19764,
     "unique_holders": 9119,
     "floor_eth": 0.1465,
-    "floor_usd": 356.13,
+    "floor_usd": 356.34,
     "top_bid_eth_low": 0.14,
     "top_bid_eth_high": 0.1454,
-    "top_bid_usd_low": 340.33,
-    "top_bid_usd_high": 353.45,
+    "top_bid_usd_low": 340.53,
+    "top_bid_usd_high": 353.67,
     "change_24h_pct": -3.6,
     "volume_24h_eth": 2.05,
-    "volume_24h_usd": 4983.37,
+    "volume_24h_usd": 4986.36,
     "recent_high_sale": "CloneX #9143 @ 1.1303 WETH ($2,550.97 USD)"
   },
   "mini_supers": {
