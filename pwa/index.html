@@ -113,7 +113,7 @@
         <span>📈</span> <span>Auto-Trade &amp; Charts</span>
       </button>
       <button id="top-tab-partner" onclick="switchMainView('partner')" class="flex-1 py-2 px-3 rounded-lg text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition">
-        <span>💎</span> <span>Strategy &amp; Setup (#1716)</span>
+        <span>🧋</span> <span>BobaTeaisGood4Me (#1716)</span>
       </button>
       <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
         <span>🎯</span> <span>Target Sniper (5)</span>
@@ -397,20 +397,20 @@
         </div>
       </div>
 
-      <!-- 💎 NEW: Partner Personal Vault (#1716) — Quantitative Strategy Blueprint, Personal Straddle Calculator & Self-Setup Playbook -->
+      <!-- 🧋 NEW: BobaTeaisGood4Me Personal Vault (#1716) — Quantitative Strategy Blueprint, Personal Straddle Calculator & Self-Setup Playbook -->
       <div id="sec-partner" class="hidden bg-[var(--card)] border border-purple-500/45 rounded-xl p-4 shadow-sm space-y-4">
         <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-3">
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <span class="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[11px] font-mono font-bold">
-                🔓 VAULT #1716 • SAMSUNG GALAXY Z FOLD 8 EDITION
+                🧋 BOBATEAISGOOD4ME • VAULT #1716 • GALAXY Z FOLD 8
               </span>
               <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[11px] font-mono font-bold">
                 50% FEE ARBITRAGE + 2-SIDED STRADDLE
               </span>
             </div>
             <h2 class="text-base font-bold text-[var(--foreground)] mt-1">
-              💎 Quantitative Strategy Blueprint &amp; Your Personal Straddle Builder
+              🧋 BobaTeaisGood4Me — Quantitative Strategy Blueprint &amp; Personal Straddle Builder
             </h2>
             <p class="text-xs text-[var(--muted-foreground)]">
               How the 2-Sided Automated Market-Making Straddle monetizes volatility in both directions—plus an interactive calculator to size and apply it to your own wallets &amp; exchange accounts.
@@ -1344,7 +1344,7 @@
       <span>📈</span><span>Charts</span>
     </button>
     <button id="dock-tab-partner" onclick="switchMainView('partner')" class="flex flex-col items-center gap-0.5 text-purple-400 hover:opacity-80">
-      <span>💎</span><span>#1716 Guide</span>
+      <span>🧋</span><span>BobaTea</span>
     </button>
     <button id="dock-tab-targets" onclick="switchMainView('targets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
       <span>🎯</span><span>Targets</span>
@@ -1365,7 +1365,7 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=10').then(reg => {
+      navigator.serviceWorker.register('sw.js?v=11').then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -1940,8 +1940,8 @@
         ownerEls.forEach(el => el.classList.remove('hidden'));
       } else if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'partner') {
         btn.className = 'px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/50 text-purple-300 text-xs font-bold flex items-center gap-1 transition';
-        icon.textContent = '💎';
-        lbl.textContent = 'Vault #1716 Unlocked (Tap to Lock)';
+        icon.textContent = '🧋';
+        lbl.textContent = 'BobaTeaisGood4Me Unlocked (Tap to Lock)';
         ownerEls.forEach(el => el.classList.add('hidden'));
       } else {
         btn.className = 'px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition';
@@ -2031,7 +2031,7 @@
           ACCOUNTS = [
             {
               id: 'partner-straddle',
-              label: '💎 My Personal Fold 8 Straddle (Vault #1716)',
+              label: '🧋 BobaTeaisGood4Me Straddle (Fold 8 Vault #1716)',
               address: `$${cUsd.toFixed(0)} Upside Sell Inventory + $${dUsd.toFixed(0)} Cash Dip Reserve`,
               eth: totEth,
               costUsd: cUsd + dUsd,
@@ -2608,7 +2608,7 @@
 
       const newEntry = {
         id: 'partner-straddle',
-        label: `💎 ${venue} Personal Straddle (Vault #1716)`,
+        label: `🧋 BobaTeaisGood4Me — ${venue} Straddle (#1716)`,
         address: `Sell Limit @ $${sellP} ($${cryptoUsd.toFixed(0)}) | Dip Buy @ $${buyP} ($${cashUsd.toFixed(0)})`,
         eth: totEthEquiv,
         costUsd: cryptoUsd + cashUsd,
