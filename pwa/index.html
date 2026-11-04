@@ -422,6 +422,74 @@
           </a>
         </div>
 
+        <!-- 🦊 HER VERIFIED ON-CHAIN WALLET & NFT SHOWCASE (kushandkandie.eth — Unlocked w/ PIN 1716) -->
+        <div class="bg-[var(--secondary)] border border-purple-500/45 rounded-xl p-3.5 space-y-3 text-xs">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <div class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2 flex-wrap">
+                <span>🦊</span>
+                <span id="p1716-ens-badge" class="text-purple-300 font-mono">kushandkandie.eth</span>
+                <span id="p1716-wallet-short" class="px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[11px] text-emerald-400">On-Chain Vault Verified</span>
+              </div>
+              <div class="text-[var(--muted-foreground)] mt-0.5">
+                Live Ethereum Mainnet Holdings: <strong>kushandkandie.eth ENS</strong> • <strong>Mini Supers #305</strong> • <strong>OG Supers! #84 &amp; #144</strong> • <strong>Enso S2 #146 &amp; #190</strong> • <strong>1,520.59 SABI (WabiSabi #341 Staked)</strong>
+              </div>
+            </div>
+            <button onclick="scanPartnerVaultWallet()"
+                    class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:opacity-90 text-white font-bold shrink-0">
+              🖼️ Scan All My NFTs on Stage →
+            </button>
+          </div>
+
+          <!-- 5-Up Interactive Gallery of Her Wallet's NFTs -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            <div onclick="loadPresetNft('ms-305'); scrollToSec('sec-viewer');"
+                 class="bg-[var(--card)] border border-emerald-500/45 rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+              <img src="nft-media/minisupers_6915.png" alt="Mini Supers #305" class="w-full aspect-square rounded-lg object-cover" />
+              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
+                <span>Mini Supers #305</span><span class="text-emerald-400">HOME</span>
+              </div>
+              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Dream Bloom • AK • 6 Acc</div>
+            </div>
+
+            <div onclick="loadPresetNft('supers-84'); scrollToSec('sec-viewer');"
+                 class="bg-[var(--card)] border border-purple-500/40 rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+              <img src="nft-media/supers_84.png" alt="Supers! #84" class="w-full aspect-square rounded-lg object-cover" />
+              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
+                <span>Supers! #84</span><span class="text-purple-300">OG</span>
+              </div>
+              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
+            </div>
+
+            <div onclick="loadPresetNft('supers-144'); scrollToSec('sec-viewer');"
+                 class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+              <img src="nft-media/supers_144.png" alt="Supers! #144" class="w-full aspect-square rounded-lg object-cover" />
+              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
+                <span>Supers! #144</span><span class="text-purple-300">OG</span>
+              </div>
+              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
+            </div>
+
+            <div onclick="loadPresetNft('enso-146'); scrollToSec('sec-viewer');"
+                 class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+              <img src="nft-media/enso_146.png" alt="Enso S2 #146" class="w-full aspect-square rounded-lg object-cover" />
+              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
+                <span>Enso S2 #146</span><span class="text-emerald-400">S2</span>
+              </div>
+              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
+            </div>
+
+            <div onclick="loadPresetNft('enso-190'); scrollToSec('sec-viewer');"
+                 class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+              <img src="nft-media/enso_190.png" alt="Enso S2 #190" class="w-full aspect-square rounded-lg object-cover" />
+              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
+                <span>Enso S2 #190</span><span class="text-emerald-400">S2</span>
+              </div>
+              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
+            </div>
+          </div>
+        </div>
+
         <!-- LIVE $1,223.11 9-LEG ARCHITECTURE MAP & INTERACTIVE SCENARIO SIMULATOR -->
         <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3.5 space-y-3 text-xs">
           <div class="flex items-center justify-between flex-wrap gap-2">
@@ -1617,6 +1685,95 @@
           { trait_type: 'Total Supply', value: '16,969 (Mint Burned/Closed)' },
           { trait_type: 'Unique Holders', value: '4,992 Collectors' }
         ]
+      },
+      'ms-305': {
+        collection: 'Mini Supers (Home Team)',
+        contract: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7',
+        tokenId: 305,
+        title: 'Mini Supers #305 (Owned by kushandkandie.eth)',
+        rank: '🧋 BobaTeaisGood4Me Vault • Home Team',
+        owner: 'kushandkandie.eth',
+        priceNote: 'Floor: 0.0013 ETH ($3.01 USD)',
+        mediaUrl: 'nft-media/minisupers_6915.png',
+        badge: '🧋 BOBATEA MINI SUPER #305',
+        traits: [
+          { trait_type: 'Hair', value: 'Dream Bloom' },
+          { trait_type: 'Weapons', value: 'AK' },
+          { trait_type: 'Clothes', value: 'Moto - Black' },
+          { trait_type: 'Eyes', value: 'Look - Blue' },
+          { trait_type: 'Eyebrows', value: 'Round' },
+          { trait_type: 'Mouth', value: 'Gasp' },
+          { trait_type: 'Background', value: 'Plain - Baby Pink' },
+          { trait_type: 'Accessories', value: 'Bone, Phone, Rubik, Octopus, Flower, Cherry' }
+        ]
+      },
+      'supers-84': {
+        collection: 'Supers! (OG Collection)',
+        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        tokenId: '79654774792527211628502023969973008318389555423553119175803920226507340906497',
+        title: 'Supers! #84 (Owned by kushandkandie.eth)',
+        rank: '🧋 BobaTeaisGood4Me Vault',
+        owner: 'kushandkandie.eth',
+        priceNote: 'Held in Vault #1716',
+        mediaUrl: 'nft-media/supers_84.png',
+        badge: '🧋 BOBATEA VAULT NFT',
+        traits: [
+          { trait_type: 'Collection', value: 'Supers! OG' },
+          { trait_type: 'Edition', value: '#84' },
+          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
+          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
+        ]
+      },
+      'supers-144': {
+        collection: 'Supers! (OG Collection)',
+        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        tokenId: '79654774792527211628502023969973008318389555423553119175803920293577550200833',
+        title: 'Supers! #144 (Owned by kushandkandie.eth)',
+        rank: '🧋 BobaTeaisGood4Me Vault',
+        owner: 'kushandkandie.eth',
+        priceNote: 'Held in Vault #1716',
+        mediaUrl: 'nft-media/supers_144.png',
+        badge: '🧋 BOBATEA VAULT NFT',
+        traits: [
+          { trait_type: 'Collection', value: 'Supers! OG' },
+          { trait_type: 'Edition', value: '#144' },
+          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
+          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
+        ]
+      },
+      'enso-146': {
+        collection: 'Enso Season 2',
+        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        tokenId: '79654774792527211628502023969973008318389555423553119175803920686103201316865',
+        title: 'Enso Season 2 #146 (Owned by kushandkandie.eth)',
+        rank: '🧋 BobaTeaisGood4Me Vault',
+        owner: 'kushandkandie.eth',
+        priceNote: 'Held in Vault #1716',
+        mediaUrl: 'nft-media/enso_146.png',
+        badge: '🌸 ENSO SEASON 2',
+        traits: [
+          { trait_type: 'Collection', value: 'Enso Season 2' },
+          { trait_type: 'Token', value: '#146' },
+          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
+          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
+        ]
+      },
+      'enso-190': {
+        collection: 'Enso Season 2',
+        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        tokenId: '79654774792527211628502023969973008318389555423553119175803920734481712939009',
+        title: 'Enso Season 2 #190 (Owned by kushandkandie.eth)',
+        rank: '🧋 BobaTeaisGood4Me Vault',
+        owner: 'kushandkandie.eth',
+        priceNote: 'Held in Vault #1716',
+        mediaUrl: 'nft-media/enso_190.png',
+        badge: '🌸 ENSO SEASON 2',
+        traits: [
+          { trait_type: 'Collection', value: 'Enso Season 2' },
+          { trait_type: 'Token', value: '#190' },
+          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
+          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
+        ]
       }
     };
 
@@ -1624,6 +1781,13 @@
 
     function resolveMediaUri(uri) {
       if (!uri) return '';
+      if (uri.includes('i.seadn.io/gae/')) {
+        const gaePart = uri.split('i.seadn.io/gae/')[1].split('?')[0];
+        return 'https://lh3.googleusercontent.com/' + gaePart + '=w500';
+      }
+      if (uri.includes('cdn.purebase.co/image/upload/')) {
+        return 'nft-media/minisupers_1868.png';
+      }
       if (uri.startsWith('ipfs://')) {
         return 'https://gateway.pinata.cloud/ipfs/' + uri.slice(7);
       }
@@ -1953,6 +2117,20 @@
     // SHA-256 hash verification of owner PIN ('1506') and partner PIN ('1716') salted with 'swooz-dex-v6-vault'
     const OWNER_PIN_VERIFY_HASH = '1216c4d5284c04352f2950b414be22536bc345255cc6848a0ba645017c83090a';
     const PARTNER_PIN_VERIFY_HASH = 'f7724f1e03dc8bf901614214ba143d1a098703e594ce174b6e4e5f4d771b312d';
+    const PARTNER_VAULT_CIPHER = 'PIhH07wW11JjldAC4PiYT6vNSmakYPt+2skHCuxnIWc34kRkwtn8PC40Q8gQEAGo8oTX2JvNCYUqnl6T/77+cl/TKrkj8ZZYgowlEMYfRfP8OmJl0LNrlZNb8C3cGUIP5C4AJuo6OevbpkuNMYPhurteQJQtTQpbe6S1UM9h9vggMuPxCAH7owR42ktSG3eUAwZHljqzDaHYlEOMeIWqc8pPqGkBJPeNQSzCACDCfxppa9vH5k3RJ/VU9kq+d5aNgpJjn8W6d9WwEK0seXY1CyqpyW8K9APPR+fgg+DEvo4KjjI3M1yqxiqqf6XCcRXIJdzUZG5t4CZpm3ZszIK+zCtrLqcqewkWgRhgnDJublhD6H5N2DjZHY/+mhJmhlbJSWB96JL51NMTHs2Q+qZL1PH/+lptTOfEoP7IrYfs4gauT+zeuvSCQoQb0pEKKzTH9CHe+IqoBoXg2jCcpmakpSf/WM2Yqv/a1NT59RYbM3i3E6tPaxs59rPC879pzl3FD7ambgg7';
+
+    function scanPartnerVaultWallet() {
+      const wAddr = (UNLOCKED_VAULT_DATA && UNLOCKED_VAULT_DATA.partner_wallet)
+        ? UNLOCKED_VAULT_DATA.partner_wallet
+        : 'kushandkandie.eth';
+      const scanInput = document.getElementById('wallet-scan-input');
+      if (scanInput) scanInput.value = wAddr;
+      switchMainView('terminal');
+      setTimeout(() => {
+        scrollToSec('sec-viewer');
+        scanWalletNfts();
+      }, 80);
+    }
 
     async function sha256Bytes(str) {
       const buf = new TextEncoder().encode(str);
@@ -2099,12 +2277,30 @@
 
       // Check Partner Fold 8 Vault PIN ('1716')
       if (pinCheckHex === PARTNER_PIN_VERIFY_HASH) {
+        const pDecrypted = await decryptVaultCipher(PARTNER_VAULT_CIPHER, 'swooz-dex-v6-vault', pin);
         VAULT_UNLOCKED = true;
         ACTIVE_VAULT_ROLE = 'partner';
-        UNLOCKED_VAULT_DATA = { ok: 'PARTNER_1716_OK', role: 'partner' };
+        UNLOCKED_VAULT_DATA = pDecrypted || {
+          ok: 'SWOOZ_VAULT_OK',
+          role: 'partner',
+          handle: 'BobaTeaisGood4Me',
+          partner_ens: 'kushandkandie.eth',
+          partner_wallet: '0xB99A35B82E1607De261b00b900A8E42b2ff893f6',
+          onchain_eth: 0.00018308,
+          sabi_balance: 1520.59,
+          mini_supers_held: 1
+        };
+        const pWallet = UNLOCKED_VAULT_DATA.partner_wallet || '0xB99A35B82E1607De261b00b900A8E42b2ff893f6';
+        const pBadgeEl = document.getElementById('p1716-wallet-short');
+        if (pBadgeEl && pWallet) {
+          pBadgeEl.textContent = `${pWallet.slice(0, 6)}...${pWallet.slice(-4)} (Mini Super #305 + 4 NFTs + 1,520 SABI)`;
+        }
+        const scanInput = document.getElementById('wallet-scan-input');
+        if (scanInput) scanInput.value = pWallet;
+
         loadPartnerCalculatorState();
         const savedPartnerAccs = loadPartnerAccounts();
-        if (savedPartnerAccs.length > 0) {
+        if (savedPartnerAccs.length > 0 && savedPartnerAccs.some(a => a.id === 'partner-onchain-wallet')) {
           ACCOUNTS = savedPartnerAccs;
         } else {
           const cUsd = parseFloat(document.getElementById('p1716-crypto-usd')?.value) || 400;
@@ -2119,8 +2315,18 @@
               costUsd: cUsd + dUsd,
               miniSupers: 0,
               isOnChain: false
+            },
+            {
+              id: 'partner-onchain-wallet',
+              label: '🦊 kushandkandie.eth (BobaTeaisGood4Me On-Chain Vault)',
+              address: pWallet,
+              eth: UNLOCKED_VAULT_DATA.onchain_eth || 0.00018308,
+              costUsd: 0.44,
+              miniSupers: UNLOCKED_VAULT_DATA.mini_supers_held || 1,
+              isOnChain: true
             }
           ];
+          saveAccounts(ACCOUNTS);
         }
         if (document.getElementById('pin-remember-chk')?.checked) {
           try { localStorage.setItem('swooz_vault_pin_v1', pin); } catch (e) {}

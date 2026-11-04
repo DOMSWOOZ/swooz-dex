@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swooz-dex-v12';
+const CACHE_NAME = 'swooz-dex-v13';
 const ASSETS = [
   './',
   'index.html',
@@ -16,7 +16,11 @@ const ASSETS = [
   'nft-media/beast_2313_pfp.png',
   'nft-media/clonex_9143.png',
   'nft-media/minisupers_6915.png',
-  'nft-media/the_walk_1.gif'
+  'nft-media/the_walk_1.gif',
+  'nft-media/supers_84.png',
+  'nft-media/supers_144.png',
+  'nft-media/enso_146.png',
+  'nft-media/enso_190.png'
 ];
 
 self.addEventListener('install', event => {
