@@ -181,6 +181,71 @@
           </div>
         </div>
 
+        <!-- NEW: ✂️ ETH "Scrape the Top" Profit-Lock & Dip Re-Buy Simulator -->
+        <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-lg p-3 space-y-2.5 text-xs">
+          <div class="flex items-center justify-between flex-wrap gap-1">
+            <div>
+              <div class="font-bold text-[var(--foreground)] flex items-center gap-1.5">
+                <span>✂️</span> <span>ETH "Scrape the Top" Profit-Lock &amp; Compounding Simulator</span>
+              </div>
+              <div class="text-[var(--muted-foreground)]">
+                Spot trading on <strong>Kraken Pro (0.25% Maker Limit)</strong> is allowed even during ACH withdrawal holds (Min order: <code class="font-mono">0.002 ETH</code>)
+              </div>
+            </div>
+            <span id="skim-live-badge" class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-mono font-bold">
+              +$12.39 Skimmable Above $900!
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div class="space-y-1">
+              <label class="text-[var(--muted-foreground)] font-medium"> Protected Principal ($ USD)</label>
+              <input id="skim-principal-usd" type="number" step="10" value="900" oninput="updateSkimCalc()"
+                     class="w-full px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+            </div>
+            <div class="space-y-1">
+              <label class="text-[var(--muted-foreground)] font-medium">Target Sell "Top" ($ / ETH)</label>
+              <input id="skim-sell-eth" type="number" step="5" value="2431" oninput="updateSkimCalc()"
+                     class="w-full px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+            </div>
+            <div class="space-y-1">
+              <label class="text-[var(--muted-foreground)] font-medium">Target Dip Re-Buy ($ / ETH)</label>
+              <input id="skim-rebuy-eth" type="number" step="5" value="2325" oninput="updateSkimCalc()"
+                     class="w-full px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5">
+            <!-- Strategy A: Skim Top Slice Only -->
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-emerald-500">Option A: Skim Only the Profit Slice</span>
+                <span id="skim-optA-fee" class="font-mono text-[10px] text-[var(--muted-foreground)]">Fee: ~$0.03</span>
+              </div>
+              <div id="skim-optA-sell" class="font-mono font-bold text-[var(--foreground)]">
+                Sell 0.00510 ETH → Lock +$12.36 Cash
+              </div>
+              <div id="skim-optA-keep" class="text-[var(--muted-foreground)] font-mono text-[11px]">
+                Keep 0.37023 ETH ($900.00) untouched in ETH
+              </div>
+            </div>
+
+            <!-- Strategy B: Full-Stack Swing (Sell Top -> Re-Buy Dip) -->
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-amber-500">Option B: Full-Stack Top Sell &amp; Dip Re-Buy</span>
+                <span id="skim-optB-fee" class="font-mono text-[10px] text-[var(--muted-foreground)]">Round-trip Fee: ~$4.55</span>
+              </div>
+              <div id="skim-optB-cash" class="font-mono font-bold text-[var(--foreground)]">
+                Sell All → $910.11 Cash (Keep +$10.11 Profit)
+              </div>
+              <div id="skim-optB-rebuy" class="text-emerald-500 font-mono font-semibold text-[11px]">
+                Re-Buy w/ $900 @ $2,325 → 0.3861 ETH (+0.0108 Free ETH!)
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 7-Day Kraken Hold Progress Bar -->
         <div class="space-y-1 pt-1 border-t border-[var(--border)]">
           <div class="flex justify-between text-xs">
@@ -1615,6 +1680,54 @@
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    function updateSkimCalc() {
+      const totalEth = ACCOUNTS.reduce((s, a) => s + (a.eth || 0), 0) || 0.37532712;
+      const principalUsd = parseFloat(document.getElementById('skim-principal-usd')?.value) || 900;
+      const sellEthPrice = parseFloat(document.getElementById('skim-sell-eth')?.value) || ETH_RATE;
+      const rebuyEthPrice = parseFloat(document.getElementById('skim-rebuy-eth')?.value) || 2325;
+
+      const grossValAtTop = totalEth * sellEthPrice;
+      const surplusUsd = grossValAtTop - principalUsd;
+      const surplusEth = sellEthPrice > 0 ? surplusUsd / sellEthPrice : 0;
+      const keptEth = Math.max(0, totalEth - Math.max(0, surplusEth));
+
+      // Kraken Pro Maker Limit fee ~0.25%
+      const makerFeeRate = 0.0025;
+      const badgeEl = document.getElementById('skim-live-badge');
+
+      if (surplusUsd > 0) {
+        const feeA = surplusUsd * makerFeeRate;
+        const netSkimUsd = surplusUsd - feeA;
+        badgeEl.className = 'px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-mono font-bold';
+        badgeEl.textContent = `+$${surplusUsd.toFixed(2)} (${surplusEth.toFixed(5)} ETH) Skimmable!`;
+        document.getElementById('skim-optA-fee').textContent = `Kraken Pro Fee: ~$${feeA.toFixed(2)}`;
+        document.getElementById('skim-optA-sell').textContent = `Sell ${surplusEth.toFixed(5)} ETH → Lock +$${netSkimUsd.toFixed(2)} Cash`;
+        document.getElementById('skim-optA-keep').textContent = `Keep ${keptEth.toFixed(5)} ETH ($${principalUsd.toFixed(2)}) untouched in ETH`;
+      } else {
+        badgeEl.className = 'px-2 py-0.5 rounded bg-amber-500/15 text-amber-500 font-mono font-bold';
+        badgeEl.textContent = `Needs $${(principalUsd / totalEth).toFixed(2)}/ETH to Skim`;
+        document.getElementById('skim-optA-fee').textContent = `Break-Even: $${(principalUsd / totalEth).toFixed(2)}/ETH`;
+        document.getElementById('skim-optA-sell').textContent = `Wait for ETH > $${(principalUsd / totalEth).toFixed(2)} to skim profit`;
+        document.getElementById('skim-optA-keep').textContent = `Current Stack: ${totalEth.toFixed(5)} ETH ($${grossValAtTop.toFixed(2)})`;
+      }
+
+      // Option B: Full-Stack Top Sell & Dip Re-Buy
+      const sellAllFee = grossValAtTop * makerFeeRate;
+      const netCashAfterSell = grossValAtTop - sellAllFee;
+      const lockedProfitUsd = netCashAfterSell - principalUsd;
+      const rebuyBudgetUsd = Math.min(netCashAfterSell, principalUsd);
+      const buyBackFee = rebuyBudgetUsd * makerFeeRate;
+      const newEthStack = rebuyEthPrice > 0 ? (rebuyBudgetUsd - buyBackFee) / rebuyEthPrice : 0;
+      const freeEthGained = newEthStack - totalEth;
+      const totalRoundTripFee = sellAllFee + buyBackFee;
+
+      document.getElementById('skim-optB-fee').textContent = `Round-Trip Fee: ~$${totalRoundTripFee.toFixed(2)}`;
+      document.getElementById('skim-optB-cash').textContent =
+        `Sell All → $${netCashAfterSell.toFixed(2)} Cash (${lockedProfitUsd >= 0 ? '+' : ''}$${lockedProfitUsd.toFixed(2)} Profit)`;
+      document.getElementById('skim-optB-rebuy').textContent =
+        `Re-Buy w/ $${rebuyBudgetUsd.toFixed(0)} @ $${rebuyEthPrice} → ${newEthStack.toFixed(4)} ETH (${freeEthGained >= 0 ? '+' : ''}${freeEthGained.toFixed(4)} ETH!)`;
+    }
+
     // Direct Browser Live Telemetry (Works 24/7 on GitHub Pages even when PC is off!)
     async function refreshTelemetry() {
       const btn = document.getElementById('btn-refresh');
@@ -1662,8 +1775,13 @@
         }
 
         document.getElementById('hdr-eth-rate').textContent = ETH_RATE.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+        const skimSellInput = document.getElementById('skim-sell-eth');
+        if (skimSellInput && document.activeElement !== skimSellInput) {
+          skimSellInput.value = Math.round(ETH_RATE);
+        }
         renderWalletPnl();
         updateCalc();
+        updateSkimCalc();
       } catch (e) {}
       btn.innerHTML = '<span>🔄</span> <span class="hidden sm:inline">Sync Live</span>';
     }
@@ -1678,6 +1796,7 @@
     updateTimers();
     setInterval(updateTimers, 1000);
     updateCalc();
+    updateSkimCalc();
     refreshTelemetry();
     setInterval(refreshTelemetry, 60000);
   </script>
