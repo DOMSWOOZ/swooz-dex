@@ -105,6 +105,7 @@ def fetch_kraken_telemetry(eth_usd_rate: float) -> dict:
     bal_ex = kraken_post("/0/private/BalanceEx", env_vars=env_vars).get("result", {})
     tb = kraken_post("/0/private/TradeBalance", env_vars=env_vars).get("result", {})
     ws = kraken_post("/0/private/WithdrawStatus", env_vars=env_vars).get("result", [])
+    open_raw = kraken_post("/0/private/OpenOrders", env_vars=env_vars).get("result", {}).get("open", {})
 
     eth_info = bal_ex.get("XETH", {})
     eth_bal = float(eth_info.get("balance", 0.3753271228))
@@ -113,6 +114,19 @@ def fetch_kraken_telemetry(eth_usd_rate: float) -> dict:
     equity_usd = float(tb.get("eb", round(eth_bal * eth_usd_rate, 2)))
 
     staking_earned = max(0.0, eth_bal - 0.37530632)
+
+    open_orders = []
+    for oid, oinfo in open_raw.items():
+        descr = oinfo.get("descr", {})
+        open_orders.append({
+            "txid": oid,
+            "pair": descr.get("pair", ""),
+            "type": descr.get("type", ""),
+            "ordertype": descr.get("ordertype", ""),
+            "price": float(descr.get("price", 0.0) or 0.0),
+            "vol": float(oinfo.get("vol", 0.0) or 0.0),
+            "order": descr.get("order", ""),
+        })
 
     recent_wd = None
     for w in ws:
@@ -132,6 +146,7 @@ def fetch_kraken_telemetry(eth_usd_rate: float) -> dict:
         "usd_balance": usd_bal,
         "equity_usd": equity_usd,
         "staking_earned_eth": round(staking_earned, 8),
+        "open_orders": open_orders,
         "recent_eth_withdrawal": recent_wd,
     }
 
