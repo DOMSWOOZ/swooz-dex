@@ -432,7 +432,7 @@
                 <span id="p1716-wallet-short" class="px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[11px] text-emerald-400">On-Chain Vault Verified</span>
               </div>
               <div class="text-[var(--muted-foreground)] mt-0.5">
-                Live Ethereum Mainnet Holdings: <strong>kushandkandie.eth ENS</strong> • <strong>Mini Supers #305</strong> • <strong>OG Supers! #84 &amp; #144</strong> • <strong>Enso S2 #146 &amp; #190</strong> • <strong>1,520.59 SABI (WabiSabi #341 Staked)</strong>
+                Live Ethereum Mainnet Holdings: <strong>kushandkandie.eth ENS</strong> • <strong>OG Supers! #84 &amp; #144</strong> • <strong>Enso S2 #146 &amp; #190</strong> • <strong>1,520.59 SABI (WabiSabi #341 Staked)</strong> • <em>(Mini Supers #305, #4258 &amp; #6539 transferred to swooz.eth!)</em>
               </div>
             </div>
             <button onclick="scanPartnerVaultWallet()"
@@ -1690,12 +1690,12 @@
         collection: 'Mini Supers (Home Team)',
         contract: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7',
         tokenId: 305,
-        title: 'Mini Supers #305 (Owned by kushandkandie.eth)',
-        rank: '🧋 BobaTeaisGood4Me Vault • Home Team',
-        owner: 'kushandkandie.eth',
+        title: 'Mini Supers #305 (kushandkandie.eth → swooz.eth)',
+        rank: '🧋 Presale Minted & Transferred to swooz.eth',
+        owner: 'swooz.eth (from kushandkandie.eth)',
         priceNote: 'Floor: 0.0013 ETH ($3.01 USD)',
         mediaUrl: 'nft-media/minisupers_6915.png',
-        badge: '🧋 BOBATEA MINI SUPER #305',
+        badge: '🧋➡🦊 MINI SUPER #305',
         traits: [
           { trait_type: 'Hair', value: 'Dream Bloom' },
           { trait_type: 'Weapons', value: 'AK' },
@@ -1705,6 +1705,27 @@
           { trait_type: 'Mouth', value: 'Gasp' },
           { trait_type: 'Background', value: 'Plain - Baby Pink' },
           { trait_type: 'Accessories', value: 'Bone, Phone, Rubik, Octopus, Flower, Cherry' }
+        ]
+      },
+      'ms-928': {
+        collection: 'Mini Supers (Home Team)',
+        contract: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7',
+        tokenId: 928,
+        title: 'Mini Supers #928 (Recovered Seed Vault)',
+        rank: '🦸 Recovered Wallet 0xae1c...39B0 (#133 Total)',
+        owner: '0xae1cA265dE962B4eCafd4Af099414b5A598139B0',
+        priceNote: 'Floor: 0.0013 ETH ($3.01 USD)',
+        mediaUrl: 'nft-media/minisupers_6915.png',
+        badge: '🦸 RECOVERED MINI SUPER #928',
+        traits: [
+          { trait_type: 'Background', value: 'Purple - Multi' },
+          { trait_type: 'Hair', value: 'Braids Orange' },
+          { trait_type: 'Weapons', value: 'Ninja White' },
+          { trait_type: 'Clothes', value: 'Tactical Tan' },
+          { trait_type: 'Eyes', value: 'Eyes' },
+          { trait_type: 'Eyebrows', value: 'High Green' },
+          { trait_type: 'Mouth', value: 'Ooo' },
+          { trait_type: 'Accessories', value: 'Eye (Acc 1), Octopus (Acc 4)' }
         ]
       },
       'supers-84': {
@@ -2293,7 +2314,7 @@
         const pWallet = UNLOCKED_VAULT_DATA.partner_wallet || '0xB99A35B82E1607De261b00b900A8E42b2ff893f6';
         const pBadgeEl = document.getElementById('p1716-wallet-short');
         if (pBadgeEl && pWallet) {
-          pBadgeEl.textContent = `${pWallet.slice(0, 6)}...${pWallet.slice(-4)} (Mini Super #305 + 4 NFTs + 1,520 SABI)`;
+          pBadgeEl.textContent = `${pWallet.slice(0, 6)}...${pWallet.slice(-4)} (4 NFTs + 1,520 SABI • 3 Mini Supers → swooz.eth)`;
         }
         const scanInput = document.getElementById('wallet-scan-input');
         if (scanInput) scanInput.value = pWallet;
@@ -2318,11 +2339,11 @@
             },
             {
               id: 'partner-onchain-wallet',
-              label: '🦊 kushandkandie.eth (BobaTeaisGood4Me On-Chain Vault)',
+              label: '🦊 kushandkandie.eth (4 NFTs + 1,520 SABI • 3 Mini Supers → swooz.eth)',
               address: pWallet,
               eth: UNLOCKED_VAULT_DATA.onchain_eth || 0.00018308,
               costUsd: 0.44,
-              miniSupers: UNLOCKED_VAULT_DATA.mini_supers_held || 1,
+              miniSupers: 0,
               isOnChain: true
             }
           ];
@@ -2390,20 +2411,57 @@
           },
           {
             id: 'swooz-eth',
-            label: `🦊 ${decrypted.owner_ens || 'swooz.eth'} (Primary Vault)`,
+            label: `🦊 ${decrypted.owner_ens || 'swooz.eth'} (Primary Vault • Includes #305, #4258, #6539)`,
             address: wAddr,
             eth: wEth,
             costUsd: 0.44,
             miniSupers: msCount,
+            isOnChain: true
+          },
+          {
+            id: 'swooz-ms928-vault',
+            label: '🦸 Mini Supers #928 Vault (Recovered Seed Phrase)',
+            address: '0xae1cA265dE962B4eCafd4Af099414b5A598139B0',
+            eth: 0.00013278,
+            costUsd: 0.32,
+            miniSupers: 1,
+            isOnChain: true
+          },
+          {
+            id: 'swooz-kushandkandie',
+            label: '🦊 kushandkandie.eth Vault (Supers! #84/#144 + Enso #146/#190 + 1,520 SABI)',
+            address: '0xB99A35B82E1607De261b00b900A8E42b2ff893f6',
+            eth: 0.00018308,
+            costUsd: 0.44,
+            miniSupers: 0,
+            isOnChain: true
+          },
+          {
+            id: 'swooz-ccs-owner',
+            label: '🎨 Cute Claw Slotz (CCS) Contract Owner (0x14e3...64EC)',
+            address: '0xcA2dB0752d308A1a07b25D003d591D6970B1A573',
+            eth: 0.00034782,
+            costUsd: 0.84,
+            miniSupers: 0,
+            isOnChain: true
+          },
+          {
+            id: 'swooz-2022-og',
+            label: '🏛️ 2022 OG Mint Vault (6 NFTs: Sin City Elite, BackPacKER, RipETH)',
+            address: '0x3bC93Bf16C5916E8414dE9a0C4559ad9d72Da7F2',
+            eth: 0.00023402,
+            costUsd: 0.56,
+            miniSupers: 0,
             isOnChain: true
           }
         ];
 
         // Append any extra custom wallets saved under owner profile
         try {
+          const coreIds = ['kraken-main', 'coinbase-adv', 'swooz-eth', 'swooz-ms928-vault', 'swooz-kushandkandie', 'swooz-ccs-owner', 'swooz-2022-og'];
           const extra = JSON.parse(localStorage.getItem('swooz_owner_accounts_v2') || '[]');
           extra.forEach(a => {
-            if (!['kraken-main', 'coinbase-adv', 'swooz-eth'].includes(a.id)) ACCOUNTS.push(a);
+            if (!coreIds.includes(a.id)) ACCOUNTS.push(a);
           });
         } catch (e) {}
 
