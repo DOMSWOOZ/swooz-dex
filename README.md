@@ -1,4 +1,4 @@
-# 🛸 SWOOZ.ETH Mobile DEX & NFT Telemetry Terminal (`v4.0`)
+# 🛸 SWOOZ.ETH Mobile DEX & Live NFT Metadata Terminal (`v5.0`)
 
 <p align="center">
   <img src="logo.png" alt="SWOOZ.ETH 3D Logo" width="420" />
@@ -20,19 +20,33 @@
 
 ---
 
+## 🎬 New in `v5.0`: Live Walking NFT Stage, Universal Token Inspector & Wallet Scanner
+
+Built for both **`swooz.eth`** and anyone else who wants to track wallets, inspect on-chain metadata, and watch their NFTs come to life:
+
+1. **🚶‍♂️ Live Walking Invisible Friends & Animated NFT Stage (`#sec-viewer`)**:
+   - **Self-Hosted 60fps Animated Walking GIFs**: Watch **Invisible Friends `#1506` (Primary Target)**, **`#1286`**, **`#140`**, **`#42`**, and **Invisible Friends Editions: *"The Walk"* (`#1`)** walking live inside the dashboard with zero IPFS gateway lag.
+   - **3D Full-Body & PFP Toggle for `BEAST #2313`**: Switch between the 3D AR-Ready Full-Body render and close-up PFP render of `BEAST #2313` alongside all 13 on-chain traits.
+   - **Featured `CloneX #9143` & `swooz.eth`'s `Mini Supers #6915`**: Inspect high-resolution artwork and full attribute breakdowns.
+2. **🚶‍♂️ 4-Up "Walking Squad" Side-by-Side Comparison**:
+   - Watch all 4 of your target Invisible Friends (`#1506`, `#1286`, `#140`, `#42`) walking side-by-side simultaneously to compare their `Cream Fannypack (0.98%)`, `Hood Up` vs. `Hood Down`, and eyewear/arm traits in real time.
+3. **🔍 Universal On-Chain Token Inspector (`Any Collection / Any Token ID`)**:
+   - Select any tracked collection (`Invisible Friends #1–5000`, `CloneX #1–20000`, `a KID called BEAST #1–10000`, `Mini Supers #1–6969`, `"The Walk"`) or paste **any custom ERC-721 contract `0x...`** + **Token ID**.
+   - Queries Ethereum Mainnet & Blockscout v2 (`tokenURI` + `ownerOf`) with multi-gateway IPFS/Arweave resolution so **any Invisible Friend (`#1`–`#5,000`) walks live on screen** when you enter its ID.
+   - **📌 One-Tap Pin to Watchlist**: Pin any inspected NFT directly to your live Target Sniper Watchlist (`localStorage` persisted).
+4. **🖼️ Universal Wallet NFT Gallery Scanner (`Scan Any Wallet's NFTs`)**:
+   - Paste **any `0x...` Ethereum wallet** (or tap `🦊 swooz.eth`, `🧥 #1506 Owner`, `👹 #2313 Owner`, or `[🖼️ NFTs]` next to any added wallet in your P&L table) to scan all ERC-721/ERC-1155 NFTs held by that wallet and tap any card to load it onto the Stage.
+
+---
+
 ## 📱 Tailored for Samsung Galaxy Z Fold 8 & Galaxy S26 Ultra
 
-**`SWOOZ.ETH DEX`** is a full-screen Progressive Web App (PWA) and real-time Ethereum Mainnet + Kraken portfolio terminal built specifically for **`swooz.eth`** (`0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4`):
-
-- **📖 Samsung Galaxy Z Fold 8 (Unfolded Inner Display `≥ 720px`)**: Automatically switches into a **Dual-Pane Split View** — keeping your **Kraken Unlock Countdown, Held ETH Gain/Loss (P&L) Tracker, Multi-Wallet Manager, and Bid Allocation Simulator** pinned on the left pane while your **5 Target Snipes (`#1506`, `#1286`, `#140`, `#42`, `BEAST #2313`) and 5 Collection Market Cards** scroll independently on the right pane.
-- **📱 Samsung Galaxy S26 Ultra & Fold 8 Cover Screen**: Ergonomic single-thumb portrait terminal with a **5-button glassmorphic Bottom Dock** (`💰 ETH P&L`, `🎯 Targets`, `📊 Markets`, `⚡ Bid Calc`, `📲 Install`) that launches the install guide as a clean pop-up modal instead of cluttering the main dashboard.
-- **🎨 Custom 3D `SWOOZ.ETH` Squircle App Icon**: Packaged with custom `192x192` and `512x512` dark-mode icons engineered for Samsung One UI home screens.
+- **📖 Samsung Galaxy Z Fold 8 (Unfolded Inner Display `≥ 720px`)**: Automatically switches into a **Dual-Pane Split View** — keeping your **Kraken Unlock Countdown, Held ETH Gain/Loss (P&L) Tracker, Multi-Wallet Manager, and Animated Target Watchlist** pinned on the left pane while your **Live Walking NFT Stage, Collection Orderbooks, and Bid Calculator** scroll independently on the right pane.
+- **📱 Samsung Galaxy S26 Ultra & Fold 8 Cover Screen**: Ergonomic single-thumb portrait terminal with a **6-button glassmorphic Bottom Dock** (`💰 ETH P&L`, `🎯 Targets`, `🎬 NFT Viewer`, `📊 Markets`, `⚡ Bid Calc`, `📲 Install`).
 
 ---
 
 ## 💰 Held ETH Gain / Loss (P&L) Across Wallets & Accounts
-
-The **Held ETH Gain / Loss (P&L)** section tracks both your **Fiat USD P&L** and your **Real NFT Purchasing Power P&L** across every connected account and wallet:
 
 1. **Kraken Main (`Read-Only API`)**:
    - **Held ETH**: `0.37532712 ETH` (includes `+0.00002080 ETH` Auto-Earn staking reward)
@@ -43,40 +57,4 @@ The **Held ETH Gain / Loss (P&L)** section tracks both your **Fiat USD P&L** and
    - Live Ethereum Mainnet `ETH` + `WETH` balances via direct JSON-RPC (`eth_getBalance` & `balanceOf`)
    - Holds **`132 / 6,969` Mini Supers (`#2 Whale Worldwide`)**
 3. **Interactive `+ Add Wallet / Account` Manager**:
-   - Add any additional `0x...` wallet (such as your 2nd Mini Supers wallet) or exchange account with optional ETH amount and USD cost basis.
-   - Automatically queries Ethereum Mainnet RPC for live `ETH`, `WETH`, and `Mini Supers` balances, merges into your **Total Held ETH & Net USD P&L**, and persists locally on your device.
-4. **NFT Purchasing Power Alpha**:
-   - Tracks how much cheaper your target NFTs (`Invisible Friends Floor + CloneX Floor`) have become in USD and ETH terms compared to Oct 28 (`0.4750 ETH` / `$1,192.89 USD` then vs. `0.3608 ETH` / `$824.09 USD` now — a **`+31.6%` (`+$368.80 USD`) net purchasing power gain**).
-
----
-
-## 🎯 Tracked Collections & Specific Target Tokens
-
-| Collection | Contract (`ERC-721`) | Tracked Target Tokens & Holdings |
-| :--- | :--- | :--- |
-| **Invisible Friends (OG)** | `0x59468516a8259058baD1cA5F8f4BFF190d30E066` | **Primary `#1506`** (Rank #1,621) • **Backups `#1286`, `#140`, `#42`** |
-| **CloneX (`RTFKT x Murakami`)** | `0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B` | Collection Floor, Top Trait/Collection Bids, 24h Volume & High Sales |
-| **a KID called BEAST (`AKCB`)** | `0x77372a4cc66063575b05b44481f059be356964a4` | **Target `BEAST #2313`** (`Beat Street` • `Black Raccoon Balaclava` • `Orange Puffer`) |
-| **Mini Supers (`Home Team`)** | `0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7` | **`132 Held` by `swooz.eth` (`#2 Holder Worldwide`)** |
-| **Invisible Friends: *"The Walk"*** | `0x0905b2277Df5c7dD6C5e3399Ece8a36621aebE85` | Token `#1` (`16,969` locked supply) |
-
----
-
-## 🛠️ Local Telemetry & Discord Webhook Setup
-
-To run the local Kraken Read-Only API sync and twice-daily Discord webhook reporter:
-
-1. Create `~/.env` (`C:\Users\<user>\.env`) with your read-only keys:
-   ```env
-   KRAKEN_API_KEY=your_kraken_read_only_key
-   KRAKEN_API_SECRET=your_kraken_read_only_secret
-   DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
-   ```
-2. Run a one-shot telemetry sync & Discord report:
-   ```bash
-   python live_tracker.py
-   ```
-3. Start the local mobile DEX API server on port `8088`:
-   ```bash
-   python dex_server.py
-   ```
+   - Add any additional `0x...` wallet or exchange account with optional ETH amount and USD cost basis, plus a one-tap **`[🖼️ NFTs]`** button to scan that wallet's NFT gallery.
