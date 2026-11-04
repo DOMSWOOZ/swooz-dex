@@ -1007,6 +1007,12 @@
         <input id="pin-remember-chk" type="checkbox" checked class="rounded accent-emerald-500" />
         <span>Remember unlock on this phone / browser</span>
       </label>
+
+      <div class="pt-1 border-t border-[var(--border)] text-center">
+        <button onclick="closePinModal()" class="w-full py-2 rounded-xl bg-[var(--secondary)] hover:bg-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold transition">
+          👤 Not the Owner? Continue in Blank Guest Mode →
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1034,7 +1040,9 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=6').catch(() => {});
+      navigator.serviceWorker.register('sw.js?v=7').then(reg => {
+        reg.update();
+      }).catch(() => {});
     }
 
     let ETH_RATE = 2259.24;
@@ -1660,6 +1668,21 @@
         decrypted = await decryptVaultCipher(LATEST_SNAPSHOT.vault_cipher, LATEST_SNAPSHOT.vault_salt || 'swooz-dex-v6-vault', pin);
       }
 
+      // Verify SHA-256 hash of PIN ('1506' + ':swooz-dex-v6-vault') so PIN unlocks immediately even before snapshot.json finishes loading
+      const pinCheckBytes = await sha256Bytes(`${pin}:swooz-dex-v6-vault`);
+      const pinCheckHex = Array.from(pinCheckBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+      if (!decrypted && pinCheckHex === OWNER_PIN_VERIFY_HASH) {
+        decrypted = {
+          ok: 'SWOOZ_VAULT_OK',
+          owner_ens: 'swooz.eth',
+          owner_wallet: '0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4',
+          kraken_eth: 0.37532712,
+          swooz_onchain: { eth: 0.00019, weth: 0 },
+          mini_supers_held: 132,
+          active_order_id: 'OV57WW-IWDWQ-D5XSSX'
+        };
+      }
+
       if (decrypted) {
         VAULT_UNLOCKED = true;
         UNLOCKED_VAULT_DATA = decrypted;
@@ -2100,7 +2123,20 @@
     setInterval(updateTimers, 1000);
     updateCalc();
     updateSkimCalc();
-    refreshTelemetry();
+
+    // Immediately show the 4-Digit PIN keypad prompt on load if not yet unlocked on this device!
+    (async function initPinPromptOnLoad() {
+      const savedPin = localStorage.getItem('swooz_vault_pin_v1');
+      if (savedPin && savedPin.length === 4) {
+        const ok = await unlockWithPin(savedPin, true);
+        if (!ok) {
+          document.getElementById('pin-modal').classList.remove('hidden');
+        }
+      } else {
+        document.getElementById('pin-modal').classList.remove('hidden');
+      }
+      refreshTelemetry();
+    })();
     setInterval(refreshTelemetry, 60000);
   </script>
 </body>
