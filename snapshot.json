@@ -1,17 +1,17 @@
 {
-  "timestamp_utc": "2026-11-04 01:27 UTC",
-  "eth_usd_rate": 2259.24,
+  "timestamp_utc": "2026-11-04 05:01 UTC",
+  "eth_usd_rate": 2255.91,
   "kraken": {
     "connected": true,
     "eth_balance": 0.3753271228,
     "eth_hold_trade": 0.0,
     "usd_balance": 0.0,
-    "equity_usd": 849.411,
+    "equity_usd": 853.8962,
     "staking_earned_eth": 2.08e-05,
     "recent_eth_withdrawal": null
   },
   "kraken_eth": 0.375327,
-  "kraken_usd": 847.96,
+  "kraken_usd": 846.7,
   "swooz_onchain": {
     "eth": 9e-05,
     "eth_usd": 0.21,
@@ -21,28 +21,28 @@
   "eth_pnl": {
     "total_held_eth": 0.375517,
     "total_cost_usd": 900.44,
-    "total_live_usd": 848.38,
-    "fiat_pnl_usd": -52.06,
-    "fiat_pnl_pct": -5.78,
+    "total_live_usd": 847.13,
+    "fiat_pnl_usd": -53.31,
+    "fiat_pnl_pct": -5.92,
     "breakeven_eth_usd": 2397.91
   },
-  "unlock_countdown": "0d 20h 41m",
+  "unlock_countdown": "0d 17h 8m",
   "unlock_utc": "2026-11-04 22:09:09 UTC (2:09 PM PST)",
   "hold_cleared": false,
   "any_target_moved": false,
   "og_collection": {
     "contract": "0x59468516a8259058baD1cA5F8f4BFF190d30E066",
-    "floor_eth": 0.211345,
-    "floor_usd": 477.48,
+    "floor_eth": 0.217571,
+    "floor_usd": 490.82,
     "top_bid_eth_low": 0.198,
     "top_bid_eth_high": 0.2,
-    "top_bid_usd_low": 447.33,
-    "top_bid_usd_high": 451.85,
+    "top_bid_usd_low": 446.67,
+    "top_bid_usd_high": 451.18,
     "target_1506_bid_eth": 0.21,
-    "target_1506_bid_usd": 474.44,
-    "change_24h_pct": -9.38057454523303,
+    "target_1506_bid_usd": 473.74,
+    "change_24h_pct": -11.8988785729117,
     "volume_24h_eth": 0.416999,
-    "volume_24h_usd": 942.1,
+    "volume_24h_usd": 940.71,
     "unique_holders": 3261
   },
   "target_tokens_status": {
@@ -74,16 +74,16 @@
   "the_walk_editions": {
     "contract": "0x0905b2277Df5c7dD6C5e3399Ece8a36621aebE85",
     "total_supply": 16969,
-    "unique_holders": 4992,
+    "unique_holders": 4991,
     "bid_eth": 0.0019,
     "bid_usd": 4.29,
     "floor_eth": 0.0022,
-    "floor_usd": 4.97
+    "floor_usd": 4.96
   },
   "akcb": {
     "contract": "0x77372a4cc66063575b05b44481f059be356964a4",
     "floor_eth": 0.0695,
-    "floor_usd": 157.04,
+    "floor_usd": 156.92,
     "change_24h_pct": 0.8284203242611828,
     "unique_holders": 2807,
     "beast_2313": {
@@ -93,22 +93,22 @@
       "expected_owner": "0x4140DB722AABeC52C0d2b28d27d838BB3F25CF1F",
       "moved_or_sold": false,
       "target_bid_eth": 0.06,
-      "target_bid_usd": 135.55
+      "target_bid_usd": 135.35
     }
   },
   "clonex": {
     "contract": "0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B",
     "total_supply": 19764,
     "unique_holders": 9119,
-    "floor_eth": 0.144958,
-    "floor_usd": 329.06,
+    "floor_eth": 0.1465,
+    "floor_usd": 330.49,
     "top_bid_eth_low": 0.14,
     "top_bid_eth_high": 0.1454,
-    "top_bid_usd_low": 316.29,
-    "top_bid_usd_high": 328.49,
-    "change_24h_pct": -3.296364147125521,
-    "volume_24h_eth": 1.56,
-    "volume_24h_usd": 3547.87,
+    "top_bid_usd_low": 315.83,
+    "top_bid_usd_high": 328.01,
+    "change_24h_pct": -3.6,
+    "volume_24h_eth": 2.05,
+    "volume_24h_usd": 4624.61,
     "recent_high_sale": "CloneX #9143 @ 1.1303 WETH ($2,550.97 USD)"
   },
   "mini_supers": {
