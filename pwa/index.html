@@ -416,6 +416,68 @@
               How the 2-Sided Automated Market-Making Straddle monetizes volatility in both directions—plus an interactive calculator to size and apply it to your own wallets &amp; exchange accounts.
             </p>
           </div>
+          <a href="strategy_explainer_visual.html" target="_blank"
+             class="px-3 py-1.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition">
+            <span>📊</span> <span>Open Full Visual Card ↗</span>
+          </a>
+        </div>
+
+        <!-- LIVE $1,223.11 9-LEG ARCHITECTURE MAP & INTERACTIVE SCENARIO SIMULATOR -->
+        <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3.5 space-y-3 text-xs">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <div class="font-bold text-sm text-[var(--foreground)]">📊 The Live $1,223.11 9-Leg Dual-Exchange Architecture (Kraken Pro + Coinbase Adv)</div>
+              <div class="text-[var(--muted-foreground)]">100% of capital deployed across 5 Upside Limit Sells ($1,007.13) + 4 Downside Dip-Buy Limits ($215.98)</div>
+            </div>
+            <span class="font-mono font-bold text-emerald-400">Net Cycle Gain: +$29.27 / Oscillation</span>
+          </div>
+
+          <!-- 4-Segment Visual Allocation Bar -->
+          <div class="space-y-1">
+            <div class="flex justify-between font-mono text-[11px]">
+              <span class="text-emerald-400 font-bold">▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)</span>
+              <span class="text-amber-400 font-bold">▼ DIP CASH AMMO: $215.98 (17.7%)</span>
+            </div>
+            <div class="w-full h-3.5 rounded-full overflow-hidden flex border border-[var(--border)] bg-[var(--card)]">
+              <div style="width: 63.1%" class="bg-emerald-500 h-full" title="Kraken ETH Upside ($771.51)"></div>
+              <div style="width: 19.2%" class="bg-sky-500 h-full" title="Coinbase Crypto Upside ($235.62)"></div>
+              <div style="width: 10.8%" class="bg-amber-500 h-full" title="Kraken Cash Dip Ammo ($132.51)"></div>
+              <div style="width: 6.9%" class="bg-purple-500 h-full" title="Coinbase USDC Dip Ammo ($83.47)"></div>
+            </div>
+            <div class="flex flex-wrap justify-between gap-2 text-[11px] text-[var(--muted-foreground)] pt-0.5">
+              <span>🟢 <strong>Kraken Pro ($904.02)</strong>: 0.32 ETH ($771.51) + $132.51 Cash</span>
+              <span>🔵 <strong>Coinbase Adv ($319.09)</strong>: $235.62 Crypto (ETH/BTC/LINK/SOL) + $83.47 USDC</span>
+            </div>
+          </div>
+
+          <!-- Interactive Scenario Simulator Buttons (Pump vs Dip vs Chop) -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-2.5">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <span class="font-bold text-[var(--foreground)]">🎛️ Tap a Market Scenario to See How the 9-Leg Bot Reacts:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <button id="p1716-sim-pump" onclick="setP1716Scenario('pump')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold">📈 A: Market Rallies +1.5%</button>
+                <button id="p1716-sim-dip" onclick="setP1716Scenario('dip')" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-[var(--foreground)] font-bold">📉 B: Market Dips -2.2%</button>
+                <button id="p1716-sim-chop" onclick="setP1716Scenario('chop')" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-[var(--foreground)] font-bold">🔄 C: Both Sides Oscillate</button>
+              </div>
+            </div>
+            <div id="p1716-sim-cards" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+                <div class="text-emerald-400 font-bold">1. 5 Upside Sells Trigger</div>
+                <div class="text-sm font-bold font-mono text-[var(--foreground)]">$1,020.02 Gross Cash</div>
+                <p class="text-[var(--muted-foreground)]">ETH hits $2,435, SOL hits $97.80, BTC hits $81.8k, LINK hits $11.85. All 5 crypto sell walls cash out into USD/USDC.</p>
+              </div>
+              <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+                <div class="text-emerald-400 font-bold">2. Bot Auto-Flips to Dip Buys</div>
+                <div class="text-sm font-bold font-mono text-[var(--foreground)]">Re-Sets 3.1% Lower</div>
+                <p class="text-[var(--muted-foreground)]">Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,360–$2,365 ETH and $93.50 SOL.</p>
+              </div>
+              <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+                <div class="text-emerald-400 font-bold">3. Net Result on Pullback</div>
+                <div class="text-sm font-bold font-mono text-[var(--foreground)]">+$28.40 / +0.0118 Free ETH</div>
+                <p class="text-[var(--muted-foreground)]">We end up owning MORE ETH &amp; SOL than we started with, without adding a single dollar from the bank.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- PART 1: THE QUANTITATIVE THESIS (Visual Math & Why It Beats Passive Holding) -->
@@ -1365,7 +1427,7 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=11').then(reg => {
+      navigator.serviceWorker.register('sw.js?v=12').then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -2488,6 +2550,81 @@
     }
 
     // 💎 Partner Vault (#1716) Custom Straddle Calculator & Fold 8 Persistence
+    const P1716_SCENARIOS = {
+      pump: [
+        {
+          title: '1. 5 Upside Sells Trigger',
+          val: '$1,020.02 Gross Cash',
+          desc: 'ETH hits $2,435, SOL hits $97.80, BTC hits $81.8k, LINK hits $11.85. All 5 crypto sell walls cash out into USD/USDC.'
+        },
+        {
+          title: '2. Bot Auto-Flips to Dip Buys',
+          val: 'Re-Sets 3.1% Lower',
+          desc: 'Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,360–$2,365 ETH and $93.50 SOL.'
+        },
+        {
+          title: '3. Net Result on Pullback',
+          val: '+$28.40 / +0.0118 Free ETH',
+          desc: 'We end up owning MORE ETH & SOL than we started with, without adding a single dollar from the bank.'
+        }
+      ],
+      dip: [
+        {
+          title: '1. 4 Cash Dip-Catchers Trigger',
+          val: '$215.98 Cash Deployed',
+          desc: 'ETH dips to $2,350 ($174.71 across Kraken + Coinbase) and SOL dips to $93.40–$93.50 ($40.76 across both).'
+        },
+        {
+          title: '2. Bot Auto-Flips to Top Sells',
+          val: 'Targets $2,435 & $97.80',
+          desc: 'The moment the dip buys fill, the daemon automatically lists that newly bought ETH at $2,434.30–$2,435 and SOL at $97.80.'
+        },
+        {
+          title: '3. Net Result on Bounce',
+          val: '+$6.85 Pure Dip Profit',
+          desc: 'Even though the market dipped first, our $215.98 cash reserve turned the drop into an automatic 3.6% bounce profit.'
+        }
+      ],
+      chop: [
+        {
+          title: '1. Sideways Volatility Harvest',
+          val: '9 Active Order Traps',
+          desc: 'Crypto spends 70%+ of the time bouncing inside a 3–4% range ($2,350 <-> $2,435 ETH and $93.40 <-> $97.80 SOL).'
+        },
+        {
+          title: '2. Compounding Loop',
+          val: '+$29.27 Net Per Full Cycle',
+          desc: 'After subtracting the 0.40%–0.50% Maker fees on both sides, each full round-trip compounds ~2.4%–3.7% net gain.'
+        },
+        {
+          title: '3. 10-Cycle Compounding',
+          val: '0.440 ETH → 0.558 ETH (+$283)',
+          desc: 'Ten oscillations inside the range add +$283.70 in net value even if ETH ends at the exact same price.'
+        }
+      ]
+    };
+
+    function setP1716Scenario(key) {
+      ['pump', 'dip', 'chop'].forEach(k => {
+        const b = document.getElementById('p1716-sim-' + k);
+        if (b) {
+          b.className = k === key
+            ? 'px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold'
+            : 'px-2.5 py-1 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-[var(--foreground)] font-bold';
+        }
+      });
+      const out = document.getElementById('p1716-sim-cards');
+      if (out && P1716_SCENARIOS[key]) {
+        out.innerHTML = P1716_SCENARIOS[key].map(item => `
+          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
+            <div class="text-emerald-400 font-bold">${item.title}</div>
+            <div class="text-sm font-bold font-mono text-[var(--foreground)]">${item.val}</div>
+            <p class="text-[var(--muted-foreground)]">${item.desc}</p>
+          </div>
+        `).join('');
+      }
+    }
+
     function loadPartnerCalculatorState() {
       try {
         const raw = localStorage.getItem('swooz_partner_1716_calc_v1');

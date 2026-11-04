@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BobaTeaisGood4Me &amp; SWOOZ.ETH — Visual Strategy Explainer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #090b10;
+      --card: #11151f;
+      --secondary: #181e2c;
+      --border: #262f45;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-3 sm:p-6">
+  <div class="max-w-5xl mx-auto bg-[var(--card)] text-[var(--foreground)] border border-purple-500/40 rounded-2xl p-4 sm:p-6 shadow-2xl space-y-5">
+
+    <!-- Top Navigation Bar back to Live DEX Terminal -->
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] pb-3">
+      <div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 text-xs font-mono font-bold">
+            🧋 BOBATEAISGOOD4ME • VAULT #1716
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold">
+            QUANT BRIEFING &amp; VISUAL EXPLAINER
+          </span>
+        </div>
+        <h1 class="font-bold text-lg sm:text-xl text-[var(--foreground)] mt-1">
+          The 9-Leg Dual-Exchange Automated Straddle ($1,223.11 USD)
+        </h1>
+        <p class="text-xs text-[var(--muted-foreground)]">
+          How idle crypto &amp; cash across Kraken Pro ($904.02) and Coinbase Advanced ($319.09) are turned into a 24/7 market-making engine
+        </p>
+      </div>
+      <a href="index.html" class="px-3 py-1.5 rounded-xl bg-emerald-500 hover:opacity-90 text-white text-xs font-bold flex items-center gap-1.5">
+        <span>←</span> <span>Back to Live Fold 8 Terminal</span>
+      </a>
+    </div>
+
+    <!-- Interactive 4-Tab Selector -->
+    <div class="flex flex-wrap gap-1.5 bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-1 text-xs font-bold">
+      <button id="tab-1" onclick="showTab(1)" class="flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white transition">1. The $1,223 Map</button>
+      <button id="tab-2" onclick="showTab(2)" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">2. Interactive Scenario Simulator</button>
+      <button id="tab-3" onclick="showTab(3)" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">3. Exact 9-Leg Math Table</button>
+      <button id="tab-4" onclick="showTab(4)" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">4. Relative-Value NFT Endgame</button>
+    </div>
+
+    <!-- ================= TAB 1: THE $1,223.11 CAPITAL ARCHITECTURE ================= -->
+    <div id="view-1" class="space-y-4 text-xs">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">Total Liquid Capital Deployed</div>
+          <div class="text-lg font-bold font-mono text-emerald-400 mt-0.5">$1,223.11 USD</div>
+          <div class="text-[var(--muted-foreground)]">Kraken ($904.02) + Coinbase ($319.09)</div>
+        </div>
+        <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">Upside Sell Inventory (82.3%)</div>
+          <div class="text-lg font-bold font-mono text-[var(--foreground)] mt-0.5">$1,007.13 Crypto</div>
+          <div class="text-emerald-400">5 Post-Only Sell Limits at Resistance</div>
+        </div>
+        <div class="bg-[var(--secondary)] border border-amber-500/35 rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">Downside Dip Ammo (17.7%)</div>
+          <div class="text-lg font-bold font-mono text-[var(--foreground)] mt-0.5">$215.98 Cash</div>
+          <div class="text-amber-400">4 Post-Only Buy Limits at Support</div>
+        </div>
+      </div>
+
+      <!-- Visual Allocation Bar -->
+      <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="flex justify-between font-mono text-xs">
+          <span class="text-emerald-400 font-bold">▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)</span>
+          <span class="text-amber-400 font-bold">▼ DIP CASH AMMO: $215.98 (17.7%)</span>
+        </div>
+        <div class="w-full h-4 rounded-full overflow-hidden flex border border-[var(--border)] bg-[var(--card)]">
+          <div style="width: 63.1%" class="bg-emerald-500 h-full" title="Kraken ETH Upside ($771.51)"></div>
+          <div style="width: 19.2%" class="bg-sky-500 h-full" title="Coinbase Crypto Upside ($235.62)"></div>
+          <div style="width: 10.8%" class="bg-amber-500 h-full" title="Kraken Cash Dip Ammo ($132.51)"></div>
+          <div style="width: 6.9%" class="bg-purple-500 h-full" title="Coinbase USDC Dip Ammo ($83.47)"></div>
+        </div>
+        <div class="flex flex-wrap justify-between gap-2 text-xs text-[var(--muted-foreground)] pt-1">
+          <span>🟢 <strong>Kraken Pro ($904.02)</strong>: 0.3200 ETH ($771.51) + $132.51 USD Cash</span>
+          <span>🔵 <strong>Coinbase Adv ($319.09)</strong>: $235.62 Crypto (ETH/BTC/LINK/SOL) + $83.47 USDC</span>
+        </div>
+      </div>
+
+      <!-- Visual Architecture Flow Diagram -->
+      <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="font-bold text-[var(--foreground)]">⚙️ How the 24/7 Python Daemon (auto_flip_eth.py) Operates</div>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-center font-mono text-[11px]">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5">
+            <div class="text-purple-300 font-bold">1. Dual API Poll</div>
+            <div class="text-[var(--muted-foreground)] font-sans mt-1">Checks Kraken + Coinbase every 20 seconds</div>
+          </div>
+          <div class="bg-[var(--card)] border border-emerald-500/35 rounded-lg p-2.5">
+            <div class="text-emerald-400 font-bold">2A. If Rally Hits Top</div>
+            <div class="text-[var(--muted-foreground)] font-sans mt-1">Sells @ $2,435 ETH / $97.80 SOL → Auto-sets Dip Buy</div>
+          </div>
+          <div class="bg-[var(--card)] border border-amber-500/35 rounded-lg p-2.5">
+            <div class="text-amber-400 font-bold">2B. If Dip Hits Bottom</div>
+            <div class="text-[var(--muted-foreground)] font-sans mt-1">Buys @ $2,350 ETH / $93.40 SOL → Auto-sets Top Sell</div>
+          </div>
+          <div class="bg-[var(--card)] border border-sky-500/35 rounded-lg p-2.5">
+            <div class="text-sky-400 font-bold">3. Net Spread Locked</div>
+            <div class="text-[var(--muted-foreground)] font-sans mt-1">Compounds +$29.27 net per full oscillation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 2: INTERACTIVE STRADDLE & FEE MATH SIMULATOR ================= -->
+    <div id="view-2" class="hidden space-y-3.5 text-xs">
+      <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3.5 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <div class="font-bold text-[var(--foreground)]">🎛️ Tap a Market Scenario to See How the 9-Leg Bot Reacts:</div>
+            <div class="text-[var(--muted-foreground)]">We don't have to guess market direction—both outcomes trigger profitable limit orders</div>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <button id="sim-btn-pump" onclick="setScenario('pump')" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-white font-bold">📈 Scenario A: Market Rallies +1.5%</button>
+            <button id="sim-btn-dip" onclick="setScenario('dip')" class="px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] font-bold">📉 Scenario B: Market Dips -2.2%</button>
+            <button id="sim-btn-chop" onclick="setScenario('chop')" class="px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] font-bold">🔄 Scenario C: Both Sides Oscillate</button>
+          </div>
+        </div>
+
+        <div id="sim-output" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1"></div>
+      </div>
+
+      <!-- The Post-Only Maker Fee Equation -->
+      <div class="bg-[var(--secondary)] border border-purple-500/40 rounded-xl p-3.5 space-y-2">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div class="font-bold text-purple-300">🛡️ The Fee Arbitrage Formula: Why All 9 Legs Use <code class="font-mono text-emerald-400">post_only=True</code></div>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono font-bold">50% Fee Reduction</span>
+        </div>
+        <p class="text-[var(--muted-foreground)]">
+          Standard retail "Buy/Sell" market orders remove liquidity from the orderbook and pay <strong>0.80%–1.50% Taker fees</strong>. By submitting <code class="font-mono">Post-Only</code> Maker orders that sit on the orderbook, we pay only <strong>0.40% on Kraken Pro</strong> and <strong>0.50% on Coinbase Advanced</strong>:
+        </p>
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5 font-mono text-center text-emerald-400 font-bold">
+          Net Compounded Return % = [ (P_sell × (1 - f)) / (P_buy × (1 + f)) - 1 ] × 100
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 3: EXACT 9-LEG PROFIT & FEE MATH TABLE ================= -->
+    <div id="view-3" class="hidden space-y-3 text-xs">
+      <div class="overflow-x-auto bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3">
+        <table class="w-full text-left border-collapse font-mono text-[11px]">
+          <thead>
+            <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
+              <th class="py-1.5 pr-2">Leg &amp; Venue</th>
+              <th class="py-1.5 px-2">Asset</th>
+              <th class="py-1.5 px-2">Active Order</th>
+              <th class="py-1.5 px-2">Auto-Flip Target</th>
+              <th class="py-1.5 px-2">Gross Spread</th>
+              <th class="py-1.5 pl-2">Net Profit (After 2x Fees)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[var(--border)]">
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-emerald-400">1. Kraken Pro</td><td class="py-1.5 px-2">0.3200 ETH</td><td class="py-1.5 px-2">SELL @ $2,434.30 ($778.98)</td><td class="py-1.5 px-2">Buy @ $2,365.00</td><td class="py-1.5 px-2">+2.93%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+2.11% (+$16.12 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-amber-400">2. Kraken Pro</td><td class="py-1.5 px-2">0.0509 ETH</td><td class="py-1.5 px-2">BUY @ $2,350.00 ($120.00)</td><td class="py-1.5 px-2">Sell @ $2,434.30</td><td class="py-1.5 px-2">+3.59%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+2.76% (+$3.31 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-purple-300">3. Kraken Pro</td><td class="py-1.5 px-2">0.1332 SOL</td><td class="py-1.5 px-2">BUY @ $93.50 ($12.51)</td><td class="py-1.5 px-2">Sell @ $97.80</td><td class="py-1.5 px-2">+4.60%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+3.77% (+$0.47 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-sky-400">4. Coinbase Adv</td><td class="py-1.5 px-2">0.0462 ETH</td><td class="py-1.5 px-2">SELL @ $2,435.00 ($112.50)</td><td class="py-1.5 px-2">Buy @ $2,360.00</td><td class="py-1.5 px-2">+3.18%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+2.15% (+$2.39 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-sky-400">5. Coinbase Adv</td><td class="py-1.5 px-2">0.2849 SOL</td><td class="py-1.5 px-2">SELL @ $97.80 ($27.87)</td><td class="py-1.5 px-2">Buy @ $93.50</td><td class="py-1.5 px-2">+4.60%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+3.56% (+$0.96 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-sky-400">6. Coinbase Adv</td><td class="py-1.5 px-2">0.00088 BTC</td><td class="py-1.5 px-2">SELL @ $81,800 ($71.67)</td><td class="py-1.5 px-2">Buy @ $78,800</td><td class="py-1.5 px-2">+3.81%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+2.78% (+$1.95 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-sky-400">7. Coinbase Adv</td><td class="py-1.5 px-2">2.3700 LINK</td><td class="py-1.5 px-2">SELL @ $11.85 ($28.08)</td><td class="py-1.5 px-2">Buy @ $11.05</td><td class="py-1.5 px-2">+7.24%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+6.17% (+$1.61 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-amber-400">8. Coinbase Adv</td><td class="py-1.5 px-2">0.0233 ETH</td><td class="py-1.5 px-2">BUY @ $2,350.00 ($54.71)</td><td class="py-1.5 px-2">Sell @ $2,435.00</td><td class="py-1.5 px-2">+3.62%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+2.59% (+$1.42 net)</td></tr>
+            <tr><td class="py-1.5 pr-2 font-sans font-bold text-purple-300">9. Coinbase Adv</td><td class="py-1.5 px-2">0.3025 SOL</td><td class="py-1.5 px-2">BUY @ $93.40 ($28.25)</td><td class="py-1.5 px-2">Sell @ $97.80</td><td class="py-1.5 px-2">+4.71%</td><td class="py-1.5 pl-2 font-bold text-emerald-400">+3.67% (+$1.04 net)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================= TAB 4: THE BLUE-CHIP NFT END-GAME ================= -->
+    <div id="view-4" class="hidden space-y-3 text-xs">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="bg-[var(--secondary)] border border-emerald-500/30 rounded-xl p-3 space-y-1">
+          <div class="text-emerald-400 font-bold">1. +31.6% Purchasing-Power Win</div>
+          <div class="text-sm font-bold font-mono text-[var(--foreground)]">ETH Up +5.2% vs NFTs Down -26.4%</div>
+          <p class="text-[var(--muted-foreground)]">
+            Because NFTs are denominated in ETH, compounding ETH while Invisible Friends &amp; CloneX floors contract expands our buying power by +31.6%.
+          </p>
+        </div>
+        <div class="bg-[var(--secondary)] border border-amber-500/30 rounded-xl p-3 space-y-1">
+          <div class="text-amber-400 font-bold">2. Double-Discount WETH Bids</div>
+          <div class="text-sm font-bold font-mono text-[var(--foreground)]">Extra 10–14% Below Floor Ask</div>
+          <p class="text-[var(--muted-foreground)]">
+            Instead of paying retail "Buy Now" prices on OpenSea, we place WETH Collection Bids on Blur/OpenSea so impatient sellers dump into our bids at a discount.
+          </p>
+        </div>
+        <div class="bg-[var(--secondary)] border border-purple-500/30 rounded-xl p-3 space-y-1">
+          <div class="text-purple-300 font-bold">3. Vault #1716 Self-Application</div>
+          <div class="text-sm font-bold font-mono text-[var(--foreground)]">Works on Any Portfolio Size</div>
+          <p class="text-[var(--muted-foreground)]">
+            Whether starting with $200, $500, or $1,200+, splitting 80% Upside Limit Sells + 20% Dip Limit Buys with Post-Only execution harvests the same spread.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const SCENARIOS = {
+      pump: [
+        {
+          title: '1. 5 Upside Sells Trigger',
+          val: '$1,020.02 Gross Cash',
+          desc: 'ETH hits $2,435, SOL hits $97.80, BTC hits $81.8k, LINK hits $11.85. All 5 crypto sell walls cash out into USD/USDC.'
+        },
+        {
+          title: '2. Bot Auto-Flips to Dip Buys',
+          val: 'Re-Sets 3.1% Lower',
+          desc: 'Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,360–$2,365 ETH and $93.50 SOL.'
+        },
+        {
+          title: '3. Net Result on Pullback',
+          val: '+$28.40 / +0.0118 Free ETH',
+          desc: 'We end up owning MORE ETH & SOL than we started with, without adding a single dollar from the bank.'
+        }
+      ],
+      dip: [
+        {
+          title: '1. 4 Cash Dip-Catchers Trigger',
+          val: '$215.98 Cash Deployed',
+          desc: 'ETH dips to $2,350 ($174.71 across Kraken + Coinbase) and SOL dips to $93.40–$93.50 ($40.76 across both).'
+        },
+        {
+          title: '2. Bot Auto-Flips to Top Sells',
+          val: 'Targets $2,435 & $97.80',
+          desc: 'The moment the dip buys fill, the daemon automatically lists that newly bought ETH at $2,434.30–$2,435 and SOL at $97.80.'
+        },
+        {
+          title: '3. Net Result on Bounce',
+          val: '+$6.85 Pure Dip Profit',
+          desc: 'Even though the market dipped first, our $215.98 cash reserve turned the drop into an automatic 3.6% bounce profit.'
+        }
+      ],
+      chop: [
+        {
+          title: '1. Sideways Volatility Harvest',
+          val: '9 Active Order Traps',
+          desc: 'Crypto spends 70%+ of the time bouncing inside a 3–4% range ($2,350 <-> $2,435 ETH and $93.40 <-> $97.80 SOL).'
+        },
+        {
+          title: '2. Compounding Loop',
+          val: '+$29.27 Net Per Full Cycle',
+          desc: 'After subtracting the 0.40%–0.50% Maker fees on both sides, each full round-trip compounds ~2.4%–3.7% net gain.'
+        },
+        {
+          title: '3. 10-Cycle Compounding',
+          val: '0.440 ETH → 0.558 ETH (+$283)',
+          desc: 'Ten oscillations inside the range add +$283.70 in net value even if ETH ends at the exact same price.'
+        }
+      ]
+    };
+
+    function setScenario(key) {
+      ['pump', 'dip', 'chop'].forEach(k => {
+        const b = document.getElementById('sim-btn-' + k);
+        b.className = k === key
+          ? 'px-3 py-1.5 rounded-lg bg-emerald-500 text-white font-bold'
+          : 'px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] font-bold';
+      });
+      const out = document.getElementById('sim-output');
+      out.innerHTML = SCENARIOS[key].map(item => `
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
+          <div class="text-emerald-400 font-bold">${item.title}</div>
+          <div class="text-sm font-bold font-mono text-[var(--foreground)]">${item.val}</div>
+          <p class="text-[var(--muted-foreground)]">${item.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    function showTab(n) {
+      [1, 2, 3, 4].forEach(i => {
+        document.getElementById('view-' + i).classList.toggle('hidden', i !== n);
+        document.getElementById('tab-' + i).className = i === n
+          ? 'flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white transition'
+          : 'flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+      });
+    }
+
+    setScenario('pump');
+  </script>
+</body>
+</html>
