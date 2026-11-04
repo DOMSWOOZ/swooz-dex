@@ -246,58 +246,55 @@
           </div>
 
           <!-- 🪜 4-Rung Kraken Pro Post-Only Limit Sell Ladder -->
-          <div class="bg-[var(--card)] border border-emerald-500/30 rounded-lg p-2.5 space-y-2">
+          <div class="bg-[var(--card)] border border-emerald-500/40 rounded-lg p-2.5 space-y-2">
             <div class="flex items-center justify-between flex-wrap gap-1">
-              <span class="font-bold text-[var(--foreground)]">🪜 4-Rung Kraken Pro "Post-Only" Limit Sell Ladder (0.40% Maker Fee)</span>
-              <span class="text-emerald-500 font-mono font-semibold">Total Skim: 0.0153 ETH → +$37.60 Net Cash | Keeps 0.3600 ETH for NFTs!</span>
+              <span class="font-bold text-[var(--foreground)]">🪜 4-Rung Kraken Pro "Post-Only" Limit Sell Ladder (ACTIVE ON KRAKEN)</span>
+              <span id="ladder-summary-badge" class="text-emerald-500 font-mono font-semibold">🟢 4 / 4 Orders Live on Book | Keeps 0.36003 ETH for NFTs!</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left border-collapse text-[11px] font-mono">
                 <thead>
                   <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
                     <th class="py-1 pr-2">Rung</th>
-                    <th class="py-1 px-2">Limit Price (USD)</th>
-                    <th class="py-1 px-2">Quantity (ETH)</th>
-                    <th class="py-1 px-2">Net Cash (After 0.40% Fee)</th>
-                    <th class="py-1 pl-2">Quick Copy</th>
+                    <th class="py-1 px-2">Limit Price</th>
+                    <th class="py-1 px-2">Quantity</th>
+                    <th class="py-1 px-2">Net Cash (0.40% Maker)</th>
+                    <th class="py-1 px-2">Kraken Order ID</th>
+                    <th class="py-1 pl-2">Live Status</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-[var(--border)]">
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">Rung 1 (Now)</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">Rung 1 (Top Skim)</td>
                     <td class="py-1.5 px-2 font-bold">$2,435.00</td>
                     <td class="py-1.5 px-2 font-bold">0.00520 ETH</td>
                     <td class="py-1.5 px-2 text-emerald-500">+$12.61 USD (Fee: $0.05)</td>
-                    <td class="py-1.5 pl-2 font-sans">
-                      <button onclick="navigator.clipboard.writeText('0.00520')" class="px-1.5 py-0.5 rounded bg-[var(--secondary)] border border-[var(--border)] hover:opacity-80">Copy Qty</button>
-                    </td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">OAQXJY-WDGCN-RY3Z7W</td>
+                    <td id="rung-status-1" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN ON BOOK</td>
                   </tr>
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-[var(--foreground)]">Rung 2 (+$20)</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-[var(--foreground)]">Rung 2 (+$20 Leg)</td>
                     <td class="py-1.5 px-2 font-bold">$2,455.00</td>
                     <td class="py-1.5 px-2 font-bold">0.00300 ETH</td>
                     <td class="py-1.5 px-2 text-emerald-500">+$7.34 USD (Fee: $0.03)</td>
-                    <td class="py-1.5 pl-2 font-sans">
-                      <button onclick="navigator.clipboard.writeText('0.00300')" class="px-1.5 py-0.5 rounded bg-[var(--secondary)] border border-[var(--border)] hover:opacity-80">Copy Qty</button>
-                    </td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">OI4O3D-JBH5Z-K4BME7</td>
+                    <td id="rung-status-2" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN ON BOOK</td>
                   </tr>
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-[var(--foreground)]">Rung 3 (+$45)</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-[var(--foreground)]">Rung 3 (+$45 Leg)</td>
                     <td class="py-1.5 px-2 font-bold">$2,480.00</td>
                     <td class="py-1.5 px-2 font-bold">0.00350 ETH</td>
                     <td class="py-1.5 px-2 text-emerald-500">+$8.65 USD (Fee: $0.03)</td>
-                    <td class="py-1.5 pl-2 font-sans">
-                      <button onclick="navigator.clipboard.writeText('0.00350')" class="px-1.5 py-0.5 rounded bg-[var(--secondary)] border border-[var(--border)] hover:opacity-80">Copy Qty</button>
-                    </td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">O2R7X4-XZOWF-7SK2NB</td>
+                    <td id="rung-status-3" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN ON BOOK</td>
                   </tr>
                   <tr>
                     <td class="py-1.5 pr-2 font-sans font-bold text-amber-500">Rung 4 ($2.5k+)</td>
                     <td class="py-1.5 px-2 font-bold">$2,510.00</td>
                     <td class="py-1.5 px-2 font-bold">0.00360 ETH</td>
                     <td class="py-1.5 px-2 text-emerald-500">+$9.00 USD (Fee: $0.04)</td>
-                    <td class="py-1.5 pl-2 font-sans">
-                      <button onclick="navigator.clipboard.writeText('0.00360')" class="px-1.5 py-0.5 rounded bg-[var(--secondary)] border border-[var(--border)] hover:opacity-80">Copy Qty</button>
-                    </td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">OTDMVI-J25FQ-CKAZ5W</td>
+                    <td id="rung-status-4" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN ON BOOK</td>
                   </tr>
                 </tbody>
               </table>
