@@ -106,8 +106,32 @@
     </div>
   </header>
 
-  <!-- Main Adaptive Container: Dual-Pane on Fold 8 Unfolded / Single-Column Centered on S26U -->
-  <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4">
+  <!-- 🎛️ Top-Level Workspace View Switcher (Reorganized Behind Toggles — No More Endless Scrolling!) -->
+  <div class="max-w-[1600px] mx-auto px-3 pt-2.5">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-1 flex items-center gap-1 overflow-x-auto text-xs font-bold shadow-sm">
+      <button id="top-tab-trade" onclick="switchMainView('trade')" class="flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>📈</span> <span>Auto-Trade &amp; Charts</span>
+      </button>
+      <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>🎯</span> <span>Target Sniper (5)</span>
+      </button>
+      <button id="top-tab-viewer" onclick="switchMainView('viewer')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>🎬</span> <span>Walking Stage</span>
+      </button>
+      <button id="top-tab-markets" onclick="switchMainView('markets')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>📊</span> <span>NFT Orderbooks</span>
+      </button>
+      <button id="top-tab-calc" onclick="switchMainView('calc')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>⚡</span> <span>Bid Allocator</span>
+      </button>
+      <button id="top-tab-split" onclick="switchMainView('split')" class="hidden md:flex py-2 px-3 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition">
+        <span>📖</span> <span>Fold 8 Split All</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Adaptive Container: Tabbed Single-Screen by default, or Dual-Pane on Fold 8 Split -->
+  <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 gap-4">
 
     <!-- ================= LEFT PANE (Fold 8 Left Screen): HELD ETH P&L + TARGET WATCHLIST + COLLECTION ORDERBOOKS ================= -->
     <section id="pane-left" class="md:col-span-6 space-y-4">
@@ -187,92 +211,100 @@
           </div>
         </div>
 
-        <!-- NEW: ✂️ ETH "Scrape the Top" Profit-Lock & Dip Re-Buy Simulator -->
-        <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-lg p-3 space-y-2.5 text-xs">
-          <div class="flex items-center justify-between flex-wrap gap-1">
+        <!-- 📈 NEW: Live Kraken Pro Candlestick Charts (ETH/USD & SOL/USD) + Automated Dual-Bucket Execution Tracker -->
+        <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3 space-y-3 text-xs">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <div>
-              <div class="font-bold text-[var(--foreground)] flex items-center gap-1.5">
-                <span>✂️</span> <span>ETH "Scrape the Top" Profit-Lock &amp; Compounding Simulator</span>
+              <div class="font-bold text-[var(--foreground)] flex items-center gap-1.5 text-sm">
+                <span>📈</span> <span>Kraken Pro Live Candlestick Charts &amp; Automated Trade Tracker</span>
               </div>
               <div class="text-[var(--muted-foreground)]">
-                Spot trading on <strong>Kraken Pro (0.25% Maker Limit)</strong> is allowed even during ACH withdrawal holds (Min order: <code class="font-mono">0.002 ETH</code>)
+                Real-time Kraken OHLC candles with your exact <strong>Target Profit-Lock ($2,434.30)</strong> &amp; <strong>Dip Re-Buy ($2,365.00)</strong> execution levels
               </div>
             </div>
-            <span id="skim-live-badge" class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-mono font-bold">
-              +$12.39 Skimmable Above $900!
+            <span id="chart-live-spread-badge" class="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono font-bold">
+              ⏳ Loading Kraken OHLC...
             </span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <div class="space-y-1">
-              <label class="text-[var(--muted-foreground)] font-medium"> Protected Principal ($ USD)</label>
-              <input id="skim-principal-usd" type="number" step="10" value="900" oninput="updateSkimCalc()"
-                     class="w-full px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+          <!-- Chart Pair & Timeframe Toggles -->
+          <div class="flex items-center justify-between flex-wrap gap-2 bg-[var(--card)] border border-[var(--border)] rounded-lg p-1.5">
+            <!-- Pair Selector: ETH/USD vs SOL/USD -->
+            <div class="flex items-center gap-1">
+              <button id="btn-pair-eth" onclick="switchChartPair('ETHUSD')"
+                      class="px-3 py-1 rounded-md bg-emerald-500 text-white font-bold font-mono transition">
+                💎 ETH/USD ($910 Lock)
+              </button>
+              <button id="btn-pair-sol" onclick="switchChartPair('SOLUSD')"
+                      class="px-3 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition">
+                ☀️ SOL/USD ($10 Scraper)
+              </button>
             </div>
-            <div class="space-y-1">
-              <label class="text-[var(--muted-foreground)] font-medium">Target Sell "Top" ($ / ETH)</label>
-              <input id="skim-sell-eth" type="number" step="5" value="2431" oninput="updateSkimCalc()"
-                     class="w-full px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
-            </div>
-            <div class="space-y-1">
-              <label class="text-[var(--muted-foreground)] font-medium">Target Dip Re-Buy ($ / ETH)</label>
-              <input id="skim-rebuy-eth" type="number" step="5" value="2325" oninput="updateSkimCalc()"
-                     class="w-full px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
+
+            <!-- Timeframe Selector: 15m | 1H | 4H | 1D -->
+            <div class="flex items-center gap-1 font-mono">
+              <button id="btn-tf-15" onclick="switchChartTf(15)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold">15m</button>
+              <button id="btn-tf-60" onclick="switchChartTf(60)" class="px-2 py-1 rounded bg-emerald-500 text-white font-bold">1H</button>
+              <button id="btn-tf-240" onclick="switchChartTf(240)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold">4H</button>
+              <button id="btn-tf-1440" onclick="switchChartTf(1440)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold">1D</button>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5">
-            <!-- Strategy A: Skim Top Slice Only -->
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="font-bold text-emerald-500">Option A: Skim Only the Profit Slice</span>
-                <span id="skim-optA-fee" class="font-mono text-[10px] text-[var(--muted-foreground)]">Fee: ~$0.03</span>
-              </div>
-              <div id="skim-optA-sell" class="font-mono font-bold text-[var(--foreground)]">
-                Sell 0.00510 ETH → Lock +$12.36 Cash
-              </div>
-              <div id="skim-optA-keep" class="text-[var(--muted-foreground)] font-mono text-[11px]">
-                Keep 0.37023 ETH ($900.00) untouched in ETH
-              </div>
+          <!-- Live OHLC KPI Strip + Distance-to-Fill Progress Gauge -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">LIVE KRAKEN LAST</div>
+              <div id="chart-kpi-last" class="text-sm font-bold text-[var(--foreground)]">$2,413.49</div>
+              <div id="chart-kpi-chg" class="text-[11px] text-emerald-400">+5.8% 24h</div>
             </div>
-
-            <!-- Strategy B: Full-Stack Swing (Sell Top -> Re-Buy Dip) -->
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="font-bold text-amber-500">Option B: Full-Stack Top Sell &amp; Dip Re-Buy</span>
-                <span id="skim-optB-fee" class="font-mono text-[10px] text-[var(--muted-foreground)]">Round-trip Fee: ~$4.55</span>
-              </div>
-              <div id="skim-optB-cash" class="font-mono font-bold text-[var(--foreground)]">
-                Sell All → $910.11 Cash (Keep +$10.11 Profit)
-              </div>
-              <div id="skim-optB-rebuy" class="text-emerald-500 font-mono font-semibold text-[11px]">
-                Re-Buy w/ $900 @ $2,325 → 0.3861 ETH (+0.0108 Free ETH!)
-              </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">24H HIGH / LOW</div>
+              <div id="chart-kpi-hl" class="text-xs font-bold text-[var(--foreground)]">$2,444 / $2,265</div>
+              <div id="chart-kpi-vol" class="text-[10px] text-[var(--muted-foreground)]">Kraken Spot Feed</div>
+            </div>
+            <div class="bg-[var(--card)] border border-emerald-500/40 rounded-lg p-2">
+              <div id="chart-kpi-target-lbl" class="text-[10px] text-emerald-400 font-sans font-bold">TARGET SELL LIMIT</div>
+              <div id="chart-kpi-target" class="text-sm font-bold text-emerald-400">$2,434.30</div>
+              <div id="chart-kpi-dist" class="text-[11px] text-amber-400">$20.81 away (99.1%)</div>
+            </div>
+            <div class="bg-[var(--card)] border border-amber-500/40 rounded-lg p-2">
+              <div id="chart-kpi-rebuy-lbl" class="text-[10px] text-amber-400 font-sans font-bold">AUTO DIP RE-BUY</div>
+              <div id="chart-kpi-rebuy" class="text-sm font-bold text-amber-400">$2,365.00</div>
+              <div id="chart-kpi-rebuy-note" class="text-[11px] text-emerald-400">→ 0.37903 ETH (+Free ETH)</div>
             </div>
           </div>
 
-          <!-- 🎯 Active Kraken Pro Full-Stack $910.00 Net Cash Profit-Lock Order (OWNER VAULT ONLY) -->
+          <!-- Interactive HTML5 Canvas Candlestick Chart + Target Order Overlay Lines -->
+          <div class="relative w-full bg-[#090c14] border border-[var(--border)] rounded-xl overflow-hidden p-2">
+            <canvas id="kraken-ohlc-canvas" width="820" height="290" class="w-full h-[240px] sm:h-[280px] block"></canvas>
+            <div class="flex items-center justify-between text-[10px] font-mono text-[var(--muted-foreground)] pt-1 px-1 border-t border-[var(--border)]/60">
+              <span>🟢 Green Dashed = Target Sell ($2,434.30 ETH / $97.80 SOL)</span>
+              <span>🟠 Amber Dashed = Auto Dip Buy ($2,365.00 ETH / $93.50 SOL)</span>
+            </div>
+          </div>
+
+          <!-- 🎯 Automated Dual-Bucket Pipeline Tracker (Owner Vault Details Unlocked w/ PIN) -->
           <div class="owner-only hidden bg-[var(--card)] border border-emerald-500/40 rounded-lg p-2.5 space-y-2">
             <div class="flex items-center justify-between flex-wrap gap-1">
-              <span class="font-bold text-[var(--foreground)]">🎯 Active Kraken Pro Full-Stack Profit-Lock Order (Post-Only Maker 0.40%)</span>
+              <span class="font-bold text-[var(--foreground)]">🤖 Active Automated Dual-Bucket Pipeline (Post-Only Maker 0.40%)</span>
               <span id="ladder-summary-badge" class="text-emerald-500 font-mono font-semibold">🟢 LIVE ON BOOK: txid OV57WW-IWDWQ-D5XSSX</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left border-collapse text-[11px] font-mono">
                 <thead>
                   <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
-                    <th class="py-1 pr-2">Strategy</th>
-                    <th class="py-1 px-2">Limit Price</th>
-                    <th class="py-1 px-2">Quantity</th>
-                    <th class="py-1 px-2">Gross / Fee (0.40%)</th>
-                    <th class="py-1 px-2">Net Cash Locked</th>
+                    <th class="py-1 pr-2">Stage</th>
+                    <th class="py-1 px-2">Trigger Price</th>
+                    <th class="py-1 px-2">Order Size</th>
+                    <th class="py-1 px-2">Maker Fee (0.40%)</th>
+                    <th class="py-1 px-2">Target Outcome</th>
                     <th class="py-1 pl-2">Live Status / Order ID</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-[var(--border)]">
                   <tr>
                     <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">1. Full-Stack Profit Lock</td>
-                    <td class="py-1.5 px-2 font-bold">$2,434.30</td>
+                    <td class="py-1.5 px-2 font-bold">$2,434.30 / ETH</td>
                     <td class="py-1.5 px-2 font-bold">0.37532712 ETH (100%)</td>
                     <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$913.66 (-$3.65 Fee)</td>
                     <td class="py-1.5 px-2 font-bold text-emerald-500">$910.00 USD (+$10.00 Net)</td>
@@ -280,11 +312,11 @@
                   </tr>
                   <tr>
                     <td class="py-1.5 pr-2 font-sans font-bold text-amber-500">2A. Core ETH Dip Re-Buy</td>
-                    <td class="py-1.5 px-2 font-bold">$2,365.00 (Post-Only)</td>
+                    <td class="py-1.5 px-2 font-bold">$2,365.00 / ETH</td>
                     <td class="py-1.5 px-2 font-bold">$900.00 Principal</td>
                     <td class="py-1.5 px-2 text-[var(--muted-foreground)]">0.40% Maker ($3.59)</td>
                     <td class="py-1.5 px-2 font-bold text-emerald-500">0.37903 ETH (+0.0037 Free ETH!)</td>
-                    <td class="py-1.5 pl-2 font-sans text-emerald-500 font-semibold">🤖 Auto-Fires via Daemon</td>
+                    <td class="py-1.5 pl-2 font-sans text-emerald-500 font-semibold">🤖 Auto-Fires on Step 1 Fill</td>
                   </tr>
                   <tr>
                     <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">2B. SOL/USD Profit Scraper</td>
@@ -292,7 +324,7 @@
                     <td class="py-1.5 px-2 font-bold">+$10.00 Profit (~0.1065 SOL)</td>
                     <td class="py-1.5 px-2 text-[var(--muted-foreground)]">House Money Loop</td>
                     <td class="py-1.5 px-2 font-bold text-purple-400">$10.00 → $10.38 → $10.78+</td>
-                    <td class="py-1.5 pl-2 font-sans text-emerald-500 font-semibold">🤖 Auto-Loops via Daemon</td>
+                    <td class="py-1.5 pl-2 font-sans text-emerald-500 font-semibold">🤖 Auto-Loops on Step 1 Fill</td>
                   </tr>
                 </tbody>
               </table>
@@ -864,7 +896,7 @@
       </div>
 
       <!-- 5. Live On-Chain Executions & Sales Tape -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+      <div id="sec-sales" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
         <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
           <h2 class="text-sm font-bold text-[var(--foreground)]">⚡ Verified On-Chain Executions &amp; Bid Fills</h2>
           <span class="text-xs text-emerald-500 font-semibold">Ethereum Mainnet Seaport / Blur</span>
@@ -1016,21 +1048,21 @@
     </div>
   </div>
 
-  <!-- Fixed Bottom Dock (Always Accessible on S26U, Fold 8 Cover, and Fold 8 Unfolded!) -->
+  <!-- Fixed Bottom Dock (Instant 1-Tap Workspace View Toggles on S26U & Fold 8!) -->
   <nav id="mobile-dock" class="fixed bottom-0 left-0 right-0 z-40 bg-[var(--card)]/95 backdrop-blur border-t border-[var(--border)] px-2 py-2 flex items-center justify-around text-xs font-semibold">
-    <button onclick="scrollToSec('sec-pnl')" class="flex flex-col items-center gap-0.5 text-emerald-500 hover:opacity-80">
-      <span>💰</span><span>ETH P&amp;L</span>
+    <button id="dock-tab-trade" onclick="switchMainView('trade')" class="flex flex-col items-center gap-0.5 text-emerald-500 hover:opacity-80">
+      <span>📈</span><span>Trade &amp; Charts</span>
     </button>
-    <button onclick="scrollToSec('sec-targets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+    <button id="dock-tab-targets" onclick="switchMainView('targets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
       <span>🎯</span><span>Targets</span>
     </button>
-    <button onclick="scrollToSec('sec-viewer')" class="flex flex-col items-center gap-0.5 text-emerald-400 hover:opacity-80">
-      <span>🎬</span><span>NFT Viewer</span>
+    <button id="dock-tab-viewer" onclick="switchMainView('viewer')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+      <span>🎬</span><span>NFT Stage</span>
     </button>
-    <button onclick="scrollToSec('sec-markets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+    <button id="dock-tab-markets" onclick="switchMainView('markets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
       <span>📊</span><span>Markets</span>
     </button>
-    <button onclick="scrollToSec('sec-calc')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+    <button id="dock-tab-calc" onclick="switchMainView('calc')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
       <span>⚡</span><span>Bid Calc</span>
     </button>
     <button onclick="toggleInstallModal()" class="flex flex-col items-center gap-0.5 text-amber-500 hover:opacity-80">
@@ -1040,7 +1072,7 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=7').then(reg => {
+      navigator.serviceWorker.register('sw.js?v=8').then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -1973,79 +2005,317 @@
       updateCalc();
     }
 
-    function setLayoutMode(mode) {
+    let ACTIVE_MAIN_VIEW = 'trade';
+    let CHART_PAIR = 'ETHUSD';
+    let CHART_TF = 60;
+    let LAST_CANDLES = [];
+
+    function switchMainView(view) {
+      ACTIVE_MAIN_VIEW = view;
       const container = document.getElementById('dex-container');
       const left = document.getElementById('pane-left');
       const right = document.getElementById('pane-right');
-      const btnFold = document.getElementById('btn-mode-auto');
-      const btnS26 = document.getElementById('btn-mode-s26u');
+      const secPnl = document.getElementById('sec-pnl');
+      const secTargets = document.getElementById('sec-targets');
+      const secViewer = document.getElementById('sec-viewer');
+      const secMarkets = document.getElementById('sec-markets');
+      const secCalc = document.getElementById('sec-calc');
+      const secSales = document.getElementById('sec-sales');
 
-      if (mode === 's26u') {
-        container.className = 'max-w-[460px] mx-auto p-3 grid grid-cols-1 gap-4 border-x border-[var(--border)]';
-        left.className = 'col-span-1 space-y-4';
-        right.className = 'col-span-1 space-y-4';
-        btnS26.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
-        btnFold.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
-      } else {
+      // Highlight top & bottom toggle buttons
+      ['trade', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
+        const topBtn = document.getElementById('top-tab-' + v);
+        if (topBtn) {
+          if (v === view) {
+            topBtn.className = 'flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition';
+          } else if (v === 'split') {
+            topBtn.className = 'hidden md:flex py-2 px-3 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition';
+          } else {
+            topBtn.className = 'flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition';
+          }
+        }
+        const dockBtn = document.getElementById('dock-tab-' + v);
+        if (dockBtn) {
+          dockBtn.className = v === view
+            ? 'flex flex-col items-center gap-0.5 text-emerald-500 font-bold'
+            : 'flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]';
+        }
+      });
+
+      if (view === 'split') {
+        // Fold 8 Unfolded Dual-Pane Split View: Show all sections across 2 columns
         container.className = 'max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
         left.className = 'md:col-span-6 space-y-4';
         right.className = 'md:col-span-6 space-y-4';
+        [secPnl, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
+        drawKrakenChart();
+        return;
+      }
+
+      // Single-View Focused Toggle Mode (No clutter, only the active section is visible!)
+      container.className = 'max-w-[1100px] mx-auto p-3 grid grid-cols-1 gap-4';
+      [secPnl, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
+
+      if (view === 'trade') {
+        left.className = 'col-span-1 space-y-4';
+        right.className = 'hidden';
+        secPnl.classList.remove('hidden');
+        setTimeout(() => drawKrakenChart(), 30);
+      } else if (view === 'targets') {
+        left.className = 'col-span-1 space-y-4';
+        right.className = 'hidden';
+        secTargets.classList.remove('hidden');
+      } else if (view === 'viewer') {
+        left.className = 'hidden';
+        right.className = 'col-span-1 space-y-4';
+        secViewer.classList.remove('hidden');
+      } else if (view === 'markets') {
+        left.className = 'hidden';
+        right.className = 'col-span-1 space-y-4';
+        secMarkets.classList.remove('hidden');
+        if (secSales) secSales.classList.remove('hidden');
+      } else if (view === 'calc') {
+        left.className = 'hidden';
+        right.className = 'col-span-1 space-y-4';
+        secCalc.classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setLayoutMode(mode) {
+      const btnFold = document.getElementById('btn-mode-auto');
+      const btnS26 = document.getElementById('btn-mode-s26u');
+      if (mode === 's26u') {
+        btnS26.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
+        btnFold.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+        switchMainView(ACTIVE_MAIN_VIEW === 'split' ? 'trade' : ACTIVE_MAIN_VIEW);
+      } else {
         btnFold.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
         btnS26.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
+        switchMainView('split');
       }
     }
 
     function scrollToSec(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const map = {
+        'sec-pnl': 'trade',
+        'sec-targets': 'targets',
+        'sec-viewer': 'viewer',
+        'sec-markets': 'markets',
+        'sec-calc': 'calc'
+      };
+      if (ACTIVE_MAIN_VIEW !== 'split' && map[id]) {
+        switchMainView(map[id]);
+      } else {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function switchChartPair(pair) {
+      CHART_PAIR = pair;
+      const bEth = document.getElementById('btn-pair-eth');
+      const bSol = document.getElementById('btn-pair-sol');
+      if (pair === 'ETHUSD') {
+        bEth.className = 'px-3 py-1 rounded-md bg-emerald-500 text-white font-bold font-mono transition';
+        bSol.className = 'px-3 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition';
+      } else {
+        bSol.className = 'px-3 py-1 rounded-md bg-purple-500 text-white font-bold font-mono transition';
+        bEth.className = 'px-3 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition';
+      }
+      fetchAndDrawKrakenOhlc();
+    }
+
+    function switchChartTf(tf) {
+      CHART_TF = tf;
+      [15, 60, 240, 1440].forEach(val => {
+        const b = document.getElementById('btn-tf-' + val);
+        if (b) {
+          b.className = val === tf
+            ? 'px-2 py-1 rounded bg-emerald-500 text-white font-bold'
+            : 'px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold';
+        }
+      });
+      fetchAndDrawKrakenOhlc();
+    }
+
+    async function fetchAndDrawKrakenOhlc() {
+      const badge = document.getElementById('chart-live-spread-badge');
+      try {
+        const kPair = CHART_PAIR === 'ETHUSD' ? 'XETHZUSD' : 'SOLUSD';
+        const res = await fetch(`https://api.kraken.com/0/public/OHLC?pair=${kPair}&interval=${CHART_TF}`);
+        if (res.ok) {
+          const data = await res.json();
+          const resObj = data.result || {};
+          const key = Object.keys(resObj).find(k => k !== 'last');
+          if (key && Array.isArray(resObj[key])) {
+            const raw = resObj[key].slice(-48); // Last 48 candles
+            LAST_CANDLES = raw.map(c => ({
+              time: Number(c[0]),
+              open: parseFloat(c[1]),
+              high: parseFloat(c[2]),
+              low: parseFloat(c[3]),
+              close: parseFloat(c[4]),
+              vol: parseFloat(c[6])
+            }));
+            drawKrakenChart();
+            return;
+          }
+        }
+      } catch (e) {}
+      if (badge) badge.textContent = '⚠️ Offline Chart Cache';
+    }
+
+    function drawKrakenChart() {
+      const canvas = document.getElementById('kraken-ohlc-canvas');
+      if (!canvas || !LAST_CANDLES.length) return;
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const lastC = LAST_CANDLES[LAST_CANDLES.length - 1];
+      const firstC = LAST_CANDLES[0];
+      const lastPrice = lastC.close;
+      const chgPct = firstC.open > 0 ? ((lastPrice - firstC.open) / firstC.open) * 100 : 0;
+
+      // Target order levels for overlay lines
+      const targetSell = CHART_PAIR === 'ETHUSD' ? 2434.30 : 97.80;
+      const targetBuy = CHART_PAIR === 'ETHUSD' ? 2365.00 : 93.50;
+
+      let minP = Math.min(...LAST_CANDLES.map(c => c.low), targetBuy * 0.996);
+      let maxP = Math.max(...LAST_CANDLES.map(c => c.high), targetSell * 1.004);
+      const pad = (maxP - minP) * 0.08 || 1;
+      minP -= pad;
+      maxP += pad;
+
+      const high24 = Math.max(...LAST_CANDLES.slice(-24).map(c => c.high));
+      const low24 = Math.min(...LAST_CANDLES.slice(-24).map(c => c.low));
+
+      // Update KPI boxes above chart
+      document.getElementById('chart-kpi-last').textContent = '$' + lastPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const chgEl = document.getElementById('chart-kpi-chg');
+      chgEl.textContent = `${chgPct >= 0 ? '+' : ''}${chgPct.toFixed(2)}% (${LAST_CANDLES.length} bars)`;
+      chgEl.className = 'text-[11px] font-bold ' + (chgPct >= 0 ? 'text-emerald-400' : 'text-rose-400');
+
+      document.getElementById('chart-kpi-hl').textContent = `$${high24.toFixed(2)} / $${low24.toFixed(2)}`;
+      document.getElementById('chart-kpi-target-lbl').textContent = CHART_PAIR === 'ETHUSD' ? 'PROFIT-LOCK SELL LIMIT' : 'SOL SCRAPE SELL LIMIT';
+      document.getElementById('chart-kpi-target').textContent = '$' + targetSell.toFixed(2);
+
+      const distUsd = targetSell - lastPrice;
+      const pctToTarget = Math.min(100, Math.max(0, (lastPrice / targetSell) * 100));
+      document.getElementById('chart-kpi-dist').textContent = distUsd > 0
+        ? `$${distUsd.toFixed(2)} away (${pctToTarget.toFixed(1)}%)`
+        : `🎯 ABOVE TARGET ($${Math.abs(distUsd).toFixed(2)})`;
+
+      document.getElementById('chart-kpi-rebuy-lbl').textContent = CHART_PAIR === 'ETHUSD' ? 'AUTO DIP RE-BUY ($900)' : 'SOL DIP ENTRY ($10)';
+      document.getElementById('chart-kpi-rebuy').textContent = '$' + targetBuy.toFixed(2);
+      document.getElementById('chart-kpi-rebuy-note').textContent = CHART_PAIR === 'ETHUSD'
+        ? '→ 0.37903 ETH (+Free ETH)'
+        : '→ ~0.1065 SOL House Loop';
+
+      const badge = document.getElementById('chart-live-spread-badge');
+      if (badge) {
+        badge.textContent = CHART_PAIR === 'ETHUSD'
+          ? `ETH $${lastPrice.toFixed(2)} → $${distUsd > 0 ? distUsd.toFixed(2) + ' to $910 Lock' : 'TARGET HIT!'}`
+          : `SOL $${lastPrice.toFixed(2)} • Buy $93.50 / Sell $97.80`;
+      }
+
+      const chartLeft = 12;
+      const chartRight = W - 68;
+      const chartTop = 14;
+      const chartBottom = H - 24;
+      const chartW = chartRight - chartLeft;
+      const chartH = chartBottom - chartTop;
+
+      const yOf = p => chartTop + ((maxP - p) / (maxP - minP)) * chartH;
+
+      // Horizontal price grid lines
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+      ctx.lineWidth = 1;
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '11px monospace';
+      for (let i = 0; i <= 4; i++) {
+        const pVal = minP + ((maxP - minP) * (4 - i)) / 4;
+        const y = yOf(pVal);
+        ctx.beginPath();
+        ctx.moveTo(chartLeft, y);
+        ctx.lineTo(chartRight, y);
+        ctx.stroke();
+        ctx.fillText('$' + pVal.toFixed(CHART_PAIR === 'ETHUSD' ? 0 : 2), chartRight + 6, y + 4);
+      }
+
+      // Draw Target Sell Limit Line (Green Dashed)
+      const ySell = yOf(targetSell);
+      ctx.save();
+      ctx.setLineDash([5, 4]);
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(chartLeft, ySell);
+      ctx.lineTo(chartRight, ySell);
+      ctx.stroke();
+      ctx.fillStyle = '#10b981';
+      ctx.fillText('🎯 $' + targetSell.toFixed(CHART_PAIR === 'ETHUSD' ? 1 : 2), chartLeft + 6, Math.max(12, ySell - 5));
+      ctx.restore();
+
+      // Draw Auto Dip Re-Buy Line (Amber Dashed)
+      const yBuy = yOf(targetBuy);
+      ctx.save();
+      ctx.setLineDash([5, 4]);
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(chartLeft, yBuy);
+      ctx.lineTo(chartRight, yBuy);
+      ctx.stroke();
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillText('🤖 Buy $' + targetBuy.toFixed(CHART_PAIR === 'ETHUSD' ? 0 : 2), chartLeft + 6, Math.min(chartBottom - 4, yBuy + 13));
+      ctx.restore();
+
+      // Draw Candlesticks
+      const stepX = chartW / LAST_CANDLES.length;
+      const bodyW = Math.max(3, Math.floor(stepX * 0.64));
+
+      LAST_CANDLES.forEach((c, idx) => {
+        const cx = chartLeft + idx * stepX + stepX / 2;
+        const isBull = c.close >= c.open;
+        const color = isBull ? '#10b981' : '#f43f5e';
+
+        const yHigh = yOf(c.high);
+        const yLow = yOf(c.low);
+        const yOpen = yOf(c.open);
+        const yClose = yOf(c.close);
+
+        // Wick
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cx, yHigh);
+        ctx.lineTo(cx, yLow);
+        ctx.stroke();
+
+        // Candle body
+        const topY = Math.min(yOpen, yClose);
+        const boxH = Math.max(2, Math.abs(yClose - yOpen));
+        ctx.fillStyle = color;
+        ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
+      });
+
+      // Time labels along bottom
+      ctx.fillStyle = '#64748b';
+      ctx.font = '10px monospace';
+      [0, Math.floor(LAST_CANDLES.length / 2), LAST_CANDLES.length - 1].forEach(i => {
+        if (!LAST_CANDLES[i]) return;
+        const d = new Date(LAST_CANDLES[i].time * 1000);
+        const lbl = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const x = chartLeft + i * stepX;
+        ctx.fillText(lbl, Math.min(chartRight - 36, Math.max(chartLeft, x - 15)), H - 6);
+      });
     }
 
     function updateSkimCalc() {
-      const totalEth = ACCOUNTS.reduce((s, a) => s + (a.eth || 0), 0) || 0.37532712;
-      const principalUsd = parseFloat(document.getElementById('skim-principal-usd')?.value) || 900;
-      const sellEthPrice = parseFloat(document.getElementById('skim-sell-eth')?.value) || ETH_RATE;
-      const rebuyEthPrice = parseFloat(document.getElementById('skim-rebuy-eth')?.value) || 2325;
-
-      const grossValAtTop = totalEth * sellEthPrice;
-      const surplusUsd = grossValAtTop - principalUsd;
-      const surplusEth = sellEthPrice > 0 ? surplusUsd / sellEthPrice : 0;
-      const keptEth = Math.max(0, totalEth - Math.max(0, surplusEth));
-
-      // Kraken Pro Maker Limit fee ~0.25%
-      const makerFeeRate = 0.0025;
-      const badgeEl = document.getElementById('skim-live-badge');
-
-      if (surplusUsd > 0) {
-        const feeA = surplusUsd * makerFeeRate;
-        const netSkimUsd = surplusUsd - feeA;
-        badgeEl.className = 'px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-mono font-bold';
-        badgeEl.textContent = `+$${surplusUsd.toFixed(2)} (${surplusEth.toFixed(5)} ETH) Skimmable!`;
-        document.getElementById('skim-optA-fee').textContent = `Kraken Pro Fee: ~$${feeA.toFixed(2)}`;
-        document.getElementById('skim-optA-sell').textContent = `Sell ${surplusEth.toFixed(5)} ETH → Lock +$${netSkimUsd.toFixed(2)} Cash`;
-        document.getElementById('skim-optA-keep').textContent = `Keep ${keptEth.toFixed(5)} ETH ($${principalUsd.toFixed(2)}) untouched in ETH`;
-      } else {
-        badgeEl.className = 'px-2 py-0.5 rounded bg-amber-500/15 text-amber-500 font-mono font-bold';
-        badgeEl.textContent = `Needs $${(principalUsd / totalEth).toFixed(2)}/ETH to Skim`;
-        document.getElementById('skim-optA-fee').textContent = `Break-Even: $${(principalUsd / totalEth).toFixed(2)}/ETH`;
-        document.getElementById('skim-optA-sell').textContent = `Wait for ETH > $${(principalUsd / totalEth).toFixed(2)} to skim profit`;
-        document.getElementById('skim-optA-keep').textContent = `Current Stack: ${totalEth.toFixed(5)} ETH ($${grossValAtTop.toFixed(2)})`;
-      }
-
-      // Option B: Full-Stack Top Sell & Dip Re-Buy
-      const sellAllFee = grossValAtTop * makerFeeRate;
-      const netCashAfterSell = grossValAtTop - sellAllFee;
-      const lockedProfitUsd = netCashAfterSell - principalUsd;
-      const rebuyBudgetUsd = Math.min(netCashAfterSell, principalUsd);
-      const buyBackFee = rebuyBudgetUsd * makerFeeRate;
-      const newEthStack = rebuyEthPrice > 0 ? (rebuyBudgetUsd - buyBackFee) / rebuyEthPrice : 0;
-      const freeEthGained = newEthStack - totalEth;
-      const totalRoundTripFee = sellAllFee + buyBackFee;
-
-      document.getElementById('skim-optB-fee').textContent = `Round-Trip Fee: ~$${totalRoundTripFee.toFixed(2)}`;
-      document.getElementById('skim-optB-cash').textContent =
-        `Sell All → $${netCashAfterSell.toFixed(2)} Cash (${lockedProfitUsd >= 0 ? '+' : ''}$${lockedProfitUsd.toFixed(2)} Profit)`;
-      document.getElementById('skim-optB-rebuy').textContent =
-        `Re-Buy w/ $${rebuyBudgetUsd.toFixed(0)} @ $${rebuyEthPrice} → ${newEthStack.toFixed(4)} ETH (${freeEthGained >= 0 ? '+' : ''}${freeEthGained.toFixed(4)} ETH!)`;
+      fetchAndDrawKrakenOhlc();
     }
 
     // Direct Browser Live Telemetry (Works 24/7 on GitHub Pages even when PC is off!)
@@ -2122,7 +2392,8 @@
     updateTimers();
     setInterval(updateTimers, 1000);
     updateCalc();
-    updateSkimCalc();
+    switchMainView('trade');
+    fetchAndDrawKrakenOhlc();
 
     // Immediately show the 4-Digit PIN keypad prompt on load if not yet unlocked on this device!
     (async function initPinPromptOnLoad() {
