@@ -509,11 +509,9 @@ def send_discord_webhook(snap: dict) -> int:
 
     if kraken.get("recent_eth_withdrawal"):
         wd = kraken["recent_eth_withdrawal"]
-        hold_line = f"🚀 **ETH Withdrawal Active:** `{wd['amount']:.4f} ETH` ({wd['status']})"
-    elif snap["hold_cleared"]:
-        hold_line = "🟢 **7-Day ACH Hold CLEARED!** Ready to withdraw to `swooz.eth`"
+        status_line = f"🚀 **ETH Withdrawal Active:** `{wd['amount']:.4f} ETH` ({wd['status']})"
     else:
-        hold_line = f"⏳ **7-Day Plaid ACH Hold:** Unlocks in `{snap['unlock_countdown']}` (`{snap['unlock_utc']}`)"
+        status_line = "🤖 **Active Strategy:** 9-Leg Dual-Exchange Straddle (`Kraken Pro` + `Coinbase Advanced`)"
 
     pnl_sign = "+" if pnl["fiat_pnl_usd"] >= 0 else ""
     color = 0xEF4444 if snap["any_target_moved"] else 0x10B981
@@ -541,7 +539,7 @@ def send_discord_webhook(snap: dict) -> int:
                     f"• **Total Held ETH (Kraken + On-Chain):** `{pnl['total_held_eth']:.5f} ETH` (**${pnl['total_live_usd']:,.2f} USD**)\n"
                     f"• **Cost Basis vs. Live Value:** `${pnl['total_cost_usd']:,.2f}` → **${pnl['total_live_usd']:,.2f} USD** (`{pnl_sign}${pnl['fiat_pnl_usd']:,.2f}` / `{pnl_sign}{pnl['fiat_pnl_pct']:.2f}%`)\n"
                     f"• **Auto-Earn Staking Gained:** `+{kraken['staking_earned_eth']:.6f} ETH` • **Break-Even ETH:** `${pnl['breakeven_eth_usd']:,.2f}`\n"
-                    f"• **Status:** {hold_line}"
+                    f"• **Status:** {status_line}"
                 ),
                 "inline": False,
             },

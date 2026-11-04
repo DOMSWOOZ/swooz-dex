@@ -61,18 +61,13 @@
         </div>
       </div>
 
-      <!-- Right Controls: Owner Vault PIN Lock + Countdown + Device Layout Switcher + Sync -->
+      <!-- Right Controls: Owner Vault PIN Lock + Device Layout Switcher + Sync -->
       <div class="flex items-center gap-2 flex-wrap">
         <button id="btn-vault-lock" onclick="onVaultButtonClick()"
                 class="px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition">
           <span id="vault-btn-icon">🔒</span>
           <span id="vault-btn-label">Unlock Owner PIN</span>
         </button>
-
-        <div id="hdr-hold-pill" class="owner-only hidden bg-[var(--secondary)] border border-[var(--border)] rounded-lg px-2.5 py-1 flex items-center gap-2">
-          <span class="text-xs text-[var(--muted-foreground)] hidden sm:inline">🦑 Unlocks (Nov 4, 2:09 PM):</span>
-          <span id="hdr-countdown" class="text-xs font-mono font-bold text-amber-500">--d --h --m --s</span>
-        </div>
 
         <!-- Fold 8 Dual-Pane vs S26U Portrait Mode Toggle -->
         <div class="inline-flex rounded-lg bg-[var(--secondary)] border border-[var(--border)] p-0.5 text-xs">
@@ -382,17 +377,6 @@
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-
-        <!-- 7-Day Kraken Hold Progress Bar (OWNER VAULT ONLY) -->
-        <div class="owner-only hidden space-y-1 pt-1 border-t border-[var(--border)]">
-          <div class="flex justify-between text-xs">
-            <span class="text-[var(--muted-foreground)]">🦑 Kraken 7-Day (168h) Plaid Hold Progress (Unlocks Nov 4 @ 2:09 PM PST)</span>
-            <span id="hold-pct-label" class="font-mono font-semibold text-emerald-500">84.1% Complete</span>
-          </div>
-          <div class="w-full h-2 bg-[var(--secondary)] rounded-full overflow-hidden border border-[var(--border)]">
-            <div id="hold-progress-bar" class="h-full bg-emerald-500 rounded-full transition-all duration-500" style="width: 84.1%"></div>
           </div>
         </div>
       </div>
@@ -2655,26 +2639,6 @@
       renderWalletPnl();
     }
 
-    function updateTimers() {
-      const now = Date.now();
-      const diff = UNLOCK_UNIX - now;
-      const el = document.getElementById('hdr-countdown');
-      if (diff <= 0) {
-        el.textContent = '🟢 HOLD CLEARED!';
-      } else {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        el.textContent = d + 'd ' + String(h).padStart(2,'0') + 'h ' + String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
-      }
-      const totalDur = UNLOCK_UNIX - DEPOSIT_UNIX;
-      const elapsed = Math.min(totalDur, Math.max(0, now - DEPOSIT_UNIX));
-      const pct = ((elapsed / totalDur) * 100).toFixed(1);
-      document.getElementById('hold-pct-label').textContent = pct + '% Complete';
-      document.getElementById('hold-progress-bar').style.width = pct + '%';
-    }
-
     function updateCalc() {
       const ifBid = parseFloat(document.getElementById('in-if').value) || 0;
       const cxBid = parseFloat(document.getElementById('in-cx').value) || 0;
@@ -3362,8 +3326,6 @@
     renderStageNft(PRESET_NFTS['if-1506']);
     renderPinnedTokens();
     renderWalletPnl();
-    updateTimers();
-    setInterval(updateTimers, 1000);
     updateCalc();
     updatePartnerStraddleCalc();
     switchMainView('trade');
