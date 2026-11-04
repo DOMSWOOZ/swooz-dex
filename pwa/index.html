@@ -112,6 +112,9 @@
       <button id="top-tab-trade" onclick="switchMainView('trade')" class="flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition">
         <span>📈</span> <span>Auto-Trade &amp; Charts</span>
       </button>
+      <button id="top-tab-partner" onclick="switchMainView('partner')" class="flex-1 py-2 px-3 rounded-lg text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>💎</span> <span>Strategy &amp; Setup (#1716)</span>
+      </button>
       <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
         <span>🎯</span> <span>Target Sniper (5)</span>
       </button>
@@ -390,6 +393,243 @@
           </div>
           <div class="w-full h-2 bg-[var(--secondary)] rounded-full overflow-hidden border border-[var(--border)]">
             <div id="hold-progress-bar" class="h-full bg-emerald-500 rounded-full transition-all duration-500" style="width: 84.1%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💎 NEW: Partner Personal Vault (#1716) — Quantitative Strategy Blueprint, Personal Straddle Calculator & Self-Setup Playbook -->
+      <div id="sec-partner" class="hidden bg-[var(--card)] border border-purple-500/45 rounded-xl p-4 shadow-sm space-y-4">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-3">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[11px] font-mono font-bold">
+                🔓 VAULT #1716 • SAMSUNG GALAXY Z FOLD 8 EDITION
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[11px] font-mono font-bold">
+                50% FEE ARBITRAGE + 2-SIDED STRADDLE
+              </span>
+            </div>
+            <h2 class="text-base font-bold text-[var(--foreground)] mt-1">
+              💎 Quantitative Strategy Blueprint &amp; Your Personal Straddle Builder
+            </h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              How the 2-Sided Automated Market-Making Straddle monetizes volatility in both directions—plus an interactive calculator to size and apply it to your own wallets &amp; exchange accounts.
+            </p>
+          </div>
+        </div>
+
+        <!-- PART 1: THE QUANTITATIVE THESIS (Visual Math & Why It Beats Passive Holding) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+          <!-- Card 1: 82/18 2-Sided Straddle -->
+          <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3 space-y-1.5">
+            <div class="font-bold text-emerald-400 flex items-center justify-between">
+              <span>1. 2-Sided Straddle (82% / 18%)</span>
+              <span class="font-mono text-[11px]">BOTH WAYS</span>
+            </div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Passive holders only win if price goes straight up. Instead, we split capital into <strong class="text-[var(--foreground)]">~82% Upside Crypto Sell Limits</strong> (<code class="text-emerald-400">+3.5%</code> above spot) and <strong class="text-[var(--foreground)]">~18% Cash Dip-Buy Limits</strong> (<code class="text-amber-400">-2.5%</code> below spot).
+            </p>
+            <div class="pt-1 font-mono text-[11px] text-emerald-400 border-t border-[var(--border)]">
+              • Rally first? Sell high → auto-rebuy lower<br/>
+              • Dip first? Buy discount → auto-sell higher
+            </div>
+          </div>
+
+          <!-- Card 2: Post-Only Maker Fee Arbitrage -->
+          <div class="bg-[var(--secondary)] border border-purple-500/35 rounded-xl p-3 space-y-1.5">
+            <div class="font-bold text-purple-300 flex items-center justify-between">
+              <span>2. Post-Only Fee Cut (-50%)</span>
+              <span class="font-mono text-[11px]">0.40%–0.50%</span>
+            </div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              Standard retail app "Buy/Sell" buttons execute <strong>Market (Taker) orders</strong> charging <code class="text-rose-400">0.80%–1.50%</code> per trade. Submitting <strong class="text-[var(--foreground)]">Post-Only Limit (Maker)</strong> orders adds liquidity to the book and cuts fees in half.
+            </p>
+            <div class="pt-1 font-mono text-[11px] text-purple-300 border-t border-[var(--border)]">
+              Net Cycle = [(P_sell × (1 - f)) / (P_buy × (1 + f))] - 1<br/>
+              <strong>Nets +2.6% to +3.7% clean profit per oscillation</strong>
+            </div>
+          </div>
+
+          <!-- Card 3: Relative-Value NFT Endgame -->
+          <div class="bg-[var(--secondary)] border border-amber-500/35 rounded-xl p-3 space-y-1.5">
+            <div class="font-bold text-amber-400 flex items-center justify-between">
+              <span>3. +31.6% Relative-Value Edge</span>
+              <span class="font-mono text-[11px]">END-GAME</span>
+            </div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              While <strong class="text-emerald-400">ETH rose +5.2%</strong>, blue-chip NFT floors (Invisible Friends, CloneX) compressed <strong class="text-amber-400">-26.4%</strong>. Compounding ETH while target assets drop in ETH terms creates a <strong class="text-[var(--foreground)]">+31.6% purchasing-power spread</strong>.
+            </p>
+            <div class="pt-1 font-mono text-[11px] text-amber-400 border-t border-[var(--border)]">
+              • Plus -13.6% extra discount via WETH Collection Bids
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 2: INTERACTIVE PERSONAL STRADDLE CALCULATOR (Custom-Sized to Her Own Capital on Her Fold 8!) -->
+        <div class="bg-[var(--secondary)] border border-purple-500/40 rounded-xl p-3.5 space-y-3 text-xs">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-1.5">
+                <span>🧮</span> <span>Your Personal 2-Sided Straddle &amp; Compounding Calculator (Vault #1716)</span>
+              </h3>
+              <p class="text-[var(--muted-foreground)]">
+                Enter your own crypto &amp; cash balances below—it automatically calculates your exact <strong>Post-Only Limit Prices</strong>, <strong>Maker Fee Savings</strong>, and <strong>Compounded Profit</strong> (saved privately on your Fold 8).
+              </p>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="applyPartnerPreset(400, 100, 'coinbase', 3.5, 2.5)" class="px-2 py-1 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold hover:opacity-80">
+                $500 Starter ($400/$100)
+              </button>
+              <button onclick="applyPartnerPreset(800, 200, 'kraken', 3.5, 2.5)" class="px-2 py-1 rounded bg-[var(--card)] text-[var(--foreground)] border border-[var(--border)] font-semibold hover:opacity-80">
+                $1,000 Stack ($800/$200)
+              </button>
+              <button onclick="applyPartnerPreset(1007.13, 215.98, 'coinbase', 3.5, 2.5)" class="px-2 py-1 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-semibold hover:opacity-80">
+                Mirror Dom's $1,223
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Custom Input Controls -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">1. Your Crypto ($ USD)</label>
+              <input id="p1716-crypto-usd" type="number" step="10" value="400" oninput="updatePartnerStraddleCalc()"
+                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-emerald-400 focus:outline-none" />
+              <div id="p1716-crypto-eth-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">≈ 0.1658 ETH</div>
+            </div>
+
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">2. Your Cash ($ USD/USDC)</label>
+              <input id="p1716-cash-usd" type="number" step="10" value="100" oninput="updatePartnerStraddleCalc()"
+                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-amber-400 focus:outline-none" />
+              <div id="p1716-split-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">80% Upside / 20% Dip</div>
+            </div>
+
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">3. Your Exchange</label>
+              <select id="p1716-venue" onchange="updatePartnerStraddleCalc()"
+                      class="w-full mt-1 bg-[var(--card)] font-mono text-xs font-bold text-[var(--foreground)] focus:outline-none">
+                <option value="coinbase">🔵 Coinbase Adv (0.50%)</option>
+                <option value="kraken">🦑 Kraken Pro (0.40%)</option>
+              </select>
+              <div id="p1716-fee-saved-lbl" class="text-[10px] font-mono text-emerald-400">Saves 50% vs Retail</div>
+            </div>
+
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">4. Upside Sell (+%)</label>
+              <input id="p1716-up-pct" type="number" step="0.25" value="3.5" oninput="updatePartnerStraddleCalc()"
+                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-emerald-400 focus:outline-none" />
+              <div id="p1716-sell-price-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">Target: $2,496</div>
+            </div>
+
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2 col-span-2 sm:col-span-1">
+              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">5. Dip Buy (-%)</label>
+              <input id="p1716-dip-pct" type="number" step="0.25" value="2.5" oninput="updatePartnerStraddleCalc()"
+                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-amber-400 focus:outline-none" />
+              <div id="p1716-buy-price-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">Target: $2,351</div>
+            </div>
+          </div>
+
+          <!-- Visual Allocation Bar (Upside vs Downside) -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-[11px] font-mono">
+              <span id="p1716-bar-left" class="text-emerald-400 font-bold">🟢 Upside Sell Inventory: $400.00 (80.0%)</span>
+              <span id="p1716-bar-right" class="text-amber-400 font-bold">🟠 Downside Dip-Buy Cash: $100.00 (20.0%)</span>
+            </div>
+            <div class="w-full h-3 rounded-full overflow-hidden bg-[var(--card)] border border-[var(--border)] flex">
+              <div id="p1716-bar-fill-up" class="h-full bg-emerald-500 transition-all duration-300" style="width: 80%"></div>
+              <div id="p1716-bar-fill-dip" class="h-full bg-amber-500 transition-all duration-300" style="width: 20%"></div>
+            </div>
+          </div>
+
+          <!-- Exact Personal Order Sheet Table -->
+          <div class="overflow-x-auto bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
+            <div class="font-bold text-[var(--foreground)] mb-1.5 flex items-center justify-between">
+              <span>📋 Your Exact Limit Order Sheet (Copy These Numbers Into Your App)</span>
+              <span id="p1716-spot-ref" class="font-mono text-[11px] text-emerald-400">Live ETH Spot: $2,411.00</span>
+            </div>
+            <table class="w-full text-left border-collapse text-[11px] font-mono">
+              <thead>
+                <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
+                  <th class="py-1.5 pr-2">Straddle Leg</th>
+                  <th class="py-1.5 px-2">Order Type</th>
+                  <th class="py-1.5 px-2">Exact Limit Price</th>
+                  <th class="py-1.5 px-2">Size / Amount</th>
+                  <th class="py-1.5 px-2">Flip Target When Filled</th>
+                  <th class="py-1.5 pl-2">Net Profit (After 2x Fees)</th>
+                </tr>
+              </thead>
+              <tbody id="p1716-orders-tbody" class="divide-y divide-[var(--border)]">
+                <!-- Populated dynamically by updatePartnerStraddleCalc() -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Compounding KPI Strip (1 Cycle, 5 Cycles, 10 Cycles + Fee Savings) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono">
+            <div class="bg-[var(--card)] border border-emerald-500/35 rounded-lg p-2.5">
+              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">1 FULL OSCILLATION NET</div>
+              <div id="p1716-net-1" class="text-sm font-bold text-emerald-400">+$24.92 USD</div>
+              <div id="p1716-net-1-pct" class="text-[11px] text-[var(--muted-foreground)]">+4.98% Net After Fees</div>
+            </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5">
+              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">5 OSCILLATIONS (COMPOUNDED)</div>
+              <div id="p1716-net-5" class="text-sm font-bold text-emerald-400">+$137.40 USD</div>
+              <div id="p1716-total-5" class="text-[11px] text-[var(--muted-foreground)]">Stack → $637.40</div>
+            </div>
+            <div class="bg-[var(--card)] border border-purple-500/35 rounded-lg p-2.5">
+              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">10 OSCILLATIONS (COMPOUNDED)</div>
+              <div id="p1716-net-10" class="text-sm font-bold text-purple-300">+$312.85 USD</div>
+              <div id="p1716-total-10" class="text-[11px] text-emerald-400">Stack → $812.85</div>
+            </div>
+            <div class="bg-[var(--card)] border border-amber-500/35 rounded-lg p-2.5">
+              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">FEES SAVED (POST-ONLY)</div>
+              <div id="p1716-fees-saved" class="text-sm font-bold text-amber-400">+$45.00 Saved</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Over 10 Cycles vs Retail</div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between flex-wrap gap-2 pt-1">
+            <span id="p1716-save-msg" class="text-[11px] text-emerald-400 font-mono">✅ Auto-saved to your Fold 8 Vault #1716</span>
+            <button onclick="syncPartnerCalcToPortfolio()"
+                    class="px-3 py-1.5 rounded-lg bg-purple-500 hover:bg-purple-600 text-white font-bold transition">
+              💾 Load My Custom Stack Into P&amp;L Tracker →
+            </button>
+          </div>
+        </div>
+
+        <!-- PART 3: STEP-BY-STEP PLAYBOOK TO APPLY THIS TO HER OWN WALLETS ON HER FOLD 8 -->
+        <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3.5 space-y-2.5 text-xs">
+          <div class="font-bold text-sm text-[var(--foreground)]">
+            📲 How to Apply This to Your Own Wallets &amp; Exchange Accounts in 3 Minutes
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
+              <div class="font-bold text-emerald-400">Step 1: Flip On Free "Advanced" Mode (Cut Fees 50%)</div>
+              <p class="text-[var(--muted-foreground)]">
+                In the <strong>Coinbase</strong> app on your Fold 8, tap the top-left <strong>Menu (9 dots) → toggle on "Advanced"</strong> (or open <strong>Kraken Pro</strong>). It uses your exact same balance and costs $0, but drops fees from <code class="text-rose-400">~1.20%</code> to <code class="text-emerald-400">0.40%–0.50%</code>.
+              </p>
+            </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
+              <div class="font-bold text-purple-300">Step 2: Enter Your 2 Post-Only Limit Orders</div>
+              <p class="text-[var(--muted-foreground)]">
+                1) Select <strong>ETH-USD</strong> (or <strong>ETH-USDC</strong>) → choose <strong>Limit</strong>.<br/>
+                2) Enter the <strong>Upside Sell Limit Price</strong> from your table above and select <strong>Execution: Post-Only</strong>.<br/>
+                3) Switch to <strong>Buy → Limit</strong>, enter your <strong>Dip-Buy Limit Price</strong> with your cash reserve, and select <strong>Post-Only</strong>.
+              </p>
+            </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
+              <div class="font-bold text-amber-400">Step 3: Flip Whichever Side Fills First</div>
+              <p class="text-[var(--muted-foreground)]">
+                When your <strong>Dip-Buy</strong> fills on a red candle, immediately place a Limit Sell at your <strong>Upside Target</strong>. When your <strong>Upside Sell</strong> fills on a green breakout, place a Limit Buy at your <strong>Dip Target</strong>—locking in <code class="text-emerald-400">+2.7% to +5.0%</code> net per swing.
+              </p>
+            </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
+              <div class="font-bold text-sky-400">Step 4: Track Your Own 0x... Wallets &amp; NFTs Here</div>
+              <p class="text-[var(--muted-foreground)]">
+                Tap <strong>"+ Add Wallet / Account"</strong> on the <strong>📈 Trade &amp; Charts</strong> tab or paste any <code class="font-mono">0x...</code> address into the <strong>🎬 Walking Stage → Wallet NFTs</strong> scanner. While unlocked with PIN <strong>1716</strong>, your wallets save strictly to your private Fold 8 profile.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1049,8 +1289,8 @@
         <div class="flex items-center gap-2">
           <span class="text-lg">🔐</span>
           <div>
-            <div class="font-bold text-sm text-[var(--foreground)]">Unlock Owner Vault Telemetry</div>
-            <div class="text-[var(--muted-foreground)]">Enter 4-digit PIN to decrypt Kraken &amp; Wallet Data</div>
+            <div class="font-bold text-sm text-[var(--foreground)]">Unlock Personal Vault Telemetry</div>
+            <div class="text-[var(--muted-foreground)]">Enter 4-digit Vault PIN (Owner or Partner Fold 8 Vault)</div>
           </div>
         </div>
         <button onclick="closePinModal()" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] font-bold">✕</button>
@@ -1101,7 +1341,10 @@
   <!-- Fixed Bottom Dock (Instant 1-Tap Workspace View Toggles on S26U & Fold 8!) -->
   <nav id="mobile-dock" class="fixed bottom-0 left-0 right-0 z-40 bg-[var(--card)]/95 backdrop-blur border-t border-[var(--border)] px-2 py-2 flex items-center justify-around text-xs font-semibold">
     <button id="dock-tab-trade" onclick="switchMainView('trade')" class="flex flex-col items-center gap-0.5 text-emerald-500 hover:opacity-80">
-      <span>📈</span><span>Trade &amp; Charts</span>
+      <span>📈</span><span>Charts</span>
+    </button>
+    <button id="dock-tab-partner" onclick="switchMainView('partner')" class="flex flex-col items-center gap-0.5 text-purple-400 hover:opacity-80">
+      <span>💎</span><span>#1716 Guide</span>
     </button>
     <button id="dock-tab-targets" onclick="switchMainView('targets')" class="flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
       <span>🎯</span><span>Targets</span>
@@ -1122,7 +1365,7 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=9').then(reg => {
+      navigator.serviceWorker.register('sw.js?v=10').then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -1618,14 +1861,16 @@
       renderPinnedTokens();
     }
 
-    // 🔐 Encrypted Owner Vault & Blank Guest Mode Architecture
+    // 🔐 Encrypted Multi-Vault (Owner #1506 + Partner Fold 8 #1716) & Blank Guest Mode Architecture
     let VAULT_UNLOCKED = false;
+    let ACTIVE_VAULT_ROLE = 'guest'; // 'guest' | 'owner' | 'partner'
     let UNLOCKED_VAULT_DATA = null;
     let LATEST_SNAPSHOT = null;
     let PIN_INPUT_BUFFER = '';
 
-    // SHA-256 hash verification of owner PIN ('1506') salted with 'swooz-dex-v6-vault'
+    // SHA-256 hash verification of owner PIN ('1506') and partner PIN ('1716') salted with 'swooz-dex-v6-vault'
     const OWNER_PIN_VERIFY_HASH = '1216c4d5284c04352f2950b414be22536bc345255cc6848a0ba645017c83090a';
+    const PARTNER_PIN_VERIFY_HASH = 'f7724f1e03dc8bf901614214ba143d1a098703e594ce174b6e4e5f4d771b312d';
 
     async function sha256Bytes(str) {
       const buf = new TextEncoder().encode(str);
@@ -1663,9 +1908,19 @@
       return []; // Blank Default Mode for public visitors!
     }
 
+    function loadPartnerAccounts() {
+      try {
+        const saved = localStorage.getItem('swooz_partner_1716_accounts_v1');
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      return [];
+    }
+
     function saveAccounts(list) {
       try {
-        const key = VAULT_UNLOCKED ? 'swooz_owner_accounts_v2' : 'swooz_guest_accounts_v2';
+        let key = 'swooz_guest_accounts_v2';
+        if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') key = 'swooz_owner_accounts_v2';
+        else if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'partner') key = 'swooz_partner_1716_accounts_v1';
         localStorage.setItem(key, JSON.stringify(list));
       } catch (e) {}
     }
@@ -1678,15 +1933,20 @@
       const lbl = document.getElementById('vault-btn-label');
       const ownerEls = document.querySelectorAll('.owner-only');
 
-      if (VAULT_UNLOCKED) {
+      if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') {
         btn.className = 'px-2.5 py-1 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-400 text-xs font-bold flex items-center gap-1 transition';
         icon.textContent = '🔓';
         lbl.textContent = 'swooz.eth Unlocked (Tap to Lock)';
         ownerEls.forEach(el => el.classList.remove('hidden'));
+      } else if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'partner') {
+        btn.className = 'px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/50 text-purple-300 text-xs font-bold flex items-center gap-1 transition';
+        icon.textContent = '💎';
+        lbl.textContent = 'Vault #1716 Unlocked (Tap to Lock)';
+        ownerEls.forEach(el => el.classList.add('hidden'));
       } else {
         btn.className = 'px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition';
         icon.textContent = '🔒';
-        lbl.textContent = 'Unlock Owner PIN';
+        lbl.textContent = 'Unlock Vault PIN';
         ownerEls.forEach(el => el.classList.add('hidden'));
       }
     }
@@ -1695,6 +1955,7 @@
       if (VAULT_UNLOCKED) {
         // Lock Vault & Return to Blank Guest Mode immediately
         VAULT_UNLOCKED = false;
+        ACTIVE_VAULT_ROLE = 'guest';
         UNLOCKED_VAULT_DATA = null;
         try { localStorage.removeItem('swooz_vault_pin_v1'); } catch (e) {}
         ACCOUNTS = loadGuestAccounts();
@@ -1705,7 +1966,7 @@
       } else {
         PIN_INPUT_BUFFER = '';
         updatePinDots();
-        document.getElementById('pin-status-msg').textContent = 'Enter 4-digit Owner PIN';
+        document.getElementById('pin-status-msg').textContent = 'Enter 4-digit Vault PIN';
         document.getElementById('pin-status-msg').className = 'text-[var(--muted-foreground)] font-mono h-4';
         document.getElementById('pin-modal').classList.remove('hidden');
       }
@@ -1750,9 +2011,49 @@
         decrypted = await decryptVaultCipher(LATEST_SNAPSHOT.vault_cipher, LATEST_SNAPSHOT.vault_salt || 'swooz-dex-v6-vault', pin);
       }
 
-      // Verify SHA-256 hash of PIN ('1506' + ':swooz-dex-v6-vault') so PIN unlocks immediately even before snapshot.json finishes loading
+      // Verify SHA-256 hash of PIN ('1506' or '1716' + ':swooz-dex-v6-vault')
       const pinCheckBytes = await sha256Bytes(`${pin}:swooz-dex-v6-vault`);
       const pinCheckHex = Array.from(pinCheckBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+
+      // Check Partner Fold 8 Vault PIN ('1716')
+      if (pinCheckHex === PARTNER_PIN_VERIFY_HASH) {
+        VAULT_UNLOCKED = true;
+        ACTIVE_VAULT_ROLE = 'partner';
+        UNLOCKED_VAULT_DATA = { ok: 'PARTNER_1716_OK', role: 'partner' };
+        loadPartnerCalculatorState();
+        const savedPartnerAccs = loadPartnerAccounts();
+        if (savedPartnerAccs.length > 0) {
+          ACCOUNTS = savedPartnerAccs;
+        } else {
+          const cUsd = parseFloat(document.getElementById('p1716-crypto-usd')?.value) || 400;
+          const dUsd = parseFloat(document.getElementById('p1716-cash-usd')?.value) || 100;
+          const totEth = ETH_RATE > 0 ? (cUsd + dUsd) / ETH_RATE : 0.207;
+          ACCOUNTS = [
+            {
+              id: 'partner-straddle',
+              label: '💎 My Personal Fold 8 Straddle (Vault #1716)',
+              address: `$${cUsd.toFixed(0)} Upside Sell Inventory + $${dUsd.toFixed(0)} Cash Dip Reserve`,
+              eth: totEth,
+              costUsd: cUsd + dUsd,
+              miniSupers: 0,
+              isOnChain: false
+            }
+          ];
+        }
+        if (document.getElementById('pin-remember-chk')?.checked) {
+          try { localStorage.setItem('swooz_vault_pin_v1', pin); } catch (e) {}
+        }
+        applyVaultUiState();
+        renderWalletPnl();
+        updateCalc();
+        updatePartnerStraddleCalc();
+        closePinModal();
+        if (!silent) {
+          switchMainView('partner');
+        }
+        return true;
+      }
+
       if (!decrypted && pinCheckHex === OWNER_PIN_VERIFY_HASH) {
         decrypted = {
           ok: 'SWOOZ_VAULT_OK',
@@ -1768,6 +2069,7 @@
 
       if (decrypted) {
         VAULT_UNLOCKED = true;
+        ACTIVE_VAULT_ROLE = 'owner';
         UNLOCKED_VAULT_DATA = decrypted;
         const kEth = decrypted.kraken?.eth_balance || decrypted.kraken_eth || 0.32000000;
         const kZusd = decrypted.kraken?.usd_balance || decrypted.eth_pnl?.kraken_zusd_ammo || 132.51;
@@ -2081,6 +2383,7 @@
       const left = document.getElementById('pane-left');
       const right = document.getElementById('pane-right');
       const secPnl = document.getElementById('sec-pnl');
+      const secPartner = document.getElementById('sec-partner');
       const secTargets = document.getElementById('sec-targets');
       const secViewer = document.getElementById('sec-viewer');
       const secMarkets = document.getElementById('sec-markets');
@@ -2088,22 +2391,32 @@
       const secSales = document.getElementById('sec-sales');
 
       // Highlight top & bottom toggle buttons
-      ['trade', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
+      ['trade', 'partner', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
         const topBtn = document.getElementById('top-tab-' + v);
         if (topBtn) {
           if (v === view) {
-            topBtn.className = 'flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition';
+            topBtn.className = v === 'partner'
+              ? 'flex-1 py-2 px-3 rounded-lg bg-purple-600 text-white flex items-center justify-center gap-1.5 shrink-0 transition'
+              : 'flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition';
           } else if (v === 'split') {
             topBtn.className = 'hidden md:flex py-2 px-3 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition';
+          } else if (v === 'partner') {
+            topBtn.className = 'flex-1 py-2 px-3 rounded-lg text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition';
           } else {
             topBtn.className = 'flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition';
           }
         }
         const dockBtn = document.getElementById('dock-tab-' + v);
         if (dockBtn) {
-          dockBtn.className = v === view
-            ? 'flex flex-col items-center gap-0.5 text-emerald-500 font-bold'
-            : 'flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]';
+          if (v === view) {
+            dockBtn.className = v === 'partner'
+              ? 'flex flex-col items-center gap-0.5 text-purple-400 font-bold'
+              : 'flex flex-col items-center gap-0.5 text-emerald-500 font-bold';
+          } else {
+            dockBtn.className = v === 'partner'
+              ? 'flex flex-col items-center gap-0.5 text-purple-400/75 hover:text-purple-300'
+              : 'flex flex-col items-center gap-0.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)]';
+          }
         }
       });
 
@@ -2112,20 +2425,26 @@
         container.className = 'max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
         left.className = 'md:col-span-6 space-y-4';
         right.className = 'md:col-span-6 space-y-4';
-        [secPnl, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
+        [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
+        updatePartnerStraddleCalc();
         drawKrakenChart();
         return;
       }
 
       // Single-View Focused Toggle Mode (No clutter, only the active section is visible!)
       container.className = 'max-w-[1100px] mx-auto p-3 grid grid-cols-1 gap-4';
-      [secPnl, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
+      [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
 
       if (view === 'trade') {
         left.className = 'col-span-1 space-y-4';
         right.className = 'hidden';
         secPnl.classList.remove('hidden');
         setTimeout(() => drawKrakenChart(), 30);
+      } else if (view === 'partner') {
+        left.className = 'col-span-1 space-y-4';
+        right.className = 'hidden';
+        if (secPartner) secPartner.classList.remove('hidden');
+        updatePartnerStraddleCalc();
       } else if (view === 'targets') {
         left.className = 'col-span-1 space-y-4';
         right.className = 'hidden';
@@ -2145,6 +2464,171 @@
         secCalc.classList.remove('hidden');
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 💎 Partner Vault (#1716) Custom Straddle Calculator & Fold 8 Persistence
+    function loadPartnerCalculatorState() {
+      try {
+        const raw = localStorage.getItem('swooz_partner_1716_calc_v1');
+        if (raw) {
+          const cfg = JSON.parse(raw);
+          if (cfg.cryptoUsd !== undefined) document.getElementById('p1716-crypto-usd').value = cfg.cryptoUsd;
+          if (cfg.cashUsd !== undefined) document.getElementById('p1716-cash-usd').value = cfg.cashUsd;
+          if (cfg.venue) document.getElementById('p1716-venue').value = cfg.venue;
+          if (cfg.upPct !== undefined) document.getElementById('p1716-up-pct').value = cfg.upPct;
+          if (cfg.dipPct !== undefined) document.getElementById('p1716-dip-pct').value = cfg.dipPct;
+        }
+      } catch (e) {}
+    }
+
+    function applyPartnerPreset(cryptoUsd, cashUsd, venue, upPct, dipPct) {
+      document.getElementById('p1716-crypto-usd').value = cryptoUsd;
+      document.getElementById('p1716-cash-usd').value = cashUsd;
+      document.getElementById('p1716-venue').value = venue;
+      document.getElementById('p1716-up-pct').value = upPct;
+      document.getElementById('p1716-dip-pct').value = dipPct;
+      updatePartnerStraddleCalc();
+    }
+
+    function updatePartnerStraddleCalc() {
+      const elCrypto = document.getElementById('p1716-crypto-usd');
+      if (!elCrypto) return;
+      const cryptoUsd = Math.max(0, parseFloat(elCrypto.value) || 0);
+      const cashUsd = Math.max(0, parseFloat(document.getElementById('p1716-cash-usd').value) || 0);
+      const venue = document.getElementById('p1716-venue').value || 'coinbase';
+      const upPct = Math.max(0.5, parseFloat(document.getElementById('p1716-up-pct').value) || 3.5);
+      const dipPct = Math.max(0.5, parseFloat(document.getElementById('p1716-dip-pct').value) || 2.5);
+
+      const spotEth = ETH_RATE > 100 ? ETH_RATE : 2411.00;
+      const spotSol = 94.80;
+      const makerFee = venue === 'kraken' ? 0.004 : 0.005;
+      const retailFee = venue === 'kraken' ? 0.008 : 0.010;
+
+      const totalUsd = cryptoUsd + cashUsd;
+      const upRatio = totalUsd > 0 ? (cryptoUsd / totalUsd) * 100 : 80;
+      const dipRatio = totalUsd > 0 ? (cashUsd / totalUsd) * 100 : 20;
+
+      const ethQty = spotEth > 0 ? cryptoUsd / spotEth : 0;
+      const sellPriceEth = spotEth * (1 + upPct / 100);
+      const buyPriceEth = spotEth * (1 - dipPct / 100);
+
+      const sellPriceSol = spotSol * (1 + upPct / 100);
+      const buyPriceSol = spotSol * (1 - dipPct / 100);
+
+      document.getElementById('p1716-crypto-eth-lbl').textContent = `≈ ${ethQty.toFixed(4)} ETH`;
+      document.getElementById('p1716-split-lbl').textContent = `${upRatio.toFixed(0)}% Upside / ${dipRatio.toFixed(0)}% Dip`;
+      document.getElementById('p1716-fee-saved-lbl').textContent = `${(makerFee * 100).toFixed(2)}% Maker vs ${(retailFee * 100).toFixed(2)}% Taker`;
+      document.getElementById('p1716-sell-price-lbl').textContent = `ETH @ $${sellPriceEth.toFixed(2)}`;
+      document.getElementById('p1716-buy-price-lbl').textContent = `ETH @ $${buyPriceEth.toFixed(2)}`;
+      document.getElementById('p1716-spot-ref').textContent = `Live ETH Spot: $${spotEth.toFixed(2)}`;
+
+      document.getElementById('p1716-bar-left').textContent = `🟢 Upside Sell Inventory: $${cryptoUsd.toFixed(2)} (${upRatio.toFixed(1)}%)`;
+      document.getElementById('p1716-bar-right').textContent = `🟠 Downside Dip-Buy Cash: $${cashUsd.toFixed(2)} (${dipRatio.toFixed(1)}%)`;
+      document.getElementById('p1716-bar-fill-up').style.width = `${upRatio.toFixed(1)}%`;
+      document.getElementById('p1716-bar-fill-dip').style.width = `${dipRatio.toFixed(1)}%`;
+
+      // Round-trip net return multiplier per oscillation: [(P_sell * (1 - f)) / (P_buy * (1 + f))] - 1
+      const cycleNetMult = ((sellPriceEth * (1 - makerFee)) / (buyPriceEth * (1 + makerFee))) - 1;
+      const cycleNetPct = cycleNetMult * 100;
+
+      // Leg 1: Upside ETH Sell -> Re-Buy at Dip Target
+      const leg1GrossSell = ethQty * sellPriceEth;
+      const leg1NetUsdGain = cryptoUsd * cycleNetMult;
+
+      // Leg 2: Downside Cash Dip-Buy (80% of cash in ETH Dip, 20% of cash in SOL Dip)
+      const ethDipCash = cashUsd * 0.80;
+      const solDipCash = cashUsd * 0.20;
+      const ethDipQty = buyPriceEth > 0 ? (ethDipCash * (1 - makerFee)) / buyPriceEth : 0;
+      const solDipQty = buyPriceSol > 0 ? (solDipCash * (1 - makerFee)) / buyPriceSol : 0;
+      const leg2NetUsdGain = ethDipCash * cycleNetMult;
+      const leg3NetUsdGain = solDipCash * cycleNetMult;
+
+      const tbody = document.getElementById('p1716-orders-tbody');
+      if (tbody) {
+        tbody.innerHTML = `
+          <tr>
+            <td class="py-1.5 pr-2 font-sans font-bold text-emerald-400">🟢 1. ETH Upside Profit-Lock</td>
+            <td class="py-1.5 px-2 font-bold">SELL LIMIT (Post-Only)</td>
+            <td class="py-1.5 px-2 font-bold text-emerald-400">$${sellPriceEth.toFixed(2)}</td>
+            <td class="py-1.5 px-2">${ethQty.toFixed(5)} ETH ($${leg1GrossSell.toFixed(2)})</td>
+            <td class="py-1.5 px-2 text-amber-400 font-bold">Re-Buy @ $${buyPriceEth.toFixed(2)}</td>
+            <td class="py-1.5 pl-2 font-bold text-emerald-400">+$${leg1NetUsdGain.toFixed(2)} (+${cycleNetPct.toFixed(2)}%)</td>
+          </tr>
+          <tr>
+            <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🟠 2. ETH Cash Dip-Catcher (80%)</td>
+            <td class="py-1.5 px-2 font-bold">BUY LIMIT (Post-Only)</td>
+            <td class="py-1.5 px-2 font-bold text-amber-400">$${buyPriceEth.toFixed(2)}</td>
+            <td class="py-1.5 px-2">${ethDipQty.toFixed(5)} ETH ($${ethDipCash.toFixed(2)} Cash)</td>
+            <td class="py-1.5 px-2 text-emerald-400 font-bold">Flip Sell @ $${sellPriceEth.toFixed(2)}</td>
+            <td class="py-1.5 pl-2 font-bold text-emerald-400">+$${leg2NetUsdGain.toFixed(2)} (+${cycleNetPct.toFixed(2)}%)</td>
+          </tr>
+          <tr>
+            <td class="py-1.5 pr-2 font-sans font-bold text-purple-300">🟣 3. SOL Volatility Scraper (20%)</td>
+            <td class="py-1.5 px-2 font-bold">BUY LIMIT (Post-Only)</td>
+            <td class="py-1.5 px-2 font-bold text-purple-300">$${buyPriceSol.toFixed(2)}</td>
+            <td class="py-1.5 px-2">${solDipQty.toFixed(4)} SOL ($${solDipCash.toFixed(2)} Cash)</td>
+            <td class="py-1.5 px-2 text-emerald-400 font-bold">Flip Sell @ $${sellPriceSol.toFixed(2)}</td>
+            <td class="py-1.5 pl-2 font-bold text-emerald-400">+$${leg3NetUsdGain.toFixed(2)} (+${cycleNetPct.toFixed(2)}%)</td>
+          </tr>
+        `;
+      }
+
+      const net1 = totalUsd * cycleNetMult;
+      const total5 = totalUsd * Math.pow(1 + cycleNetMult, 5);
+      const net5 = total5 - totalUsd;
+      const total10 = totalUsd * Math.pow(1 + cycleNetMult, 10);
+      const net10 = total10 - totalUsd;
+      const feeSaved10 = totalUsd * (retailFee - makerFee) * 2 * 10;
+
+      document.getElementById('p1716-net-1').textContent = `+$${net1.toFixed(2)} USD`;
+      document.getElementById('p1716-net-1-pct').textContent = `+${cycleNetPct.toFixed(2)}% Net After 2x Maker Fees`;
+      document.getElementById('p1716-net-5').textContent = `+$${net5.toFixed(2)} USD`;
+      document.getElementById('p1716-total-5').textContent = `Stack → $${total5.toFixed(2)}`;
+      document.getElementById('p1716-net-10').textContent = `+$${net10.toFixed(2)} USD`;
+      document.getElementById('p1716-total-10').textContent = `Stack → $${total10.toFixed(2)}`;
+      document.getElementById('p1716-fees-saved').textContent = `+$${feeSaved10.toFixed(2)} Saved`;
+
+      try {
+        localStorage.setItem('swooz_partner_1716_calc_v1', JSON.stringify({
+          cryptoUsd, cashUsd, venue, upPct, dipPct
+        }));
+      } catch (e) {}
+    }
+
+    function syncPartnerCalcToPortfolio() {
+      const cryptoUsd = Math.max(0, parseFloat(document.getElementById('p1716-crypto-usd')?.value) || 400);
+      const cashUsd = Math.max(0, parseFloat(document.getElementById('p1716-cash-usd')?.value) || 100);
+      const venue = document.getElementById('p1716-venue')?.value === 'kraken' ? 'Kraken Pro' : 'Coinbase Advanced';
+      const upPct = parseFloat(document.getElementById('p1716-up-pct')?.value) || 3.5;
+      const dipPct = parseFloat(document.getElementById('p1716-dip-pct')?.value) || 2.5;
+      const spotEth = ETH_RATE > 100 ? ETH_RATE : 2411.00;
+      const sellP = (spotEth * (1 + upPct / 100)).toFixed(2);
+      const buyP = (spotEth * (1 - dipPct / 100)).toFixed(2);
+      const totEthEquiv = spotEth > 0 ? (cryptoUsd + cashUsd) / spotEth : 0;
+
+      const newEntry = {
+        id: 'partner-straddle',
+        label: `💎 ${venue} Personal Straddle (Vault #1716)`,
+        address: `Sell Limit @ $${sellP} ($${cryptoUsd.toFixed(0)}) | Dip Buy @ $${buyP} ($${cashUsd.toFixed(0)})`,
+        eth: totEthEquiv,
+        costUsd: cryptoUsd + cashUsd,
+        miniSupers: 0,
+        isOnChain: false
+      };
+
+      const existingIdx = ACCOUNTS.findIndex(a => a.id === 'partner-straddle');
+      if (existingIdx >= 0) {
+        ACCOUNTS[existingIdx] = newEntry;
+      } else {
+        ACCOUNTS.unshift(newEntry);
+      }
+      saveAccounts(ACCOUNTS);
+      renderWalletPnl();
+      const msg = document.getElementById('p1716-save-msg');
+      if (msg) {
+        msg.textContent = `✅ Loaded $${(cryptoUsd + cashUsd).toFixed(2)} ${venue} Straddle into your P&L Tracker!`;
+      }
+      switchMainView('trade');
     }
 
     function setLayoutMode(mode) {
@@ -2442,6 +2926,7 @@
         }
         renderWalletPnl();
         updateCalc();
+        updatePartnerStraddleCalc();
         updateSkimCalc();
       } catch (e) {}
       btn.innerHTML = '<span>🔄</span> <span class="hidden sm:inline">Sync Live</span>';
@@ -2451,12 +2936,14 @@
       document.getElementById(id).addEventListener('input', updateCalc);
     });
 
+    loadPartnerCalculatorState();
     renderStageNft(PRESET_NFTS['if-1506']);
     renderPinnedTokens();
     renderWalletPnl();
     updateTimers();
     setInterval(updateTimers, 1000);
     updateCalc();
+    updatePartnerStraddleCalc();
     switchMainView('trade');
     fetchAndDrawKrakenOhlc();
 
@@ -2467,6 +2954,8 @@
         const ok = await unlockWithPin(savedPin, true);
         if (!ok) {
           document.getElementById('pin-modal').classList.remove('hidden');
+        } else if (ACTIVE_VAULT_ROLE === 'partner') {
+          switchMainView('partner');
         }
       } else {
         document.getElementById('pin-modal').classList.remove('hidden');
