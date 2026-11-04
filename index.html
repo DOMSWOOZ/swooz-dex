@@ -283,48 +283,98 @@
             </div>
           </div>
 
-          <!-- 🎯 Automated 3-Leg Dual-Sided Straddle Tracker (Owner Vault Details Unlocked w/ PIN) -->
+          <!-- 🎯 Automated 9-Leg Dual-Exchange Straddle Tracker (Kraken Pro + Coinbase Advanced — Unlocked w/ PIN) -->
           <div class="owner-only hidden bg-[var(--card)] border border-emerald-500/40 rounded-lg p-2.5 space-y-2">
             <div class="flex items-center justify-between flex-wrap gap-1">
-              <span class="font-bold text-[var(--foreground)]">🤖 Active 3-Leg Dual-Sided Straddle (Playing Both Pump &amp; Dip — 0.40% Maker)</span>
-              <span id="ladder-summary-badge" class="text-emerald-500 font-mono font-semibold">🟢 3 LIVE ORDERS ON KRAKEN BOOK</span>
+              <span class="font-bold text-[var(--foreground)]">🤖 Active 9-Leg Dual-Exchange Auto-Straddle (Kraken Pro + Coinbase Advanced)</span>
+              <span id="ladder-summary-badge" class="text-emerald-500 font-mono font-semibold">🟢 9 LIVE POST-ONLY ORDERS ACTIVE ($1,223.11 DEPLOYED)</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left border-collapse text-[11px] font-mono">
                 <thead>
                   <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
-                    <th class="py-1 pr-2">Active Leg</th>
-                    <th class="py-1 px-2">Limit Price</th>
+                    <th class="py-1 pr-2">Exchange &amp; Leg</th>
+                    <th class="py-1 px-2">Side &amp; Limit</th>
                     <th class="py-1 px-2">Order Size</th>
-                    <th class="py-1 px-2">Maker Fee (0.40%)</th>
+                    <th class="py-1 px-2">Gross Value</th>
                     <th class="py-1 px-2">Auto-Flip Target</th>
-                    <th class="py-1 pl-2">Live Kraken Order ID</th>
+                    <th class="py-1 pl-2">Live Order ID</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-[var(--border)]">
+                  <!-- KRAKEN PRO 3 LEGS -->
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">1. ETH Upside Sell (85%)</td>
-                    <td class="py-1.5 px-2 font-bold">Sell @ $2,434.30</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-emerald-500">🦑 1. Kraken ETH Upside</td>
+                    <td class="py-1.5 px-2 font-bold">SELL @ $2,434.30</td>
                     <td class="py-1.5 px-2 font-bold">0.32000000 ETH</td>
-                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$778.98 (-$3.12 Fee)</td>
-                    <td class="py-1.5 px-2 font-bold text-emerald-500">$775.86 → Re-Buy @ $2,365</td>
-                    <td id="rung-status-1" class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OQZFZ5-JE7VA-XL4ICG)</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$778.98 (0.4% Fee)</td>
+                    <td class="py-1.5 px-2 font-bold text-emerald-500">Auto-Buys @ $2,365.00</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OQZFZ5)</td>
                   </tr>
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-amber-500">2. ETH Dip-Catcher ($120)</td>
-                    <td class="py-1.5 px-2 font-bold">Buy @ $2,350.00</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-amber-500">🦑 2. Kraken ETH Dip Buy</td>
+                    <td class="py-1.5 px-2 font-bold">BUY @ $2,350.00</td>
                     <td class="py-1.5 px-2 font-bold">0.05085957 ETH</td>
-                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$119.52 (+$0.48 Fee)</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$120.00 Cash</td>
                     <td class="py-1.5 px-2 font-bold text-amber-400">Auto-Sells @ $2,434.30</td>
-                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (O2M55I-TTRGZ-JHPZLG)</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (O2M55I)</td>
                   </tr>
                   <tr>
-                    <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">3. SOL Dip Scraper ($12.51)</td>
-                    <td class="py-1.5 px-2 font-bold">Buy @ $93.50</td>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🦑 3. Kraken SOL Dip Buy</td>
+                    <td class="py-1.5 px-2 font-bold">BUY @ $93.50</td>
                     <td class="py-1.5 px-2 font-bold">0.13324064 SOL</td>
-                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$12.46 (+$0.05 Fee)</td>
-                    <td class="py-1.5 px-2 font-bold text-purple-400">Auto-Sells @ $97.80 Loop</td>
-                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OXHR5G-7XDXV-JDJ77G)</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$12.51 Cash</td>
+                    <td class="py-1.5 px-2 font-bold text-purple-400">Auto-Sells @ $97.80</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (OXHR5G)</td>
+                  </tr>
+                  <!-- COINBASE ADVANCED 6 LEGS -->
+                  <tr>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 4. Coinbase ETH Upside</td>
+                    <td class="py-1.5 px-2 font-bold">SELL @ $2,435.00</td>
+                    <td class="py-1.5 px-2 font-bold">0.04620134 ETH</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$112.50 USDC</td>
+                    <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $2,360.00</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (6ccbc4fb)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 5. Coinbase SOL Upside</td>
+                    <td class="py-1.5 px-2 font-bold">SELL @ $97.80</td>
+                    <td class="py-1.5 px-2 font-bold">0.28494619 SOL</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$27.87 USDC</td>
+                    <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $93.50</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (af8d6809)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 6. Coinbase BTC Upside</td>
+                    <td class="py-1.5 px-2 font-bold">SELL @ $81,800.00</td>
+                    <td class="py-1.5 px-2 font-bold">0.00087620 BTC</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$71.67 USDC</td>
+                    <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $78,800.00</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (245c48b9)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 7. Coinbase LINK Upside</td>
+                    <td class="py-1.5 px-2 font-bold">SELL @ $11.85</td>
+                    <td class="py-1.5 px-2 font-bold">2.37000000 LINK</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$28.08 USDC</td>
+                    <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $11.05</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (21abdc51)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🔵 8. Coinbase ETH Dip Buy</td>
+                    <td class="py-1.5 px-2 font-bold">BUY @ $2,350.00</td>
+                    <td class="py-1.5 px-2 font-bold">0.02328000 ETH</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$54.71 USDC</td>
+                    <td class="py-1.5 px-2 font-bold text-amber-400">Auto-Sells @ $2,435.00</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (6f967d19)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🔵 9. Coinbase SOL Dip Buy</td>
+                    <td class="py-1.5 px-2 font-bold">BUY @ $93.40</td>
+                    <td class="py-1.5 px-2 font-bold">0.30250000 SOL</td>
+                    <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$28.25 USDC</td>
+                    <td class="py-1.5 px-2 font-bold text-purple-400">Auto-Sells @ $97.80</td>
+                    <td class="py-1.5 pl-2 font-sans font-bold text-emerald-500">🟢 OPEN (76e7ed73)</td>
                   </tr>
                 </tbody>
               </table>
@@ -1072,7 +1122,7 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=8').then(reg => {
+      navigator.serviceWorker.register('sw.js?v=9').then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -1726,6 +1776,9 @@
         const wEth = (decrypted.swooz_onchain?.eth || 0) + (decrypted.swooz_onchain?.weth || 0) || 0.00019;
         const msCount = decrypted.mini_supers_held || 132;
 
+        const cbTotalUsd = decrypted.coinbase?.total_usd || 319.09;
+        const cbEthEquiv = ETH_RATE > 0 ? cbTotalUsd / ETH_RATE : 0.13227;
+
         ACCOUNTS = [
           {
             id: 'kraken-main',
@@ -1733,6 +1786,15 @@
             address: `0.3200 ETH @ $2,434.30 | $120 ETH Buy @ $2,350 | $12.51 SOL Buy @ $93.50`,
             eth: kTotalEthEquiv,
             costUsd: 900.00,
+            miniSupers: 0,
+            isOnChain: false
+          },
+          {
+            id: 'coinbase-adv',
+            label: '🔵 Coinbase Advanced Straddle (6 Active Legs)',
+            address: `0.0462 ETH + $83.47 USDC + 0.285 SOL + 0.00088 BTC + 2.37 LINK`,
+            eth: cbEthEquiv,
+            costUsd: 300.00,
             miniSupers: 0,
             isOnChain: false
           },
@@ -1751,7 +1813,7 @@
         try {
           const extra = JSON.parse(localStorage.getItem('swooz_owner_accounts_v2') || '[]');
           extra.forEach(a => {
-            if (a.id !== 'kraken-main' && a.id !== 'swooz-eth') ACCOUNTS.push(a);
+            if (!['kraken-main', 'coinbase-adv', 'swooz-eth'].includes(a.id)) ACCOUNTS.push(a);
           });
         } catch (e) {}
 

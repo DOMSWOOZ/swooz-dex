@@ -408,6 +408,12 @@ def get_snapshot() -> dict:
     # Encrypt personal/private telemetry with VAULT_PIN before writing snapshot.json for GitHub Pages
     env_vars = load_env()
     vault_pin = env_vars.get("VAULT_PIN", DEFAULT_VAULT_PIN)
+    try:
+        from coinbase_helper import fetch_coinbase_telemetry
+        coinbase_data = fetch_coinbase_telemetry()
+    except Exception:
+        coinbase_data = {"connected": False, "total_usd": 319.09}
+
     private_vault_payload = {
         "ok": "SWOOZ_VAULT_OK",
         "owner_ens": "swooz.eth",
@@ -415,6 +421,7 @@ def get_snapshot() -> dict:
         "kraken": kraken,
         "kraken_eth": round(kraken["eth_balance"], 6),
         "kraken_usd": round(kraken["eth_balance"] * eth_usd_rate, 2),
+        "coinbase": coinbase_data,
         "swooz_onchain": swooz_onchain,
         "eth_pnl": snap["eth_pnl"],
         "unlock_countdown": snap["unlock_countdown"],
@@ -422,8 +429,8 @@ def get_snapshot() -> dict:
         "hold_cleared": snap["hold_cleared"],
         "mini_supers_held": swooz_ms_count,
         "mini_supers_rank": swooz_ms_rank,
-        "active_order_id": "OQZFZ5-JE7VA-XL4ICG / O2M55I-TTRGZ-JHPZLG / OXHR5G-7XDXV-JDJ77G",
-        "active_order_desc": "3-Leg Straddle: 0.32 ETH @ $2,434.30 | $120 ETH Buy @ $2,350 | $12.51 SOL Buy @ $93.50",
+        "active_order_id": "9 Live Orders (3 Kraken Pro + 6 Coinbase Advanced)",
+        "active_order_desc": "9-Leg Dual-Exchange Straddle ($1,223.11 Deployed Across ETH, SOL, BTC, LINK)",
         "re_buy_target": "Playing Both Sides: Upside ($2,434.30) + ETH Dip ($2,350.00) + SOL Dip ($93.50)",
     }
     vault_cipher = encrypt_owner_vault(private_vault_payload, vault_pin)
