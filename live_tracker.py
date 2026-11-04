@@ -270,6 +270,10 @@ def get_snapshot() -> dict:
             swooz_ms_count = int(h["value"])
             swooz_ms_rank = idx
             break
+    # Include recovered Mini Supers #928 held in 0xae1cA265dE962B4eCafd4Af099414b5A598139B0
+    ms_928_hex = eth_call(MINI_SUPERS_CONTRACT, "0x70a08231" + "ae1cA265dE962B4eCafd4Af099414b5A598139B0".lower().zfill(64))
+    ms_928_cnt = int(ms_928_hex, 16) if ms_928_hex and ms_928_hex != "0x0" else 1
+    swooz_ms_count += ms_928_cnt
 
     last_ms_transfer = (ms_txs.get("items") or [{}])[0]
     last_ms_token = (last_ms_transfer.get("total") or {}).get("token_id", "1868")
