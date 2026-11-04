@@ -1,0 +1,40 @@
+[
+  {
+    "timestamp_utc": "2026-11-04 22:32 UTC",
+    "exchange": "Kraken Pro",
+    "leg": "K-Leg 1 (ETH Upside -> Dip Re-Buy)",
+    "filled_order_id": "OQZFZ5-JE7VA-XL4ICG",
+    "filled_side": "SELL",
+    "pair": "ETH/USD",
+    "filled_size": 0.32000000,
+    "filled_price_usd": 2434.30,
+    "gross_usd": 778.98,
+    "fee_usd": 3.12,
+    "net_usd": 775.86,
+    "flipped_order_id": "OB3VUY-7XHEE-EISY6C",
+    "flipped_side": "BUY",
+    "flipped_size": 0.32675219,
+    "flipped_price_usd": 2365.00,
+    "projected_cycle_profit_eth": 0.00675219,
+    "projected_cycle_profit_usd": 16.44
+  },
+  {
+    "timestamp_utc": "2026-11-04 22:33 UTC",
+    "exchange": "Coinbase Advanced",
+    "leg": "CB-Leg 1 (ETH Upside -> Dip Re-Buy)",
+    "filled_order_id": "6ccbc4fb-fdd1-4cac-a168-045eba43851d",
+    "filled_side": "SELL",
+    "pair": "ETH-USDC",
+    "filled_size": 0.04620134,
+    "filled_price_usd": 2435.00,
+    "gross_usd": 112.50,
+    "fee_usd": 0.56,
+    "net_usd": 111.94,
+    "flipped_order_id": "1b4768d6-07e7-4ecd-afc0-c19e77a8732a",
+    "flipped_side": "BUY",
+    "flipped_size": 0.04719500,
+    "flipped_price_usd": 2360.00,
+    "projected_cycle_profit_eth": 0.00099366,
+    "projected_cycle_profit_usd": 2.42
+  }
+]
