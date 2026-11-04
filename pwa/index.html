@@ -1751,12 +1751,32 @@
       }
     }
 
+    async function resolveAddressOrEns(rawInput) {
+      const val = (rawInput || '').trim();
+      if (val.startsWith('0x') && val.length === 42) return val;
+      if (val.toLowerCase().endsWith('.eth')) {
+        try {
+          const res = await fetch(`https://eth.blockscout.com/api/v2/search?q=${encodeURIComponent(val)}`);
+          if (res.ok) {
+            const data = await res.json();
+            const match = (data.items || []).find(i => i.address_hash);
+            if (match && match.address_hash) return match.address_hash;
+          }
+        } catch (e) {}
+      }
+      return val;
+    }
+
     async function scanWalletNfts(walletAddr) {
-      const addr = (walletAddr || '').trim();
       const statusEl = document.getElementById('wallet-nft-status');
       const grid = document.getElementById('wallet-nft-grid');
+      const raw = (walletAddr || '').trim();
+      if (raw.toLowerCase().endsWith('.eth')) {
+        statusEl.innerHTML = `⏳ Resolving ENS domain <span class="text-emerald-500">${raw}</span> on Ethereum Mainnet...`;
+      }
+      const addr = await resolveAddressOrEns(raw);
       if (!addr.startsWith('0x') || addr.length !== 42) {
-        statusEl.innerHTML = `<span class="text-amber-500">Please enter a valid 42-character 0x... Ethereum address.</span>`;
+        statusEl.innerHTML = `<span class="text-amber-500">Please enter a valid 0x... Ethereum address or .eth ENS domain.</span>`;
         return;
       }
       statusEl.innerHTML = `⏳ Scanning Ethereum Mainnet NFTs held by <span class="text-emerald-500">${addr.slice(0,6)}...${addr.slice(-4)}</span>...`;
@@ -2261,8 +2281,9 @@
     }
 
     async function addCustomWallet() {
-      const label = document.getElementById('new-w-label').value.trim() || 'Added Wallet';
-      const addr = document.getElementById('new-w-addr').value.trim();
+      const rawAddr = document.getElementById('new-w-addr').value.trim();
+      const addr = await resolveAddressOrEns(rawAddr);
+      const label = document.getElementById('new-w-label').value.trim() || (rawAddr.toLowerCase().endsWith('.eth') ? rawAddr : 'Added Wallet');
       let ethVal = parseFloat(document.getElementById('new-w-eth').value) || 0;
       let costVal = parseFloat(document.getElementById('new-w-cost').value) || 0;
       let msCount = 0;
