@@ -1,26 +1,45 @@
-const CACHE_NAME = 'swooz-dex-v4';
-const ASSETS = ['./', 'index.html', 'manifest.json', 'logo.png', 'icon-192.png', 'icon-512.png'];
+const CACHE_NAME = 'swooz-dex-v5';
+const ASSETS = [
+  './',
+  'index.html',
+  'manifest.json',
+  'logo.png',
+  'icon-192.png',
+  'icon-512.png',
+  'icon.svg',
+  'nft-media/if_1506.gif',
+  'nft-media/if_1286.gif',
+  'nft-media/if_140.gif',
+  'nft-media/if_42.gif',
+  'nft-media/beast_2313_full.png',
+  'nft-media/beast_2313_pfp.png',
+  'nft-media/clonex_9143.png',
+  'nft-media/minisupers_6915.png',
+  'nft-media/the_walk_1.gif'
+];
 
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS).catch(() => {}))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.url.includes('/api/') || event.request.url.includes('snapshot.json')) {
+self.addEventListener('fetch', event => {
+  if (event.request.url.includes('snapshot.json') || event.request.url.includes('/api/')) {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match(event.request))
+    );
     return;
   }
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    caches.match(event.request).then(cached => cached || fetch(event.request))
   );
 });
