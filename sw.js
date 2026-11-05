@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swooz-dex-v28';
+const CACHE_NAME = 'swooz-dex-v29';
 const ASSETS = [
   './',
   'index.html',
@@ -38,7 +38,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Always use Network-First for HTML, JS, and JSON so updates show up immediately on mobile!
+  // Always use Network-First with cache:'no-store' for HTML, JS, and JSON so GitHub Pages pushes show up immediately!
   if (
     event.request.mode === 'navigate' ||
     event.request.url.endsWith('.html') ||
@@ -47,7 +47,7 @@ self.addEventListener('fetch', event => {
     event.request.url.includes('/api/')
   ) {
     event.respondWith(
-      fetch(event.request)
+      fetch(event.request, { cache: 'no-store' })
         .then(res => {
           const clone = res.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));

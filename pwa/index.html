@@ -2536,7 +2536,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?v=25').then(reg => {
+      // Purge stale caches (< v29) immediately so GitHub Pages pushes never hang in browser cache
+      if ('caches' in window) {
+        caches.keys().then(keys => {
+          keys.forEach(k => {
+            if (k !== 'swooz-dex-v29') caches.delete(k);
+          });
+        }).catch(() => {});
+      }
+      navigator.serviceWorker.register('sw.js?v=29', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
