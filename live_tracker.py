@@ -31,7 +31,7 @@ SWOOZ_WALLET = "0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4"
 ENV_PATH = os.path.expanduser("~/.env")
 SNAPSHOT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pwa", "snapshot.json")
 ROOT_SNAPSHOT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "snapshot.json")
-DEFAULT_VAULT_PIN = "1506"
+DEFAULT_VAULT_PIN = "5284"
 VAULT_SALT = "swooz-dex-v6-vault"
 
 
