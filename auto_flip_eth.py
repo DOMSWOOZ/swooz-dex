@@ -88,13 +88,13 @@ def main() -> None:
     env = load_env()
     webhook = env.get("DISCORD_WEBHOOK_URL", "")
 
-    # Kraken 3 Bidirectional Legs
+    # Kraken 3 Bidirectional Legs (All 3 Dip Buys Filled & Auto-Flipped to Top Sells!)
     k_legs = [
         {
             "name": "Kraken Leg 1 (ETH Core Ping-Pong)",
-            "txid": "OB3VUY-7XHEE-EISY6C",
+            "txid": "OIRRSA-EJ6VK-CHG3QB",
             "pair": "XETHZUSD",
-            "state": "BUY",
+            "state": "SELL",
             "vol": 0.32675219,
             "buy_px": 2365.00,
             "sell_px": 2434.30,
@@ -102,9 +102,9 @@ def main() -> None:
         },
         {
             "name": "Kraken Leg 2 (ETH Dip Catcher)",
-            "txid": "O2M55I-TTRGZ-JHPZLG",
+            "txid": "OLG3FW-CCZ3Z-CCKMM3",
             "pair": "XETHZUSD",
-            "state": "BUY",
+            "state": "SELL",
             "vol": 0.05085957,
             "buy_px": 2350.00,
             "sell_px": 2434.30,
@@ -112,23 +112,23 @@ def main() -> None:
         },
         {
             "name": "Kraken Leg 3 (SOL Dip Scraper)",
-            "txid": "OXHR5G-7XDXV-JDJ77G",
+            "txid": "OYVQU7-TCAOI-KITOGU",
             "pair": "SOLUSD",
-            "state": "BUY",
-            "vol": 0.13324064,
+            "state": "SELL",
+            "vol": 0.133241,
             "buy_px": 93.50,
             "sell_px": 97.80,
             "decimals": 6,
         },
     ]
 
-    # Coinbase 6 Bidirectional Legs
+    # Coinbase 6 Bidirectional Legs (All 3 Dip Buys Filled & Auto-Flipped to Top Sells — 9/9 Legs Now Armed as Upside Sells!)
     cb_legs = [
         {
             "name": "CB ETH Core Ping-Pong",
-            "order_id": "1b4768d6-07e7-4ecd-afc0-c19e77a8732a",
+            "order_id": "6d5a6169-84cd-4121-8217-86aaa03085c5",
             "product_id": "ETH-USDC",
-            "state": "BUY",
+            "state": "SELL",
             "buy_px": 2360.00,
             "sell_px": 2435.00,
             "decimals": 6,
@@ -162,18 +162,18 @@ def main() -> None:
         },
         {
             "name": "CB ETH Dip-Catcher",
-            "order_id": "6f967d19-e0f9-4c03-ab8e-7cb6c21d6b5b",
+            "order_id": "a9e815e1-01fe-46c5-aa58-42a988a5040c",
             "product_id": "ETH-USDC",
-            "state": "BUY",
+            "state": "SELL",
             "buy_px": 2350.00,
             "sell_px": 2435.00,
             "decimals": 6,
         },
         {
             "name": "CB SOL Dip-Catcher",
-            "order_id": "76e7ed73-8732-4cc2-b35b-4accb2bd62bb",
+            "order_id": "a7f9808b-da52-4056-889c-578c06164c44",
             "product_id": "SOL-USDC",
-            "state": "BUY",
+            "state": "SELL",
             "buy_px": 93.40,
             "sell_px": 97.80,
             "decimals": 6,
