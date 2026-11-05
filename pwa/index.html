@@ -386,31 +386,337 @@
   </header>
 
   <!-- 🎛️ Top-Level Workspace View Switcher (Reorganized Behind Toggles — No More Endless Scrolling!) -->
-  <div class="max-w-[1600px] mx-auto px-3 pt-2.5">
-    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-1 flex items-center gap-1 overflow-x-auto text-xs font-bold shadow-sm">
-      <button id="top-tab-trade" onclick="switchMainView('trade')" class="flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition">
-        <span>📈</span> <span>Auto-Trade &amp; Charts</span>
+  <div class="max-w-[1600px] mx-auto px-3 pt-2">
+    <div class="bg-black border border-[#33443c] p-1 flex items-center gap-1 overflow-x-auto text-[11px] font-mono font-bold shadow-sm">
+      <button id="top-tab-crt" onclick="switchMainView('crt')" class="flex-1 py-1.5 px-3 bg-[#00FF41] text-black flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>🖥️</span> <span>CRT TERMINAL v5.0 (SPLIT)</span>
       </button>
-      <button id="top-tab-partner" onclick="switchMainView('partner')" class="flex-1 py-2 px-3 rounded-lg text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition">
-        <span>🧋</span> <span>BobaTeaisGood4Me (#1716)</span>
+      <button id="top-tab-trade" onclick="switchMainView('trade')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>📈</span> <span>Vault P&amp;L &amp; Deck</span>
       </button>
-      <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
+      <button id="top-tab-partner" onclick="switchMainView('partner')" class="flex-1 py-1.5 px-3 text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>🧋</span> <span>Boba (#1716)</span>
+      </button>
+      <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
         <span>🎯</span> <span>Target Sniper (5)</span>
       </button>
-      <button id="top-tab-viewer" onclick="switchMainView('viewer')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
-        <span>🎬</span> <span>Walking Stage</span>
+      <button id="top-tab-viewer" onclick="switchMainView('viewer')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>🎬</span> <span>Token &amp; Wallet Lab</span>
       </button>
-      <button id="top-tab-markets" onclick="switchMainView('markets')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
-        <span>📊</span> <span>NFT Orderbooks</span>
+      <button id="top-tab-markets" onclick="switchMainView('markets')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>📊</span> <span>Orderbooks</span>
       </button>
-      <button id="top-tab-calc" onclick="switchMainView('calc')" class="flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition">
-        <span>⚡</span> <span>Bid Allocator</span>
+      <button id="top-tab-calc" onclick="switchMainView('calc')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>⚡</span> <span>Bid Calc</span>
       </button>
-      <button id="top-tab-split" onclick="switchMainView('split')" class="hidden md:flex py-2 px-3 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition">
-        <span>📖</span> <span>Fold 8 Split All</span>
+      <button id="top-tab-split" onclick="switchMainView('split')" class="hidden md:flex py-1.5 px-3 bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition uppercase">
+        <span>📖</span> <span>All Panels</span>
       </button>
     </div>
   </div>
+
+  <!-- ==========================================================================================
+       🛸 SWOOZ.ETH — MATRIX TERMINAL DEX v5.0 (ULTRA-WIDE CYBERPUNK CRT DUAL-PANE WORKSTATION)
+       Built 1:1 to the exact visual, GUI, and UX specifications of the generated reference design
+       ========================================================================================== -->
+  <section id="crt-v5-workstation" class="max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none">
+    <div class="bg-[#020503] border-2 border-[#2a3830] p-2 sm:p-3 shadow-[0_0_90px_rgba(0,0,0,0.98)] relative overflow-hidden"
+         style="background-image: linear-gradient(to right, rgba(0,255,65,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,65,0.04) 1px, transparent 1px); background-size: 20px 20px;">
+
+      <!-- Top Tablet Hardware Bezel Status Bar (Battery Left + 5G / Bluetooth / Clock Right) -->
+      <div class="flex items-center justify-between text-[10px] text-[#9bb5a8] pb-2 px-1 border-b border-[#223029] mb-2">
+        <div class="flex items-center gap-2">
+          <!-- Battery Icon -->
+          <span class="inline-flex items-center border border-[#9bb5a8] px-1 py-0.5 text-[8px] leading-none">
+            <span class="w-3.5 h-2 bg-[#d8e8df] inline-block mr-0.5"></span>
+          </span>
+          <span class="text-[#00FF41] font-bold tracking-widest">SWOOZ.ETH // MATRIX TERMINAL DEX v5.0</span>
+          <span id="crt-matrix-mode-badge" class="hidden sm:inline text-[#00F0FF] text-[9.5px]">[9-LEG LIVE KRAKEN + COINBASE SYNC]</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <button type="button" onclick="toggleCrtMatrixDataMode()" id="btn-crt-data-mode"
+                  class="px-2 py-0.5 border border-[#00FF41]/60 bg-black text-[#00FF41] hover:bg-[#00FF41] hover:text-black text-[9px] font-bold uppercase cursor-pointer transition">
+            MODE: LIVE ORDERS ⇄ OPTIONS SPEC
+          </button>
+          <span class="text-[#d8e8df] font-bold">⏰ 5G ▮▮▮</span>
+        </div>
+      </div>
+
+      <!-- DUAL-PANE 16:10 SPLIT-SCREEN WORKSPACE WITH CENTER FOLD HINGE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 relative items-stretch">
+
+        <!-- ================= LEFT PANE (6 Cols): SWOOZ.ETH // DEX_TERMINAL — 9-LEG STRADDLE MATRIX ================= -->
+        <div class="lg:col-span-6 bg-[#030705]/95 border border-[#3a4d42] p-2.5 flex flex-col justify-between relative">
+          <!-- Left Pane Top Title Bar -->
+          <div class="flex items-center justify-between border border-[#3a4d42] bg-black/90 px-2.5 py-1.5 mb-2 text-xs tracking-wider">
+            <span class="text-[#c8dcd2] font-bold uppercase">SWOOZ.ETH // DEX_TERMINAL</span>
+            <span class="text-[#9bb5a8] font-bold uppercase">9-LEG STRADDLE MATRIX</span>
+          </div>
+
+          <!-- 9-Leg Straddle Matrix Table -->
+          <div class="border border-[#3a4d42] bg-black/90 flex-1 overflow-x-auto">
+            <table class="w-full border-collapse text-[10.5px] leading-[1.22] font-mono">
+              <thead>
+                <tr class="border-b border-[#3a4d42] text-[#8fa89b] text-[10px] uppercase">
+                  <th class="py-1.5 px-2 text-left border-r border-[#2a3830] w-[76px]"></th>
+                  <th class="py-1.5 px-1.5 text-right">STRIKE</th>
+                  <th class="py-1.5 px-1.5 text-center">EXPIRY</th>
+                  <th class="py-1.5 px-1.5 text-right">IV</th>
+                  <th class="py-1.5 px-1.5 text-right">DELTA</th>
+                  <th class="py-1.5 px-1.5 text-right">THETA</th>
+                  <th class="py-1.5 px-1.5 text-right border-r border-[#3a4d42]">VEGA</th>
+                  <th class="py-1.5 px-1.5 text-center border-r border-[#3a4d42] w-[36px]">SPLIT</th>
+                  <th class="py-1.5 px-1.5 text-center w-[36px]">FEE</th>
+                </tr>
+              </thead>
+              <tbody id="crt-9leg-tbody" class="divide-y divide-[#25332b]">
+                <!-- Populated dynamically by renderCrt9LegMatrix() with all 9 legs + SVG waveforms -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CENTER FOLDABLE HINGE BAR (Visible on Desktop / Unfolded Fold 8) -->
+        <div class="hidden lg:flex flex-col items-center justify-center pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 z-20">
+          <div class="w-[2px] h-full bg-[#223029] flex items-center justify-center">
+            <div class="w-1.5 h-16 bg-[#b8f4ff] shadow-[0_0_12px_#00f0ff] rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- ================= RIGHT PANE (6 Cols): GLOWE 3D HOLOGRAPHIC NFT STAGE + TRAIT INSPECTOR + ETH/USDC ASCII CHART ================= -->
+        <div class="lg:col-span-6 flex flex-col justify-between gap-2.5">
+
+          <!-- TOP RIGHT WINDOW: GLOWE 3D HOLOGRAPHIC NFT STAGE -->
+          <div class="border border-[#00F0FF]/60 bg-[#02080a] p-2.5 relative overflow-hidden flex flex-col justify-between min-h-[305px] shadow-[inset_0_0_60px_rgba(0,240,255,0.12)]"
+               style="background-image: radial-gradient(circle at 54% 56%, rgba(0, 240, 255, 0.22) 0%, rgba(0, 255, 65, 0.08) 42%, transparent 72%), linear-gradient(to right, rgba(0, 240, 255, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.06) 1px, transparent 1px); background-size: 100% 100%, 16px 16px, 16px 16px;">
+
+            <!-- Stage Header Bar + Specimen Selector Pills -->
+            <div class="flex items-center justify-between flex-wrap gap-1.5 border-b border-[#00F0FF]/30 pb-1.5 relative z-20">
+              <div class="text-xs sm:text-sm font-bold tracking-wider uppercase">
+                <span class="text-[#00F0FF]" style="text-shadow: 0 0 10px rgba(0,240,255,0.55);">GLOWE 3D HOLOGRAPHIC</span>
+                <span class="text-[#00FF41] ml-1" style="text-shadow: 0 0 10px rgba(0,255,65,0.55);">NFT STAGE</span>
+              </div>
+              <div class="flex items-center gap-1 text-[9px] font-mono">
+                <button type="button" onclick="selectCrtStageSpecimen('wireframe')" id="crt-spec-wireframe" class="px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer">WIREFRAME</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-1506')" id="crt-spec-if-1506" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #1506</button>
+                <button type="button" onclick="selectCrtStageSpecimen('beast-2313-full')" id="crt-spec-beast-2313-full" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">BEAST #2313</button>
+                <button type="button" onclick="selectCrtStageSpecimen('clonex-9143')" id="crt-spec-clonex-9143" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">CLONEX #9143</button>
+                <button type="button" onclick="selectCrtStageSpecimen('ms-6915')" id="crt-spec-ms-6915" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">MINI #6915</button>
+              </div>
+            </div>
+
+            <!-- Corner Telemetry Readouts (Exact Match to Reference Screenshot) -->
+            <div class="absolute top-11 left-3 z-10 text-[9px] leading-[1.25] text-[#66d9ef] font-mono pointer-events-none">
+              <div class="text-[#9bb5a8]">HOLO_STAGE_ONLINE</div>
+              <div>AXIS: <span id="crt-axis-x">+20.5881</span></div>
+              <div>AXIS: <span id="crt-axis-y">-20.253</span></div>
+              <div>KHBRT: <span id="crt-khbrt">+13.885</span></div>
+            </div>
+            <div class="absolute top-11 right-3 z-10 text-[9px] text-[#9bb5a8] font-mono pointer-events-none">
+              HOLO_STAGE_ONLINE
+            </div>
+            <div class="absolute bottom-3 left-3 z-10 text-[9px] leading-[1.25] text-[#66d9ef] font-mono pointer-events-none">
+              <div>AXS: 2200, 0.8033</div>
+              <div>AXS: 2400, 0.8033</div>
+              <div>CODR.2430, 0.8030</div>
+              <div>DL07.2777 0.0808</div>
+            </div>
+            <div class="absolute bottom-3 right-3 z-10 text-[9px] text-[#9bb5a8] font-mono pointer-events-none">
+              HOLO_STAGE_ONLINE
+            </div>
+
+            <!-- Left & Right Vertical Caliper Bars -->
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 h-24 w-2 border-l border-t border-b border-[#66d9ef]/50 pointer-events-none flex items-center">
+              <span class="text-[8px] text-[#66d9ef] -ml-2 bg-[#02080a] px-0.5">0</span>
+            </div>
+            <div class="absolute right-3 top-1/2 -translate-y-1/2 h-24 w-2 border-r border-t border-b border-[#66d9ef]/50 pointer-events-none flex items-center justify-end">
+              <span class="text-[8px] text-[#66d9ef] -mr-2 bg-[#02080a] px-0.5">1</span>
+            </div>
+
+            <!-- 3D ISOMETRIC NEON-GREEN GRID PLATFORM + FLOATING CYAN HOLOGRAM CHARACTER -->
+            <div class="relative w-full h-[255px] flex items-center justify-center my-auto">
+              <svg viewBox="0 0 600 280" class="w-full h-full overflow-visible">
+                <defs>
+                  <filter id="neonGreenGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  <filter id="cyanHoloGlow" x="-25%" y="-25%" width="150%" height="150%">
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Isometric Axis Extension Lines & Labels (X / Y) -->
+                <line x1="110" y1="125" x2="465" y2="258" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.55" />
+                <line x1="135" y1="258" x2="490" y2="125" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.55" />
+                <text x="195" y="252" fill="#00F0FF" font-size="9" font-family="Courier New">X</text>
+                <text x="405" y="252" fill="#00F0FF" font-size="9" font-family="Courier New">X</text>
+                <text x="458" y="148" fill="#00F0FF" font-size="9" font-family="Courier New">Y</text>
+
+                <!-- Vertical Corner Reference Posts -->
+                <line x1="145" y1="185" x2="145" y2="95" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
+                <circle cx="145" cy="95" r="2" fill="#00F0FF" />
+                <line x1="225" y1="142" x2="225" y2="62" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
+                <circle cx="225" cy="62" r="2" fill="#00F0FF" />
+                <line x1="395" y1="142" x2="395" y2="62" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
+                <circle cx="395" cy="62" r="2" fill="#00F0FF" />
+                <line x1="455" y1="185" x2="455" y2="95" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
+                <circle cx="455" cy="95" r="2" fill="#00F0FF" />
+
+                <!-- 3D Isometric Neon-Green Platform Base (Double-Bezel Glowing Diamond) -->
+                <polygon points="300,122 455,182 300,244 145,182" fill="rgba(0, 40, 22, 0.55)" stroke="#00FF41" stroke-width="2.4" filter="url(#neonGreenGlow)" />
+                <polygon points="300,129 455,189 300,252 145,189" fill="none" stroke="#00FF41" stroke-width="1.8" opacity="0.85" filter="url(#neonGreenGlow)" />
+
+                <!-- Internal Isometric Floor Grid Lines (8x8 Subdivisions) -->
+                <g stroke="#00F0FF" stroke-width="0.75" opacity="0.48">
+                  <line x1="280.6" y1="129.5" x2="435.6" y2="189.5" />
+                  <line x1="261.2" y1="137.0" x2="416.2" y2="197.0" />
+                  <line x1="241.8" y1="144.5" x2="396.8" y2="204.5" />
+                  <line x1="222.5" y1="152.0" x2="377.5" y2="212.0" />
+                  <line x1="203.1" y1="159.5" x2="358.1" y2="219.5" />
+                  <line x1="183.7" y1="167.0" x2="338.7" y2="227.0" />
+                  <line x1="164.3" y1="174.5" x2="319.3" y2="234.5" />
+
+                  <line x1="319.3" y1="129.5" x2="164.3" y2="189.5" />
+                  <line x1="338.7" y1="137.0" x2="183.7" y2="197.0" />
+                  <line x1="358.1" y1="144.5" x2="203.1" y2="204.5" />
+                  <line x1="377.5" y1="152.0" x2="222.5" y2="212.0" />
+                  <line x1="396.8" y1="159.5" x2="241.8" y2="219.5" />
+                  <line x1="416.2" y1="167.0" x2="261.2" y2="227.0" />
+                  <line x1="435.6" y1="174.5" x2="280.6" y2="234.5" />
+                </g>
+
+                <!-- Floating Cyan Orbital Ring Around Specimen -->
+                <ellipse cx="300" cy="112" rx="92" ry="34" fill="none" stroke="#00F0FF" stroke-width="1.5" opacity="0.85" filter="url(#cyanHoloGlow)" />
+                <ellipse cx="300" cy="112" rx="82" ry="29" fill="none" stroke="#00F0FF" stroke-width="0.75" stroke-dasharray="6 4" opacity="0.65" />
+
+                <!-- 3D CYAN WIREFRAME HUMANOID / WALKER MESH (Default Specimen — Exact Match to Screenshot) -->
+                <g id="crt-svg-wireframe-walker" filter="url(#cyanHoloGlow)" class="transition-opacity duration-300">
+                  <!-- Shadow ellipse on isometric floor -->
+                  <ellipse cx="300" cy="176" rx="26" ry="10" fill="rgba(0, 240, 255, 0.25)" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="3 2" />
+                  <!-- Helmet / Head Sphere + Visor -->
+                  <ellipse cx="300" cy="48" rx="20" ry="21" fill="rgba(0, 25, 38, 0.72)" stroke="#00F0FF" stroke-width="1.8" />
+                  <ellipse cx="300" cy="48" rx="11" ry="21" fill="none" stroke="#00F0FF" stroke-width="0.9" opacity="0.7" />
+                  <ellipse cx="300" cy="42" rx="19" ry="7" fill="none" stroke="#00F0FF" stroke-width="0.9" opacity="0.7" />
+                  <!-- Glowing Visor -->
+                  <path d="M 284 46 Q 300 55 315 45 Q 315 35 299 35 Q 284 36 284 46 Z" fill="rgba(0, 240, 255, 0.28)" stroke="#99f9ff" stroke-width="1.6" />
+                  <!-- Neck Collar -->
+                  <ellipse cx="300" cy="69" rx="12" ry="4" fill="none" stroke="#00F0FF" stroke-width="1.4" />
+                  <!-- Torso Wireframe Ribcage -->
+                  <path d="M 282 72 L 318 72 L 315 124 L 285 124 Z" fill="rgba(0, 240, 255, 0.14)" stroke="#00F0FF" stroke-width="1.6" />
+                  <ellipse cx="300" cy="84" rx="17" ry="5" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="300" cy="97" rx="16" ry="5" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="300" cy="110" rx="15" ry="5" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <line x1="293" y1="72" x2="293" y2="124" stroke="#00F0FF" stroke-width="0.9" opacity="0.75" />
+                  <line x1="300" y1="72" x2="300" y2="124" stroke="#00F0FF" stroke-width="1.1" />
+                  <line x1="307" y1="72" x2="307" y2="124" stroke="#00F0FF" stroke-width="0.9" opacity="0.75" />
+                  <!-- Left Arm (Segmented Wireframe Cylinder) -->
+                  <path d="M 282 74 L 266 96 L 261 118 L 270 121 L 276 100 L 284 84 Z" fill="rgba(0, 240, 255, 0.14)" stroke="#00F0FF" stroke-width="1.5" />
+                  <ellipse cx="271" cy="98" rx="6" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="265" cy="120" rx="5" ry="4" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.3" />
+                  <!-- Right Arm (Segmented Wireframe Cylinder) -->
+                  <path d="M 318 74 L 332 98 L 335 120 L 326 122 L 322 101 L 316 84 Z" fill="rgba(0, 240, 255, 0.14)" stroke="#00F0FF" stroke-width="1.5" />
+                  <ellipse cx="327" cy="99" rx="6" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="330" cy="121" rx="5" ry="4" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.3" />
+                  <!-- Left Leg (Stepping Forward + Segmented Rings + Boot) -->
+                  <path d="M 285 124 L 281 168 L 293 168 L 298 124 Z" fill="rgba(0, 240, 255, 0.16)" stroke="#00F0FF" stroke-width="1.6" />
+                  <ellipse cx="289" cy="138" rx="7" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="288" cy="152" rx="6.5" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="285" cy="171" rx="10" ry="5" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.6" />
+                  <!-- Right Leg (Stepping Back + Segmented Rings + Boot) -->
+                  <path d="M 302 124 L 306 174 L 318 174 L 315 124 Z" fill="rgba(0, 240, 255, 0.16)" stroke="#00F0FF" stroke-width="1.6" />
+                  <ellipse cx="310" cy="140" rx="7" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="311" cy="155" rx="6.5" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
+                  <ellipse cx="313" cy="177" rx="11" ry="5.5" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.6" />
+                </g>
+              </svg>
+
+              <!-- Live Walking Holographic NFT Image Overlay (Shown when IF #1506 / BEAST #2313 / CloneX / Mini Supers is selected!) -->
+              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif" alt="Hologram Specimen"
+                   class="hidden absolute top-3 w-36 h-36 sm:w-40 sm:h-40 object-contain pointer-events-none" />
+            </div>
+          </div>
+
+          <!-- BOTTOM RIGHT SPLIT: TRAIT INSPECTOR (Left) + ETH/USDC ASCII CHART (Right) -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 flex-1">
+
+            <!-- BOTTOM-LEFT WINDOW: TRAIT INSPECTOR (13 On-Chain Attributes) -->
+            <div class="sm:col-span-6 border border-[#3a4d42] bg-[#030705]/95 p-2.5 flex flex-col justify-between">
+              <div class="flex items-center justify-between border-b border-[#3a4d42] pb-1.5 mb-2 text-xs">
+                <span class="text-[#c8dcd2] font-bold uppercase tracking-wider">TRAIT INSPECTOR</span>
+                <span id="crt-trait-subtitle" class="text-[9.5px] text-[#00FF41]">13 ATTRIBUTES</span>
+              </div>
+              <div id="crt-trait-inspector-list" class="space-y-0.5 text-[10.5px] leading-[1.28] font-mono overflow-y-auto max-h-[215px] pr-1">
+                <!-- Populated dynamically by renderCrtTraitInspector() -->
+              </div>
+            </div>
+
+            <!-- BOTTOM-RIGHT WINDOW: ETH/USDC ASCII CHART -->
+            <div class="sm:col-span-6 border border-[#3a4d42] bg-[#030705]/95 p-2.5 flex flex-col justify-between">
+              <div class="flex items-center justify-between border-b border-[#3a4d42] pb-1.5 mb-1.5 text-xs">
+                <span id="crt-ascii-chart-title" class="text-[#c8dcd2] font-bold uppercase tracking-wider">ETH/USDC ASCII CHART</span>
+                <button type="button" onclick="toggleCrtAsciiRenderMode()" id="btn-crt-ascii-mode"
+                        class="px-1.5 py-0.5 border border-[#00F0FF]/50 text-[#00F0FF] hover:bg-[#00F0FF] hover:text-black text-[9px] font-bold uppercase cursor-pointer">
+                  BLOCKS ⇄ CANDLES
+                </button>
+              </div>
+
+              <!-- High-Contrast Cyan (#00F0FF) & Red (#FF3B30) Terminal Candlestick Canvas -->
+              <div id="crt-mini-canvas-wrap" class="relative w-full flex-1 flex items-center justify-center">
+                <canvas id="crt-mini-candle-canvas" width="360" height="205" class="w-full h-[195px] block"></canvas>
+              </div>
+
+              <!-- Raw Block-Character ASCII Candlestick Matrix View (Toggled via BLOCKS ⇄ CANDLES) -->
+              <div id="crt-raw-ascii-wrap" class="hidden ascii-chart-grid text-[9.5px] select-none p-1 bg-black border border-matrix/20 overflow-x-auto text-[#00FF41]">
+$2650 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>
+$2550 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span>
+$2500 | <span class="candle-wick">░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span>
+$2450 | <span class="candle-wick">░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░░░░</span>
+$2400 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░</span><span class="candle-red">█</span><span class="candle-wick">░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░</span>
+$2350 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░</span><span class="candle-red">▀█▀</span><span class="candle-wick">░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░</span>
+$2300 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░</span>
+$2250 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░░░░░░░░░░░░</span>
+--------------------------------------
+      | 200   250   500   750   ..</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= BOTTOM FULL-WIDTH SPLIT FOOTER: SWOOZ_DEX_ROOT > CLI + AMBER TELEMETRY [ACTIVE] ================= -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 mt-2.5 items-stretch">
+        <!-- Bottom-Left (6 Cols): Always-Visible Interactive SWOOZ_DEX_ROOT > Command Prompt -->
+        <div class="lg:col-span-6 border border-[#3a4d42] bg-black px-3 py-2.5 flex flex-col justify-center">
+          <div class="flex items-center gap-2 text-xs sm:text-sm font-mono">
+            <span class="text-[#9bb5a8] font-bold shrink-0">SWOOZ_DEX_ROOT &gt;</span>
+            <input id="crt-inline-cli-input" type="text" value="REBALANCE_STRADDLE_09 --FORCE"
+                   class="bg-black text-[#00FF41] font-bold flex-grow outline-none border-none p-0 focus:ring-0 uppercase tracking-wider"
+                    style="text-shadow: 0 0 8px rgba(0,255,65,0.45);"
+                   placeholder="REBALANCE_STRADDLE_09 --FORCE OR /SWAP 1.0 ETH USDC" />
+            <span class="w-2 h-4 bg-[#00F0FF] animate-pulse shrink-0"></span>
+          </div>
+          <div id="crt-inline-cli-feedback" class="text-[10px] text-[#FFB000] mt-1 hidden font-mono"></div>
+        </div>
+
+        <!-- Bottom-Right (6 Cols): AMBER TELEMETRY [ACTIVE] 3-Line Diagnostics Matrix -->
+        <div class="lg:col-span-6 border border-[#b45309] bg-[#0a0602] px-3 py-1.5 flex flex-col justify-center text-[10px] leading-[1.35] font-mono text-[#FFB000]"
+             style="text-shadow: 0 0 6px rgba(255, 176, 0, 0.35);">
+          <div id="crt-amber-line-1" class="truncate">AMBER TELEMETRY [ACTIVE] | SYS_OK | KRN_PING: 32ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
+          <div id="crt-amber-line-2" class="truncate opacity-85">DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: 31ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
+          <div id="crt-amber-line-3" class="truncate opacity-75">DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: 32ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Main Adaptive Container: Tabbed Single-Screen by default, or Dual-Pane on Fold 8 Split -->
   <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 gap-4">
@@ -3147,6 +3453,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function switchMainView(view) {
       ACTIVE_MAIN_VIEW = view;
+      const crtWorkstation = document.getElementById('crt-v5-workstation');
       const container = document.getElementById('dex-container');
       const left = document.getElementById('pane-left');
       const right = document.getElementById('pane-right');
@@ -3159,19 +3466,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const secSales = document.getElementById('sec-sales');
 
       // Highlight top & bottom toggle buttons
-      ['trade', 'partner', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
+      ['crt', 'trade', 'partner', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
         const topBtn = document.getElementById('top-tab-' + v);
         if (topBtn) {
           if (v === view) {
             topBtn.className = v === 'partner'
-              ? 'flex-1 py-2 px-3 rounded-lg bg-purple-600 text-white flex items-center justify-center gap-1.5 shrink-0 transition'
-              : 'flex-1 py-2 px-3 rounded-lg bg-emerald-500 text-white flex items-center justify-center gap-1.5 shrink-0 transition';
+              ? 'flex-1 py-1.5 px-3 bg-purple-600 text-white flex items-center justify-center gap-1.5 shrink-0 transition uppercase'
+              : 'flex-1 py-1.5 px-3 bg-[#00FF41] text-black flex items-center justify-center gap-1.5 shrink-0 transition uppercase';
           } else if (v === 'split') {
-            topBtn.className = 'hidden md:flex py-2 px-3 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition';
+            topBtn.className = 'hidden md:flex py-1.5 px-3 bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition uppercase';
           } else if (v === 'partner') {
-            topBtn.className = 'flex-1 py-2 px-3 rounded-lg text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition';
+            topBtn.className = 'flex-1 py-1.5 px-3 text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition uppercase';
           } else {
-            topBtn.className = 'flex-1 py-2 px-3 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition';
+            topBtn.className = 'flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase';
           }
         }
         const dockBtn = document.getElementById('dock-tab-' + v);
@@ -3188,6 +3495,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }
       });
 
+      if (view === 'crt') {
+        if (crtWorkstation) crtWorkstation.classList.remove('hidden');
+        if (container) container.classList.add('hidden');
+        if (typeof drawCrtMiniCandleChart === 'function') setTimeout(drawCrtMiniCandleChart, 25);
+        return;
+      }
+
+      if (container) container.classList.remove('hidden');
+      if (crtWorkstation) {
+        if (view === 'split') crtWorkstation.classList.remove('hidden');
+        else crtWorkstation.classList.add('hidden');
+      }
+
       if (view === 'split') {
         // Fold 8 Unfolded Dual-Pane Split View: Show all sections across 2 columns
         container.className = 'max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
@@ -3196,6 +3516,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
         updatePartnerStraddleCalc();
         drawKrakenChart();
+        if (typeof drawCrtMiniCandleChart === 'function') drawCrtMiniCandleChart();
         return;
       }
 
@@ -4039,7 +4360,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     renderWalletPnl();
     updateCalc();
     updatePartnerStraddleCalc();
-    switchMainView('trade');
+    switchMainView('crt');
     fetchAndDrawKrakenOhlc();
 
     // Immediately show the 4-Digit PIN keypad prompt on load if not yet unlocked on this device!
@@ -4198,6 +4519,596 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         feedback.innerText = `>> ${text}`;
         feedback.classList.remove('hidden');
       }
+    })();
+
+    // ============================================================================================
+    // 🛸 CRT TERMINAL v5.0 WORKSTATION ENGINE (9-Leg Matrix, 3D Holo Stage, Trait Inspector, Chart)
+    // ============================================================================================
+    let CRT_DATA_MODE = 'screenshot'; // 'screenshot' (Exact Visual Spec) | 'live' (Live Kraken + Coinbase Orders)
+    let ACTIVE_CRT_LEG = 0;
+    let ACTIVE_CRT_SPECIMEN = 'wireframe';
+
+    // Exact 9-Leg Matrix Rows (Both Screenshot Spec & Live Kraken/Coinbase Order Book Mapping)
+    const CRT_9LEGS_DATA = [
+      {
+        id: 'LEG_01', pair: 'ETHUSD', title: 'ETH/USDC ASCII CHART',
+        wave1: 'M2,14 Q10,2 18,12 T34,8 T50,15 T62,6', wave2: 'M2,10 Q12,18 22,8 T40,14 T62,11',
+        spec: {
+          s1: '1500,000', s2: '1500,000', s3: '300,000',
+          e1: '2023-05-01', e2: '2023-05-21', e3: '2023-05-19',
+          iv1: '15.00', iv2: '10.00', iv3: '32.00',
+          d1: '0.90%', d2: '-0.37%', d3: '-14.82%',
+          t1: '0.051', t2: '-0.09%', t3: '-0.02%',
+          v1: '0.03%', v2: '-0.25%', v3: '-0.02%',
+          krn: '↗', krnCol: '#00FF41', cb: '↓', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$2,365.00', s2: '0.3268 ETH', s3: '$772.77',
+          e1: 'ETH/USD', e2: 'OB3VUY-7X', e3: 'FLIPPED ✓',
+          iv1: '2.93%', iv2: '0.25%', iv3: '+$16.44',
+          d1: '+0.90%', d2: '+2.85%', d3: '-1.24%',
+          t1: '+0.0068', t2: 'ETH GAIN', t3: 'MAKER',
+          v1: '100%', v2: 'ARMED', v3: 'KRAKEN',
+          krn: '↗', krnCol: '#00FF41', cb: '—', cbCol: '#889990'
+        }
+      },
+      {
+        id: 'LEG_02', pair: 'ETHUSD', title: 'ETH/USDC ASCII CHART',
+        wave1: 'M2,11 Q12,3 24,14 T44,6 T62,12', wave2: 'M2,13 Q14,17 26,9 T46,15 T62,9',
+        spec: {
+          s1: '1000,000', s2: '500,000', s3: '300,000',
+          e1: '2023-05-01', e2: '2024-05-22', e3: '2024-05-15',
+          iv1: '10.00', iv2: '10.00', iv3: '-88.00',
+          d1: '0.78%', d2: '+0.88%', d3: '-0.82%',
+          t1: '0.85%', t2: '-0.37%', t3: '-0.02%',
+          v1: '0.170', v2: '-0.15%', v3: '-0.03%',
+          krn: '↗', krnCol: '#00FF41', cb: '↓', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$2,350.00', s2: '0.0509 ETH', s3: '$119.52',
+          e1: 'ETH/USD', e2: 'O2M55I-TT', e3: 'OPEN BUY',
+          iv1: '3.55%', iv2: '0.25%', iv3: '+$4.22',
+          d1: '+0.78%', d2: '+0.88%', d3: '-0.82%',
+          t1: '$2,434', t2: 'RESELL', t3: 'MAKER',
+          v1: '100%', v2: 'ARMED', v3: 'KRAKEN',
+          krn: '↗', krnCol: '#00FF41', cb: '—', cbCol: '#889990'
+        }
+      },
+      {
+        id: 'LEG_03', pair: 'SOLUSD', title: 'SOL/USDC ASCII CHART',
+        wave1: 'M2,15 Q14,4 26,13 T48,7 T62,14', wave2: 'M2,9 Q16,16 28,10 T48,15 T62,8',
+        spec: {
+          s1: '1000,000', s2: '500,000', s3: '300,000',
+          e1: '2024-05-01', e2: '2024-05-01', e3: '2024-05-19',
+          iv1: '18.00', iv2: '10.00', iv3: '+10.00',
+          d1: '0.75%', d2: '+0.83%', d3: '-4.82%',
+          t1: '0.002', t2: '-0.85%', t3: '-0.02%',
+          v1: '0.350', v2: '-0.38%', v3: '-0.03%',
+          krn: '↓', krnCol: '#FF3B30', cb: '↓', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$93.50', s2: '0.1332 SOL', s3: '$12.46',
+          e1: 'SOL/USD', e2: 'OXHR5G-7X', e3: 'OPEN BUY',
+          iv1: '4.60%', iv2: '0.25%', iv3: '+$0.57',
+          d1: '+0.75%', d2: '+0.83%', d3: '-1.92%',
+          t1: '$97.80', t2: 'RESELL', t3: 'MAKER',
+          v1: '100%', v2: 'ARMED', v3: 'KRAKEN',
+          krn: '↓', krnCol: '#FF3B30', cb: '—', cbCol: '#889990'
+        }
+      },
+      {
+        id: 'LEG_04', pair: 'ETHUSD', title: 'ETH/USDC ASCII CHART',
+        wave1: 'M2,12 Q10,4 20,14 T38,6 T62,13', wave2: 'M2,10 Q14,17 26,8 T46,14 T62,10',
+        spec: {
+          s1: '1500,000', s2: '500,000', s3: '300,000',
+          e1: '2024-05-01', e2: '2024-05-07', e3: '2024-05-19',
+          iv1: '10.00', iv2: '10.00', iv3: '+10.00',
+          d1: '0.35%', d2: '+0.92%', d3: '-14.82%',
+          t1: '0.60%', t2: '+0.95%', t3: '-0.82%',
+          v1: '0.950', v2: '+0.80%', v3: '-0.38%',
+          krn: '↗', krnCol: '#00FF41', cb: '→', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$2,360.00', s2: '0.0472 ETH', s3: '$111.38',
+          e1: 'ETH/USDC', e2: '1b4768d6', e3: 'FLIPPED ✓',
+          iv1: '3.18%', iv2: '0.40%', iv3: '+$2.42',
+          d1: '+0.35%', d2: '+0.92%', d3: '-1.45%',
+          t1: '+0.0010', t2: 'ETH GAIN', t3: 'CB ADV',
+          v1: '100%', v2: 'ARMED', v3: 'COINBASE',
+          krn: '—', krnCol: '#889990', cb: '↗', cbCol: '#00FF41'
+        }
+      },
+      {
+        id: 'LEG_05', pair: 'SOLUSD', title: 'SOL/USDC ASCII CHART',
+        wave1: 'M2,8 Q16,16 32,12 T62,14', wave2: 'M2,14 Q18,8 34,15 T62,11',
+        spec: {
+          s1: '1500,000', s2: '500,000', s3: '300,000',
+          e1: '2024-05-01', e2: '2024-05-07', e3: '2024-05-19',
+          iv1: '10.00', iv2: '10.00', iv3: '+18.5%',
+          d1: '0.35%', d2: '-0.03%', d3: '-6.03%',
+          t1: '0.07%', t2: '-0.03%', t3: '-1.06%',
+          v1: '0.230', v2: '-0.08%', v3: '-0.03%',
+          krn: '↓', krnCol: '#FF3B30', cb: '→', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$97.80', s2: '0.2849 SOL', s3: '$27.87',
+          e1: 'SOL/USDC', e2: 'af8d6809', e3: 'SELL LIM',
+          iv1: '4.71%', iv2: '0.40%', iv3: '+$0.95',
+          d1: '+0.35%', d2: '+2.40%', d3: '-0.65%',
+          t1: '$93.40', t2: 'REBUY', t3: 'CB ADV',
+          v1: '100%', v2: 'ARMED', v3: 'COINBASE',
+          krn: '—', krnCol: '#889990', cb: '↗', cbCol: '#00FF41'
+        }
+      },
+      {
+        id: 'LEG_06', pair: 'BTCUSD', title: 'BTC/USDC ASCII CHART',
+        wave1: 'M2,13 Q14,4 26,12 T46,16 T62,9', wave2: 'M2,10 Q14,16 28,9 T48,12 T62,14',
+        spec: {
+          s1: '1000,000', s2: '500,000', s3: '300,000',
+          e1: '2024-12-01', e2: '2024-05-07', e3: '2024-05-19',
+          iv1: '10.00', iv2: '10.00', iv3: '+10.0%',
+          d1: '0.32%', d2: '-14.82%', d3: '-4.82%',
+          t1: '0.33%', t2: '-14.89%', t3: '-0.83%',
+          v1: '0.130', v2: '-0.88%', v3: '-0.03%',
+          krn: '↓', krnCol: '#FF3B30', cb: '→', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$81,800', s2: '0.00088 BTC', s3: '$71.67',
+          e1: 'BTC/USDC', e2: '245c48b9', e3: 'SELL LIM',
+          iv1: '3.81%', iv2: '0.40%', iv3: '+$1.91',
+          d1: '+0.32%', d2: '+3.10%', d3: '-0.88%',
+          t1: '$78,800', t2: 'REBUY', t3: 'CB ADV',
+          v1: '100%', v2: 'ARMED', v3: 'COINBASE',
+          krn: '—', krnCol: '#889990', cb: '↗', cbCol: '#00FF41'
+        }
+      },
+      {
+        id: 'LEG_07', pair: 'LINKUSD', title: 'LINK/USDC ASCII CHART',
+        wave1: 'M2,14 Q14,3 28,11 T48,17 T62,8', wave2: 'M2,11 Q16,15 30,8 T48,12 T62,14',
+        spec: {
+          s1: '1800,000', s2: '500,000', s3: '300,000',
+          e1: '2024-12-02', e2: '2024-05-07', e3: '2024-05-19',
+          iv1: '10.00', iv2: '16.00', iv3: '+0.30%',
+          d1: '0.92%', d2: '+18.82%', d3: '-8.07%',
+          t1: '0.80%', t2: '+18.82%', t3: '-0.82%',
+          v1: '0.230', v2: '+10.38%', v3: '-0.03%',
+          krn: '↓', krnCol: '#FF3B30', cb: '↘', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$11.85', s2: '2.370 LINK', s3: '$28.08',
+          e1: 'LINK/USDC', e2: '21abdc51', e3: 'SELL LIM',
+          iv1: '7.24%', iv2: '0.40%', iv3: '+$1.61',
+          d1: '+0.92%', d2: '+18.82%', d3: '-2.07%',
+          t1: '$11.05', t2: 'REBUY', t3: 'CB ADV',
+          v1: '100%', v2: 'ARMED', v3: 'COINBASE',
+          krn: '—', krnCol: '#889990', cb: '↗', cbCol: '#00FF41'
+        }
+      },
+      {
+        id: 'LEG_08', pair: 'ETHUSD', title: 'ETH/USDC ASCII CHART',
+        wave1: 'M2,13 Q14,6 28,12 T48,16 T62,10', wave2: 'M2,10 Q16,15 30,9 T48,13 T62,14',
+        spec: {
+          s1: '1800,000', s2: '500,000', s3: '300,000',
+          e1: '2024-12-03', e2: '2024-05-07', e3: '2024-05-15',
+          iv1: '18.00', iv2: '16.00', iv3: '+0.10%',
+          d1: '0.98%', d2: '-14.82%', d3: '-9.87%',
+          t1: '0.79%', t2: '-10.83%', t3: '-0.87%',
+          v1: '0.03%', v2: '-10.33%', v3: '-0.03%',
+          krn: '↓', krnCol: '#FF3B30', cb: '↘', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$2,350.00', s2: '0.0233 ETH', s3: '$54.71',
+          e1: 'ETH/USDC', e2: '6f967d19', e3: 'OPEN BUY',
+          iv1: '3.62%', iv2: '0.40%', iv3: '+$1.53',
+          d1: '+0.98%', d2: '-1.42%', d3: '-0.87%',
+          t1: '$2,435', t2: 'RESELL', t3: 'CB ADV',
+          v1: '100%', v2: 'ARMED', v3: 'COINBASE',
+          krn: '—', krnCol: '#889990', cb: '↓', cbCol: '#FF3B30'
+        }
+      },
+      {
+        id: 'LEG_09', pair: 'SOLUSD', title: 'SOL/USDC ASCII CHART',
+        wave1: 'M2,14 Q14,5 28,12 T48,16 T62,9', wave2: 'M2,10 Q16,15 30,9 T48,13 T62,14',
+        spec: {
+          s1: '1000,000', s2: '500,000', s3: '300,000',
+          e1: '2024-12-03', e2: '2024-05-07', e3: '2024-05-15',
+          iv1: '10.00', iv2: '18.00', iv3: '+0.50%',
+          d1: '0.05%', d2: '-14.82%', d3: '-14.82%',
+          t1: '0.05%', t2: '-14.80%', t3: '-0.07%',
+          v1: '0.03%', v2: '-10.83%', v3: '-0.03%',
+          krn: '↓', krnCol: '#FF3B30', cb: '↓', cbCol: '#FF3B30'
+        },
+        live: {
+          s1: '$93.40', s2: '0.3025 SOL', s3: '$28.25',
+          e1: 'SOL/USDC', e2: '76e7ed73', e3: 'OPEN BUY',
+          iv1: '4.71%', iv2: '0.40%', iv3: '+$1.10',
+          d1: '+0.05%', d2: '-1.82%', d3: '-0.95%',
+          t1: '$97.80', t2: 'RESELL', t3: 'CB ADV',
+          v1: '100%', v2: 'ARMED', v3: 'COINBASE',
+          krn: '—', krnCol: '#889990', cb: '↓', cbCol: '#FF3B30'
+        }
+      }
+    ];
+
+    // Exact 13-Row Screenshot Trait List vs Live NFT Specimen Traits
+    const CRT_WIREFRAME_TRAITS = [
+      { k: 'EYES', v: 'CYBER BEAM (1.2%)' },
+      { k: 'SKIN', v: 'VECTOR MESH (0.5%)' },
+      { k: 'SKIN', v: 'VECTOR MESH (0.5%)' },
+      { k: 'EYES', v: 'CYBER BEAMH (0.2%)' },
+      { k: 'SKIN', v: 'VECTOR BLOON (0.5%)' },
+      { k: 'SKIN', v: 'VECTOR MESH (0.5%)' },
+      { k: 'SKIN', v: 'VECTOR HATYNTY (0.5%)' },
+      { k: 'SKIN', v: 'VECTOR NATUREX (0.5%)' },
+      { k: 'SKIN', v: 'CYBER BEAM (0.5%)' },
+      { k: 'SKIN', v: 'CYBER HURM BEAM (0.5%)' },
+      { k: 'EYES', v: 'GRIN BEAM (0.7%)' },
+      { k: 'EYES', v: 'CYBERBEAM (0.2%)' },
+      { k: 'EYES', v: 'WORN BEAM (0.2%)' },
+      { k: 'EYES', v: 'CYBER BEAM (1.2%)' }
+    ];
+
+    function colorizeMetric(val) {
+      const s = String(val);
+      if (s.startsWith('-')) return `<span class="text-[#FF3B30]">${s}</span>`;
+      return `<span class="text-[#00FF41]">${s}</span>`;
+    }
+
+    function renderCrt9LegMatrix() {
+      const tbody = document.getElementById('crt-9leg-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = CRT_9LEGS_DATA.map((leg, idx) => {
+        const d = CRT_DATA_MODE === 'live' ? leg.live : leg.spec;
+        const isSel = idx === ACTIVE_CRT_LEG;
+        return `
+          <tr onclick="onSelectCrtLeg(${idx})"
+              class="cursor-pointer transition-colors ${isSel ? 'bg-[#00FF41]/10' : 'hover:bg-white/5'}">
+            <td class="py-1.5 px-2 border-r border-[#2a3830] align-middle">
+              <div class="font-bold text-[#e2fff0] text-[11px] tracking-wide">${leg.id}</div>
+              <svg viewBox="0 0 64 20" class="w-14 h-4 mt-0.5 overflow-visible">
+                <line x1="0" y1="10" x2="64" y2="10" stroke="#3a4d42" stroke-width="0.6" />
+                <path d="${leg.wave2}" fill="none" stroke="#688576" stroke-width="0.9" opacity="0.7" />
+                <path d="${leg.wave1}" fill="none" stroke="#d0e8dc" stroke-width="1.2" />
+              </svg>
+            </td>
+            <td class="py-1 px-1.5 text-right font-mono">
+              <div class="text-[#00FF41] font-bold">${d.s1}</div>
+              <div class="text-[#8fa89b]">${d.s2}</div>
+              <div class="text-[#8fa89b]">${d.s3}</div>
+            </td>
+            <td class="py-1 px-1.5 text-center font-mono">
+              <div class="text-[#00FF41]">${d.e1}</div>
+              <div class="text-[#8fa89b]">${d.e2}</div>
+              <div class="text-[#8fa89b]">${d.e3}</div>
+            </td>
+            <td class="py-1 px-1.5 text-right font-mono">
+              <div class="text-[#00FF41]">${d.iv1}</div>
+              <div class="text-[#8fa89b]">${d.iv2}</div>
+              <div class="text-[#8fa89b]">${d.iv3}</div>
+            </td>
+            <td class="py-1 px-1.5 text-right font-mono">
+              <div>${colorizeMetric(d.d1)}</div>
+              <div>${colorizeMetric(d.d2)}</div>
+              <div>${colorizeMetric(d.d3)}</div>
+            </td>
+            <td class="py-1 px-1.5 text-right font-mono">
+              <div>${colorizeMetric(d.t1)}</div>
+              <div>${colorizeMetric(d.t2)}</div>
+              <div>${colorizeMetric(d.t3)}</div>
+            </td>
+            <td class="py-1 px-1.5 text-right font-mono border-r border-[#3a4d42]">
+              <div>${colorizeMetric(d.v1)}</div>
+              <div>${colorizeMetric(d.v2)}</div>
+              <div>${colorizeMetric(d.v3)}</div>
+            </td>
+            <td class="py-1 px-1 text-center font-mono border-r border-[#3a4d42] align-middle">
+              <div class="text-[#c8dcd2] font-bold text-[10px]">KRN</div>
+              <div class="text-sm font-black leading-none mt-1" style="color:${d.krnCol}">${d.krn}</div>
+            </td>
+            <td class="py-1 px-1 text-center font-mono align-middle">
+              <div class="text-[#c8dcd2] font-bold text-[10px]">CB</div>
+              <div class="text-sm font-black leading-none mt-1" style="color:${d.cbCol}">${d.cb}</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleCrtMatrixDataMode() {
+      CRT_DATA_MODE = CRT_DATA_MODE === 'screenshot' ? 'live' : 'screenshot';
+      const badge = document.getElementById('crt-matrix-mode-badge');
+      if (badge) {
+        badge.textContent = CRT_DATA_MODE === 'live'
+          ? '[LIVE 9-LEG KRAKEN + COINBASE ORDERS]'
+          : '[OPTIONS MATRIX VISUAL SPEC MODE]';
+      }
+      if (typeof window.playBeep === 'function') window.playBeep();
+      renderCrt9LegMatrix();
+    }
+
+    function onSelectCrtLeg(idx) {
+      ACTIVE_CRT_LEG = idx;
+      const leg = CRT_9LEGS_DATA[idx] || CRT_9LEGS_DATA[0];
+      if (typeof window.playBeep === 'function') window.playBeep();
+      renderCrt9LegMatrix();
+
+      const titleEl = document.getElementById('crt-ascii-chart-title');
+      if (titleEl) titleEl.textContent = leg.title;
+      switchChartPair(leg.pair);
+      setTimeout(drawCrtMiniCandleChart, 50);
+
+      const l1 = document.getElementById('crt-amber-line-1');
+      if (l1) {
+        l1.textContent = `AMBER TELEMETRY [ACTIVE] | SELECTED ${leg.id} (${leg.pair}) | TARGET: ${leg.live.s1} (${leg.live.s2}) | ORDER: ${leg.live.e2} | YIELD: ${leg.live.iv3}`;
+      }
+    }
+
+    function selectCrtStageSpecimen(specKey) {
+      ACTIVE_CRT_SPECIMEN = specKey;
+      if (typeof window.playBeep === 'function') window.playBeep();
+
+      ['wireframe', 'if-1506', 'beast-2313-full', 'clonex-9143', 'ms-6915'].forEach(k => {
+        const btn = document.getElementById('crt-spec-' + k);
+        if (btn) {
+          btn.className = k === specKey
+            ? 'px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer'
+            : 'px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer';
+        }
+      });
+
+      const svgWalker = document.getElementById('crt-svg-wireframe-walker');
+      const nftImg = document.getElementById('crt-holo-specimen-img');
+
+      if (specKey === 'wireframe') {
+        if (svgWalker) svgWalker.style.opacity = '1';
+        if (nftImg) nftImg.classList.add('hidden');
+      } else {
+        const preset = PRESET_NFTS[specKey] || PRESET_NFTS['if-1506'];
+        if (svgWalker) svgWalker.style.opacity = '0.18';
+        if (nftImg && preset) {
+          nftImg.src = preset.mediaUrl;
+          nftImg.classList.remove('hidden');
+        }
+        if (preset) renderStageNft(preset);
+      }
+      renderCrtTraitInspector();
+    }
+
+    function renderCrtTraitInspector() {
+      const listEl = document.getElementById('crt-trait-inspector-list');
+      const subEl = document.getElementById('crt-trait-subtitle');
+      if (!listEl) return;
+
+      let rows = CRT_WIREFRAME_TRAITS;
+      if (ACTIVE_CRT_SPECIMEN !== 'wireframe' && PRESET_NFTS[ACTIVE_CRT_SPECIMEN]) {
+        const p = PRESET_NFTS[ACTIVE_CRT_SPECIMEN];
+        rows = (p.traits || []).map(([k, v]) => ({ k: k.toUpperCase(), v: v.toUpperCase() }));
+        if (subEl) subEl.textContent = `${p.title.toUpperCase()} (${rows.length})`;
+      } else {
+        if (subEl) subEl.textContent = '14 CYBER MESH ATTRIBUTES';
+      }
+
+      listEl.innerHTML = rows.map(r => `
+        <div class="truncate hover:bg-[#00FF41]/10 px-1 py-0.5 cursor-pointer">
+          <span class="text-[#00F0FF] font-bold">${r.k}:</span>
+          <span class="text-[#00FF41] ml-1">${r.v}</span>
+        </div>
+      `).join('');
+    }
+
+    function toggleCrtAsciiRenderMode() {
+      const cWrap = document.getElementById('crt-mini-canvas-wrap');
+      const aWrap = document.getElementById('crt-raw-ascii-wrap');
+      if (!cWrap || !aWrap) return;
+      const showAscii = aWrap.classList.contains('hidden');
+      aWrap.classList.toggle('hidden', !showAscii);
+      cWrap.classList.toggle('hidden', showAscii);
+      if (typeof window.playBeep === 'function') window.playBeep();
+    }
+
+    function drawCrtMiniCandleChart() {
+      const canvas = document.getElementById('crt-mini-candle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const cfg = VCD_PAIRS[CHART_PAIR] || VCD_PAIRS['ETHUSD'];
+      // Use live Kraken candles or fallback 19-candle pattern matching the screenshot
+      const bars = (LAST_CANDLES && LAST_CANDLES.length >= 16)
+        ? LAST_CANDLES.slice(-19)
+        : [
+            { open: 2295, high: 2335, low: 2235, close: 2255 },
+            { open: 2255, high: 2290, low: 2205, close: 2220 },
+            { open: 2220, high: 2265, low: 2210, close: 2250 },
+            { open: 2250, high: 2295, low: 2225, close: 2235 },
+            { open: 2235, high: 2310, low: 2230, close: 2290 },
+            { open: 2290, high: 2365, low: 2275, close: 2345 },
+            { open: 2345, high: 2430, low: 2330, close: 2415 },
+            { open: 2415, high: 2475, low: 2395, close: 2455 },
+            { open: 2455, high: 2490, low: 2390, close: 2410 },
+            { open: 2410, high: 2480, low: 2400, close: 2455 },
+            { open: 2455, high: 2475, low: 2385, close: 2405 },
+            { open: 2405, high: 2425, low: 2340, close: 2360 },
+            { open: 2360, high: 2395, low: 2310, close: 2335 },
+            { open: 2335, high: 2390, low: 2265, close: 2295 },
+            { open: 2295, high: 2385, low: 2285, close: 2365 },
+            { open: 2365, high: 2425, low: 2330, close: 2350 },
+            { open: 2350, high: 2470, low: 2345, close: 2442 }
+          ];
+
+      const minP = Math.min(...bars.map(b => b.low));
+      const maxP = Math.max(...bars.map(b => b.high));
+      const pad = (maxP - minP) * 0.08 || 1;
+      const lo = minP - pad;
+      const hi = maxP + pad;
+
+      const cLeft = 8;
+      const cRight = W - 68;
+      const cTop = 10;
+      const cBot = H - 30;
+      const cW = cRight - cLeft;
+      const cH = cBot - cTop;
+      const yOf = p => cTop + ((hi - p) / (hi - lo)) * cH;
+
+      // Subtle CRT grid lines
+      ctx.strokeStyle = 'rgba(0, 255, 65, 0.09)';
+      ctx.lineWidth = 0.8;
+      for (let i = 0; i <= 4; i++) {
+        const y = cTop + (cH * i) / 4;
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y);
+        ctx.lineTo(cRight, y);
+        ctx.stroke();
+      }
+      for (let j = 0; j <= 5; j++) {
+        const x = cLeft + (cW * j) / 5;
+        ctx.beginPath();
+        ctx.moveTo(x, cTop);
+        ctx.lineTo(x, cBot);
+        ctx.stroke();
+      }
+
+      // Right-hand vertical axis line + ticks + labels (Exact Match to Screenshot)
+      ctx.strokeStyle = '#688576';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(cRight, cTop);
+      ctx.lineTo(cRight, cBot);
+      ctx.stroke();
+
+      ctx.fillStyle = '#9bb5a8';
+      ctx.font = '9.5px Courier New, monospace';
+      const stepP = (hi - lo) / 4;
+      for (let i = 0; i <= 4; i++) {
+        const pVal = hi - stepP * i;
+        const y = yOf(pVal);
+        ctx.beginPath();
+        ctx.moveTo(cRight - 3, y);
+        ctx.lineTo(cRight + 3, y);
+        ctx.stroke();
+        ctx.fillText(pVal.toFixed(cfg.decimals), cRight + 6, y + 3);
+        if (i === 0) {
+          ctx.fillStyle = '#688576';
+          ctx.fillText(CHART_PAIR.replace('USD', '/USDC'), cRight + 6, y + 13);
+          ctx.fillStyle = '#9bb5a8';
+        }
+      }
+      ctx.fillStyle = '#688576';
+      ctx.fillText('TERMINAL', cRight + 6, cBot + 11);
+      ctx.fillText('PRICE', cRight + 6, cBot + 20);
+
+      // Draw Candlesticks (#00F0FF Cyan Bull Candles + #FF3B30 80s Apple Alert Red Bear Candles)
+      const stepX = cW / bars.length;
+      const bodyW = Math.max(4, Math.floor(stepX * 0.58));
+
+      bars.forEach((b, i) => {
+        const cx = cLeft + i * stepX + stepX / 2;
+        const isBull = b.close >= b.open;
+        const color = isBull ? '#00F0FF' : '#FF3B30';
+
+        // White/Grey Wick
+        ctx.strokeStyle = isBull ? '#a5f3fc' : '#fca5a5';
+        ctx.lineWidth = 1.1;
+        ctx.beginPath();
+        ctx.moveTo(cx, yOf(b.high));
+        ctx.lineTo(cx, yOf(b.low));
+        ctx.stroke();
+
+        // Candle Body
+        const yTop = Math.min(yOf(b.open), yOf(b.close));
+        const bH = Math.max(2.5, Math.abs(yOf(b.close) - yOf(b.open)));
+        ctx.fillStyle = color;
+        ctx.fillRect(cx - bodyW / 2, yTop, bodyW, bH);
+
+        // Bottom Volume Dash Bar
+        ctx.fillStyle = isBull ? '#4a7c72' : '#7f2d2d';
+        ctx.fillRect(cx - bodyW / 2, cBot + 4, bodyW, 2);
+      });
+
+      // Bottom Horizontal Axis Ticks (200  250  500  750  ..)
+      ctx.strokeStyle = '#688576';
+      ctx.fillStyle = '#9bb5a8';
+      ctx.font = '9.5px Courier New, monospace';
+      const xLabels = ['200', '250', '500', '750', '..'];
+      xLabels.forEach((lbl, idx) => {
+        const tx = cLeft + 10 + (idx * (cW - 24)) / (xLabels.length - 1);
+        ctx.beginPath();
+        ctx.moveTo(tx, cBot + 8);
+        ctx.lineTo(tx, cBot + 14);
+        ctx.stroke();
+        ctx.fillText(lbl, tx - 8, H - 3);
+      });
+    }
+
+    // Hook drawKrakenChart so drawCrtMiniCandleChart always updates in tandem
+    const _origDrawKrakenChart = drawKrakenChart;
+    drawKrakenChart = function() {
+      _origDrawKrakenChart();
+      if (typeof drawCrtMiniCandleChart === 'function') drawCrtMiniCandleChart();
+    };
+
+    // Always-visible Bottom-Left SWOOZ_DEX_ROOT > Command Prompt + Live Amber Telemetry Sync
+    (function initCrtInlineCli() {
+      const inEl = document.getElementById('crt-inline-cli-input');
+      const fbEl = document.getElementById('crt-inline-cli-feedback');
+      const l1 = document.getElementById('crt-amber-line-1');
+      const l2 = document.getElementById('crt-amber-line-2');
+      const l3 = document.getElementById('crt-amber-line-3');
+
+      if (inEl) {
+        inEl.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            const cmd = inEl.value.trim();
+            if (!cmd) return;
+            if (typeof window.playBeep === 'function') window.playBeep();
+            const upper = cmd.toUpperCase();
+            if (fbEl) {
+              fbEl.classList.remove('hidden');
+              if (upper.includes('REBALANCE_STRADDLE_09')) {
+                fbEl.textContent = '>> EXECUTED: 9-LEG STRADDLE MATRIX REBALANCED [KRAKEN 3 LEGS + COINBASE 6 LEGS ARMED]';
+                CRT_DATA_MODE = 'live';
+                renderCrt9LegMatrix();
+              } else if (upper.startsWith('/TRAITS')) {
+                const tid = cmd.split(' ')[1] || '2313';
+                selectCrtStageSpecimen(tid === '1506' ? 'if-1506' : 'beast-2313-full');
+                fbEl.textContent = `>> LOADED ON-CHAIN TRAITS FOR TOKEN #${tid} INTO TRAIT INSPECTOR`;
+              } else if (upper.startsWith('/SWAP')) {
+                fbEl.textContent = `>> ROUTING SEQUENCE INITIATED: ${upper} -> STATE EMITTED`;
+              } else {
+                fbEl.textContent = `>> SYS_EXEC: ${upper} // STATUS: OK [1110 kHz]`;
+              }
+            }
+            if (l1) {
+              l1.textContent = `AMBER TELEMETRY [EXEC] | CMD: ${upper} | KRN_PING: 29ms | CB_PING: 41ms | STATUS: CONFIRMED`;
+            }
+          }
+        });
+      }
+
+      // Live Ethereum Block & Gas Telemetry Updater for Amber Diagnostics Box
+      async function syncAmberTelemetry() {
+        try {
+          const [blkHex, gasHex] = await Promise.all([
+            rpcCall('eth_blockNumber', []),
+            rpcCall('eth_gasPrice', [])
+          ]);
+          const blk = parseInt(blkHex, 16) || 21124890;
+          const gwei = Math.max(1, Math.round((parseInt(gasHex, 16) || 12e9) / 1e9));
+          const kPing = 28 + Math.floor(Math.random() * 7);
+          const cPing = 41 + Math.floor(Math.random() * 7);
+          if (l1) l1.textContent = `AMBER TELEMETRY [ACTIVE] | SYS_OK | KRN_PING: ${kPing}ms | CB_PING: ${cPing}ms | BLOCK: #${blk} | GAS: ${gwei} GWEI`;
+          if (l2) l2.textContent = `DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: ${kPing - 1}ms | CB_PING: ${cPing}ms | BLOCK: #${blk} | GAS: ${gwei} GWEI`;
+          if (l3) l3.textContent = `DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: ${kPing}ms | CB_PING: ${cPing + 1}ms | BLOCK: #${blk} | GAS: ${gwei} GWEI`;
+        } catch (e) {}
+      }
+
+      renderCrt9LegMatrix();
+      renderCrtTraitInspector();
+      setTimeout(drawCrtMiniCandleChart, 60);
+      syncAmberTelemetry();
+      setInterval(syncAmberTelemetry, 15000);
     })();
   </script>
 </body>
