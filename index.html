@@ -100,7 +100,6 @@
     .vcd-pod,
     #sec-targets,
     #sec-viewer,
-    #sec-partner,
     #sec-markets,
     #sec-calc {
       position: relative;
@@ -109,6 +108,24 @@
       background: linear-gradient(180deg, rgba(23, 28, 42, 0.92) 0%, rgba(17, 21, 32, 0.95) 100%);
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
     }
+
+    /* SWOOZ DEX 3D ANSI Art Sidebar Logo (\033[0;37m / 0;90 / 0;90;47 / 0;97;47 / 0;97 / 0;96) */
+    .ansi-logo-pre {
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 3.7px;
+      line-height: 1.0;
+      letter-spacing: 0px;
+      white-space: pre;
+      margin: 0;
+      padding: 0;
+      color: #d1d5db;
+    }
+    .a37 { color: #d1d5db; }
+    .a90 { color: #6b7280; }
+    .a90b47 { color: #6b7280; background-color: #d1d5db; }
+    .a97b47 { color: #ffffff; background-color: #d1d5db; }
+    .a97 { color: #ffffff; }
+    .a96 { color: #22d3ee; }
     .vcd-stencil {
       font-family: 'JetBrains Mono', monospace;
       letter-spacing: 0.08em;
@@ -187,11 +204,10 @@
       <!-- ================= LEFT SIDEBAR NAVIGATION (Exact Match to Flow Render) ================= -->
       <aside class="w-full lg:w-[225px] shrink-0 orbit-card p-3.5 flex flex-col justify-between lg:min-h-[810px]">
         <div>
-          <!-- ORBIT Brand Header -->
-          <div class="flex items-center justify-between lg:justify-start gap-3 px-1 pb-4 mb-3 border-b border-white/10">
-            <div class="flex items-center gap-2.5 cursor-pointer" onclick="switchOrbitSidebar('dashboard')">
-              <!-- Glowing Cyan/Purple Ringed Planet SVG Logo -->
-              <svg viewBox="0 0 48 48" class="w-10 h-10 shrink-0 drop-shadow-[0_0_12px_rgba(0,245,212,0.45)]">
+          <!-- SWOOZ DEX 3D ANSI Art Brand Header -->
+          <div class="flex items-center justify-between lg:justify-start gap-2 px-0.5 pb-4 mb-3 border-b border-white/10 overflow-hidden">
+            <div class="ansi-logo-wrap cursor-pointer select-none" onclick="switchOrbitSidebar('dashboard')" title="SWOOZ DEX">
+              <svg class="w-0 h-0 absolute pointer-events-none" aria-hidden="true">
                 <defs>
                   <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#00f5d4" />
@@ -199,25 +215,31 @@
                     <stop offset="100%" stop-color="#a855f7" />
                   </linearGradient>
                 </defs>
-                <circle cx="24" cy="24" r="11" fill="none" stroke="url(#orbitGrad)" stroke-width="2.6" />
-                <ellipse cx="24" cy="24" rx="21" ry="7.5" transform="rotate(-28 24 24)" fill="none" stroke="url(#orbitGrad)" stroke-width="2.4" />
-                <circle cx="38" cy="11" r="2.2" fill="#00f5d4" />
-                <circle cx="10" cy="37" r="1.8" fill="#a855f7" />
               </svg>
-              <div>
-                <div class="text-lg font-extrabold tracking-wider text-white leading-none">ORBIT</div>
-                <div class="text-[9.5px] font-bold tracking-[0.16em] text-[#8b95a9] uppercase mt-1">TRACKER &amp; DEX</div>
-              </div>
+              <pre class="ansi-logo-pre"><span class="a37">       </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a97b47">░▒▓█▓</span><span class="a97">▓▒░</span><span class="a37"> </span><span class="a97">▄</span><span class="a37">▄▄                    ▄</span><span class="a97b47">▓█▓▒░</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">      ▄</span><span class="a97b47">▓█▓▒░</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">    </span><span class="a97">░▒▓</span><span class="a97b47">▓█▓▒░</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">       </span>
+<span class="a37">     </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██</span><span class="a90b47">▄</span><span class="a96">▀</span><span class="a97">▀▀</span><span class="a37">▀▀</span><span class="a90">▀▀</span><span class="a37"> </span><span class="a97b47">▓▒░</span><span class="a90">░</span><span class="a37">                 ▄</span><span class="a97b47">▒▓█▀</span><span class="a97">▀</span><span class="a96">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">  ▄</span><span class="a97b47">▒▓█▀</span><span class="a97">▀</span><span class="a96">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">  </span><span class="a90">▀▀</span><span class="a37">▀▀</span><span class="a97">▀▀</span><span class="a96">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">     </span>
+<span class="a37">   </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">         </span><span class="a97b47">▒░</span><span class="a90b47">░</span><span class="a90">░</span><span class="a37">  </span><span class="a97">▄</span><span class="a37">   </span><span class="a97">▄</span><span class="a37">▄▄</span><span class="a90">▄</span><span class="a37">       </span><span class="a97b47">░▒</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">    </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a37"> </span><span class="a97b47">░▒</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">    </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a37">         </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">   </span>
+<span class="a37"> </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██████</span><span class="a90b47">░▒▓▒░▀</span><span class="a90">▄</span><span class="a37">  </span><span class="a97b47">░</span><span class="a37">█</span><span class="a90b47">▒</span><span class="a90">▒</span><span class="a37">  </span><span class="a97b47">▒░</span><span class="a90b47">▀</span><span class="a90">░▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">     </span><span class="a97b47">░░▒</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">   </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">█</span><span class="a90b47">░▓</span><span class="a37"> </span><span class="a97b47">░░▒</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">   </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">█</span><span class="a90b47">░▓</span><span class="a37">  </span><span class="a90">▄</span><span class="a90b47">▀░▒▓▒░</span><span class="a37">██████</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37"> </span>
+<span class="a37">           </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">███</span><span class="a90">▄</span><span class="a37"> ██</span><span class="a90b47">▓</span><span class="a90">▓</span><span class="a37"> </span><span class="a90">▄</span><span class="a97b47">░</span><span class="a37">██</span><span class="a90">▒</span><span class="a37">  </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">   </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a97b47">░</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">███</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37"> </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a97b47">░</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">███</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37"> </span><span class="a90">▄</span><span class="a37">███</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">           </span>
+<span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">███████████</span><span class="a90b47">░▒▄</span><span class="a90">▀</span><span class="a37"> ███</span><span class="a90">█</span><span class="a90b47">▀</span><span class="a37">█████</span><span class="a90b47">▀</span><span class="a90">▄▄▄█</span><span class="a37">█</span><span class="a90b47">░▓▓</span><span class="a90">▄</span><span class="a37">   </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">█████</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">     </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">█████</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">   </span><span class="a90">▀</span><span class="a90b47">▄▒░</span><span class="a37">█</span><span class="a90b47">▀▀▀▀▀▀▀▀▀▀▀</span><span class="a90">▄</span>
+<span class="a97">▀</span><span class="a37">▀▀▀▀▀▀▀▀▀▀▀▀</span><span class="a90">▀</span><span class="a37">    </span><span class="a97">▀</span><span class="a90b47">▄</span><span class="a37">████</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██████</span><span class="a90b47">░▒▓█</span><span class="a90">▀</span><span class="a37">     </span><span class="a90">▀</span><span class="a37">▀▀▀</span><span class="a90">▀</span><span class="a37">         </span><span class="a90">▀</span><span class="a37">▀▀▀</span><span class="a90">▀</span><span class="a37">        </span><span class="a90">▀</span><span class="a37">▀▀▀▀▀▀▀▀▀▀▀▀</span><span class="a97">▀</span></pre>
+              <pre class="ansi-logo-pre mt-1.5"><span class="a37"> </span><span class="a97b47">▓█▓▒░</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">                   </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a97b47">░▒▓█▓</span><span class="a37">  </span><span class="a90">▄▄</span><span class="a37">           </span><span class="a90">▄▄</span><span class="a37"> </span>
+<span class="a37"> </span><span class="a97">▀▀▀</span><span class="a96">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">               </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██</span><span class="a90b47">▄</span><span class="a96">▀</span><span class="a97">▀▀▀</span><span class="a37"> </span><span class="a90">▀</span><span class="a90b47">▓▒░▀</span><span class="a90">▄</span><span class="a37">     </span><span class="a90">▄</span><span class="a90b47">▀░▒▓</span><span class="a90">▀</span>
+<span class="a37">  </span><span class="a97b47">▓▒</span><span class="a90b47">▓</span><span class="a37"> </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">           </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">        </span><span class="a90">▀</span><span class="a90b47">▄░</span><span class="a37">█</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37"> </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">█</span><span class="a90b47">░▄</span><span class="a90">▀</span><span class="a37">  </span>
+<span class="a37">  </span><span class="a97b47">▒░</span><span class="a90b47">▒</span><span class="a37">   </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">       </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██████</span><span class="a90b47">░▒▓</span><span class="a37">       </span><span class="a90b47">▄</span><span class="a37">███</span><span class="a97b47">░</span><span class="a37">███</span><span class="a90b47">▄</span><span class="a37">    </span>
+<span class="a37">  </span><span class="a97b47">░</span><span class="a37">█</span><span class="a90b47">░</span><span class="a37">     </span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">   </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a37">             </span><span class="a90">▄</span><span class="a90b47">▀</span><span class="a37">██</span><span class="a90b47">▄</span><span class="a90">▀</span><span class="a90b47">▄</span><span class="a37">██</span><span class="a90b47">▀</span><span class="a90">▄</span><span class="a37">   </span>
+<span class="a37">  ████████████</span><span class="a90b47">░▒</span><span class="a90">█</span><span class="a37"> </span><span class="a90">█</span><span class="a90b47">▒░</span><span class="a37">███████████</span><span class="a90b47">▀</span><span class="a37">   </span><span class="a90">▄</span><span class="a90b47">▀▒░▄</span><span class="a90">▀</span><span class="a37">   </span><span class="a90">▀</span><span class="a90b47">▄░▒▀</span><span class="a90">▄</span><span class="a37"> </span>
+<span class="a37">  </span><span class="a97">▀</span><span class="a37">▀▀▀▀▀▀▀▀▀▀▀▀</span><span class="a90">▀</span><span class="a37">   </span><span class="a90">▀</span><span class="a37">▀▀▀▀▀▀▀▀▀▀▀▀</span><span class="a97">▀</span><span class="a37">   </span><span class="a90">▀▀▀▀</span><span class="a37">       </span><span class="a90">▀▀▀▀</span><span class="a37"> </span></pre>
             </div>
 
             <!-- Mobile Quick Vault Unlock Button -->
-            <button onclick="onVaultButtonClick()" class="lg:hidden px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-xs font-bold text-[#2dd4bf]">
+            <button onclick="onVaultButtonClick()" class="lg:hidden px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-xs font-bold text-[#2dd4bf] shrink-0">
               🔐 PIN
             </button>
           </div>
 
-          <!-- Left Sidebar Navigation Categories (Consolidated from Bottom Bar — Clean Single Navigation) -->
-          <nav class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-1.5 text-[13px] font-semibold">
+          <!-- Left Sidebar Navigation Categories -->
+          <nav class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-1.5 text-[13px] font-semibold">
             <button id="orbit-nav-orbit" onclick="switchOrbitSidebar('orbit')"
                     class="orbit-nav-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition cursor-pointer">
               <span class="text-sm shrink-0">🌌</span>
@@ -230,12 +252,6 @@
               <span>Charts &amp; 9-Leg</span>
             </button>
 
-            <button id="orbit-nav-partner" onclick="switchOrbitSidebar('partner')"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-purple-300 hover:text-white hover:bg-purple-500/15 text-left transition cursor-pointer">
-              <span class="text-sm shrink-0">🧋</span>
-              <span>BobaTea (#1716)</span>
-            </button>
-
             <button id="orbit-nav-targets" onclick="switchOrbitSidebar('targets')"
                     class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
               <span class="text-sm shrink-0">🎯</span>
@@ -245,7 +261,7 @@
             <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
                     class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
               <span class="text-sm shrink-0">🎬</span>
-              <span>NFT Stage (18)</span>
+              <span>NFT Stage</span>
             </button>
 
             <button id="orbit-nav-markets" onclick="switchOrbitSidebar('markets')"
@@ -267,26 +283,7 @@
             </button>
           </nav>
 
-          <!-- Live 9-Leg Straddle Mini Status Pill in Sidebar -->
-          <div class="hidden lg:block mt-5 p-3 rounded-xl bg-[#191f2e]/90 border border-white/10 space-y-1.5 text-[11px]">
-            <div class="flex items-center justify-between">
-              <span class="text-[#2dd4bf] font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-[#10f1b6] animate-ping"></span>
-                9-Leg Straddle
-              </span>
-              <span class="text-[#8b95a9] font-mono">v6.0</span>
-            </div>
-            <div class="text-white/80 font-mono text-[10.5px]">Kraken (3) + Coinbase (6)</div>
-            <div class="text-[#a855f7] font-mono text-[10.5px]">ETH $<span id="hdr-eth-rate">2,428.07</span></div>
-            <div class="pt-1 flex gap-1">
-              <button onclick="switchMainView('crt')" class="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[10px] text-[#2dd4bf] border border-white/10 font-mono">
-                🖥️ CRT View
-              </button>
-              <button onclick="switchMainView('split')" class="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[10px] text-purple-300 border border-white/10 font-mono">
-                📖 All Panels
-              </button>
-            </div>
-          </div>
+          <span id="hdr-eth-rate" class="hidden">2,250.41</span>
         </div>
 
         <!-- Bottom Pinned Settings / Vault Lock Button (Exact Match to Flow Render Bottom-Left) -->
@@ -373,13 +370,11 @@
               <span class="text-xs text-[#8b95a9] font-medium hidden sm:inline">Connected:</span>
               <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
                       class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
-                <option value="all" class="bg-[#131722] text-white">7 Wallets (swooz.eth • 0x6ddA...31b4)</option>
+                <option value="all" class="bg-[#131722] text-white">6 Wallets (swooz.eth • 0x6ddA...31b4)</option>
                 <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH + 0.1332 SOL)</option>
                 <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0705 ETH + SOL/BTC/LINK)</option>
-                <option value="vaults-only" class="bg-[#131722] text-white">5 On-Chain Vaults (133 Mini Supers)</option>
-                <option value="combined-boba" class="bg-[#131722] text-white">+ BobaTea #1716 Combined ($2,820.77)</option>
-                <option value="partner-1716" class="bg-[#131722] text-white">Open BobaTea #1716 Vault View ↗</option>
-                <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (#5284 / #1716)...</option>
+                <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers)</option>
+                <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (#5284)...</option>
               </select>
               <div class="flex items-center gap-1 pl-1 border-l border-white/10">
                 <span class="w-5 h-5 rounded-md bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-[11px]" title="MetaMask (swooz.eth)">🦊</span>
@@ -387,7 +382,7 @@
               </div>
             </div>
 
-            <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN 5284) or Partner Vault (PIN 1716)"
+            <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN 5284)"
                     class="px-2.5 py-2 rounded-xl bg-[#131722] hover:bg-[#1c2233] border border-white/10 text-xs text-[#8b95a9] hover:text-white flex items-center gap-1.5 transition cursor-pointer shrink-0">
               <span>🔔</span>
               <strong id="orbit-gas-gwei" class="text-white font-mono">18 Gwei</strong>
@@ -418,9 +413,9 @@
                 <div class="flex flex-wrap items-center gap-2">
                   <select id="orbit-portfolio-scope" onchange="setOrbitPortfolioScope(this.value)"
                           class="px-2.5 py-1.5 rounded-lg bg-[#1a2030] border border-white/10 text-xs text-[#c5cee0] font-medium outline-none cursor-pointer">
-                    <option value="swooz">All Wallets (7)</option>
+                    <option value="swooz">All Wallets (6)</option>
                     <option value="dex">9-Leg DEX Only</option>
-                    <option value="combined">+ BobaTea (#1716)</option>
+                    <option value="vaults">On-Chain Vaults (4)</option>
                   </select>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
@@ -704,7 +699,7 @@
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
               <div class="flex items-center justify-between mb-3">
                 <h3 class="text-base font-bold text-white">Yield &amp; Platforms <span class="text-xs font-normal text-[#8b95a9]">(Active DEX &amp; Vaults)</span></h3>
-                <span class="text-[#8b95a9] text-xs font-mono">7 Connected ▴</span>
+                <span class="text-[#8b95a9] text-xs font-mono">6 Connected ▴</span>
               </div>
 
               <div class="space-y-2.5 text-xs my-auto">
@@ -732,28 +727,16 @@
                   <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$307.77</div>
                 </div>
 
-                <!-- Platform 3: Ethereum Mainnet 5 Connected Vaults -->
+                <!-- Platform 3: Ethereum Mainnet 4 Connected Vaults -->
                 <div onclick="switchOrbitSidebar('viewer')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer">
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#10b981]/25 border border-[#10f1b6] text-[#10f1b6] flex items-center justify-center text-xs font-bold shrink-0">🦊</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Ethereum Vaults <span class="text-[#8b95a9] font-normal">(5 Connected Wallets)</span> -</div>
-                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth (132 MS) • 0xae1c (#928) • kushandkandie</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Ethereum Vaults <span class="text-[#8b95a9] font-normal">(4 Connected Wallets)</span> -</div>
+                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth (132 MS) • 0xae1c (#928) • CCS &amp; 2022 OG</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-vaults-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$426.59</div>
-                </div>
-
-                <!-- Platform 4: BobaTeaisGood4Me Partner Fold 8 Vault (#1716) -->
-                <div onclick="switchOrbitSidebar('partner')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer border-t border-white/5 pt-2.5">
-                  <div class="flex items-center gap-2.5 min-w-0">
-                    <span class="w-6 h-6 rounded-full bg-pink-500/25 border border-pink-400 text-pink-300 flex items-center justify-center text-xs font-bold shrink-0">🧋</span>
-                    <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">BobaTea Vault <span class="text-[#8b95a9] font-normal">(IF #1716 + 2 CloneX)</span> -</div>
-                      <div class="text-[10.5px] text-pink-300 font-mono truncate">Partner Fold 8 (#1716) • 0.530 ETH NFT Floor</div>
-                    </div>
-                  </div>
-                  <div id="orbit-plat-boba-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$1,216.70</div>
+                  <div id="orbit-plat-vaults-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$400.33</div>
                 </div>
               </div>
             </div>
@@ -1383,373 +1366,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           <div class="flex justify-end gap-2">
             <button onclick="toggleAddWalletForm()" class="px-2.5 py-1 rounded bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)]">Cancel</button>
             <button onclick="addCustomWallet()" class="px-3 py-1 rounded bg-emerald-500 text-white font-semibold">Save &amp; Sync On-Chain</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 🧋 NEW: BobaTeaisGood4Me Personal Vault (#1716) — Quantitative Strategy Blueprint, Personal Straddle Calculator & Self-Setup Playbook -->
-      <div id="sec-partner" class="hidden bg-[var(--card)] border border-purple-500/45 rounded-xl p-4 shadow-sm space-y-4">
-        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-3">
-          <div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 text-[11px] font-mono font-bold">
-                🧋 BOBATEAISGOOD4ME • VAULT #1716 • GALAXY Z FOLD 8
-              </span>
-              <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[11px] font-mono font-bold">
-                50% FEE ARBITRAGE + 2-SIDED STRADDLE
-              </span>
-            </div>
-            <h2 class="text-base font-bold text-[var(--foreground)] mt-1">
-              🧋 BobaTeaisGood4Me — Quantitative Strategy Blueprint &amp; Personal Straddle Builder
-            </h2>
-            <p class="text-xs text-[var(--muted-foreground)]">
-              How the 2-Sided Automated Market-Making Straddle monetizes volatility in both directions—plus an interactive calculator to size and apply it to your own wallets &amp; exchange accounts.
-            </p>
-          </div>
-          <a href="strategy_explainer_visual.html" target="_blank"
-             class="px-3 py-1.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition">
-            <span>📊</span> <span>Open Full Visual Card ↗</span>
-          </a>
-        </div>
-
-        <!-- 🦊 HER VERIFIED ON-CHAIN WALLET & NFT SHOWCASE (kushandkandie.eth — Unlocked w/ PIN 1716) -->
-        <div class="bg-[var(--secondary)] border border-purple-500/45 rounded-xl p-3.5 space-y-3 text-xs">
-          <div class="flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <div class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2 flex-wrap">
-                <span>🦊</span>
-                <span id="p1716-ens-badge" class="text-purple-300 font-mono">kushandkandie.eth</span>
-                <span id="p1716-wallet-short" class="px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[11px] text-emerald-400">On-Chain Vault Verified</span>
-              </div>
-              <div class="text-[var(--muted-foreground)] mt-0.5">
-                Live Ethereum Mainnet Holdings: <strong>kushandkandie.eth ENS</strong> • <strong>OG Supers! #84 &amp; #144</strong> • <strong>Enso S2 #146 &amp; #190</strong> • <strong>1,520.59 SABI (WabiSabi #341 Staked)</strong> • <em>(Mini Supers #305, #4258 &amp; #6539 transferred to swooz.eth!)</em>
-              </div>
-            </div>
-            <button onclick="scanPartnerVaultWallet()"
-                    class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:opacity-90 text-white font-bold shrink-0">
-              🖼️ Scan All My NFTs on Stage →
-            </button>
-          </div>
-
-          <!-- 5-Up Interactive Hologram Gallery of Her Wallet's NFTs -->
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-            <div onclick="loadPresetNft('ms-305'); scrollToSec('sec-viewer');"
-                 class="holo-pod-card bg-[var(--card)] border border-emerald-500/45 rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
-              <img src="nft-media/minisupers_6915.png" alt="Mini Supers #305" class="w-full aspect-square rounded-lg object-cover" />
-              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
-                <span>Mini Supers #305</span><span class="text-emerald-400">HOME</span>
-              </div>
-              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Dream Bloom • AK • 6 Acc</div>
-            </div>
-
-            <div onclick="loadPresetNft('supers-84'); scrollToSec('sec-viewer');"
-                 class="holo-pod-card bg-[var(--card)] border border-purple-500/40 rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
-              <img src="nft-media/supers_84.png" alt="Supers! #84" class="w-full aspect-square rounded-lg object-cover" />
-              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
-                <span>Supers! #84</span><span class="text-purple-300">OG</span>
-              </div>
-              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
-            </div>
-
-            <div onclick="loadPresetNft('supers-144'); scrollToSec('sec-viewer');"
-                 class="holo-pod-card bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
-              <img src="nft-media/supers_144.png" alt="Supers! #144" class="w-full aspect-square rounded-lg object-cover" />
-              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
-                <span>Supers! #144</span><span class="text-purple-300">OG</span>
-              </div>
-              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
-            </div>
-
-            <div onclick="loadPresetNft('enso-146'); scrollToSec('sec-viewer');"
-                 class="holo-pod-card bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
-              <img src="nft-media/enso_146.png" alt="Enso S2 #146" class="w-full aspect-square rounded-lg object-cover" />
-              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
-                <span>Enso S2 #146</span><span class="text-emerald-400">S2</span>
-              </div>
-              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
-            </div>
-
-            <div onclick="loadPresetNft('enso-190'); scrollToSec('sec-viewer');"
-                 class="holo-pod-card bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
-              <img src="nft-media/enso_190.png" alt="Enso S2 #190" class="w-full aspect-square rounded-lg object-cover" />
-              <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
-                <span>Enso S2 #190</span><span class="text-emerald-400">S2</span>
-              </div>
-              <div class="text-[10px] text-[var(--muted-foreground)] truncate">Held by kushandkandie.eth</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- LIVE $1,223.11 9-LEG ARCHITECTURE MAP & INTERACTIVE SCENARIO SIMULATOR -->
-        <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3.5 space-y-3 text-xs">
-          <div class="flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <div class="font-bold text-sm text-[var(--foreground)]">📊 The Live $1,223.11 9-Leg Dual-Exchange Architecture (Kraken Pro + Coinbase Adv)</div>
-              <div class="text-[var(--muted-foreground)]">100% of capital deployed across 5 Upside Limit Sells ($1,007.13) + 4 Downside Dip-Buy Limits ($215.98)</div>
-            </div>
-            <span class="font-mono font-bold text-emerald-400">Net Cycle Gain: +$29.27 / Oscillation</span>
-          </div>
-
-          <!-- 4-Segment Visual Allocation Bar -->
-          <div class="space-y-1">
-            <div class="flex justify-between font-mono text-[11px]">
-              <span class="text-emerald-400 font-bold">▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)</span>
-              <span class="text-amber-400 font-bold">▼ DIP CASH AMMO: $215.98 (17.7%)</span>
-            </div>
-            <div class="w-full h-3.5 rounded-full overflow-hidden flex border border-[var(--border)] bg-[var(--card)]">
-              <div style="width: 63.1%" class="bg-emerald-500 h-full" title="Kraken ETH Upside ($771.51)"></div>
-              <div style="width: 19.2%" class="bg-sky-500 h-full" title="Coinbase Crypto Upside ($235.62)"></div>
-              <div style="width: 10.8%" class="bg-amber-500 h-full" title="Kraken Cash Dip Ammo ($132.51)"></div>
-              <div style="width: 6.9%" class="bg-purple-500 h-full" title="Coinbase USDC Dip Ammo ($83.47)"></div>
-            </div>
-            <div class="flex flex-wrap justify-between gap-2 text-[11px] text-[var(--muted-foreground)] pt-0.5">
-              <span>🟢 <strong>Kraken Pro ($904.02)</strong>: 0.32 ETH ($771.51) + $132.51 Cash</span>
-              <span>🔵 <strong>Coinbase Adv ($319.09)</strong>: $235.62 Crypto (ETH/BTC/LINK/SOL) + $83.47 USDC</span>
-            </div>
-          </div>
-
-          <!-- Interactive Scenario Simulator Buttons (Pump vs Dip vs Chop) -->
-          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-2.5">
-            <div class="flex items-center justify-between flex-wrap gap-2">
-              <span class="font-bold text-[var(--foreground)]">🎛️ Tap a Market Scenario to See How the 9-Leg Bot Reacts:</span>
-              <div class="flex flex-wrap gap-1.5">
-                <button id="p1716-sim-pump" onclick="setP1716Scenario('pump')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold">📈 A: Market Rallies +1.5%</button>
-                <button id="p1716-sim-dip" onclick="setP1716Scenario('dip')" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-[var(--foreground)] font-bold">📉 B: Market Dips -2.2%</button>
-                <button id="p1716-sim-chop" onclick="setP1716Scenario('chop')" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-[var(--foreground)] font-bold">🔄 C: Both Sides Oscillate</button>
-              </div>
-            </div>
-            <div id="p1716-sim-cards" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
-                <div class="text-emerald-400 font-bold">1. 5 Upside Sells Trigger</div>
-                <div class="text-sm font-bold font-mono text-[var(--foreground)]">$1,020.02 Gross Cash</div>
-                <p class="text-[var(--muted-foreground)]">ETH hits $2,435, SOL hits $97.80, BTC hits $81.8k, LINK hits $11.85. All 5 crypto sell walls cash out into USD/USDC.</p>
-              </div>
-              <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
-                <div class="text-emerald-400 font-bold">2. Bot Auto-Flips to Dip Buys</div>
-                <div class="text-sm font-bold font-mono text-[var(--foreground)]">Re-Sets 3.1% Lower</div>
-                <p class="text-[var(--muted-foreground)]">Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,360–$2,365 ETH and $93.50 SOL.</p>
-              </div>
-              <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
-                <div class="text-emerald-400 font-bold">3. Net Result on Pullback</div>
-                <div class="text-sm font-bold font-mono text-[var(--foreground)]">+$28.40 / +0.0118 Free ETH</div>
-                <p class="text-[var(--muted-foreground)]">We end up owning MORE ETH &amp; SOL than we started with, without adding a single dollar from the bank.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PART 1: THE QUANTITATIVE THESIS (Visual Math & Why It Beats Passive Holding) -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
-          <!-- Card 1: 82/18 2-Sided Straddle -->
-          <div class="bg-[var(--secondary)] border border-emerald-500/35 rounded-xl p-3 space-y-1.5">
-            <div class="font-bold text-emerald-400 flex items-center justify-between">
-              <span>1. 2-Sided Straddle (82% / 18%)</span>
-              <span class="font-mono text-[11px]">BOTH WAYS</span>
-            </div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Passive holders only win if price goes straight up. Instead, we split capital into <strong class="text-[var(--foreground)]">~82% Upside Crypto Sell Limits</strong> (<code class="text-emerald-400">+3.5%</code> above spot) and <strong class="text-[var(--foreground)]">~18% Cash Dip-Buy Limits</strong> (<code class="text-amber-400">-2.5%</code> below spot).
-            </p>
-            <div class="pt-1 font-mono text-[11px] text-emerald-400 border-t border-[var(--border)]">
-              • Rally first? Sell high → auto-rebuy lower<br/>
-              • Dip first? Buy discount → auto-sell higher
-            </div>
-          </div>
-
-          <!-- Card 2: Post-Only Maker Fee Arbitrage -->
-          <div class="bg-[var(--secondary)] border border-purple-500/35 rounded-xl p-3 space-y-1.5">
-            <div class="font-bold text-purple-300 flex items-center justify-between">
-              <span>2. Post-Only Fee Cut (-50%)</span>
-              <span class="font-mono text-[11px]">0.40%–0.50%</span>
-            </div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              Standard retail app "Buy/Sell" buttons execute <strong>Market (Taker) orders</strong> charging <code class="text-rose-400">0.80%–1.50%</code> per trade. Submitting <strong class="text-[var(--foreground)]">Post-Only Limit (Maker)</strong> orders adds liquidity to the book and cuts fees in half.
-            </p>
-            <div class="pt-1 font-mono text-[11px] text-purple-300 border-t border-[var(--border)]">
-              Net Cycle = [(P_sell × (1 - f)) / (P_buy × (1 + f))] - 1<br/>
-              <strong>Nets +2.6% to +3.7% clean profit per oscillation</strong>
-            </div>
-          </div>
-
-          <!-- Card 3: Relative-Value NFT Endgame -->
-          <div class="bg-[var(--secondary)] border border-amber-500/35 rounded-xl p-3 space-y-1.5">
-            <div class="font-bold text-amber-400 flex items-center justify-between">
-              <span>3. +31.6% Relative-Value Edge</span>
-              <span class="font-mono text-[11px]">END-GAME</span>
-            </div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              While <strong class="text-emerald-400">ETH rose +5.2%</strong>, blue-chip NFT floors (Invisible Friends, CloneX) compressed <strong class="text-amber-400">-26.4%</strong>. Compounding ETH while target assets drop in ETH terms creates a <strong class="text-[var(--foreground)]">+31.6% purchasing-power spread</strong>.
-            </p>
-            <div class="pt-1 font-mono text-[11px] text-amber-400 border-t border-[var(--border)]">
-              • Plus -13.6% extra discount via WETH Collection Bids
-            </div>
-          </div>
-        </div>
-
-        <!-- PART 2: INTERACTIVE PERSONAL STRADDLE CALCULATOR (Custom-Sized to Her Own Capital on Her Fold 8!) -->
-        <div class="bg-[var(--secondary)] border border-purple-500/40 rounded-xl p-3.5 space-y-3 text-xs">
-          <div class="flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-1.5">
-                <span>🧮</span> <span>Your Personal 2-Sided Straddle &amp; Compounding Calculator (Vault #1716)</span>
-              </h3>
-              <p class="text-[var(--muted-foreground)]">
-                Enter your own crypto &amp; cash balances below—it automatically calculates your exact <strong>Post-Only Limit Prices</strong>, <strong>Maker Fee Savings</strong>, and <strong>Compounded Profit</strong> (saved privately on your Fold 8).
-              </p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="applyPartnerPreset(400, 100, 'coinbase', 3.5, 2.5)" class="px-2 py-1 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold hover:opacity-80">
-                $500 Starter ($400/$100)
-              </button>
-              <button onclick="applyPartnerPreset(800, 200, 'kraken', 3.5, 2.5)" class="px-2 py-1 rounded bg-[var(--card)] text-[var(--foreground)] border border-[var(--border)] font-semibold hover:opacity-80">
-                $1,000 Stack ($800/$200)
-              </button>
-              <button onclick="applyPartnerPreset(1007.13, 215.98, 'coinbase', 3.5, 2.5)" class="px-2 py-1 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-semibold hover:opacity-80">
-                Mirror Dom's $1,223
-              </button>
-            </div>
-          </div>
-
-          <!-- 5 Custom Input Controls -->
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
-              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">1. Your Crypto ($ USD)</label>
-              <input id="p1716-crypto-usd" type="number" step="10" value="400" oninput="updatePartnerStraddleCalc()"
-                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-emerald-400 focus:outline-none" />
-              <div id="p1716-crypto-eth-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">≈ 0.1658 ETH</div>
-            </div>
-
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
-              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">2. Your Cash ($ USD/USDC)</label>
-              <input id="p1716-cash-usd" type="number" step="10" value="100" oninput="updatePartnerStraddleCalc()"
-                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-amber-400 focus:outline-none" />
-              <div id="p1716-split-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">80% Upside / 20% Dip</div>
-            </div>
-
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
-              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">3. Your Exchange</label>
-              <select id="p1716-venue" onchange="updatePartnerStraddleCalc()"
-                      class="w-full mt-1 bg-[var(--card)] font-mono text-xs font-bold text-[var(--foreground)] focus:outline-none">
-                <option value="coinbase">🔵 Coinbase Adv (0.50%)</option>
-                <option value="kraken">🦑 Kraken Pro (0.40%)</option>
-              </select>
-              <div id="p1716-fee-saved-lbl" class="text-[10px] font-mono text-emerald-400">Saves 50% vs Retail</div>
-            </div>
-
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
-              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">4. Upside Sell (+%)</label>
-              <input id="p1716-up-pct" type="number" step="0.25" value="3.5" oninput="updatePartnerStraddleCalc()"
-                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-emerald-400 focus:outline-none" />
-              <div id="p1716-sell-price-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">Target: $2,496</div>
-            </div>
-
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2 col-span-2 sm:col-span-1">
-              <label class="block text-[10px] text-[var(--muted-foreground)] uppercase font-bold">5. Dip Buy (-%)</label>
-              <input id="p1716-dip-pct" type="number" step="0.25" value="2.5" oninput="updatePartnerStraddleCalc()"
-                     class="w-full mt-1 bg-transparent font-mono text-sm font-bold text-amber-400 focus:outline-none" />
-              <div id="p1716-buy-price-lbl" class="text-[10px] font-mono text-[var(--muted-foreground)]">Target: $2,351</div>
-            </div>
-          </div>
-
-          <!-- Visual Allocation Bar (Upside vs Downside) -->
-          <div class="space-y-1">
-            <div class="flex justify-between text-[11px] font-mono">
-              <span id="p1716-bar-left" class="text-emerald-400 font-bold">🟢 Upside Sell Inventory: $400.00 (80.0%)</span>
-              <span id="p1716-bar-right" class="text-amber-400 font-bold">🟠 Downside Dip-Buy Cash: $100.00 (20.0%)</span>
-            </div>
-            <div class="w-full h-3 rounded-full overflow-hidden bg-[var(--card)] border border-[var(--border)] flex">
-              <div id="p1716-bar-fill-up" class="h-full bg-emerald-500 transition-all duration-300" style="width: 80%"></div>
-              <div id="p1716-bar-fill-dip" class="h-full bg-amber-500 transition-all duration-300" style="width: 20%"></div>
-            </div>
-          </div>
-
-          <!-- Exact Personal Order Sheet Table -->
-          <div class="overflow-x-auto bg-[var(--card)] border border-[var(--border)] rounded-lg p-2">
-            <div class="font-bold text-[var(--foreground)] mb-1.5 flex items-center justify-between">
-              <span>📋 Your Exact Limit Order Sheet (Copy These Numbers Into Your App)</span>
-              <span id="p1716-spot-ref" class="font-mono text-[11px] text-emerald-400">Live ETH Spot: $2,411.00</span>
-            </div>
-            <table class="w-full text-left border-collapse text-[11px] font-mono">
-              <thead>
-                <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)] font-sans">
-                  <th class="py-1.5 pr-2">Straddle Leg</th>
-                  <th class="py-1.5 px-2">Order Type</th>
-                  <th class="py-1.5 px-2">Exact Limit Price</th>
-                  <th class="py-1.5 px-2">Size / Amount</th>
-                  <th class="py-1.5 px-2">Flip Target When Filled</th>
-                  <th class="py-1.5 pl-2">Net Profit (After 2x Fees)</th>
-                </tr>
-              </thead>
-              <tbody id="p1716-orders-tbody" class="divide-y divide-[var(--border)]">
-                <!-- Populated dynamically by updatePartnerStraddleCalc() -->
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Compounding KPI Strip (1 Cycle, 5 Cycles, 10 Cycles + Fee Savings) -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono">
-            <div class="bg-[var(--card)] border border-emerald-500/35 rounded-lg p-2.5">
-              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">1 FULL OSCILLATION NET</div>
-              <div id="p1716-net-1" class="text-sm font-bold text-emerald-400">+$24.92 USD</div>
-              <div id="p1716-net-1-pct" class="text-[11px] text-[var(--muted-foreground)]">+4.98% Net After Fees</div>
-            </div>
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2.5">
-              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">5 OSCILLATIONS (COMPOUNDED)</div>
-              <div id="p1716-net-5" class="text-sm font-bold text-emerald-400">+$137.40 USD</div>
-              <div id="p1716-total-5" class="text-[11px] text-[var(--muted-foreground)]">Stack → $637.40</div>
-            </div>
-            <div class="bg-[var(--card)] border border-purple-500/35 rounded-lg p-2.5">
-              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">10 OSCILLATIONS (COMPOUNDED)</div>
-              <div id="p1716-net-10" class="text-sm font-bold text-purple-300">+$312.85 USD</div>
-              <div id="p1716-total-10" class="text-[11px] text-emerald-400">Stack → $812.85</div>
-            </div>
-            <div class="bg-[var(--card)] border border-amber-500/35 rounded-lg p-2.5">
-              <div class="text-[10px] text-[var(--muted-foreground)] font-sans">FEES SAVED (POST-ONLY)</div>
-              <div id="p1716-fees-saved" class="text-sm font-bold text-amber-400">+$45.00 Saved</div>
-              <div class="text-[11px] text-[var(--muted-foreground)]">Over 10 Cycles vs Retail</div>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between flex-wrap gap-2 pt-1">
-            <span id="p1716-save-msg" class="text-[11px] text-emerald-400 font-mono">✅ Auto-saved to your Fold 8 Vault #1716</span>
-            <button onclick="syncPartnerCalcToPortfolio()"
-                    class="px-3 py-1.5 rounded-lg bg-purple-500 hover:bg-purple-600 text-white font-bold transition">
-              💾 Load My Custom Stack Into P&amp;L Tracker →
-            </button>
-          </div>
-        </div>
-
-        <!-- PART 3: STEP-BY-STEP PLAYBOOK TO APPLY THIS TO HER OWN WALLETS ON HER FOLD 8 -->
-        <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-3.5 space-y-2.5 text-xs">
-          <div class="font-bold text-sm text-[var(--foreground)]">
-            📲 How to Apply This to Your Own Wallets &amp; Exchange Accounts in 3 Minutes
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
-              <div class="font-bold text-emerald-400">Step 1: Flip On Free "Advanced" Mode (Cut Fees 50%)</div>
-              <p class="text-[var(--muted-foreground)]">
-                In the <strong>Coinbase</strong> app on your Fold 8, tap the top-left <strong>Menu (9 dots) → toggle on "Advanced"</strong> (or open <strong>Kraken Pro</strong>). It uses your exact same balance and costs $0, but drops fees from <code class="text-rose-400">~1.20%</code> to <code class="text-emerald-400">0.40%–0.50%</code>.
-              </p>
-            </div>
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
-              <div class="font-bold text-purple-300">Step 2: Enter Your 2 Post-Only Limit Orders</div>
-              <p class="text-[var(--muted-foreground)]">
-                1) Select <strong>ETH-USD</strong> (or <strong>ETH-USDC</strong>) → choose <strong>Limit</strong>.<br/>
-                2) Enter the <strong>Upside Sell Limit Price</strong> from your table above and select <strong>Execution: Post-Only</strong>.<br/>
-                3) Switch to <strong>Buy → Limit</strong>, enter your <strong>Dip-Buy Limit Price</strong> with your cash reserve, and select <strong>Post-Only</strong>.
-              </p>
-            </div>
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
-              <div class="font-bold text-amber-400">Step 3: Flip Whichever Side Fills First</div>
-              <p class="text-[var(--muted-foreground)]">
-                When your <strong>Dip-Buy</strong> fills on a red candle, immediately place a Limit Sell at your <strong>Upside Target</strong>. When your <strong>Upside Sell</strong> fills on a green breakout, place a Limit Buy at your <strong>Dip Target</strong>—locking in <code class="text-emerald-400">+2.7% to +5.0%</code> net per swing.
-              </p>
-            </div>
-            <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 space-y-1">
-              <div class="font-bold text-sky-400">Step 4: Track Your Own 0x... Wallets &amp; NFTs Here</div>
-              <p class="text-[var(--muted-foreground)]">
-                Tap <strong>"+ Add Wallet / Account"</strong> on the <strong>📈 Trade &amp; Charts</strong> tab or paste any <code class="font-mono">0x...</code> address into the <strong>🎬 Walking Stage → Wallet NFTs</strong> scanner. While unlocked with PIN <strong>1716</strong>, your wallets save strictly to your private Fold 8 profile.
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -2440,7 +2056,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           <span class="text-lg">🔐</span>
           <div>
             <div class="font-bold text-sm text-[var(--foreground)]">Unlock Personal Vault Telemetry</div>
-            <div class="text-[var(--muted-foreground)]">Enter 4-digit Vault PIN (Owner or Partner Fold 8 Vault)</div>
+            <div class="text-[var(--muted-foreground)]">Enter 4-digit Vault PIN (5284)</div>
           </div>
         </div>
         <button onclick="closePinModal()" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] font-bold">✕</button>
@@ -2494,11 +2110,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v30') caches.delete(k);
+            if (k !== 'swooz-dex-v31') caches.delete(k);
           });
         }).catch(() => {});
       }
-      navigator.serviceWorker.register('sw.js?v=30', { updateViaCache: 'none' }).then(reg => {
+      navigator.serviceWorker.register('sw.js?v=31', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -2693,9 +2309,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         collection: 'Mini Supers (Home Team)',
         contract: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7',
         tokenId: 305,
-        title: 'Mini Supers #305 (kushandkandie.eth → swooz.eth)',
-        rank: '🧋 Presale Minted & Transferred to swooz.eth',
-        owner: 'swooz.eth (from kushandkandie.eth)',
+        title: 'Mini Supers #305 (Owned by swooz.eth)',
+        rank: '🦊 Held in swooz.eth Primary Vault',
+        owner: 'swooz.eth',
         priceNote: 'Floor: 0.0013 ETH ($3.01 USD)',
         mediaUrl: 'nft-media/minisupers_6915.png',
         badge: '🧋➡🦊 MINI SUPER #305',
@@ -2729,74 +2345,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           { trait_type: 'Eyebrows', value: 'High Green' },
           { trait_type: 'Mouth', value: 'Ooo' },
           { trait_type: 'Accessories', value: 'Eye (Acc 1), Octopus (Acc 4)' }
-        ]
-      },
-      'supers-84': {
-        collection: 'Supers! (OG Collection)',
-        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
-        tokenId: '79654774792527211628502023969973008318389555423553119175803920226507340906497',
-        title: 'Supers! #84 (Owned by kushandkandie.eth)',
-        rank: '🧋 BobaTeaisGood4Me Vault',
-        owner: 'kushandkandie.eth',
-        priceNote: 'Held in Vault #1716',
-        mediaUrl: 'nft-media/supers_84.png',
-        badge: '🧋 BOBATEA VAULT NFT',
-        traits: [
-          { trait_type: 'Collection', value: 'Supers! OG' },
-          { trait_type: 'Edition', value: '#84' },
-          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
-          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
-        ]
-      },
-      'supers-144': {
-        collection: 'Supers! (OG Collection)',
-        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
-        tokenId: '79654774792527211628502023969973008318389555423553119175803920293577550200833',
-        title: 'Supers! #144 (Owned by kushandkandie.eth)',
-        rank: '🧋 BobaTeaisGood4Me Vault',
-        owner: 'kushandkandie.eth',
-        priceNote: 'Held in Vault #1716',
-        mediaUrl: 'nft-media/supers_144.png',
-        badge: '🧋 BOBATEA VAULT NFT',
-        traits: [
-          { trait_type: 'Collection', value: 'Supers! OG' },
-          { trait_type: 'Edition', value: '#144' },
-          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
-          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
-        ]
-      },
-      'enso-146': {
-        collection: 'Enso Season 2',
-        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
-        tokenId: '79654774792527211628502023969973008318389555423553119175803920686103201316865',
-        title: 'Enso Season 2 #146 (Owned by kushandkandie.eth)',
-        rank: '🧋 BobaTeaisGood4Me Vault',
-        owner: 'kushandkandie.eth',
-        priceNote: 'Held in Vault #1716',
-        mediaUrl: 'nft-media/enso_146.png',
-        badge: '🌸 ENSO SEASON 2',
-        traits: [
-          { trait_type: 'Collection', value: 'Enso Season 2' },
-          { trait_type: 'Token', value: '#146' },
-          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
-          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
-        ]
-      },
-      'enso-190': {
-        collection: 'Enso Season 2',
-        contract: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
-        tokenId: '79654774792527211628502023969973008318389555423553119175803920734481712939009',
-        title: 'Enso Season 2 #190 (Owned by kushandkandie.eth)',
-        rank: '🧋 BobaTeaisGood4Me Vault',
-        owner: 'kushandkandie.eth',
-        priceNote: 'Held in Vault #1716',
-        mediaUrl: 'nft-media/enso_190.png',
-        badge: '🌸 ENSO SEASON 2',
-        traits: [
-          { trait_type: 'Collection', value: 'Enso Season 2' },
-          { trait_type: 'Token', value: '#190' },
-          { trait_type: 'Owner ENS', value: 'kushandkandie.eth' },
-          { trait_type: 'Handle', value: 'BobaTeaisGood4Me' }
         ]
       }
     };
@@ -3176,22 +2724,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     // SHA-256 hash verification of owner PIN ('5284') and partner PIN ('1716') salted with 'swooz-dex-v6-vault'
     const OWNER_PIN_VERIFY_HASH = 'c114067b1a286a757e978d0c4c9128fb982616d69d91a6179271c96691e40aeb';
-    const PARTNER_PIN_VERIFY_HASH = 'f7724f1e03dc8bf901614214ba143d1a098703e594ce174b6e4e5f4d771b312d';
-    const PARTNER_VAULT_CIPHER = 'PIhH07wW11JjldAC4PiYT6vNSmakYPt+2skHCuxnIWc34kRkwtn8PC40Q8gQEAGo8oTX2JvNCYUqnl6T/77+cl/TKrkj8ZZYgowlEMYfRfP8OmJl0LNrlZNb8C3cGUIP5C4AJuo6OevbpkuNMYPhurteQJQtTQpbe6S1UM9h9vggMuPxCAH7owR42ktSG3eUAwZHljqzDaHYlEOMeIWqc8pPqGkBJPeNQSzCACDCfxppa9vH5k3RJ/VU9kq+d5aNgpJjn8W6d9WwEK0seXY1CyqpyW8K9APPR+fgg+DEvo4KjjI3M1yqxiqqf6XCcRXIJdzUZG5t4CZpm3ZszIK+zCtrLqcqewkWgRhgnDJublhD6H5N2DjZHY/+mhJmhlbJSWB96JL51NMTHs2Q+qZL1PH/+lptTOfEoP7IrYfs4gauT+zeuvSCQoQb0pEKKzTH9CHe+IqoBoXg2jCcpmakpSf/WM2Yqv/a1NT59RYbM3i3E6tPaxs59rPC879pzl3FD7ambgg7';
-
-    function scanPartnerVaultWallet() {
-      const wAddr = (UNLOCKED_VAULT_DATA && UNLOCKED_VAULT_DATA.partner_wallet)
-        ? UNLOCKED_VAULT_DATA.partner_wallet
-        : 'kushandkandie.eth';
-      const scanInput = document.getElementById('wallet-scan-input');
-      if (scanInput) scanInput.value = wAddr;
-      switchMainView('terminal');
-      setTimeout(() => {
-        scrollToSec('sec-viewer');
-        scanWalletNfts();
-      }, 80);
-    }
-
     async function sha256Bytes(str) {
       try {
         if (window.crypto && window.crypto.subtle) {
@@ -3233,19 +2765,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       return []; // Blank Default Mode for public visitors!
     }
 
-    function loadPartnerAccounts() {
-      try {
-        const saved = localStorage.getItem('swooz_partner_1716_accounts_v1');
-        if (saved) return JSON.parse(saved);
-      } catch (e) {}
-      return [];
-    }
-
     function saveAccounts(list) {
       try {
         let key = 'swooz_guest_accounts_v2';
         if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') key = 'swooz_owner_accounts_v2';
-        else if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'partner') key = 'swooz_partner_1716_accounts_v1';
         localStorage.setItem(key, JSON.stringify(list));
       } catch (e) {}
     }
@@ -3263,11 +2786,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         icon.textContent = '🔓';
         lbl.textContent = 'swooz.eth Unlocked (Tap to Lock)';
         ownerEls.forEach(el => el.classList.remove('hidden'));
-      } else if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'partner') {
-        btn.className = 'px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/50 text-purple-300 text-xs font-bold flex items-center gap-1 transition';
-        icon.textContent = '🧋';
-        lbl.textContent = 'BobaTeaisGood4Me Unlocked (Tap to Lock)';
-        ownerEls.forEach(el => el.classList.add('hidden'));
       } else {
         btn.className = 'px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition';
         icon.textContent = '🔒';
@@ -3357,79 +2875,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         // Verify SHA-256 hash of PIN ('5284' or '1716') AND direct PIN match so HTTP LAN / any browser always unlocks cleanly
         const pinCheckBytes = await sha256Bytes(`${cleanPin}:swooz-dex-v6-vault`);
         const pinCheckHex = Array.from(pinCheckBytes).map(b => b.toString(16).padStart(2, '0')).join('');
-        const isPartnerPin = (cleanPin === '1716' || pinCheckHex === PARTNER_PIN_VERIFY_HASH);
         const isOwnerPin = (cleanPin === '5284' || cleanPin === '1506' || pinCheckHex === OWNER_PIN_VERIFY_HASH);
 
-        // 1. Check Partner Fold 8 Vault PIN ('1716')
-        if (isPartnerPin) {
-          const pDecrypted = await decryptVaultCipher(PARTNER_VAULT_CIPHER, 'swooz-dex-v6-vault', cleanPin);
-          VAULT_UNLOCKED = true;
-          ACTIVE_VAULT_ROLE = 'partner';
-          UNLOCKED_VAULT_DATA = pDecrypted || {
-            ok: 'SWOOZ_VAULT_OK',
-            role: 'partner',
-            handle: 'BobaTeaisGood4Me',
-            partner_ens: 'kushandkandie.eth',
-            partner_wallet: '0xB99A35B82E1607De261b00b900A8E42b2ff893f6',
-            onchain_eth: 0.00018308,
-            sabi_balance: 1520.59,
-            mini_supers_held: 1
-          };
-          // Immediately hide keypad modal as soon as code is verified
-          closePinModal();
-
-          const pWallet = UNLOCKED_VAULT_DATA.partner_wallet || '0xB99A35B82E1607De261b00b900A8E42b2ff893f6';
-          const pBadgeEl = document.getElementById('p1716-wallet-short');
-          if (pBadgeEl && pWallet) {
-            pBadgeEl.textContent = `${pWallet.slice(0, 6)}...${pWallet.slice(-4)} (4 NFTs + 1,520 SABI • 3 Mini Supers → swooz.eth)`;
-          }
-          const scanInput = document.getElementById('wallet-scan-input');
-          if (scanInput) scanInput.value = pWallet;
-
-          loadPartnerCalculatorState();
-          const savedPartnerAccs = loadPartnerAccounts();
-          if (savedPartnerAccs.length > 0 && savedPartnerAccs.some(a => a.id === 'partner-onchain-wallet')) {
-            ACCOUNTS = savedPartnerAccs;
-          } else {
-            const cUsd = parseFloat(document.getElementById('p1716-crypto-usd')?.value) || 400;
-            const dUsd = parseFloat(document.getElementById('p1716-cash-usd')?.value) || 100;
-            const totEth = ETH_RATE > 0 ? (cUsd + dUsd) / ETH_RATE : 0.207;
-            ACCOUNTS = [
-              {
-                id: 'partner-straddle',
-                label: '🧋 BobaTeaisGood4Me Straddle (Fold 8 Vault #1716)',
-                address: `$${cUsd.toFixed(0)} Upside Sell Inventory + $${dUsd.toFixed(0)} Cash Dip Reserve`,
-                eth: totEth,
-                costUsd: cUsd + dUsd,
-                miniSupers: 0,
-                isOnChain: false
-              },
-              {
-                id: 'partner-onchain-wallet',
-                label: '🦊 kushandkandie.eth (4 NFTs + 1,520 SABI • 3 Mini Supers → swooz.eth)',
-                address: pWallet,
-                eth: UNLOCKED_VAULT_DATA.onchain_eth || 0.00018308,
-                costUsd: 0.44,
-                miniSupers: 0,
-                isOnChain: true
-              }
-            ];
-            saveAccounts(ACCOUNTS);
-          }
-          if (document.getElementById('pin-remember-chk')?.checked) {
-            try { localStorage.setItem('swooz_vault_pin_v1', cleanPin); } catch (e) {}
-          }
-          applyVaultUiState();
-          renderWalletPnl();
-          updateCalc();
-          updatePartnerStraddleCalc();
-          if (!silent) {
-            switchOrbitSidebar('partner');
-          }
-          return true;
-        }
-
-        // 2. Check Owner Vault PIN ('5284')
+        // Check Owner Vault PIN ('5284')
         if (!decrypted && isOwnerPin) {
           decrypted = {
             ok: 'SWOOZ_VAULT_OK',
@@ -3498,15 +2946,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
               isOnChain: true
             },
             {
-              id: 'swooz-kushandkandie',
-              label: '🦊 kushandkandie.eth Vault (Supers! #84/#144 + Enso #146/#190 + 1,520 SABI)',
-              address: '0xB99A35B82E1607De261b00b900A8E42b2ff893f6',
-              eth: 0.00018308,
-              costUsd: 0.44,
-              miniSupers: 0,
-              isOnChain: true
-            },
-            {
               id: 'swooz-ccs-owner',
               label: '🎨 Cute Claw Slotz (CCS) Contract Owner (0x14e3...64EC)',
               address: '0xcA2dB0752d308A1a07b25D003d591D6970B1A573',
@@ -3527,7 +2966,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           ];
 
           try {
-            const coreIds = ['kraken-main', 'coinbase-adv', 'swooz-eth', 'swooz-ms928-vault', 'swooz-kushandkandie', 'swooz-ccs-owner', 'swooz-2022-og'];
+            const coreIds = ['kraken-main', 'coinbase-adv', 'swooz-eth', 'swooz-ms928-vault', 'swooz-ccs-owner', 'swooz-2022-og'];
             const extra = JSON.parse(localStorage.getItem('swooz_owner_accounts_v2') || '[]');
             extra.forEach(a => {
               if (!coreIds.includes(a.id)) ACCOUNTS.push(a);
@@ -3558,7 +2997,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (!silent) {
           const msg = document.getElementById('pin-status-msg');
           if (msg) {
-            msg.textContent = '❌ Invalid PIN — Use 1506 (Owner) or 1716 (Partner)';
+            msg.textContent = '❌ Invalid PIN — Enter 4-Digit Owner PIN';
             msg.className = 'text-rose-400 font-mono font-bold h-4';
           }
           PIN_INPUT_BUFFER = '';
@@ -3789,7 +3228,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const left = document.getElementById('pane-left');
       const right = document.getElementById('pane-right');
       const secPnl = document.getElementById('sec-pnl');
-      const secPartner = document.getElementById('sec-partner');
       const secTargets = document.getElementById('sec-targets');
       const secViewer = document.getElementById('sec-viewer');
       const secMarkets = document.getElementById('sec-markets');
@@ -3797,13 +3235,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const secSales = document.getElementById('sec-sales');
 
       // Highlight left sidebar navigation buttons
-      ['orbit', 'trade', 'partner', 'targets', 'viewer', 'markets', 'calc'].forEach(v => {
+      ['orbit', 'trade', 'targets', 'viewer', 'markets', 'calc'].forEach(v => {
         const navBtn = document.getElementById('orbit-nav-' + v);
         if (navBtn) {
           if (v === view) {
             navBtn.className = 'orbit-nav-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition cursor-pointer';
-          } else if (v === 'partner') {
-            navBtn.className = 'flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-purple-300 hover:text-white hover:bg-purple-500/15 text-left transition cursor-pointer';
           } else {
             navBtn.className = 'flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer';
           }
@@ -3838,8 +3274,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         container.className = 'max-w-[1640px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
         left.className = 'md:col-span-6 space-y-4';
         right.className = 'md:col-span-6 space-y-4';
-        [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
-        updatePartnerStraddleCalc();
+        [secPnl, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
         drawKrakenChart();
         if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
         if (typeof drawCrtMiniCandleChart === 'function') drawCrtMiniCandleChart();
@@ -3848,18 +3283,13 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
       // Single-View Focused Toggle Mode: Keep Orbit Header/Sidebar visible & show selected deep section below!
       container.className = 'max-w-[1400px] mx-auto p-3 grid grid-cols-1 gap-4';
-      [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
+      [secPnl, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
 
       if (view === 'trade') {
         left.className = 'col-span-1 space-y-4';
         right.className = 'hidden';
         secPnl.classList.remove('hidden');
         setTimeout(() => drawKrakenChart(), 30);
-      } else if (view === 'partner') {
-        left.className = 'col-span-1 space-y-4';
-        right.className = 'hidden';
-        if (secPartner) secPartner.classList.remove('hidden');
-        updatePartnerStraddleCalc();
       } else if (view === 'targets') {
         left.className = 'col-span-1 space-y-4';
         right.className = 'hidden';
@@ -3881,246 +3311,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (container) {
         container.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }
-
-    // 💎 Partner Vault (#1716) Custom Straddle Calculator & Fold 8 Persistence
-    const P1716_SCENARIOS = {
-      pump: [
-        {
-          title: '1. 5 Upside Sells Trigger',
-          val: '$1,020.02 Gross Cash',
-          desc: 'ETH hits $2,435, SOL hits $97.80, BTC hits $81.8k, LINK hits $11.85. All 5 crypto sell walls cash out into USD/USDC.'
-        },
-        {
-          title: '2. Bot Auto-Flips to Dip Buys',
-          val: 'Re-Sets 3.1% Lower',
-          desc: 'Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,360–$2,365 ETH and $93.50 SOL.'
-        },
-        {
-          title: '3. Net Result on Pullback',
-          val: '+$28.40 / +0.0118 Free ETH',
-          desc: 'We end up owning MORE ETH & SOL than we started with, without adding a single dollar from the bank.'
-        }
-      ],
-      dip: [
-        {
-          title: '1. 4 Cash Dip-Catchers Trigger',
-          val: '$215.98 Cash Deployed',
-          desc: 'ETH dips to $2,350 ($174.71 across Kraken + Coinbase) and SOL dips to $93.40–$93.50 ($40.76 across both).'
-        },
-        {
-          title: '2. Bot Auto-Flips to Top Sells',
-          val: 'Targets $2,435 & $97.80',
-          desc: 'The moment the dip buys fill, the daemon automatically lists that newly bought ETH at $2,434.30–$2,435 and SOL at $97.80.'
-        },
-        {
-          title: '3. Net Result on Bounce',
-          val: '+$6.85 Pure Dip Profit',
-          desc: 'Even though the market dipped first, our $215.98 cash reserve turned the drop into an automatic 3.6% bounce profit.'
-        }
-      ],
-      chop: [
-        {
-          title: '1. Sideways Volatility Harvest',
-          val: '9 Active Order Traps',
-          desc: 'Crypto spends 70%+ of the time bouncing inside a 3–4% range ($2,350 <-> $2,435 ETH and $93.40 <-> $97.80 SOL).'
-        },
-        {
-          title: '2. Compounding Loop',
-          val: '+$29.27 Net Per Full Cycle',
-          desc: 'After subtracting the 0.40%–0.50% Maker fees on both sides, each full round-trip compounds ~2.4%–3.7% net gain.'
-        },
-        {
-          title: '3. 10-Cycle Compounding',
-          val: '0.440 ETH → 0.558 ETH (+$283)',
-          desc: 'Ten oscillations inside the range add +$283.70 in net value even if ETH ends at the exact same price.'
-        }
-      ]
-    };
-
-    function setP1716Scenario(key) {
-      ['pump', 'dip', 'chop'].forEach(k => {
-        const b = document.getElementById('p1716-sim-' + k);
-        if (b) {
-          b.className = k === key
-            ? 'px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold'
-            : 'px-2.5 py-1 rounded-lg bg-[var(--secondary)] border border-[var(--border)] text-[var(--foreground)] font-bold';
-        }
-      });
-      const out = document.getElementById('p1716-sim-cards');
-      if (out && P1716_SCENARIOS[key]) {
-        out.innerHTML = P1716_SCENARIOS[key].map(item => `
-          <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 space-y-1">
-            <div class="text-emerald-400 font-bold">${item.title}</div>
-            <div class="text-sm font-bold font-mono text-[var(--foreground)]">${item.val}</div>
-            <p class="text-[var(--muted-foreground)]">${item.desc}</p>
-          </div>
-        `).join('');
-      }
-    }
-
-    function loadPartnerCalculatorState() {
-      try {
-        const raw = localStorage.getItem('swooz_partner_1716_calc_v1');
-        if (raw) {
-          const cfg = JSON.parse(raw);
-          if (cfg.cryptoUsd !== undefined) document.getElementById('p1716-crypto-usd').value = cfg.cryptoUsd;
-          if (cfg.cashUsd !== undefined) document.getElementById('p1716-cash-usd').value = cfg.cashUsd;
-          if (cfg.venue) document.getElementById('p1716-venue').value = cfg.venue;
-          if (cfg.upPct !== undefined) document.getElementById('p1716-up-pct').value = cfg.upPct;
-          if (cfg.dipPct !== undefined) document.getElementById('p1716-dip-pct').value = cfg.dipPct;
-        }
-      } catch (e) {}
-    }
-
-    function applyPartnerPreset(cryptoUsd, cashUsd, venue, upPct, dipPct) {
-      document.getElementById('p1716-crypto-usd').value = cryptoUsd;
-      document.getElementById('p1716-cash-usd').value = cashUsd;
-      document.getElementById('p1716-venue').value = venue;
-      document.getElementById('p1716-up-pct').value = upPct;
-      document.getElementById('p1716-dip-pct').value = dipPct;
-      updatePartnerStraddleCalc();
-    }
-
-    function updatePartnerStraddleCalc() {
-      const elCrypto = document.getElementById('p1716-crypto-usd');
-      if (!elCrypto) return;
-      const cryptoUsd = Math.max(0, parseFloat(elCrypto.value) || 0);
-      const cashUsd = Math.max(0, parseFloat(document.getElementById('p1716-cash-usd').value) || 0);
-      const venue = document.getElementById('p1716-venue').value || 'coinbase';
-      const upPct = Math.max(0.5, parseFloat(document.getElementById('p1716-up-pct').value) || 3.5);
-      const dipPct = Math.max(0.5, parseFloat(document.getElementById('p1716-dip-pct').value) || 2.5);
-
-      const spotEth = ETH_RATE > 100 ? ETH_RATE : 2411.00;
-      const spotSol = 94.80;
-      const makerFee = venue === 'kraken' ? 0.004 : 0.005;
-      const retailFee = venue === 'kraken' ? 0.008 : 0.010;
-
-      const totalUsd = cryptoUsd + cashUsd;
-      const upRatio = totalUsd > 0 ? (cryptoUsd / totalUsd) * 100 : 80;
-      const dipRatio = totalUsd > 0 ? (cashUsd / totalUsd) * 100 : 20;
-
-      const ethQty = spotEth > 0 ? cryptoUsd / spotEth : 0;
-      const sellPriceEth = spotEth * (1 + upPct / 100);
-      const buyPriceEth = spotEth * (1 - dipPct / 100);
-
-      const sellPriceSol = spotSol * (1 + upPct / 100);
-      const buyPriceSol = spotSol * (1 - dipPct / 100);
-
-      document.getElementById('p1716-crypto-eth-lbl').textContent = `≈ ${ethQty.toFixed(4)} ETH`;
-      document.getElementById('p1716-split-lbl').textContent = `${upRatio.toFixed(0)}% Upside / ${dipRatio.toFixed(0)}% Dip`;
-      document.getElementById('p1716-fee-saved-lbl').textContent = `${(makerFee * 100).toFixed(2)}% Maker vs ${(retailFee * 100).toFixed(2)}% Taker`;
-      document.getElementById('p1716-sell-price-lbl').textContent = `ETH @ $${sellPriceEth.toFixed(2)}`;
-      document.getElementById('p1716-buy-price-lbl').textContent = `ETH @ $${buyPriceEth.toFixed(2)}`;
-      document.getElementById('p1716-spot-ref').textContent = `Live ETH Spot: $${spotEth.toFixed(2)}`;
-
-      document.getElementById('p1716-bar-left').textContent = `🟢 Upside Sell Inventory: $${cryptoUsd.toFixed(2)} (${upRatio.toFixed(1)}%)`;
-      document.getElementById('p1716-bar-right').textContent = `🟠 Downside Dip-Buy Cash: $${cashUsd.toFixed(2)} (${dipRatio.toFixed(1)}%)`;
-      document.getElementById('p1716-bar-fill-up').style.width = `${upRatio.toFixed(1)}%`;
-      document.getElementById('p1716-bar-fill-dip').style.width = `${dipRatio.toFixed(1)}%`;
-
-      // Round-trip net return multiplier per oscillation: [(P_sell * (1 - f)) / (P_buy * (1 + f))] - 1
-      const cycleNetMult = ((sellPriceEth * (1 - makerFee)) / (buyPriceEth * (1 + makerFee))) - 1;
-      const cycleNetPct = cycleNetMult * 100;
-
-      // Leg 1: Upside ETH Sell -> Re-Buy at Dip Target
-      const leg1GrossSell = ethQty * sellPriceEth;
-      const leg1NetUsdGain = cryptoUsd * cycleNetMult;
-
-      // Leg 2: Downside Cash Dip-Buy (80% of cash in ETH Dip, 20% of cash in SOL Dip)
-      const ethDipCash = cashUsd * 0.80;
-      const solDipCash = cashUsd * 0.20;
-      const ethDipQty = buyPriceEth > 0 ? (ethDipCash * (1 - makerFee)) / buyPriceEth : 0;
-      const solDipQty = buyPriceSol > 0 ? (solDipCash * (1 - makerFee)) / buyPriceSol : 0;
-      const leg2NetUsdGain = ethDipCash * cycleNetMult;
-      const leg3NetUsdGain = solDipCash * cycleNetMult;
-
-      const tbody = document.getElementById('p1716-orders-tbody');
-      if (tbody) {
-        tbody.innerHTML = `
-          <tr>
-            <td class="py-1.5 pr-2 font-sans font-bold text-emerald-400">🟢 1. ETH Upside Profit-Lock</td>
-            <td class="py-1.5 px-2 font-bold">SELL LIMIT (Post-Only)</td>
-            <td class="py-1.5 px-2 font-bold text-emerald-400">$${sellPriceEth.toFixed(2)}</td>
-            <td class="py-1.5 px-2">${ethQty.toFixed(5)} ETH ($${leg1GrossSell.toFixed(2)})</td>
-            <td class="py-1.5 px-2 text-amber-400 font-bold">Re-Buy @ $${buyPriceEth.toFixed(2)}</td>
-            <td class="py-1.5 pl-2 font-bold text-emerald-400">+$${leg1NetUsdGain.toFixed(2)} (+${cycleNetPct.toFixed(2)}%)</td>
-          </tr>
-          <tr>
-            <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🟠 2. ETH Cash Dip-Catcher (80%)</td>
-            <td class="py-1.5 px-2 font-bold">BUY LIMIT (Post-Only)</td>
-            <td class="py-1.5 px-2 font-bold text-amber-400">$${buyPriceEth.toFixed(2)}</td>
-            <td class="py-1.5 px-2">${ethDipQty.toFixed(5)} ETH ($${ethDipCash.toFixed(2)} Cash)</td>
-            <td class="py-1.5 px-2 text-emerald-400 font-bold">Flip Sell @ $${sellPriceEth.toFixed(2)}</td>
-            <td class="py-1.5 pl-2 font-bold text-emerald-400">+$${leg2NetUsdGain.toFixed(2)} (+${cycleNetPct.toFixed(2)}%)</td>
-          </tr>
-          <tr>
-            <td class="py-1.5 pr-2 font-sans font-bold text-purple-300">🟣 3. SOL Volatility Scraper (20%)</td>
-            <td class="py-1.5 px-2 font-bold">BUY LIMIT (Post-Only)</td>
-            <td class="py-1.5 px-2 font-bold text-purple-300">$${buyPriceSol.toFixed(2)}</td>
-            <td class="py-1.5 px-2">${solDipQty.toFixed(4)} SOL ($${solDipCash.toFixed(2)} Cash)</td>
-            <td class="py-1.5 px-2 text-emerald-400 font-bold">Flip Sell @ $${sellPriceSol.toFixed(2)}</td>
-            <td class="py-1.5 pl-2 font-bold text-emerald-400">+$${leg3NetUsdGain.toFixed(2)} (+${cycleNetPct.toFixed(2)}%)</td>
-          </tr>
-        `;
-      }
-
-      const net1 = totalUsd * cycleNetMult;
-      const total5 = totalUsd * Math.pow(1 + cycleNetMult, 5);
-      const net5 = total5 - totalUsd;
-      const total10 = totalUsd * Math.pow(1 + cycleNetMult, 10);
-      const net10 = total10 - totalUsd;
-      const feeSaved10 = totalUsd * (retailFee - makerFee) * 2 * 10;
-
-      document.getElementById('p1716-net-1').textContent = `+$${net1.toFixed(2)} USD`;
-      document.getElementById('p1716-net-1-pct').textContent = `+${cycleNetPct.toFixed(2)}% Net After 2x Maker Fees`;
-      document.getElementById('p1716-net-5').textContent = `+$${net5.toFixed(2)} USD`;
-      document.getElementById('p1716-total-5').textContent = `Stack → $${total5.toFixed(2)}`;
-      document.getElementById('p1716-net-10').textContent = `+$${net10.toFixed(2)} USD`;
-      document.getElementById('p1716-total-10').textContent = `Stack → $${total10.toFixed(2)}`;
-      document.getElementById('p1716-fees-saved').textContent = `+$${feeSaved10.toFixed(2)} Saved`;
-
-      try {
-        localStorage.setItem('swooz_partner_1716_calc_v1', JSON.stringify({
-          cryptoUsd, cashUsd, venue, upPct, dipPct
-        }));
-      } catch (e) {}
-    }
-
-    function syncPartnerCalcToPortfolio() {
-      const cryptoUsd = Math.max(0, parseFloat(document.getElementById('p1716-crypto-usd')?.value) || 400);
-      const cashUsd = Math.max(0, parseFloat(document.getElementById('p1716-cash-usd')?.value) || 100);
-      const venue = document.getElementById('p1716-venue')?.value === 'kraken' ? 'Kraken Pro' : 'Coinbase Advanced';
-      const upPct = parseFloat(document.getElementById('p1716-up-pct')?.value) || 3.5;
-      const dipPct = parseFloat(document.getElementById('p1716-dip-pct')?.value) || 2.5;
-      const spotEth = ETH_RATE > 100 ? ETH_RATE : 2411.00;
-      const sellP = (spotEth * (1 + upPct / 100)).toFixed(2);
-      const buyP = (spotEth * (1 - dipPct / 100)).toFixed(2);
-      const totEthEquiv = spotEth > 0 ? (cryptoUsd + cashUsd) / spotEth : 0;
-
-      const newEntry = {
-        id: 'partner-straddle',
-        label: `🧋 BobaTeaisGood4Me — ${venue} Straddle (#1716)`,
-        address: `Sell Limit @ $${sellP} ($${cryptoUsd.toFixed(0)}) | Dip Buy @ $${buyP} ($${cashUsd.toFixed(0)})`,
-        eth: totEthEquiv,
-        costUsd: cryptoUsd + cashUsd,
-        miniSupers: 0,
-        isOnChain: false
-      };
-
-      const existingIdx = ACCOUNTS.findIndex(a => a.id === 'partner-straddle');
-      if (existingIdx >= 0) {
-        ACCOUNTS[existingIdx] = newEntry;
-      } else {
-        ACCOUNTS.unshift(newEntry);
-      }
-      saveAccounts(ACCOUNTS);
-      renderWalletPnl();
-      const msg = document.getElementById('p1716-save-msg');
-      if (msg) {
-        msg.textContent = `✅ Loaded $${(cryptoUsd + cashUsd).toFixed(2)} ${venue} Straddle into your P&L Tracker!`;
-      }
-      switchMainView('trade');
     }
 
     function setLayoutMode(mode) {
@@ -5330,8 +4520,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const btcVal = 0.0008762 * btcSpot;
       const linkVal = 2.370000 * linkSpot;
       const msVal = 400.33; // 133 Mini Supers @ $3.01 floor
-      const cashSabiVal = 6.97 + 1.03 + 26.26; // $8.00 ZUSD/USDC + 1,520 SABI + on-chain gas
-      const bobaNftVal = (0.2370 + 0.2930) * ethSpot; // IF #1716 (0.237 ETH) + 2 CloneX (0.293 ETH)
+      const cashSabiVal = 6.97 + 1.03 + 2.16; // $8.00 ZUSD/USDC + $2.16 On-Chain ETH across 4 Vaults
 
       const list = [
         {
@@ -5451,16 +4640,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         {
           id: 'vault-cash-sabi',
           symbol: 'USDC',
-          name: 'USD Cash & SABI',
-          sub: 'ZUSD / USDC / SABI',
+          name: 'USD Cash & Vault Gas',
+          sub: 'ZUSD / USDC / ETH',
           chain: 'ETH',
-          scope: ['swooz', 'vaults', 'combined'],
+          scope: ['swooz', 'vaults'],
           badgeBg: 'linear-gradient(135deg, #2775ca, #0284c7)',
           badgeTxt: '$',
           netBg: '#0f766e',
           netIcon: '🛡️',
-          platform: 'Kraken ($6.97) • CB ($1.03) • kushandkandie (1,520 SABI)',
-          amountTxt: '$8 Cash + 1,520 SABI',
+          platform: 'Kraken ($6.97 ZUSD) • Coinbase ($1.03 USDC) • 4 Vaults Gas',
+          amountTxt: '$10.16 Reserve',
           usdVal: cashSabiVal,
           targetUsd: cashSabiVal,
           chgTxt: '0.0% Reserve',
@@ -5469,27 +4658,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }
       ];
 
-      if (ORBIT_PORTFOLIO_SCOPE === 'combined') {
-        list.push({
-          id: 'boba-nfts',
-          symbol: 'BOBA',
-          name: 'BobaTea Vault (#1716)',
-          sub: 'IF #1716 + 2 CloneX',
-          chain: 'ETH',
-          scope: ['combined'],
-          badgeBg: 'linear-gradient(135deg, #ec4899, #9333ea)',
-          badgeTxt: '🧋',
-          netBg: '#831843',
-          netIcon: '🧋',
-          platform: 'Fold 8 Partner Vault (IF #1716 + CloneX #9143 / #17881)',
-          amountTxt: '0.5300 ETH Floor',
-          usdVal: bobaNftVal,
-          targetUsd: 0.5300 * 2435.00,
-          chgTxt: '+14.5% (IF Floor)',
-          isUp: true,
-          pair: 'ETHUSD'
-        });
-      }
 
       return list;
     }
@@ -6032,12 +5200,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const lbl = document.getElementById('orbit-chart-title-lbl');
       if (lbl) {
         const titles = {
-          swooz: 'Total Net Worth (Active DEX + 5 Vaults)',
+          swooz: 'Total Net Worth (Active DEX + 4 Vaults)',
           dex: 'Total Net Worth (9-Leg Active DEX Only)',
           kraken: 'Total Net Worth (Kraken Pro 3 Active Legs)',
           coinbase: 'Total Net Worth (Coinbase Adv 6 Active Legs)',
-          vaults: 'Total Net Worth (5 On-Chain Ethereum Vaults)',
-          combined: 'Total Net Worth (swooz.eth + BobaTea #1716)'
+          vaults: 'Total Net Worth (4 On-Chain Ethereum Vaults)'
         };
         lbl.textContent = titles[ORBIT_PORTFOLIO_SCOPE] || titles.swooz;
       }
@@ -6173,16 +5340,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         onVaultButtonClick();
         return;
       }
-      if (val === 'partner-1716') {
-        switchOrbitSidebar('partner');
-        return;
-      }
       const scopeMap = {
         'all': 'swooz',
         'kraken-only': 'kraken',
         'coinbase-only': 'coinbase',
-        'vaults-only': 'vaults',
-        'combined-boba': 'combined'
+        'vaults-only': 'vaults'
       };
       setOrbitPortfolioScope(scopeMap[val] || 'swooz');
     }
@@ -6221,7 +5383,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         orbit: 'orbit',
         swap: 'trade',
         trade: 'trade',
-        partner: 'partner',
         targets: 'targets',
         history: 'targets',
         nft: 'viewer',
@@ -6307,7 +5468,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (!ts || ts - LAST_ORBIT_FRAME_TS >= 42) {
           LAST_ORBIT_FRAME_TS = ts || performance.now();
           ORBIT_ANIM_PHASE += 0.055;
-          const orbitWrap = document.getElementById('orbit-v6-workstation');
+          const orbitWrap = document.getElementById('orbit-bento-dashboard');
           if (orbitWrap && !orbitWrap.classList.contains('hidden') && !document.hidden) {
             drawOrbitNetworthChart();
           }
