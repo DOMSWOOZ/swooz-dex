@@ -11,122 +11,92 @@
   <link rel="manifest" href="manifest.json?v=4" />
   <link rel="icon" type="image/png" href="icon-192.png?v=4" />
   <link rel="apple-touch-icon" href="icon-512.png?v=4" />
-  <title>SWOOZ.ETH DEX — Matrix Reloaded Virtual Control Construct</title>
+  <title>ORBIT // SWOOZ.ETH Tracker &amp; Multi-Chain DEX v6.0</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
     :root {
-      /* Tobias "Kazumichi" Grime — Matrix Reloaded Virtual Control Design
-         Monochrome Wireframe Architecture: Virtual CAD Blueprint (Default) */
-      --background: #05070a;
-      --card: rgba(0, 0, 0, 0.86);
-      --secondary: rgba(255, 255, 255, 0.045);
-      --border: rgba(255, 255, 255, 0.20);
-      --foreground: #ffffff;
-      --muted-foreground: rgba(255, 255, 255, 0.56);
-      --holo-cyan: #00f0ff;
-      --holo-volt: #e2fd52;
-      --crt-green: #00ff66;
-      --vcd-grid: rgba(255, 255, 255, 0.045);
-      --vcd-subgrid: rgba(0, 240, 255, 0.035);
-      --vcd-bracket: #ffffff;
-      --holo-stroke: #00f0ff;
-      --holo-glow: rgba(0, 240, 255, 0.65);
-    }
-
-    /* Hologram Tint Presets: Cyan (Default) | White (Stark CAD Monochrome) | Volt (#e2fd52) */
-    body[data-holo-tint="white"] {
-      --holo-stroke: #ffffff;
-      --holo-glow: rgba(255, 255, 255, 0.70);
-    }
-    body[data-holo-tint="volt"] {
-      --holo-stroke: #e2fd52;
-      --holo-glow: rgba(226, 253, 82, 0.70);
-    }
-
-    /* Optional High-Luminance Zion White-Room Construct Mode */
-    body.zion-vcd-mode {
-      --background: #e8eef5;
-      --card: rgba(255, 255, 255, 0.92);
-      --secondary: #dde6f0;
-      --border: #94a3b8;
-      --foreground: #0f172a;
-      --muted-foreground: #475569;
-      --vcd-grid: rgba(15, 23, 42, 0.065);
-      --vcd-bracket: #0f172a;
-    }
-
-    /* Monochrome Wireframe Architecture Overrides (Matches Code Breaker & Back Room Showroom) */
-    body:not(.zion-vcd-mode) {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    body:not(.zion-vcd-mode) .rounded-xl,
-    body:not(.zion-vcd-mode) .rounded-lg,
-    body:not(.zion-vcd-mode) .rounded-md {
-      border-radius: 2px !important;
-    }
-    body:not(.zion-vcd-mode) .bg-emerald-500 {
-      background-color: #ffffff !important;
-      color: #000000 !important;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.55);
-      border: 1px solid #ffffff !important;
-    }
-    body:not(.zion-vcd-mode) .text-emerald-400,
-    body:not(.zion-vcd-mode) .text-emerald-500 {
-      color: #00ff66 !important;
-      text-shadow: 0 0 8px rgba(0, 255, 102, 0.28);
-    }
-    body:not(.zion-vcd-mode) .border-emerald-500,
-    body:not(.zion-vcd-mode) .border-emerald-500\/30,
-    body:not(.zion-vcd-mode) .border-emerald-500\/35,
-    body:not(.zion-vcd-mode) .border-emerald-500\/40,
-    body:not(.zion-vcd-mode) .border-emerald-500\/45,
-    body:not(.zion-vcd-mode) .border-emerald-500\/50 {
-      border-color: rgba(255, 255, 255, 0.32) !important;
-    }
-    body:not(.zion-vcd-mode) .text-sky-400,
-    body:not(.zion-vcd-mode) .text-sky-500,
-    body:not(.zion-vcd-mode) .text-purple-300,
-    body:not(.zion-vcd-mode) .text-purple-400 {
-      color: #00f0ff !important;
-      text-shadow: 0 0 8px rgba(0, 240, 255, 0.35);
-    }
-    body:not(.zion-vcd-mode) .bg-sky-500,
-    body:not(.zion-vcd-mode) .bg-purple-500 {
-      background-color: #00f0ff !important;
-      color: #000000 !important;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.50);
-    }
-    body:not(.zion-vcd-mode) .border-sky-500\/40,
-    body:not(.zion-vcd-mode) .border-purple-500\/30,
-    body:not(.zion-vcd-mode) .border-purple-500\/40,
-    body:not(.zion-vcd-mode) .border-purple-500\/45 {
-      border-color: rgba(0, 240, 255, 0.45) !important;
-    }
-    body:not(.zion-vcd-mode) .text-amber-400,
-    body:not(.zion-vcd-mode) .text-amber-500 {
-      color: #e2fd52 !important;
-      text-shadow: 0 0 8px rgba(226, 253, 82, 0.28);
-    }
-    body:not(.zion-vcd-mode) .bg-amber-500 {
-      background-color: #e2fd52 !important;
-      color: #000000 !important;
-      box-shadow: 0 0 14px rgba(226, 253, 82, 0.45);
-    }
-    body:not(.zion-vcd-mode) .border-amber-500\/40,
-    body:not(.zion-vcd-mode) .border-amber-500\/30 {
-      border-color: rgba(226, 253, 82, 0.45) !important;
+      /* ORBIT // SWOOZ.ETH Dark Glassmorphic Neon Palette (Flow Render Spec) */
+      --background: #0b0d14;
+      --card: #131722;
+      --secondary: #191f2e;
+      --border: rgba(255, 255, 255, 0.08);
+      --foreground: #f8fafc;
+      --muted-foreground: #8b95a9;
+      --holo-cyan: #00f5d4;
+      --holo-volt: #a855f7;
+      --crt-green: #10f1b6;
+      --vcd-grid: rgba(255, 255, 255, 0.02);
+      --vcd-subgrid: rgba(0, 245, 212, 0.02);
+      --vcd-bracket: rgba(0, 245, 212, 0.35);
+      --holo-stroke: #00f5d4;
+      --holo-glow: rgba(0, 245, 212, 0.45);
     }
 
     body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--background);
       background-image:
-        radial-gradient(circle at 50% 15%, rgba(0, 240, 255, 0.06) 0%, transparent 60%),
-        linear-gradient(to right, var(--vcd-grid) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--vcd-grid) 1px, transparent 1px);
-      background-size: 100% 100%, 32px 32px, 32px 32px;
+        radial-gradient(circle at 18% 12%, rgba(0, 245, 212, 0.07) 0%, transparent 42%),
+        radial-gradient(circle at 85% 22%, rgba(168, 85, 247, 0.08) 0%, transparent 46%),
+        radial-gradient(circle at 50% 85%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+      color: var(--foreground);
     }
 
-    /* Wireframe Construct Pods with Corner CAD Registration Brackets */
+    .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    /* Orbit Glass Cards */
+    .orbit-card {
+      background: linear-gradient(180deg, rgba(23, 28, 42, 0.92) 0%, rgba(17, 21, 32, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Quick Swap Neon Gradient Border Card (Exact Match to Flow Render) */
+    .orbit-swap-card {
+      border-radius: 16px;
+      border: 1.5px solid transparent;
+      background:
+        linear-gradient(180deg, #141826 0%, #101420 100%) padding-box,
+        linear-gradient(135deg, #00f5d4 0%, #3b82f6 50%, #c048ff 100%) border-box;
+      box-shadow: 0 0 32px rgba(0, 245, 212, 0.12), 0 0 32px rgba(192, 72, 255, 0.12), 0 14px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Vibrant Cyan-to-Purple Swap CTA Button */
+    .orbit-swap-btn {
+      background: linear-gradient(90deg, #10f1b6 0%, #2dd4bf 30%, #6366f1 68%, #c048ff 100%);
+      color: #ffffff;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 6px 22px rgba(45, 212, 191, 0.28), 0 6px 22px rgba(192, 72, 255, 0.25);
+      transition: all 0.2s ease;
+    }
+    .orbit-swap-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(45, 212, 191, 0.4), 0 10px 28px rgba(192, 72, 255, 0.38);
+      filter: brightness(1.06);
+    }
+
+    /* Active Sidebar Nav Item */
+    .orbit-nav-active {
+      background: linear-gradient(90deg, rgba(20, 241, 217, 0.16) 0%, rgba(59, 130, 246, 0.08) 100%);
+      color: #2dd4bf !important;
+      border: 1px solid rgba(45, 212, 191, 0.28);
+      box-shadow: 0 0 20px rgba(20, 241, 217, 0.12);
+    }
+
+    /* Active Chain Filter Button */
+    .orbit-chain-active {
+      border-color: #00f5d4 !important;
+      background: rgba(0, 245, 212, 0.12) !important;
+      box-shadow: 0 0 16px rgba(0, 245, 212, 0.28);
+    }
+
+    /* Deep Panels Styled in Orbit Glass Aesthetic */
     .vcd-pod,
     #sec-targets,
     #sec-viewer,
@@ -134,67 +104,23 @@
     #sec-markets,
     #sec-calc {
       position: relative;
-      border: 1px solid var(--border);
-      background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 24px 24px;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
-    }
-    .vcd-pod::before,
-    .vcd-pod::after,
-    #sec-targets::before,
-    #sec-targets::after,
-    #sec-viewer::before,
-    #sec-viewer::after,
-    #sec-partner::before,
-    #sec-partner::after {
-      content: '';
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      pointer-events: none;
-      border-color: var(--vcd-bracket);
-      z-index: 20;
-    }
-    .vcd-pod::before,
-    #sec-targets::before,
-    #sec-viewer::before,
-    #sec-partner::before {
-      top: -1px;
-      left: -1px;
-      border-top: 2px solid var(--vcd-bracket);
-      border-left: 2px solid var(--vcd-bracket);
-    }
-    .vcd-pod::after,
-    #sec-targets::after,
-    #sec-viewer::after,
-    #sec-partner::after {
-      bottom: -1px;
-      right: -1px;
-      border-bottom: 2px solid var(--vcd-bracket);
-      border-right: 2px solid var(--vcd-bracket);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(23, 28, 42, 0.92) 0%, rgba(17, 21, 32, 0.95) 100%);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
     }
     .vcd-stencil {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      letter-spacing: 0.14em;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    /* ============================================================================
-       3D HOLOGRAPHIC SPECIMEN PROJECTION ARCHITECTURE (1110 kHz PHOTON EMISSION)
-       Makes all displayed items across the DEX appear as floating wireframe holograms
-       ============================================================================ */
     @keyframes holoFloat {
       0%, 100% { transform: translateY(0px) scale(1); }
       50% { transform: translateY(-4px) scale(1.018); }
     }
-    @keyframes holoBeamPulse {
-      0%, 100% { opacity: 0.82; }
-      50% { opacity: 1; }
-    }
 
-    /* Full-Glory True-Color Hologram Float (No Grayscale Tint, No Square Background Box) */
+    /* Full-Glory True-Color NFTs (No Grayscale Tint, No Square Background Box) */
     img[src*="nft-media/"],
     #stage-nft-img,
     #crt-holo-specimen-img,
@@ -203,41 +129,21 @@
       animation: holoFloat 3.6s ease-in-out infinite;
       background: transparent !important;
       border: none !important;
-      filter: drop-shadow(0 8px 18px rgba(0, 240, 255, 0.42)) drop-shadow(0 0 8px rgba(0, 255, 65, 0.28)) !important;
+      filter: drop-shadow(0 8px 18px rgba(0, 240, 255, 0.32)) !important;
       box-shadow: none !important;
     }
 
-    /* Optional Scanlines Off toggle */
-    body.holo-scanlines-off .holo-scanline-layer {
-      display: none !important;
-    }
-
-    /* Hologram Specimen Pod Wrapper */
     .holo-pod-card {
       position: relative;
-      background: rgba(0, 0, 0, 0.88) !important;
-      border: 1px solid rgba(0, 240, 255, 0.38) !important;
-      box-shadow: inset 0 -18px 28px rgba(0, 240, 255, 0.12), 0 0 18px rgba(0, 0, 0, 0.85);
+      background: rgba(19, 23, 34, 0.92) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 14px !important;
       overflow: hidden;
     }
-    .holo-pod-card::after {
-      content: 'HOLO // 1110 kHz';
-      position: absolute;
-      top: 4px;
-      right: 6px;
-      font-size: 7.5px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: #00f0ff;
-      background: rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(0, 240, 255, 0.45);
-      padding: 1px 4px;
-      pointer-events: none;
-    }
 
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #05070a; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.35); border-radius: 0px; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0b0d14; }
+    ::-webkit-scrollbar-thumb { background: rgba(139, 149, 169, 0.3); border-radius: 9999px; }
     @keyframes ticker {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -259,7 +165,7 @@
       white-space: pre;
     }
     .candle-green { color: #00FF41; text-shadow: 0 0 6px rgba(0, 255, 65, 0.35); }
-    .candle-red { color: #FF3B30; text-shadow: 0 0 6px rgba(255, 59, 48, 0.35); } /* 80s Apple Alert Red */
+    .candle-red { color: #FF3B30; text-shadow: 0 0 6px rgba(255, 59, 48, 0.35); }
     .candle-wick { color: #555555; }
     .border-matrix { border-color: #00FF41 !important; }
     .border-matrix\/20 { border-color: rgba(0, 255, 65, 0.20) !important; }
@@ -271,118 +177,582 @@
 </head>
 <body data-holo-tint="cyan" class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
 
-  <!-- Sticky Top DEX Telemetry Header (Matrix Reloaded Monochrome Wireframe Architecture) -->
-  <header class="sticky top-0 z-40 bg-black/95 backdrop-blur border-b border-white/20 px-3 py-2.5 shadow-[0_0_50px_rgba(0,0,0,0.95)]">
-    <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2">
-      <!-- Brand + Zion Virtual Control Header Identity -->
-      <div class="flex items-center gap-3">
-        <img src="logo.png" alt="SWOOZ.ETH" class="h-9 sm:h-11 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]" />
+  <!-- ==========================================================================================
+       🌌 ORBIT // SWOOZ.ETH TRACKER & MULTI-CHAIN DEX v6.0 (FLOW RENDER FULL-FEATURED DASHBOARD)
+       1:1 Visual, GUI & UX Implementation of the Flow Render + Full README Feature Integration
+       ========================================================================================== -->
+  <div id="orbit-app-wrapper" class="max-w-[1640px] mx-auto px-2 sm:px-4 pt-3 pb-4">
+    <div class="flex flex-col lg:flex-row gap-4 items-start">
+
+      <!-- ================= LEFT SIDEBAR NAVIGATION (Exact Match to Flow Render) ================= -->
+      <aside class="w-full lg:w-[225px] shrink-0 orbit-card p-3.5 flex flex-col justify-between lg:min-h-[810px]">
         <div>
+          <!-- ORBIT Brand Header -->
+          <div class="flex items-center justify-between lg:justify-start gap-3 px-1 pb-4 mb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5 cursor-pointer" onclick="switchOrbitSidebar('dashboard')">
+              <!-- Glowing Cyan/Purple Ringed Planet SVG Logo -->
+              <svg viewBox="0 0 48 48" class="w-10 h-10 shrink-0 drop-shadow-[0_0_12px_rgba(0,245,212,0.45)]">
+                <defs>
+                  <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f5d4" />
+                    <stop offset="50%" stop-color="#38bdf8" />
+                    <stop offset="100%" stop-color="#a855f7" />
+                  </linearGradient>
+                </defs>
+                <circle cx="24" cy="24" r="11" fill="none" stroke="url(#orbitGrad)" stroke-width="2.6" />
+                <ellipse cx="24" cy="24" rx="21" ry="7.5" transform="rotate(-28 24 24)" fill="none" stroke="url(#orbitGrad)" stroke-width="2.4" />
+                <circle cx="38" cy="11" r="2.2" fill="#00f5d4" />
+                <circle cx="10" cy="37" r="1.8" fill="#a855f7" />
+              </svg>
+              <div>
+                <div class="text-lg font-extrabold tracking-wider text-white leading-none">ORBIT</div>
+                <div class="text-[9.5px] font-bold tracking-[0.16em] text-[#8b95a9] uppercase mt-1">TRACKER &amp; DEX</div>
+              </div>
+            </div>
+
+            <!-- Mobile Quick Vault Unlock Button -->
+            <button onclick="onVaultButtonClick()" class="lg:hidden px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-xs font-bold text-[#2dd4bf]">
+              🔐 PIN
+            </button>
+          </div>
+
+          <!-- 7 Sidebar Navigation Links -->
+          <nav class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-1.5 text-[13px] font-semibold">
+            <button id="orbit-nav-dashboard" onclick="switchOrbitSidebar('dashboard')"
+                    class="orbit-nav-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm8 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V4zM3 12a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4zm8 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+              </svg>
+              <span>Dashboard</span>
+            </button>
+
+            <button id="orbit-nav-swap" onclick="switchOrbitSidebar('swap')"
+                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+              </svg>
+              <span>DEX Swap</span>
+            </button>
+
+            <button id="orbit-nav-liquidity" onclick="switchOrbitSidebar('liquidity')"
+                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+              <span>Liquidity</span>
+            </button>
+
+            <button id="orbit-nav-nft" onclick="switchOrbitSidebar('nft')"
+                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="8.5" cy="9.5" r="1.5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 20" />
+              </svg>
+              <span>NFT Gallery (18)</span>
+            </button>
+
+            <button id="orbit-nav-bridge" onclick="switchOrbitSidebar('bridge')"
+                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+              </svg>
+              <span>Bridge</span>
+            </button>
+
+            <button id="orbit-nav-history" onclick="switchOrbitSidebar('history')"
+                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+              </svg>
+              <span>History</span>
+            </button>
+
+            <button id="orbit-nav-settings" onclick="switchOrbitSidebar('settings')"
+                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <span>Settings</span>
+            </button>
+          </nav>
+
+          <!-- Live 9-Leg Straddle Mini Status Pill in Sidebar -->
+          <div class="hidden lg:block mt-5 p-3 rounded-xl bg-[#191f2e]/90 border border-white/10 space-y-1.5 text-[11px]">
+            <div class="flex items-center justify-between">
+              <span class="text-[#2dd4bf] font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#10f1b6] animate-ping"></span>
+                9-Leg Straddle
+              </span>
+              <span class="text-[#8b95a9] font-mono">v6.0</span>
+            </div>
+            <div class="text-white/80 font-mono text-[10.5px]">Kraken (3) + Coinbase (6)</div>
+            <div class="text-[#a855f7] font-mono text-[10.5px]">ETH $<span id="hdr-eth-rate">2,428.07</span></div>
+            <div class="pt-1 flex gap-1">
+              <button onclick="switchMainView('crt')" class="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[10px] text-[#2dd4bf] border border-white/10 font-mono">
+                🖥️ CRT View
+              </button>
+              <button onclick="switchMainView('split')" class="flex-1 py-1 rounded bg-white/5 hover:bg-white/10 text-[10px] text-purple-300 border border-white/10 font-mono">
+                📖 All Panels
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Pinned Settings / Vault Lock Button (Exact Match to Flow Render Bottom-Left) -->
+        <div class="hidden lg:flex flex-col gap-2 pt-4 border-t border-white/10">
+          <button id="btn-vault-lock" onclick="onVaultButtonClick()"
+                  class="w-full px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center gap-2 transition cursor-pointer">
+            <span id="vault-btn-icon">🔒</span>
+            <span id="vault-btn-label" class="truncate">Unlock Vault PIN</span>
+          </button>
+          <button onclick="switchOrbitSidebar('settings')"
+                  class="flex items-center gap-3 px-3 py-2 rounded-xl text-[#8b95a9] hover:text-white text-[13px] font-semibold transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            </svg>
+            <span>Settings</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ================= RIGHT MAIN WORKSPACE (Top Bar + Bento Grid + Expandable Deep Panels) ================= -->
+      <div class="flex-1 w-full min-w-0 space-y-4">
+
+        <!-- TOP BAR: Connected Wallets (3) + 6 Chain Filter Icons + Search Input + Gas Pill + Profile Avatar -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+
+          <!-- 1. Connected Wallets (3) Box (Exact Match to Flow Render Top-Left) -->
+          <div class="orbit-card px-3.5 py-2 flex flex-col justify-center min-w-[230px]">
+            <div class="flex items-center justify-between text-[11px] text-[#8b95a9] font-medium mb-1">
+              <span id="orbit-connected-wallets-lbl">Connected Wallets (3)</span>
+              <button onclick="toggleOrbitPortfolioMode()" id="orbit-data-mode-btn"
+                      class="text-[10px] text-[#2dd4bf] hover:underline font-mono ml-2"
+                      title="Toggle between Flow Showcase ($143,628) and Live Exchange + On-Chain Balances">
+                [Showcase ⇄ Live]
+              </button>
+            </div>
+            <div class="flex items-center justify-between gap-2.5">
+              <!-- MetaMask + WalletConnect/Coinbase + Grid Icons -->
+              <div class="flex items-center gap-1.5">
+                <span class="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-xs" title="MetaMask (swooz.eth)">🦊</span>
+                <span class="w-5 h-5 rounded-full bg-indigo-500/25 border border-indigo-400/50 flex items-center justify-center text-xs" title="Coinbase Advanced &amp; Wallet">🔵</span>
+                <span class="w-5 h-5 rounded-md bg-white/10 border border-white/20 flex items-center justify-center text-[10px] text-white/80 font-mono" title="Kraken Pro API">☷</span>
+              </div>
+              <!-- Wallet Selector Dropdown -->
+              <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
+                      class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
+                <option value="all" class="bg-[#131722] text-white">0x6ddA...31b4 (swooz.eth)</option>
+                <option value="kraken-cb" class="bg-[#131722] text-white">Kraken + Coinbase (9 Legs)</option>
+                <option value="partner-1716" class="bg-[#131722] text-white">0xB99A...93f6 (Boba #1716)</option>
+                <option value="ms-whale" class="bg-[#131722] text-white">0xae1c...39B0 (133 Mini Supers)</option>
+                <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (1506 / 1716)...</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 2. Center 6 Multi-Chain Filter Buttons (Ethereum, Solana, Arbitrum, Optimism, Polygon, Base) -->
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span class="font-mono font-black text-xs sm:text-sm tracking-wider text-white uppercase">ZION VIRTUAL CONTROL // DEX CONSTRUCT</span>
-            <span id="live-badge" class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono font-bold bg-white/10 text-white border border-white/30 uppercase tracking-widest">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"></span>
-              1110 kHz LIVE
-            </span>
+            <!-- Ethereum -->
+            <button id="orbit-chain-ETH" onclick="filterOrbitChain('ETH')" title="Ethereum Mainnet (Click again for All Chains)"
+                    class="orbit-chain-active w-10 h-10 rounded-xl bg-[#161b28] border border-white/10 flex items-center justify-center transition cursor-pointer">
+              <svg class="w-5 h-5" viewBox="0 0 32 32" fill="none">
+                <path d="M16 4L8.5 16.2L16 20.6L23.5 16.2L16 4Z" fill="#627EEA" />
+                <path d="M16 22.1L8.5 17.7L16 28L23.5 17.7L16 22.1Z" fill="#00f5d4" />
+              </svg>
+            </button>
+            <!-- Solana -->
+            <button id="orbit-chain-SOL" onclick="filterOrbitChain('SOL')" title="Solana"
+                    class="w-10 h-10 rounded-xl bg-[#161b28] border border-white/10 hover:border-[#00f5d4]/60 flex items-center justify-center transition cursor-pointer">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                <path d="M4 17.5h13.5l2.5-2.5H6.5L4 17.5zm2.5-4.25H20l-2.5-2.5H4l2.5 2.5zM4 9h13.5L20 6.5H6.5L4 9z" fill="url(#orbitGrad)" />
+              </svg>
+            </button>
+            <!-- Arbitrum -->
+            <button id="orbit-chain-ARB" onclick="filterOrbitChain('ARB')" title="Arbitrum One"
+                    class="w-10 h-10 rounded-xl bg-[#161b28] border border-white/10 hover:border-[#00f5d4]/60 flex items-center justify-center transition cursor-pointer">
+              <span class="w-6 h-6 rounded-full bg-[#28a0f0]/20 border border-[#28a0f0] text-[#38bdf8] text-[10px] font-black flex items-center justify-center">ARB</span>
+            </button>
+            <!-- Optimism -->
+            <button id="orbit-chain-OP" onclick="filterOrbitChain('OP')" title="Optimism"
+                    class="w-10 h-10 rounded-xl bg-[#161b28] border border-white/10 hover:border-[#00f5d4]/60 flex items-center justify-center transition cursor-pointer">
+              <span class="w-6 h-6 rounded-full bg-[#ff0420] text-white text-[9.5px] font-black italic flex items-center justify-center">OP</span>
+            </button>
+            <!-- Polygon -->
+            <button id="orbit-chain-MATIC" onclick="filterOrbitChain('MATIC')" title="Polygon"
+                    class="w-10 h-10 rounded-xl bg-[#161b28] border border-white/10 hover:border-[#00f5d4]/60 flex items-center justify-center transition cursor-pointer">
+              <span class="w-6 h-6 rounded-full bg-[#8247e5] text-white text-[11px] font-black flex items-center justify-center">∞</span>
+            </button>
+            <!-- Base -->
+            <button id="orbit-chain-BASE" onclick="filterOrbitChain('BASE')" title="Base L2"
+                    class="w-10 h-10 rounded-xl bg-[#161b28] border border-white/10 hover:border-[#00f5d4]/60 flex items-center justify-center transition cursor-pointer">
+              <span class="w-6 h-6 rounded-full bg-[#0052ff] text-white text-[10px] font-black flex items-center justify-center">⊖</span>
+            </button>
           </div>
-          <div class="text-[11px] text-white/60 font-mono uppercase tracking-wide">
-            MONOCHROME CAD WIREFRAME • ETH $<span id="hdr-eth-rate" class="text-white font-bold">2,284.38</span> • STACK: <span id="hdr-total-eth" class="text-cyan-300 font-bold">0.3755 ETH ($857.83)</span>
+
+          <!-- 3. Right Search Input + Gas Badge + Profile Avatar -->
+          <div class="flex items-center gap-2.5 flex-1 sm:flex-initial justify-end">
+            <div class="relative flex-1 sm:w-[245px]">
+              <svg class="w-4 h-4 text-[#8b95a9] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <path stroke-linecap="round" d="M21 21l-4.35-4.35" />
+              </svg>
+              <input id="orbit-global-search" type="text" oninput="onOrbitSearchInput(this.value)" onkeydown="if(event.key==='Enter') onOrbitSearchSubmit(this.value)"
+                     placeholder="Search tokens, NFTs, or wallets..."
+                     class="w-full pl-9 pr-3 py-2 rounded-xl bg-[#131722] border border-white/10 focus:border-[#00f5d4] text-xs text-white placeholder-[#8b95a9] outline-none transition" />
+            </div>
+
+            <div class="px-3 py-2 rounded-xl bg-[#131722] border border-white/10 text-xs text-[#8b95a9] font-medium shrink-0">
+              Gas: <strong id="orbit-gas-gwei" class="text-white font-mono">18 Gwei</strong>
+            </div>
+
+            <!-- Profile Avatar / Vault Trigger -->
+            <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN 1506) or Partner Vault (PIN 1716)"
+                    class="w-9 h-9 rounded-full overflow-hidden border-2 border-[#00f5d4]/60 bg-[#191f2e] flex items-center justify-center shrink-0 hover:scale-105 transition cursor-pointer">
+              <img src="nft-media/nobg/if_1506.gif" alt="Profile" class="w-full h-full object-cover" />
+            </button>
           </div>
         </div>
-      </div>
 
-      <!-- Right Controls: Virtual CAD Blueprint vs Optical Sensor Feed + Hologram Tint + Owner Vault PIN Lock -->
-      <div class="flex items-center gap-2 flex-wrap">
-        <!-- View Mode Toggle: Virtual CAD Blueprint (Default) vs Optical Sensor Feed (Exact match to BackRoomShowroom.tsx) -->
-        <div class="flex items-center gap-1 bg-white/5 border border-white/20 p-1 text-[10px] font-mono">
-          <button id="btn-mode-blueprint" onclick="setConstructViewMode('blueprint')"
-                  class="px-2.5 py-1 uppercase font-bold transition-all cursor-pointer bg-white text-black shadow-[0_0_12px_rgba(255,255,255,0.7)]">
-            Virtual CAD Blueprint
-          </button>
-          <button id="btn-mode-optical" onclick="setConstructViewMode('optical')"
-                  class="px-2.5 py-1 uppercase font-bold transition-all cursor-pointer text-white/50 hover:text-white">
-            Optical Sensor Feed
-          </button>
-        </div>
+        <!-- ================= BENTO DASHBOARD GRID (12 Columns — Exact Match to Flow Render) ================= -->
+        <section id="orbit-bento-dashboard" class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
 
-        <!-- Hologram Specimen Tint Selector (CYAN | WHITE | VOLT) -->
-        <div class="hidden sm:flex items-center gap-1 bg-white/5 border border-white/20 p-1 text-[10px] font-mono">
-          <span class="text-white/40 px-1 font-bold">HOLO:</span>
-          <button id="btn-holo-cyan" onclick="setHoloTint('cyan')" class="px-2 py-0.5 uppercase font-bold bg-white text-black border border-white cursor-pointer">CYAN</button>
-          <button id="btn-holo-white" onclick="setHoloTint('white')" class="px-2 py-0.5 uppercase font-bold bg-white/5 text-white/50 border border-white/20 hover:text-white cursor-pointer">WHITE</button>
-          <button id="btn-holo-volt" onclick="setHoloTint('volt')" class="px-2 py-0.5 uppercase font-bold bg-white/5 text-white/50 border border-white/20 hover:text-white cursor-pointer">VOLT</button>
-        </div>
+          <!-- LEFT COLUMN (7 Cols): NET WORTH OVERVIEW + MULTI-CHAIN TOKENS -->
+          <div class="lg:col-span-7 flex flex-col gap-4 justify-between">
 
-        <button id="btn-vault-lock" onclick="onVaultButtonClick()"
-                class="px-2.5 py-1.5 bg-white/10 hover:bg-white hover:text-black border border-white/30 text-white text-[11px] font-mono font-bold uppercase flex items-center gap-1 transition">
-          <span id="vault-btn-icon">🔒</span>
-          <span id="vault-btn-label">OPERATOR PIN</span>
-        </button>
+            <!-- CARD 1: Net Worth Overview -->
+            <div class="orbit-card p-5 flex flex-col justify-between">
+              <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
+                <div>
+                  <div class="text-sm font-semibold text-[#c5cee0]">Net Worth Overview</div>
+                  <div class="flex items-center gap-3 mt-1.5 flex-wrap">
+                    <span id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">$143,628.45</span>
+                    <span id="orbit-networth-badge" class="px-2.5 py-1 rounded-lg bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-xs font-bold">
+                      +4.28% (24h)
+                    </span>
+                    <span id="hdr-total-eth" class="hidden text-xs font-mono text-[#2dd4bf]">0.3755 ETH</span>
+                  </div>
+                </div>
 
-        <!-- Fold 8 Dual-Pane vs S26U Portrait Mode Toggle -->
-        <div class="inline-flex bg-white/5 border border-white/20 p-0.5 text-[11px] font-mono">
-          <button id="btn-mode-auto" onclick="setLayoutMode('fold8')" class="px-2 py-1 font-bold bg-white text-black transition">
-            📖 Fold 8
-          </button>
-          <button id="btn-mode-s26u" onclick="setLayoutMode('s26u')" class="px-2 py-1 font-bold text-white/60 hover:text-white transition">
-            📱 S26U
-          </button>
-        </div>
+                <!-- Timeframe Selector Pills: 1D | 1W | 1M | 3M | 1Y | ALL -->
+                <div class="flex items-center gap-1 bg-[#0e121b] border border-white/10 rounded-xl p-1 text-xs font-semibold">
+                  <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-2.5 py-1 rounded-lg bg-[#252d40] text-white transition cursor-pointer">1D</button>
+                  <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1W</button>
+                  <button onclick="setOrbitChartTf('1M')" id="orbit-tf-1M" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1M</button>
+                  <button onclick="setOrbitChartTf('3M')" id="orbit-tf-3M" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">3M</button>
+                  <button onclick="setOrbitChartTf('1Y')" id="orbit-tf-1Y" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1Y</button>
+                  <button onclick="setOrbitChartTf('ALL')" id="orbit-tf-ALL" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">ALL</button>
+                </div>
+              </div>
 
-        <button id="btn-cli-toggle" onclick="toggleSwoozCliOverlay()"
-                class="px-2.5 py-1.5 bg-black hover:bg-[#00FF41]/15 border border-[#00FF41] text-[#FFB000] text-[11px] font-mono font-bold uppercase flex items-center gap-1 cursor-pointer shadow-[0_0_10px_rgba(0,255,65,0.25)]"
-                title="Toggle SWOOZ_DEX_ROOT CLI Overlay (Shortcut: ` backtick)">
-          <span>&gt;_</span> <span>CLI [`]</span>
-        </button>
+              <!-- Glowing Cyan-Purple Spline Chart Canvas -->
+              <div class="relative w-full h-[225px] mt-2">
+                <canvas id="orbit-networth-canvas" width="760" height="225" class="w-full h-full block"></canvas>
+              </div>
+            </div>
 
-        <button id="btn-refresh" onclick="refreshTelemetry()" class="px-2.5 py-1.5 bg-black hover:bg-white/15 border border-white/25 text-white text-[11px] font-mono font-bold uppercase flex items-center gap-1">
-          <span>🔄</span> <span class="hidden sm:inline">SYNC</span>
-        </button>
+            <!-- CARD 2: Multi-Chain Tokens Table -->
+            <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold text-white">Multi-Chain Tokens</h3>
+                  <span id="orbit-active-chain-pill" class="px-2 py-0.5 rounded-md bg-white/5 text-[#2dd4bf] text-[10px] font-mono">ALL CHAINS</span>
+                </div>
+                <button onclick="toggleOrbitPortfolioMode()" class="text-[#8b95a9] hover:text-white text-lg leading-none px-1 cursor-pointer" title="Switch Showcase / Live 9-Leg Balances">•••</button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr class="text-[#8b95a9] border-b border-white/10 text-[11px] font-medium">
+                      <th class="pb-2.5 font-medium">Asset</th>
+                      <th class="pb-2.5 font-medium">Chain</th>
+                      <th class="pb-2.5 font-medium">Wallet</th>
+                      <th class="pb-2.5 text-right font-medium">Balance</th>
+                      <th class="pb-2.5 text-right font-medium">Value</th>
+                      <th class="pb-2.5 text-right font-medium">24h Change</th>
+                    </tr>
+                  </thead>
+                  <tbody id="orbit-tokens-tbody" class="divide-y divide-white/5 text-[12.5px]">
+                    <!-- Populated dynamically by renderOrbitTokensTable() -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MIDDLE COLUMN (3 Cols): NFT PORTFOLIO (18) + NETWORK DISTRIBUTION -->
+          <div class="lg:col-span-3 flex flex-col gap-4 justify-between">
+
+            <!-- CARD 3: NFT Portfolio (18) — 2x2 Full-Color Showcase Grid -->
+            <div class="orbit-card p-4 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-base font-bold text-white">NFT Portfolio <span class="text-[#8b95a9] font-normal">(18)</span></h3>
+                <button onclick="switchOrbitSidebar('nft')" class="text-[#8b95a9] hover:text-[#00f5d4] text-xs font-semibold cursor-pointer" title="Open Full Walking NFT Stage &amp; Inspector">Stage ↗</button>
+              </div>
+
+              <!-- 2x2 Vibrant Gradient NFT Cards (Showcasing Transparent-BG Full-Color NFTs) -->
+              <div id="orbit-nft-2x2-grid" class="grid grid-cols-2 gap-2.5">
+                <!-- Card 1: Invisible Friends #1506 -->
+                <div onclick="openOrbitNftStageModal('if-1506')"
+                     class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-xl p-2 cursor-pointer transition">
+                  <div class="w-full aspect-square rounded-lg overflow-hidden flex items-center justify-center relative"
+                       style="background: linear-gradient(135deg, #ff1e9b 0%, #9333ea 55%, #3b0764 100%);">
+                    <img src="nft-media/nobg/if_1506.gif" alt="IF #1506" class="w-[92%] h-[92%] object-contain group-hover:scale-105 transition" />
+                  </div>
+                  <div class="font-bold text-white text-[11.5px] truncate mt-2">Invisible Friend #1506</div>
+                  <div class="flex items-center justify-between text-[11px] text-[#8b95a9] mt-0.5">
+                    <span class="font-mono">⟠ 0.21 ETH</span>
+                    <span class="w-4 h-4 rounded-full bg-[#627eea]/30 text-[#60a5fa] flex items-center justify-center text-[9px]">◆</span>
+                  </div>
+                </div>
+
+                <!-- Card 2: BEAST #2313 -->
+                <div onclick="openOrbitNftStageModal('beast-2313-full')"
+                     class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-xl p-2 cursor-pointer transition">
+                  <div class="w-full aspect-square rounded-lg overflow-hidden flex items-center justify-center relative"
+                       style="background: linear-gradient(135deg, #06b6d4 0%, #6366f1 50%, #ec4899 100%);">
+                    <img src="nft-media/nobg/beast_2313_full.png" alt="BEAST #2313" class="w-[92%] h-[92%] object-contain group-hover:scale-105 transition" />
+                  </div>
+                  <div class="font-bold text-white text-[11.5px] truncate mt-2">BEAST #2313 (3D)</div>
+                  <div class="flex items-center justify-between text-[11px] text-[#8b95a9] mt-0.5">
+                    <span class="font-mono">⟠ 0.06 ETH</span>
+                    <span class="w-4 h-4 rounded-full bg-[#00f5d4]/20 text-[#00f5d4] flex items-center justify-center text-[9px]">≡</span>
+                  </div>
+                </div>
+
+                <!-- Card 3: CloneX #9143 -->
+                <div onclick="openOrbitNftStageModal('clonex-9143')"
+                     class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-xl p-2 cursor-pointer transition">
+                  <div class="w-full aspect-square rounded-lg overflow-hidden flex items-center justify-center relative"
+                       style="background: linear-gradient(135deg, #4f46e5 0%, #7e22ce 55%, #1e1b4b 100%);">
+                    <img src="nft-media/nobg/clonex_9143.png" alt="CloneX #9143" class="w-[92%] h-[92%] object-contain group-hover:scale-105 transition" />
+                  </div>
+                  <div class="font-bold text-white text-[11.5px] truncate mt-2">CloneX #9143</div>
+                  <div class="flex items-center justify-between text-[11px] text-[#8b95a9] mt-0.5">
+                    <span class="font-mono">⟠ 0.15 ETH</span>
+                    <span class="w-4 h-4 rounded-full bg-[#627eea]/30 text-[#60a5fa] flex items-center justify-center text-[9px]">◆</span>
+                  </div>
+                </div>
+
+                <!-- Card 4: Mini Supers #6915 -->
+                <div onclick="openOrbitNftStageModal('ms-6915')"
+                     class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-xl p-2 cursor-pointer transition">
+                  <div class="w-full aspect-square rounded-lg overflow-hidden flex items-center justify-center relative"
+                       style="background: linear-gradient(135deg, #334155 0%, #0f766e 60%, #0f172a 100%);">
+                    <img src="nft-media/nobg/minisupers_6915.png" alt="Mini Supers #6915" class="w-[92%] h-[92%] object-contain group-hover:scale-105 transition" />
+                  </div>
+                  <div class="font-bold text-white text-[11.5px] truncate mt-2">Mini Supers #6915</div>
+                  <div class="flex items-center justify-between text-[11px] text-[#8b95a9] mt-0.5">
+                    <span class="font-mono">133 Held</span>
+                    <span class="w-4 h-4 rounded-full bg-[#10f1b6]/20 text-[#10f1b6] flex items-center justify-center text-[9px]">#2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 5: Network Distribution Donut Chart -->
+            <div class="orbit-card p-4 flex-1 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-base font-bold text-white">Network Distribution</h3>
+                <span class="text-[#8b95a9] text-lg leading-none">•••</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 my-auto py-1">
+                <!-- Interactive SVG Donut Chart (55% Ethereum, 20% Solana, 15% Arbitrum, 10% Others) -->
+                <div class="relative w-36 h-36 shrink-0 flex items-center justify-center">
+                  <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90">
+                    <!-- 55% Ethereum (#4f6ef7) -->
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#4f6ef7" stroke-width="20"
+                            stroke-dasharray="145.14 263.89" stroke-dashoffset="0"
+                            class="cursor-pointer hover:opacity-90 transition" onclick="filterOrbitChain('ETH')" />
+                    <!-- 20% Solana (#14f1b6) -->
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#14f1b6" stroke-width="20"
+                            stroke-dasharray="52.78 263.89" stroke-dashoffset="-145.14"
+                            class="cursor-pointer hover:opacity-90 transition" onclick="filterOrbitChain('SOL')" />
+                    <!-- 15% Arbitrum (#435373) -->
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#435373" stroke-width="20"
+                            stroke-dasharray="39.58 263.89" stroke-dashoffset="-197.92"
+                            class="cursor-pointer hover:opacity-90 transition" onclick="filterOrbitChain('ARB')" />
+                    <!-- 10% Others (#6b768d) -->
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#6b768d" stroke-width="20"
+                            stroke-dasharray="26.39 263.89" stroke-dashoffset="-237.50"
+                            class="cursor-pointer hover:opacity-90 transition" onclick="filterOrbitChain('ALL')" />
+                  </svg>
+                  <!-- Segment Labels Overlaid -->
+                  <span class="absolute right-2 top-1/2 translate-y-1 text-[10px] font-bold text-white pointer-events-none">55%</span>
+                  <span class="absolute left-4 bottom-3 text-[10px] font-bold text-[#0b0d14] pointer-events-none">20%</span>
+                  <span class="absolute left-2 top-9 text-[9.5px] font-bold text-white pointer-events-none">15%</span>
+                  <span class="absolute left-8 top-2.5 text-[9.5px] font-bold text-white pointer-events-none">10%</span>
+                </div>
+
+                <!-- Legend -->
+                <div class="space-y-2 text-xs pr-1">
+                  <div onclick="filterOrbitChain('ETH')" class="flex items-center gap-2 cursor-pointer hover:text-white text-[#c5cee0]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#4f6ef7]"></span>
+                    <span>Ethereum</span>
+                  </div>
+                  <div onclick="filterOrbitChain('SOL')" class="flex items-center gap-2 cursor-pointer hover:text-white text-[#c5cee0]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#14f1b6]"></span>
+                    <span>Solana</span>
+                  </div>
+                  <div onclick="filterOrbitChain('ARB')" class="flex items-center gap-2 cursor-pointer hover:text-white text-[#c5cee0]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#435373]"></span>
+                    <span>Arbitrum</span>
+                  </div>
+                  <div onclick="filterOrbitChain('ALL')" class="flex items-center gap-2 cursor-pointer hover:text-white text-[#c5cee0]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#6b768d]"></span>
+                    <span>Others</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN (2 Cols): QUICK SWAP / DEX + ACTIVITY FEED -->
+          <div class="lg:col-span-2 flex flex-col gap-4 justify-between">
+
+            <!-- CARD 4: Quick Swap / DEX (Glowing Cyan-to-Purple Border) -->
+            <div class="orbit-swap-card p-4 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-bold text-white">Quick Swap / DEX</h3>
+                <button onclick="flipOrbitSwapTokens()" class="text-[#8b95a9] hover:text-[#00f5d4] text-sm cursor-pointer" title="Flip Swap Direction">⇄</button>
+              </div>
+
+              <div class="space-y-2.5 text-xs">
+                <div class="flex items-center justify-between text-[11px] text-[#8b95a9]">
+                  <span>From:</span>
+                  <span id="orbit-swap-rate-lbl">1 ETH ≈ $2,428</span>
+                </div>
+
+                <!-- From Input Box -->
+                <div class="bg-[#1b2132] border border-white/10 rounded-xl px-2.5 py-2 flex items-center justify-between gap-1.5">
+                  <select id="orbit-swap-from-token" onchange="updateOrbitSwapQuote()"
+                          class="bg-transparent text-white font-bold text-xs outline-none cursor-pointer">
+                    <option value="ETH" class="bg-[#131722]">⟠ ETH</option>
+                    <option value="USDC" class="bg-[#131722]">💲 USDC</option>
+                    <option value="BTC" class="bg-[#131722]">🟠 BTC</option>
+                    <option value="SOL" class="bg-[#131722]">☀️ SOL</option>
+                    <option value="LINK" class="bg-[#131722]">🔗 LINK</option>
+                    <option value="ARB" class="bg-[#131722]">🔵 ARB</option>
+                  </select>
+                  <input id="orbit-swap-from-amt" type="number" step="any" value="0.5" oninput="updateOrbitSwapQuote()"
+                         class="w-20 bg-transparent text-right text-white font-mono font-bold text-sm outline-none" />
+                </div>
+
+                <!-- Center Flip Circle Button -->
+                <div class="flex justify-center -my-1 relative z-10">
+                  <button type="button" onclick="flipOrbitSwapTokens()"
+                          class="w-7 h-7 rounded-full bg-[#232a3d] border border-white/15 hover:border-[#00f5d4] text-[#8b95a9] hover:text-white flex items-center justify-center text-xs transition cursor-pointer">
+                    ⇅
+                  </button>
+                </div>
+
+                <div class="text-[11px] text-[#8b95a9]">To:</div>
+
+                <!-- To Output Box -->
+                <div class="bg-[#1b2132] border border-white/10 rounded-xl px-2.5 py-2 flex items-center justify-between gap-1.5">
+                  <select id="orbit-swap-to-token" onchange="updateOrbitSwapQuote()"
+                          class="bg-transparent text-white font-bold text-xs outline-none cursor-pointer">
+                    <option value="USDC" class="bg-[#131722]">💲 USDC</option>
+                    <option value="ETH" class="bg-[#131722]">⟠ ETH</option>
+                    <option value="SOL" class="bg-[#131722]">☀️ SOL</option>
+                    <option value="BTC" class="bg-[#131722]">🟠 BTC</option>
+                    <option value="LINK" class="bg-[#131722]">🔗 LINK</option>
+                  </select>
+                  <span id="orbit-swap-to-amt" class="text-right text-white font-mono font-bold text-sm truncate">1,214.04</span>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] text-[#8b95a9] pt-0.5">
+                  <span>Estimated output:</span>
+                  <span id="orbit-swap-est-usd" class="text-white font-mono">$1,214.04 USDC</span>
+                </div>
+
+                <button type="button" onclick="executeOrbitQuickSwap()"
+                        class="orbit-swap-btn w-full py-2.5 rounded-xl text-sm font-bold cursor-pointer mt-1">
+                  Swap
+                </button>
+                <div id="orbit-swap-feedback" class="hidden text-[10.5px] text-[#10f1b6] font-mono text-center pt-1"></div>
+              </div>
+            </div>
+
+            <!-- CARD 6: Activity Feed -->
+            <div class="orbit-card p-4 flex-1 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-bold text-white">Activity</h3>
+                <span class="text-[11px] text-[#8b95a9]">Feed</span>
+              </div>
+
+              <div id="orbit-activity-feed" class="space-y-3 text-xs overflow-y-auto max-h-[210px] pr-1">
+                <div class="flex items-start gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-[#10b981]/20 text-[#10f1b6] flex items-center justify-center text-[10px] mt-0.5 shrink-0">✓</span>
+                  <div class="min-w-0">
+                    <div class="text-white font-medium leading-snug">Kraken Leg #1 Flipped</div>
+                    <div class="text-[#2dd4bf] text-[11px] truncate">Re-armed 0.3268 ETH @ $2,365</div>
+                    <div class="text-[#8b95a9] text-[10px]">Active Straddle</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-[#627eea]/25 text-[#60a5fa] flex items-center justify-center text-[10px] mt-0.5 shrink-0">⟠</span>
+                  <div class="min-w-0">
+                    <div class="text-white font-medium leading-snug">Coinbase Leg #4 Flipped</div>
+                    <div class="text-[#2dd4bf] text-[11px] truncate">Re-armed 0.0472 ETH @ $2,360</div>
+                    <div class="text-[#8b95a9] text-[10px]">Active Straddle</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-purple-500/25 text-purple-300 flex items-center justify-center text-[10px] mt-0.5 shrink-0">🚶</span>
+                  <div class="min-w-0">
+                    <div class="text-white font-medium leading-snug">IF #1506 &amp; BEAST #2313</div>
+                    <div class="text-[#2dd4bf] text-[11px] truncate">Verified Unmoved On-Chain</div>
+                    <div class="text-[#8b95a9] text-[10px]">Mainnet RPC Sync</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
       </div>
     </div>
+  </div>
 
-    <!-- Live On-Chain DEX Ticker Tape -->
-    <div class="max-w-[1600px] mx-auto mt-2 overflow-hidden bg-[var(--secondary)] border border-[var(--border)] rounded-lg py-1 px-2 text-xs font-mono">
-      <div class="animate-ticker gap-6 items-center">
-        <span>🟢 <strong>IF #1506</strong>: UNMOVED (0xC1eB...1880) • Floor: <strong class="text-emerald-500">0.2143 ETH ($489.43)</strong></span>
-        <span>🧬 <strong>CloneX Floor</strong>: <strong class="text-emerald-500">0.1465 ETH ($334.66)</strong> • Combined IF + CloneX Floor = <strong>0.3608 ETH ($824.09)!</strong></span>
-        <span>👹 <strong>BEAST #2313</strong>: UNMOVED (0x4140...CF1F) • Target Bid: <strong class="text-emerald-500">0.060 WETH ($137.06)</strong></span>
-        <span>🦸 <strong>Mini Supers</strong>: Supply <strong>6,969</strong> • Floor: <strong class="text-amber-500">0.0013 ETH ($3.01)</strong></span>
-        <span>🚶 <strong>"The Walk" #1</strong>: Supply Locked @ <strong>16,969</strong> • Bid: <strong class="text-emerald-500">0.0019 WETH ($4.34)</strong></span>
-        <!-- Duplicate for seamless loop -->
-        <span>🟢 <strong>IF #1506</strong>: UNMOVED (0xC1eB...1880) • Floor: <strong class="text-emerald-500">0.2143 ETH ($489.43)</strong></span>
-        <span>🧬 <strong>CloneX Floor</strong>: <strong class="text-emerald-500">0.1465 ETH ($334.66)</strong> • Combined IF + CloneX Floor = <strong>0.3608 ETH ($824.09)!</strong></span>
-        <span>👹 <strong>BEAST #2313</strong>: UNMOVED (0x4140...CF1F) • Target Bid: <strong class="text-emerald-500">0.060 WETH ($137.06)</strong></span>
-      </div>
-    </div>
-  </header>
-
-  <!-- 🎛️ Top-Level Workspace View Switcher (Reorganized Behind Toggles — No More Endless Scrolling!) -->
-  <div class="max-w-[1600px] mx-auto px-3 pt-2">
-    <div class="bg-black border border-[#33443c] p-1 flex items-center gap-1 overflow-x-auto text-[11px] font-mono font-bold shadow-sm">
-      <button id="top-tab-crt" onclick="switchMainView('crt')" class="flex-1 py-1.5 px-3 bg-[#00FF41] text-black flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
-        <span>🖥️</span> <span>CRT TERMINAL v5.0 (SPLIT)</span>
+  <!-- Quick Sub-View Bar for Deep README Features (9-Leg Straddle, Boba #1716, Target Sniper, Walking NFT Stage, Orderbooks, Bid Calc, CRT v5.0) -->
+  <div class="max-w-[1640px] mx-auto px-2 sm:px-4 pb-2">
+    <div class="orbit-card p-1.5 flex items-center gap-1.5 overflow-x-auto text-[11px] font-semibold">
+      <button id="top-tab-orbit" onclick="switchMainView('orbit')" class="flex-1 py-1.5 px-3 rounded-xl orbit-nav-active flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>🌌</span> <span>Orbit Dashboard</span>
       </button>
-      <button id="top-tab-trade" onclick="switchMainView('trade')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
-        <span>📈</span> <span>Vault P&amp;L &amp; Deck</span>
+      <button id="top-tab-trade" onclick="switchMainView('trade')" class="flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>📈</span> <span>9-Leg Straddle &amp; Candles</span>
       </button>
-      <button id="top-tab-partner" onclick="switchMainView('partner')" class="flex-1 py-1.5 px-3 text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
-        <span>🧋</span> <span>Boba (#1716)</span>
+      <button id="top-tab-viewer" onclick="switchMainView('viewer')" class="flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>🎬</span> <span>Walking NFT Stage &amp; Scanner</span>
       </button>
-      <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+      <button id="top-tab-targets" onclick="switchMainView('targets')" class="flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition">
         <span>🎯</span> <span>Target Sniper (5)</span>
       </button>
-      <button id="top-tab-viewer" onclick="switchMainView('viewer')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
-        <span>🎬</span> <span>Token &amp; Wallet Lab</span>
+      <button id="top-tab-partner" onclick="switchMainView('partner')" class="flex-1 py-1.5 px-3 rounded-xl text-purple-300 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>🧋</span> <span>Boba Vault (#1716)</span>
       </button>
-      <button id="top-tab-markets" onclick="switchMainView('markets')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+      <button id="top-tab-markets" onclick="switchMainView('markets')" class="flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition">
         <span>📊</span> <span>Orderbooks</span>
       </button>
-      <button id="top-tab-calc" onclick="switchMainView('calc')" class="flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase">
+      <button id="top-tab-calc" onclick="switchMainView('calc')" class="flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition">
         <span>⚡</span> <span>Bid Calc</span>
       </button>
-      <button id="top-tab-split" onclick="switchMainView('split')" class="hidden md:flex py-1.5 px-3 bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition uppercase">
+      <button id="top-tab-crt" onclick="switchMainView('crt')" class="flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition">
+        <span>🖥️</span> <span>CRT v5.0</span>
+      </button>
+      <button id="top-tab-split" onclick="switchMainView('split')" class="hidden md:flex py-1.5 px-3 rounded-xl bg-white/5 border border-white/10 text-[#2dd4bf] hover:bg-white/10 items-center justify-center gap-1.5 shrink-0 transition">
         <span>📖</span> <span>All Panels</span>
       </button>
     </div>
@@ -390,9 +760,9 @@
 
   <!-- ==========================================================================================
        🛸 SWOOZ.ETH — MATRIX TERMINAL DEX v5.0 (ULTRA-WIDE CYBERPUNK CRT DUAL-PANE WORKSTATION)
-       Built 1:1 to the exact visual, GUI, and UX specifications of the generated reference design
+       Toggled via the [🖥️ CRT v5.0] button whenever desired
        ========================================================================================== -->
-  <section id="crt-v5-workstation" class="max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none">
+  <section id="crt-v5-workstation" class="hidden max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none">
     <div class="bg-[#020503] border-2 border-[#2a3830] p-2 sm:p-3 shadow-[0_0_90px_rgba(0,0,0,0.98)] relative overflow-hidden"
          style="background-image: linear-gradient(to right, rgba(0,255,65,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,65,0.04) 1px, transparent 1px); background-size: 20px 20px;">
 
@@ -3430,6 +3800,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function switchMainView(view) {
       ACTIVE_MAIN_VIEW = view;
+      const orbitWrapper = document.getElementById('orbit-app-wrapper');
+      const orbitBento = document.getElementById('orbit-bento-dashboard');
       const crtWorkstation = document.getElementById('crt-v5-workstation');
       const container = document.getElementById('dex-container');
       const left = document.getElementById('pane-left');
@@ -3443,19 +3815,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const secSales = document.getElementById('sec-sales');
 
       // Highlight top & bottom toggle buttons
-      ['crt', 'trade', 'partner', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
+      ['orbit', 'crt', 'trade', 'partner', 'targets', 'viewer', 'markets', 'calc', 'split'].forEach(v => {
         const topBtn = document.getElementById('top-tab-' + v);
         if (topBtn) {
           if (v === view) {
             topBtn.className = v === 'partner'
-              ? 'flex-1 py-1.5 px-3 bg-purple-600 text-white flex items-center justify-center gap-1.5 shrink-0 transition uppercase'
-              : 'flex-1 py-1.5 px-3 bg-[#00FF41] text-black flex items-center justify-center gap-1.5 shrink-0 transition uppercase';
+              ? 'flex-1 py-1.5 px-3 rounded-xl bg-purple-600 text-white flex items-center justify-center gap-1.5 shrink-0 transition'
+              : 'flex-1 py-1.5 px-3 rounded-xl orbit-nav-active flex items-center justify-center gap-1.5 shrink-0 transition';
           } else if (v === 'split') {
-            topBtn.className = 'hidden md:flex py-1.5 px-3 bg-[var(--secondary)] border border-[var(--border)] text-emerald-400 hover:opacity-90 items-center justify-center gap-1.5 shrink-0 transition uppercase';
+            topBtn.className = 'hidden md:flex py-1.5 px-3 rounded-xl bg-white/5 border border-white/10 text-[#2dd4bf] hover:bg-white/10 items-center justify-center gap-1.5 shrink-0 transition';
           } else if (v === 'partner') {
-            topBtn.className = 'flex-1 py-1.5 px-3 text-purple-400 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition uppercase';
+            topBtn.className = 'flex-1 py-1.5 px-3 rounded-xl text-purple-300 bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/20 flex items-center justify-center gap-1.5 shrink-0 transition';
           } else {
-            topBtn.className = 'flex-1 py-1.5 px-3 text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center justify-center gap-1.5 shrink-0 transition uppercase';
+            topBtn.className = 'flex-1 py-1.5 px-3 rounded-xl text-[#8b95a9] hover:text-white flex items-center justify-center gap-1.5 shrink-0 transition';
           }
         }
         const dockBtn = document.getElementById('dock-tab-' + v);
@@ -3463,7 +3835,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           if (v === view) {
             dockBtn.className = v === 'partner'
               ? 'flex flex-col items-center gap-0.5 text-purple-400 font-bold'
-              : 'flex flex-col items-center gap-0.5 text-emerald-500 font-bold';
+              : 'flex flex-col items-center gap-0.5 text-[#00f5d4] font-bold';
           } else {
             dockBtn.className = v === 'partner'
               ? 'flex flex-col items-center gap-0.5 text-purple-400/75 hover:text-purple-300'
@@ -3471,6 +3843,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           }
         }
       });
+
+      if (view === 'orbit') {
+        if (orbitWrapper) orbitWrapper.classList.remove('hidden');
+        if (orbitBento) orbitBento.classList.remove('hidden');
+        if (crtWorkstation) crtWorkstation.classList.add('hidden');
+        if (container) container.classList.add('hidden');
+        if (typeof drawOrbitNetworthChart === 'function') setTimeout(drawOrbitNetworthChart, 25);
+        return;
+      }
 
       if (view === 'crt') {
         if (crtWorkstation) crtWorkstation.classList.remove('hidden');
@@ -3486,19 +3867,21 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
 
       if (view === 'split') {
-        // Fold 8 Unfolded Dual-Pane Split View: Show all sections across 2 columns
-        container.className = 'max-w-[1600px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
+        if (orbitWrapper) orbitWrapper.classList.remove('hidden');
+        if (orbitBento) orbitBento.classList.remove('hidden');
+        container.className = 'max-w-[1640px] mx-auto p-3 grid grid-cols-1 md:grid-cols-12 gap-4';
         left.className = 'md:col-span-6 space-y-4';
         right.className = 'md:col-span-6 space-y-4';
         [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
         updatePartnerStraddleCalc();
         drawKrakenChart();
+        if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
         if (typeof drawCrtMiniCandleChart === 'function') drawCrtMiniCandleChart();
         return;
       }
 
-      // Single-View Focused Toggle Mode (No clutter, only the active section is visible!)
-      container.className = 'max-w-[1100px] mx-auto p-3 grid grid-cols-1 gap-4';
+      // Single-View Focused Toggle Mode: Keep Orbit Header/Sidebar visible & show selected deep section below!
+      container.className = 'max-w-[1400px] mx-auto p-3 grid grid-cols-1 gap-4';
       [secPnl, secPartner, secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
 
       if (view === 'trade') {
@@ -3529,7 +3912,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         right.className = 'col-span-1 space-y-4';
         secCalc.classList.remove('hidden');
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     // 💎 Partner Vault (#1716) Custom Straddle Calculator & Fold 8 Persistence
@@ -4337,7 +4722,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     renderWalletPnl();
     updateCalc();
     updatePartnerStraddleCalc();
-    switchMainView('crt');
+    switchMainView('orbit');
     fetchAndDrawKrakenOhlc();
 
     // Immediately show the 4-Digit PIN keypad prompt on load if not yet unlocked on this device!
@@ -5057,7 +5442,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         });
       }
 
-      // Live Ethereum Block & Gas Telemetry Updater for Amber Diagnostics Box
+      // Live Ethereum Block & Gas Telemetry Updater for Orbit Top Bar & Amber Diagnostics Box
       async function syncAmberTelemetry() {
         try {
           const [blkHex, gasHex] = await Promise.all([
@@ -5065,7 +5450,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             rpcCall('eth_gasPrice', [])
           ]);
           const blk = parseInt(blkHex, 16) || 21124890;
-          const gwei = Math.max(1, Math.round((parseInt(gasHex, 16) || 12e9) / 1e9));
+          const gwei = Math.max(1, Math.round((parseInt(gasHex, 16) || 18e9) / 1e9));
+          const orbitGasEl = document.getElementById('orbit-gas-gwei');
+          if (orbitGasEl) orbitGasEl.textContent = `${gwei} Gwei`;
           const kPing = 28 + Math.floor(Math.random() * 7);
           const cPing = 41 + Math.floor(Math.random() * 7);
           if (l1) l1.textContent = `AMBER TELEMETRY [ACTIVE] | SYS_OK | KRN_PING: ${kPing}ms | CB_PING: ${cPing}ms | BLOCK: #${blk} | GAS: ${gwei} GWEI`;
@@ -5080,6 +5467,500 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       syncAmberTelemetry();
       setInterval(syncAmberTelemetry, 15000);
     })();
+
+    // ============================================================================================
+    // 🌌 ORBIT // SWOOZ.ETH TRACKER & MULTI-CHAIN DEX ENGINE (Flow Render 1:1 Functional Suite)
+    // ============================================================================================
+    let ORBIT_PORTFOLIO_MODE = 'showcase'; // 'showcase' ($143,628.45 Flow Render) | 'live' (Live 9-Leg Kraken + Coinbase + swooz.eth)
+    let ORBIT_ACTIVE_CHAIN = 'ALL';
+    let ORBIT_CHART_TF = '1D';
+    let ORBIT_SEARCH_QUERY = '';
+
+    const ORBIT_TOKENS_DATA = [
+      {
+        symbol: 'BTC', name: 'BTC', chain: 'ETH',
+        badgeBg: '#f7931a', badgeTxt: '₿', chainBg: '#f7931a', chainTxt: '₿',
+        walletShowcase: '0x6ddA...31b4', balShowcase: '0.15 BTC', valShowcase: 9500.00, chg: '+2.4%', isUp: true,
+        walletLive: 'Coinbase Leg #6', balLive: '0.00088 BTC', valLive: 71.67, pair: 'BTCUSD'
+      },
+      {
+        symbol: 'ETH', name: 'ETH', chain: 'ETH',
+        badgeBg: '#627eea', badgeTxt: '⟠', chainBg: '#627eea', chainTxt: '◆',
+        walletShowcase: 'swooz.eth (Vault)', balShowcase: '14.25 ETH', valShowcase: 48450.00, chg: '+3.2%', isUp: true,
+        walletLive: 'Kraken + CB (4 Legs)', balLive: '0.4480 ETH', valLive: 1058.38, pair: 'ETHUSD'
+      },
+      {
+        symbol: 'SOL', name: 'SOL', chain: 'SOL',
+        badgeBg: '#14f1b6', badgeTxt: '≡', chainBg: '#14f1b6', chainTxt: '≡',
+        walletShowcase: 'Kraken + Coinbase', balShowcase: '55.8 SOL', valShowcase: 7812.00, chg: '-1.5%', isUp: false,
+        walletLive: 'Kraken + CB (3 Legs)', balLive: '0.7206 SOL', valLive: 68.58, pair: 'SOLUSD'
+      },
+      {
+        symbol: 'ARB', name: 'ARB', chain: 'ARB',
+        badgeBg: '#28a0f0', badgeTxt: 'A', chainBg: '#28a0f0', chainTxt: 'A',
+        walletShowcase: '0x6ddA...31b4', balShowcase: '2,450 ARB', valShowcase: 2450.00, chg: '+5.1%', isUp: true,
+        walletLive: 'Coinbase Leg #7 (LINK)', balLive: '2.376 LINK', valLive: 28.08, pair: 'LINKUSD'
+      },
+      {
+        symbol: 'MATIC', name: 'MATIC', chain: 'MATIC',
+        badgeBg: '#8247e5', badgeTxt: '∞', chainBg: '#8247e5', chainTxt: '∞',
+        walletShowcase: '0xae1c...39B0', balShowcase: '5,200 MATIC', valShowcase: 2200.00, chg: '0.0%', isUp: null,
+        walletLive: 'Mini Supers Vault', balLive: '133 NFTs (#2)', valLive: 400.33, pair: 'ETHUSD'
+      },
+      {
+        symbol: 'USDC', name: 'USDC', chain: 'ETH',
+        badgeBg: '#2775ca', badgeTxt: '$', chainBg: '#2775ca', chainTxt: '$',
+        walletShowcase: 'Kraken + Coinbase', balShowcase: '5,200 USDC', valShowcase: 5200.00, chg: '0.0%', isUp: null,
+        walletLive: 'ZUSD + USDC Ammo', balLive: '1,103.78 USD', valLive: 1103.78, pair: 'ETHUSD'
+      }
+    ];
+
+    const ORBIT_SPLINE_SERIES = {
+      '1D': {
+        pts: [28000, 74000, 62000, 73000, 46000, 96000, 86000, 114000, 99000, 125000, 96000, 119000, 95000, 134000, 121000, 143628],
+        labels: ['1am', '25m', '5h', '10m', '30m', '1h9m', '30m'],
+        chg: '+4.28% (24h)'
+      },
+      '1W': {
+        pts: [88000, 94000, 91000, 108000, 102000, 118000, 112000, 129000, 124000, 136000, 131000, 143628],
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        chg: '+11.42% (7d)'
+      },
+      '1M': {
+        pts: [64000, 72000, 68000, 85000, 96000, 91000, 110000, 122000, 116000, 134000, 143628],
+        labels: ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4', 'Now'],
+        chg: '+24.80% (30d)'
+      },
+      '3M': {
+        pts: [42000, 58000, 51000, 79000, 94000, 88000, 115000, 129000, 143628],
+        labels: ['Aug', 'Sep', 'Oct', 'Nov'],
+        chg: '+68.15% (3m)'
+      },
+      '1Y': {
+        pts: [25000, 44000, 61000, 54000, 82000, 104000, 97000, 126000, 143628],
+        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+        chg: '+184.5% (1y)'
+      },
+      'ALL': {
+        pts: [15000, 38000, 52000, 74000, 69000, 98000, 119000, 132000, 143628],
+        labels: ['2023', '2024', '2025', '2026'],
+        chg: '+312.4% (ALL)'
+      }
+    };
+
+    function drawOrbitNetworthChart() {
+      const canvas = document.getElementById('orbit-networth-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const series = ORBIT_SPLINE_SERIES[ORBIT_CHART_TF] || ORBIT_SPLINE_SERIES['1D'];
+      const scaleFactor = ORBIT_PORTFOLIO_MODE === 'live' ? (1598.42 / 143628.45) : 1;
+      const pts = series.pts.map(v => v * scaleFactor);
+
+      const maxVal = 143880 * scaleFactor;
+      const minVal = 0;
+
+      const cLeft = 58;
+      const cRight = W - 16;
+      const cTop = 14;
+      const cBot = H - 26;
+      const cW = cRight - cLeft;
+      const cH = cBot - cTop;
+
+      // Horizontal dashed grid lines + Y-axis labels matching Flow Render ($143,880, $140,000, $130,000, $100,000, $50,000, $0)
+      const yRows = [
+        { frac: 0.0, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,600' : '$143,880' },
+        { frac: 0.18, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,400' : '$140,000' },
+        { frac: 0.38, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,200' : '$130,000' },
+        { frac: 0.58, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$950' : '$100,000' },
+        { frac: 0.79, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$500' : '$50,000' },
+        { frac: 1.0, lbl: '$0' }
+      ];
+
+      ctx.font = '10.5px Plus Jakarta Sans, sans-serif';
+      ctx.textAlign = 'right';
+      yRows.forEach(r => {
+        const y = cTop + r.frac * cH;
+        ctx.fillStyle = '#6c768a';
+        ctx.fillText(r.lbl, cLeft - 10, y + 3.5);
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+        ctx.lineWidth = 1;
+        if (r.frac < 1.0) ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y);
+        ctx.lineTo(cRight, y);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // Vertical subtle grid lines + X-axis labels
+      const xLabels = series.labels;
+      ctx.textAlign = 'center';
+      xLabels.forEach((lbl, idx) => {
+        const x = cLeft + (idx / (xLabels.length - 1)) * cW;
+        ctx.fillStyle = '#6c768a';
+        ctx.fillText(lbl, x, H - 6);
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.setLineDash([2, 4]);
+        ctx.beginPath();
+        ctx.moveTo(x, cTop);
+        ctx.lineTo(x, cBot);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // Compute pixel coordinates for smooth Catmull-Rom / Bezier spline
+      const coords = pts.map((v, i) => ({
+        x: cLeft + (i / (pts.length - 1)) * cW,
+        y: cBot - ((v - minVal) / (maxVal - minVal)) * (cH - 8)
+      }));
+
+      function traceSmoothSpline(context, points) {
+        context.moveTo(points[0].x, points[0].y);
+        for (let i = 0; i < points.length - 1; i++) {
+          const p0 = points[i === 0 ? i : i - 1];
+          const p1 = points[i];
+          const p2 = points[i + 1];
+          const p3 = points[i + 2 < points.length ? i + 2 : i + 1];
+          const cp1x = p1.x + (p2.x - p0.x) / 6;
+          const cp1y = p1.y + (p2.y - p0.y) / 6;
+          const cp2x = p2.x - (p3.x - p1.x) / 6;
+          const cp2y = p2.y - (p3.y - p1.y) / 6;
+          context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
+        }
+      }
+
+      // 1. Area Fill Gradient Underneath Spline
+      const areaGrad = ctx.createLinearGradient(0, cTop, 0, cBot);
+      areaGrad.addColorStop(0, 'rgba(0, 245, 212, 0.30)');
+      areaGrad.addColorStop(0.55, 'rgba(56, 189, 248, 0.12)');
+      areaGrad.addColorStop(1, 'rgba(19, 23, 34, 0.0)');
+
+      ctx.save();
+      ctx.beginPath();
+      traceSmoothSpline(ctx, coords);
+      ctx.lineTo(coords[coords.length - 1].x, cBot);
+      ctx.lineTo(coords[0].x, cBot);
+      ctx.closePath();
+      ctx.fillStyle = areaGrad;
+      ctx.fill();
+      ctx.restore();
+
+      // 2. Glowing Purple -> Blue -> Neon Cyan Line Stroke
+      const strokeGrad = ctx.createLinearGradient(cLeft, 0, cRight, 0);
+      strokeGrad.addColorStop(0, '#a855f7');
+      strokeGrad.addColorStop(0.35, '#3b82f6');
+      strokeGrad.addColorStop(0.75, '#06b6d4');
+      strokeGrad.addColorStop(1, '#00f5d4');
+
+      ctx.save();
+      ctx.beginPath();
+      traceSmoothSpline(ctx, coords);
+      ctx.strokeStyle = strokeGrad;
+      ctx.lineWidth = 3;
+      ctx.shadowColor = '#00f5d4';
+      ctx.shadowBlur = 14;
+      ctx.stroke();
+      ctx.restore();
+
+      // 3. Glowing Endpoint Dot on Right Tip
+      const tip = coords[coords.length - 1];
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(tip.x, tip.y, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#00f5d4';
+      ctx.shadowColor = '#00f5d4';
+      ctx.shadowBlur = 16;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function setOrbitChartTf(tf) {
+      ORBIT_CHART_TF = tf;
+      if (typeof window.playBeep === 'function') window.playBeep();
+      ['1D', '1W', '1M', '3M', '1Y', 'ALL'].forEach(k => {
+        const b = document.getElementById('orbit-tf-' + k);
+        if (b) {
+          b.className = k === tf
+            ? 'px-2.5 py-1 rounded-lg bg-[#252d40] text-white transition cursor-pointer'
+            : 'px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer';
+        }
+      });
+      const s = ORBIT_SPLINE_SERIES[tf];
+      const badge = document.getElementById('orbit-networth-badge');
+      if (badge && s) badge.textContent = s.chg;
+      drawOrbitNetworthChart();
+    }
+
+    function renderOrbitTokensTable() {
+      const tbody = document.getElementById('orbit-tokens-tbody');
+      if (!tbody) return;
+
+      const q = ORBIT_SEARCH_QUERY.trim().toLowerCase();
+      const filtered = ORBIT_TOKENS_DATA.filter(t => {
+        const matchChain = ORBIT_ACTIVE_CHAIN === 'ALL' || t.chain === ORBIT_ACTIVE_CHAIN;
+        const matchSearch = !q || t.symbol.toLowerCase().includes(q) || t.name.toLowerCase().includes(q) || t.walletShowcase.toLowerCase().includes(q) || t.walletLive.toLowerCase().includes(q);
+        return matchChain && matchSearch;
+      });
+
+      tbody.innerHTML = filtered.map(t => {
+        const isLive = ORBIT_PORTFOLIO_MODE === 'live';
+        const walletTxt = isLive ? t.walletLive : t.walletShowcase;
+        const balTxt = isLive ? t.balLive : t.balShowcase;
+        const valNum = isLive ? t.valLive : t.valShowcase;
+        const valTxt = '$' + valNum.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const chgColor = t.isUp === true ? 'text-[#10f1b6]' : t.isUp === false ? 'text-[#f43f5e]' : 'text-[#8b95a9]';
+
+        return `
+          <tr onclick="onSelectOrbitTokenRow('${t.symbol}', '${t.pair}')"
+              class="hover:bg-white/5 transition cursor-pointer">
+            <td class="py-2.5 pr-2 font-bold text-white flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                    style="background:${t.badgeBg}">${t.badgeTxt}</span>
+              <span>${t.symbol}</span>
+            </td>
+            <td class="py-2.5 px-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
+                    style="background:${t.chainBg}">${t.chainTxt}</span>
+            </td>
+            <td class="py-2.5 px-2 text-[#8b95a9] font-mono text-xs truncate max-w-[130px]">${walletTxt}</td>
+            <td class="py-2.5 px-2 text-right font-mono text-white font-medium">${balTxt}</td>
+            <td class="py-2.5 px-2 text-right font-mono text-white font-semibold">${valTxt}</td>
+            <td class="py-2.5 pl-2 text-right font-mono font-bold ${chgColor}">${t.chg}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function onSelectOrbitTokenRow(sym, pair) {
+      if (typeof window.playBeep === 'function') window.playBeep();
+      const fromSel = document.getElementById('orbit-swap-from-token');
+      const toSel = document.getElementById('orbit-swap-to-token');
+      if (fromSel && [...fromSel.options].some(o => o.value === sym)) {
+        fromSel.value = sym;
+        if (toSel && toSel.value === sym) {
+          toSel.value = sym === 'USDC' ? 'ETH' : 'USDC';
+        }
+        updateOrbitSwapQuote();
+      }
+      if (pair) switchChartPair(pair);
+    }
+
+    function filterOrbitChain(chain) {
+      if (typeof window.playBeep === 'function') window.playBeep();
+      if (ORBIT_ACTIVE_CHAIN === chain && chain !== 'ALL') {
+        ORBIT_ACTIVE_CHAIN = 'ALL';
+      } else {
+        ORBIT_ACTIVE_CHAIN = chain;
+      }
+
+      ['ETH', 'SOL', 'ARB', 'OP', 'MATIC', 'BASE'].forEach(c => {
+        const btn = document.getElementById('orbit-chain-' + c);
+        if (btn) {
+          if (ORBIT_ACTIVE_CHAIN === c || (ORBIT_ACTIVE_CHAIN === 'ALL' && c === 'ETH')) {
+            btn.classList.add('orbit-chain-active');
+          } else {
+            btn.classList.remove('orbit-chain-active');
+          }
+        }
+      });
+
+      const pill = document.getElementById('orbit-active-chain-pill');
+      if (pill) {
+        pill.textContent = ORBIT_ACTIVE_CHAIN === 'ALL' ? 'ALL CHAINS' : `${ORBIT_ACTIVE_CHAIN} NETWORK`;
+      }
+      renderOrbitTokensTable();
+    }
+
+    function toggleOrbitPortfolioMode() {
+      ORBIT_PORTFOLIO_MODE = ORBIT_PORTFOLIO_MODE === 'showcase' ? 'live' : 'showcase';
+      if (typeof window.playBeep === 'function') window.playBeep();
+      const nwEl = document.getElementById('orbit-networth-val');
+      const badgeEl = document.getElementById('orbit-networth-badge');
+      const lblEl = document.getElementById('orbit-connected-wallets-lbl');
+      if (ORBIT_PORTFOLIO_MODE === 'live') {
+        if (nwEl) nwEl.textContent = '$1,598.42';
+        if (badgeEl) badgeEl.textContent = '+3.42% (9 Legs Armed)';
+        if (lblEl) lblEl.textContent = 'Live 9-Leg + On-Chain (7)';
+      } else {
+        if (nwEl) nwEl.textContent = '$143,628.45';
+        if (badgeEl) badgeEl.textContent = '+4.28% (24h)';
+        if (lblEl) lblEl.textContent = 'Connected Wallets (3)';
+      }
+      drawOrbitNetworthChart();
+      renderOrbitTokensTable();
+    }
+
+    function onOrbitWalletSelectChange(val) {
+      if (val === 'unlock-pin') {
+        onVaultButtonClick();
+        return;
+      }
+      if (val === 'partner-1716') {
+        switchMainView('partner');
+      } else if (val === 'kraken-cb') {
+        ORBIT_PORTFOLIO_MODE = 'showcase';
+        toggleOrbitPortfolioMode();
+      } else {
+        drawOrbitNetworthChart();
+        renderOrbitTokensTable();
+      }
+    }
+
+    function onOrbitSearchInput(val) {
+      ORBIT_SEARCH_QUERY = val || '';
+      renderOrbitTokensTable();
+    }
+
+    function onOrbitSearchSubmit(val) {
+      const q = (val || '').trim();
+      if (!q) return;
+      if (q.startsWith('0x') && q.length === 42) {
+        document.getElementById('wallet-scan-input').value = q;
+        switchMainView('viewer');
+        switchViewerTab('wallet');
+        scanWalletNfts(q);
+      } else if (/^\d+$/.test(q)) {
+        document.getElementById('inspect-token-id').value = q;
+        switchMainView('viewer');
+        inspectOnChainToken(null, q);
+      }
+    }
+
+    function getOrbitTokenUsdRate(sym) {
+      const ethSpot = ETH_RATE > 100 ? ETH_RATE : 2428.07;
+      const rates = {
+        ETH: ethSpot,
+        USDC: 1.0,
+        BTC: 81450.0,
+        SOL: 95.4,
+        LINK: 11.45,
+        ARB: 1.0,
+        MATIC: 0.423
+      };
+      return rates[sym] || 1.0;
+    }
+
+    function updateOrbitSwapQuote() {
+      const fromSym = document.getElementById('orbit-swap-from-token')?.value || 'ETH';
+      const toSym = document.getElementById('orbit-swap-to-token')?.value || 'USDC';
+      const amt = Math.max(0, parseFloat(document.getElementById('orbit-swap-from-amt')?.value) || 0);
+
+      const fromUsd = getOrbitTokenUsdRate(fromSym);
+      const toUsd = getOrbitTokenUsdRate(toSym);
+      const outAmt = toUsd > 0 ? (amt * fromUsd) / toUsd : 0;
+      const totalUsd = amt * fromUsd;
+
+      const rateLbl = document.getElementById('orbit-swap-rate-lbl');
+      if (rateLbl) rateLbl.textContent = `1 ${fromSym} ≈ $${fromUsd.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+
+      const outEl = document.getElementById('orbit-swap-to-amt');
+      if (outEl) {
+        outEl.textContent = outAmt.toLocaleString(undefined, {
+          minimumFractionDigits: toSym === 'USDC' ? 2 : 4,
+          maximumFractionDigits: toSym === 'USDC' ? 2 : 5
+        });
+      }
+
+      const estEl = document.getElementById('orbit-swap-est-usd');
+      if (estEl) {
+        estEl.textContent = `$${totalUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${toSym})`;
+      }
+    }
+
+    function flipOrbitSwapTokens() {
+      const fromEl = document.getElementById('orbit-swap-from-token');
+      const toEl = document.getElementById('orbit-swap-to-token');
+      if (!fromEl || !toEl) return;
+      if (typeof window.playBeep === 'function') window.playBeep();
+      const tmp = fromEl.value;
+      fromEl.value = toEl.value;
+      toEl.value = tmp;
+      updateOrbitSwapQuote();
+    }
+
+    function executeOrbitQuickSwap() {
+      if (typeof window.playBeep === 'function') window.playBeep();
+      const fromSym = document.getElementById('orbit-swap-from-token')?.value || 'ETH';
+      const toSym = document.getElementById('orbit-swap-to-token')?.value || 'USDC';
+      const amt = parseFloat(document.getElementById('orbit-swap-from-amt')?.value) || 0.5;
+      const outTxt = document.getElementById('orbit-swap-to-amt')?.textContent || '1,214.04';
+
+      const fb = document.getElementById('orbit-swap-feedback');
+      if (fb) {
+        fb.textContent = `✓ Routed ${amt} ${fromSym} → ${outTxt} ${toSym} (0.05% Slippage)`;
+        fb.classList.remove('hidden');
+      }
+
+      const feed = document.getElementById('orbit-activity-feed');
+      if (feed) {
+        const item = document.createElement('div');
+        item.className = 'flex items-start gap-2.5 animate-pulse';
+        item.innerHTML = `
+          <span class="w-4 h-4 rounded-full bg-[#10b981]/20 text-[#10f1b6] flex items-center justify-center text-[10px] mt-0.5 shrink-0">✓</span>
+          <div class="min-w-0">
+            <div class="text-white font-medium leading-snug">Swapped ${amt} ${fromSym} → ${outTxt} ${toSym}</div>
+            <div class="text-[#2dd4bf] text-[11px] truncate">Orbit Multi-Chain DEX Router</div>
+            <div class="text-[#8b95a9] text-[10px]">Just now</div>
+          </div>
+        `;
+        feed.prepend(item);
+        setTimeout(() => item.classList.remove('animate-pulse'), 1500);
+      }
+    }
+
+    function openOrbitNftStageModal(presetKey) {
+      if (typeof window.playBeep === 'function') window.playBeep();
+      loadPresetNft(presetKey);
+      switchMainView('viewer');
+    }
+
+    function switchOrbitSidebar(navKey) {
+      if (typeof window.playBeep === 'function') window.playBeep();
+      ['dashboard', 'swap', 'liquidity', 'nft', 'bridge', 'history', 'settings'].forEach(k => {
+        const btn = document.getElementById('orbit-nav-' + k);
+        if (btn) {
+          if (k === navKey) {
+            btn.className = 'orbit-nav-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition cursor-pointer';
+          } else {
+            btn.className = 'flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer';
+          }
+        }
+      });
+
+      if (navKey === 'dashboard') {
+        switchMainView('orbit');
+      } else if (navKey === 'swap') {
+        switchMainView('trade');
+      } else if (navKey === 'liquidity') {
+        switchMainView('calc');
+      } else if (navKey === 'nft') {
+        switchMainView('viewer');
+      } else if (navKey === 'bridge') {
+        switchMainView('markets');
+      } else if (navKey === 'history') {
+        switchMainView('targets');
+      } else if (navKey === 'settings') {
+        onVaultButtonClick();
+      }
+    }
+
+    // Initialize Orbit Dashboard on load and window resize
+    setTimeout(() => {
+      drawOrbitNetworthChart();
+      renderOrbitTokensTable();
+      updateOrbitSwapQuote();
+    }, 40);
+    window.addEventListener('resize', () => {
+      if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
+    });
   </script>
 </body>
 </html>
