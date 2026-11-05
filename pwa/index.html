@@ -277,6 +277,23 @@
     .animate-ticker:hover {
       animation-play-state: paused;
     }
+
+    /* Explicit terminal charting typography & 80s Apple Amber / Matrix Green CLI rules */
+    .ascii-chart-grid {
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.15;
+      letter-spacing: -0.05em;
+      white-space: pre;
+    }
+    .candle-green { color: #00FF41; text-shadow: 0 0 6px rgba(0, 255, 65, 0.35); }
+    .candle-red { color: #FF3B30; text-shadow: 0 0 6px rgba(255, 59, 48, 0.35); } /* 80s Apple Alert Red */
+    .candle-wick { color: #555555; }
+    .border-matrix { border-color: #00FF41 !important; }
+    .border-matrix\/20 { border-color: rgba(0, 255, 65, 0.20) !important; }
+    .text-apple-amber { color: #FFB000 !important; text-shadow: 0 0 8px rgba(255, 176, 0, 0.35); }
+    .text-apple-amber\/60 { color: rgba(255, 176, 0, 0.72) !important; }
+    .text-matrix-green { color: #00FF41 !important; }
+    .placeholder-matrix-green\/30::placeholder { color: rgba(0, 255, 65, 0.35) !important; }
   </style>
 </head>
 <body data-holo-tint="cyan" class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
@@ -339,6 +356,12 @@
             📱 S26U
           </button>
         </div>
+
+        <button id="btn-cli-toggle" onclick="toggleSwoozCliOverlay()"
+                class="px-2.5 py-1.5 bg-black hover:bg-[#00FF41]/15 border border-[#00FF41] text-[#FFB000] text-[11px] font-mono font-bold uppercase flex items-center gap-1 cursor-pointer shadow-[0_0_10px_rgba(0,255,65,0.25)]"
+                title="Toggle SWOOZ_DEX_ROOT CLI Overlay (Shortcut: ` backtick)">
+          <span>&gt;_</span> <span>CLI [`]</span>
+        </button>
 
         <button id="btn-refresh" onclick="refreshTelemetry()" class="px-2.5 py-1.5 bg-black hover:bg-white/15 border border-white/25 text-white text-[11px] font-mono font-bold uppercase flex items-center gap-1">
           <span>🔄</span> <span class="hidden sm:inline">SYNC</span>
@@ -1642,6 +1665,26 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Terminal ASCII Block Candlestick Matrix Stream (Injected into Markets Window Wrapper) -->
+        <div class="border border-matrix p-2 bg-black mt-3">
+          <div class="text-apple-amber mb-1 flex justify-between text-[10px] font-mono font-bold">
+            <span id="ascii-market-header">📈 MARKET_STREAM: ETH//USDC (1H_INTERVAL)</span>
+            <span id="ascii-market-scale">SCALE: 1 BLOCK = $50 • PRESS [`] FOR CLI</span>
+          </div>
+          
+          <div id="ascii-chart-output" class="ascii-chart-grid text-[11px] select-none p-1 bg-black border border-matrix/20 overflow-x-auto text-[#00FF41]">$2650 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>
+$2600 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>
+$2550 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░░░░</span>
+$2500 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░░░░</span>
+$2450 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░░░░░░░</span>
+$2400 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░</span><span class="candle-red">█</span><span class="candle-wick">░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░░░░</span>
+$2350 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░</span><span class="candle-red">▀█▀</span><span class="candle-wick">░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░░░░</span>
+$2300 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░░░░</span>
+$2250 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░</span>
+----------------------------------------------------------------
+      | 11:00   12:00   13:00   14:00   15:00   16:00   17:00 (PST)</div>
         </div>
       </div>
 
@@ -4015,6 +4058,147 @@
       refreshTelemetry();
     })();
     setInterval(refreshTelemetry, 60000);
+  </script>
+
+  <!-- Root-Level SWOOZ_DEX_ROOT CLI Overlay Container (Toggled via ` backtick or >_ CLI button) -->
+  <div id="cli-overlay" class="hidden fixed inset-x-0 bottom-0 bg-black border-t-2 border-matrix p-3 z-50 font-mono text-xs shadow-2xl">
+    <div class="flex items-center gap-2 max-w-[1600px] mx-auto">
+      <span class="text-apple-amber animate-pulse font-bold shrink-0">SWOOZ_DEX_ROOT &gt;</span>
+      <input type="text" id="cli-input" class="bg-black text-matrix-green flex-grow outline-none border-none p-0 focus:ring-0 uppercase placeholder-matrix-green/30" placeholder="TYPE /SWAP AMOUNT FROM TO --MAX-SLIPPAGE OR /TRAITS 2313 OR /HELP..." />
+      <button type="button" onclick="toggleSwoozCliOverlay(false)" class="px-2 py-0.5 border border-matrix/20 text-apple-amber hover:bg-white/10 text-[10px]">[ESC]</button>
+    </div>
+    <div id="cli-feedback" class="text-[10px] text-apple-amber/60 mt-1 hidden max-w-[1600px] mx-auto whitespace-pre-wrap"></div>
+  </div>
+
+  <script>
+    // Mechanical tap synth beep for CLI state emission
+    window.playBeep = function() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(1110, ctx.currentTime);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.09);
+      } catch (e) {}
+    };
+
+    // 13-Trait On-Chain JSON Mapping Helper for CLI Overlay Inspection (/traits [id])
+    const CLI_TRAITS_MAP = {
+      '2313': {
+        title: 'BEAST #2313 (a KID called BEAST — 13 On-Chain Traits)',
+        traits: [
+          '01. BEASTHOOD: Beat Street', '02. GENDER: Male', '03. DNA: Vinyl',
+          '04. HEAD: Black Raccoon Balaclava', '05. EYES: Concerned', '06. EYEWEAR: Pink Rectangular Glasses',
+          '07. MOUTH: Neutral', '08. TOP: Orange Puffer Jacket', '09. PANTS: Blue Jeans',
+          '10. SHOES: Blue High Tops', '11. JEWELRY: Silver Chain', '12. LEFT HAND: Boombox', '13. BACKGROUND: Concrete'
+        ]
+      },
+      '1506': {
+        title: 'INVISIBLE FRIENDS #1506 (Primary Snipe — 10 On-Chain Traits)',
+        traits: [
+          '01. FANNYPACK: Cream Fannypack (0.98%)', '02. UPPER BODY: Light/Dark Blue Hoodie Up (0.90%)',
+          '03. EYES: Boomer Glasses (1.92%)', '04. MOUTH: Pipe', '05. LOWER BODY: Blue Jeans',
+          '06. FEET: White Classics', '07. LEFT ARM: Phone', '08. RIGHT ARM: Coffee',
+          '09. SLEEVES: Long Sleeves', '10. BACKGROUND: Light Blue'
+        ]
+      }
+    };
+
+    function toggleSwoozCliOverlay(forceState) {
+      const overlay = document.getElementById('cli-overlay');
+      const input = document.getElementById('cli-input');
+      if (!overlay) return;
+      if (typeof forceState === 'boolean') {
+        overlay.classList.toggle('hidden', !forceState);
+      } else {
+        overlay.classList.toggle('hidden');
+      }
+      if (!overlay.classList.contains('hidden') && input) {
+        setTimeout(() => input.focus(), 20);
+      }
+    }
+
+    // Global SWOOZ_DEX_ROOT CLI Listener Engine Execution Logic Block
+    (function initSwoozCLI() {
+      const overlay = document.getElementById('cli-overlay');
+      const input = document.getElementById('cli-input');
+      const feedback = document.getElementById('cli-feedback');
+      if (!overlay || !input || !feedback) return;
+
+      // Toggle overlay on backtick (`), escape closes it
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '`') {
+          e.preventDefault();
+          overlay.classList.toggle('hidden');
+          if (!overlay.classList.contains('hidden')) input.focus();
+        } else if (e.key === 'Escape') {
+          overlay.classList.add('hidden');
+        }
+      });
+
+      // Handle command line token processing execution parser rule paths
+      input.addEventListener('keydown', async (e) => {
+        if (e.key === 'Enter') {
+          const rawCmd = input.value.trim().toLowerCase();
+          input.value = ''; // Clean prompt quickly
+          
+          if (!rawCmd.startsWith('/')) {
+            showFeedback("ERR: UNKNOWN ROUTE SEQUENCE. COMMANDS MUST INITIATE WITH '/'");
+            return;
+          }
+
+          const args = rawCmd.split(' ');
+          const action = args[0];
+
+          if (action === '/swap') {
+            // Syntax parser logic format validation verification checklist: /swap [amt] [from] [to]
+            const amount = args[1];
+            const fromToken = args[2];
+            const toToken = args[3];
+
+            if (!amount || !fromToken || !toToken) {
+              showFeedback("SYNTAX EXCEPTION. USE: /swap 1.0 wbtc usdc");
+              return;
+            }
+
+            showFeedback(`ROUTING SEQUENCE INITIATED: SWAPPING ${amount.toUpperCase()} ${fromToken.toUpperCase()} -> ${toToken.toUpperCase()}...`);
+            
+            // Execute interface data injection updates cleanly behind scene layers
+            setTimeout(() => {
+              showFeedback(`SUCCESS // EXECUTING STATE EMIT PIPELINE FOR ${fromToken.toUpperCase()} ROUTE.`);
+              if (typeof window.playBeep === 'function') window.playBeep(); // Trigger mechanical tap synth
+            }, 1200);
+
+          } else if (action === '/traits') {
+            const tid = args[1] || '2313';
+            const rec = CLI_TRAITS_MAP[tid] || CLI_TRAITS_MAP['2313'];
+            showFeedback(`${rec.title}\n` + rec.traits.join('  //  '));
+            if (typeof window.playBeep === 'function') window.playBeep();
+          } else if (action === '/help') {
+            showFeedback("CORE MAN: [/swap] [amount] [from] [to] // [/traits 2313|1506] // [/clear] // [/exit]");
+          } else if (action === '/clear') {
+            feedback.classList.add('hidden');
+          } else if (action === '/exit') {
+            overlay.classList.add('hidden');
+          } else {
+            showFeedback(`ERR: PIPELINE TARGET CONSOLE COMMAND '${action}' NOT DETECTED.`);
+          }
+        }
+      });
+
+      function showFeedback(text) {
+        feedback.innerText = `>> ${text}`;
+        feedback.classList.remove('hidden');
+      }
+    })();
   </script>
 </body>
 </html>
