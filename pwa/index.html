@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="theme-color" content="#020804" />
+  <meta name="theme-color" content="#05070a" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -11,117 +11,165 @@
   <link rel="manifest" href="manifest.json?v=4" />
   <link rel="icon" type="image/png" href="icon-192.png?v=4" />
   <link rel="apple-touch-icon" href="icon-512.png?v=4" />
-  <title>SWOOZ.ETH DEX — Matrix Reloaded Virtual Control Terminal</title>
+  <title>SWOOZ.ETH DEX — Matrix Reloaded Virtual Control Construct</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      /* Kazumichi Tobias Grime — Matrix Reloaded Virtual Control Design Palette */
-      --background: #020804;
-      --card: #041109;
-      --secondary: #071c0f;
-      --border: #0e3d21;
-      --foreground: #e6fff0;
-      --muted-foreground: #68a682;
+      /* Tobias "Kazumichi" Grime — Matrix Reloaded Virtual Control Design
+         Monochrome Wireframe Architecture: Virtual CAD Blueprint (Default) */
+      --background: #05070a;
+      --card: rgba(0, 0, 0, 0.86);
+      --secondary: rgba(255, 255, 255, 0.045);
+      --border: rgba(255, 255, 255, 0.20);
+      --foreground: #ffffff;
+      --muted-foreground: rgba(255, 255, 255, 0.56);
+      --holo-cyan: #00f0ff;
+      --holo-volt: #e2fd52;
       --crt-green: #00ff66;
-      --crt-green-alt: #00ff41;
-      --zion-cyan: #00e5ff;
-      --warn-amber: #ffb703;
-      --vcd-grid: rgba(0, 255, 102, 0.065);
-      --vcd-subgrid: rgba(0, 229, 255, 0.03);
-      --vcd-bracket: #00e5ff;
+      --vcd-grid: rgba(255, 255, 255, 0.045);
+      --vcd-subgrid: rgba(0, 240, 255, 0.035);
+      --vcd-bracket: #ffffff;
+      --holo-stroke: #00f0ff;
+      --holo-glow: rgba(0, 240, 255, 0.65);
     }
-    /* Optional High-Luminance Zion White-Room Mode */
+
+    /* Hologram Tint Presets: Cyan (Default) | White (Stark CAD Monochrome) | Volt (#e2fd52) */
+    body[data-holo-tint="white"] {
+      --holo-stroke: #ffffff;
+      --holo-glow: rgba(255, 255, 255, 0.70);
+    }
+    body[data-holo-tint="volt"] {
+      --holo-stroke: #e2fd52;
+      --holo-glow: rgba(226, 253, 82, 0.70);
+    }
+
+    /* Optional High-Luminance Zion White-Room Construct Mode */
     body.zion-vcd-mode {
       --background: #e8eef5;
-      --card: rgba(255, 255, 255, 0.90);
+      --card: rgba(255, 255, 255, 0.92);
       --secondary: #dde6f0;
       --border: #94a3b8;
       --foreground: #0f172a;
       --muted-foreground: #475569;
       --vcd-grid: rgba(15, 23, 42, 0.065);
-      --vcd-bracket: #0284c7;
+      --vcd-bracket: #0f172a;
     }
 
-    /* Override Tailwind Emerald / Sky / Amber across the entire DEX to match the exact Kazumichi Palette */
+    /* Monochrome Wireframe Architecture Overrides (Matches Code Breaker & Back Room Showroom) */
+    body:not(.zion-vcd-mode) {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    body:not(.zion-vcd-mode) .rounded-xl,
+    body:not(.zion-vcd-mode) .rounded-lg,
+    body:not(.zion-vcd-mode) .rounded-md {
+      border-radius: 2px !important;
+    }
+    body:not(.zion-vcd-mode) .bg-emerald-500 {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.55);
+      border: 1px solid #ffffff !important;
+    }
     body:not(.zion-vcd-mode) .text-emerald-400,
     body:not(.zion-vcd-mode) .text-emerald-500 {
       color: #00ff66 !important;
-      text-shadow: 0 0 8px rgba(0, 255, 102, 0.25);
-    }
-    body:not(.zion-vcd-mode) .bg-emerald-500 {
-      background-color: #00ff41 !important;
-      color: #020804 !important;
-      box-shadow: 0 0 12px rgba(0, 255, 65, 0.35);
+      text-shadow: 0 0 8px rgba(0, 255, 102, 0.28);
     }
     body:not(.zion-vcd-mode) .border-emerald-500,
     body:not(.zion-vcd-mode) .border-emerald-500\/30,
     body:not(.zion-vcd-mode) .border-emerald-500\/35,
     body:not(.zion-vcd-mode) .border-emerald-500\/40,
-    body:not(.zion-vcd-mode) .border-emerald-500\/45 {
-      border-color: rgba(0, 255, 102, 0.45) !important;
+    body:not(.zion-vcd-mode) .border-emerald-500\/45,
+    body:not(.zion-vcd-mode) .border-emerald-500\/50 {
+      border-color: rgba(255, 255, 255, 0.32) !important;
     }
     body:not(.zion-vcd-mode) .text-sky-400,
-    body:not(.zion-vcd-mode) .text-sky-500 {
-      color: #00e5ff !important;
-      text-shadow: 0 0 8px rgba(0, 229, 255, 0.28);
+    body:not(.zion-vcd-mode) .text-sky-500,
+    body:not(.zion-vcd-mode) .text-purple-300,
+    body:not(.zion-vcd-mode) .text-purple-400 {
+      color: #00f0ff !important;
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.35);
     }
-    body:not(.zion-vcd-mode) .bg-sky-500 {
-      background-color: #00e5ff !important;
-      color: #020804 !important;
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.35);
+    body:not(.zion-vcd-mode) .bg-sky-500,
+    body:not(.zion-vcd-mode) .bg-purple-500 {
+      background-color: #00f0ff !important;
+      color: #000000 !important;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.50);
     }
-    body:not(.zion-vcd-mode) .border-sky-500\/40 {
-      border-color: rgba(0, 229, 255, 0.50) !important;
+    body:not(.zion-vcd-mode) .border-sky-500\/40,
+    body:not(.zion-vcd-mode) .border-purple-500\/30,
+    body:not(.zion-vcd-mode) .border-purple-500\/40,
+    body:not(.zion-vcd-mode) .border-purple-500\/45 {
+      border-color: rgba(0, 240, 255, 0.45) !important;
     }
     body:not(.zion-vcd-mode) .text-amber-400,
     body:not(.zion-vcd-mode) .text-amber-500 {
-      color: #ffb703 !important;
-      text-shadow: 0 0 8px rgba(255, 183, 3, 0.25);
+      color: #e2fd52 !important;
+      text-shadow: 0 0 8px rgba(226, 253, 82, 0.28);
     }
     body:not(.zion-vcd-mode) .bg-amber-500 {
-      background-color: #ffb703 !important;
-      color: #020804 !important;
-      box-shadow: 0 0 12px rgba(255, 183, 3, 0.35);
+      background-color: #e2fd52 !important;
+      color: #000000 !important;
+      box-shadow: 0 0 14px rgba(226, 253, 82, 0.45);
     }
-    body:not(.zion-vcd-mode) .border-amber-500\/40 {
-      border-color: rgba(255, 183, 3, 0.50) !important;
+    body:not(.zion-vcd-mode) .border-amber-500\/40,
+    body:not(.zion-vcd-mode) .border-amber-500\/30 {
+      border-color: rgba(226, 253, 82, 0.45) !important;
     }
-
-    body.zion-vcd-mode .text-emerald-400 { color: #047857 !important; }
-    body.zion-vcd-mode .text-amber-400 { color: #b45309 !important; }
-    body.zion-vcd-mode .text-sky-400 { color: #0369a1 !important; }
-    body.zion-vcd-mode .text-purple-300,
-    body.zion-vcd-mode .text-purple-400 { color: #6d28d9 !important; }
 
     body {
       background-color: var(--background);
       background-image:
-        radial-gradient(circle at 50% 18%, rgba(0, 229, 255, 0.05) 0%, transparent 55%),
+        radial-gradient(circle at 50% 15%, rgba(0, 240, 255, 0.06) 0%, transparent 60%),
         linear-gradient(to right, var(--vcd-grid) 1px, transparent 1px),
         linear-gradient(to bottom, var(--vcd-grid) 1px, transparent 1px);
-      background-size: 100% 100%, 28px 28px, 28px 28px;
+      background-size: 100% 100%, 32px 32px, 32px 32px;
     }
-    .vcd-pod {
+
+    /* Wireframe Construct Pods with Corner CAD Registration Brackets */
+    .vcd-pod,
+    #sec-targets,
+    #sec-viewer,
+    #sec-partner,
+    #sec-markets,
+    #sec-calc {
       position: relative;
       border: 1px solid var(--border);
-      box-shadow: inset 0 0 18px rgba(0, 255, 102, 0.03);
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 24px 24px;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
     }
     .vcd-pod::before,
-    .vcd-pod::after {
+    .vcd-pod::after,
+    #sec-targets::before,
+    #sec-targets::after,
+    #sec-viewer::before,
+    #sec-viewer::after,
+    #sec-partner::before,
+    #sec-partner::after {
       content: '';
       position: absolute;
       width: 10px;
       height: 10px;
       pointer-events: none;
       border-color: var(--vcd-bracket);
+      z-index: 20;
     }
-    .vcd-pod::before {
+    .vcd-pod::before,
+    #sec-targets::before,
+    #sec-viewer::before,
+    #sec-partner::before {
       top: -1px;
       left: -1px;
       border-top: 2px solid var(--vcd-bracket);
       border-left: 2px solid var(--vcd-bracket);
     }
-    .vcd-pod::after {
+    .vcd-pod::after,
+    #sec-targets::after,
+    #sec-viewer::after,
+    #sec-partner::after {
       bottom: -1px;
       right: -1px;
       border-bottom: 2px solid var(--vcd-bracket);
@@ -132,9 +180,91 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
+
+    /* ============================================================================
+       3D HOLOGRAPHIC SPECIMEN PROJECTION ARCHITECTURE (1110 kHz PHOTON EMISSION)
+       Makes all displayed items across the DEX appear as floating wireframe holograms
+       ============================================================================ */
+    @keyframes holoFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-4px) scale(1.018); }
+    }
+    @keyframes holoBeamPulse {
+      0%, 100% { opacity: 0.82; }
+      50% { opacity: 1; }
+    }
+
+    /* Automatic Hologram Shader applied to all displayed NFT / Specimen items in Blueprint Mode */
+    body:not(.optical-sensor-mode) img[src*="nft-media/"],
+    body:not(.optical-sensor-mode) #stage-nft-img,
+    body:not(.optical-sensor-mode) #wallet-nft-grid img,
+    body:not(.optical-sensor-mode) #custom-targets-list img {
+      animation: holoFloat 3.6s ease-in-out infinite, holoBeamPulse 2.4s ease-in-out infinite;
+      border: 1px solid rgba(0, 240, 255, 0.55) !important;
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 240, 255, 0.16) 0px, rgba(0, 240, 255, 0.16) 1px, transparent 1px, transparent 3px),
+        radial-gradient(ellipse at bottom, rgba(0, 240, 255, 0.35) 0%, rgba(5, 7, 10, 0.95) 75%) !important;
+      filter: grayscale(1) contrast(1.38) brightness(1.12) sepia(1) hue-rotate(150deg) saturate(3.2) drop-shadow(0 0 12px rgba(0, 240, 255, 0.75));
+      box-shadow: inset 0 -10px 22px rgba(0, 240, 255, 0.28), 0 0 16px rgba(0, 240, 255, 0.32);
+    }
+
+    /* Stark Monochrome White CAD Wireframe Hologram Tint */
+    body:not(.optical-sensor-mode)[data-holo-tint="white"] img[src*="nft-media/"],
+    body:not(.optical-sensor-mode)[data-holo-tint="white"] #stage-nft-img,
+    body:not(.optical-sensor-mode)[data-holo-tint="white"] #wallet-nft-grid img,
+    body:not(.optical-sensor-mode)[data-holo-tint="white"] #custom-targets-list img {
+      border-color: rgba(255, 255, 255, 0.70) !important;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0px, rgba(255, 255, 255, 0.15) 1px, transparent 1px, transparent 3px),
+        radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.30) 0%, rgba(5, 7, 10, 0.95) 75%) !important;
+      filter: grayscale(1) contrast(1.55) brightness(1.18) drop-shadow(0 0 12px rgba(255, 255, 255, 0.75));
+      box-shadow: inset 0 -10px 22px rgba(255, 255, 255, 0.25), 0 0 16px rgba(255, 255, 255, 0.32);
+    }
+
+    /* High-Flea Volt (#e2fd52) Hologram Tint */
+    body:not(.optical-sensor-mode)[data-holo-tint="volt"] img[src*="nft-media/"],
+    body:not(.optical-sensor-mode)[data-holo-tint="volt"] #stage-nft-img,
+    body:not(.optical-sensor-mode)[data-holo-tint="volt"] #wallet-nft-grid img,
+    body:not(.optical-sensor-mode)[data-holo-tint="volt"] #custom-targets-list img {
+      border-color: rgba(226, 253, 82, 0.65) !important;
+      background:
+        repeating-linear-gradient(0deg, rgba(226, 253, 82, 0.15) 0px, rgba(226, 253, 82, 0.15) 1px, transparent 1px, transparent 3px),
+        radial-gradient(ellipse at bottom, rgba(226, 253, 82, 0.30) 0%, rgba(5, 7, 10, 0.95) 75%) !important;
+      filter: grayscale(1) contrast(1.42) brightness(1.12) sepia(1) hue-rotate(32deg) saturate(3.5) drop-shadow(0 0 12px rgba(226, 253, 82, 0.75));
+      box-shadow: inset 0 -10px 22px rgba(226, 253, 82, 0.25), 0 0 16px rgba(226, 253, 82, 0.32);
+    }
+
+    /* Optional Scanlines Off toggle */
+    body.holo-scanlines-off .holo-scanline-layer {
+      display: none !important;
+    }
+
+    /* Hologram Specimen Pod Wrapper */
+    .holo-pod-card {
+      position: relative;
+      background: rgba(0, 0, 0, 0.88) !important;
+      border: 1px solid rgba(0, 240, 255, 0.38) !important;
+      box-shadow: inset 0 -18px 28px rgba(0, 240, 255, 0.12), 0 0 18px rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+    }
+    .holo-pod-card::after {
+      content: 'HOLO // 1110 kHz';
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      font-size: 7.5px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #00f0ff;
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(0, 240, 255, 0.45);
+      padding: 1px 4px;
+      pointer-events: none;
+    }
+
     ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #020804; }
-    ::-webkit-scrollbar-thumb { background: rgba(0, 255, 102, 0.35); border-radius: 9999px; }
+    ::-webkit-scrollbar-track { background: #05070a; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.35); border-radius: 0px; }
     @keyframes ticker {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -149,56 +279,69 @@
     }
   </style>
 </head>
-<body class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
+<body data-holo-tint="cyan" class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
 
-  <!-- Sticky Top DEX Telemetry Header -->
-  <header class="sticky top-0 z-40 bg-[var(--card)]/95 backdrop-blur border-b border-[var(--border)] px-3 py-2.5 shadow-sm">
+  <!-- Sticky Top DEX Telemetry Header (Matrix Reloaded Monochrome Wireframe Architecture) -->
+  <header class="sticky top-0 z-40 bg-black/95 backdrop-blur border-b border-white/20 px-3 py-2.5 shadow-[0_0_50px_rgba(0,0,0,0.95)]">
     <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2">
-      <!-- Brand + Trader Identity -->
+      <!-- Brand + Zion Virtual Control Header Identity -->
       <div class="flex items-center gap-3">
-        <img src="logo.png" alt="SWOOZ.ETH" class="h-9 sm:h-11 w-auto object-contain drop-shadow-md" />
+        <img src="logo.png" alt="SWOOZ.ETH" class="h-9 sm:h-11 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]" />
         <div>
-          <div class="flex items-center gap-2">
-            <span class="font-mono font-extrabold text-xs sm:text-sm tracking-wider text-[var(--foreground)]">DEX TERMINAL</span>
-            <span id="live-badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              LIVE
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <span class="font-mono font-black text-xs sm:text-sm tracking-wider text-white uppercase">ZION VIRTUAL CONTROL // DEX CONSTRUCT</span>
+            <span id="live-badge" class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono font-bold bg-white/10 text-white border border-white/30 uppercase tracking-widest">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#00ff66] animate-pulse"></span>
+              1110 kHz LIVE
             </span>
           </div>
-          <div class="text-xs text-[var(--muted-foreground)] font-mono">
-            ETH $<span id="hdr-eth-rate">2,284.38</span> • Total ETH: <span id="hdr-total-eth" class="text-emerald-500 font-bold">0.3755 ETH ($857.83)</span>
+          <div class="text-[11px] text-white/60 font-mono uppercase tracking-wide">
+            MONOCHROME CAD WIREFRAME • ETH $<span id="hdr-eth-rate" class="text-white font-bold">2,284.38</span> • STACK: <span id="hdr-total-eth" class="text-cyan-300 font-bold">0.3755 ETH ($857.83)</span>
           </div>
         </div>
       </div>
 
-      <!-- Right Controls: Owner Vault PIN Lock + Device Layout Switcher + Sync -->
+      <!-- Right Controls: Virtual CAD Blueprint vs Optical Sensor Feed + Hologram Tint + Owner Vault PIN Lock -->
       <div class="flex items-center gap-2 flex-wrap">
-        <button id="btn-vault-lock" onclick="onVaultButtonClick()"
-                class="px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition">
-          <span id="vault-btn-icon">🔒</span>
-          <span id="vault-btn-label">Unlock Owner PIN</span>
-        </button>
-
-        <!-- Fold 8 Dual-Pane vs S26U Portrait Mode Toggle -->
-        <div class="inline-flex rounded-lg bg-[var(--secondary)] border border-[var(--border)] p-0.5 text-xs">
-          <button id="btn-mode-auto" onclick="setLayoutMode('fold8')" class="px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition">
-            📖 Fold 8 Split
+        <!-- View Mode Toggle: Virtual CAD Blueprint (Default) vs Optical Sensor Feed (Exact match to BackRoomShowroom.tsx) -->
+        <div class="flex items-center gap-1 bg-white/5 border border-white/20 p-1 text-[10px] font-mono">
+          <button id="btn-mode-blueprint" onclick="setConstructViewMode('blueprint')"
+                  class="px-2.5 py-1 uppercase font-bold transition-all cursor-pointer bg-white text-black shadow-[0_0_12px_rgba(255,255,255,0.7)]">
+            Virtual CAD Blueprint
           </button>
-          <button id="btn-mode-s26u" onclick="setLayoutMode('s26u')" class="px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">
-            📱 S26U Portrait
+          <button id="btn-mode-optical" onclick="setConstructViewMode('optical')"
+                  class="px-2.5 py-1 uppercase font-bold transition-all cursor-pointer text-white/50 hover:text-white">
+            Optical Sensor Feed
           </button>
         </div>
 
-        <!-- Matrix Reloaded Virtual Control HUD Theme Switcher (Zion White Room vs Dark Vector) -->
-        <button id="btn-vcd-theme" onclick="toggleVcdTheme()"
-                class="px-2.5 py-1.5 rounded-lg bg-sky-500/15 hover:bg-sky-500/25 border border-sky-500/40 text-sky-400 text-xs font-mono font-bold flex items-center gap-1 transition"
-                title="Switch between Matrix Reloaded Zion White-Room VCD and Dark Vector HUD">
-          <span id="vcd-theme-icon">⚪</span>
-          <span id="vcd-theme-lbl">ZION VCD</span>
+        <!-- Hologram Specimen Tint Selector (CYAN | WHITE | VOLT) -->
+        <div class="hidden sm:flex items-center gap-1 bg-white/5 border border-white/20 p-1 text-[10px] font-mono">
+          <span class="text-white/40 px-1 font-bold">HOLO:</span>
+          <button id="btn-holo-cyan" onclick="setHoloTint('cyan')" class="px-2 py-0.5 uppercase font-bold bg-white text-black border border-white cursor-pointer">CYAN</button>
+          <button id="btn-holo-white" onclick="setHoloTint('white')" class="px-2 py-0.5 uppercase font-bold bg-white/5 text-white/50 border border-white/20 hover:text-white cursor-pointer">WHITE</button>
+          <button id="btn-holo-volt" onclick="setHoloTint('volt')" class="px-2 py-0.5 uppercase font-bold bg-white/5 text-white/50 border border-white/20 hover:text-white cursor-pointer">VOLT</button>
+        </div>
+
+        <button id="btn-vault-lock" onclick="onVaultButtonClick()"
+                class="px-2.5 py-1.5 bg-white/10 hover:bg-white hover:text-black border border-white/30 text-white text-[11px] font-mono font-bold uppercase flex items-center gap-1 transition">
+          <span id="vault-btn-icon">🔒</span>
+          <span id="vault-btn-label">OPERATOR PIN</span>
         </button>
 
-        <button id="btn-refresh" onclick="refreshTelemetry()" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] hover:opacity-80 border border-[var(--border)] text-xs font-semibold flex items-center gap-1">
-          <span>🔄</span> <span class="hidden sm:inline">Sync Live</span>
+        <!-- Fold 8 Dual-Pane vs S26U Portrait Mode Toggle -->
+        <div class="inline-flex bg-white/5 border border-white/20 p-0.5 text-[11px] font-mono">
+          <button id="btn-mode-auto" onclick="setLayoutMode('fold8')" class="px-2 py-1 font-bold bg-white text-black transition">
+            📖 Fold 8
+          </button>
+          <button id="btn-mode-s26u" onclick="setLayoutMode('s26u')" class="px-2 py-1 font-bold text-white/60 hover:text-white transition">
+            📱 S26U
+          </button>
+        </div>
+
+        <button id="btn-refresh" onclick="refreshTelemetry()" class="px-2.5 py-1.5 bg-black hover:bg-white/15 border border-white/25 text-white text-[11px] font-mono font-bold uppercase flex items-center gap-1">
+          <span>🔄</span> <span class="hidden sm:inline">SYNC</span>
         </button>
       </div>
     </div>
@@ -336,12 +479,12 @@
           </div>
 
           <!-- Interactive HTML5 Canvas Candlestick Chart + Kazumichi Virtual Control Overlay -->
-          <div id="vcd-canvas-wrap" class="vcd-pod relative w-full bg-[#020804] rounded-xl overflow-hidden p-2">
+          <div id="vcd-canvas-wrap" class="vcd-pod relative w-full bg-[#05070a] rounded-xl overflow-hidden p-2">
             <canvas id="kraken-ohlc-canvas" width="860" height="310" class="w-full h-[250px] sm:h-[300px] block"></canvas>
-            <div class="flex items-center justify-between flex-wrap gap-2 text-[10px] font-mono text-[var(--muted-foreground)] pt-1.5 px-1 border-t border-[var(--border)]/60">
-              <span class="text-emerald-400">🟢 CRT Phosphor (#00ff66) = Upper Sell Vector ($2,434.30 ETH / $97.80 SOL)</span>
-              <span class="text-sky-400">🔵 Electric Zion Cyan (#00e5ff) = Core Re-Buy &amp; Harmonic Rings</span>
-              <span class="text-amber-400">🟠 Warning Amber (#ffb703) = Sector Dip Threshold ($2,350 ETH / $93.50 SOL)</span>
+            <div class="flex items-center justify-between flex-wrap gap-2 text-[10px] font-mono text-white/60 pt-1.5 px-1 border-t border-white/15">
+              <span class="text-white font-bold">⚪ STARK WHITE / #00FF66 = Upper Sell Vector ($2,434.30 ETH / $97.80 SOL)</span>
+              <span class="text-cyan-400 font-bold">🔵 HOLO CYAN (#00F0FF) = Core Re-Buy &amp; 1110 kHz Harmonic Tumblers</span>
+              <span class="text-[#e2fd52] font-bold">⚡ VOLT (#E2FD52) = Sector Dip Threshold ($2,350 ETH / $93.50 SOL)</span>
             </div>
           </div>
 
@@ -640,10 +783,10 @@
             </button>
           </div>
 
-          <!-- 5-Up Interactive Gallery of Her Wallet's NFTs -->
+          <!-- 5-Up Interactive Hologram Gallery of Her Wallet's NFTs -->
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
             <div onclick="loadPresetNft('ms-305'); scrollToSec('sec-viewer');"
-                 class="bg-[var(--card)] border border-emerald-500/45 rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+                 class="holo-pod-card bg-[var(--card)] border border-emerald-500/45 rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
               <img src="nft-media/minisupers_6915.png" alt="Mini Supers #305" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
                 <span>Mini Supers #305</span><span class="text-emerald-400">HOME</span>
@@ -652,7 +795,7 @@
             </div>
 
             <div onclick="loadPresetNft('supers-84'); scrollToSec('sec-viewer');"
-                 class="bg-[var(--card)] border border-purple-500/40 rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+                 class="holo-pod-card bg-[var(--card)] border border-purple-500/40 rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
               <img src="nft-media/supers_84.png" alt="Supers! #84" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
                 <span>Supers! #84</span><span class="text-purple-300">OG</span>
@@ -661,7 +804,7 @@
             </div>
 
             <div onclick="loadPresetNft('supers-144'); scrollToSec('sec-viewer');"
-                 class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+                 class="holo-pod-card bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
               <img src="nft-media/supers_144.png" alt="Supers! #144" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
                 <span>Supers! #144</span><span class="text-purple-300">OG</span>
@@ -670,7 +813,7 @@
             </div>
 
             <div onclick="loadPresetNft('enso-146'); scrollToSec('sec-viewer');"
-                 class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+                 class="holo-pod-card bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
               <img src="nft-media/enso_146.png" alt="Enso S2 #146" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
                 <span>Enso S2 #146</span><span class="text-emerald-400">S2</span>
@@ -679,7 +822,7 @@
             </div>
 
             <div onclick="loadPresetNft('enso-190'); scrollToSec('sec-viewer');"
-                 class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500 transition space-y-1">
+                 class="holo-pod-card bg-[var(--card)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
               <img src="nft-media/enso_190.png" alt="Enso S2 #190" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between text-[11px]">
                 <span>Enso S2 #190</span><span class="text-emerald-400">S2</span>
@@ -1190,28 +1333,84 @@
           </div>
         </div>
 
-        <!-- TAB 1: Single Stage + Full Metadata & Trait Breakdown -->
+        <!-- TAB 1: 3D HOLOGRAPHIC PROJECTION CHAMBER + Full Metadata & Trait Breakdown -->
         <div id="viewer-tab-stage" class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 items-start">
-          <!-- Animated Artwork Stage (Left 5 Cols) -->
-          <div class="sm:col-span-5 bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2.5 flex flex-col items-center space-y-2">
-            <div class="relative w-full aspect-square rounded-lg overflow-hidden bg-black/40 border border-[var(--border)] flex items-center justify-center">
+          <!-- 3D HOLOGRAPHIC PROJECTION CHAMBER (Left 5 Cols — Exact Match to BackRoomShowroom.tsx) -->
+          <div class="sm:col-span-5 bg-black border border-white/25 p-3 flex flex-col justify-between relative overflow-hidden shadow-[0_0_50px_rgba(0,240,255,0.16)] space-y-2">
+            <!-- Upward Conical Hologram Light Cone -->
+            <div class="absolute inset-x-4 bottom-8 h-56 bg-[radial-gradient(ellipse_at_bottom,rgba(0,240,255,0.28)_0%,transparent_75%)] pointer-events-none"></div>
+
+            <!-- Scanline Texture Overlay -->
+            <div class="holo-scanline-layer absolute inset-0 pointer-events-none opacity-25"
+                 style="background: repeating-linear-gradient(0deg, rgba(0,240,255,0.18) 0px, rgba(0,240,255,0.18) 1px, transparent 1px, transparent 3px);"></div>
+
+            <!-- Top Chamber Telemetry HUD -->
+            <div class="w-full flex items-center justify-between text-[9px] font-mono uppercase tracking-wider text-white/60 pb-1.5 border-b border-white/15 relative z-10">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                <span class="text-white font-bold">HOLO-PROJECTOR: ACTIVE</span>
+              </div>
+              <span class="text-cyan-400 font-bold">1110 kHz PHOTON EMISSION</span>
+            </div>
+
+            <!-- 3D Holographic Floating Vector Specimen Stage -->
+            <div class="relative w-full aspect-square overflow-hidden bg-black/60 border border-white/20 flex items-center justify-center z-10 pb-6">
               <img id="stage-nft-img" src="nft-media/if_1506.gif" alt="NFT Stage"
-                   class="w-full h-full object-contain transition-all duration-200" />
-              <span id="stage-media-badge" class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-emerald-400 font-mono text-[10px] font-bold border border-emerald-500/40">
-                🚶 LIVE WALKING GIF
+                   class="w-[86%] h-[86%] object-contain transition-all duration-300" />
+
+              <!-- Isometric CAD Wireframe Bounding Mesh Overlay -->
+              <svg id="holo-cad-mesh-overlay" viewBox="0 0 240 240" class="absolute inset-0 w-full h-full pointer-events-none opacity-75">
+                <!-- Isometric CAD Cube & Crosshair Reticle -->
+                <polygon points="35,28 205,28 218,42 218,195 48,195 35,180" fill="none" stroke="var(--holo-stroke)" stroke-width="1" stroke-dasharray="4 3" opacity="0.65" />
+                <rect x="48" y="42" width="155" height="140" fill="none" stroke="var(--holo-stroke)" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.45" />
+                <line x1="120" y1="18" x2="120" y2="205" stroke="var(--holo-stroke)" stroke-width="0.6" stroke-dasharray="2 5" opacity="0.4" />
+                <line x1="22" y1="112" x2="218" y2="112" stroke="var(--holo-stroke)" stroke-width="0.6" stroke-dasharray="2 5" opacity="0.4" />
+                <!-- Wireframe Vertex Nodes -->
+                <circle cx="35" cy="28" r="2.5" fill="var(--holo-stroke)" />
+                <circle cx="205" cy="28" r="2.5" fill="var(--holo-stroke)" />
+                <circle cx="218" cy="195" r="2.5" fill="var(--holo-stroke)" />
+                <circle cx="35" cy="180" r="2.5" fill="var(--holo-stroke)" />
+              </svg>
+
+              <!-- Circular Hologram Base Projector Rings -->
+              <div class="absolute bottom-1 inset-x-0 flex flex-col items-center pointer-events-none">
+                <svg viewBox="0 0 240 40" class="w-48 h-8">
+                  <ellipse cx="120" cy="20" rx="92" ry="13" fill="none" stroke="rgba(0,240,255,0.35)" stroke-width="1" stroke-dasharray="4 2" />
+                  <ellipse cx="120" cy="20" rx="64" ry="9" fill="rgba(0,240,255,0.12)" stroke="var(--holo-stroke)" stroke-width="1.8" />
+                  <circle cx="120" cy="20" r="3" fill="#ffffff" />
+                </svg>
+              </div>
+
+              <span id="stage-media-badge" class="absolute top-2 left-2 px-2 py-0.5 bg-black/90 text-cyan-300 font-mono text-[9.5px] font-bold border border-cyan-400/60 uppercase tracking-wider">
+                HOLO SPECIMEN // WALKING GIF
               </span>
             </div>
-            <div class="w-full flex items-center justify-between gap-1 text-xs">
+
+            <!-- Chamber Hologram Controls & Tint Switcher -->
+            <div class="w-full pt-1.5 border-t border-white/15 flex flex-wrap items-center justify-between gap-1.5 text-[9px] font-mono relative z-10">
+              <div class="flex items-center gap-1">
+                <span class="text-white/40 uppercase">TINT:</span>
+                <button type="button" onclick="setHoloTint('cyan')" class="holo-tint-btn-cyan px-1.5 py-0.5 uppercase font-bold border bg-white text-black border-white cursor-pointer">CYAN</button>
+                <button type="button" onclick="setHoloTint('white')" class="holo-tint-btn-white px-1.5 py-0.5 uppercase font-bold border bg-white/5 border-white/20 text-white/60 hover:text-white cursor-pointer">WHITE</button>
+                <button type="button" onclick="setHoloTint('volt')" class="holo-tint-btn-volt px-1.5 py-0.5 uppercase font-bold border bg-white/5 border-white/20 text-white/60 hover:text-white cursor-pointer">VOLT</button>
+                <button type="button" onclick="setConstructViewMode('optical')" class="holo-tint-btn-optical px-1.5 py-0.5 uppercase font-bold border bg-white/5 border-white/20 text-white/60 hover:text-white cursor-pointer">OPTICAL</button>
+              </div>
+              <button type="button" id="btn-holo-scanlines" onclick="toggleHoloScanlines()" class="px-1.5 py-0.5 bg-white/5 hover:bg-white/20 border border-white/20 text-white uppercase font-bold cursor-pointer">
+                SCANLINES: ON
+              </button>
+            </div>
+
+            <div class="w-full flex items-center justify-between gap-1 text-xs relative z-10">
               <a id="stage-link-os" href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
-                 class="flex-1 text-center py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-semibold hover:opacity-80">
+                 class="flex-1 text-center py-1.5 bg-white/5 border border-white/20 text-white font-bold uppercase text-[10px] hover:bg-white hover:text-black transition">
                 🌊 OpenSea
               </a>
               <a id="stage-link-blur" href="https://blur.io/eth/asset/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
-                 class="flex-1 text-center py-1.5 rounded bg-amber-500/15 text-amber-500 border border-amber-500/30 font-semibold hover:opacity-80">
+                 class="flex-1 text-center py-1.5 bg-white/5 border border-white/20 text-[#e2fd52] font-bold uppercase text-[10px] hover:bg-white hover:text-black transition">
                 ⚡ Blur
               </a>
               <button onclick="scanCurrentNftOwnerWallet()"
-                      class="flex-1 text-center py-1.5 rounded bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 font-semibold hover:opacity-80">
+                      class="flex-1 text-center py-1.5 bg-cyan-400 text-black font-black uppercase text-[10px] hover:bg-white transition">
                 🖼️ Owner NFTs
               </button>
             </div>
@@ -1250,28 +1449,28 @@
             <span class="text-emerald-500 font-mono">All 4 Share Cream Fannypack (0.98%) + Blue Hoodie</span>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <div onclick="loadPresetNft('if-1506'); switchViewerTab('stage');" class="bg-[var(--secondary)] border border-emerald-500/50 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+            <div onclick="loadPresetNft('if-1506'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-emerald-500/50 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
               <img src="nft-media/if_1506.gif" alt="IF #1506" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
                 <span>#1506</span><span class="text-emerald-500">PRIMARY</span>
               </div>
               <div class="text-[11px] text-[var(--muted-foreground)]">Hood Up • Boomer Glasses • Pipe</div>
             </div>
-            <div onclick="loadPresetNft('if-1286'); switchViewerTab('stage');" class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+            <div onclick="loadPresetNft('if-1286'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
               <img src="nft-media/if_1286.gif" alt="IF #1286" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
                 <span>#1286</span><span class="text-[var(--muted-foreground)]">Rank #1,367</span>
               </div>
               <div class="text-[11px] text-[var(--muted-foreground)]">Hood Up • Red Glasses •Dart</div>
             </div>
-            <div onclick="loadPresetNft('if-140'); switchViewerTab('stage');" class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+            <div onclick="loadPresetNft('if-140'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
               <img src="nft-media/if_140.gif" alt="IF #140" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
                 <span>#140</span><span class="text-[var(--muted-foreground)]">Rank #814</span>
               </div>
               <div class="text-[11px] text-[var(--muted-foreground)]">Hood Down • Gold Stake</div>
             </div>
-            <div onclick="loadPresetNft('if-42'); switchViewerTab('stage');" class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+            <div onclick="loadPresetNft('if-42'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
               <img src="nft-media/if_42.gif" alt="IF #42" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
                 <span>#42</span><span class="text-amber-500">Rank #489</span>
@@ -2244,11 +2443,11 @@
             }
             return `
               <div onclick="inspectOnChainToken('${cAddr}', '${tid}')"
-                   class="bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-emerald-500/60 transition space-y-1">
+                   class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:border-cyan-400 transition space-y-1">
                 <img src="${img}" alt="${name}" loading="lazy"
                      class="w-full aspect-square rounded-lg object-cover bg-black/30" />
                 <div class="font-bold text-[var(--foreground)] truncate text-[11px]">${name}</div>
-                <div class="text-[10px] font-mono text-[var(--muted-foreground)] truncate">${item.token?.name || 'ERC-721'}</div>
+                <div class="text-[10px] font-mono text-cyan-300 truncate">${item.token?.name || 'ERC-721'}</div>
               </div>
             `;
           }).join('');
@@ -3262,21 +3461,58 @@
       }
     }
 
-    // Toby Grime / Kazumichi 'Matrix Reloaded' (2003) Zion White-Room vs Dark Vector HUD Theme Switcher
+    // Tobias "Kazumichi" Grime — Matrix Reloaded Virtual Control Construct & 3D Hologram Controllers
+    function setConstructViewMode(mode) {
+      const btnBp = document.getElementById('btn-mode-blueprint');
+      const btnOpt = document.getElementById('btn-mode-optical');
+      const meshOverlay = document.getElementById('holo-cad-mesh-overlay');
+      if (mode === 'optical') {
+        document.body.classList.add('optical-sensor-mode');
+        if (btnOpt) btnOpt.className = 'px-2.5 py-1 uppercase font-bold transition-all cursor-pointer bg-white text-black shadow-[0_0_12px_rgba(255,255,255,0.7)]';
+        if (btnBp) btnBp.className = 'px-2.5 py-1 uppercase font-bold transition-all cursor-pointer text-white/50 hover:text-white';
+        if (meshOverlay) meshOverlay.style.opacity = '0.20';
+      } else {
+        document.body.classList.remove('optical-sensor-mode');
+        if (btnBp) btnBp.className = 'px-2.5 py-1 uppercase font-bold transition-all cursor-pointer bg-white text-black shadow-[0_0_12px_rgba(255,255,255,0.7)]';
+        if (btnOpt) btnOpt.className = 'px-2.5 py-1 uppercase font-bold transition-all cursor-pointer text-white/50 hover:text-white';
+        if (meshOverlay) meshOverlay.style.opacity = '0.75';
+      }
+      drawKrakenChart();
+    }
+
+    function setHoloTint(tint) {
+      document.body.classList.remove('optical-sensor-mode');
+      document.body.setAttribute('data-holo-tint', tint);
+      setConstructViewMode('blueprint');
+      ['cyan', 'white', 'volt'].forEach(c => {
+        const hdrBtn = document.getElementById('btn-holo-' + c);
+        if (hdrBtn) {
+          hdrBtn.className = c === tint
+            ? 'px-2 py-0.5 uppercase font-bold bg-white text-black border border-white cursor-pointer'
+            : 'px-2 py-0.5 uppercase font-bold bg-white/5 text-white/50 border border-white/20 hover:text-white cursor-pointer';
+        }
+        document.querySelectorAll('.holo-tint-btn-' + c).forEach(b => {
+          b.className = 'holo-tint-btn-' + c + ' px-1.5 py-0.5 uppercase font-bold border cursor-pointer ' +
+            (c === tint ? 'bg-white text-black border-white' : 'bg-white/5 border-white/20 text-white/60 hover:text-white');
+        });
+      });
+      drawKrakenChart();
+    }
+
+    function toggleHoloScanlines() {
+      const isOff = document.body.classList.toggle('holo-scanlines-off');
+      const btn = document.getElementById('btn-holo-scanlines');
+      if (btn) btn.textContent = 'SCANLINES: ' + (isOff ? 'OFF' : 'ON');
+    }
+
     function applyVcdTheme(isZionWhite) {
       const wrap = document.getElementById('vcd-canvas-wrap');
-      const icon = document.getElementById('vcd-theme-icon');
-      const lbl = document.getElementById('vcd-theme-lbl');
       if (isZionWhite) {
         document.body.classList.add('zion-vcd-mode');
         if (wrap) wrap.className = 'vcd-pod relative w-full bg-[#eef3f8] rounded-xl overflow-hidden p-2';
-        if (icon) icon.textContent = '🟢';
-        if (lbl) lbl.textContent = 'MATRIX CRT';
       } else {
         document.body.classList.remove('zion-vcd-mode');
-        if (wrap) wrap.className = 'vcd-pod relative w-full bg-[#020804] rounded-xl overflow-hidden p-2';
-        if (icon) icon.textContent = '⚪';
-        if (lbl) lbl.textContent = 'ZION WHITE';
+        if (wrap) wrap.className = 'vcd-pod relative w-full bg-[#05070a] rounded-xl overflow-hidden p-2';
       }
       drawKrakenChart();
     }
@@ -3470,22 +3706,38 @@
 
       const yOf = p => chartTop + ((maxP - p) / (maxP - minP)) * chartH;
 
-      // 1. Kazumichi 'Matrix Reloaded' Concentric Harmonic Rings, Phase Angles & Radar Sweep (#00e5ff Electric Zion Cyan)
+      const isOptical = document.body.classList.contains('optical-sensor-mode');
+      const holoTint = document.body.getAttribute('data-holo-tint') || 'cyan';
+      const holoHex = holoTint === 'volt' ? '#e2fd52' : holoTint === 'white' ? '#ffffff' : '#00f0ff';
+
+      // 1. Tobias "Kazumichi" Grime 'Matrix Reloaded' Concentric Harmonic Tumbler Rings (1110 kHz CARRIER)
       const radCx = chartLeft + chartW * 0.50;
       const radCy = chartTop + chartH * 0.50;
       ctx.save();
       [42, 84, 126].forEach((r, idx) => {
         ctx.beginPath();
-        ctx.strokeStyle = isZion ? 'rgba(2, 132, 199, 0.10)' : (idx === 1 ? 'rgba(0, 229, 255, 0.16)' : 'rgba(0, 229, 255, 0.09)');
-        ctx.lineWidth = 1;
-        if (idx === 1) ctx.setLineDash([4, 4]);
+        ctx.strokeStyle = isZion
+          ? 'rgba(15, 23, 42, 0.12)'
+          : (idx === 1 ? 'rgba(255, 255, 255, 0.24)' : 'rgba(0, 240, 255, 0.14)');
+        ctx.lineWidth = idx === 1 ? 1.4 : 1;
+        if (idx === 0) ctx.setLineDash([4, 6]);
         else ctx.setLineDash([]);
         ctx.arc(radCx, radCy, r, 0, Math.PI * 2);
         ctx.stroke();
       });
+      // Target Notches at 75° and 210° (Exact match to VirtualControlBreaker.tsx)
+      [75, 210].forEach(deg => {
+        const rad = (deg - 90) * (Math.PI / 180);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(radCx + Math.cos(rad) * 120, radCy + Math.sin(rad) * 120);
+        ctx.lineTo(radCx + Math.cos(rad) * 132, radCy + Math.sin(rad) * 132);
+        ctx.stroke();
+      });
       // Phase Angle Crosshair Vectors through Radar Center
       ctx.setLineDash([2, 4]);
-      ctx.strokeStyle = isZion ? 'rgba(2, 132, 199, 0.12)' : 'rgba(0, 229, 255, 0.12)';
+      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.14)' : 'rgba(255, 255, 255, 0.15)';
       ctx.beginPath();
       ctx.moveTo(radCx - 135, radCy); ctx.lineTo(radCx + 135, radCy);
       ctx.moveTo(radCx, radCy - 115); ctx.lineTo(radCx, radCy + 115);
@@ -3494,18 +3746,18 @@
 
       // Outlined Stencil Watermark ("3G // VCD-09")
       ctx.font = 'bold 42px monospace';
-      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.08)' : 'rgba(0, 255, 102, 0.11)';
+      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.11)';
       ctx.lineWidth = 1.2;
       ctx.strokeText(cfg.stencil, chartLeft + 18, chartBottom - 26);
       ctx.font = '10px monospace';
-      ctx.fillStyle = isZion ? 'rgba(15, 23, 42, 0.45)' : 'rgba(0, 229, 255, 0.65)';
-      ctx.fillText(`SYS.VEC // ZION VIRTUAL CONTROL // ${CHART_TF}M INTERVAL // PHASE ANGLE 045.0°`, chartLeft + 20, chartTop + 12);
+      ctx.fillStyle = isZion ? 'rgba(15, 23, 42, 0.55)' : 'rgba(255, 255, 255, 0.65)';
+      ctx.fillText(`ZION VIRTUAL CONTROL // 1110 kHz CARRIER // ${CHART_TF}M CAD WIREFRAME // RING 01: 75° ✓ RING 02: 210° ✓`, chartLeft + 20, chartTop + 12);
       ctx.restore();
 
-      // 2. Vector Telemetry Coordinate Grid + Biometric Registration Ticks ('+')
-      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.10)' : 'rgba(0, 255, 102, 0.12)';
+      // 2. Monochrome Spatial Coordinate Grid + CAD Registration Ticks ('+')
+      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.10)' : 'rgba(255, 255, 255, 0.10)';
       ctx.lineWidth = 1;
-      ctx.fillStyle = isZion ? '#334155' : '#68a682';
+      ctx.fillStyle = isZion ? '#334155' : 'rgba(255, 255, 255, 0.68)';
       ctx.font = '11px monospace';
       const vCols = 6;
       for (let i = 0; i <= 4; i++) {
@@ -3517,9 +3769,9 @@
         ctx.stroke();
         ctx.fillText('$' + pVal.toFixed(cfg.decimals), chartRight + 8, y + 4);
 
-        // Draw '+' registration marks along the grid in Electric Zion Cyan (#00e5ff)
+        // Draw '+' CAD registration marks along the grid
         ctx.save();
-        ctx.strokeStyle = isZion ? 'rgba(2, 132, 199, 0.30)' : 'rgba(0, 229, 255, 0.35)';
+        ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.30)' : 'rgba(0, 240, 255, 0.38)';
         for (let c = 1; c < vCols; c++) {
           const gx = chartLeft + (chartW * c) / vCols;
           ctx.beginPath();
@@ -3532,17 +3784,17 @@
         ctx.restore();
       }
 
-      // 3. Draw Upper Sell Vector Line (CRT Phosphor Green #00ff66 Dashed)
+      // 3. Draw Upper Sell Vector Line (Stark White / #00ff66 Dashed)
       const ySell = yOf(targetSell);
       ctx.save();
       ctx.setLineDash([6, 4]);
-      ctx.strokeStyle = isZion ? '#047857' : '#00ff66';
+      ctx.strokeStyle = isZion ? '#0f172a' : '#00ff66';
       ctx.lineWidth = 1.6;
       ctx.beginPath();
       ctx.moveTo(chartLeft, ySell);
       ctx.lineTo(chartRight, ySell);
       ctx.stroke();
-      ctx.fillStyle = isZion ? '#047857' : '#00ff66';
+      ctx.fillStyle = isZion ? '#0f172a' : '#00ff66';
       ctx.fillText(
         (CHART_PAIR === 'ETHUSD' ? '✅ FILLED SELL @ $' : '🎯 SELL VECTOR @ $') + targetSell.toFixed(cfg.decimals),
         chartLeft + 8,
@@ -3550,79 +3802,94 @@
       );
       ctx.restore();
 
-      // 4. Draw Core Ping-Pong Re-Buy Vector Line (Electric Zion Cyan #00e5ff Dashed)
+      // 4. Draw Core Ping-Pong Re-Buy Vector Line (Hologram Cyan #00f0ff Dashed)
       if (Math.abs(coreRebuy - targetBuy) > 0.001) {
         const yCore = yOf(coreRebuy);
         ctx.save();
         ctx.setLineDash([4, 3]);
-        ctx.strokeStyle = isZion ? '#0284c7' : '#00e5ff';
+        ctx.strokeStyle = isZion ? '#0284c7' : '#00f0ff';
         ctx.lineWidth = 1.6;
         ctx.beginPath();
         ctx.moveTo(chartLeft, yCore);
         ctx.lineTo(chartRight, yCore);
         ctx.stroke();
-        ctx.fillStyle = isZion ? '#0284c7' : '#00e5ff';
+        ctx.fillStyle = isZion ? '#0284c7' : '#00f0ff';
         ctx.fillText('🔄 CORE RE-BUY @ $' + coreRebuy.toFixed(cfg.decimals) + ' (0.374 ETH)', chartLeft + 8, Math.max(14, yCore - 5));
         ctx.restore();
       }
 
-      // 5. Draw Sector Dip Threshold Vector Line (Warning Amber #ffb703 Dashed)
+      // 5. Draw Sector Dip Threshold Vector Line (High-Flea Volt #e2fd52 Dashed)
       const yBuy = yOf(targetBuy);
       ctx.save();
       ctx.setLineDash([6, 4]);
-      ctx.strokeStyle = isZion ? '#b45309' : '#ffb703';
+      ctx.strokeStyle = isZion ? '#b45309' : '#e2fd52';
       ctx.lineWidth = 1.6;
       ctx.beginPath();
       ctx.moveTo(chartLeft, yBuy);
       ctx.lineTo(chartRight, yBuy);
       ctx.stroke();
-      ctx.fillStyle = isZion ? '#b45309' : '#ffb703';
-      ctx.fillText('⚠️ SECTOR THRESHOLD / DIP @ $' + targetBuy.toFixed(cfg.decimals), chartLeft + 8, Math.min(chartBottom - 4, yBuy + 13));
+      ctx.fillStyle = isZion ? '#b45309' : '#e2fd52';
+      ctx.fillText('⚡ SECTOR THRESHOLD / DIP @ $' + targetBuy.toFixed(cfg.decimals), chartLeft + 8, Math.min(chartBottom - 4, yBuy + 13));
       ctx.restore();
 
-      // 6. Right-Margin Biometric / Volume Telemetry Ticks (#00e5ff Electric Zion Cyan)
+      // 6. Right-Margin Biometric / Volume Telemetry Ticks (Stark White / Cyan)
       const maxVol = Math.max(...LAST_CANDLES.map(c => c.vol || 1), 1);
       LAST_CANDLES.forEach(c => {
         const yMid = yOf((c.high + c.low) / 2);
         const barLen = Math.max(2, ((c.vol || 0) / maxVol) * 28);
-        ctx.fillStyle = isZion ? 'rgba(2, 132, 199, 0.25)' : 'rgba(0, 229, 255, 0.28)';
+        ctx.fillStyle = isZion ? 'rgba(15, 23, 42, 0.25)' : 'rgba(255, 255, 255, 0.28)';
         ctx.fillRect(chartRight - barLen, yMid - 1, barLen, 2);
       });
 
-      // 7. Draw Candlesticks (CRT Phosphor #00ff41 Bull Tumblers + Warning Amber/Crimson Bear Tumblers)
+      // 7. Draw Candlesticks: Monochrome CAD Wireframe Construct (Default) vs Optical Sensor Mode
       const stepX = chartW / LAST_CANDLES.length;
       const bodyW = Math.max(3, Math.floor(stepX * 0.64));
 
       LAST_CANDLES.forEach((c, idx) => {
         const cx = chartLeft + idx * stepX + stepX / 2;
         const isBull = c.close >= c.open;
-        const color = isBull
-          ? (isZion ? '#059669' : '#00ff41')
-          : (isZion ? '#e11d48' : '#ff3b5c');
 
         const yHigh = yOf(c.high);
         const yLow = yOf(c.low);
         const yOpen = yOf(c.open);
         const yClose = yOf(c.close);
-
-        // Wick
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 1.2;
-        ctx.beginPath();
-        ctx.moveTo(cx, yHigh);
-        ctx.lineTo(cx, yLow);
-        ctx.stroke();
-
-        // Candle body
         const topY = Math.min(yOpen, yClose);
         const boxH = Math.max(2, Math.abs(yClose - yOpen));
-        ctx.fillStyle = color;
-        ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
+
+        if (!isOptical && !isZion) {
+          // Virtual CAD Blueprint Mode: Wireframe Hologram Candlesticks
+          const strokeCol = isBull ? '#ffffff' : holoHex;
+          ctx.strokeStyle = strokeCol;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(cx, yHigh);
+          ctx.lineTo(cx, yLow);
+          ctx.stroke();
+
+          ctx.fillStyle = isBull ? 'rgba(255, 255, 255, 0.85)' : '#05070a';
+          ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
+          ctx.strokeStyle = strokeCol;
+          ctx.lineWidth = 1.2;
+          ctx.strokeRect(cx - bodyW / 2, topY, bodyW, boxH);
+        } else {
+          // Optical Sensor Mode: Full-Color Candlesticks
+          const color = isBull
+            ? (isZion ? '#059669' : '#00ff66')
+            : (isZion ? '#e11d48' : '#ff3b5c');
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(cx, yHigh);
+          ctx.lineTo(cx, yLow);
+          ctx.stroke();
+          ctx.fillStyle = color;
+          ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
+        }
       });
 
-      // 8. Corner Targeting Reticle Brackets Inside Canvas Viewport (#00e5ff Electric Zion Cyan)
-      ctx.strokeStyle = isZion ? '#0284c7' : '#00e5ff';
-      ctx.lineWidth = 1.6;
+      // 8. Corner CAD Targeting Reticle Brackets Inside Canvas Viewport (#ffffff Stark White)
+      ctx.strokeStyle = isZion ? '#0f172a' : '#ffffff';
+      ctx.lineWidth = 1.8;
       const bLen = 12;
       // Top-Left
       ctx.beginPath();
@@ -3636,7 +3903,7 @@
       ctx.stroke();
 
       // Time labels along bottom
-      ctx.fillStyle = isZion ? '#475569' : '#68a682';
+      ctx.fillStyle = isZion ? '#475569' : 'rgba(255, 255, 255, 0.60)';
       ctx.font = '10px monospace';
       [0, Math.floor(LAST_CANDLES.length / 2), LAST_CANDLES.length - 1].forEach(i => {
         if (!LAST_CANDLES[i]) return;
