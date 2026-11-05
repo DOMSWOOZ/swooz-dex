@@ -5638,10 +5638,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.restore();
     }
 
+    let CACHED_ORBIT_SPOT_TOTAL = 1606.96;
+    let CACHED_ORBIT_TARGET_TOTAL = 1695.66;
+
     function updateOrbitPortfolioTotals() {
       const assets = getLiveOrbitAssets().filter(a => a.scope.includes(ORBIT_PORTFOLIO_SCOPE));
       const spotTotal = assets.reduce((s, a) => s + a.usdVal, 0);
       const targetTotal = assets.reduce((s, a) => s + a.targetUsd, 0);
+      CACHED_ORBIT_SPOT_TOTAL = spotTotal;
+      CACHED_ORBIT_TARGET_TOTAL = targetTotal;
       const upsideUsd = Math.max(0, targetTotal - spotTotal);
       const upsidePct = spotTotal > 0 ? ((upsideUsd / spotTotal) * 100).toFixed(2) : '5.52';
 
@@ -5660,6 +5665,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
 
       const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
+      const ethPill = document.getElementById('orbit-live-eth-pill');
+      if (ethPill) {
+        const upsideToSell = Math.max(0, 2434.30 - ethSpot).toFixed(2);
+        ethPill.textContent = `ETH $${ethSpot.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 6 Buys Filled ✓ • +$${upsideToSell} to $2,434.30 Sell`;
+      }
       const krkValEl = document.getElementById('orbit-plat-kraken-val');
       if (krkValEl) krkValEl.textContent = '$' + (0.377612 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97).toFixed(2);
       const cbValEl = document.getElementById('orbit-plat-cb-val');
@@ -5682,15 +5692,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ? LAST_CANDLES.slice(-14)
         : ORBIT_ETH_FALLBACK_CANDLES;
       const spotEth = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : (liveCandles[liveCandles.length - 1].close || 2250.41);
-      const ethPill = document.getElementById('orbit-live-eth-pill');
-      if (ethPill) {
-        const upsideToSell = Math.max(0, 2434.30 - spotEth).toFixed(2);
-        ethPill.textContent = `ETH $${spotEth.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 6 Buys Filled ✓ • +$${upsideToSell} to $2,434.30 Sell`;
-      }
-
-      const assets = getLiveOrbitAssets().filter(a => a.scope.includes(ORBIT_PORTFOLIO_SCOPE));
-      const spotTotal = assets.reduce((s, a) => s + a.usdVal, 0);
-      const targetTotal = assets.reduce((s, a) => s + a.targetUsd, 0);
+      const spotTotal = CACHED_ORBIT_SPOT_TOTAL || 1606.96;
+      const targetTotal = CACHED_ORBIT_TARGET_TOTAL || 1695.66;
 
       // =========================================================================
       // MODE 1 (DEFAULT): 'networth' — Dynamic 60fps Live Curve + Touch Crosshair
@@ -6379,12 +6382,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         });
       }
 
-      // 60fps Active Chart Renderer (Runs whenever Orbit Dashboard is visible)
-      function animateOrbitChartFrame() {
-        ORBIT_ANIM_PHASE += 0.032;
-        const orbitWrap = document.getElementById('orbit-v6-workstation');
-        if (orbitWrap && !orbitWrap.classList.contains('hidden')) {
-          drawOrbitNetworthChart();
+      // Throttled 24fps Pure-Canvas Active Chart Renderer (zero DOM mutations per frame)
+      let LAST_ORBIT_FRAME_TS = 0;
+      function animateOrbitChartFrame(ts) {
+        if (!ts || ts - LAST_ORBIT_FRAME_TS >= 42) {
+          LAST_ORBIT_FRAME_TS = ts || performance.now();
+          ORBIT_ANIM_PHASE += 0.055;
+          const orbitWrap = document.getElementById('orbit-v6-workstation');
+          if (orbitWrap && !orbitWrap.classList.contains('hidden') && !document.hidden) {
+            drawOrbitNetworthChart();
+          }
         }
         requestAnimationFrame(animateOrbitChartFrame);
       }
