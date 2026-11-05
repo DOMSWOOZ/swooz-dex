@@ -5389,11 +5389,21 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let ORBIT_CARD2_TAB = 'tokens'; // 'tokens' (Default: Asset Tracker Table) | 'plan' (9-Leg Trading Plan Breakdown)
     let ORBIT_SEARCH_QUERY = '';
 
+    // Live Multi-Asset Spot Prices & 60fps Dynamic Chart State
+    let LIVE_SOL_RATE = 90.51;
+    let LIVE_BTC_RATE = 78692.00;
+    let LIVE_LINK_RATE = 10.91;
+    let PREV_NETWORTH_USD = 0;
+    let LAST_TICK_DELTA_USD = 0.00;
+    let LAST_TICK_TIME_STR = 'LIVE';
+    let ORBIT_ANIM_PHASE = 0;
+    let ORBIT_HOVER_X = null; // Mouse or touch X coordinate on #orbit-networth-canvas
+
     function getLiveOrbitAssets() {
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2252.79;
-      const solSpot = 90.51;
-      const btcSpot = 78692.00;
-      const linkSpot = 10.91;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
+      const solSpot = LIVE_SOL_RATE;
+      const btcSpot = LIVE_BTC_RATE;
+      const linkSpot = LIVE_LINK_RATE;
 
       const krkEthVal = 0.377612 * ethSpot;
       const cbEthVal = 0.070475 * ethSpot;
@@ -5420,7 +5430,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           amountTxt: '0.3776 ETH',
           usdVal: krkEthVal,
           targetUsd: 0.377612 * 2434.30,
-          chgTxt: '+8.1% to $2,434',
+          chgTxt: `+${(((2434.30 - ethSpot) / ethSpot) * 100).toFixed(1)}% to $2,434`,
           isUp: true,
           pair: 'ETHUSD'
         },
@@ -5439,7 +5449,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           amountTxt: '0.0705 ETH',
           usdVal: cbEthVal,
           targetUsd: 0.070475 * 2435.00,
-          chgTxt: '+8.1% to $2,435',
+          chgTxt: `+${(((2435.00 - ethSpot) / ethSpot) * 100).toFixed(1)}% to $2,435`,
           isUp: true,
           pair: 'ETHUSD'
         },
@@ -5458,7 +5468,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           amountTxt: '0.7207 SOL',
           usdVal: solVal,
           targetUsd: 0.720671 * 97.80,
-          chgTxt: '+8.0% to $97.80',
+          chgTxt: `+${(((97.80 - solSpot) / solSpot) * 100).toFixed(1)}% to $97.80`,
           isUp: true,
           pair: 'SOLUSD'
         },
@@ -5477,7 +5487,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           amountTxt: '0.00088 BTC',
           usdVal: btcVal,
           targetUsd: 0.0008762 * 81800,
-          chgTxt: '+3.9% to $81.8k',
+          chgTxt: `+${(((81800 - btcSpot) / btcSpot) * 100).toFixed(1)}% to $81.8k`,
           isUp: true,
           pair: 'BTCUSD'
         },
@@ -5496,7 +5506,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           amountTxt: '2.3700 LINK',
           usdVal: linkVal,
           targetUsd: 2.37 * 11.85,
-          chgTxt: '+8.6% to $11.85',
+          chgTxt: `+${(((11.85 - linkSpot) / linkSpot) * 100).toFixed(1)}% to $11.85`,
           isUp: true,
           pair: 'LINKUSD'
         },
@@ -5573,7 +5583,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       { open: 2365.00, high: 2369, low: 2344, close: 2350.00, lbl: '04:00' },
       { open: 2350.00, high: 2354, low: 2310, close: 2318.40, lbl: '06:00' },
       { open: 2318.40, high: 2324, low: 2275, close: 2284.10, lbl: '08:00' },
-      { open: 2284.10, high: 2290, low: 2245, close: 2252.79, lbl: 'NOW' }
+      { open: 2284.10, high: 2290, low: 2245, close: 2250.41, lbl: 'NOW' }
     ];
 
     function traceSmoothSpline(context, points) {
@@ -5590,6 +5600,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const cp2y = p2.y - (p3.y - p1.y) / 6;
         context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
       }
+    }
+
+    function samplePointOnPolyline(points, tNorm) {
+      if (!points.length) return { x: 0, y: 0 };
+      const t = Math.max(0, Math.min(0.9999, tNorm)) * (points.length - 1);
+      const idx = Math.floor(t);
+      const frac = t - idx;
+      const p1 = points[idx];
+      const p2 = points[Math.min(points.length - 1, idx + 1)];
+      return {
+        x: p1.x + (p2.x - p1.x) * frac,
+        y: p1.y + (p2.y - p1.y) * frac
+      };
     }
 
     function drawOrbitRoundedPill(ctx, x, y, w, h, r, bgFill, strokeCol) {
@@ -5620,7 +5643,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const spotTotal = assets.reduce((s, a) => s + a.usdVal, 0);
       const targetTotal = assets.reduce((s, a) => s + a.targetUsd, 0);
       const upsideUsd = Math.max(0, targetTotal - spotTotal);
-      const upsidePct = spotTotal > 0 ? ((upsideUsd / spotTotal) * 100).toFixed(2) : '5.71';
+      const upsidePct = spotTotal > 0 ? ((upsideUsd / spotTotal) * 100).toFixed(2) : '5.52';
+
+      if (PREV_NETWORTH_USD > 0 && Math.abs(spotTotal - PREV_NETWORTH_USD) >= 0.01) {
+        LAST_TICK_DELTA_USD = spotTotal - PREV_NETWORTH_USD;
+      }
+      PREV_NETWORTH_USD = spotTotal;
 
       const nwEl = document.getElementById('orbit-networth-val');
       if (nwEl) {
@@ -5631,11 +5659,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         badgeEl.innerHTML = `<span>+${upsidePct}% (+$${upsideUsd.toFixed(2)} at $2,435 Bounce)</span> <span class="text-[#8b95a9] font-normal">today</span>`;
       }
 
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2252.79;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
       const krkValEl = document.getElementById('orbit-plat-kraken-val');
-      if (krkValEl) krkValEl.textContent = '$' + (0.377612 * ethSpot + 0.133241 * 90.51 + 6.97).toFixed(2);
+      if (krkValEl) krkValEl.textContent = '$' + (0.377612 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97).toFixed(2);
       const cbValEl = document.getElementById('orbit-plat-cb-val');
-      if (cbValEl) cbValEl.textContent = '$' + (0.070475 * ethSpot + 0.58743 * 90.51 + 68.95 + 25.85 + 1.03).toFixed(2);
+      if (cbValEl) cbValEl.textContent = '$' + (0.070475 * ethSpot + 0.58743 * LIVE_SOL_RATE + (0.0008762 * LIVE_BTC_RATE) + (2.37 * LIVE_LINK_RATE) + 1.03).toFixed(2);
       const ifFloorEl = document.getElementById('orbit-nft-floor-if');
       if (ifFloorEl) ifFloorEl.textContent = `Floor: 0.237 ETH ($${Math.round(0.237 * ethSpot)})`;
       const beastFloorEl = document.getElementById('orbit-nft-floor-beast');
@@ -5650,45 +5678,88 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const H = canvas.height;
       ctx.clearRect(0, 0, W, H);
 
-      updateOrbitPortfolioTotals();
-
       const liveCandles = (typeof LAST_CANDLES !== 'undefined' && LAST_CANDLES.length >= 8 && CHART_PAIR === 'ETHUSD')
         ? LAST_CANDLES.slice(-14)
         : ORBIT_ETH_FALLBACK_CANDLES;
-      const spotEth = liveCandles[liveCandles.length - 1].close || ((typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2252.79);
+      const spotEth = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : (liveCandles[liveCandles.length - 1].close || 2250.41);
       const ethPill = document.getElementById('orbit-live-eth-pill');
       if (ethPill) {
         const upsideToSell = Math.max(0, 2434.30 - spotEth).toFixed(2);
         ethPill.textContent = `ETH $${spotEth.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 6 Buys Filled ✓ • +$${upsideToSell} to $2,434.30 Sell`;
       }
 
+      const assets = getLiveOrbitAssets().filter(a => a.scope.includes(ORBIT_PORTFOLIO_SCOPE));
+      const spotTotal = assets.reduce((s, a) => s + a.usdVal, 0);
+      const targetTotal = assets.reduce((s, a) => s + a.targetUsd, 0);
+
       // =========================================================================
-      // MODE 1 (DEFAULT): 'networth' — Clean Dual-Line Neon Green & Purple Curve
-      // Matches Omni Tracker Reference Render (`media_1793904641352_97566955.jpg`)
+      // MODE 1 (DEFAULT): 'networth' — Dynamic 60fps Live Curve + Touch Crosshair
       // =========================================================================
       if (ORBIT_CHART_MODE === 'networth') {
         const cLeft = 14;
-        const cRight = W - 16;
-        const cTop = 16;
+        const cRight = W - 18;
+        const cTop = 26;
         const cBot = H - 24;
         const cW = cRight - cLeft;
         const cH = cBot - cTop;
 
-        // Green Curve = Compounding Straddle Target Trajectory (0.3662 ETH -> 0.4481 ETH + 0.7207 SOL)
-        const greenNorm = [0.18, 0.34, 0.25, 0.56, 0.46, 0.78, 0.68, 0.94];
-        // Purple Curve = Spot Market Baseline
-        const purpleNorm = [0.14, 0.27, 0.19, 0.45, 0.36, 0.63, 0.55, 0.80];
+        // Live micro-oscillation driven by real ETH spot price + 60fps phase so chart breathes in real time
+        const ethNormShift = ((spotEth - 2250) / 200) * 0.08;
+        const baseGreen = [0.18, 0.34, 0.25, 0.56, 0.46, 0.76 + ethNormShift, 0.67 + ethNormShift, 0.93];
+        const basePurple = [0.14, 0.27, 0.19, 0.45, 0.36, 0.61 + ethNormShift, 0.54 + ethNormShift, 0.78];
 
-        const greenPts = greenNorm.map((v, i) => ({
-          x: cLeft + (i / (greenNorm.length - 1)) * cW,
-          y: cBot - v * cH
-        }));
-        const purplePts = purpleNorm.map((v, i) => ({
-          x: cLeft + (i / (purpleNorm.length - 1)) * cW,
-          y: cBot - v * cH
-        }));
+        const stageMeta = [
+          { lbl: 'Sold Top @ $2,434.30', eth: 2434.30, nw: spotTotal * 0.93, tgt: targetTotal * 0.94, note: 'Sold 0.3662 ETH -> $891.48 Cash' },
+          { lbl: 'Pullback @ $2,405.00', eth: 2405.00, nw: spotTotal * 0.95, tgt: targetTotal * 0.95, note: 'Waiting for $2,365 Buy Zone' },
+          { lbl: 'Filled Leg #1 @ $2,365✓', eth: 2365.00, nw: spotTotal * 0.96, tgt: targetTotal * 0.97, note: 'Bought 0.3268 ETH (+0.0068 Free ETH)' },
+          { lbl: 'Filled Leg #4 @ $2,360✓', eth: 2360.00, nw: spotTotal * 0.98, tgt: targetTotal * 0.98, note: 'Bought 0.0472 ETH (+0.0010 Free ETH)' },
+          { lbl: 'Filled Dip Net @ $2,350✓', eth: 2350.00, nw: spotTotal * 0.99, tgt: targetTotal * 0.99, note: 'Scooped +0.0741 ETH & +0.4357 SOL' },
+          { lbl: 'All 9 Sells Armed ✓', eth: spotEth + 6.5, nw: spotTotal * 0.995, tgt: targetTotal * 0.995, note: '0.4481 ETH + 0.7207 SOL Armed' },
+          { lbl: `LIVE NOW ($${spotEth.toFixed(2)})`, eth: spotEth, nw: spotTotal, tgt: targetTotal, note: 'Streaming Kraken & Coinbase Ticks' },
+          { lbl: 'Target Bounce @ $2,435', eth: 2435.00, nw: targetTotal * 0.97, tgt: targetTotal, note: `Pays $${targetTotal.toFixed(2)} (+$${(targetTotal - spotTotal).toFixed(2)})` }
+        ];
 
-        // Subtle Horizontal Baseline & X-Axis Labels ('Last', '2365 Fill', '2350 Fill', 'Now', '$2,435 Target')
+        const greenPts = baseGreen.map((v, i) => {
+          const wave = (i > 0 && i < baseGreen.length - 1)
+            ? Math.sin(ORBIT_ANIM_PHASE * 2.2 + i * 0.95) * 0.014
+            : Math.sin(ORBIT_ANIM_PHASE * 3.0) * 0.008;
+          const clamped = Math.max(0.08, Math.min(0.97, v + wave));
+          return {
+            x: cLeft + (i / (baseGreen.length - 1)) * cW,
+            y: cBot - clamped * cH
+          };
+        });
+
+        const purplePts = basePurple.map((v, i) => {
+          const wave = (i > 0 && i < basePurple.length - 1)
+            ? Math.cos(ORBIT_ANIM_PHASE * 2.0 + i * 0.85) * 0.012
+            : Math.cos(ORBIT_ANIM_PHASE * 2.6) * 0.007;
+          const clamped = Math.max(0.05, Math.min(0.90, v + wave));
+          return {
+            x: cLeft + (i / (basePurple.length - 1)) * cW,
+            y: cBot - clamped * cH
+          };
+        });
+
+        // 1. Live Streaming Telemetry Pill at Top-Left of Canvas
+        const pulseAlpha = 0.45 + 0.55 * Math.abs(Math.sin(ORBIT_ANIM_PHASE * 3.2));
+        drawOrbitRoundedPill(ctx, cLeft, 3, 252, 18, 5, 'rgba(14, 18, 27, 0.85)', 'rgba(16, 241, 182, 0.30)');
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cLeft + 9, 12, 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(16, 241, 182, ${pulseAlpha.toFixed(2)})`;
+        ctx.shadowColor = '#10f1b6';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+
+        ctx.font = 'bold 9.5px JetBrains Mono, monospace';
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#e2e8f0';
+        const deltaSign = LAST_TICK_DELTA_USD >= 0 ? '+' : '';
+        ctx.fillText(`LIVE FEED • ETH $${spotEth.toFixed(2)} • SOL $${LIVE_SOL_RATE.toFixed(2)} (${deltaSign}$${LAST_TICK_DELTA_USD.toFixed(2)})`, cLeft + 17, 15);
+
+        // 2. Subtle Horizontal Baseline & X-Axis Labels
         ctx.save();
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
         ctx.lineWidth = 1;
@@ -5707,14 +5778,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.font = '10px Plus Jakarta Sans, sans-serif';
         ctx.textAlign = 'center';
         xLabels.forEach((lbl, idx) => {
-          const x = cLeft + 16 + (idx / (xLabels.length - 1)) * (cW - 32);
-          ctx.fillStyle = idx === xLabels.length - 1 ? '#10f1b6' : '#8b95a9';
+          const x = cLeft + 18 + (idx / (xLabels.length - 1)) * (cW - 36);
+          ctx.fillStyle = idx === xLabels.length - 1 ? '#10f1b6' : idx === 3 ? '#00f5d4' : '#8b95a9';
           ctx.fillText(lbl, x, H - 6);
         });
 
-        // Glowing Emerald Area Fill under Green Curve
+        // 3. Glowing Emerald Area Fill under Green Curve
         const areaGrad = ctx.createLinearGradient(0, cTop, 0, cBot);
-        areaGrad.addColorStop(0, 'rgba(16, 241, 182, 0.32)');
+        areaGrad.addColorStop(0, 'rgba(16, 241, 182, 0.34)');
         areaGrad.addColorStop(0.55, 'rgba(59, 130, 246, 0.12)');
         areaGrad.addColorStop(1, 'rgba(19, 23, 34, 0.0)');
 
@@ -5728,7 +5799,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.fill();
         ctx.restore();
 
-        // Secondary Purple Spline (Spot Baseline)
+        // 4. Secondary Purple Spline (Spot Market Baseline)
         ctx.save();
         ctx.beginPath();
         traceSmoothSpline(ctx, purplePts);
@@ -5739,7 +5810,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.stroke();
         ctx.restore();
 
-        // Primary Neon Green Spline (Active 9-Leg Straddle Equity)
+        // 5. Primary Neon Green Spline (Active 9-Leg Straddle Equity)
         ctx.save();
         ctx.beginPath();
         traceSmoothSpline(ctx, greenPts);
@@ -5750,8 +5821,46 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.stroke();
         ctx.restore();
 
-        // Glowing Tip Dot at Top-Right
+        // 6. Traveling Neon Energy Photons along both splines (60fps active visual motion)
+        const photonT = (ORBIT_ANIM_PHASE * 0.22) % 1;
+        const pGreen = samplePointOnPolyline(greenPts, photonT);
+        const pPurple = samplePointOnPolyline(purplePts, (photonT + 0.35) % 1);
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(pGreen.x, pGreen.y, 3.6, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = '#00f5d4';
+        ctx.shadowBlur = 14;
+        ctx.fill();
+        ctx.restore();
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(pPurple.x, pPurple.y, 2.8, 0, Math.PI * 2);
+        ctx.fillStyle = '#e879f9';
+        ctx.shadowColor = '#a855f7';
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.restore();
+
+        // 7. Pulsing Radar Sonar Rings on "Now" (idx 6) and "Target $2,435" Tip (idx 7)
+        const nowPt = greenPts[6];
         const tip = greenPts[greenPts.length - 1];
+        const sonarFrac = (ORBIT_ANIM_PHASE * 0.7) % 1;
+        const sonarRadius = 5 + sonarFrac * 15;
+        const sonarAlpha = Math.max(0, 0.65 * (1 - sonarFrac));
+
+        // Sonar ring on Tip
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(tip.x, tip.y, sonarRadius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(16, 241, 182, ${sonarAlpha.toFixed(2)})`;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+        ctx.restore();
+
+        // Solid glowing Tip dot
         ctx.save();
         ctx.beginPath();
         ctx.arc(tip.x, tip.y, 5, 0, Math.PI * 2);
@@ -5760,6 +5869,81 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.shadowBlur = 16;
         ctx.fill();
         ctx.restore();
+
+        // Pulsing cyan dot on "Now" node
+        if (nowPt) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(nowPt.x, nowPt.y, 3.8, 0, Math.PI * 2);
+          ctx.fillStyle = '#00f5d4';
+          ctx.shadowColor = '#00f5d4';
+          ctx.shadowBlur = 10;
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // 8. Interactive Mouse / Touch Crosshair Scrubber & Floating HUD Tooltip
+        if (ORBIT_HOVER_X !== null && ORBIT_HOVER_X >= cLeft && ORBIT_HOVER_X <= cRight) {
+          let bestIdx = 0;
+          let bestDist = Infinity;
+          greenPts.forEach((pt, idx) => {
+            const d = Math.abs(pt.x - ORBIT_HOVER_X);
+            if (d < bestDist) {
+              bestDist = d;
+              bestIdx = idx;
+            }
+          });
+          const gPt = greenPts[bestIdx];
+          const pPt = purplePts[bestIdx];
+          const meta = stageMeta[bestIdx] || stageMeta[6];
+
+          // Vertical Laser Line
+          ctx.save();
+          ctx.setLineDash([3, 3]);
+          ctx.strokeStyle = 'rgba(0, 245, 212, 0.65)';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(gPt.x, cTop - 4);
+          ctx.lineTo(gPt.x, cBot);
+          ctx.stroke();
+          ctx.restore();
+
+          // Highlight Dots on Green & Purple Curves
+          [
+            { pt: gPt, col: '#10f1b6' },
+            { pt: pPt, col: '#a855f7' }
+          ].forEach(item => {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(item.pt.x, item.pt.y, 5.2, 0, Math.PI * 2);
+            ctx.fillStyle = item.col;
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1.5;
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+          });
+
+          // Floating Glass HUD Card
+          const boxW = 205;
+          const boxH = 44;
+          const boxX = Math.max(cLeft + 4, Math.min(W - boxW - 6, gPt.x - boxW / 2));
+          const boxY = Math.max(24, gPt.y - boxH - 10);
+          drawOrbitRoundedPill(ctx, boxX, boxY, boxW, boxH, 7, 'rgba(14, 18, 27, 0.94)', 'rgba(0, 245, 212, 0.55)');
+
+          ctx.textAlign = 'left';
+          ctx.font = 'bold 10px Plus Jakarta Sans, sans-serif';
+          ctx.fillStyle = '#00f5d4';
+          ctx.fillText(meta.lbl, boxX + 8, boxY + 13);
+
+          ctx.font = '9.5px JetBrains Mono, monospace';
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(`Spot: $${meta.nw.toFixed(2)} → Tgt: $${meta.tgt.toFixed(2)}`, boxX + 8, boxY + 26);
+
+          ctx.font = '9px Plus Jakarta Sans, sans-serif';
+          ctx.fillStyle = '#34d399';
+          ctx.fillText(meta.note, boxX + 8, boxY + 38);
+        }
         return;
       }
 
@@ -6136,12 +6320,85 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       switchMainView(map[navKey] || 'orbit');
     }
 
-    // Initialize Orbit Dashboard on load and window resize
-    setTimeout(() => {
-      updateOrbitPortfolioTotals();
-      drawOrbitNetworthChart();
-      renderOrbitTokensTable();
-    }, 40);
+    // 5-Second High-Frequency Live Kraken Multi-Asset Ticker Stream (ETH, SOL, BTC, LINK)
+    async function pollLiveKrakenMultiTicker() {
+      try {
+        const res = await fetch('https://api.kraken.com/0/public/Ticker?pair=XETHZUSD,SOLUSD,XXBTZUSD,LINKUSD', { cache: 'no-store' });
+        if (!res.ok) return;
+        const json = await res.json();
+        const r = json.result || {};
+        const ethC = parseFloat((r.XETHZUSD || r.ETHUSD || {}).c?.[0]);
+        const solC = parseFloat((r.SOLUSD || {}).c?.[0]);
+        const btcC = parseFloat((r.XXBTZUSD || r.XBTUSD || {}).c?.[0]);
+        const linkC = parseFloat((r.LINKUSD || {}).c?.[0]);
+
+        if (ethC > 500) ETH_RATE = ethC;
+        if (solC > 5) LIVE_SOL_RATE = solC;
+        if (btcC > 5000) LIVE_BTC_RATE = btcC;
+        if (linkC > 1) LIVE_LINK_RATE = linkC;
+
+        const prevNw = PREV_NETWORTH_USD;
+        updateOrbitPortfolioTotals();
+        renderOrbitTokensTable();
+
+        // Flash Net Worth number on live tick change
+        const nwEl = document.getElementById('orbit-networth-val');
+        if (nwEl && prevNw > 0 && Math.abs(PREV_NETWORTH_USD - prevNw) >= 0.01) {
+          const isUp = PREV_NETWORTH_USD >= prevNw;
+          nwEl.style.transition = 'color 0.25s ease, text-shadow 0.25s ease';
+          nwEl.style.color = isUp ? '#10f1b6' : '#fb7185';
+          nwEl.style.textShadow = isUp ? '0 0 18px rgba(16,241,182,0.55)' : '0 0 18px rgba(244,63,94,0.55)';
+          setTimeout(() => {
+            nwEl.style.color = '#ffffff';
+            nwEl.style.textShadow = 'none';
+          }, 900);
+        }
+      } catch (e) {}
+    }
+
+    // Bind Mouse & Touch Interactive Crosshair Scrubber to #orbit-networth-canvas
+    (function initOrbitActiveChartLoop() {
+      const canvas = document.getElementById('orbit-networth-canvas');
+      if (canvas) {
+        const updateHoverFromClientX = (clientX) => {
+          const rect = canvas.getBoundingClientRect();
+          if (rect.width > 0) {
+            ORBIT_HOVER_X = ((clientX - rect.left) / rect.width) * canvas.width;
+          }
+        };
+        canvas.addEventListener('mousemove', (e) => updateHoverFromClientX(e.clientX));
+        canvas.addEventListener('mouseleave', () => { ORBIT_HOVER_X = null; });
+        canvas.addEventListener('touchstart', (e) => {
+          if (e.touches && e.touches[0]) updateHoverFromClientX(e.touches[0].clientX);
+        }, { passive: true });
+        canvas.addEventListener('touchmove', (e) => {
+          if (e.touches && e.touches[0]) updateHoverFromClientX(e.touches[0].clientX);
+        }, { passive: true });
+        canvas.addEventListener('touchend', () => {
+          setTimeout(() => { ORBIT_HOVER_X = null; }, 1800);
+        });
+      }
+
+      // 60fps Active Chart Renderer (Runs whenever Orbit Dashboard is visible)
+      function animateOrbitChartFrame() {
+        ORBIT_ANIM_PHASE += 0.032;
+        const orbitWrap = document.getElementById('orbit-v6-workstation');
+        if (orbitWrap && !orbitWrap.classList.contains('hidden')) {
+          drawOrbitNetworthChart();
+        }
+        requestAnimationFrame(animateOrbitChartFrame);
+      }
+
+      setTimeout(() => {
+        updateOrbitPortfolioTotals();
+        drawOrbitNetworthChart();
+        renderOrbitTokensTable();
+        pollLiveKrakenMultiTicker();
+        setInterval(pollLiveKrakenMultiTicker, 5000);
+        requestAnimationFrame(animateOrbitChartFrame);
+      }, 40);
+    })();
+
     window.addEventListener('resize', () => {
       if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
     });
