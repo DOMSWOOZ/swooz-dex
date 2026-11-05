@@ -423,48 +423,212 @@
           <!-- LEFT COLUMN (7 Cols): NET WORTH OVERVIEW + MULTI-CHAIN TOKENS -->
           <div class="lg:col-span-7 flex flex-col gap-4 justify-between">
 
-            <!-- CARD 1: Net Worth Overview -->
+            <!-- CARD 1: Net Worth & Live ETH 9-Leg Straddle Chart -->
             <div class="orbit-card p-5 flex flex-col justify-between">
               <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
                 <div>
-                  <div class="text-sm font-semibold text-[#c5cee0]">Net Worth Overview</div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span id="orbit-chart-title-lbl" class="text-sm font-semibold text-[#c5cee0]">ETH/USD Straddle Zones &amp; Net Worth</span>
+                    <span id="orbit-live-eth-pill" class="px-2 py-0.5 rounded-md bg-[#00f5d4]/15 border border-[#00f5d4]/30 text-[#00f5d4] text-[11px] font-mono font-bold">
+                      ETH $2,428.07 LIVE
+                    </span>
+                  </div>
                   <div class="flex items-center gap-3 mt-1.5 flex-wrap">
                     <span id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">$143,628.45</span>
                     <span id="orbit-networth-badge" class="px-2.5 py-1 rounded-lg bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-xs font-bold">
-                      +4.28% (24h)
+                      +$30.75 / Cycle Armed
                     </span>
                     <span id="hdr-total-eth" class="hidden text-xs font-mono text-[#2dd4bf]">0.3755 ETH</span>
                   </div>
                 </div>
 
-                <!-- Timeframe Selector Pills: 1D | 1W | 1M | 3M | 1Y | ALL -->
-                <div class="flex items-center gap-1 bg-[#0e121b] border border-white/10 rounded-xl p-1 text-xs font-semibold">
-                  <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-2.5 py-1 rounded-lg bg-[#252d40] text-white transition cursor-pointer">1D</button>
-                  <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1W</button>
-                  <button onclick="setOrbitChartTf('1M')" id="orbit-tf-1M" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1M</button>
-                  <button onclick="setOrbitChartTf('3M')" id="orbit-tf-3M" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">3M</button>
-                  <button onclick="setOrbitChartTf('1Y')" id="orbit-tf-1Y" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1Y</button>
-                  <button onclick="setOrbitChartTf('ALL')" id="orbit-tf-ALL" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">ALL</button>
+                <!-- Chart Mode & Timeframe Controls -->
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <!-- 3-Way Chart View Switcher: Straddle Map (Default) | Candles | Net Worth -->
+                  <div class="flex items-center gap-1 bg-[#0e121b] border border-white/10 rounded-xl p-1 text-[11px] font-semibold">
+                    <button onclick="setOrbitChartMode('straddle')" id="orbit-cmode-straddle" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#00f5d4]/25 to-[#3b82f6]/25 border border-[#00f5d4]/40 text-[#00f5d4] transition cursor-pointer">🎯 Straddle Map</button>
+                    <button onclick="setOrbitChartMode('candles')" id="orbit-cmode-candles" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">🕯️ Candles</button>
+                    <button onclick="setOrbitChartMode('networth')" id="orbit-cmode-networth" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">📈 Net Worth</button>
+                  </div>
+
+                  <!-- Timeframe Selector Pills: 1D | 1W | 1M | ALL -->
+                  <div class="flex items-center gap-0.5 bg-[#0e121b] border border-white/10 rounded-xl p-1 text-[11px] font-semibold">
+                    <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-2 py-1 rounded-lg bg-[#252d40] text-white transition cursor-pointer">1D</button>
+                    <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-2 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1W</button>
+                    <button onclick="setOrbitChartTf('1M')" id="orbit-tf-1M" class="px-2 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">1M</button>
+                    <button onclick="setOrbitChartTf('ALL')" id="orbit-tf-ALL" class="px-2 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">ALL</button>
+                  </div>
                 </div>
               </div>
 
-              <!-- Glowing Cyan-Purple Spline Chart Canvas -->
-              <div class="relative w-full h-[225px] mt-2">
+              <!-- Crystal-Clear Interactive Chart Canvas -->
+              <div class="relative w-full h-[225px] mt-1">
                 <canvas id="orbit-networth-canvas" width="760" height="225" class="w-full h-full block"></canvas>
+              </div>
+
+              <!-- 4-Step Trading Plan Legend Strip directly underneath the chart -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2.5 pt-2.5 border-t border-white/10 text-[11px]">
+                <div class="px-2.5 py-1.5 rounded-lg bg-[#10b981]/10 border border-[#10b981]/30 flex flex-col">
+                  <span class="text-[#34d399] font-bold">1. SOLD TOP ✓</span>
+                  <span class="text-white font-mono font-semibold">$2,434.30 / $2,435</span>
+                  <span class="text-[#8b95a9] text-[10px]">$891.48 Cash Locked</span>
+                </div>
+                <div class="px-2.5 py-1.5 rounded-lg bg-[#00f5d4]/10 border border-[#00f5d4]/30 flex flex-col">
+                  <span class="text-[#00f5d4] font-bold">2. RE-BUY TARGET 🎯</span>
+                  <span class="text-white font-mono font-semibold">$2,365 / $2,360</span>
+                  <span class="text-[#8b95a9] text-[10px]">+0.0078 Free ETH (+$18.86)</span>
+                </div>
+                <div class="px-2.5 py-1.5 rounded-lg bg-[#f59e0b]/10 border border-[#f59e0b]/30 flex flex-col">
+                  <span class="text-[#fbbf24] font-bold">3. DIP SAFETY NET 🛡️</span>
+                  <span class="text-white font-mono font-semibold">$2,350 ETH / $93.40 SOL</span>
+                  <span class="text-[#8b95a9] text-[10px]">$214.94 Extra Cash Buys</span>
+                </div>
+                <div class="px-2.5 py-1.5 rounded-lg bg-[#a855f7]/10 border border-[#a855f7]/30 flex flex-col">
+                  <span class="text-[#c084fc] font-bold">4. ALT PUMP WALLS 🚀</span>
+                  <span class="text-white font-mono font-semibold">$97.80 SOL • $81.8k BTC</span>
+                  <span class="text-[#8b95a9] text-[10px]">+$11.89 Alt + Dip Profit</span>
+                </div>
               </div>
             </div>
 
-            <!-- CARD 2: Multi-Chain Tokens Table -->
+            <!-- CARD 2: 9-Leg Trading Plan Breakdown & Multi-Chain Tokens (Same Card Slot, Clean 2-Tab Toggle) -->
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                  <h3 class="text-base font-bold text-white">Multi-Chain Tokens</h3>
-                  <span id="orbit-active-chain-pill" class="px-2 py-0.5 rounded-md bg-white/5 text-[#2dd4bf] text-[10px] font-mono">ALL CHAINS</span>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-1.5 bg-[#0e121b] border border-white/10 rounded-xl p-1">
+                  <button onclick="switchOrbitCard2Tab('plan')" id="orbit-card2-btn-plan" class="px-3 py-1 rounded-lg bg-gradient-to-r from-[#00f5d4]/25 to-[#a855f7]/25 border border-[#00f5d4]/40 text-white text-xs font-bold transition cursor-pointer">
+                    🎯 Our 9-Leg Trading Plan (Both Sides)
+                  </button>
+                  <button onclick="switchOrbitCard2Tab('tokens')" id="orbit-card2-btn-tokens" class="px-3 py-1 rounded-lg text-[#8b95a9] hover:text-white text-xs font-semibold transition cursor-pointer">
+                    🪙 Multi-Chain Tokens (6)
+                  </button>
                 </div>
-                <button onclick="toggleOrbitPortfolioMode()" class="text-[#8b95a9] hover:text-white text-lg leading-none px-1 cursor-pointer" title="Switch Showcase / Live 9-Leg Balances">•••</button>
+
+                <div class="flex items-center gap-2">
+                  <span id="orbit-active-chain-pill" class="px-2 py-0.5 rounded-md bg-[#10b981]/15 border border-[#10b981]/30 text-[#34d399] text-[10px] font-mono font-bold">9 LEGS ARMED • 24/7 DAEMON</span>
+                  <button onclick="toggleOrbitPortfolioMode()" class="text-[#8b95a9] hover:text-white text-lg leading-none px-1 cursor-pointer" title="Switch Showcase / Live 9-Leg Balances">•••</button>
+                </div>
               </div>
 
-              <div class="overflow-x-auto">
+              <!-- TAB A (DEFAULT): OUR 9-LEG TRADING PLAN BREAKDOWN -->
+              <div id="orbit-card2-plan-view" class="space-y-2.5 text-xs">
+                <!-- How It Works Summary Banner -->
+                <div class="p-2.5 rounded-xl bg-[#0e121b] border border-white/10 flex flex-wrap items-center justify-between gap-2">
+                  <div class="text-[#c5cee0] leading-snug">
+                    <span class="text-[#00f5d4] font-bold">How Our Straddle Works:</span> We <span class="text-[#34d399] font-semibold">already sold 0.3662 ETH at the $2,434.30–$2,435 top</span> for <span class="text-white font-mono font-bold">$891.48 cash</span>. Whether the market <span class="text-[#c084fc] font-semibold">pumps higher</span> or <span class="text-[#00f5d4] font-semibold">pulls back</span>, our 9 live limit orders across Kraken Pro &amp; Coinbase Advanced automatically profit and flip sides.
+                  </div>
+                </div>
+
+                <!-- 3-Column Strategy Breakdown Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                  <!-- PILLAR 1: Flipped ETH Re-Buy Core -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#00f5d4]/30 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#00f5d4] font-bold text-xs">🔄 1. Flipped ETH Re-Buys</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#00f5d4]/15 text-[#00f5d4] font-mono text-[10px] font-bold">$891.48 Cash</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Cash from our <span class="text-white font-mono">$2,434.30</span> &amp; <span class="text-white font-mono">$2,435</span> top sells waiting to buy back more ETH on a ~2.6% pullback:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[11px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L1</b> KRK Buy @ <b class="text-[#00f5d4]">$2,365</b></span>
+                          <span class="text-[#34d399]">+0.0068 ETH (+$16.44)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L4</b> CB Buy @ <b class="text-[#00f5d4]">$2,360</b></span>
+                          <span class="text-[#34d399]">+0.0010 ETH (+$2.42)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>Re-Buys <b class="text-white">0.3740 ETH</b></span>
+                      <span class="text-[#34d399] font-bold">+$18.86 / Flip</span>
+                    </div>
+                  </div>
+
+                  <!-- PILLAR 2: Upside Alt Sell Walls (If Market Pumps) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#a855f7]/30 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#c084fc] font-bold text-xs">🚀 2. If Market Pumps</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/15 text-[#c084fc] font-mono text-[10px] font-bold">$127.62 Crypto</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        If crypto rallies instead of dipping, our 3 Coinbase sell walls cash out into USDC at resistance &amp; auto-flip to buy dips:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[11px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L5</b> Sell 0.285 SOL @ <b class="text-[#c084fc]">$97.80</b></span>
+                          <span class="text-[#34d399]">+$0.95</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L6</b> Sell 0.00088 BTC @ <b class="text-[#c084fc]">$81.8k</b></span>
+                          <span class="text-[#34d399]">+$1.91</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L7</b> Sell 2.37 LINK @ <b class="text-[#c084fc]">$11.85</b></span>
+                          <span class="text-[#34d399]">+$1.61</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>3 Upside Sell Walls</span>
+                      <span class="text-[#34d399] font-bold">+$4.47 / Flip</span>
+                    </div>
+                  </div>
+
+                  <!-- PILLAR 3: Cash Dip-Catchers (If Market Dumps Deeper) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#f59e0b]/30 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#fbbf24] font-bold text-xs">🛡️ 3. Extra Dip Safety Net</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/15 text-[#fbbf24] font-mono text-[10px] font-bold">$214.94 Cash</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Idle cash on Kraken &amp; Coinbase deployed at deeper support levels to scoop cheap ETH &amp; SOL and auto-flip to sell high:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[11px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L2+L8</b> Buy 0.074 ETH @ <b class="text-[#fbbf24]">$2,350</b></span>
+                          <span class="text-[#34d399]">+$5.75</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L3</b> KRK Buy 0.133 SOL @ <b class="text-[#fbbf24]">$93.50</b></span>
+                          <span class="text-[#34d399]">+$0.57</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">L9</b> CB Buy 0.303 SOL @ <b class="text-[#fbbf24]">$93.40</b></span>
+                          <span class="text-[#34d399]">+$1.10</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>4 Dip-Catcher Buys</span>
+                      <span class="text-[#34d399] font-bold">+$7.42 / Flip</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Totals Bar -->
+                <div class="px-3 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4]/10 via-[#3b82f6]/10 to-[#a855f7]/10 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <span class="text-white font-bold">Total Active Capital: <span class="text-[#00f5d4] font-mono">$1,231.40</span></span>
+                    <span class="text-[#8b95a9]">•</span>
+                    <span class="text-[#c5cee0]">Buy Ammo: <b class="text-white font-mono">$1,103.78</b> (6 Legs)</span>
+                    <span class="text-[#8b95a9]">•</span>
+                    <span class="text-[#c5cee0]">Sell Ammo: <b class="text-white font-mono">$127.62</b> (3 Legs)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] font-mono font-bold">
+                      Net Cycle Profit: +$30.75 (Auto-Compounding)
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TAB B: MULTI-CHAIN TOKENS TABLE (1-Click Toggle) -->
+              <div id="orbit-card2-tokens-view" class="hidden overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr class="text-[#8b95a9] border-b border-white/10 text-[11px] font-medium">
@@ -4355,11 +4519,13 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
               vol: parseFloat(c[6])
             }));
             drawKrakenChart();
+            if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
             return;
           }
         }
       } catch (e) {}
       if (badge) badge.textContent = '⚠️ Offline Chart Cache';
+      if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
     }
 
     function drawKrakenChart() {
@@ -4419,12 +4585,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const badge = document.getElementById('chart-live-spread-badge');
       if (badge) {
         badge.textContent = CHART_PAIR === 'ETHUSD'
-          ? `VCD // ETH $${lastPrice.toFixed(2)} • $${distRebuy.toFixed(2)} above $2,365 Re-Buy`
-          : `VCD // ${CHART_PAIR} $${lastPrice.toFixed(cfg.decimals)} • Active Vector Armed`;
+          ? `LIVE // ETH $${lastPrice.toFixed(2)} • $${distRebuy.toFixed(2)} above $2,365 Re-Buy`
+          : `LIVE // ${CHART_PAIR} $${lastPrice.toFixed(cfg.decimals)} • Active Straddle Armed`;
       }
 
       const chartLeft = 16;
-      const chartRight = W - 82;
+      const chartRight = W - 88;
       const chartTop = 18;
       const chartBottom = H - 26;
       const chartW = chartRight - chartLeft;
@@ -4432,60 +4598,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
       const yOf = p => chartTop + ((maxP - p) / (maxP - minP)) * chartH;
 
-      const isOptical = document.body.classList.contains('optical-sensor-mode');
-      const holoTint = document.body.getAttribute('data-holo-tint') || 'cyan';
-      const holoHex = holoTint === 'volt' ? '#e2fd52' : holoTint === 'white' ? '#ffffff' : '#00f0ff';
-
-      // 1. Tobias "Kazumichi" Grime 'Matrix Reloaded' Concentric Harmonic Tumbler Rings (1110 kHz CARRIER)
-      const radCx = chartLeft + chartW * 0.50;
-      const radCy = chartTop + chartH * 0.50;
-      ctx.save();
-      [42, 84, 126].forEach((r, idx) => {
-        ctx.beginPath();
-        ctx.strokeStyle = isZion
-          ? 'rgba(15, 23, 42, 0.12)'
-          : (idx === 1 ? 'rgba(255, 255, 255, 0.24)' : 'rgba(0, 240, 255, 0.14)');
-        ctx.lineWidth = idx === 1 ? 1.4 : 1;
-        if (idx === 0) ctx.setLineDash([4, 6]);
-        else ctx.setLineDash([]);
-        ctx.arc(radCx, radCy, r, 0, Math.PI * 2);
-        ctx.stroke();
-      });
-      // Target Notches at 75° and 210° (Exact match to VirtualControlBreaker.tsx)
-      [75, 210].forEach(deg => {
-        const rad = (deg - 90) * (Math.PI / 180);
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(radCx + Math.cos(rad) * 120, radCy + Math.sin(rad) * 120);
-        ctx.lineTo(radCx + Math.cos(rad) * 132, radCy + Math.sin(rad) * 132);
-        ctx.stroke();
-      });
-      // Phase Angle Crosshair Vectors through Radar Center
-      ctx.setLineDash([2, 4]);
-      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.14)' : 'rgba(255, 255, 255, 0.15)';
-      ctx.beginPath();
-      ctx.moveTo(radCx - 135, radCy); ctx.lineTo(radCx + 135, radCy);
-      ctx.moveTo(radCx, radCy - 115); ctx.lineTo(radCx, radCy + 115);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      // Outlined Stencil Watermark ("3G // VCD-09")
-      ctx.font = 'bold 42px monospace';
-      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.11)';
-      ctx.lineWidth = 1.2;
-      ctx.strokeText(cfg.stencil, chartLeft + 18, chartBottom - 26);
-      ctx.font = '10px monospace';
-      ctx.fillStyle = isZion ? 'rgba(15, 23, 42, 0.55)' : 'rgba(255, 255, 255, 0.65)';
-      ctx.fillText(`ZION VIRTUAL CONTROL // 1110 kHz CARRIER // ${CHART_TF}M CAD WIREFRAME // RING 01: 75° ✓ RING 02: 210° ✓`, chartLeft + 20, chartTop + 12);
-      ctx.restore();
-
-      // 2. Monochrome Spatial Coordinate Grid + CAD Registration Ticks ('+')
-      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.10)' : 'rgba(255, 255, 255, 0.10)';
+      // 1. Clean Orbit Horizontal Grid + Price Ticks on Right
+      ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.10)' : 'rgba(255, 255, 255, 0.07)';
       ctx.lineWidth = 1;
-      ctx.fillStyle = isZion ? '#334155' : 'rgba(255, 255, 255, 0.68)';
-      ctx.font = '11px monospace';
-      const vCols = 6;
+      ctx.fillStyle = isZion ? '#334155' : '#8b95a9';
+      ctx.font = '11px JetBrains Mono, monospace';
       for (let i = 0; i <= 4; i++) {
         const pVal = minP + ((maxP - minP) * (4 - i)) / 4;
         const y = yOf(pVal);
@@ -4494,87 +4611,75 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.lineTo(chartRight, y);
         ctx.stroke();
         ctx.fillText('$' + pVal.toFixed(cfg.decimals), chartRight + 8, y + 4);
-
-        // Draw '+' CAD registration marks along the grid
-        ctx.save();
-        ctx.strokeStyle = isZion ? 'rgba(15, 23, 42, 0.30)' : 'rgba(0, 240, 255, 0.38)';
-        for (let c = 1; c < vCols; c++) {
-          const gx = chartLeft + (chartW * c) / vCols;
-          ctx.beginPath();
-          ctx.moveTo(gx - 3, y);
-          ctx.lineTo(gx + 3, y);
-          ctx.moveTo(gx, y - 3);
-          ctx.lineTo(gx, y + 3);
-          ctx.stroke();
-        }
-        ctx.restore();
       }
 
-      // 3. Draw Upper Sell Vector Line (Stark White / #00ff66 Dashed)
+      // 2. Shaded Profit Zone Between Top Sell & Re-Buy Target
       const ySell = yOf(targetSell);
+      const yCore = yOf(coreRebuy);
+      const yBuy = yOf(targetBuy);
+      ctx.save();
+      const zoneGrad = ctx.createLinearGradient(0, ySell, 0, yCore);
+      zoneGrad.addColorStop(0, 'rgba(16, 241, 182, 0.08)');
+      zoneGrad.addColorStop(1, 'rgba(0, 245, 212, 0.08)');
+      ctx.fillStyle = zoneGrad;
+      ctx.fillRect(chartLeft, Math.min(ySell, yCore), chartW, Math.abs(yCore - ySell));
+      ctx.restore();
+
+      // 3. Draw Upper Sell Target Line (Emerald #10f1b6 Dashed)
       ctx.save();
       ctx.setLineDash([6, 4]);
-      ctx.strokeStyle = isZion ? '#0f172a' : '#00ff66';
+      ctx.strokeStyle = '#10f1b6';
       ctx.lineWidth = 1.6;
       ctx.beginPath();
       ctx.moveTo(chartLeft, ySell);
       ctx.lineTo(chartRight, ySell);
       ctx.stroke();
-      ctx.fillStyle = isZion ? '#0f172a' : '#00ff66';
+      ctx.fillStyle = '#10f1b6';
+      ctx.font = 'bold 11px Plus Jakarta Sans, sans-serif';
       ctx.fillText(
-        (CHART_PAIR === 'ETHUSD' ? '✅ FILLED SELL @ $' : '🎯 SELL VECTOR @ $') + targetSell.toFixed(cfg.decimals),
+        (CHART_PAIR === 'ETHUSD' ? '✓ SOLD TOP @ $' : '🚀 UPSIDE SELL @ $') + targetSell.toFixed(cfg.decimals) + (CHART_PAIR === 'ETHUSD' ? ' ($891.48 Cash Locked)' : ''),
         chartLeft + 8,
         Math.max(14, ySell - 5)
       );
       ctx.restore();
 
-      // 4. Draw Core Ping-Pong Re-Buy Vector Line (Hologram Cyan #00f0ff Dashed)
+      // 4. Draw Core Auto-Flip Re-Buy Target Line (Neon Cyan #00f5d4 Dashed)
       if (Math.abs(coreRebuy - targetBuy) > 0.001) {
-        const yCore = yOf(coreRebuy);
         ctx.save();
-        ctx.setLineDash([4, 3]);
-        ctx.strokeStyle = isZion ? '#0284c7' : '#00f0ff';
+        ctx.setLineDash([5, 3]);
+        ctx.strokeStyle = '#00f5d4';
         ctx.lineWidth = 1.6;
         ctx.beginPath();
         ctx.moveTo(chartLeft, yCore);
         ctx.lineTo(chartRight, yCore);
         ctx.stroke();
-        ctx.fillStyle = isZion ? '#0284c7' : '#00f0ff';
-        ctx.fillText('🔄 CORE RE-BUY @ $' + coreRebuy.toFixed(cfg.decimals) + ' (0.374 ETH)', chartLeft + 8, Math.max(14, yCore - 5));
+        ctx.fillStyle = '#00f5d4';
+        ctx.font = 'bold 11px Plus Jakarta Sans, sans-serif';
+        ctx.fillText('🎯 RE-BUY TARGET @ $' + coreRebuy.toFixed(cfg.decimals) + ' (+0.0078 Free ETH / +$18.86)', chartLeft + 8, Math.max(14, yCore - 5));
         ctx.restore();
       }
 
-      // 5. Draw Sector Dip Threshold Vector Line (High-Flea Volt #e2fd52 Dashed)
-      const yBuy = yOf(targetBuy);
+      // 5. Draw Extra Dip-Catcher Line (Amber #fbbf24 Dashed)
       ctx.save();
       ctx.setLineDash([6, 4]);
-      ctx.strokeStyle = isZion ? '#b45309' : '#e2fd52';
+      ctx.strokeStyle = '#fbbf24';
       ctx.lineWidth = 1.6;
       ctx.beginPath();
       ctx.moveTo(chartLeft, yBuy);
       ctx.lineTo(chartRight, yBuy);
       ctx.stroke();
-      ctx.fillStyle = isZion ? '#b45309' : '#e2fd52';
-      ctx.fillText('⚡ SECTOR THRESHOLD / DIP @ $' + targetBuy.toFixed(cfg.decimals), chartLeft + 8, Math.min(chartBottom - 4, yBuy + 13));
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'bold 11px Plus Jakarta Sans, sans-serif';
+      ctx.fillText('🛡️ DIP SAFETY NET @ $' + targetBuy.toFixed(cfg.decimals), chartLeft + 8, Math.min(chartBottom - 4, yBuy + 13));
       ctx.restore();
 
-      // 6. Right-Margin Biometric / Volume Telemetry Ticks (Stark White / Cyan)
-      const maxVol = Math.max(...LAST_CANDLES.map(c => c.vol || 1), 1);
-      LAST_CANDLES.forEach(c => {
-        const yMid = yOf((c.high + c.low) / 2);
-        const barLen = Math.max(2, ((c.vol || 0) / maxVol) * 28);
-        ctx.fillStyle = isZion ? 'rgba(15, 23, 42, 0.25)' : 'rgba(255, 255, 255, 0.28)';
-        ctx.fillRect(chartRight - barLen, yMid - 1, barLen, 2);
-      });
-
-      // 7. Draw Candlesticks: Monochrome CAD Wireframe Construct (Default) vs Optical Sensor Mode
+      // 6. Clean Full-Color Emerald (#10f1b6) & Rose (#f43f5e) Candlesticks
       const stepX = chartW / LAST_CANDLES.length;
-      const bodyW = Math.max(3, Math.floor(stepX * 0.64));
+      const bodyW = Math.max(4, Math.floor(stepX * 0.66));
 
       LAST_CANDLES.forEach((c, idx) => {
         const cx = chartLeft + idx * stepX + stepX / 2;
         const isBull = c.close >= c.open;
-
         const yHigh = yOf(c.high);
         const yLow = yOf(c.low);
         const yOpen = yOf(c.open);
@@ -4582,61 +4687,27 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const topY = Math.min(yOpen, yClose);
         const boxH = Math.max(2, Math.abs(yClose - yOpen));
 
-        if (!isOptical && !isZion) {
-          // Virtual CAD Blueprint Mode: Wireframe Hologram Candlesticks
-          const strokeCol = isBull ? '#ffffff' : holoHex;
-          ctx.strokeStyle = strokeCol;
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.moveTo(cx, yHigh);
-          ctx.lineTo(cx, yLow);
-          ctx.stroke();
+        const color = isBull ? '#10f1b6' : '#f43f5e';
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.moveTo(cx, yHigh);
+        ctx.lineTo(cx, yLow);
+        ctx.stroke();
 
-          ctx.fillStyle = isBull ? 'rgba(255, 255, 255, 0.85)' : '#05070a';
-          ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
-          ctx.strokeStyle = strokeCol;
-          ctx.lineWidth = 1.2;
-          ctx.strokeRect(cx - bodyW / 2, topY, bodyW, boxH);
-        } else {
-          // Optical Sensor Mode: Full-Color Candlesticks
-          const color = isBull
-            ? (isZion ? '#059669' : '#00ff66')
-            : (isZion ? '#e11d48' : '#ff3b5c');
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.moveTo(cx, yHigh);
-          ctx.lineTo(cx, yLow);
-          ctx.stroke();
-          ctx.fillStyle = color;
-          ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
-        }
+        ctx.fillStyle = color;
+        ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
       });
 
-      // 8. Corner CAD Targeting Reticle Brackets Inside Canvas Viewport (#ffffff Stark White)
-      ctx.strokeStyle = isZion ? '#0f172a' : '#ffffff';
-      ctx.lineWidth = 1.8;
-      const bLen = 12;
-      // Top-Left
-      ctx.beginPath();
-      ctx.moveTo(4, 4 + bLen); ctx.lineTo(4, 4); ctx.lineTo(4 + bLen, 4);
-      // Top-Right
-      ctx.moveTo(W - 4 - bLen, 4); ctx.lineTo(W - 4, 4); ctx.lineTo(W - 4, 4 + bLen);
-      // Bottom-Left
-      ctx.moveTo(4, H - 4 - bLen); ctx.lineTo(4, H - 4); ctx.lineTo(4 + bLen, H - 4);
-      // Bottom-Right
-      ctx.moveTo(W - 4 - bLen, H - 4); ctx.lineTo(W - 4, H - 4); ctx.lineTo(W - 4, H - 4 - bLen);
-      ctx.stroke();
-
-      // Time labels along bottom
-      ctx.fillStyle = isZion ? '#475569' : 'rgba(255, 255, 255, 0.60)';
-      ctx.font = '10px monospace';
-      [0, Math.floor(LAST_CANDLES.length / 2), LAST_CANDLES.length - 1].forEach(i => {
+      // 7. Time labels along bottom
+      ctx.fillStyle = '#8b95a9';
+      ctx.font = '10.5px JetBrains Mono, monospace';
+      [0, Math.floor(LAST_CANDLES.length * 0.25), Math.floor(LAST_CANDLES.length * 0.5), Math.floor(LAST_CANDLES.length * 0.75), LAST_CANDLES.length - 1].forEach(i => {
         if (!LAST_CANDLES[i]) return;
         const d = new Date(LAST_CANDLES[i].time * 1000);
         const lbl = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const x = chartLeft + i * stepX;
-        ctx.fillText(lbl, Math.min(chartRight - 36, Math.max(chartLeft, x - 15)), H - 6);
+        ctx.fillText(lbl, Math.min(chartRight - 42, Math.max(chartLeft, x - 18)), H - 6);
       });
     }
 
@@ -5474,6 +5545,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let ORBIT_PORTFOLIO_MODE = 'showcase'; // 'showcase' ($143,628.45 Flow Render) | 'live' (Live 9-Leg Kraken + Coinbase + swooz.eth)
     let ORBIT_ACTIVE_CHAIN = 'ALL';
     let ORBIT_CHART_TF = '1D';
+    let ORBIT_CHART_MODE = 'straddle'; // 'straddle' (Default: ETH Price + 9-Leg Target Zones) | 'candles' (Clean OHLC Candlesticks) | 'networth' (Portfolio Curve)
+    let ORBIT_CARD2_TAB = 'plan'; // 'plan' (Default: 9-Leg Trading Plan) | 'tokens' (Multi-Chain Tokens Table)
     let ORBIT_SEARCH_QUERY = '';
 
     const ORBIT_TOKENS_DATA = [
@@ -5548,6 +5621,58 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
     };
 
+    const ORBIT_ETH_FALLBACK_CANDLES = [
+      { open: 2386, high: 2394, low: 2378, close: 2390, lbl: '08:00' },
+      { open: 2390, high: 2402, low: 2387, close: 2398, lbl: '10:00' },
+      { open: 2398, high: 2414, low: 2395, close: 2411, lbl: '12:00' },
+      { open: 2411, high: 2425, low: 2406, close: 2421, lbl: '14:00' },
+      { open: 2421, high: 2436, low: 2418, close: 2434.30, lbl: '16:00' },
+      { open: 2434.30, high: 2438, low: 2414, close: 2417, lbl: '18:00' },
+      { open: 2417, high: 2426, low: 2404, close: 2409, lbl: '20:00' },
+      { open: 2409, high: 2423, low: 2405, close: 2419, lbl: '21:00' },
+      { open: 2419, high: 2431, low: 2415, close: 2424, lbl: '22:00' },
+      { open: 2424, high: 2432, low: 2420, close: 2428.07, lbl: 'NOW' }
+    ];
+
+    function traceSmoothSpline(context, points) {
+      if (!points.length) return;
+      context.moveTo(points[0].x, points[0].y);
+      for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[i === 0 ? i : i - 1];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[i + 2 < points.length ? i + 2 : i + 1];
+        const cp1x = p1.x + (p2.x - p0.x) / 6;
+        const cp1y = p1.y + (p2.y - p0.y) / 6;
+        const cp2x = p2.x - (p3.x - p1.x) / 6;
+        const cp2y = p2.y - (p3.y - p1.y) / 6;
+        context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
+      }
+    }
+
+    function drawOrbitRoundedPill(ctx, x, y, w, h, r, bgFill, strokeCol) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      ctx.fillStyle = bgFill;
+      ctx.fill();
+      if (strokeCol) {
+        ctx.strokeStyle = strokeCol;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
     function drawOrbitNetworthChart() {
       const canvas = document.getElementById('orbit-networth-canvas');
       if (!canvas) return;
@@ -5556,6 +5681,241 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const H = canvas.height;
       ctx.clearRect(0, 0, W, H);
 
+      // Update live ETH header pill whenever chart renders
+      const liveCandles = (typeof LAST_CANDLES !== 'undefined' && LAST_CANDLES.length >= 8 && CHART_PAIR === 'ETHUSD')
+        ? LAST_CANDLES.slice(-18)
+        : ORBIT_ETH_FALLBACK_CANDLES;
+      const spotEth = liveCandles[liveCandles.length - 1].close || 2428.07;
+      const ethPill = document.getElementById('orbit-live-eth-pill');
+      if (ethPill) {
+        const dist = (spotEth - 2365.00).toFixed(2);
+        ethPill.textContent = `ETH $${spotEth.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • $${dist} above $2,365 Re-Buy`;
+      }
+
+      // =========================================================================
+      // MODE 1 & 2: 'straddle' (ETH Price + 9-Leg Zones) & 'candles' (Clean OHLC)
+      // =========================================================================
+      if (ORBIT_CHART_MODE === 'straddle' || ORBIT_CHART_MODE === 'candles') {
+        const cLeft = 58;
+        const cRight = W - 188; // Room on right for crystal-clear target callout pills
+        const cTop = 14;
+        const cBot = H - 24;
+        const cW = cRight - cLeft;
+        const cH = cBot - cTop;
+
+        const minP = 2340;
+        const maxP = 2450;
+        const yOf = p => cTop + ((maxP - p) / (maxP - minP)) * cH;
+
+        // 1. Clean Dollar Y-Axis Grid ($2,440, $2,415, $2,390, $2,365, $2,340)
+        const priceTicks = [2440, 2415, 2390, 2365, 2340];
+        ctx.font = '10.5px JetBrains Mono, monospace';
+        ctx.textAlign = 'right';
+        priceTicks.forEach(p => {
+          const y = yOf(p);
+          ctx.fillStyle = '#8b95a9';
+          ctx.fillText('$' + p.toLocaleString(), cLeft - 8, y + 3.5);
+
+          ctx.save();
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+          ctx.lineWidth = 1;
+          ctx.setLineDash([2, 4]);
+          ctx.beginPath();
+          ctx.moveTo(cLeft, y);
+          ctx.lineTo(cRight, y);
+          ctx.stroke();
+          ctx.restore();
+        });
+
+        // 2. Clean Time X-Axis Labels along bottom
+        ctx.textAlign = 'center';
+        const stepIdxs = [0, Math.floor(liveCandles.length * 0.25), Math.floor(liveCandles.length * 0.5), Math.floor(liveCandles.length * 0.75), liveCandles.length - 1];
+        stepIdxs.forEach((idx, i) => {
+          const c = liveCandles[idx];
+          if (!c) return;
+          const x = cLeft + (idx / Math.max(1, liveCandles.length - 1)) * cW;
+          let lbl = c.lbl || '';
+          if (!lbl && c.time) {
+            const d = new Date(c.time * 1000);
+            lbl = i === stepIdxs.length - 1 ? 'NOW' : d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          }
+          ctx.fillStyle = i === stepIdxs.length - 1 ? '#00f5d4' : '#8b95a9';
+          ctx.fillText(lbl, x, H - 6);
+        });
+
+        // 3. Shaded Profit Channel between Sold Top ($2,434.30) & Re-Buy Target ($2,365.00)
+        const ySoldTop = yOf(2434.30);
+        const yRebuy = yOf(2365.00);
+        const yDip = yOf(2350.00);
+
+        ctx.save();
+        const bandGrad = ctx.createLinearGradient(0, ySoldTop, 0, yRebuy);
+        bandGrad.addColorStop(0, 'rgba(16, 241, 182, 0.09)');
+        bandGrad.addColorStop(1, 'rgba(0, 245, 212, 0.09)');
+        ctx.fillStyle = bandGrad;
+        ctx.fillRect(cLeft, ySoldTop, cW, yRebuy - ySoldTop);
+        ctx.restore();
+
+        // 4. Horizontal Straddle Target Lines + Right-Hand Pill Badges
+        const zones = [
+          {
+            price: 2434.30,
+            color: '#10f1b6',
+            bg: 'rgba(16, 185, 129, 0.16)',
+            border: 'rgba(16, 241, 182, 0.45)',
+            title: '✓ SOLD TOP @ $2,434.30',
+            sub: '$891.48 Cash Locked'
+          },
+          {
+            price: 2365.00,
+            color: '#00f5d4',
+            bg: 'rgba(0, 245, 212, 0.14)',
+            border: 'rgba(0, 245, 212, 0.45)',
+            title: '🎯 RE-BUY @ $2,365 / $2,360',
+            sub: '+0.0078 ETH (+$18.86)'
+          },
+          {
+            price: 2350.00,
+            color: '#fbbf24',
+            bg: 'rgba(245, 158, 11, 0.14)',
+            border: 'rgba(251, 191, 36, 0.45)',
+            title: '🛡️ DIP NET @ $2,350.00',
+            sub: '$174.23 Extra Cash'
+          }
+        ];
+
+        zones.forEach(z => {
+          const y = yOf(z.price);
+          ctx.save();
+          ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = z.color;
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(cLeft, y);
+          ctx.lineTo(cRight + 6, y);
+          ctx.stroke();
+          ctx.restore();
+
+          // Right-hand Callout Pill
+          const pillX = cRight + 10;
+          const pillY = Math.max(4, Math.min(H - 36, y - 15));
+          drawOrbitRoundedPill(ctx, pillX, pillY, 172, 30, 7, z.bg, z.border);
+          ctx.textAlign = 'left';
+          ctx.font = 'bold 10px Plus Jakarta Sans, sans-serif';
+          ctx.fillStyle = z.color;
+          ctx.fillText(z.title, pillX + 8, pillY + 12);
+          ctx.font = '9.5px JetBrains Mono, monospace';
+          ctx.fillStyle = '#e2e8f0';
+          ctx.fillText(z.sub, pillX + 8, pillY + 24);
+        });
+
+        // 5. Render Either Smooth Glowing Spline ('straddle') OR Clean Candlesticks ('candles')
+        if (ORBIT_CHART_MODE === 'straddle') {
+          const coords = liveCandles.map((c, i) => ({
+            x: cLeft + (i / Math.max(1, liveCandles.length - 1)) * cW,
+            y: yOf(c.close)
+          }));
+
+          const areaGrad = ctx.createLinearGradient(0, cTop, 0, cBot);
+          areaGrad.addColorStop(0, 'rgba(0, 245, 212, 0.28)');
+          areaGrad.addColorStop(0.6, 'rgba(59, 130, 246, 0.10)');
+          areaGrad.addColorStop(1, 'rgba(19, 23, 34, 0.0)');
+
+          ctx.save();
+          ctx.beginPath();
+          traceSmoothSpline(ctx, coords);
+          ctx.lineTo(coords[coords.length - 1].x, cBot);
+          ctx.lineTo(coords[0].x, cBot);
+          ctx.closePath();
+          ctx.fillStyle = areaGrad;
+          ctx.fill();
+          ctx.restore();
+
+          const strokeGrad = ctx.createLinearGradient(cLeft, 0, cRight, 0);
+          strokeGrad.addColorStop(0, '#a855f7');
+          strokeGrad.addColorStop(0.4, '#3b82f6');
+          strokeGrad.addColorStop(1, '#00f5d4');
+
+          ctx.save();
+          ctx.beginPath();
+          traceSmoothSpline(ctx, coords);
+          ctx.strokeStyle = strokeGrad;
+          ctx.lineWidth = 3;
+          ctx.shadowColor = '#00f5d4';
+          ctx.shadowBlur = 12;
+          ctx.stroke();
+          ctx.restore();
+
+          // Plot Sold Top Execution Marker on the 2434.30 peak
+          let peakIdx = 0;
+          liveCandles.forEach((c, idx) => {
+            if (c.high >= liveCandles[peakIdx].high) peakIdx = idx;
+          });
+          const peakPt = coords[peakIdx];
+          if (peakPt) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(peakPt.x, ySoldTop, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#10f1b6';
+            ctx.shadowColor = '#10f1b6';
+            ctx.shadowBlur = 10;
+            ctx.fill();
+            ctx.restore();
+          }
+
+          // Live Spot Glowing Tip + Badge
+          const tip = coords[coords.length - 1];
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(tip.x, tip.y, 5, 0, Math.PI * 2);
+          ctx.fillStyle = '#00f5d4';
+          ctx.shadowColor = '#00f5d4';
+          ctx.shadowBlur = 16;
+          ctx.fill();
+          ctx.restore();
+
+          // Spot Price Callout Tag near Tip
+          const tagW = 108;
+          const tagH = 20;
+          const tagX = Math.max(cLeft + 10, tip.x - tagW - 10);
+          const tagY = Math.max(cTop + 4, Math.min(cBot - 24, tip.y - 10));
+          drawOrbitRoundedPill(ctx, tagX, tagY, tagW, tagH, 5, 'rgba(14, 18, 27, 0.92)', '#00f5d4');
+          ctx.textAlign = 'center';
+          ctx.font = 'bold 10px JetBrains Mono, monospace';
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(`NOW $${spotEth.toFixed(2)}`, tagX + tagW / 2, tagY + 13.5);
+        } else {
+          // Clean Candlesticks Mode inside Card 1
+          const stepX = cW / liveCandles.length;
+          const bodyW = Math.max(5, Math.floor(stepX * 0.62));
+          liveCandles.forEach((c, idx) => {
+            const cx = cLeft + idx * stepX + stepX / 2;
+            const isBull = c.close >= c.open;
+            const yH = yOf(c.high);
+            const yL = yOf(c.low);
+            const yO = yOf(c.open);
+            const yC = yOf(c.close);
+            const topY = Math.min(yO, yC);
+            const boxH = Math.max(2, Math.abs(yC - yO));
+            const col = isBull ? '#10f1b6' : '#f43f5e';
+
+            ctx.strokeStyle = col;
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(cx, yH);
+            ctx.lineTo(cx, yL);
+            ctx.stroke();
+
+            ctx.fillStyle = col;
+            ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
+          });
+        }
+        return;
+      }
+
+      // =========================================================================
+      // MODE 3: 'networth' (Original Portfolio Net Worth Growth Curve)
+      // =========================================================================
       const series = ORBIT_SPLINE_SERIES[ORBIT_CHART_TF] || ORBIT_SPLINE_SERIES['1D'];
       const scaleFactor = ORBIT_PORTFOLIO_MODE === 'live' ? (1598.42 / 143628.45) : 1;
       const pts = series.pts.map(v => v * scaleFactor);
@@ -5570,21 +5930,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const cW = cRight - cLeft;
       const cH = cBot - cTop;
 
-      // Horizontal dashed grid lines + Y-axis labels matching Flow Render ($143,880, $140,000, $130,000, $100,000, $50,000, $0)
       const yRows = [
         { frac: 0.0, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,600' : '$143,880' },
-        { frac: 0.18, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,400' : '$140,000' },
-        { frac: 0.38, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,200' : '$130,000' },
-        { frac: 0.58, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$950' : '$100,000' },
-        { frac: 0.79, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$500' : '$50,000' },
+        { frac: 0.25, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$1,200' : '$110,000' },
+        { frac: 0.50, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$800' : '$75,000' },
+        { frac: 0.75, lbl: ORBIT_PORTFOLIO_MODE === 'live' ? '$400' : '$35,000' },
         { frac: 1.0, lbl: '$0' }
       ];
 
-      ctx.font = '10.5px Plus Jakarta Sans, sans-serif';
+      ctx.font = '10.5px JetBrains Mono, monospace';
       ctx.textAlign = 'right';
       yRows.forEach(r => {
         const y = cTop + r.frac * cH;
-        ctx.fillStyle = '#6c768a';
+        ctx.fillStyle = '#8b95a9';
         ctx.fillText(r.lbl, cLeft - 10, y + 3.5);
 
         ctx.save();
@@ -5598,46 +5956,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.restore();
       });
 
-      // Vertical subtle grid lines + X-axis labels
-      const xLabels = series.labels;
+      const xLabels = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', 'NOW'];
       ctx.textAlign = 'center';
       xLabels.forEach((lbl, idx) => {
         const x = cLeft + (idx / (xLabels.length - 1)) * cW;
-        ctx.fillStyle = '#6c768a';
+        ctx.fillStyle = '#8b95a9';
         ctx.fillText(lbl, x, H - 6);
-
-        ctx.save();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
-        ctx.setLineDash([2, 4]);
-        ctx.beginPath();
-        ctx.moveTo(x, cTop);
-        ctx.lineTo(x, cBot);
-        ctx.stroke();
-        ctx.restore();
       });
 
-      // Compute pixel coordinates for smooth Catmull-Rom / Bezier spline
       const coords = pts.map((v, i) => ({
         x: cLeft + (i / (pts.length - 1)) * cW,
         y: cBot - ((v - minVal) / (maxVal - minVal)) * (cH - 8)
       }));
 
-      function traceSmoothSpline(context, points) {
-        context.moveTo(points[0].x, points[0].y);
-        for (let i = 0; i < points.length - 1; i++) {
-          const p0 = points[i === 0 ? i : i - 1];
-          const p1 = points[i];
-          const p2 = points[i + 1];
-          const p3 = points[i + 2 < points.length ? i + 2 : i + 1];
-          const cp1x = p1.x + (p2.x - p0.x) / 6;
-          const cp1y = p1.y + (p2.y - p0.y) / 6;
-          const cp2x = p2.x - (p3.x - p1.x) / 6;
-          const cp2y = p2.y - (p3.y - p1.y) / 6;
-          context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
-        }
-      }
-
-      // 1. Area Fill Gradient Underneath Spline
       const areaGrad = ctx.createLinearGradient(0, cTop, 0, cBot);
       areaGrad.addColorStop(0, 'rgba(0, 245, 212, 0.30)');
       areaGrad.addColorStop(0.55, 'rgba(56, 189, 248, 0.12)');
@@ -5653,7 +5984,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.fill();
       ctx.restore();
 
-      // 2. Glowing Purple -> Blue -> Neon Cyan Line Stroke
       const strokeGrad = ctx.createLinearGradient(cLeft, 0, cRight, 0);
       strokeGrad.addColorStop(0, '#a855f7');
       strokeGrad.addColorStop(0.35, '#3b82f6');
@@ -5670,7 +6000,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.stroke();
       ctx.restore();
 
-      // 3. Glowing Endpoint Dot on Right Tip
       const tip = coords[coords.length - 1];
       ctx.save();
       ctx.beginPath();
@@ -5682,6 +6011,42 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.restore();
     }
 
+    function setOrbitChartMode(mode) {
+      ORBIT_CHART_MODE = mode;
+      if (typeof window.playBeep === 'function') window.playBeep();
+      ['straddle', 'candles', 'networth'].forEach(m => {
+        const b = document.getElementById('orbit-cmode-' + m);
+        if (b) {
+          b.className = m === mode
+            ? 'px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#00f5d4]/25 to-[#3b82f6]/25 border border-[#00f5d4]/40 text-[#00f5d4] transition cursor-pointer'
+            : 'px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer';
+        }
+      });
+      drawOrbitNetworthChart();
+    }
+
+    function switchOrbitCard2Tab(tab) {
+      ORBIT_CARD2_TAB = tab;
+      if (typeof window.playBeep === 'function') window.playBeep();
+      const planView = document.getElementById('orbit-card2-plan-view');
+      const tokensView = document.getElementById('orbit-card2-tokens-view');
+      const btnPlan = document.getElementById('orbit-card2-btn-plan');
+      const btnTokens = document.getElementById('orbit-card2-btn-tokens');
+
+      if (tab === 'plan') {
+        if (planView) planView.classList.remove('hidden');
+        if (tokensView) tokensView.classList.add('hidden');
+        if (btnPlan) btnPlan.className = 'px-3 py-1 rounded-lg bg-gradient-to-r from-[#00f5d4]/25 to-[#a855f7]/25 border border-[#00f5d4]/40 text-white text-xs font-bold transition cursor-pointer';
+        if (btnTokens) btnTokens.className = 'px-3 py-1 rounded-lg text-[#8b95a9] hover:text-white text-xs font-semibold transition cursor-pointer';
+      } else {
+        if (planView) planView.classList.add('hidden');
+        if (tokensView) tokensView.classList.remove('hidden');
+        if (btnTokens) btnTokens.className = 'px-3 py-1 rounded-lg bg-gradient-to-r from-[#00f5d4]/25 to-[#a855f7]/25 border border-[#00f5d4]/40 text-white text-xs font-bold transition cursor-pointer';
+        if (btnPlan) btnPlan.className = 'px-3 py-1 rounded-lg text-[#8b95a9] hover:text-white text-xs font-semibold transition cursor-pointer';
+        renderOrbitTokensTable();
+      }
+    }
+
     function setOrbitChartTf(tf) {
       ORBIT_CHART_TF = tf;
       if (typeof window.playBeep === 'function') window.playBeep();
@@ -5689,13 +6054,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const b = document.getElementById('orbit-tf-' + k);
         if (b) {
           b.className = k === tf
-            ? 'px-2.5 py-1 rounded-lg bg-[#252d40] text-white transition cursor-pointer'
-            : 'px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer';
+            ? 'px-2 py-1 rounded-lg bg-[#252d40] text-white transition cursor-pointer'
+            : 'px-2 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer';
         }
       });
-      const s = ORBIT_SPLINE_SERIES[tf];
-      const badge = document.getElementById('orbit-networth-badge');
-      if (badge && s) badge.textContent = s.chg;
+      const tfMap = { '1D': 15, '1W': 60, '1M': 240, 'ALL': 1440 };
+      if (tfMap[tf] && typeof switchChartTf === 'function') {
+        switchChartTf(tfMap[tf]);
+      }
       drawOrbitNetworthChart();
     }
 
