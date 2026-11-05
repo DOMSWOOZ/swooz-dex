@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swooz-dex-v21';
+const CACHE_NAME = 'swooz-dex-v22';
 const ASSETS = [
   './',
   'index.html',
@@ -8,19 +8,19 @@ const ASSETS = [
   'icon-192.png',
   'icon-512.png',
   'icon.svg',
-  'nft-media/if_1506.gif',
-  'nft-media/if_1286.gif',
-  'nft-media/if_140.gif',
-  'nft-media/if_42.gif',
-  'nft-media/beast_2313_full.png',
-  'nft-media/beast_2313_pfp.png',
-  'nft-media/clonex_9143.png',
-  'nft-media/minisupers_6915.png',
-  'nft-media/the_walk_1.gif',
-  'nft-media/supers_84.png',
-  'nft-media/supers_144.png',
-  'nft-media/enso_146.png',
-  'nft-media/enso_190.png'
+  'nft-media/nobg/if_1506.gif',
+  'nft-media/nobg/if_1286.gif',
+  'nft-media/nobg/if_140.gif',
+  'nft-media/nobg/if_42.gif',
+  'nft-media/nobg/beast_2313_full.png',
+  'nft-media/nobg/beast_2313_pfp.png',
+  'nft-media/nobg/clonex_9143.png',
+  'nft-media/nobg/minisupers_6915.png',
+  'nft-media/nobg/the_walk_1.gif',
+  'nft-media/nobg/supers_84.png',
+  'nft-media/nobg/supers_144.png',
+  'nft-media/nobg/enso_146.png',
+  'nft-media/nobg/enso_190.png'
 ];
 
 self.addEventListener('install', event => {

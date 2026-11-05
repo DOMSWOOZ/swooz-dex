@@ -194,44 +194,17 @@
       50% { opacity: 1; }
     }
 
-    /* Automatic Hologram Shader applied to all displayed NFT / Specimen items in Blueprint Mode */
-    body:not(.optical-sensor-mode) img[src*="nft-media/"],
-    body:not(.optical-sensor-mode) #stage-nft-img,
-    body:not(.optical-sensor-mode) #wallet-nft-grid img,
-    body:not(.optical-sensor-mode) #custom-targets-list img {
-      animation: holoFloat 3.6s ease-in-out infinite, holoBeamPulse 2.4s ease-in-out infinite;
-      border: 1px solid rgba(0, 240, 255, 0.55) !important;
-      background:
-        repeating-linear-gradient(0deg, rgba(0, 240, 255, 0.16) 0px, rgba(0, 240, 255, 0.16) 1px, transparent 1px, transparent 3px),
-        radial-gradient(ellipse at bottom, rgba(0, 240, 255, 0.35) 0%, rgba(5, 7, 10, 0.95) 75%) !important;
-      filter: grayscale(1) contrast(1.38) brightness(1.12) sepia(1) hue-rotate(150deg) saturate(3.2) drop-shadow(0 0 12px rgba(0, 240, 255, 0.75));
-      box-shadow: inset 0 -10px 22px rgba(0, 240, 255, 0.28), 0 0 16px rgba(0, 240, 255, 0.32);
-    }
-
-    /* Stark Monochrome White CAD Wireframe Hologram Tint */
-    body:not(.optical-sensor-mode)[data-holo-tint="white"] img[src*="nft-media/"],
-    body:not(.optical-sensor-mode)[data-holo-tint="white"] #stage-nft-img,
-    body:not(.optical-sensor-mode)[data-holo-tint="white"] #wallet-nft-grid img,
-    body:not(.optical-sensor-mode)[data-holo-tint="white"] #custom-targets-list img {
-      border-color: rgba(255, 255, 255, 0.70) !important;
-      background:
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0px, rgba(255, 255, 255, 0.15) 1px, transparent 1px, transparent 3px),
-        radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.30) 0%, rgba(5, 7, 10, 0.95) 75%) !important;
-      filter: grayscale(1) contrast(1.55) brightness(1.18) drop-shadow(0 0 12px rgba(255, 255, 255, 0.75));
-      box-shadow: inset 0 -10px 22px rgba(255, 255, 255, 0.25), 0 0 16px rgba(255, 255, 255, 0.32);
-    }
-
-    /* High-Flea Volt (#e2fd52) Hologram Tint */
-    body:not(.optical-sensor-mode)[data-holo-tint="volt"] img[src*="nft-media/"],
-    body:not(.optical-sensor-mode)[data-holo-tint="volt"] #stage-nft-img,
-    body:not(.optical-sensor-mode)[data-holo-tint="volt"] #wallet-nft-grid img,
-    body:not(.optical-sensor-mode)[data-holo-tint="volt"] #custom-targets-list img {
-      border-color: rgba(226, 253, 82, 0.65) !important;
-      background:
-        repeating-linear-gradient(0deg, rgba(226, 253, 82, 0.15) 0px, rgba(226, 253, 82, 0.15) 1px, transparent 1px, transparent 3px),
-        radial-gradient(ellipse at bottom, rgba(226, 253, 82, 0.30) 0%, rgba(5, 7, 10, 0.95) 75%) !important;
-      filter: grayscale(1) contrast(1.42) brightness(1.12) sepia(1) hue-rotate(32deg) saturate(3.5) drop-shadow(0 0 12px rgba(226, 253, 82, 0.75));
-      box-shadow: inset 0 -10px 22px rgba(226, 253, 82, 0.25), 0 0 16px rgba(226, 253, 82, 0.32);
+    /* Full-Glory True-Color Hologram Float (No Grayscale Tint, No Square Background Box) */
+    img[src*="nft-media/"],
+    #stage-nft-img,
+    #crt-holo-specimen-img,
+    #wallet-nft-grid img,
+    #custom-targets-list img {
+      animation: holoFloat 3.6s ease-in-out infinite;
+      background: transparent !important;
+      border: none !important;
+      filter: drop-shadow(0 8px 18px rgba(0, 240, 255, 0.42)) drop-shadow(0 0 8px rgba(0, 255, 65, 0.28)) !important;
+      box-shadow: none !important;
     }
 
     /* Optional Scanlines Off toggle */
@@ -490,30 +463,36 @@
           <div class="border border-[#00F0FF]/60 bg-[#02080a] p-2.5 relative overflow-hidden flex flex-col justify-between min-h-[305px] shadow-[inset_0_0_60px_rgba(0,240,255,0.12)]"
                style="background-image: radial-gradient(circle at 54% 56%, rgba(0, 240, 255, 0.22) 0%, rgba(0, 255, 65, 0.08) 42%, transparent 72%), linear-gradient(to right, rgba(0, 240, 255, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.06) 1px, transparent 1px); background-size: 100% 100%, 16px 16px, 16px 16px;">
 
-            <!-- Stage Header Bar + Specimen Selector Pills -->
+            <!-- Stage Header Bar + Specimen Selector Pills (No Wireframe — Full-Color Backgroundless NFTs) -->
             <div class="flex items-center justify-between flex-wrap gap-1.5 border-b border-[#00F0FF]/30 pb-1.5 relative z-20">
               <div class="text-xs sm:text-sm font-bold tracking-wider uppercase">
                 <span class="text-[#00F0FF]" style="text-shadow: 0 0 10px rgba(0,240,255,0.55);">GLOWE 3D HOLOGRAPHIC</span>
                 <span class="text-[#00FF41] ml-1" style="text-shadow: 0 0 10px rgba(0,255,65,0.55);">NFT STAGE</span>
               </div>
-              <div class="flex items-center gap-1 text-[9px] font-mono">
-                <button type="button" onclick="selectCrtStageSpecimen('wireframe')" id="crt-spec-wireframe" class="px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer">WIREFRAME</button>
-                <button type="button" onclick="selectCrtStageSpecimen('if-1506')" id="crt-spec-if-1506" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #1506</button>
+              <div class="flex items-center flex-wrap gap-1 text-[9px] font-mono">
+                <button type="button" onclick="selectCrtStageSpecimen('if-1506')" id="crt-spec-if-1506" class="px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer">IF #1506</button>
                 <button type="button" onclick="selectCrtStageSpecimen('beast-2313-full')" id="crt-spec-beast-2313-full" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">BEAST #2313</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-1286')" id="crt-spec-if-1286" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #1286</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-140')" id="crt-spec-if-140" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #140</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-42')" id="crt-spec-if-42" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #42</button>
                 <button type="button" onclick="selectCrtStageSpecimen('clonex-9143')" id="crt-spec-clonex-9143" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">CLONEX #9143</button>
                 <button type="button" onclick="selectCrtStageSpecimen('ms-6915')" id="crt-spec-ms-6915" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">MINI #6915</button>
+                <button type="button" onclick="selectCrtStageSpecimen('walk-1')" id="crt-spec-walk-1" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">WALK #1</button>
               </div>
             </div>
 
-            <!-- Corner Telemetry Readouts (Exact Match to Reference Screenshot) -->
+            <!-- Corner Telemetry Readouts -->
             <div class="absolute top-11 left-3 z-10 text-[9px] leading-[1.25] text-[#66d9ef] font-mono pointer-events-none">
               <div class="text-[#9bb5a8]">HOLO_STAGE_ONLINE</div>
               <div>AXIS: <span id="crt-axis-x">+20.5881</span></div>
               <div>AXIS: <span id="crt-axis-y">-20.253</span></div>
               <div>KHBRT: <span id="crt-khbrt">+13.885</span></div>
+              <div id="crt-stage-active-label" class="text-[#00FF41] font-bold mt-1">INVISIBLE FRIENDS #1506</div>
             </div>
-            <div class="absolute top-11 right-3 z-10 text-[9px] text-[#9bb5a8] font-mono pointer-events-none">
-              HOLO_STAGE_ONLINE
+            <div class="absolute top-11 right-3 z-10 text-[9px] text-[#9bb5a8] font-mono pointer-events-none text-right">
+              <div>HOLO_STAGE_ONLINE</div>
+              <div id="crt-stage-active-rank" class="text-[#00F0FF] mt-0.5">RANK #1,621 / 5,000</div>
+              <div id="crt-stage-active-bid" class="text-[#FFB000] mt-0.5">TARGET: 0.210 WETH</div>
             </div>
             <div class="absolute bottom-3 left-3 z-10 text-[9px] leading-[1.25] text-[#66d9ef] font-mono pointer-events-none">
               <div>AXS: 2200, 0.8033</div>
@@ -533,7 +512,7 @@
               <span class="text-[8px] text-[#66d9ef] -mr-2 bg-[#02080a] px-0.5">1</span>
             </div>
 
-            <!-- 3D ISOMETRIC NEON-GREEN GRID PLATFORM + FLOATING CYAN HOLOGRAM CHARACTER -->
+            <!-- 3D ISOMETRIC NEON-GREEN GRID PLATFORM + FULL-COLOR TRANSPARENT-BG NFT SHOWCASE -->
             <div class="relative w-full h-[255px] flex items-center justify-center my-auto">
               <svg viewBox="0 0 600 280" class="w-full h-full overflow-visible">
                 <defs>
@@ -593,54 +572,17 @@
                   <line x1="435.6" y1="174.5" x2="280.6" y2="234.5" />
                 </g>
 
+                <!-- Glowing Floor Pedestal Shadow Under NFT Feet -->
+                <ellipse cx="300" cy="180" rx="34" ry="12" fill="rgba(0, 255, 65, 0.22)" stroke="#00FF41" stroke-width="1" stroke-dasharray="4 3" filter="url(#neonGreenGlow)" />
+
                 <!-- Floating Cyan Orbital Ring Around Specimen -->
                 <ellipse cx="300" cy="112" rx="92" ry="34" fill="none" stroke="#00F0FF" stroke-width="1.5" opacity="0.85" filter="url(#cyanHoloGlow)" />
                 <ellipse cx="300" cy="112" rx="82" ry="29" fill="none" stroke="#00F0FF" stroke-width="0.75" stroke-dasharray="6 4" opacity="0.65" />
-
-                <!-- 3D CYAN WIREFRAME HUMANOID / WALKER MESH (Default Specimen — Exact Match to Screenshot) -->
-                <g id="crt-svg-wireframe-walker" filter="url(#cyanHoloGlow)" class="transition-opacity duration-300">
-                  <!-- Shadow ellipse on isometric floor -->
-                  <ellipse cx="300" cy="176" rx="26" ry="10" fill="rgba(0, 240, 255, 0.25)" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="3 2" />
-                  <!-- Helmet / Head Sphere + Visor -->
-                  <ellipse cx="300" cy="48" rx="20" ry="21" fill="rgba(0, 25, 38, 0.72)" stroke="#00F0FF" stroke-width="1.8" />
-                  <ellipse cx="300" cy="48" rx="11" ry="21" fill="none" stroke="#00F0FF" stroke-width="0.9" opacity="0.7" />
-                  <ellipse cx="300" cy="42" rx="19" ry="7" fill="none" stroke="#00F0FF" stroke-width="0.9" opacity="0.7" />
-                  <!-- Glowing Visor -->
-                  <path d="M 284 46 Q 300 55 315 45 Q 315 35 299 35 Q 284 36 284 46 Z" fill="rgba(0, 240, 255, 0.28)" stroke="#99f9ff" stroke-width="1.6" />
-                  <!-- Neck Collar -->
-                  <ellipse cx="300" cy="69" rx="12" ry="4" fill="none" stroke="#00F0FF" stroke-width="1.4" />
-                  <!-- Torso Wireframe Ribcage -->
-                  <path d="M 282 72 L 318 72 L 315 124 L 285 124 Z" fill="rgba(0, 240, 255, 0.14)" stroke="#00F0FF" stroke-width="1.6" />
-                  <ellipse cx="300" cy="84" rx="17" ry="5" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="300" cy="97" rx="16" ry="5" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="300" cy="110" rx="15" ry="5" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <line x1="293" y1="72" x2="293" y2="124" stroke="#00F0FF" stroke-width="0.9" opacity="0.75" />
-                  <line x1="300" y1="72" x2="300" y2="124" stroke="#00F0FF" stroke-width="1.1" />
-                  <line x1="307" y1="72" x2="307" y2="124" stroke="#00F0FF" stroke-width="0.9" opacity="0.75" />
-                  <!-- Left Arm (Segmented Wireframe Cylinder) -->
-                  <path d="M 282 74 L 266 96 L 261 118 L 270 121 L 276 100 L 284 84 Z" fill="rgba(0, 240, 255, 0.14)" stroke="#00F0FF" stroke-width="1.5" />
-                  <ellipse cx="271" cy="98" rx="6" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="265" cy="120" rx="5" ry="4" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.3" />
-                  <!-- Right Arm (Segmented Wireframe Cylinder) -->
-                  <path d="M 318 74 L 332 98 L 335 120 L 326 122 L 322 101 L 316 84 Z" fill="rgba(0, 240, 255, 0.14)" stroke="#00F0FF" stroke-width="1.5" />
-                  <ellipse cx="327" cy="99" rx="6" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="330" cy="121" rx="5" ry="4" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.3" />
-                  <!-- Left Leg (Stepping Forward + Segmented Rings + Boot) -->
-                  <path d="M 285 124 L 281 168 L 293 168 L 298 124 Z" fill="rgba(0, 240, 255, 0.16)" stroke="#00F0FF" stroke-width="1.6" />
-                  <ellipse cx="289" cy="138" rx="7" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="288" cy="152" rx="6.5" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="285" cy="171" rx="10" ry="5" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.6" />
-                  <!-- Right Leg (Stepping Back + Segmented Rings + Boot) -->
-                  <path d="M 302 124 L 306 174 L 318 174 L 315 124 Z" fill="rgba(0, 240, 255, 0.16)" stroke="#00F0FF" stroke-width="1.6" />
-                  <ellipse cx="310" cy="140" rx="7" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="311" cy="155" rx="6.5" ry="3" fill="none" stroke="#00F0FF" stroke-width="1" />
-                  <ellipse cx="313" cy="177" rx="11" ry="5.5" fill="rgba(0, 240, 255, 0.35)" stroke="#99f9ff" stroke-width="1.6" />
-                </g>
               </svg>
 
-              <!-- Live Walking Holographic NFT Image Overlay (Shown when IF #1506 / BEAST #2313 / CloneX / Mini Supers is selected!) -->
-              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif" alt="Hologram Specimen"
-                   class="hidden absolute top-3 w-36 h-36 sm:w-40 sm:h-40 object-contain pointer-events-none" />
+              <!-- Full-Color Backgroundless NFT Standing Directly on the 3D Isometric Stage -->
+              <img id="crt-holo-specimen-img" src="nft-media/nobg/if_1506.gif" alt="Hologram Specimen"
+                   class="absolute top-1 w-44 h-44 sm:w-48 sm:h-48 object-contain pointer-events-none z-10" />
             </div>
           </div>
 
@@ -2568,17 +2510,52 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       return uri;
     }
 
+    function toNobgMediaUrl(url) {
+      if (!url) return '';
+      if (url.startsWith('nft-media/') && !url.startsWith('nft-media/nobg/')) {
+        return url.replace('nft-media/', 'nft-media/nobg/');
+      }
+      return url;
+    }
+
     function renderStageNft(item) {
       CURRENT_STAGE_NFT = item;
+      const cleanUrl = toNobgMediaUrl(item.mediaUrl);
       const imgEl = document.getElementById('stage-nft-img');
-      imgEl.src = item.mediaUrl;
-      imgEl.onerror = function() {
-        if (this.src.includes('gateway.pinata.cloud/ipfs/')) {
-          this.src = this.src.replace('https://gateway.pinata.cloud/ipfs/', 'https://ipfs.io/ipfs/');
-        } else if (this.src.includes('ipfs.io/ipfs/')) {
-          this.src = this.src.replace('https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/');
-        }
-      };
+      if (imgEl) {
+        imgEl.src = cleanUrl;
+        imgEl.onerror = function() {
+          if (this.src.includes('nft-media/nobg/')) {
+            this.src = this.src.replace('nft-media/nobg/', 'nft-media/');
+          } else if (this.src.includes('gateway.pinata.cloud/ipfs/')) {
+            this.src = this.src.replace('https://gateway.pinata.cloud/ipfs/', 'https://ipfs.io/ipfs/');
+          } else if (this.src.includes('ipfs.io/ipfs/')) {
+            this.src = this.src.replace('https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/');
+          }
+        };
+      }
+
+      // Sync with Top-Right GLOWE 3D HOLOGRAPHIC NFT STAGE automatically!
+      const crtHoloImg = document.getElementById('crt-holo-specimen-img');
+      if (crtHoloImg) {
+        crtHoloImg.src = cleanUrl;
+        crtHoloImg.classList.remove('hidden');
+        crtHoloImg.onerror = function() {
+          if (this.src.includes('nft-media/nobg/')) {
+            this.src = this.src.replace('nft-media/nobg/', 'nft-media/');
+          }
+        };
+      }
+      const crtLbl = document.getElementById('crt-stage-active-label');
+      if (crtLbl) crtLbl.textContent = (item.title || 'NFT SPECIMEN').toUpperCase();
+      const crtRank = document.getElementById('crt-stage-active-rank');
+      if (crtRank) crtRank.textContent = (item.rank || `TOKEN #${item.tokenId}`).toUpperCase();
+      const crtBid = document.getElementById('crt-stage-active-bid');
+      if (crtBid) crtBid.textContent = (item.priceNote || 'ON-CHAIN VERIFIED').toUpperCase();
+
+      if (typeof renderCrtTraitInspector === 'function') {
+        renderCrtTraitInspector();
+      }
 
       document.getElementById('stage-media-badge').textContent = item.badge || '🧬 ON-CHAIN NFT';
       document.getElementById('stage-collection-name').textContent = item.collection;
@@ -4526,7 +4503,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     // ============================================================================================
     let CRT_DATA_MODE = 'screenshot'; // 'screenshot' (Exact Visual Spec) | 'live' (Live Kraken + Coinbase Orders)
     let ACTIVE_CRT_LEG = 0;
-    let ACTIVE_CRT_SPECIMEN = 'wireframe';
+    let ACTIVE_CRT_SPECIMEN = 'if-1506';
 
     // Exact 9-Leg Matrix Rows (Both Screenshot Spec & Live Kraken/Coinbase Order Book Mapping)
     const CRT_9LEGS_DATA = [
@@ -4847,7 +4824,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ACTIVE_CRT_SPECIMEN = specKey;
       if (typeof window.playBeep === 'function') window.playBeep();
 
-      ['wireframe', 'if-1506', 'beast-2313-full', 'clonex-9143', 'ms-6915'].forEach(k => {
+      ['if-1506', 'beast-2313-full', 'if-1286', 'if-140', 'if-42', 'clonex-9143', 'ms-6915', 'walk-1'].forEach(k => {
         const btn = document.getElementById('crt-spec-' + k);
         if (btn) {
           btn.className = k === specKey
@@ -4856,20 +4833,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }
       });
 
-      const svgWalker = document.getElementById('crt-svg-wireframe-walker');
-      const nftImg = document.getElementById('crt-holo-specimen-img');
-
-      if (specKey === 'wireframe') {
-        if (svgWalker) svgWalker.style.opacity = '1';
-        if (nftImg) nftImg.classList.add('hidden');
-      } else {
-        const preset = PRESET_NFTS[specKey] || PRESET_NFTS['if-1506'];
-        if (svgWalker) svgWalker.style.opacity = '0.18';
-        if (nftImg && preset) {
-          nftImg.src = preset.mediaUrl;
-          nftImg.classList.remove('hidden');
-        }
-        if (preset) renderStageNft(preset);
+      const preset = PRESET_NFTS[specKey] || PRESET_NFTS['if-1506'];
+      if (preset) {
+        renderStageNft(preset);
       }
       renderCrtTraitInspector();
     }
@@ -4879,13 +4845,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const subEl = document.getElementById('crt-trait-subtitle');
       if (!listEl) return;
 
-      let rows = CRT_WIREFRAME_TRAITS;
-      if (ACTIVE_CRT_SPECIMEN !== 'wireframe' && PRESET_NFTS[ACTIVE_CRT_SPECIMEN]) {
-        const p = PRESET_NFTS[ACTIVE_CRT_SPECIMEN];
-        rows = (p.traits || []).map(([k, v]) => ({ k: k.toUpperCase(), v: v.toUpperCase() }));
-        if (subEl) subEl.textContent = `${p.title.toUpperCase()} (${rows.length})`;
+      const activeNft = CURRENT_STAGE_NFT || PRESET_NFTS[ACTIVE_CRT_SPECIMEN] || PRESET_NFTS['if-1506'];
+      let rows = [];
+      if (activeNft && Array.isArray(activeNft.traits) && activeNft.traits.length > 0) {
+        rows = activeNft.traits.map(t => {
+          if (Array.isArray(t)) return { k: String(t[0]).toUpperCase(), v: String(t[1]).toUpperCase() };
+          return { k: String(t.trait_type || 'TRAIT').toUpperCase(), v: String(t.value || '').toUpperCase() };
+        });
+        if (subEl) subEl.textContent = `${(activeNft.title || 'NFT').toUpperCase()} (${rows.length})`;
       } else {
-        if (subEl) subEl.textContent = '14 CYBER MESH ATTRIBUTES';
+        rows = CRT_WIREFRAME_TRAITS;
+        if (subEl) subEl.textContent = '14 ATTRIBUTES';
       }
 
       listEl.innerHTML = rows.map(r => `
