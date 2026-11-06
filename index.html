@@ -370,10 +370,10 @@
               <span class="text-xs text-[#8b95a9] font-medium hidden sm:inline">Connected:</span>
               <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
                       class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
-                <option value="all" class="bg-[#131722] text-white">6 Wallets (swooz.eth • 0x6ddA...31b4)</option>
-                <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH + 0.1332 SOL)</option>
-                <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0705 ETH + SOL/BTC/LINK)</option>
-                <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers)</option>
+                <option value="all" class="bg-[#131722] text-white">6 Wallets (swooz.eth • $1,587.97 USD)</option>
+                <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
+                <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0705 ETH / $158.60 + Alts / $149.17)</option>
+                <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
                 <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (#5284)...</option>
               </select>
               <div class="flex items-center gap-1 pl-1 border-l border-white/10">
@@ -413,9 +413,9 @@
                 <div class="flex flex-wrap items-center gap-2">
                   <select id="orbit-portfolio-scope" onchange="setOrbitPortfolioScope(this.value)"
                           class="px-2.5 py-1.5 rounded-lg bg-[#1a2030] border border-white/10 text-xs text-[#c5cee0] font-medium outline-none cursor-pointer">
-                    <option value="swooz">All Wallets (6)</option>
-                    <option value="dex">9-Leg DEX Only</option>
-                    <option value="vaults">On-Chain Vaults (4)</option>
+                    <option value="swooz">All Wallets (6 • $1,587.97)</option>
+                    <option value="dex">9-Leg DEX Only ($1,177.48)</option>
+                    <option value="vaults">On-Chain Vaults (4 • $410.49)</option>
                   </select>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
@@ -442,25 +442,25 @@
                     <span>+5.71% (+$91.68 at $2,435 Bounce)</span>
                     <span class="text-[#8b95a9] font-normal">today</span>
                   </div>
-                  <span id="hdr-total-eth" class="hidden">0.4481 ETH</span>
+                  <span id="hdr-total-eth" class="hidden">0.4481 ETH ($1,008.38)</span>
 
-                  <!-- Mini Active Position Summary Pills -->
-                  <div class="pt-2 grid grid-cols-2 gap-1.5 text-[10.5px] font-mono">
-                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between">
+                  <!-- Mini Active Position Summary Pills (Token Amount + Live $USD Reference) -->
+                  <div class="pt-2 grid grid-cols-2 gap-1.5 text-[10px] font-mono">
+                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">ETH:</span>
-                      <span class="text-white font-bold">0.4481 ETH</span>
+                      <span id="orbit-pill-eth-val" class="text-white font-bold">0.4481 ETH <span class="text-[#34d399]">($1,008.38)</span></span>
                     </div>
-                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between">
+                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">SOL:</span>
-                      <span class="text-white font-bold">0.7207 SOL</span>
+                      <span id="orbit-pill-sol-val" class="text-white font-bold">0.7207 SOL <span class="text-[#34d399]">($65.23)</span></span>
                     </div>
-                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between">
+                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">BTC/LINK:</span>
-                      <span class="text-[#34d399] font-bold">$94.80</span>
+                      <span id="orbit-pill-alts-val" class="text-white font-bold">0.00088 / 2.37 <span class="text-[#34d399]">($94.80)</span></span>
                     </div>
-                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between">
+                    <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">NFTs:</span>
-                      <span class="text-[#00f5d4] font-bold">139 Held</span>
+                      <span id="orbit-pill-nfts-val" class="text-[#00f5d4] font-bold">133 Held <span class="text-[#34d399]">($400.33)</span></span>
                     </div>
                   </div>
                 </div>
@@ -488,7 +488,7 @@
 
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded-md bg-[#10b981]/15 border border-[#10b981]/30 text-[#34d399] text-[10px] font-mono font-bold">
-                    9/9 UPSIDE SELLS ARMED • +0.0078 FREE ETH GAINED
+                    9/9 UPSIDE SELLS ARMED • +0.0078 FREE ETH (+$18.86) GAINED
                   </span>
                 </div>
               </div>
@@ -501,7 +501,7 @@
                       <th class="pb-2.5 font-medium">Asset</th>
                       <th class="pb-2.5 font-medium">Network</th>
                       <th class="pb-2.5 font-medium">Platform / Wallet</th>
-                      <th class="pb-2.5 text-right font-medium">Amount</th>
+                      <th class="pb-2.5 text-right font-medium">Amount ($USD Ref)</th>
                       <th class="pb-2.5 text-right font-medium">USD Value</th>
                     </tr>
                   </thead>
@@ -515,7 +515,7 @@
               <div id="orbit-card2-plan-view" class="hidden space-y-2.5 text-xs">
                 <div class="p-2.5 rounded-xl bg-[#0e121b] border border-white/10 flex flex-wrap items-center justify-between gap-2">
                   <div class="text-[#c5cee0] leading-snug">
-                    <span class="text-[#10f1b6] font-bold">✓ All 6 Overnight Dip-Buys Filled!</span> When ETH dipped to <span class="text-white font-mono">$2,252.79</span>, our bot scooped all 4 ETH buy legs (<span class="text-[#00f5d4] font-semibold">compounding +0.0078 Free ETH</span> + <span class="text-[#fbbf24] font-semibold">+0.0741 ETH Dip Net</span>) and both SOL buy legs (<span class="text-[#c084fc] font-semibold">0.7207 SOL total</span>), and automatically flipped all 9 legs to <span class="text-white font-bold">Upside SELL walls</span>!
+                    <span class="text-[#10f1b6] font-bold">✓ All 6 Overnight Dip-Buys Filled!</span> When ETH dipped to <span class="text-white font-mono">$2,252.79</span>, our bot scooped all 4 ETH buy legs (<span class="text-[#00f5d4] font-semibold">compounding +0.0078 Free ETH / +$18.86</span> + <span class="text-[#fbbf24] font-semibold">+0.0741 ETH / $174.23 Dip Net</span>) and both SOL buy legs (<span class="text-[#c084fc] font-semibold">0.7207 SOL / $65.23 total</span>), and automatically flipped all 9 legs to <span class="text-white font-bold">Upside SELL walls ($1,261.16 Target)</span>!
                   </div>
                 </div>
 
@@ -525,24 +525,24 @@
                     <div>
                       <div class="flex items-center justify-between mb-1.5">
                         <span class="text-[#00f5d4] font-bold text-xs">🎯 1. Core ETH Sells</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#00f5d4]/15 text-[#00f5d4] font-mono text-[10px] font-bold">0.3739 ETH</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#00f5d4]/15 text-[#00f5d4] font-mono text-[10px] font-bold">0.3739 ETH ($841.52)</span>
                       </div>
                       <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        Bought back @ <span class="text-white font-mono">$2,365 / $2,360</span> (+0.0078 Free ETH gained) &amp; armed to sell on bounce:
+                        Bought back @ <span class="text-white font-mono">$2,365 / $2,360</span> (+0.0078 Free ETH / +$18.86) &amp; armed to sell on bounce:
                       </p>
-                      <div class="space-y-1.5 font-mono text-[11px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L1</b> KRK Sell <b class="text-[#00f5d4]">0.3268 ETH</b></span>
-                          <span class="text-[#34d399]">@ $2,434.30</span>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L1</b> KRK <b class="text-[#00f5d4]">0.3268 ETH</b> <span class="text-[#8b95a9]">($735.33)</span></span>
+                          <span class="text-[#34d399]">@ $2,434.30 ($795.41)</span>
                         </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L4</b> CB Sell <b class="text-[#00f5d4]">0.0472 ETH</b></span>
-                          <span class="text-[#34d399]">@ $2,435.00</span>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L4</b> CB <b class="text-[#00f5d4]">0.0472 ETH</b> <span class="text-[#8b95a9]">($106.19)</span></span>
+                          <span class="text-[#34d399]">@ $2,435.00 ($114.92)</span>
                         </div>
                       </div>
                     </div>
                     <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Target Payout</span>
+                      <span>Spot: $841.52 → Target</span>
                       <span class="text-[#34d399] font-bold">$910.33 USD</span>
                     </div>
                   </div>
@@ -552,28 +552,28 @@
                     <div>
                       <div class="flex items-center justify-between mb-1.5">
                         <span class="text-[#fbbf24] font-bold text-xs">🛡️ 2. Dip-Net Flipped Sells</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/15 text-[#fbbf24] font-mono text-[10px] font-bold">0.0741 ETH + SOL</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/15 text-[#fbbf24] font-mono text-[10px] font-bold">0.0741 ETH + SOL ($206.25)</span>
                       </div>
                       <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        Scooped at <span class="text-white font-mono">$2,350 ETH</span> &amp; <span class="text-white font-mono">$93.40 SOL</span> and auto-flipped to top sell walls:
+                        Scooped at <span class="text-white font-mono">$2,350 ETH</span> &amp; <span class="text-white font-mono">$93.40 SOL</span> ($214.94 cost) and auto-flipped to top sell walls:
                       </p>
-                      <div class="space-y-1.5 font-mono text-[11px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L2+L8</b> Sell <b class="text-[#fbbf24]">0.0741 ETH</b></span>
-                          <span class="text-[#34d399]">@ $2,434.30</span>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L2+L8</b> <b class="text-[#fbbf24]">0.0741 ETH</b> <span class="text-[#8b95a9]">($166.81)</span></span>
+                          <span class="text-[#34d399]">@ $2,434.30 ($180.49)</span>
                         </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L3</b> KRK Sell <b class="text-[#fbbf24]">0.1332 SOL</b></span>
-                          <span class="text-[#34d399]">@ $97.80</span>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L3</b> KRK <b class="text-[#fbbf24]">0.1332 SOL</b> <span class="text-[#8b95a9]">($12.06)</span></span>
+                          <span class="text-[#34d399]">@ $97.80 ($13.03)</span>
                         </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L9</b> CB Sell <b class="text-[#fbbf24]">0.3025 SOL</b></span>
-                          <span class="text-[#34d399]">@ $97.80</span>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L9</b> CB <b class="text-[#fbbf24]">0.3025 SOL</b> <span class="text-[#8b95a9]">($27.38)</span></span>
+                          <span class="text-[#34d399]">@ $97.80 ($29.58)</span>
                         </div>
                       </div>
                     </div>
                     <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Target Payout</span>
+                      <span>Spot: $206.25 → Target</span>
                       <span class="text-[#34d399] font-bold">$223.21 USD</span>
                     </div>
                   </div>
@@ -583,28 +583,28 @@
                     <div>
                       <div class="flex items-center justify-between mb-1.5">
                         <span class="text-[#c084fc] font-bold text-xs">🚀 3. Alt Pump Walls</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/15 text-[#c084fc] font-mono text-[10px] font-bold">SOL • BTC • LINK</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/15 text-[#c084fc] font-mono text-[10px] font-bold">SOL • BTC • LINK ($120.59)</span>
                       </div>
                       <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
                         3 Coinbase Advanced upside walls ready to cash out into USDC &amp; re-arm dip buys:
                       </p>
-                      <div class="space-y-1.5 font-mono text-[11px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L5</b> Sell <b class="text-[#c084fc]">0.2849 SOL</b></span>
-                          <span class="text-[#34d399]">@ $97.80</span>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L5</b> <b class="text-[#c084fc]">0.2849 SOL</b> <span class="text-[#8b95a9]">($25.79)</span></span>
+                          <span class="text-[#34d399]">@ $97.80 ($27.87)</span>
                         </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L6</b> Sell <b class="text-[#c084fc]">0.00088 BTC</b></span>
-                          <span class="text-[#34d399]">@ $81,800</span>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L6</b> <b class="text-[#c084fc]">0.00088 BTC</b> <span class="text-[#8b95a9]">($68.95)</span></span>
+                          <span class="text-[#34d399]">@ $81.8k ($71.67)</span>
                         </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">L7</b> Sell <b class="text-[#c084fc]">2.370 LINK</b></span>
-                          <span class="text-[#34d399]">@ $11.85</span>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L7</b> <b class="text-[#c084fc]">2.370 LINK</b> <span class="text-[#8b95a9]">($25.86)</span></span>
+                          <span class="text-[#34d399]">@ $11.85 ($28.08)</span>
                         </div>
                       </div>
                     </div>
                     <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Target Payout</span>
+                      <span>Spot: $120.59 → Target</span>
                       <span class="text-[#34d399] font-bold">$127.62 USD</span>
                     </div>
                   </div>
@@ -613,9 +613,9 @@
                 <!-- Bottom Totals Bar -->
                 <div class="px-3 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4]/10 via-[#3b82f6]/10 to-[#a855f7]/10 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px]">
                   <div class="flex items-center gap-2.5 flex-wrap">
-                    <span class="text-white font-bold">Armed Stack: <span class="text-[#00f5d4] font-mono">0.4481 ETH</span> + <span class="text-[#10f1b6] font-mono">0.7207 SOL</span></span>
+                    <span class="text-white font-bold">Armed Stack: <span class="text-[#00f5d4] font-mono">0.4481 ETH ($1,008.38)</span> + <span class="text-[#10f1b6] font-mono">0.7207 SOL ($65.23)</span></span>
                     <span class="text-[#8b95a9]">•</span>
-                    <span class="text-[#c5cee0]">Next Dip Re-Buys: <b class="text-white font-mono">~0.4616 ETH</b> @ $2,363</span>
+                    <span class="text-[#c5cee0]">Next Dip Re-Buys: <b class="text-white font-mono">~0.4616 ETH ($1,090.76)</b> @ $2,363</span>
                   </div>
                   <span class="px-2 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] font-mono font-bold">
                     Total Target Payout: $1,261.16 USD
@@ -636,7 +636,7 @@
                 <button onclick="switchOrbitSidebar('viewer')" class="text-[#8b95a9] hover:text-[#00f5d4] text-xs font-semibold cursor-pointer">Open Stage ↗</button>
               </div>
               <div class="text-xs text-[#8b95a9] font-medium mb-3">
-                Collectible NFTs <span class="text-white font-semibold">(139 Held + 5 Sniper Targets)</span>
+                Collectible NFTs <span class="text-white font-semibold">(133 Held • $400.33 USD + 5 Sniper Targets • $698.33 Est.)</span>
               </div>
 
               <!-- Top Row: 2 Square Feature Cards (IF #1506 & BEAST #2313) -->
@@ -686,7 +686,7 @@
                 </div>
                 <div class="min-w-0 flex-1 pr-5">
                   <div class="font-bold text-white text-sm leading-tight">Mini Supers Whale Stack</div>
-                  <div class="text-xs text-[#00f5d4] font-semibold mt-0.5">133 Held (swooz.eth + #928)</div>
+                  <div class="text-xs text-[#00f5d4] font-semibold mt-0.5">133 Held ($400.33 USD • swooz.eth + #928)</div>
                   <div class="text-[11px] text-[#8b95a9] font-mono mt-1.5 leading-snug">
                     Floor: 0.00134 ETH ($3.01)<br />
                     <span class="text-[#34d399] font-semibold">Stack Value: $400.33 USD</span>
@@ -699,7 +699,7 @@
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
               <div class="flex items-center justify-between mb-3">
                 <h3 class="text-base font-bold text-white">Yield &amp; Platforms <span class="text-xs font-normal text-[#8b95a9]">(Active DEX &amp; Vaults)</span></h3>
-                <span class="text-[#8b95a9] text-xs font-mono">6 Connected ▴</span>
+                <span class="text-[#8b95a9] text-xs font-mono">6 Connected ($1,587.97) ▴</span>
               </div>
 
               <div class="space-y-2.5 text-xs my-auto">
@@ -708,8 +708,8 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#4f6ef7]/25 border border-[#4f6ef7] text-[#60a5fa] flex items-center justify-center text-xs font-bold shrink-0">🦑</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span class="text-[#8b95a9] font-normal">(0.3776 ETH + 0.1332 SOL)</span> -</div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">3 SELLs @ $2,434.30 &amp; $97.80 → $932.25 Target</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span class="text-[#8b95a9] font-normal">(0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</span> -</div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">3 SELLs @ $2,434.30 &amp; $97.80 + $6.97 ZUSD → $932.25 Target</div>
                     </div>
                   </div>
                   <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$869.71</div>
@@ -720,8 +720,8 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#a855f7]/25 border border-[#a855f7] text-[#c084fc] flex items-center justify-center text-xs font-bold shrink-0">🔵</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(6 Active SELL Legs)</span> -</div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">0.0705 ETH • 0.5874 SOL • BTC • LINK → $329.84</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(0.0705 ETH / $158.60 + Alts / $149.17)</span> -</div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">0.0705 ETH ($158.60) • 0.5874 SOL ($53.17) • BTC ($68.95) • LINK ($25.86) → $329.84</div>
                     </div>
                   </div>
                   <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$307.77</div>
@@ -732,11 +732,11 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#10b981]/25 border border-[#10f1b6] text-[#10f1b6] flex items-center justify-center text-xs font-bold shrink-0">🦊</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Ethereum Vaults <span class="text-[#8b95a9] font-normal">(4 Connected Wallets)</span> -</div>
-                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth (132 MS) • 0xae1c (#928) • CCS &amp; 2022 OG</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Ethereum Vaults <span class="text-[#8b95a9] font-normal">(4 Connected Wallets • $2.16 ETH Gas)</span> -</div>
+                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth (132 MS / $397.32) • 0xae1c (#928 / $3.01) • CCS &amp; 2022 OG</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-vaults-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$400.33</div>
+                  <div id="orbit-plat-vaults-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$402.49</div>
                 </div>
               </div>
             </div>
@@ -1131,7 +1131,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               <div class="vcd-pod bg-[var(--card)] rounded-lg p-2.5">
                 <div class="text-[10px] text-[var(--muted-foreground)] vcd-stencil">COMPLETED TOP SKIMS</div>
                 <div class="text-sm font-extrabold text-sky-400 mt-0.5">2 / 2 ETH LEGS SOLD</div>
-                <div class="text-[10px] text-emerald-400">0.3662 ETH Sold @ $2,434.40</div>
+                <div class="text-[10px] text-emerald-400">0.3662 ETH ($891.48) Sold @ $2,434.40</div>
               </div>
               <div class="vcd-pod bg-[var(--card)] rounded-lg p-2.5">
                 <div class="text-[10px] text-[var(--muted-foreground)] vcd-stencil">LOCKED PULLBACK YIELD</div>
@@ -1219,7 +1219,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr class="bg-emerald-500/10">
                       <td class="py-1.5 pr-2 font-sans font-bold text-emerald-400">🦑 N-01 Kraken ETH Core (Sold @ $2,434.30!)</td>
                       <td class="py-1.5 px-2 font-bold text-amber-400">BUY @ $2,365.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.32675219 ETH</td>
+                      <td class="py-1.5 px-2 font-bold">0.3268 ETH ($735.33)</td>
                       <td class="py-1.5 px-2 text-emerald-400 font-bold">$775.86 Net Cash</td>
                       <td class="py-1.5 px-2 font-bold text-emerald-400">Auto-Sells @ $2,434.30 (+$16.44)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🔄 FLIPPED (OB3VUY)</td>
@@ -1227,7 +1227,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🦑 N-02 Kraken ETH Dip Catcher</td>
                       <td class="py-1.5 px-2 font-bold">BUY @ $2,350.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.05085957 ETH</td>
+                      <td class="py-1.5 px-2 font-bold">0.0509 ETH ($114.45)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$120.00 Cash</td>
                       <td class="py-1.5 px-2 font-bold text-amber-400">Auto-Sells @ $2,434.30 (+$3.31)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (O2M55I)</td>
@@ -1235,7 +1235,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🦑 N-03 Kraken SOL Dip Scraper</td>
                       <td class="py-1.5 px-2 font-bold">BUY @ $93.50</td>
-                      <td class="py-1.5 px-2 font-bold">0.13324064 SOL</td>
+                      <td class="py-1.5 px-2 font-bold">0.1332 SOL ($12.06)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$12.51 Cash</td>
                       <td class="py-1.5 px-2 font-bold text-purple-400">Auto-Sells @ $97.80 (+$0.47)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OXHR5G)</td>
@@ -1244,7 +1244,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr class="bg-sky-500/10">
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 N-04 Coinbase ETH Core (Sold @ $2,435!)</td>
                       <td class="py-1.5 px-2 font-bold text-amber-400">BUY @ $2,360.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.04719500 ETH</td>
+                      <td class="py-1.5 px-2 font-bold">0.0472 ETH ($106.19)</td>
                       <td class="py-1.5 px-2 text-emerald-400 font-bold">$111.94 Net USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Sells @ $2,435.00 (+$2.42)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-sky-400">🔄 FLIPPED (1b4768d6)</td>
@@ -1252,7 +1252,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 N-05 Coinbase SOL Upside</td>
                       <td class="py-1.5 px-2 font-bold">SELL @ $97.80</td>
-                      <td class="py-1.5 px-2 font-bold">0.28494619 SOL</td>
+                      <td class="py-1.5 px-2 font-bold">0.2849 SOL ($25.79)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$27.87 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $93.50 (+$0.95)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (af8d6809)</td>
@@ -1260,7 +1260,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 N-06 Coinbase BTC Upside</td>
                       <td class="py-1.5 px-2 font-bold">SELL @ $81,800.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.00087620 BTC</td>
+                      <td class="py-1.5 px-2 font-bold">0.00088 BTC ($68.95)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$71.67 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $78,800.00 (+$1.91)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (245c48b9)</td>
@@ -1268,7 +1268,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 N-07 Coinbase LINK Upside</td>
                       <td class="py-1.5 px-2 font-bold">SELL @ $11.85</td>
-                      <td class="py-1.5 px-2 font-bold">2.37000000 LINK</td>
+                      <td class="py-1.5 px-2 font-bold">2.3700 LINK ($25.86)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$28.08 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $11.05 (+$1.61)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (21abdc51)</td>
@@ -1276,7 +1276,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🔵 N-08 Coinbase ETH Dip Catcher</td>
                       <td class="py-1.5 px-2 font-bold">BUY @ $2,350.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.02328000 ETH</td>
+                      <td class="py-1.5 px-2 font-bold">0.0233 ETH ($52.39)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$54.71 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-amber-400">Auto-Sells @ $2,435.00 (+$1.42)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (6f967d19)</td>
@@ -1284,7 +1284,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🔵 N-09 Coinbase SOL Dip Catcher</td>
                       <td class="py-1.5 px-2 font-bold">BUY @ $93.40</td>
-                      <td class="py-1.5 px-2 font-bold">0.30250000 SOL</td>
+                      <td class="py-1.5 px-2 font-bold">0.3025 SOL ($27.38)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$28.25 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-purple-400">Auto-Sells @ $97.80 (+$1.04)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (76e7ed73)</td>
@@ -1891,7 +1891,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             <p class="text-xs text-[var(--muted-foreground)]">Simulate deploying your ETH / WETH stack across collection bids</p>
           </div>
           <span id="calc-avail-badge" class="text-xs font-mono px-2 py-0.5 rounded bg-[var(--secondary)] border border-[var(--border)]">
-            Available: 0.3750 ETH
+            Available: 0.4481 ETH ($1,008.38 USD)
           </span>
         </div>
 
@@ -2114,7 +2114,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           });
         }).catch(() => {});
       }
-      navigator.serviceWorker.register('sw.js?v=31', { updateViaCache: 'none' }).then(reg => {
+      navigator.serviceWorker.register('sw.js?v=32', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -4535,7 +4535,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           netBg: '#f59e0b',
           netIcon: '🦑',
           platform: 'Kraken Pro (Legs #1 & #2 SELL @ $2,434.30)',
-          amountTxt: '0.3776 ETH',
+          amountTxt: `0.3776 ETH ($${krkEthVal.toFixed(2)})`,
           usdVal: krkEthVal,
           targetUsd: 0.377612 * 2434.30,
           chgTxt: `+${(((2434.30 - ethSpot) / ethSpot) * 100).toFixed(1)}% to $2,434`,
@@ -4554,7 +4554,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           netBg: '#0052ff',
           netIcon: '🔵',
           platform: 'Coinbase Adv (Legs #4 & #8 SELL @ $2,435)',
-          amountTxt: '0.0705 ETH',
+          amountTxt: `0.0705 ETH ($${cbEthVal.toFixed(2)})`,
           usdVal: cbEthVal,
           targetUsd: 0.070475 * 2435.00,
           chgTxt: `+${(((2435.00 - ethSpot) / ethSpot) * 100).toFixed(1)}% to $2,435`,
@@ -4573,7 +4573,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           netBg: '#1e1b4b',
           netIcon: '◎',
           platform: 'Kraken Leg #3 + Coinbase Legs #5 & #9 (@ $97.80)',
-          amountTxt: '0.7207 SOL',
+          amountTxt: `0.7207 SOL ($${solVal.toFixed(2)})`,
           usdVal: solVal,
           targetUsd: 0.720671 * 97.80,
           chgTxt: `+${(((97.80 - solSpot) / solSpot) * 100).toFixed(1)}% to $97.80`,
@@ -4592,7 +4592,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           netBg: '#f7931a',
           netIcon: '₿',
           platform: 'Coinbase Adv (Leg #6 SELL @ $81,800)',
-          amountTxt: '0.00088 BTC',
+          amountTxt: `0.00088 BTC ($${btcVal.toFixed(2)})`,
           usdVal: btcVal,
           targetUsd: 0.0008762 * 81800,
           chgTxt: `+${(((81800 - btcSpot) / btcSpot) * 100).toFixed(1)}% to $81.8k`,
@@ -4611,7 +4611,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           netBg: '#2563eb',
           netIcon: '⬡',
           platform: 'Coinbase Adv (Leg #7 SELL @ $11.85)',
-          amountTxt: '2.3700 LINK',
+          amountTxt: `2.3700 LINK ($${linkVal.toFixed(2)})`,
           usdVal: linkVal,
           targetUsd: 2.37 * 11.85,
           chgTxt: `+${(((11.85 - linkSpot) / linkSpot) * 100).toFixed(1)}% to $11.85`,
@@ -4629,8 +4629,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           badgeTxt: '🦸',
           netBg: '#1e293b',
           netIcon: '🦊',
-          platform: 'swooz.eth (132 Held) + 0xae1c...39B0 (#928)',
-          amountTxt: '133 NFTs',
+          platform: 'swooz.eth (132 Held / $397.32) + 0xae1c...39B0 (#928 / $3.01)',
+          amountTxt: '133 NFTs ($400.33)',
           usdVal: msVal,
           targetUsd: msVal,
           chgTxt: '+14.5% Floor',
@@ -4648,8 +4648,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           badgeTxt: '$',
           netBg: '#0f766e',
           netIcon: '🛡️',
-          platform: 'Kraken ($6.97 ZUSD) • Coinbase ($1.03 USDC) • 4 Vaults Gas',
-          amountTxt: '$10.16 Reserve',
+          platform: 'Kraken ($6.97 ZUSD) • Coinbase ($1.03 USDC) • 4 Vaults ($2.16 ETH)',
+          amountTxt: 'Cash + Gas ($10.16)',
           usdVal: cashSabiVal,
           targetUsd: cashSabiVal,
           chgTxt: '0.0% Reserve',
@@ -4765,6 +4765,13 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (ifFloorEl) ifFloorEl.textContent = `Floor: 0.237 ETH ($${Math.round(0.237 * ethSpot)})`;
       const beastFloorEl = document.getElementById('orbit-nft-floor-beast');
       if (beastFloorEl) beastFloorEl.textContent = `Floor: 0.0695 ETH ($${Math.round(0.0695 * ethSpot)})`;
+
+      const pillEthEl = document.getElementById('orbit-pill-eth-val');
+      if (pillEthEl) pillEthEl.innerHTML = `0.4481 ETH <span class="text-[#34d399]">($${(0.448087 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
+      const pillSolEl = document.getElementById('orbit-pill-sol-val');
+      if (pillSolEl) pillSolEl.innerHTML = `0.7207 SOL <span class="text-[#34d399]">($${(0.720671 * LIVE_SOL_RATE).toFixed(2)})</span>`;
+      const pillAltsEl = document.getElementById('orbit-pill-alts-val');
+      if (pillAltsEl) pillAltsEl.innerHTML = `0.00088 / 2.37 <span class="text-[#34d399]">($${(0.0008762 * LIVE_BTC_RATE + 2.37 * LIVE_LINK_RATE).toFixed(2)})</span>`;
     }
 
     function drawOrbitNetworthChart() {
@@ -4801,10 +4808,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const stageMeta = [
           { lbl: 'Sold Top @ $2,434.30', eth: 2434.30, nw: spotTotal * 0.93, tgt: targetTotal * 0.94, note: 'Sold 0.3662 ETH -> $891.48 Cash' },
           { lbl: 'Pullback @ $2,405.00', eth: 2405.00, nw: spotTotal * 0.95, tgt: targetTotal * 0.95, note: 'Waiting for $2,365 Buy Zone' },
-          { lbl: 'Filled Leg #1 @ $2,365✓', eth: 2365.00, nw: spotTotal * 0.96, tgt: targetTotal * 0.97, note: 'Bought 0.3268 ETH (+0.0068 Free ETH)' },
-          { lbl: 'Filled Leg #4 @ $2,360✓', eth: 2360.00, nw: spotTotal * 0.98, tgt: targetTotal * 0.98, note: 'Bought 0.0472 ETH (+0.0010 Free ETH)' },
-          { lbl: 'Filled Dip Net @ $2,350✓', eth: 2350.00, nw: spotTotal * 0.99, tgt: targetTotal * 0.99, note: 'Scooped +0.0741 ETH & +0.4357 SOL' },
-          { lbl: 'All 9 Sells Armed ✓', eth: spotEth + 6.5, nw: spotTotal * 0.995, tgt: targetTotal * 0.995, note: '0.4481 ETH + 0.7207 SOL Armed' },
+          { lbl: 'Filled Leg #1 @ $2,365✓', eth: 2365.00, nw: spotTotal * 0.96, tgt: targetTotal * 0.97, note: 'Bought 0.3268 ETH ($772.77 • +$16.44)' },
+          { lbl: 'Filled Leg #4 @ $2,360✓', eth: 2360.00, nw: spotTotal * 0.98, tgt: targetTotal * 0.98, note: 'Bought 0.0472 ETH ($111.38 • +$2.42)' },
+          { lbl: 'Filled Dip Net @ $2,350✓', eth: 2350.00, nw: spotTotal * 0.99, tgt: targetTotal * 0.99, note: 'Scooped +0.0741 ETH ($174.23) & +SOL ($40.71)' },
+          { lbl: 'All 9 Sells Armed ✓', eth: spotEth + 6.5, nw: spotTotal * 0.995, tgt: targetTotal * 0.995, note: '0.4481 ETH ($1,008) + 0.7207 SOL ($65) Armed' },
           { lbl: `LIVE NOW ($${spotEth.toFixed(2)})`, eth: spotEth, nw: spotTotal, tgt: targetTotal, note: 'Streaming Kraken & Coinbase Ticks' },
           { lbl: 'Target Bounce @ $2,435', eth: 2435.00, nw: targetTotal * 0.97, tgt: targetTotal, note: `Pays $${targetTotal.toFixed(2)} (+$${(targetTotal - spotTotal).toFixed(2)})` }
         ];
@@ -5090,7 +5097,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           bg: 'rgba(16, 185, 129, 0.15)',
           border: 'rgba(16, 241, 182, 0.45)',
           title: '✓ FILLED @ $2,365',
-          sub: '+0.0078 Free ETH'
+          sub: '+0.0078 ETH (+$18.86)'
         },
         {
           price: 2350.00,
@@ -5098,7 +5105,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           bg: 'rgba(245, 158, 11, 0.14)',
           border: 'rgba(251, 191, 36, 0.45)',
           title: '✓ FILLED @ $2,350',
-          sub: '+0.0741 ETH Scooped'
+          sub: '+0.0741 ETH ($174.23)'
         }
       ];
 
