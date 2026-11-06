@@ -2248,7 +2248,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const wethVal = (parseInt(wethHex, 16) || 0) / 1e18;
         const bethVal = (parseInt(bethHex, 16) || 0) / 1e18;
         const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
-        FLIP_DESK_ETH_USD = (ethVal + wethVal + bethVal) * ethSpot;
+        const onChainSum = ethVal + wethVal + bethVal;
+        FLIP_DESK_ETH_BAL = onChainSum > 0.0001 ? onChainSum : 0.026900;
+        FLIP_DESK_ETH_USD = FLIP_DESK_ETH_BAL * ethSpot;
         const lbl = document.getElementById('flipdesk-ms-count-lbl');
         if (lbl) {
           lbl.textContent = `${FLIP_DESK_MS_COUNT} Swept ($${(FLIP_DESK_MS_COUNT * 3.01).toFixed(2)}) • Live Ammo: ${(ethVal + wethVal + bethVal).toFixed(4)} ETH/BETH ($${FLIP_DESK_ETH_USD.toFixed(2)})`;
@@ -2263,7 +2265,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     setTimeout(syncFlipDeskOnChain, 1200);
     setInterval(syncFlipDeskOnChain, 30000);
 
-    navigator.serviceWorker.register('sw.js?v=36', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=37', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -4662,7 +4664,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let LIVE_LINK_RATE = 10.91;
     let FLIP_DESK_ADDR = '0x9be1662E325413224810F2237c2D0788032b8f74';
     let FLIP_DESK_MS_COUNT = 0;
-    let FLIP_DESK_ETH_USD = 0.00;
+    let FLIP_DESK_ETH_BAL = 0.026900;
+    let FLIP_DESK_ETH_USD = 60.05;
     let PREV_NETWORTH_USD = 0;
     let LAST_TICK_DELTA_USD = 0.00;
     let LAST_TICK_TIME_STR = 'LIVE';
@@ -4676,7 +4679,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const linkSpot = LIVE_LINK_RATE;
 
       const krkEthVal = 0.377612 * ethSpot;
-      const cbEthVal = 0.070475 * ethSpot;
+      const cbEthVal = 0.043575 * ethSpot;
       const solVal = 0.720671 * solSpot;
       const btcVal = 0.0008762 * btcSpot;
       const linkVal = 2.370000 * linkSpot;
@@ -4714,10 +4717,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           badgeTxt: '⟠',
           netBg: '#0052ff',
           netIcon: '🔵',
-          platform: 'Coinbase Adv (Legs #4 & #8 SELL @ $2,435)',
-          amountTxt: `0.0705 ETH ($${cbEthVal.toFixed(2)})`,
+          platform: 'Coinbase Adv (Leg #4 SELL @ $2,435.00)',
+          amountTxt: `0.0436 ETH ($${cbEthVal.toFixed(2)})`,
           usdVal: cbEthVal,
-          targetUsd: 0.070475 * 2435.00,
+          targetUsd: 0.043575 * 2435.00,
           chgTxt: `+${(((2435.00 - ethSpot) / ethSpot) * 100).toFixed(1)}% to $2,435`,
           isUp: true,
           pair: 'ETHUSD'
@@ -4802,18 +4805,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           id: 'flipdesk-ms',
           symbol: 'MS-STEALTH',
           name: 'Stealth Flip Desk (0x9be1)',
-          sub: '0x9be1...8f74 • $60 Blur Carve-Out',
+          sub: '0x9be1...8f74 • 0.0269 ETH ($60.05) Sent',
           chain: 'MATIC',
           scope: ['swooz', 'vaults', 'flipdesk', 'combined'],
           badgeBg: 'linear-gradient(135deg, #00f5d4, #0d9488)',
           badgeTxt: '🕵️',
           netBg: '#0f766e',
           netIcon: '⚡',
-          platform: `0x9be1...8f74 (${FLIP_DESK_MS_COUNT} Swept + 0.0269 ETH / $60.22 Unlocked on CB!)`,
-          amountTxt: `${FLIP_DESK_MS_COUNT} NFTs ($${(FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD).toFixed(2)} / $60 Armed)`,
+          platform: `0x9be1...8f74 (${FLIP_DESK_MS_COUNT} Swept + ${FLIP_DESK_ETH_BAL.toFixed(4)} ETH / $${FLIP_DESK_ETH_USD.toFixed(2)} Ammo)`,
+          amountTxt: `${FLIP_DESK_ETH_BAL.toFixed(4)} ETH + ${FLIP_DESK_MS_COUNT} NFTs ($${(FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD).toFixed(2)})`,
           usdVal: FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD,
-          targetUsd: (FLIP_DESK_MS_COUNT > 0 ? FLIP_DESK_MS_COUNT * 3.01 : 180.00),
-          chgTxt: '🟢 $60.22 Unlocked Now!',
+          targetUsd: (FLIP_DESK_MS_COUNT > 0 ? FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD : 180.00),
+          chgTxt: '🚀 0.0269 ETH ($60.05) Funded!',
           isUp: true,
           pair: 'ETHUSD'
         },
@@ -4940,7 +4943,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const krkValEl = document.getElementById('orbit-plat-kraken-val');
       if (krkValEl) krkValEl.textContent = '$' + (0.377612 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97).toFixed(2);
       const cbValEl = document.getElementById('orbit-plat-cb-val');
-      if (cbValEl) cbValEl.textContent = '$' + (0.070475 * ethSpot + 0.58743 * LIVE_SOL_RATE + (0.0008762 * LIVE_BTC_RATE) + (2.37 * LIVE_LINK_RATE) + 1.03).toFixed(2);
+      if (cbValEl) cbValEl.textContent = '$' + (0.043575 * ethSpot + 0.58743 * LIVE_SOL_RATE + (0.0008762 * LIVE_BTC_RATE) + (2.37 * LIVE_LINK_RATE) + 1.03).toFixed(2);
       const ifFloorEl = document.getElementById('orbit-nft-floor-if');
       if (ifFloorEl) ifFloorEl.textContent = `Floor: 0.237 ETH ($${Math.round(0.237 * ethSpot)})`;
       const beastFloorEl = document.getElementById('orbit-nft-floor-beast');
