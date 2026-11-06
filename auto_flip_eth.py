@@ -24,6 +24,7 @@ import time
 import urllib.request
 import uuid
 from coinbase_helper import cb_request
+from speak import speak_text
 from live_tracker import get_snapshot, kraken_post, load_env
 
 KRAKEN_MAKER_FEE = 0.004
@@ -46,6 +47,10 @@ def log_trade_event(event: dict) -> None:
 
 
 def send_discord_alert(webhook_url: str, title: str, description: str, color: int = 0x10B981) -> None:
+    try:
+        speak_text(title.replace("🎯", "").replace("💰", "").replace("🔵", ""))
+    except Exception:
+        pass
     if not webhook_url:
         return
     payload = {
