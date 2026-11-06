@@ -374,6 +374,7 @@
                 <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
                 <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0705 ETH / $158.60 + Alts / $149.17)</option>
                 <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
+                <option value="flipdesk-only" class="bg-[#131722] text-[#00f5d4]">🦸 Flip Desk (0xae1c...39B0 • WETH Bid &amp; Sweep)</option>
                 <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (#5284)...</option>
               </select>
               <div class="flex items-center gap-1 pl-1 border-l border-white/10">
@@ -416,6 +417,7 @@
                     <option value="swooz">All Wallets (6 • $1,587.97)</option>
                     <option value="dex">9-Leg DEX Only ($1,177.48)</option>
                     <option value="vaults">On-Chain Vaults (4 • $410.49)</option>
+                    <option value="flipdesk">🦸 Flip Desk (0xae1c...39B0)</option>
                   </select>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
@@ -482,7 +484,11 @@
                   </button>
                   <button onclick="switchOrbitCard2Tab('plan')" id="orbit-card2-btn-plan"
                           class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1">
-                    <span>🎯 9-Leg Trading Plan (All 9 Orders)</span>
+                    <span>🎯 9-Leg Trading Plan</span>
+                  </button>
+                  <button onclick="switchOrbitCard2Tab('msflip')" id="orbit-card2-btn-msflip"
+                          class="text-xs font-semibold text-[#8b95a9] hover:text-[#00f5d4] pb-1 transition cursor-pointer flex items-center gap-1">
+                    <span>🦸 Mini Supers Sweep Plan (0xae1c)</span>
                   </button>
                 </div>
 
@@ -622,6 +628,118 @@
                   </span>
                 </div>
               </div>
+
+              <!-- TAB C: MINI SUPERS FLIP DESK (0xae1c...39B0) — WETH BID LADDER VS. FLOOR SWEEP PLAN -->
+              <div id="orbit-card2-msflip-view" class="hidden space-y-2.5 text-xs">
+                <div class="p-2.5 rounded-xl bg-[#0e121b] border border-[#00f5d4]/30 flex flex-wrap items-center justify-between gap-2">
+                  <div class="text-[#c5cee0] leading-snug">
+                    <span class="text-[#00f5d4] font-bold">🦸 Flip Desk Active: <code class="font-mono text-white">0xae1cA265dE962B4eCafd4Af099414b5A598139B0</code></span>
+                    — Cold Vault <span class="text-white font-mono">swooz.eth</span> stays locked at <span class="text-[#10f1b6] font-bold">132 Held ($397.32)</span> with zero marketplace approvals. All new WETH bids, sweeps &amp; future sales route through <span class="text-white font-mono">0xae1c...39B0</span> (currently <b id="flipdesk-ms-count-lbl" class="text-[#00f5d4]">1 Held #928 • $3.01</b>).
+                  </div>
+                </div>
+
+                <!-- 3-Pillar WETH Bid vs Floor Sweep Strategy -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                  <!-- PILLAR 1: Top-of-Book WETH Collection Bids (Primary 65% Allocation) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#10b981]/40 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#10f1b6] font-bold text-xs">🥇 1. WETH Top Bids (Best Price)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#10b981]/20 text-[#34d399] font-mono text-[10px] font-bold">70–80% OFF FLOOR</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Last 22 on-chain Mini Supers sales filled via WETH bids at <span class="text-white font-mono">0.00010–0.00030 WETH ($0.23–$0.68)</span>! Seller pays 100% of gas:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">Bid Tier A</b> <span class="text-[#10f1b6]">10x @ 0.00035 WETH</span></span>
+                          <span class="text-[#34d399]">$0.79/ea ($7.88)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">Bid Tier B</b> <span class="text-[#10f1b6]">10x @ 0.00028 WETH</span></span>
+                          <span class="text-[#34d399]">$0.63/ea ($6.30)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>20 NFTs Cost: $14.18 ($0 Gas)</span>
+                      <span class="text-[#34d399] font-bold">Floor Val: $60.20 (+324%)</span>
+                    </div>
+                  </div>
+
+                  <!-- PILLAR 2: Deep Bulk-Dump Catcher Net (20% Allocation) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#f59e0b]/40 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#fbbf24] font-bold text-xs">🕸️ 2. Deep Dump Net</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/20 text-[#fbbf24] font-mono text-[10px] font-bold">85–92% OFF FLOOR</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        On Nov 1, a holder dumped 17 Mini Supers in one click down to <span class="text-white font-mono">0.00010 WETH ($0.23)</span>. Keep deep standing bids armed:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">Bid Tier C</b> <span class="text-[#fbbf24]">10x @ 0.00020 WETH</span></span>
+                          <span class="text-[#34d399]">$0.45/ea ($4.50)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">Bid Tier D</b> <span class="text-[#fbbf24]">10x @ 0.00012 WETH</span></span>
+                          <span class="text-[#34d399]">$0.27/ea ($2.70)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>20 NFTs Cost: $7.20 ($0 Gas)</span>
+                      <span class="text-[#34d399] font-bold">Floor Val: $60.20 (+736%)</span>
+                    </div>
+                  </div>
+
+                  <!-- PILLAR 3: Selective Floor Trait Sweep (15% Allocation) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#a855f7]/40 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#c084fc] font-bold text-xs">⚡ 3. Rare Floor Snipes</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/20 text-[#c084fc] font-mono text-[10px] font-bold">0.00134 ETH ($3.01)</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Only sweep the ETH floor directly when a rare trait / top-500 rank lists at floor price, or to clear thin walls before relisting:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">5x Rare Floor</b> <span class="text-[#c084fc]">@ 0.00134 ETH</span></span>
+                          <span class="text-[#34d399]">$3.01/ea ($15.05)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
+                          <span><b class="text-white">Flip Relist</b> <span class="text-[#c084fc]">@ 0.0038–0.006 ETH</span></span>
+                          <span class="text-[#34d399]">$8.55–$13.50/ea</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>Total Budget: ~0.0162 ETH ($36.43)</span>
+                      <span class="text-[#34d399] font-bold">45 NFTs → $135.45 Floor!</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interactive Flip Desk Quick Calculator & Direct Marketplace Links -->
+                <div class="p-2.5 rounded-xl bg-gradient-to-r from-[#00f5d4]/10 via-[#3b82f6]/10 to-[#a855f7]/10 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="text-white font-bold">Stealth Funding Rule:</span>
+                    <span class="text-[#c5cee0]">Withdraw <b class="text-[#00f5d4] font-mono">0.015–0.025 ETH ($33.75–$56.25)</b> from Kraken/Coinbase directly to <code class="text-white font-mono select-all">0xae1cA265dE962B4eCafd4Af099414b5A598139B0</code>, wrap <b class="text-white font-mono">0.010 ETH → WETH</b>, and post ladders!</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0">
+                    <a href="https://opensea.io/collection/minisupers" target="_blank"
+                       class="px-2.5 py-1 rounded-lg bg-[#2081e2]/25 hover:bg-[#2081e2]/40 border border-[#2081e2]/50 text-white font-semibold">
+                      🌊 OpenSea Bid Book ↗
+                    </a>
+                    <a href="https://blur.io/eth/collection/0xe935e764da0f1a2597f9c1bf13a64515bff9f7d7" target="_blank"
+                       class="px-2.5 py-1 rounded-lg bg-[#f59e0b]/25 hover:bg-[#f59e0b]/40 border border-[#f59e0b]/50 text-[#fbbf24] font-semibold">
+                      ⚡ Blur Sweep &amp; Bids ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -685,11 +803,11 @@
                   <img src="nft-media/nobg/minisupers_6915.png" alt="Mini Supers #6915" class="w-[88%] h-[88%] object-contain group-hover:scale-105 transition" />
                 </div>
                 <div class="min-w-0 flex-1 pr-5">
-                  <div class="font-bold text-white text-sm leading-tight">Mini Supers Whale Stack</div>
-                  <div class="text-xs text-[#00f5d4] font-semibold mt-0.5">133 Held ($400.33 USD • swooz.eth + #928)</div>
-                  <div class="text-[11px] text-[#8b95a9] font-mono mt-1.5 leading-snug">
-                    Floor: 0.00134 ETH ($3.01)<br />
-                    <span class="text-[#34d399] font-semibold">Stack Value: $400.33 USD</span>
+                  <div class="font-bold text-white text-sm leading-tight">Mini Supers Whale + Flip Desk</div>
+                  <div id="orbit-card3-ms-held" class="text-xs text-[#00f5d4] font-semibold mt-0.5">132 Cold (swooz.eth) + 1 Flip Desk (0xae1c)</div>
+                  <div class="text-[11px] text-[#8b95a9] font-mono mt-1 leading-snug">
+                    Floor: 0.00134 ETH ($3.01) • WETH Bids: $0.23–$0.79<br />
+                    <span class="text-[#34d399] font-semibold">Stack: $400.33 USD</span> • <span onclick="event.stopPropagation(); switchOrbitCard2Tab('msflip');" class="text-[#fbbf24] underline hover:text-white">Open Sweep Plan ↗</span>
                   </div>
                 </div>
               </div>
@@ -2114,7 +2232,36 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           });
         }).catch(() => {});
       }
-      navigator.serviceWorker.register('sw.js?v=32', { updateViaCache: 'none' }).then(reg => {
+      // Live On-Chain Flip Desk (0xae1c...39B0) Mini Supers & WETH/ETH Watcher
+    async function syncFlipDeskOnChain() {
+      try {
+        const msData = '0x70a08231000000000000000000000000ae1ca265de962b4ecafd4af099414b5a598139b0';
+        const [msHex, ethHex, wethHex] = await Promise.all([
+          rpcCall('eth_call', [{ to: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7', data: msData }, 'latest']),
+          rpcCall('eth_getBalance', [FLIP_DESK_ADDR, 'latest']),
+          rpcCall('eth_call', [{ to: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', data: msData }, 'latest'])
+        ]);
+        const cnt = parseInt(msHex, 16);
+        if (!isNaN(cnt) && cnt >= 1) FLIP_DESK_MS_COUNT = cnt;
+        const ethVal = (parseInt(ethHex, 16) || 0) / 1e18;
+        const wethVal = (parseInt(wethHex, 16) || 0) / 1e18;
+        const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
+        FLIP_DESK_ETH_USD = (ethVal + wethVal) * ethSpot;
+        const lbl = document.getElementById('flipdesk-ms-count-lbl');
+        if (lbl) {
+          lbl.textContent = `${FLIP_DESK_MS_COUNT} Held ($${(FLIP_DESK_MS_COUNT * 3.01).toFixed(2)}) • Ammo: ${(ethVal + wethVal).toFixed(4)} ETH/WETH ($${FLIP_DESK_ETH_USD.toFixed(2)})`;
+        }
+        const c3 = document.getElementById('orbit-card3-ms-held');
+        if (c3) {
+          c3.textContent = `132 Cold (swooz.eth / $397.32) + ${FLIP_DESK_MS_COUNT} Flip Desk (0xae1c / $${(FLIP_DESK_MS_COUNT * 3.01).toFixed(2)})`;
+        }
+        renderOrbitTokensTable();
+      } catch (e) {}
+    }
+    setTimeout(syncFlipDeskOnChain, 1200);
+    setInterval(syncFlipDeskOnChain, 30000);
+
+    navigator.serviceWorker.register('sw.js?v=33', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -2938,11 +3085,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             },
             {
               id: 'swooz-ms928-vault',
-              label: '🦸 Mini Supers #928 Vault (Recovered Seed Phrase)',
+              label: '🦸 Mini Supers Flip & WETH Bid Desk (Includes #928 • Stealth Sales Wallet)',
               address: '0xae1cA265dE962B4eCafd4Af099414b5A598139B0',
               eth: 0.00013278,
               costUsd: 0.32,
-              miniSupers: 1,
+              miniSupers: FLIP_DESK_MS_COUNT,
               isOnChain: true
             },
             {
@@ -4502,6 +4649,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let LIVE_SOL_RATE = 90.51;
     let LIVE_BTC_RATE = 78692.00;
     let LIVE_LINK_RATE = 10.91;
+    let FLIP_DESK_ADDR = '0xae1cA265dE962B4eCafd4Af099414b5A598139B0';
+    let FLIP_DESK_MS_COUNT = 1;
+    let FLIP_DESK_ETH_USD = 0.30;
     let PREV_NETWORTH_USD = 0;
     let LAST_TICK_DELTA_USD = 0.00;
     let LAST_TICK_TIME_STR = 'LIVE';
@@ -4620,20 +4770,39 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         },
         {
           id: 'vault-ms',
-          symbol: 'MS',
-          name: 'Mini Supers Vault',
-          sub: 'ERC-721 • #2 Whale',
+          symbol: 'MS-COLD',
+          name: 'Mini Supers Cold Vault',
+          sub: 'swooz.eth • #2 Whale (Locked)',
           chain: 'MATIC',
           scope: ['swooz', 'vaults', 'combined'],
           badgeBg: 'linear-gradient(135deg, #8247e5, #6d28d9)',
           badgeTxt: '🦸',
           netBg: '#1e293b',
           netIcon: '🦊',
-          platform: 'swooz.eth (132 Held / $397.32) + 0xae1c...39B0 (#928 / $3.01)',
-          amountTxt: '133 NFTs ($400.33)',
-          usdVal: msVal,
-          targetUsd: msVal,
-          chgTxt: '+14.5% Floor',
+          platform: 'swooz.eth (132 Cold Held • Zero Approvals)',
+          amountTxt: '132 NFTs ($397.32)',
+          usdVal: 397.32,
+          targetUsd: 397.32,
+          chgTxt: '🔒 Cold Hold',
+          isUp: true,
+          pair: 'ETHUSD'
+        },
+        {
+          id: 'flipdesk-ms',
+          symbol: 'MS-FLIP',
+          name: 'Mini Supers Flip Desk',
+          sub: '0xae1c...39B0 • WETH Bid & Sweep',
+          chain: 'MATIC',
+          scope: ['swooz', 'vaults', 'flipdesk', 'combined'],
+          badgeBg: 'linear-gradient(135deg, #00f5d4, #0d9488)',
+          badgeTxt: '⚡',
+          netBg: '#0f766e',
+          netIcon: '🎯',
+          platform: `0xae1c...39B0 (${FLIP_DESK_MS_COUNT} Held #928 + WETH Bids @ $0.63–$0.79)`,
+          amountTxt: `${FLIP_DESK_MS_COUNT} NFT${FLIP_DESK_MS_COUNT === 1 ? '' : 's'} ($${(FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD).toFixed(2)})`,
+          usdVal: FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD,
+          targetUsd: FLIP_DESK_MS_COUNT * 8.55 + FLIP_DESK_ETH_USD,
+          chgTxt: '🎯 Bid Ladder $0.27–$0.79',
           isUp: true,
           pair: 'ETHUSD'
         },
@@ -5211,7 +5380,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           dex: 'Total Net Worth (9-Leg Active DEX Only)',
           kraken: 'Total Net Worth (Kraken Pro 3 Active Legs)',
           coinbase: 'Total Net Worth (Coinbase Adv 6 Active Legs)',
-          vaults: 'Total Net Worth (4 On-Chain Ethereum Vaults)'
+          vaults: 'Total Net Worth (4 On-Chain Ethereum Vaults)',
+          flipdesk: 'Mini Supers Flip Desk (0xae1c...39B0)'
         };
         lbl.textContent = titles[ORBIT_PORTFOLIO_SCOPE] || titles.swooz;
       }
@@ -5225,21 +5395,23 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (typeof window.playBeep === 'function') window.playBeep();
       const planView = document.getElementById('orbit-card2-plan-view');
       const tokensView = document.getElementById('orbit-card2-tokens-view');
+      const msflipView = document.getElementById('orbit-card2-msflip-view');
       const btnPlan = document.getElementById('orbit-card2-btn-plan');
       const btnTokens = document.getElementById('orbit-card2-btn-tokens');
+      const btnMsflip = document.getElementById('orbit-card2-btn-msflip');
 
-      if (tab === 'plan') {
-        if (planView) planView.classList.remove('hidden');
-        if (tokensView) tokensView.classList.add('hidden');
-        if (btnPlan) btnPlan.className = 'text-base font-bold text-white border-b-2 border-[#00f5d4] pb-1 transition cursor-pointer flex items-center gap-1';
-        if (btnTokens) btnTokens.className = 'text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer';
-      } else {
-        if (planView) planView.classList.add('hidden');
-        if (tokensView) tokensView.classList.remove('hidden');
-        if (btnTokens) btnTokens.className = 'text-base font-bold text-white border-b-2 border-[#00f5d4] pb-1 transition cursor-pointer';
-        if (btnPlan) btnPlan.className = 'text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1';
-        renderOrbitTokensTable();
-      }
+      const activeCls = 'text-sm sm:text-base font-bold text-white border-b-2 border-[#00f5d4] pb-1 transition cursor-pointer flex items-center gap-1';
+      const idleCls = 'text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1';
+
+      if (planView) planView.classList.toggle('hidden', tab !== 'plan');
+      if (tokensView) tokensView.classList.toggle('hidden', tab !== 'tokens');
+      if (msflipView) msflipView.classList.toggle('hidden', tab !== 'msflip');
+
+      if (btnTokens) btnTokens.className = tab === 'tokens' ? activeCls : idleCls;
+      if (btnPlan) btnPlan.className = tab === 'plan' ? activeCls : idleCls;
+      if (btnMsflip) btnMsflip.className = tab === 'msflip' ? activeCls : idleCls;
+
+      if (tab === 'tokens') renderOrbitTokensTable();
     }
 
     function setOrbitChartTf(tf) {
@@ -5351,8 +5523,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         'all': 'swooz',
         'kraken-only': 'kraken',
         'coinbase-only': 'coinbase',
-        'vaults-only': 'vaults'
+        'vaults-only': 'vaults',
+        'flipdesk-only': 'flipdesk'
       };
+      if (val === 'flipdesk-only') {
+        switchOrbitCard2Tab('msflip');
+      }
       setOrbitPortfolioScope(scopeMap[val] || 'swooz');
     }
 
