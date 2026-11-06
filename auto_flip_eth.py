@@ -126,7 +126,8 @@ def main() -> None:
     cb_legs = [
         {
             "name": "CB ETH Core Ping-Pong",
-            "order_id": "6d5a6169-84cd-4121-8217-86aaa03085c5",
+            "order_id": "93609cd9-a7f7-4ec5-bebb-50d61005b628",
+            "carved_topup": True,
             "product_id": "ETH-USDC",
             "state": "SELL",
             "buy_px": 2360.00,
@@ -162,7 +163,8 @@ def main() -> None:
         },
         {
             "name": "CB ETH Dip-Catcher",
-            "order_id": "a9e815e1-01fe-46c5-aa58-42a988a5040c",
+            "order_id": "",
+            "carved_out": True,
             "product_id": "ETH-USDC",
             "state": "SELL",
             "buy_px": 2350.00,

@@ -633,7 +633,7 @@
               <div id="orbit-card2-msflip-view" class="hidden space-y-2.5 text-xs">
                 <div class="p-2.5 rounded-xl bg-[#0e121b] border border-[#00f5d4]/30 flex flex-wrap items-center justify-between gap-2">
                   <div class="text-[#c5cee0] leading-snug">
-                    <span class="text-[#00f5d4] font-bold">🕵️ Stealth Flip Desk Armed: $60.00 ETH Carve-Out on $2,435.00 Fill → <code class="font-mono text-white select-all">0x9be1662E325413224810F2237c2D0788032b8f74</code></span><br />
+                    <span class="text-[#10f1b6] font-bold">✅ $60.22 ETH (`0.026900 ETH`) UNLOCKED ON COINBASE NOW → Send to <code class="font-mono text-white select-all">0x9be1662E325413224810F2237c2D0788032b8f74</code></span><br />
                     Older unattached wallet (<span class="text-white font-mono">0x9be1...8f74</span> • <b id="flipdesk-ms-count-lbl" class="text-[#00f5d4]">0 Held • $60.00 Carve-Out Pending</b>) with <b class="text-[#10f1b6]">zero on-chain link</b> to <span class="text-white font-mono">swooz.eth (132)</span> or <span class="text-white font-mono">0xae1c (#928)</span>! Looks like a fresh 2022 whale entering Mini Supers on Blur.
                   </div>
                 </div>
@@ -2263,7 +2263,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     setTimeout(syncFlipDeskOnChain, 1200);
     setInterval(syncFlipDeskOnChain, 30000);
 
-    navigator.serviceWorker.register('sw.js?v=35', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=36', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -4809,11 +4809,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           badgeTxt: '🕵️',
           netBg: '#0f766e',
           netIcon: '⚡',
-          platform: `0x9be1...8f74 (${FLIP_DESK_MS_COUNT} Swept + $60 Carve-Out @ $2,435 Fill)`,
+          platform: `0x9be1...8f74 (${FLIP_DESK_MS_COUNT} Swept + 0.0269 ETH / $60.22 Unlocked on CB!)`,
           amountTxt: `${FLIP_DESK_MS_COUNT} NFTs ($${(FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD).toFixed(2)} / $60 Armed)`,
           usdVal: FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD,
           targetUsd: (FLIP_DESK_MS_COUNT > 0 ? FLIP_DESK_MS_COUNT * 3.01 : 180.00),
-          chgTxt: '⏳ $60 @ $2,435 Fill',
+          chgTxt: '🟢 $60.22 Unlocked Now!',
           isUp: true,
           pair: 'ETHUSD'
         },
