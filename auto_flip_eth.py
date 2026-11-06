@@ -88,59 +88,68 @@ def main() -> None:
     env = load_env()
     webhook = env.get("DISCORD_WEBHOOK_URL", "")
 
-    # Kraken Pro 4 Staggered High-Velocity Compounding Legs
+    # Kraken Pro 4 Bidirectional Reverse-Grid + Breakout Legs (Plays BOTH sides of the live $2,216-$2,284 range + $2,385 breakout!)
     k_legs = [
         {
-            "name": "Kraken Leg 1A (ETH Mid-Bounce Harvester)",
-            "txid": "OFRWGP-47KMX-JAHVTJ",
-            "pair": "XETHZUSD",
-            "state": "SELL",
-            "vol": 0.16337609,
-            "buy_px": 2382.00,
-            "sell_px": 2428.00,
-            "decimals": 8,
-        },
-        {
-            "name": "Kraken Leg 1B (ETH Breakout Power Leg)",
-            "txid": "OH7SYK-7VCUF-WH5K5O",
-            "pair": "XETHZUSD",
-            "state": "SELL",
-            "vol": 0.16337610,
-            "buy_px": 2398.00,
-            "sell_px": 2458.00,
-            "decimals": 8,
-        },
-        {
-            "name": "Kraken Leg 2 (ETH Fast-Trigger Scalper)",
-            "txid": "OW5ZDC-BUN57-7TVZUG",
+            "name": "Kraken Leg 2 (Local Range Short/Reload)",
+            "txid": "OUUDZ7-CBKWI-EQDF5F",
             "pair": "XETHZUSD",
             "state": "SELL",
             "vol": 0.05085957,
-            "buy_px": 2364.00,
-            "sell_px": 2408.00,
+            "buy_px": 2216.00,
+            "sell_px": 2262.00,
             "decimals": 8,
         },
         {
-            "name": "Kraken Leg 3 (SOL Fast Scalper)",
-            "txid": "OTIZEK-ZNKY6-2BEFNY",
+            "name": "Kraken Leg 1A (Channel Top Short/Reload)",
+            "txid": "OL4VXF-ZQFX3-Y4ZWSA",
+            "pair": "XETHZUSD",
+            "state": "SELL",
+            "vol": 0.16337609,
+            "buy_px": 2234.00,
+            "sell_px": 2284.00,
+            "decimals": 8,
+        },
+        {
+            "name": "Kraken Leg 1B (Mid-Breakout Rally Wall)",
+            "txid": "OUZWVK-5LAOQ-JK2OHZ",
+            "pair": "XETHZUSD",
+            "state": "SELL",
+            "vol": 0.16337610,
+            "buy_px": 2330.00,
+            "sell_px": 2385.00,
+            "decimals": 8,
+        },
+        {
+            "name": "Kraken Leg 3 (Local SOL Range Scalper)",
+            "txid": "OFFIKV-FPECK-TBSP3W",
             "pair": "SOLUSD",
             "state": "SELL",
             "vol": 0.13324100,
-            "buy_px": 93.80,
-            "sell_px": 96.80,
+            "buy_px": 88.90,
+            "sell_px": 91.80,
             "decimals": 6,
         },
     ]
 
-    # Coinbase Advanced 5 Staggered High-Velocity Compounding Legs (Total = 9 Active Legs!)
+    # Coinbase Advanced 5 Bidirectional Reverse-Grid + Breakout Legs (Total = 9 Active Legs!)
     cb_legs = [
         {
-            "name": "CB Leg 4 (ETH Breakout Compounder)",
+            "name": "CB Leg 4 (ETH Upper Breakout Wall)",
             "order_id": "cc4b1d80-4b1c-427b-be6e-8a91424d65ce",
             "product_id": "ETH-USDC",
             "state": "SELL",
             "buy_px": 2388.00,
             "sell_px": 2448.00,
+            "decimals": 6,
+        },
+        {
+            "name": "CB Leg 9 (Local SOL Range Scalper)",
+            "order_id": "a3ca66c6-22a4-48f9-ac17-93fe26e85641",
+            "product_id": "SOL-USDC",
+            "state": "SELL",
+            "buy_px": 89.20,
+            "sell_px": 92.40,
             "decimals": 6,
         },
         {
@@ -169,15 +178,6 @@ def main() -> None:
             "buy_px": 11.20,
             "sell_px": 11.85,
             "decimals": 2,
-        },
-        {
-            "name": "CB Leg 9 (SOL Mid-Bounce Catcher)",
-            "order_id": "a7f9808b-da52-4056-889c-578c06164c44",
-            "product_id": "SOL-USDC",
-            "state": "SELL",
-            "buy_px": 94.20,
-            "sell_px": 97.80,
-            "decimals": 6,
         },
     ]
 
