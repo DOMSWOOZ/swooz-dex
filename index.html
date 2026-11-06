@@ -1262,7 +1262,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <td class="py-1.5 px-2 font-bold">0.0436 ETH ($97.19)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$106.67 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $2,388.00 (+$2.61)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (cc4b1d80)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (e4a92d0b)</td>
                     </tr>
                     <tr class="bg-purple-500/10">
                       <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🔵 L9 Coinbase SOL Mid Reverse-Grid</td>
@@ -1278,7 +1278,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <td class="py-1.5 px-2 font-bold">0.2849 SOL ($25.42)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$28.32 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $95.20 (+$1.20)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (a272dcf4)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (8aeeb1b6)</td>
                     </tr>
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 L6 Coinbase BTC Breakout</td>
@@ -1286,7 +1286,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <td class="py-1.5 px-2 font-bold">0.00088 BTC ($66.18)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$71.67 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $79,200.00 (+$1.91)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (245c48b9)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (5a3235f8)</td>
                     </tr>
                     <tr>
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 L7 Coinbase LINK Breakout</td>
@@ -1294,7 +1294,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <td class="py-1.5 px-2 font-bold">2.3700 LINK ($25.57)</td>
                       <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$28.08 USDC</td>
                       <td class="py-1.5 px-2 font-bold text-sky-400">Auto-Buys @ $11.20 (+$1.54)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (21abdc51)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (1662fbe6)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -2117,12 +2117,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v43') caches.delete(k);
+            if (k !== 'swooz-dex-v44') caches.delete(k);
           });
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=43', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=44', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -3403,9 +3403,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         btnId: 'btn-pair-btc',
         activeCls: 'px-2.5 py-1 rounded-md bg-amber-500 text-white font-bold font-mono transition',
         stencil: '3G // VCD-09 // BTCUSD',
-        targetSell: 81800.00,
-        coreRebuy: 79200.00,
-        targetBuy: 79200.00,
+        targetSell: 76800.00,
+        coreRebuy: 74800.00,
+        targetBuy: 74800.00,
         decimals: 0,
         sellNote: '🟢 Armed: 0.0008762 BTC ($71.67)',
         rebuyLbl: 'VEC.04 // BTC RE-BUY VECTOR',
@@ -3417,9 +3417,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         btnId: 'btn-pair-link',
         activeCls: 'px-2.5 py-1 rounded-md bg-sky-500 text-white font-bold font-mono transition',
         stencil: '3G // VCD-09 // LINKUSD',
-        targetSell: 11.85,
-        coreRebuy: 11.20,
-        targetBuy: 11.20,
+        targetSell: 11.05,
+        coreRebuy: 10.65,
+        targetBuy: 10.65,
         decimals: 2,
         sellNote: '🟢 Armed: 2.37 LINK ($28.08)',
         rebuyLbl: 'VEC.04 // LINK RE-BUY VECTOR',

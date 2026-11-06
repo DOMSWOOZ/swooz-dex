@@ -137,19 +137,19 @@ def main() -> None:
         },
     ]
 
-    # Coinbase Advanced 5 Bidirectional Reverse-Grid + Breakout Legs (Total = 9 Active Legs!)
+    # Coinbase Advanced 5 Bidirectional Local Reverse-Grid Legs (Total = 9 Active Legs!)
     cb_legs = [
         {
-            "name": "CB Leg 4 (ETH Upper Breakout Wall)",
-            "order_id": "cc4b1d80-4b1c-427b-be6e-8a91424d65ce",
+            "name": "CB Leg 4 (ETH Local Reverse-Grid)",
+            "order_id": "e4a92d0b-7496-47da-be16-5c1674d847c9",
             "product_id": "ETH-USDC",
             "state": "SELL",
-            "buy_px": 2388.00,
-            "sell_px": 2448.00,
+            "buy_px": 2222.00,
+            "sell_px": 2272.00,
             "decimals": 6,
         },
         {
-            "name": "CB Leg 9 (Local SOL Range Scalper)",
+            "name": "CB Leg 9 (SOL Fast Reverse-Grid)",
             "order_id": "a3ca66c6-22a4-48f9-ac17-93fe26e85641",
             "product_id": "SOL-USDC",
             "state": "SELL",
@@ -158,30 +158,30 @@ def main() -> None:
             "decimals": 6,
         },
         {
-            "name": "CB Leg 5 (SOL Breakout Runner)",
-            "order_id": "a272dcf4-9e7e-4e4b-819c-1101ca4cc0ad",
+            "name": "CB Leg 5 (SOL Mid Reverse-Grid)",
+            "order_id": "8aeeb1b6-3a95-471e-a47a-bd58b0eb8f06",
             "product_id": "SOL-USDC",
             "state": "SELL",
-            "buy_px": 95.20,
-            "sell_px": 99.40,
+            "buy_px": 91.20,
+            "sell_px": 94.80,
             "decimals": 6,
         },
         {
-            "name": "CB Leg 6 (BTC Upside Wall)",
-            "order_id": "245c48b9-9ff8-403c-89ae-a999ad3868a0",
+            "name": "CB Leg 6 (BTC Local Reverse-Grid)",
+            "order_id": "5a3235f8-d22b-4285-b262-5d0de497dbf8",
             "product_id": "BTC-USDC",
             "state": "SELL",
-            "buy_px": 79200.00,
-            "sell_px": 81800.00,
+            "buy_px": 74800.00,
+            "sell_px": 76800.00,
             "decimals": 7,
         },
         {
-            "name": "CB Leg 7 (LINK Upside Wall)",
-            "order_id": "21abdc51-4595-4432-948e-6885eb412b77",
+            "name": "CB Leg 7 (LINK Local Reverse-Grid)",
+            "order_id": "1662fbe6-26ba-4d25-8ffc-02d3225b3195",
             "product_id": "LINK-USDC",
             "state": "SELL",
-            "buy_px": 11.20,
-            "sell_px": 11.85,
+            "buy_px": 10.65,
+            "sell_px": 11.05,
             "decimals": 2,
         },
     ]
