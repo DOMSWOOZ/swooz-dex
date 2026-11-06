@@ -302,7 +302,7 @@ def main() -> None:
                     dec = leg["decimals"]
                     if leg["state"] == "SELL" and filled_val > 5.0:
                         net_usdc = (filled_val - fee_val) / (1.0 + CB_MAKER_FEE)
-                        # $60.00 Post-Bounce Carve-Out Rule for Mini Supers Flip Desk (0xae1cA265dE962B4eCafd4Af099414b5A598139B0):
+                        # $60.00 Post-Bounce Carve-Out Rule for Mini Supers Flip Desk (0x9be1662E325413224810F2237c2D0788032b8f74):
                         # When CB ETH Dip-Catcher (~$56.46 net) fills @ $2,435, keep it 100% UNLOCKED for transfer,
                         # and shave $3.54 off CB ETH Core (~$114.46 -> $110.92) so $60.00 total is Available to Transfer!
                         if leg["name"] == "CB ETH Dip-Catcher" and not leg.get("carved_out"):
@@ -312,7 +312,7 @@ def main() -> None:
                             send_discord_alert(
                                 webhook,
                                 "🦸 $56.46 / $60.00 FLIP-DESK CARVE-OUT UNLOCKED (Leg #8 Filled @ $2,435)!",
-                                "Kept `$56.46` unlocked (not re-locked in orders) for transfer to `0xae1cA265dE962B4eCafd4Af099414b5A598139B0` (Blur WETH Bid Pool)!",
+                                "Kept `$56.46` unlocked (not re-locked in orders) for transfer to `0x9be1662E325413224810F2237c2D0788032b8f74` (Blur WETH Bid Pool)!",
                             )
                             get_snapshot()
                             continue
