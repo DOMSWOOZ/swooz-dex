@@ -433,9 +433,9 @@ def get_snapshot() -> dict:
         "hold_cleared": snap["hold_cleared"],
         "mini_supers_held": swooz_ms_count,
         "mini_supers_rank": swooz_ms_rank,
-        "active_order_id": "9 Live Orders (3 Kraken Pro + 6 Coinbase Advanced)",
-        "active_order_desc": "9-Leg Dual-Exchange Straddle ($1,223.11 Deployed Across ETH, SOL, BTC, LINK)",
-        "re_buy_target": "Playing Both Sides: Upside ($2,434.30) + ETH Dip ($2,350.00) + SOL Dip ($93.50)",
+        "active_order_id": "9 Live Orders (4 Kraken Pro + 5 Coinbase Advanced)",
+        "active_order_desc": "9-Leg Reverse-Grid + Breakout Hybrid (OUUDZ7 @ $2,262 | OL4VXF @ $2,284 | OUZWVK @ $2,385 | OFFIKV @ $91.80)",
+        "re_buy_target": "Reverse-Grid Reloads: ETH @ $2,216 & $2,234 | SOL @ $88.90 & $89.20 | Breakout @ $2,385 / $2,448",
     }
     vault_cipher = encrypt_owner_vault(private_vault_payload, vault_pin)
 
@@ -511,7 +511,7 @@ def send_discord_webhook(snap: dict) -> int:
         wd = kraken["recent_eth_withdrawal"]
         status_line = f"🚀 **ETH Withdrawal Active:** `{wd['amount']:.4f} ETH` ({wd['status']})"
     else:
-        status_line = "🤖 **Active Strategy:** 9-Leg Dual-Exchange Straddle (`Kraken Pro` + `Coinbase Advanced`)"
+        status_line = "🤖 **Active Strategy:** 9-Leg Bidirectional Reverse-Grid (`$2,262/$2,284` ↔ `$2,216/$2,234`) + Breakout (`$2,385/$2,448`)"
 
     pnl_sign = "+" if pnl["fiat_pnl_usd"] >= 0 else ""
     color = 0xEF4444 if snap["any_target_moved"] else 0x10B981
