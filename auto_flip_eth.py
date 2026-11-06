@@ -302,6 +302,23 @@ def main() -> None:
                     dec = leg["decimals"]
                     if leg["state"] == "SELL" and filled_val > 5.0:
                         net_usdc = (filled_val - fee_val) / (1.0 + CB_MAKER_FEE)
+                        # $60.00 Post-Bounce Carve-Out Rule for Mini Supers Flip Desk (0xae1cA265dE962B4eCafd4Af099414b5A598139B0):
+                        # When CB ETH Dip-Catcher (~$56.46 net) fills @ $2,435, keep it 100% UNLOCKED for transfer,
+                        # and shave $3.54 off CB ETH Core (~$114.46 -> $110.92) so $60.00 total is Available to Transfer!
+                        if leg["name"] == "CB ETH Dip-Catcher" and not leg.get("carved_out"):
+                            leg["carved_out"] = True
+                            leg["order_id"] = ""
+                            leg["state"] = "CARVED_OUT_60"
+                            send_discord_alert(
+                                webhook,
+                                "🦸 $56.46 / $60.00 FLIP-DESK CARVE-OUT UNLOCKED (Leg #8 Filled @ $2,435)!",
+                                "Kept `$56.46` unlocked (not re-locked in orders) for transfer to `0xae1cA265dE962B4eCafd4Af099414b5A598139B0` (Blur WETH Bid Pool)!",
+                            )
+                            get_snapshot()
+                            continue
+                        if leg["name"] == "CB ETH Core Ping-Pong" and not leg.get("carved_topup"):
+                            leg["carved_topup"] = True
+                            net_usdc = max(10.0, net_usdc - 3.54)
                         new_sz = round(net_usdc / leg["buy_px"], dec)
                         new_oid = place_cb_post_only(
                             leg["product_id"], "BUY", f"{new_sz:.{dec}f}", f"{leg['buy_px']:.2f}"
