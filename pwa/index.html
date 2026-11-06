@@ -250,42 +250,27 @@
             </button>
           </div>
 
-          <!-- Left Sidebar Navigation Categories -->
+          <!-- Left Sidebar Navigation Categories (Automated Trading Forefront + NFT Archive Background) -->
+          <div class="text-[10px] font-mono uppercase tracking-wider text-[#10f1b6] px-2 pb-1 font-bold">
+            ⚡ Automated Trading
+          </div>
           <nav class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-1.5 text-[13px] font-semibold">
             <button id="orbit-nav-orbit" onclick="switchOrbitSidebar('orbit')"
                     class="orbit-nav-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition cursor-pointer">
-              <span class="text-sm shrink-0">🌌</span>
-              <span>Dashboard</span>
+              <span class="text-sm shrink-0">⚡</span>
+              <span>Trading Command</span>
             </button>
 
             <button id="orbit-nav-trade" onclick="switchOrbitSidebar('trade')"
                     class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
               <span class="text-sm shrink-0">📈</span>
-              <span>Charts &amp; 9-Leg</span>
+              <span>4-Asset Charts</span>
             </button>
 
-            <button id="orbit-nav-targets" onclick="switchOrbitSidebar('targets')"
+            <button id="orbit-nav-plan" onclick="switchOrbitSidebar('orbit'); switchOrbitCard2Tab('plan');"
                     class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-              <span class="text-sm shrink-0">🎯</span>
-              <span>Targets (5)</span>
-            </button>
-
-            <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-              <span class="text-sm shrink-0">🎬</span>
-              <span>NFT Stage</span>
-            </button>
-
-            <button id="orbit-nav-markets" onclick="switchOrbitSidebar('markets')"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-              <span class="text-sm shrink-0">📊</span>
-              <span>Markets</span>
-            </button>
-
-            <button id="orbit-nav-calc" onclick="switchOrbitSidebar('calc')"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-              <span class="text-sm shrink-0">⚡</span>
-              <span>Bid Calc</span>
+              <span class="text-sm shrink-0">🤖</span>
+              <span>10-Leg Bot Plan</span>
             </button>
 
             <button id="orbit-nav-install" onclick="toggleInstallModal()"
@@ -295,7 +280,39 @@
             </button>
           </nav>
 
-          <span id="hdr-eth-rate" class="hidden">2,250.41</span>
+          <!-- Background Archive Section: Legacy NFT Vaults & Watchlist -->
+          <div class="mt-4 pt-3 border-t border-white/10">
+            <div class="text-[9.5px] font-mono uppercase tracking-wider text-[#8b95a9]/70 px-2 pb-1 font-semibold">
+              🗄️ Background NFT Archive
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-1 text-[11.5px] font-medium">
+              <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
+                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+                <span class="text-xs shrink-0">🗄️</span>
+                <span>NFT Vaults (Bg)</span>
+              </button>
+
+              <button id="orbit-nav-targets" onclick="switchOrbitSidebar('targets')"
+                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+                <span class="text-xs shrink-0">🎯</span>
+                <span>Legacy Watchlist</span>
+              </button>
+
+              <button id="orbit-nav-markets" onclick="switchOrbitSidebar('markets')"
+                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+                <span class="text-xs shrink-0">📊</span>
+                <span>NFT Floors (Bg)</span>
+              </button>
+
+              <button id="orbit-nav-calc" onclick="switchOrbitSidebar('calc')"
+                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+                <span class="text-xs shrink-0">🧮</span>
+                <span>Legacy Bid Calc</span>
+              </button>
+            </div>
+          </div>
+
+                    <span id="hdr-eth-rate" class="hidden">2,250.41</span>
         </div>
 
         <!-- Bottom Pinned Settings / Vault Lock Button (Exact Match to Flow Render Bottom-Left) -->
@@ -497,265 +514,296 @@
               </div>
             </div>
 
-            <!-- CARD 2: Asset Tracker (Real Active DEX & Wallet Holdings + 1-Click 9-Leg Straddle Breakdown Toggle) -->
+            <!-- CARD 2: 10-Leg Automated Profit Scraper Plan (Default Forefront Tab) + Asset Tracker Table -->
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <div class="flex items-center gap-3">
-                  <button onclick="switchOrbitCard2Tab('tokens')" id="orbit-card2-btn-tokens"
-                          class="text-base font-bold text-white border-b-2 border-[#00f5d4] pb-1 transition cursor-pointer">
-                    Asset Tracker
-                  </button>
                   <button onclick="switchOrbitCard2Tab('plan')" id="orbit-card2-btn-plan"
-                          class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1">
-                    <span>🎯 9-Leg Trading Plan</span>
+                          class="text-sm sm:text-base font-bold text-white border-b-2 border-[#00f5d4] pb-1 transition cursor-pointer flex items-center gap-1">
+                    <span>⚡ 10-Leg Profit Scraper Plan</span>
+                  </button>
+                  <button onclick="switchOrbitCard2Tab('tokens')" id="orbit-card2-btn-tokens"
+                          class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer">
+                    Asset Holdings
                   </button>
                 </div>
 
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded-md bg-[#10b981]/15 border border-[#10b981]/30 text-[#34d399] text-[10px] font-mono font-bold">
-                    9/9 BIDIRECTIONAL LEGS ARMED • 4 REVERSE-GRID + 5 BREAKOUT WALLS
+                    10/10 POST-ONLY MAKER LEGS ARMED • +$25.62 / FULL CYCLE
                   </span>
                 </div>
               </div>
 
-              <!-- TAB A (DEFAULT — Matches Omni Tracker Render): ASSET TRACKER TABLE -->
-              <div id="orbit-card2-tokens-view" class="overflow-x-auto">
+              <!-- TAB A (DEFAULT FOREFRONT): 10-LEG HIGH-FREQUENCY PROFIT SCRAPER ARCHITECTURE -->
+              <div id="orbit-card2-plan-view" class="space-y-2.5 text-xs">
+                <div class="p-2.5 rounded-xl bg-[#0e121b] border border-[#10b981]/40 flex flex-wrap items-center justify-between gap-2">
+                  <div class="text-[#c5cee0] leading-snug">
+                    <span class="text-[#10f1b6] font-bold">⚡ 10-Leg High-Frequency Profit Scraper Armed (100% Capital Active in Local Channel)!</span> We split the distant $2,385 breakout wall into two active channel scrapers at <b class="text-[#00f5d4] font-mono">$2,254.00 (just +0.80% / $18 above spot!)</b> and <b class="text-[#00f5d4] font-mono">$2,312.00</b>. All 10 Post-Only Maker legs across <b class="text-white">Kraken Pro (5 legs)</b> and <b class="text-white">Coinbase Advanced (5 legs)</b> automatically sell local pops and re-buy $42–$54 lower, auto-compounding <b class="text-[#10f1b6] font-mono">+$25.62 USD net profit per full cycle</b>!
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                  <!-- PILLAR 1: Ultra-Fast ETH Scrapers ($2,254 / $2,262 / $2,272) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#00f5d4]/30 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#00f5d4] font-bold text-xs">⚡ 1. Fast ETH Scrapers (3 Legs)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#00f5d4]/15 text-[#00f5d4] font-mono text-[10px] font-bold">0.1761 ETH ($394)</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Sits 0.80%–1.61% above spot to harvest every $18–$36 ETH bounce &amp; auto-rebuy $42–$50 lower:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L1B</b> KRK <b class="text-[#00f5d4]">0.0817 ETH</b></span>
+                          <span class="text-[#34d399]">@ $2,254 ↔ $2,212 (+$3.43)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L2</b> KRK <b class="text-[#00f5d4]">0.0509 ETH</b></span>
+                          <span class="text-[#34d399]">@ $2,262 ↔ $2,216 (+$2.34)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L4</b> CB <b class="text-[#00f5d4]">0.0436 ETH</b></span>
+                          <span class="text-[#34d399]">@ $2,272 ↔ $2,222 (+$2.18)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>Unlocks $398.17 Cash</span>
+                      <span class="text-[#34d399] font-bold">+$7.95 / Swing</span>
+                    </div>
+                  </div>
+
+                  <!-- PILLAR 2: Mid & Upper Channel ETH Scrapers ($2,284 & $2,312) -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#f59e0b]/30 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#fbbf24] font-bold text-xs">🔥 2. Channel ETH Walls (2 Legs)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/15 text-[#fbbf24] font-mono text-[10px] font-bold">0.2451 ETH ($548)</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Captures medium intraday surges to $2,284 &amp; $2,312 and reloads at $2,234 &amp; $2,258:
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L1A</b> KRK <b class="text-[#fbbf24]">0.1634 ETH</b></span>
+                          <span class="text-[#34d399]">@ $2,284 ↔ $2,234 (+$8.17)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L1C</b> KRK <b class="text-[#fbbf24]">0.0817 ETH</b></span>
+                          <span class="text-[#34d399]">@ $2,312 ↔ $2,258 (+$4.41)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>Unlocks $562.01 Cash</span>
+                      <span class="text-[#34d399] font-bold">+$12.58 / Swing</span>
+                    </div>
+                  </div>
+
+                  <!-- PILLAR 3: 5-Leg SOL / BTC / LINK Range Scrapers -->
+                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#a855f7]/30 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[#c084fc] font-bold text-xs">🚀 3. Multi-Asset Scrapers (5 Legs)</span>
+                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/15 text-[#c084fc] font-mono text-[10px] font-bold">5 Legs ($156)</span>
+                      </div>
+                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
+                        Scrapes BTC ($76.8k ↔ $74.8k), LINK ($11.05 ↔ $10.65), and 3 SOL tiers ($91.80 / $92.40 / $94.80):
+                      </p>
+                      <div class="space-y-1.5 font-mono text-[10.5px]">
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L6</b> CB <b class="text-[#fbbf24]">0.00088 BTC</b></span>
+                          <span class="text-[#34d399]">@ $76.8k ↔ $74.8k (+$1.75)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L3+L9+L5</b> <b class="text-[#c084fc]">0.7207 SOL</b></span>
+                          <span class="text-[#34d399]">@ $91.8–$94.8 (+$2.39)</span>
+                        </div>
+                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
+                          <span><b class="text-white">L7</b> CB <b class="text-[#38bdf8]">2.370 LINK</b></span>
+                          <span class="text-[#34d399]">@ $11.05 ↔ $10.65 (+$0.95)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
+                      <span>Unlocks $160.67 Cash</span>
+                      <span class="text-[#34d399] font-bold">+$5.09 / Swing</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Totals Bar -->
+                <div class="px-3 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4]/10 via-[#3b82f6]/10 to-[#a855f7]/10 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                  <div class="flex items-center gap-2.5 flex-wrap">
+                    <span class="text-white font-bold">💰 Profit Scraper Math: <span class="text-[#10f1b6] font-mono">+$18.86 Banked</span> + <span class="text-[#00f5d4] font-mono">+$25.62 / Full 10-Leg Cycle</span> = <b class="text-[#34d399] font-mono">+$70.10 in 2 Cycles • +$95.72 in 3 Cycles!</b></span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] font-mono font-bold">
+                    100% Auto-Compounding Active
+                  </span>
+                </div>
+              </div>
+
+              <!-- TAB B: ASSET HOLDINGS TABLE -->
+              <div id="orbit-card2-tokens-view" class="hidden overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr class="text-[#8b95a9] border-b border-white/10 text-[11px] font-medium">
                       <th class="pb-2.5 font-medium">Asset</th>
                       <th class="pb-2.5 font-medium">Network</th>
-                      <th class="pb-2.5 font-medium">Platform / Wallet</th>
+                      <th class="pb-2.5 font-medium">Platform / Active Legs</th>
                       <th class="pb-2.5 text-right font-medium">Amount ($USD Ref)</th>
                       <th class="pb-2.5 text-right font-medium">USD Value</th>
                     </tr>
                   </thead>
                   <tbody id="orbit-tokens-tbody" class="divide-y divide-white/5 text-[12.5px]">
-                    <!-- Populated dynamically by renderOrbitTokensTable() with real active DEX holdings -->
+                    <!-- Populated dynamically by renderOrbitTokensTable() -->
                   </tbody>
                 </table>
-              </div>
-
-              <!-- TAB B: AGGRESSIVE 9-LEG BOTH-SIDES REVERSE-GRID + BREAKOUT HYBRID -->
-              <div id="orbit-card2-plan-view" class="hidden space-y-2.5 text-xs">
-                <div class="p-2.5 rounded-xl bg-[#0e121b] border border-[#10b981]/40 flex flex-wrap items-center justify-between gap-2">
-                  <div class="text-[#c5cee0] leading-snug">
-                    <span class="text-[#10f1b6] font-bold">⚔️ Both-Sides Reverse-Grid + Breakout Hybrid Armed!</span> Half of your ETH (<b class="text-[#00f5d4] font-mono">0.2142 ETH / $478</b>) and 60% of your SOL (<b class="text-[#00f5d4] font-mono">0.4357 SOL / $39</b>) now sit <b class="text-white">right on top of the live $2,230 / $89.20 channel ($2,262 &amp; $2,284 ETH • $91.80 &amp; $92.40 SOL)</b> to sell local pops into USD cash and <b class="text-[#10f1b6]">auto-rebuy $46–$50 lower ($2,216 &amp; $2,234 ETH • $88.90 &amp; $89.20 SOL)</b>, stacking <b class="text-white font-mono">+0.00297 Free ETH (+$6.65)</b> per local swing while the other half rides the <b class="text-[#fbbf24]">$2,385 &amp; $2,448 breakout</b>!
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
-                  <!-- PILLAR 1: Live Channel Reverse-Grid (Sells Local Pops @ $2,262 & $2,284 -> Rebuys @ $2,216 & $2,234) -->
-                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#00f5d4]/30 flex flex-col justify-between">
-                    <div>
-                      <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[#00f5d4] font-bold text-xs">⚔️ 1. Local Range Reverse-Grid</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#00f5d4]/15 text-[#00f5d4] font-mono text-[10px] font-bold">0.2142 ETH ($477.85)</span>
-                      </div>
-                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        Sells local $32–$54 pops into USD &amp; buys back at $2,216 / $2,234 (+$6.65 / +0.0030 Free ETH per swing):
-                      </p>
-                      <div class="space-y-1.5 font-mono text-[10.5px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L2</b> KRK <b class="text-[#00f5d4]">0.0509 ETH</b> <span class="text-[#8b95a9]">($113.44)</span></span>
-                          <span class="text-[#34d399]">@ $2,262 ↔ $2,216</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L1A</b> KRK <b class="text-[#00f5d4]">0.1634 ETH</b> <span class="text-[#8b95a9]">($364.41)</span></span>
-                          <span class="text-[#34d399]">@ $2,284 ↔ $2,234</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Unlocks $486.24 Cash on Pop</span>
-                      <span class="text-[#34d399] font-bold">+$6.65 / Swing</span>
-                    </div>
-                  </div>
-
-                  <!-- PILLAR 2: Breakout Rally ETH Walls ($2,385 & $2,448) -->
-                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#f59e0b]/30 flex flex-col justify-between">
-                    <div>
-                      <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[#fbbf24] font-bold text-xs">🔥 2. Breakout Rally ETH</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/15 text-[#fbbf24] font-mono text-[10px] font-bold">0.2070 ETH ($461.60)</span>
-                      </div>
-                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        Holds 50% of your ETH for the major breakout to $2,385 &amp; $2,448 (rebuys @ $2,330 &amp; $2,388):
-                      </p>
-                      <div class="space-y-1.5 font-mono text-[10.5px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L1B</b> KRK <b class="text-[#fbbf24]">0.1634 ETH</b> <span class="text-[#8b95a9]">($364.41)</span></span>
-                          <span class="text-[#34d399]">@ $2,385 ($389.65)</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L4</b> CB <b class="text-[#fbbf24]">0.0436 ETH</b> <span class="text-[#8b95a9]">($97.19)</span></span>
-                          <span class="text-[#34d399]">@ $2,448 ($106.67)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Rebuys @ $2,330 &amp; $2,388</span>
-                      <span class="text-[#34d399] font-bold">$496.32 USD</span>
-                    </div>
-                  </div>
-
-                  <!-- PILLAR 3: 5 Staggered SOL / BTC / LINK Pump Walls -->
-                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#a855f7]/30 flex flex-col justify-between">
-                    <div>
-                      <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[#c084fc] font-bold text-xs">🚀 3. Staggered Alt Ladder</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/15 text-[#c084fc] font-mono text-[10px] font-bold">5 Legs ($156.05)</span>
-                      </div>
-                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        3 SOL tiers ($91.80 / $92.40 Reverse-Grid + $99.40 Breakout) + BTC ($81.8k) + LINK ($11.85):
-                      </p>
-                      <div class="space-y-1.5 font-mono text-[10.5px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L3+L9+L5</b> <b class="text-[#c084fc]">0.7207 SOL</b> <span class="text-[#8b95a9]">($64.30)</span></span>
-                          <span class="text-[#34d399]">@ $91.8–$99.4 ($68.50)</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L6</b> CB <b class="text-[#c084fc]">0.00088 BTC</b> <span class="text-[#8b95a9]">($66.18)</span></span>
-                          <span class="text-[#34d399]">@ $81.8k ($71.67)</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
-                          <span><b class="text-white">L7</b> CB <b class="text-[#c084fc]">2.370 LINK</b> <span class="text-[#8b95a9]">($25.57)</span></span>
-                          <span class="text-[#34d399]">@ $11.85 ($28.08)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Spot: $156.05 → Target</span>
-                      <span class="text-[#34d399] font-bold">$170.55 USD</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Bottom Totals Bar ($60.05 Recovery Tracker) -->
-                <div class="px-3 py-2 rounded-xl bg-gradient-to-r from-[#00f5d4]/10 via-[#3b82f6]/10 to-[#a855f7]/10 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px]">
-                  <div class="flex items-center gap-2.5 flex-wrap">
-                    <span class="text-white font-bold">🎯 $60.05 Recovery Tracker: <span class="text-[#10f1b6] font-mono">+$18.86 Banked</span> + <span class="text-[#00f5d4] font-mono">+$34.82 Wave 1 Realized (+$98.90 vs Spot)</span> + <span class="text-[#fbbf24] font-mono">+$22.40 Wave 2</span> = <b class="text-[#34d399] font-mono">+$76.08 Net!</b></span>
-                  </div>
-                  <span class="px-2 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] font-mono font-bold">
-                    Wave 1 Target Payout: $1,197.95 USD
-                  </span>
-                </div>
               </div>
             </div>
 
           </div>
 
-          <!-- RIGHT COLUMN (5 Cols): NFT PORTFOLIO (2 Square + 1 Wide Layout) + YIELD & PLATFORMS (Active DEX & Vaults) -->
+          <!-- RIGHT COLUMN (5 Cols): LIVE AUTOMATED PROFIT-SCRAPER ENGINE + CONNECTED EXCHANGES -->
           <div class="lg:col-span-5 flex flex-col gap-4 justify-between">
 
-            <!-- CARD 3: NFT Portfolio — Exact 2-Square Top + 1-Wide Horizontal Bottom Layout from Reference Render -->
+            <!-- CARD 3: Automated Profit-Scraper Telemetry & Next-Fill Countdown (Replaces old NFT Showcase!) -->
             <div class="orbit-card p-5 flex flex-col justify-between">
               <div class="flex items-center justify-between mb-1">
-                <h3 class="text-lg font-bold text-white tracking-tight">NFT Portfolio</h3>
-                <button onclick="switchOrbitSidebar('viewer')" class="text-[#8b95a9] hover:text-[#00f5d4] text-xs font-semibold cursor-pointer">Open Stage ↗</button>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base sm:text-lg font-bold text-white tracking-tight">⚡ Profit-Scraper Engine</h3>
+                  <span class="px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-[10px] font-mono font-bold">
+                    10/10 ARMED
+                  </span>
+                </div>
+                <button onclick="scrollToSec('sec-pnl')" class="text-[#00f5d4] hover:underline text-xs font-semibold cursor-pointer">Full Charts ↓</button>
               </div>
               <div class="text-xs text-[#8b95a9] font-medium mb-3">
-                Collectible NFTs <span class="text-white font-semibold">(133 Held • $400.33 USD + 5 Sniper Targets • $698.33 Est.)</span>
+                Bidirectional Auto-Flipping Daemon <span class="text-white font-semibold">(5 Kraken Pro + 5 Coinbase Adv Legs)</span>
               </div>
 
-              <!-- Top Row: 2 Square Feature Cards (IF #1506 & BEAST #2313) -->
-              <div class="grid grid-cols-2 gap-3 mb-3">
-                <!-- Square Card 1: Invisible Friends #1506 -->
-                <div onclick="openOrbitNftStageModal('if-1506')"
-                     class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-2xl p-2.5 cursor-pointer transition">
-                  <div class="w-full aspect-square rounded-xl overflow-hidden flex items-center justify-center relative"
-                       style="background: linear-gradient(145deg, #a855f7 0%, #6d28d9 55%, #2e1065 100%);">
-                    <span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-white text-[#1e293b] flex items-center justify-center text-xs font-bold shadow">◆</span>
-                    <img src="nft-media/nobg/if_1506.gif" alt="IF #1506" class="w-[88%] h-[88%] object-contain group-hover:scale-105 transition" />
-                  </div>
-                  <div class="flex items-center justify-between mt-2.5">
-                    <span class="font-bold text-white text-xs truncate">Invisible Friends #1506</span>
-                    <span class="w-4 h-4 rounded-full bg-white/10 text-white flex items-center justify-center text-[9px] shrink-0">◆</span>
-                  </div>
-                  <div id="orbit-nft-floor-if" class="text-[11px] text-[#8b95a9] mt-0.5 font-mono">
-                    Floor: 0.237 ETH ($534)
-                  </div>
+              <!-- 4 Key Profit-Scraper KPI Boxes -->
+              <div class="grid grid-cols-2 gap-2.5 mb-3 font-mono">
+                <div class="bg-[#181d2c] border border-white/10 rounded-xl p-2.5">
+                  <div class="text-[10px] text-[#8b95a9] uppercase">Banked Realized Profit</div>
+                  <div class="text-base font-extrabold text-[#10f1b6] mt-0.5">+$18.86 USD</div>
+                  <div class="text-[10px] text-slate-400">+0.00782 Free ETH Locked</div>
                 </div>
-
-                <!-- Square Card 2: BEAST #2313 -->
-                <div onclick="openOrbitNftStageModal('beast-2313-full')"
-                     class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-2xl p-2.5 cursor-pointer transition">
-                  <div class="w-full aspect-square rounded-xl overflow-hidden flex items-center justify-center relative"
-                       style="background: linear-gradient(145deg, #1e293b 0%, #0f172a 55%, #020617 100%);">
-                    <span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#0e121b] border border-white/20 text-[#00f5d4] flex items-center justify-center text-[10px] font-bold shadow">◆</span>
-                    <img src="nft-media/nobg/beast_2313_full.png" alt="BEAST #2313" class="w-[88%] h-[88%] object-contain group-hover:scale-105 transition" />
-                  </div>
-                  <div class="flex items-center justify-between mt-2.5">
-                    <span class="font-bold text-white text-xs truncate">BEAST #2313</span>
-                    <span class="w-4 h-4 rounded-full bg-[#00f5d4]/20 text-[#00f5d4] flex items-center justify-center text-[9px] shrink-0">◆</span>
-                  </div>
-                  <div id="orbit-nft-floor-beast" class="text-[11px] text-[#8b95a9] mt-0.5 font-mono">
-                    Floor: 0.0695 ETH ($157)
-                  </div>
+                <div class="bg-[#181d2c] border border-white/10 rounded-xl p-2.5">
+                  <div class="text-[10px] text-[#8b95a9] uppercase">Yield Per 10-Leg Cycle</div>
+                  <div class="text-base font-extrabold text-amber-400 mt-0.5">+$25.62 USD</div>
+                  <div class="text-[10px] text-emerald-400">+$20.53 ETH + $5.09 Alts</div>
                 </div>
               </div>
 
-              <!-- Bottom Row: 1 Wide Horizontal Feature Card (Matches ChronoLand #110 Wide Card in Render!) -->
-              <div onclick="openOrbitNftStageModal('ms-6915')"
-                   class="group bg-[#181d2c] border border-white/10 hover:border-[#00f5d4] rounded-2xl p-2.5 cursor-pointer transition flex items-center gap-3.5 relative">
-                <span class="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-[#8247e5] text-white flex items-center justify-center text-[10px] font-black shadow">#2</span>
-                <div class="w-28 h-24 sm:w-32 sm:h-24 rounded-xl overflow-hidden shrink-0 flex items-center justify-center"
-                     style="background: linear-gradient(135deg, #0d9488 0%, #115e59 55%, #042f2e 100%);">
-                  <img src="nft-media/nobg/minisupers_6915.png" alt="Mini Supers #6915" class="w-[88%] h-[88%] object-contain group-hover:scale-105 transition" />
+              <!-- Live Top-4 Closest Order Fill Countdown Bars -->
+              <div class="space-y-2 bg-[#111623] border border-white/10 rounded-xl p-3 font-mono text-[11px]">
+                <div class="flex items-center justify-between text-[10px] text-[#8b95a9] uppercase font-bold">
+                  <span>🎯 Closest Active Sell Fills</span>
+                  <span id="scraper-next-fill-lbl" class="text-[#00f5d4]">Live Distance</span>
                 </div>
-                <div class="min-w-0 flex-1 pr-5">
-                  <div class="font-bold text-white text-sm leading-tight">Mini Supers Whale Stack</div>
-                  <div id="orbit-card3-ms-held" class="text-xs text-[#00f5d4] font-semibold mt-0.5">133 Held ($400.33 USD • swooz.eth + #928)</div>
-                  <div class="text-[11px] text-[#8b95a9] font-mono mt-1 leading-snug">
-                    Floor: 0.00134 ETH ($3.01)<br />
-                    <span class="text-[#34d399] font-semibold">Stack Value: $400.33 USD</span>
+
+                <!-- Row 1: Kraken L1B ETH @ $2,254 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between items-center">
+                    <span class="text-white font-bold">🦑 L1B ETH Sell @ $2,254.00 <span class="text-emerald-400">(+$3.43)</span></span>
+                    <span id="topfill-dist-1" class="text-emerald-400 font-bold">$18.00 (0.80%) away</span>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div id="topfill-bar-1" class="h-full bg-emerald-400 rounded-full" style="width: 86%"></div>
                   </div>
                 </div>
+
+                <!-- Row 2: Coinbase L6 BTC @ $76,800 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between items-center">
+                    <span class="text-white font-bold">🔵 L6 BTC Sell @ $76,800 <span class="text-amber-400">(+$1.75)</span></span>
+                    <span id="topfill-dist-2" class="text-amber-300 font-bold">$742 (0.97%) away</span>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div id="topfill-bar-2" class="h-full bg-amber-400 rounded-full" style="width: 82%"></div>
+                  </div>
+                </div>
+
+                <!-- Row 3: Kraken L2 ETH @ $2,262 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between items-center">
+                    <span class="text-white font-bold">🦑 L2 ETH Sell @ $2,262.00 <span class="text-cyan-300">(+$2.34)</span></span>
+                    <span id="topfill-dist-3" class="text-cyan-300 font-bold">$26.00 (1.16%) away</span>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div id="topfill-bar-3" class="h-full bg-cyan-400 rounded-full" style="width: 78%"></div>
+                  </div>
+                </div>
+
+                <!-- Row 4: Coinbase L4 ETH @ $2,272 -->
+                <div class="space-y-1">
+                  <div class="flex justify-between items-center">
+                    <span class="text-white font-bold">🔵 L4 ETH Sell @ $2,272.00 <span class="text-sky-400">(+$2.18)</span></span>
+                    <span id="topfill-dist-4" class="text-sky-300 font-bold">$36.00 (1.61%) away</span>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div id="topfill-bar-4" class="h-full bg-sky-400 rounded-full" style="width: 70%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subtle Background NFT Vault Archive Link -->
+              <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10.5px] text-[#8b95a9]">
+                <span>🗄️ Background NFT Vaults: 133 Mini Supers + 6 OG ($400.33)</span>
+                <button onclick="switchOrbitSidebar('viewer')" class="text-[#8b95a9] hover:text-white underline cursor-pointer">Archive ↗</button>
+              </div>
+              <div class="hidden" aria-hidden="true">
+                <span id="orbit-nft-floor-if"></span>
+                <span id="orbit-nft-floor-beast"></span>
+                <span id="orbit-card3-ms-held"></span>
               </div>
             </div>
 
-            <!-- CARD 4: Yield & Platforms (Active DEX Straddle & Connected Vaults — Matches Bottom-Right of Render!) -->
+            <!-- CARD 4: Connected Exchanges & Automated Capital Allocation -->
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
               <div class="flex items-center justify-between mb-3">
-                <h3 class="text-base font-bold text-white">Yield &amp; Platforms <span class="text-xs font-normal text-[#8b95a9]">(Active DEX &amp; Vaults)</span></h3>
-                <span class="text-[#8b95a9] text-xs font-mono">6 Connected ($1,587.97) ▴</span>
+                <h3 class="text-base font-bold text-white">Exchange Allocation <span class="text-xs font-normal text-[#8b95a9]">(10 Active Legs)</span></h3>
+                <span class="text-[#10f1b6] text-xs font-mono font-bold">100% Deployed ▴</span>
               </div>
 
               <div class="space-y-2.5 text-xs my-auto">
-                <!-- Platform 1: Kraken Pro (4 Active Legs: 3 Reverse-Grid + 1 Breakout) -->
+                <!-- Platform 1: Kraken Pro (5 Active Legs) -->
                 <div onclick="setOrbitPortfolioScope('kraken')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer">
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#4f6ef7]/25 border border-[#4f6ef7] text-[#60a5fa] flex items-center justify-center text-xs font-bold shrink-0">🦑</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span class="text-[#8b95a9] font-normal">(0.3776 ETH / $842.07 + 0.1332 SOL / $11.89)</span> -</div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">4 Legs: ETH @ $2,262 / $2,284 / $2,385 + SOL @ $91.80 + $6.97 ZUSD → $895.09</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span class="text-[#8b95a9] font-normal">(0.3776 ETH / $844 + 0.1332 SOL / $12)</span></div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,254 • $2,262 • $2,284 • $2,312 + SOL @ $91.80 (+$18.74/cycle)</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$860.93</div>
+                  <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$863.20</div>
                 </div>
 
-                <!-- Platform 2: Coinbase Advanced (5 Active Legs: 1 Reverse-Grid + 4 Breakout) -->
+                <!-- Platform 2: Coinbase Advanced (5 Active Legs) -->
                 <div onclick="setOrbitPortfolioScope('coinbase')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer">
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#a855f7]/25 border border-[#a855f7] text-[#c084fc] flex items-center justify-center text-xs font-bold shrink-0">🔵</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(0.0436 ETH / $97.19 + Alts / $144.16)</span> -</div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,448 • SOL @ $92.40 / $99.40 • BTC @ $81.8k • LINK @ $11.85 → $262.69</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(0.0436 ETH + 0.5874 SOL + BTC + LINK)</span></div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,272 • SOL @ $92.40 / $94.80 • BTC @ $76.8k • LINK @ $11.05 (+$6.88/cycle)</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$242.38</div>
+                  <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$242.71</div>
                 </div>
 
-                <!-- Platform 3: Ethereum Mainnet 4 Connected Vaults -->
-                <div onclick="switchOrbitSidebar('viewer')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer">
+                <!-- Platform 3: Background Ethereum Vaults -->
+                <div onclick="switchOrbitSidebar('viewer')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer opacity-75">
                   <div class="flex items-center gap-2.5 min-w-0">
-                    <span class="w-6 h-6 rounded-full bg-[#10b981]/25 border border-[#10f1b6] text-[#10f1b6] flex items-center justify-center text-xs font-bold shrink-0">🦊</span>
+                    <span class="w-6 h-6 rounded-full bg-[#10b981]/20 border border-[#10f1b6]/50 text-[#10f1b6] flex items-center justify-center text-xs font-bold shrink-0">🗄️</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Ethereum Vaults <span class="text-[#8b95a9] font-normal">(4 Connected Wallets • $2.16 ETH Gas)</span> -</div>
-                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth (132 MS / $397.32) • 0xae1c (#928 / $3.01) • CCS &amp; 2022 OG</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Background On-Chain Vaults <span class="text-[#8b95a9] font-normal">(4 Cold Wallets)</span></div>
+                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth &amp; 3 Vaults (Passive Hold • Click for NFT Archive)</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-vaults-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$402.49</div>
+                  <div id="orbit-plat-vaults-val" class="font-mono font-bold text-slate-300 text-sm shrink-0 pl-2">$402.49</div>
                 </div>
               </div>
             </div>
@@ -1055,14 +1103,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 LIVE MULTI-ASSET CHARTS // 9-LEG REVERSE-GRID
               </span>
               <span class="px-2 py-0.5 rounded bg-sky-500/15 border border-sky-500/40 text-sky-400 text-[10px] font-mono font-bold">
-                🦑 KRAKEN PRO [4 LEGS] + 🔵 COINBASE ADV [5 LEGS]
+                🦑 KRAKEN PRO [5 LEGS] + 🔵 COINBASE ADV [5 LEGS]
               </span>
               <span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[10px] font-mono font-bold">
-                ⚡ +$12.97 / FULL LOCAL SWING
+                ⚡ +$25.62 / FULL 10-LEG CYCLE
               </span>
             </div>
             <h2 class="text-sm sm:text-base font-extrabold font-mono text-[var(--foreground)] mt-1">
-              📊 Live 4-Asset Order-Zone Charts &amp; 9-Leg Fill Proximity Radar
+              📊 Live 4-Asset Order-Zone Charts &amp; 10-Leg Fill Proximity Radar
             </h2>
           </div>
           <div class="flex items-center gap-2">
@@ -1082,7 +1130,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               </button>
               <button id="btn-pair-eth" onclick="switchChartPair('ETHUSD')"
                       class="px-2.5 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition cursor-pointer">
-                💎 ETH/USD ($2,262 / $2,272 / $2,284 + $2,385)
+                💎 ETH/USD ($2,254 • $2,262 • $2,272 • $2,284 • $2,312)
               </button>
               <button id="btn-pair-sol" onclick="switchChartPair('SOLUSD')"
                       class="px-2.5 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition cursor-pointer">
@@ -1117,9 +1165,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   <div>
                     <div class="font-bold font-mono text-white text-xs sm:text-sm flex items-center gap-1.5">
                       <span>ETH/USD</span>
-                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400">4 LEGS (KRK + CB)</span>
+                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400">5 LEGS (KRK + CB)</span>
                     </div>
-                    <div class="text-[10px] font-mono text-slate-400">Sells: $2,262 • $2,272 • $2,284 • $2,385 | Buys: $2,216–$2,234</div>
+                    <div class="text-[10px] font-mono text-slate-400">5 ETH Legs: Sells @ $2,254 • $2,262 • $2,272 • $2,284 • $2,312 | Buys @ $2,212–$2,258</div>
                   </div>
                 </div>
                 <div class="text-right font-mono">
@@ -1327,13 +1375,21 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,234.00 (+0.00233 ETH / +$8.17)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OL4VXF)</td>
                     </tr>
-                    <tr onclick="switchChartPair('ETHUSD')" class="hover:bg-white/5 cursor-pointer transition">
-                      <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🦑 L1B Kraken ETH Breakout Wall</td>
-                      <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $2,385.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.1634 ETH ($364.41)</td>
-                      <td class="py-1.5 px-2 text-[var(--muted-foreground)]">$389.65 USD</td>
-                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,330.00 (+$8.99 Swing)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OUZWVK)</td>
+                    <tr onclick="switchChartPair('ETHUSD')" class="bg-emerald-500/15 hover:bg-emerald-500/25 cursor-pointer transition">
+                      <td class="py-1.5 pr-2 font-sans font-bold text-emerald-300">🦑 L1B Kraken ETH Ultra-Fast Scraper</td>
+                      <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $2,254.00</td>
+                      <td class="py-1.5 px-2 font-bold">0.0817 ETH ($182.66)</td>
+                      <td class="py-1.5 px-2 text-emerald-400 font-bold">$184.13 USD</td>
+                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,212.00 (+0.00155 ETH / +$3.43)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OIJB2P)</td>
+                    </tr>
+                    <tr onclick="switchChartPair('ETHUSD')" class="bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer transition">
+                      <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🦑 L1C Kraken ETH Upper Channel Scraper</td>
+                      <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $2,312.00</td>
+                      <td class="py-1.5 px-2 font-bold">0.0817 ETH ($182.66)</td>
+                      <td class="py-1.5 px-2 text-emerald-400 font-bold">$188.86 USD</td>
+                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,258.00 (+0.00195 ETH / +$4.41)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OKTWE3)</td>
                     </tr>
                     <tr onclick="switchChartPair('SOLUSD')" class="bg-purple-500/10 hover:bg-purple-500/20 cursor-pointer transition">
                       <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🦑 L3 Kraken SOL Fast Reverse-Grid</td>
@@ -3287,8 +3343,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (orbitWrapper) orbitWrapper.classList.remove('hidden');
         if (orbitBento) orbitBento.classList.remove('hidden');
         if (crtWorkstation) crtWorkstation.classList.add('hidden');
-        if (container) container.classList.add('hidden');
-        if (typeof drawOrbitNetworthChart === 'function') setTimeout(drawOrbitNetworthChart, 25);
+        if (container) {
+          container.classList.remove('hidden');
+          container.className = 'max-w-[1600px] mx-auto px-3 pb-6 grid grid-cols-1 gap-4';
+        }
+        if (left) left.className = 'col-span-1 space-y-4';
+        if (right) right.className = 'hidden';
+        [secTargets, secViewer, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
+        if (secPnl) secPnl.classList.remove('hidden');
+        setTimeout(() => {
+          if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
+          if (typeof drawKrakenChart === 'function') drawKrakenChart();
+        }, 25);
         return;
       }
 
@@ -3430,18 +3496,21 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         btnId: 'btn-pair-eth',
         activeCls: 'px-2.5 py-1 rounded-md bg-emerald-500 text-white font-bold font-mono transition cursor-pointer',
         stencil: '3G // VCD-09 // ETHUSD',
-        targetSell: 2262.00,
-        coreRebuy: 2216.00,
-        targetBuy: 2216.00,
+        targetSell: 2254.00,
+        coreRebuy: 2212.00,
+        targetBuy: 2212.00,
         decimals: 2,
         sells: [
+          { price: 2254.00, label: 'L1B KRK SELL $2,254 (0.0817 ETH)', color: '#00f5d4' },
           { price: 2262.00, label: 'L2 KRK SELL $2,262 (0.0509 ETH)', color: '#10f1b6' },
           { price: 2272.00, label: 'L4 CB SELL $2,272 (0.0436 ETH)', color: '#38bdf8' },
-          { price: 2284.00, label: 'L1A KRK SELL $2,284 (0.1634 ETH)', color: '#34d399' }
+          { price: 2284.00, label: 'L1A KRK SELL $2,284 (0.1634 ETH)', color: '#34d399' },
+          { price: 2312.00, label: 'L1C KRK SELL $2,312 (0.0817 ETH)', color: '#a855f7' }
         ],
         buys: [
+          { price: 2258.00, label: 'L1C REBUY $2,258 (+$4.41)', color: '#c084fc' },
           { price: 2234.00, label: 'L1A REBUY $2,234 (+$8.17)', color: '#fbbf24' },
-          { price: 2216.00, label: 'L2 REBUY $2,216 (+$2.34)', color: '#f59e0b' }
+          { price: 2212.00, label: 'L1B REBUY $2,212 (+$3.43)', color: '#f59e0b' }
         ],
         sellNote: '⚔️ Armed: $2,262 / $2,272 / $2,284 (+$2,385 Brk)',
         rebuyLbl: 'VEC.04 // RELOAD & BREAKOUT VECTORS',
@@ -3804,15 +3873,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const linkSpot = (typeof LIVE_LINK_RATE === 'number' && LIVE_LINK_RATE > 1) ? LIVE_LINK_RATE : 10.81;
 
       const legs = [
-        { name: '🦑 L2 ETH ($2,262)', spot: ethSpot, sell: 2262.00, buy: 2216.00, profit: '+$2.34', color: '#10f1b6' },
-        { name: '🔵 L6 BTC ($76,800)', spot: btcSpot, sell: 76800.00, buy: 74800.00, profit: '+$1.75', color: '#f59e0b' },
-        { name: '🔵 L4 ETH ($2,272)', spot: ethSpot, sell: 2272.00, buy: 2222.00, profit: '+$2.18', color: '#38bdf8' },
-        { name: '🔗 L7 LINK ($11.05)', spot: linkSpot, sell: 11.05, buy: 10.65, profit: '+$0.95', color: '#0ea5e9' },
-        { name: '🦑 L1A ETH ($2,284)', spot: ethSpot, sell: 2284.00, buy: 2234.00, profit: '+$8.17', color: '#34d399' },
-        { name: '🦑 L3 SOL ($91.80)', spot: solSpot, sell: 91.80, buy: 88.90, profit: '+$0.39', color: '#a855f7' },
-        { name: '🔵 L9 SOL ($92.40)', spot: solSpot, sell: 92.40, buy: 89.20, profit: '+$0.97', color: '#c084fc' },
-        { name: '🔵 L5 SOL ($94.80)', spot: solSpot, sell: 94.80, buy: 91.20, profit: '+$1.03', color: '#818cf8' },
-        { name: '🦑 L1B ETH ($2,385)', spot: ethSpot, sell: 2385.00, buy: 2330.00, profit: '+$8.99', color: '#fbbf24' }
+        { name: '🦑 L1B ETH ($2,254)', spot: ethSpot, sell: 2254.00, buy: 2212.00, profit: '+$3.43', color: '#00f5d4', unit: '$' },
+        { name: '🔵 L6 BTC ($76,800)', spot: btcSpot, sell: 76800.00, buy: 74800.00, profit: '+$1.75', color: '#f59e0b', unit: '$' },
+        { name: '🦑 L2 ETH ($2,262)', spot: ethSpot, sell: 2262.00, buy: 2216.00, profit: '+$2.34', color: '#10f1b6', unit: '$' },
+        { name: '🔵 L4 ETH ($2,272)', spot: ethSpot, sell: 2272.00, buy: 2222.00, profit: '+$2.18', color: '#38bdf8', unit: '$' },
+        { name: '🔗 L7 LINK ($11.05)', spot: linkSpot, sell: 11.05, buy: 10.65, profit: '+$0.95', color: '#0ea5e9', unit: '$' },
+        { name: '🦑 L3 SOL ($91.80)', spot: solSpot, sell: 91.80, buy: 88.90, profit: '+$0.39', color: '#a855f7', unit: '$' },
+        { name: '🦑 L1A ETH ($2,284)', spot: ethSpot, sell: 2284.00, buy: 2234.00, profit: '+$8.17', color: '#34d399', unit: '$' },
+        { name: '🔵 L9 SOL ($92.40)', spot: solSpot, sell: 92.40, buy: 89.20, profit: '+$0.97', color: '#c084fc', unit: '$' },
+        { name: '🦑 L1C ETH ($2,312)', spot: ethSpot, sell: 2312.00, buy: 2258.00, profit: '+$4.41', color: '#fbbf24', unit: '$' },
+        { name: '🔵 L5 SOL ($94.80)', spot: solSpot, sell: 94.80, buy: 91.20, profit: '+$1.03', color: '#818cf8', unit: '$' }
       ].map(l => {
         const pctAway = l.spot > 0 ? Math.max(0, ((l.sell - l.spot) / l.spot) * 100) : 0;
         const fillProgress = Math.max(8, Math.min(100, (1 - Math.min(pctAway, 7.5) / 7.5) * 100));
@@ -3823,6 +3893,34 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (closestBadge && legs[0]) {
         closestBadge.textContent = `NEXT FILL: ${legs[0].name} (${legs[0].pctAway.toFixed(2)}% away)`;
       }
+      // Update Hero Card 3 Live Top-4 Fill Bars
+      const d1 = Math.max(0, 2254.00 - ethSpot);
+      const p1 = ethSpot > 0 ? (d1 / ethSpot) * 100 : 0;
+      const el1 = document.getElementById('topfill-dist-1');
+      const b1 = document.getElementById('topfill-bar-1');
+      if (el1) el1.textContent = `$${d1.toFixed(2)} (${p1.toFixed(2)}%) away`;
+      if (b1) b1.style.width = `${Math.max(12, Math.min(98, 100 - p1 * 18))}%`;
+
+      const d2 = Math.max(0, 76800.00 - btcSpot);
+      const p2 = btcSpot > 0 ? (d2 / btcSpot) * 100 : 0;
+      const el2 = document.getElementById('topfill-dist-2');
+      const b2 = document.getElementById('topfill-bar-2');
+      if (el2) el2.textContent = `$${Math.round(d2).toLocaleString()} (${p2.toFixed(2)}%) away`;
+      if (b2) b2.style.width = `${Math.max(12, Math.min(98, 100 - p2 * 18))}%`;
+
+      const d3 = Math.max(0, 2262.00 - ethSpot);
+      const p3 = ethSpot > 0 ? (d3 / ethSpot) * 100 : 0;
+      const el3 = document.getElementById('topfill-dist-3');
+      const b3 = document.getElementById('topfill-bar-3');
+      if (el3) el3.textContent = `$${d3.toFixed(2)} (${p3.toFixed(2)}%) away`;
+      if (b3) b3.style.width = `${Math.max(12, Math.min(98, 100 - p3 * 18))}%`;
+
+      const d4 = Math.max(0, 2272.00 - ethSpot);
+      const p4 = ethSpot > 0 ? (d4 / ethSpot) * 100 : 0;
+      const el4 = document.getElementById('topfill-dist-4');
+      const b4 = document.getElementById('topfill-bar-4');
+      if (el4) el4.textContent = `$${d4.toFixed(2)} (${p4.toFixed(2)}%) away`;
+      if (b4) b4.style.width = `${Math.max(12, Math.min(98, 100 - p4 * 18))}%`;
 
       const rowH = (H - 18) / legs.length;
       const barLeft = 148;
@@ -3860,15 +3958,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.clearRect(0, 0, W, H);
 
       const stages = [
-        { lbl: 'Banked', sub: 'Locked', val: 18.86, color: '#38bdf8' },
-        { lbl: 'Cycle 1', sub: '8 Grid Legs', val: 31.83, color: '#10f1b6' },
-        { lbl: 'Cycle 2', sub: '+2nd Swing', val: 44.80, color: '#10f1b6' },
-        { lbl: 'Cycle 3', sub: '+3rd Swing', val: 57.77, color: '#34d399' },
-        { lbl: 'Cycle 4', sub: '+4th Swing', val: 70.74, color: '#a855f7' },
-        { lbl: '+L1B Brk', sub: '$2,385 Fill', val: 82.40, color: '#fbbf24' }
+        { lbl: 'Banked', sub: 'Locked Cash', val: 18.86, color: '#38bdf8' },
+        { lbl: 'Cycle 1', sub: '10 Legs (+25.6)', val: 44.48, color: '#10f1b6' },
+        { lbl: 'Cycle 2', sub: '+2nd Cycle', val: 70.10, color: '#34d399' },
+        { lbl: 'Cycle 2.2', sub: 'Shift Goal!', val: 75.22, color: '#fbbf24' },
+        { lbl: 'Cycle 3', sub: '+3rd Cycle', val: 95.72, color: '#a855f7' },
+        { lbl: 'Cycle 4', sub: 'Compounded', val: 121.34, color: '#00f5d4' }
       ];
 
-      const maxVal = 92;
+      const maxVal = 132;
       const cLeft = 42;
       const cRight = W - 18;
       const cTop = 22;
@@ -4807,7 +4905,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let ORBIT_ACTIVE_CHAIN = 'ALL';
     let ORBIT_CHART_TF = '1D';
     let ORBIT_CHART_MODE = 'networth'; // 'networth' (Default: Clean Dual-Line Neon Green & Purple Curve) | 'straddle' (ETH Price + 9-Leg Zones) | 'candles' (Clean OHLC)
-    let ORBIT_CARD2_TAB = 'tokens'; // 'tokens' (Default: Asset Tracker Table) | 'plan' (9-Leg Trading Plan Breakdown)
+    let ORBIT_CARD2_TAB = 'plan'; // 'tokens' (Default: Asset Tracker Table) | 'plan' (9-Leg Trading Plan Breakdown)
     let ORBIT_SEARCH_QUERY = '';
 
     // Live Multi-Asset Spot Prices & 60fps Dynamic Chart State

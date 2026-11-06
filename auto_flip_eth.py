@@ -116,13 +116,23 @@ def main() -> None:
             "decimals": 8,
         },
         {
-            "name": "Kraken Leg 1B (Mid-Breakout Rally Wall)",
-            "txid": "OUZWVK-5LAOQ-JK2OHZ",
+            "name": "Kraken Leg 1B (Ultra-Fast Channel Scraper)",
+            "txid": "OIJB2P-UMEA3-YYFQJI",
             "pair": "XETHZUSD",
             "state": "SELL",
-            "vol": 0.16337610,
-            "buy_px": 2330.00,
-            "sell_px": 2385.00,
+            "vol": 0.08168805,
+            "buy_px": 2212.00,
+            "sell_px": 2254.00,
+            "decimals": 8,
+        },
+        {
+            "name": "Kraken Leg 1C (Upper Channel Scraper)",
+            "txid": "OKTWE3-PT7M3-55RSVY",
+            "pair": "XETHZUSD",
+            "state": "SELL",
+            "vol": 0.08168805,
+            "buy_px": 2258.00,
+            "sell_px": 2312.00,
             "decimals": 8,
         },
         {
@@ -187,7 +197,7 @@ def main() -> None:
     ]
 
     print(
-        "[9-Leg Aggressive Auto-Compounding Recovery Bot v6 Live] Watching 4 Kraken Pro + 5 Coinbase Advanced Orders!",
+        "[10-Leg High-Frequency Auto-Compounding Profit Scraper v7 Live] Watching 5 Kraken Pro + 5 Coinbase Advanced Orders!",
         flush=True,
     )
 
