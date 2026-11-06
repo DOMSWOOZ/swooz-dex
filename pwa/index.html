@@ -372,9 +372,8 @@
                       class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
                 <option value="all" class="bg-[#131722] text-white">6 Wallets (swooz.eth • $1,587.97 USD)</option>
                 <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
-                <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0705 ETH / $158.60 + Alts / $149.17)</option>
+                <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0436 ETH / $97.55 + Alts / $148.03)</option>
                 <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
-                <option value="flipdesk-only" class="bg-[#131722] text-[#00f5d4]">🕵️ Stealth Flip Desk (0x9be1...8f74 • $60 Blur Pool)</option>
                 <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (#5284)...</option>
               </select>
               <div class="flex items-center gap-1 pl-1 border-l border-white/10">
@@ -417,7 +416,6 @@
                     <option value="swooz">All Wallets (6 • $1,587.97)</option>
                     <option value="dex">9-Leg DEX Only ($1,177.48)</option>
                     <option value="vaults">On-Chain Vaults (4 • $410.49)</option>
-                    <option value="flipdesk">🕵️ Stealth Flip Desk (0x9be1...8f74)</option>
                   </select>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
@@ -438,19 +436,19 @@
               <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
                 <!-- Left 5 Cols: Total Net Worth & Today's Straddle Gain -->
                 <div class="sm:col-span-5 space-y-1.5">
-                  <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Total Net Worth (Active DEX + 5 Vaults)</div>
+                  <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Total Net Worth (Active DEX + 4 Real Vaults)</div>
                   <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$1,604.07</div>
                   <div id="orbit-networth-badge" class="text-xs font-semibold text-[#10f1b6] flex items-center gap-1 flex-wrap">
                     <span>+5.71% (+$91.68 at $2,435 Bounce)</span>
                     <span class="text-[#8b95a9] font-normal">today</span>
                   </div>
-                  <span id="hdr-total-eth" class="hidden">0.4481 ETH ($1,008.38)</span>
+                  <span id="hdr-total-eth" class="hidden">0.4212 ETH ($947.87)</span>
 
                   <!-- Mini Active Position Summary Pills (Token Amount + Live $USD Reference) -->
                   <div class="pt-2 grid grid-cols-2 gap-1.5 text-[10px] font-mono">
                     <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">ETH:</span>
-                      <span id="orbit-pill-eth-val" class="text-white font-bold">0.4481 ETH <span class="text-[#34d399]">($1,008.38)</span></span>
+                      <span id="orbit-pill-eth-val" class="text-white font-bold">0.4212 ETH <span class="text-[#34d399]">($947.87)</span></span>
                     </div>
                     <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">SOL:</span>
@@ -485,10 +483,6 @@
                   <button onclick="switchOrbitCard2Tab('plan')" id="orbit-card2-btn-plan"
                           class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1">
                     <span>🎯 9-Leg Trading Plan</span>
-                  </button>
-                  <button onclick="switchOrbitCard2Tab('msflip')" id="orbit-card2-btn-msflip"
-                          class="text-xs font-semibold text-[#8b95a9] hover:text-[#00f5d4] pb-1 transition cursor-pointer flex items-center gap-1">
-                    <span>🕵️ Stealth Sweep Plan (0x9be1)</span>
                   </button>
                 </div>
 
@@ -628,118 +622,6 @@
                   </span>
                 </div>
               </div>
-
-              <!-- TAB C: MINI SUPERS STEALTH FLIP DESK (0x9be1...8f74) — $60 POST-BOUNCE CARVE-OUT & BLUR BETH BID POOL PLAN -->
-              <div id="orbit-card2-msflip-view" class="hidden space-y-2.5 text-xs">
-                <div class="p-2.5 rounded-xl bg-[#0e121b] border border-[#00f5d4]/30 flex flex-wrap items-center justify-between gap-2">
-                  <div class="text-[#c5cee0] leading-snug">
-                    <span class="text-[#10f1b6] font-bold">✅ $60.22 ETH (`0.026900 ETH`) UNLOCKED ON COINBASE NOW → Send to <code class="font-mono text-white select-all">0x9be1662E325413224810F2237c2D0788032b8f74</code></span><br />
-                    Older unattached wallet (<span class="text-white font-mono">0x9be1...8f74</span> • <b id="flipdesk-ms-count-lbl" class="text-[#00f5d4]">0 Held • $60.00 Carve-Out Pending</b>) with <b class="text-[#10f1b6]">zero on-chain link</b> to <span class="text-white font-mono">swooz.eth (132)</span> or <span class="text-white font-mono">0xae1c (#928)</span>! Looks like a fresh 2022 whale entering Mini Supers on Blur.
-                  </div>
-                </div>
-
-                <!-- 3-Pillar $60.00 Blur BETH Bid Pool + Selective Snipe Allocation -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
-                  <!-- PILLAR 1: Blur Bid Pool Top-of-Book ($25.00 / 0.0103 BETH) -->
-                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#10b981]/40 flex flex-col justify-between">
-                    <div>
-                      <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[#10f1b6] font-bold text-xs">🥇 1. Blur Pool Top Bids ($25)</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#10b981]/20 text-[#34d399] font-mono text-[10px] font-bold">0% FEE • $0 GAS</span>
-                      </div>
-                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        <b class="text-white">Blur Bid Pool (`BETH`)</b> is #1: 0% marketplace fee, 100% gasless bid edits, and routes all bulk-dumps first:
-                      </p>
-                      <div class="space-y-1.5 font-mono text-[10.5px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">Tier A</b> <span class="text-[#10f1b6]">15x @ 0.00036 BETH</span></span>
-                          <span class="text-[#34d399]">$0.88/ea ($13.15)</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">Tier B</b> <span class="text-[#10f1b6]">17x @ 0.00028 BETH</span></span>
-                          <span class="text-[#34d399]">$0.68/ea ($11.59)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>32 NFTs Cost: $24.74 ($0 Gas)</span>
-                      <span class="text-[#34d399] font-bold">Floor Val: $96.32 (+289%)</span>
-                    </div>
-                  </div>
-
-                  <!-- PILLAR 2: Deep Bulk-Dump Catcher Net ($17.00 / 0.0070 BETH) -->
-                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#f59e0b]/40 flex flex-col justify-between">
-                    <div>
-                      <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[#fbbf24] font-bold text-xs">🕸️ 2. Blur Deep Net ($17)</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#f59e0b]/20 text-[#fbbf24] font-mono text-[10px] font-bold">85–92% OFF FLOOR</span>
-                      </div>
-                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        Backed by the same <b class="text-white">0.0173 BETH ($42.00)</b> Blur Pool deposit — catches multi-NFT panic dumps down to $0.29:
-                      </p>
-                      <div class="space-y-1.5 font-mono text-[10.5px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">Tier C</b> <span class="text-[#fbbf24]">20x @ 0.00020 BETH</span></span>
-                          <span class="text-[#34d399]">$0.49/ea ($9.74)</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">Tier D</b> <span class="text-[#fbbf24]">25x @ 0.00012 BETH</span></span>
-                          <span class="text-[#34d399]">$0.29/ea ($7.30)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>45 NFTs Cost: $17.04 ($0 Gas)</span>
-                      <span class="text-[#34d399] font-bold">Floor Val: $135.45 (+695%)</span>
-                    </div>
-                  </div>
-
-                  <!-- PILLAR 3: Native ETH Reserve for Rare Floor Snipes & Gas ($18.00 / 0.0074 ETH) -->
-                  <div class="p-3 rounded-xl bg-[#0e121b]/90 border border-[#a855f7]/40 flex flex-col justify-between">
-                    <div>
-                      <div class="flex items-center justify-between mb-1.5">
-                        <span class="text-[#c084fc] font-bold text-xs">⚡ 3. Rare Snipes + Gas ($18)</span>
-                        <span class="px-1.5 py-0.5 rounded bg-[#a855f7]/20 text-[#c084fc] font-mono text-[10px] font-bold">0.00134 ETH ($3.01)</span>
-                      </div>
-                      <p class="text-[11px] text-[#8b95a9] mb-2 leading-relaxed">
-                        Keep <b class="text-white">$18.00 (0.0074 ETH)</b> unwrapped in <span class="font-mono text-white">0x9be1...8f74</span> for Blur Pool deposit gas + 5 rare trait floor snipes:
-                      </p>
-                      <div class="space-y-1.5 font-mono text-[10.5px]">
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">5x Rare Snipes</b> <span class="text-[#c084fc]">@ 0.00134 ETH</span></span>
-                          <span class="text-[#34d399]">$3.01/ea ($15.05)</span>
-                        </div>
-                        <div class="p-1.5 rounded bg-white/5 flex justify-between items-center">
-                          <span><b class="text-white">Gas Buffer</b> <span class="text-[#c084fc]">0.0012 ETH</span></span>
-                          <span class="text-[#34d399]">$2.95 Reserve</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-white/10 flex justify-between text-[10px] text-[#c5cee0]">
-                      <span>Full Carve-Out: $60.00 (~0.0246 ETH)</span>
-                      <span class="text-[#34d399] font-bold">Up to 82 NFTs → $246.82!</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Step-by-Step Post-Fill Execution Bar -->
-                <div class="p-2.5 rounded-xl bg-gradient-to-r from-[#00f5d4]/10 via-[#3b82f6]/10 to-[#a855f7]/10 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px]">
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-white font-bold">Auto-Carve-Out Active:</span>
-                    <span class="text-[#c5cee0]">1️⃣ Bot sells @ <b class="text-[#34d399] font-mono">$2,435</b> &amp; unlocks <b class="text-[#00f5d4] font-mono">$60.00</b> → 2️⃣ Withdraw <b class="text-white font-mono">0.0246 ETH ($60)</b> to <code class="text-white font-mono select-all">0x9be1662E325413224810F2237c2D0788032b8f74</code> → 3️⃣ Deposit <b class="text-white font-mono">$42 (0.0173 ETH)</b> into Blur Pool!</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 shrink-0">
-                    <a href="https://blur.io/eth/collection/0xe935e764da0f1a2597f9c1bf13a64515bff9f7d7" target="_blank"
-                       class="px-2.5 py-1 rounded-lg bg-[#f59e0b]/25 hover:bg-[#f59e0b]/40 border border-[#f59e0b]/50 text-[#fbbf24] font-semibold">
-                      ⚡ #1 Blur Bid Pool (0% Fee) ↗
-                    </a>
-                    <a href="https://opensea.io/collection/minisupers" target="_blank"
-                       class="px-2.5 py-1 rounded-lg bg-[#2081e2]/25 hover:bg-[#2081e2]/40 border border-[#2081e2]/50 text-white font-semibold">
-                      🌊 OpenSea Offers ↗
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
@@ -803,11 +685,11 @@
                   <img src="nft-media/nobg/minisupers_6915.png" alt="Mini Supers #6915" class="w-[88%] h-[88%] object-contain group-hover:scale-105 transition" />
                 </div>
                 <div class="min-w-0 flex-1 pr-5">
-                  <div class="font-bold text-white text-sm leading-tight">Mini Supers Whale + Flip Desk</div>
-                  <div id="orbit-card3-ms-held" class="text-xs text-[#00f5d4] font-semibold mt-0.5">133 Cold (swooz.eth + #928) • Stealth Desk: 0x9be1</div>
+                  <div class="font-bold text-white text-sm leading-tight">Mini Supers Whale Stack</div>
+                  <div id="orbit-card3-ms-held" class="text-xs text-[#00f5d4] font-semibold mt-0.5">133 Held ($400.33 USD • swooz.eth + #928)</div>
                   <div class="text-[11px] text-[#8b95a9] font-mono mt-1 leading-snug">
-                    Floor: 0.00134 ETH ($3.01) • WETH Bids: $0.23–$0.79<br />
-                    <span class="text-[#34d399] font-semibold">Stack: $400.33 USD</span> • <span onclick="event.stopPropagation(); switchOrbitCard2Tab('msflip');" class="text-[#fbbf24] underline hover:text-white">Open Sweep Plan ↗</span>
+                    Floor: 0.00134 ETH ($3.01)<br />
+                    <span class="text-[#34d399] font-semibold">Stack Value: $400.33 USD</span>
                   </div>
                 </div>
               </div>
@@ -838,8 +720,8 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#a855f7]/25 border border-[#a855f7] text-[#c084fc] flex items-center justify-center text-xs font-bold shrink-0">🔵</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(0.0705 ETH / $158.60 + Alts / $149.17)</span> -</div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">0.0705 ETH ($158.60) • 0.5874 SOL ($53.17) • BTC ($68.95) • LINK ($25.86) → $329.84</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(0.0436 ETH / $97.55 + Alts / $148.03)</span> -</div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">0.0436 ETH ($97.55) • 0.5874 SOL ($53.17) • BTC ($68.95) • LINK ($25.86) → $264.61</div>
                     </div>
                   </div>
                   <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$307.77</div>
@@ -2228,44 +2110,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v31') caches.delete(k);
+            if (k !== 'swooz-dex-v38') caches.delete(k);
           });
         }).catch(() => {});
       }
-      // Live On-Chain Stealth Flip Desk (0x9be1...8f74) Mini Supers & WETH/BETH/ETH Watcher
-    async function syncFlipDeskOnChain() {
-      try {
-        const msData = '0x70a082310000000000000000000000009be1662e325413224810f2237c2d0788032b8f74';
-        const [msHex, ethHex, wethHex, bethHex] = await Promise.all([
-          rpcCall('eth_call', [{ to: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7', data: msData }, 'latest']),
-          rpcCall('eth_getBalance', [FLIP_DESK_ADDR, 'latest']),
-          rpcCall('eth_call', [{ to: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', data: msData }, 'latest']),
-          rpcCall('eth_call', [{ to: '0x0000000000A39bb272e79075ade125fd351887Ac', data: msData }, 'latest'])
-        ]);
-        const cnt = parseInt(msHex, 16);
-        if (!isNaN(cnt) && cnt >= 0) FLIP_DESK_MS_COUNT = cnt;
-        const ethVal = (parseInt(ethHex, 16) || 0) / 1e18;
-        const wethVal = (parseInt(wethHex, 16) || 0) / 1e18;
-        const bethVal = (parseInt(bethHex, 16) || 0) / 1e18;
-        const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
-        const onChainSum = ethVal + wethVal + bethVal;
-        FLIP_DESK_ETH_BAL = onChainSum > 0.0001 ? onChainSum : 0.026900;
-        FLIP_DESK_ETH_USD = FLIP_DESK_ETH_BAL * ethSpot;
-        const lbl = document.getElementById('flipdesk-ms-count-lbl');
-        if (lbl) {
-          lbl.textContent = `${FLIP_DESK_MS_COUNT} Swept ($${(FLIP_DESK_MS_COUNT * 3.01).toFixed(2)}) • Live Ammo: ${(ethVal + wethVal + bethVal).toFixed(4)} ETH/BETH ($${FLIP_DESK_ETH_USD.toFixed(2)})`;
-        }
-        const c3 = document.getElementById('orbit-card3-ms-held');
-        if (c3) {
-          c3.textContent = `133 Cold ($400.33) + ${FLIP_DESK_MS_COUNT} Stealth Desk (0x9be1 / $${(FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD).toFixed(2)})`;
-        }
-        renderOrbitTokensTable();
-      } catch (e) {}
-    }
-    setTimeout(syncFlipDeskOnChain, 1200);
-    setInterval(syncFlipDeskOnChain, 30000);
 
-    navigator.serviceWorker.register('sw.js?v=37', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=38', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
     }
@@ -3094,15 +2944,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
               eth: 0.00013278,
               costUsd: 0.32,
               miniSupers: 1,
-              isOnChain: true
-            },
-            {
-              id: 'swooz-stealth-9be1',
-              label: '🕵️ Stealth Mini Supers Flip & Blur Bid Desk ($60 Carve-Out @ $2,435)',
-              address: '0x9be1662E325413224810F2237c2D0788032b8f74',
-              eth: 0.0,
-              costUsd: 0.0,
-              miniSupers: FLIP_DESK_MS_COUNT,
               isOnChain: true
             },
             {
@@ -4662,10 +4503,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let LIVE_SOL_RATE = 90.51;
     let LIVE_BTC_RATE = 78692.00;
     let LIVE_LINK_RATE = 10.91;
-    let FLIP_DESK_ADDR = '0x9be1662E325413224810F2237c2D0788032b8f74';
-    let FLIP_DESK_MS_COUNT = 0;
-    let FLIP_DESK_ETH_BAL = 0.026900;
-    let FLIP_DESK_ETH_USD = 60.05;
     let PREV_NETWORTH_USD = 0;
     let LAST_TICK_DELTA_USD = 0.00;
     let LAST_TICK_TIME_STR = 'LIVE';
@@ -4802,25 +4639,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           pair: 'ETHUSD'
         },
         {
-          id: 'flipdesk-ms',
-          symbol: 'MS-STEALTH',
-          name: 'Stealth Flip Desk (0x9be1)',
-          sub: '0x9be1...8f74 • 0.0269 ETH ($60.05) Sent',
-          chain: 'MATIC',
-          scope: ['swooz', 'vaults', 'flipdesk', 'combined'],
-          badgeBg: 'linear-gradient(135deg, #00f5d4, #0d9488)',
-          badgeTxt: '🕵️',
-          netBg: '#0f766e',
-          netIcon: '⚡',
-          platform: `0x9be1...8f74 (${FLIP_DESK_MS_COUNT} Swept + ${FLIP_DESK_ETH_BAL.toFixed(4)} ETH / $${FLIP_DESK_ETH_USD.toFixed(2)} Ammo)`,
-          amountTxt: `${FLIP_DESK_ETH_BAL.toFixed(4)} ETH + ${FLIP_DESK_MS_COUNT} NFTs ($${(FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD).toFixed(2)})`,
-          usdVal: FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD,
-          targetUsd: (FLIP_DESK_MS_COUNT > 0 ? FLIP_DESK_MS_COUNT * 3.01 + FLIP_DESK_ETH_USD : 180.00),
-          chgTxt: '🚀 0.0269 ETH ($60.05) Funded!',
-          isUp: true,
-          pair: 'ETHUSD'
-        },
-        {
           id: 'vault-cash-sabi',
           symbol: 'USDC',
           name: 'USD Cash & Vault Gas',
@@ -4950,7 +4768,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (beastFloorEl) beastFloorEl.textContent = `Floor: 0.0695 ETH ($${Math.round(0.0695 * ethSpot)})`;
 
       const pillEthEl = document.getElementById('orbit-pill-eth-val');
-      if (pillEthEl) pillEthEl.innerHTML = `0.4481 ETH <span class="text-[#34d399]">($${(0.448087 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
+      if (pillEthEl) pillEthEl.innerHTML = `0.4212 ETH <span class="text-[#34d399]">($${(0.421187 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
       const pillSolEl = document.getElementById('orbit-pill-sol-val');
       if (pillSolEl) pillSolEl.innerHTML = `0.7207 SOL <span class="text-[#34d399]">($${(0.720671 * LIVE_SOL_RATE).toFixed(2)})</span>`;
       const pillAltsEl = document.getElementById('orbit-pill-alts-val');
@@ -5394,8 +5212,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           dex: 'Total Net Worth (9-Leg Active DEX Only)',
           kraken: 'Total Net Worth (Kraken Pro 3 Active Legs)',
           coinbase: 'Total Net Worth (Coinbase Adv 6 Active Legs)',
-          vaults: 'Total Net Worth (4 On-Chain Ethereum Vaults)',
-          flipdesk: 'Stealth Mini Supers Flip Desk (0x9be1...8f74)'
+          vaults: 'Total Net Worth (4 On-Chain Ethereum Vaults)'
         };
         lbl.textContent = titles[ORBIT_PORTFOLIO_SCOPE] || titles.swooz;
       }
@@ -5537,12 +5354,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         'all': 'swooz',
         'kraken-only': 'kraken',
         'coinbase-only': 'coinbase',
-        'vaults-only': 'vaults',
-        'flipdesk-only': 'flipdesk'
+        'vaults-only': 'vaults'
       };
-      if (val === 'flipdesk-only') {
-        switchOrbitCard2Tab('msflip');
-      }
       setOrbitPortfolioScope(scopeMap[val] || 'swooz');
     }
 
