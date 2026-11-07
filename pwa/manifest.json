@@ -1,7 +1,7 @@
 {
-  "name": "SWOOZ.ETH DEX — NFT & Kraken Sniper Terminal",
-  "short_name": "SWOOZ.ETH",
-  "description": "Live Mobile NFT & Kraken DEX Terminal for swooz.eth (Fold 8 Dual-Pane & S26 Ultra)",
+  "name": "SWOOZ DEX — NFT & Kraken Sniper Terminal",
+  "short_name": "SWOOZ",
+  "description": "Live Mobile NFT & Kraken DEX Terminal for Vault Owner (Fold 8 Dual-Pane & S26 Ultra)",
   "start_url": "./?v=4",
   "display": "standalone",
   "orientation": "any",

@@ -5,3 +5,5 @@ __pycache__/
 *$py.class
 cloudflared.exe
 *.log
+trade_history.json
+*.py

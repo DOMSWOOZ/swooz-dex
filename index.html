@@ -7,17 +7,17 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="SWOOZ.ETH" />
+  <meta name="apple-mobile-web-app-title" content="SWOOZ DEX" />
   <link rel="manifest" href="manifest.json?v=4" />
   <link rel="icon" type="image/png" href="icon-192.png?v=4" />
   <link rel="apple-touch-icon" href="icon-512.png?v=4" />
-  <title>ORBIT // SWOOZ.ETH Tracker &amp; Multi-Chain DEX v6.0</title>
+  <title>ORBIT // SWOOZ Tracker &amp; Multi-Chain DEX v6.0</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
     :root {
-      /* ORBIT // SWOOZ.ETH Dark Glassmorphic Neon Palette (Flow Render Spec) */
+      /* ORBIT // SWOOZ Dark Glassmorphic Neon Palette (Flow Render Spec) */
       --background: #0b0d14;
       --card: #131722;
       --secondary: #191f2e;
@@ -207,10 +207,10 @@
 <body data-holo-tint="cyan" class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
 
   <!-- ==========================================================================================
-       🌌 ORBIT // SWOOZ.ETH TRACKER & MULTI-CHAIN DEX v6.0 (FLOW RENDER FULL-FEATURED DASHBOARD)
+       🌌 ORBIT // SWOOZ TRACKER & MULTI-CHAIN DEX v6.0 (FLOW RENDER FULL-FEATURED DASHBOARD)
        1:1 Visual, GUI & UX Implementation of the Flow Render + Full README Feature Integration
        ========================================================================================== -->
-  <div id="orbit-app-wrapper" class="max-w-[1640px] mx-auto px-2 sm:px-4 pt-3 pb-4">
+  <div id="orbit-app-wrapper" class="max-w-[1640px] mx-auto px-2 sm:px-4 pt-3 pb-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
     <div class="flex flex-col lg:flex-row gap-4 items-start">
 
       <!-- ================= LEFT SIDEBAR NAVIGATION (Exact Match to Flow Render) ================= -->
@@ -336,7 +336,7 @@
       <!-- ================= RIGHT MAIN WORKSPACE (Top Bar + Bento Grid + Expandable Deep Panels) ================= -->
       <div class="flex-1 w-full min-w-0 space-y-4">
 
-        <!-- TOP BAR: Search Input (Left) + All Networks Filter Bar (Center) + Connected Wallets & PIN #5284 (Right) -->
+        <!-- TOP BAR: Search Input (Left) + All Networks Filter Bar (Center) + Connected Wallets & Vault PIN Lock (Right) -->
         <div class="flex flex-wrap items-center justify-between gap-3">
 
           <!-- 1. Left Search Input (Matches Omni Tracker Top-Left Search) -->
@@ -393,20 +393,20 @@
             </button>
           </div>
 
-          <!-- 3. Right Connected Wallets Pill + Vault Lock/Unlock (#5284) + Gas Bell -->
+          <!-- 3. Right Connected Wallets Pill + Vault Lock/Unlock  + Gas Bell -->
           <div class="flex items-center gap-2.5">
             <div class="px-3.5 py-2 rounded-xl bg-[#131722] border border-white/10 flex items-center gap-2.5">
               <span class="text-xs text-[#8b95a9] font-medium hidden sm:inline">Connected:</span>
               <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
                       class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
-                <option value="all" class="bg-[#131722] text-white">6 Wallets (swooz.eth • $1,587.97 USD)</option>
+                <option id="orbit-opt-all-wallets" value="all" class="bg-[#131722] text-white">6 Wallets (Encrypted Vault • PIN Locked)</option>
                 <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
                 <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0436 ETH / $97.55 + Alts / $148.03)</option>
                 <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
-                <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN (#5284)...</option>
+                <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN ...</option>
               </select>
               <div class="flex items-center gap-1 pl-1 border-l border-white/10">
-                <span class="w-5 h-5 rounded-md bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-[11px]" title="MetaMask (swooz.eth)">🦊</span>
+                <span class="w-5 h-5 rounded-md bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-[11px]" title="Primary On-Chain Vault (Encrypted)">🦊</span>
                 <span class="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-[10px] text-emerald-300 font-mono" title="Kraken Pro + Coinbase Adv">☷</span>
               </div>
             </div>
@@ -417,7 +417,7 @@
               <button id="btn-orbit-voice-mic"><span id="orbit-voice-mic-icon">🎙️</span><span id="orbit-voice-mic-lbl">Muted</span></button>
             </div>
 
-            <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN 5284)"
+            <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN Locked)"
                     class="px-2.5 py-2 rounded-xl bg-[#131722] hover:bg-[#1c2233] border border-white/10 text-xs text-[#8b95a9] hover:text-white flex items-center gap-1.5 transition cursor-pointer shrink-0">
               <span>🔔</span>
               <strong id="orbit-gas-gwei" class="text-white font-mono">18 Gwei</strong>
@@ -643,12 +643,12 @@
                     <img src="nft-media/nobg/the_walk_1.gif" alt="The Walk #1" class="w-10 h-10 rounded-lg object-contain bg-emerald-500/10 border border-emerald-500/30 shrink-0" />
                     <div class="space-y-0.5">
                       <div class="flex items-center gap-2 flex-wrap">
-                        <span class="text-white font-bold">🚶‍♂️ The Walk #1 — 3 Editions Held in `swooz.eth`!</span>
+                        <span class="text-white font-bold">🚶‍♂️ The Walk #1 — 3 Editions Held in Primary Vault!</span>
                         <span class="px-1.5 py-0.5 rounded bg-emerald-500/25 border border-emerald-400/50 text-emerald-300 font-mono text-[9.5px] font-bold">✅ STAGE 1: 3/3 ON-CHAIN VERIFIED</span>
                         <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[9.5px] font-bold">🔥 Wk1 Physical • Wk2 New Character</span>
                       </div>
                       <div class="text-[#8b95a9] font-mono text-[10px]">
-                        <b class="text-emerald-400">Stage 1 Complete (3 Held):</b> 1 Copy for 3x Principal Shield (`0.0066 ETH`) • 1 Copy for Wk2 Digital Character Burn • 1 Copy Permanent `swooz.eth` Vault Hold •
+                        <b class="text-emerald-400">Stage 1 Complete (3 Held):</b> 1 Copy for 3x Principal Shield (`0.0066 ETH`) • 1 Copy for Wk2 Digital Character Burn • 1 Copy Permanent Primary Vault Hold •
                         <b class="text-cyan-300">Stage 2 (+3 Copies):</b> Unlocks after <b class="text-white">L1B + L2 + L1A (+$13.94)</b> complete 1 cycle!
                       </div>
                     </div>
@@ -833,7 +833,7 @@
                     <span class="w-6 h-6 rounded-full bg-[#10b981]/20 border border-[#10f1b6]/50 text-[#10f1b6] flex items-center justify-center text-xs font-bold shrink-0">🗄️</span>
                     <div class="min-w-0">
                       <div class="text-[#e2e8f0] font-semibold truncate">Background On-Chain Vaults <span class="text-[#8b95a9] font-normal">(4 Cold Wallets)</span></div>
-                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">swooz.eth &amp; 3 Vaults (Passive Hold • Click for NFT Archive)</div>
+                      <div class="text-[10.5px] text-[#8b95a9] font-mono truncate">4 Encrypted Vaults (Passive Hold • Click for NFT Archive)</div>
                     </div>
                   </div>
                   <div id="orbit-plat-vaults-val" class="font-mono font-bold text-slate-300 text-sm shrink-0 pl-2">$402.49</div>
@@ -849,10 +849,10 @@
   </div>
 
   <!-- ==========================================================================================
-       🛸 SWOOZ.ETH — MATRIX TERMINAL DEX v5.0 (ULTRA-WIDE CYBERPUNK CRT DUAL-PANE WORKSTATION)
+       🛸 SWOOZ // MATRIX TERMINAL DEX v5.0 (ULTRA-WIDE CYBERPUNK CRT DUAL-PANE WORKSTATION)
        Toggled via the [🖥️ CRT v5.0] button whenever desired
        ========================================================================================== -->
-  <section id="crt-v5-workstation" class="hidden max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none">
+  <section id="crt-v5-workstation" class="hidden max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none transition duration-300 blur-2xl pointer-events-none opacity-10">
     <div class="bg-[#020503] border-2 border-[#2a3830] p-2 sm:p-3 shadow-[0_0_90px_rgba(0,0,0,0.98)] relative overflow-hidden"
          style="background-image: linear-gradient(to right, rgba(0,255,65,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,65,0.04) 1px, transparent 1px); background-size: 20px 20px;">
 
@@ -863,7 +863,7 @@
           <span class="inline-flex items-center border border-[#9bb5a8] px-1 py-0.5 text-[8px] leading-none">
             <span class="w-3.5 h-2 bg-[#d8e8df] inline-block mr-0.5"></span>
           </span>
-          <span class="text-[#00FF41] font-bold tracking-widest">SWOOZ.ETH // MATRIX TERMINAL DEX v5.0</span>
+          <span class="text-[#00FF41] font-bold tracking-widest">SWOOZ // MATRIX TERMINAL DEX v5.0</span>
           <span id="crt-matrix-mode-badge" class="hidden sm:inline text-[#00F0FF] text-[9.5px]">[9-LEG LIVE KRAKEN + COINBASE SYNC]</span>
         </div>
         <div class="flex items-center gap-2.5">
@@ -878,11 +878,11 @@
       <!-- DUAL-PANE 16:10 SPLIT-SCREEN WORKSPACE WITH CENTER FOLD HINGE -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 relative items-stretch">
 
-        <!-- ================= LEFT PANE (6 Cols): SWOOZ.ETH // DEX_TERMINAL — 9-LEG STRADDLE MATRIX ================= -->
+        <!-- ================= LEFT PANE (6 Cols): SWOOZ // DEX_TERMINAL — 9-LEG STRADDLE MATRIX ================= -->
         <div class="lg:col-span-6 bg-[#030705]/95 border border-[#3a4d42] p-2.5 flex flex-col justify-between relative">
           <!-- Left Pane Top Title Bar -->
           <div class="flex items-center justify-between border border-[#3a4d42] bg-black/90 px-2.5 py-1.5 mb-2 text-xs tracking-wider">
-            <span class="text-[#c8dcd2] font-bold uppercase">SWOOZ.ETH // DEX_TERMINAL</span>
+            <span class="text-[#c8dcd2] font-bold uppercase">SWOOZ // DEX_TERMINAL</span>
             <span class="text-[#9bb5a8] font-bold uppercase">9-LEG STRADDLE MATRIX</span>
           </div>
 
@@ -1121,7 +1121,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
   </section>
 
   <!-- Main Adaptive Container: Tabbed Single-Screen by default, or Dual-Pane on Fold 8 Split -->
-  <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 gap-4">
+  <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 gap-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
 
     <!-- ================= LEFT PANE (Fold 8 Left Screen): HELD ETH P&L + TARGET WATCHLIST + COLLECTION ORDERBOOKS ================= -->
     <section id="pane-left" class="md:col-span-6 space-y-4">
@@ -2338,7 +2338,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         <div class="flex items-center gap-2">
           <img src="icon-192.png?v=4" alt="Icon" class="w-8 h-8 rounded-lg" />
           <div>
-            <div class="font-bold text-sm text-[var(--foreground)]">📲 Install SWOOZ.ETH DEX on Fold 8 &amp; S26 Ultra</div>
+            <div class="font-bold text-sm text-[var(--foreground)]">📲 Install SWOOZ DEX on Fold 8 &amp; S26 Ultra</div>
             <div class="text-[var(--muted-foreground)]">Permanent 24/7 GitHub Pages + Local LAN Links</div>
           </div>
         </div>
@@ -2373,18 +2373,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     </div>
   </div>
 
-  <!-- 🔐 4-Digit Owner Vault PIN Keypad Modal -->
-  <div id="pin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3">
-    <div class="bg-[var(--card)] border border-amber-500/50 rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 text-xs">
+  <!-- 🔐 Mandatory Full-Screen 4-Digit Owner Vault PIN Lock Shield -->
+  <div id="pin-modal" class="fixed inset-0 z-[9999] bg-[#060911]/95 backdrop-blur-2xl flex items-center justify-center p-3">
+    <div class="bg-[var(--card)] border-2 border-emerald-500/50 rounded-2xl max-w-sm w-full p-5 shadow-[0_0_90px_rgba(16,185,129,0.25)] space-y-4 text-xs">
       <div class="flex items-center justify-between border-b border-[var(--border)] pb-2.5">
-        <div class="flex items-center gap-2">
-          <span class="text-lg">🔐</span>
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-lg">🔒</span>
           <div>
-            <div class="font-bold text-sm text-[var(--foreground)]">Unlock Personal Vault Telemetry</div>
-            <div class="text-[var(--muted-foreground)]">Enter 4-digit Vault PIN (5284)</div>
+            <div class="font-extrabold text-sm text-[var(--foreground)] tracking-wide">SWOOZ DEX // VAULT PIN LOCK</div>
+            <div class="text-[var(--muted-foreground)] font-mono text-[11px]">Enter 4-Digit PIN to Decrypt snapshot.json</div>
           </div>
         </div>
-        <button onclick="closePinModal()" class="px-2.5 py-1 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] font-bold">✕</button>
+        <span class="px-2 py-0.5 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 font-mono text-[10px] font-bold">SHA-256</span>
       </div>
 
       <!-- 4-Digit PIN Display Dots -->
@@ -2396,7 +2396,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           <div class="w-11 h-12 rounded-xl bg-[var(--secondary)] border border-[var(--border)] flex items-center justify-center text-lg font-mono font-bold text-emerald-400">•</div>
         </div>
         <div id="pin-status-msg" class="text-[var(--muted-foreground)] font-mono h-4">
-          Public visitors stay in Blank Guest Mode
+          DEX Locked • Enter 4-Digit PIN (Touch or Keyboard)
         </div>
       </div>
 
@@ -2421,10 +2421,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         <span>Remember unlock on this phone / browser</span>
       </label>
 
-      <div class="pt-1 border-t border-[var(--border)] text-center">
-        <button onclick="closePinModal()" class="w-full py-2 rounded-xl bg-[var(--secondary)] hover:bg-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold transition">
-          👤 Not the Owner? Continue in Blank Guest Mode →
-        </button>
+      <div class="pt-1.5 border-t border-[var(--border)] text-center text-[10px] text-[var(--muted-foreground)] font-mono">
+        🛡️ All wallet addresses, persona &amp; balances are locked inside encrypted <code class="text-emerald-400">snapshot.json</code>
       </div>
     </div>
   </div>
@@ -2435,7 +2433,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v45') caches.delete(k);
+            if (k !== 'swooz-dex-v52') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -2635,9 +2633,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         collection: 'Mini Supers (Home Team)',
         contract: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7',
         tokenId: 305,
-        title: 'Mini Supers #305 (Owned by swooz.eth)',
-        rank: '🦊 Held in swooz.eth Primary Vault',
-        owner: 'swooz.eth',
+        title: 'Mini Supers #305 (Primary Vault)',
+        rank: '🦊 Held in Primary Vault (Encrypted)',
+        owner: 'Encrypted in snapshot.json',
         priceNote: 'Floor: 0.0013 ETH ($3.01 USD)',
         mediaUrl: 'nft-media/minisupers_6915.png',
         badge: '🧋➡🦊 MINI SUPER #305',
@@ -2657,8 +2655,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         contract: '0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7',
         tokenId: 928,
         title: 'Mini Supers #928 (Recovered Seed Vault)',
-        rank: '🦸 Recovered Wallet 0xae1c...39B0 (#133 Total)',
-        owner: '0xae1cA265dE962B4eCafd4Af099414b5A598139B0',
+        rank: '🦸 Recovered Cold Vault (#133 Total)',
+        owner: 'Encrypted in snapshot.json',
         priceNote: 'Floor: 0.0013 ETH ($3.01 USD)',
         mediaUrl: 'nft-media/minisupers_6915.png',
         badge: '🦸 RECOVERED MINI SUPER #928',
@@ -3048,8 +3046,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let LATEST_SNAPSHOT = null;
     let PIN_INPUT_BUFFER = '';
 
-    // SHA-256 hash verification of owner PIN ('5284') and partner PIN ('1716') salted with 'swooz-dex-v6-vault'
+    // SHA-256 hash verification of Owner Vault PIN salted with 'swooz-dex-v6-vault' + encrypted fallback cipher
     const OWNER_PIN_VERIFY_HASH = 'c114067b1a286a757e978d0c4c9128fb982616d69d91a6179271c96691e40aeb';
+    const FALLBACK_VAULT_CIPHER = '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';
+
     async function sha256Bytes(str) {
       try {
         if (window.crypto && window.crypto.subtle) {
@@ -3084,50 +3084,70 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     }
 
     function loadGuestAccounts() {
-      try {
-        const saved = localStorage.getItem('swooz_guest_accounts_v2');
-        if (saved) return JSON.parse(saved);
-      } catch (e) {}
-      return []; // Blank Default Mode for public visitors!
+      return [];
     }
 
     function saveAccounts(list) {
       try {
-        let key = 'swooz_guest_accounts_v2';
-        if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') key = 'swooz_owner_accounts_v2';
-        localStorage.setItem(key, JSON.stringify(list));
+        if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') {
+          localStorage.setItem('swooz_owner_accounts_v2', JSON.stringify(list));
+        }
       } catch (e) {}
     }
 
-    let ACCOUNTS = loadGuestAccounts();
+    let ACCOUNTS = [];
 
     function applyVaultUiState() {
       const btn = document.getElementById('btn-vault-lock');
       const icon = document.getElementById('vault-btn-icon');
       const lbl = document.getElementById('vault-btn-label');
       const ownerEls = document.querySelectorAll('.owner-only');
+      const lockTargets = ['orbit-app-wrapper', 'crt-v5-workstation', 'dex-container'];
+      const optAll = document.getElementById('orbit-opt-all-wallets');
 
       if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') {
-        btn.className = 'px-2.5 py-1 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-400 text-xs font-bold flex items-center gap-1 transition';
-        icon.textContent = '🔓';
-        lbl.textContent = 'swooz.eth Unlocked (Tap to Lock)';
+        const ensName = UNLOCKED_VAULT_DATA?.owner_ens || 'Vault';
+        if (btn) btn.className = 'px-2.5 py-1 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-400 text-xs font-bold flex items-center gap-1 transition';
+        if (icon) icon.textContent = '🔓';
+        if (lbl) lbl.textContent = `${ensName} Unlocked (Tap to Lock)`;
+        if (optAll) optAll.textContent = `6 Wallets (${ensName} • $1,587.97 USD)`;
         ownerEls.forEach(el => el.classList.remove('hidden'));
+        lockTargets.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('blur-2xl', 'pointer-events-none', 'opacity-10');
+        });
+        const modal = document.getElementById('pin-modal');
+        if (modal) modal.classList.add('hidden');
       } else {
-        btn.className = 'px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition';
-        icon.textContent = '🔒';
-        lbl.textContent = 'Unlock Vault PIN';
+        if (btn) btn.className = 'px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-500 text-xs font-bold flex items-center gap-1 transition';
+        if (icon) icon.textContent = '🔒';
+        if (lbl) lbl.textContent = 'Unlock Vault PIN';
+        if (optAll) optAll.textContent = '6 Wallets (Encrypted Vault • PIN Locked)';
         ownerEls.forEach(el => el.classList.add('hidden'));
+        lockTargets.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('blur-2xl', 'pointer-events-none', 'opacity-10');
+        });
+        const modal = document.getElementById('pin-modal');
+        if (modal) modal.classList.remove('hidden');
       }
     }
 
     function onVaultButtonClick() {
       if (VAULT_UNLOCKED) {
-        // Lock Vault & Return to Blank Guest Mode immediately
+        // Immediately lock DEX & require 4-digit PIN again
         VAULT_UNLOCKED = false;
         ACTIVE_VAULT_ROLE = 'guest';
         UNLOCKED_VAULT_DATA = null;
         try { localStorage.removeItem('swooz_vault_pin_v1'); } catch (e) {}
-        ACCOUNTS = loadGuestAccounts();
+        ACCOUNTS = [];
+        PIN_INPUT_BUFFER = '';
+        updatePinDots();
+        const msg = document.getElementById('pin-status-msg');
+        if (msg) {
+          msg.textContent = '🔒 DEX Locked — Enter 4-Digit PIN to Unlock';
+          msg.className = 'text-amber-400 font-mono h-4';
+        }
         applyVaultUiState();
         renderWalletPnl();
         updateCalc();
@@ -3135,13 +3155,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       } else {
         PIN_INPUT_BUFFER = '';
         updatePinDots();
-        document.getElementById('pin-status-msg').textContent = 'Enter 4-digit Vault PIN';
-        document.getElementById('pin-status-msg').className = 'text-[var(--muted-foreground)] font-mono h-4';
-        document.getElementById('pin-modal').classList.remove('hidden');
+        const msg = document.getElementById('pin-status-msg');
+        if (msg) {
+          msg.textContent = 'Enter 4-Digit Vault PIN';
+          msg.className = 'text-[var(--muted-foreground)] font-mono h-4';
+        }
+        document.getElementById('pin-modal')?.classList.remove('hidden');
       }
     }
 
     function closePinModal() {
+      if (!VAULT_UNLOCKED) return; // Cannot dismiss lock screen while vault is locked
       const m = document.getElementById('pin-modal');
       if (m) m.classList.add('hidden');
       PIN_INPUT_BUFFER = '';
@@ -3182,10 +3206,25 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       updatePinDots();
       const msg = document.getElementById('pin-status-msg');
       if (msg) {
-        msg.textContent = 'Enter 4-digit Vault PIN';
+        msg.textContent = 'Enter 4-Digit Vault PIN';
         msg.className = 'text-[var(--muted-foreground)] font-mono h-4';
       }
     }
+
+    // Allow physical keyboard entry on PC / Fold 8 when #pin-modal is open
+    window.addEventListener('keydown', (e) => {
+      if (VAULT_UNLOCKED) return;
+      if (e.key >= '0' && e.key <= '9') {
+        e.preventDefault();
+        pressPinDigit(e.key);
+      } else if (e.key === 'Backspace' || e.key === 'Escape') {
+        e.preventDefault();
+        clearPinDigits();
+      } else if (e.key === 'Enter' && PIN_INPUT_BUFFER.length === 4) {
+        e.preventDefault();
+        submitPinUnlock();
+      }
+    });
 
     async function unlockWithPin(pin, silent) {
       const cleanPin = String(pin || PIN_INPUT_BUFFER || '').trim();
@@ -3193,52 +3232,64 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       PIN_UNLOCK_BUSY = true;
 
       try {
+        // Ensure snapshot.json is loaded first if not yet fetched
+        if (!LATEST_SNAPSHOT || !LATEST_SNAPSHOT.vault_cipher) {
+          try {
+            const snapRes = await fetch('snapshot.json?t=' + Date.now());
+            if (snapRes.ok) {
+              LATEST_SNAPSHOT = await snapRes.json();
+              if (LATEST_SNAPSHOT.eth_usd_rate) ETH_RATE = LATEST_SNAPSHOT.eth_usd_rate;
+            }
+          } catch (e) {}
+        }
+
+        const pinCheckBytes = await sha256Bytes(`${cleanPin}:swooz-dex-v6-vault`);
+        const pinCheckHex = Array.from(pinCheckBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+        if (pinCheckHex !== OWNER_PIN_VERIFY_HASH) {
+          if (!silent) {
+            const msg = document.getElementById('pin-status-msg');
+            if (msg) {
+              msg.textContent = '❌ Invalid PIN — Access Denied';
+              msg.className = 'text-rose-400 font-mono font-bold h-4';
+            }
+            PIN_INPUT_BUFFER = '';
+            updatePinDots();
+          }
+          return false;
+        }
+
         let decrypted = null;
         if (LATEST_SNAPSHOT && LATEST_SNAPSHOT.vault_cipher) {
           decrypted = await decryptVaultCipher(LATEST_SNAPSHOT.vault_cipher, LATEST_SNAPSHOT.vault_salt || 'swooz-dex-v6-vault', cleanPin);
         }
-
-        // Verify SHA-256 hash of PIN ('5284' or '1716') AND direct PIN match so HTTP LAN / any browser always unlocks cleanly
-        const pinCheckBytes = await sha256Bytes(`${cleanPin}:swooz-dex-v6-vault`);
-        const pinCheckHex = Array.from(pinCheckBytes).map(b => b.toString(16).padStart(2, '0')).join('');
-        const isOwnerPin = (cleanPin === '5284' || cleanPin === '1506' || pinCheckHex === OWNER_PIN_VERIFY_HASH);
-
-        // Check Owner Vault PIN ('5284')
-        if (!decrypted && isOwnerPin) {
-          decrypted = {
-            ok: 'SWOOZ_VAULT_OK',
-            owner_ens: 'swooz.eth',
-            owner_wallet: '0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4',
-            kraken_eth: 0.377612,
-            kraken: { eth_balance: 0.377612, usd_balance: 6.97 },
-            swooz_onchain: { eth: 0.00019, weth: 0 },
-            mini_supers_held: 132,
-            active_order_id: 'OUUDZ7 / OL4VXF / OUZWVK / OFFIKV (4 Kraken + 5 CB Legs)'
-          };
+        if (!decrypted) {
+          decrypted = await decryptVaultCipher(FALLBACK_VAULT_CIPHER, 'swooz-dex-v6-vault', cleanPin);
         }
 
         if (decrypted) {
           VAULT_UNLOCKED = true;
           ACTIVE_VAULT_ROLE = 'owner';
           UNLOCKED_VAULT_DATA = decrypted;
-          // Immediately hide keypad modal as soon as 5284 is verified!
           closePinModal();
 
-          const kEth = decrypted.kraken?.eth_balance || decrypted.kraken_eth || 0.377612;
+          const kEth = decrypted.kraken?.eth_balance || decrypted.kraken_eth || 0.3712;
           const kZusd = decrypted.kraken?.usd_balance || 6.97;
           const kTotalEthEquiv = kEth + (ETH_RATE > 0 ? (kZusd + 12.06) / ETH_RATE : 0);
-          const wAddr = decrypted.owner_wallet || '0x6ddAc958d8A54f63B6BD86FB71693fBB493331b4';
-          const wEth = (decrypted.swooz_onchain?.eth || 0) + (decrypted.swooz_onchain?.weth || 0) || 0.00019;
+          const wAddr = decrypted.owner_wallet || '';
+          const wEns = decrypted.owner_ens || 'Primary Vault';
+          const wEth = (decrypted.swooz_onchain?.eth || 0) + (decrypted.swooz_onchain?.weth || 0) || 0.00098;
           const msCount = decrypted.mini_supers_held || 132;
 
           const cbTotalUsd = decrypted.coinbase?.total_usd || 242.38;
           const cbEthEquiv = ETH_RATE > 0 ? cbTotalUsd / ETH_RATE : 0.10869;
 
+          const coldVaults = Array.isArray(decrypted.cold_vaults) ? decrypted.cold_vaults : [];
+
           ACCOUNTS = [
             {
               id: 'kraken-main',
-              label: '🦑 Kraken Pro Reverse-Grid + Breakout (0.3776 ETH + 0.1332 SOL • 4 Active Legs)',
-              address: `0.0509 ETH @ $2,262 | 0.1634 ETH @ $2,284 | 0.1634 ETH @ $2,385 | 0.1332 SOL @ $91.80`,
+              label: '🦑 Kraken Pro Profit-Scraper (5 Active Legs: L1B, L2, L1A, L1C, L4)',
+              address: '0.0566 ETH @ $2,254 | 0.0509 ETH @ $2,262 | 0.1634 ETH @ $2,284 | 0.0737 ETH @ $2,312 | 0.1332 SOL @ $91.80',
               eth: kTotalEthEquiv,
               costUsd: 900.00,
               miniSupers: 0,
@@ -3246,8 +3297,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             },
             {
               id: 'coinbase-adv',
-              label: '🔵 Coinbase Advanced Reverse-Grid + Breakout (5 Active Legs)',
-              address: `0.0436 ETH @ $2,448 | 0.3025 SOL @ $92.40 | 0.2849 SOL @ $99.40 | BTC @ $81.8k | LINK @ $11.85`,
+              label: '🔵 Coinbase Advanced Profit-Scraper (5 Active Legs: L3, L5, L6, L7, L9)',
+              address: '0.0436 ETH @ $2,308 | 0.3025 SOL @ $92.40 | 0.2849 SOL @ $94.80 | BTC @ $76.8k | LINK @ $9.88',
               eth: cbEthEquiv,
               costUsd: 240.00,
               miniSupers: 0,
@@ -3255,61 +3306,36 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             },
             {
               id: 'swooz-eth',
-              label: `🦊 ${decrypted.owner_ens || 'swooz.eth'} (Primary Vault • Includes #305, #4258, #6539)`,
+              label: `🦊 ${wEns} (Primary Vault • 3x The Walk #1 + Mini Supers #305, #4258, #6539)`,
               address: wAddr,
               eth: wEth,
               costUsd: 0.44,
               miniSupers: msCount,
               isOnChain: true
             },
-            {
-              id: 'swooz-ms928-vault',
-              label: '🦸 Mini Supers #928 Vault (Recovered Seed Phrase • Cold Hold)',
-              address: '0xae1cA265dE962B4eCafd4Af099414b5A598139B0',
-              eth: 0.00013278,
-              costUsd: 0.32,
-              miniSupers: 1,
-              isOnChain: true
-            },
-            {
-              id: 'swooz-ccs-owner',
-              label: '🎨 Cute Claw Slotz (CCS) Contract Owner (0x14e3...64EC)',
-              address: '0xcA2dB0752d308A1a07b25D003d591D6970B1A573',
-              eth: 0.00034782,
-              costUsd: 0.84,
-              miniSupers: 0,
-              isOnChain: true
-            },
-            {
-              id: 'swooz-2022-og',
-              label: '🏛️ 2022 OG Mint Vault (6 NFTs: Sin City Elite, BackPacKER, RipETH)',
-              address: '0x3bC93Bf16C5916E8414dE9a0C4559ad9d72Da7F2',
-              eth: 0.00023402,
-              costUsd: 0.56,
-              miniSupers: 0,
-              isOnChain: true
-            }
+            ...coldVaults
           ];
-
-          try {
-            const coreIds = ['kraken-main', 'coinbase-adv', 'swooz-eth', 'swooz-ms928-vault', 'swooz-ccs-owner', 'swooz-2022-og'];
-            const extra = JSON.parse(localStorage.getItem('swooz_owner_accounts_v2') || '[]');
-            extra.forEach(a => {
-              if (!coreIds.includes(a.id)) ACCOUNTS.push(a);
-            });
-          } catch (e) {}
 
           if (document.getElementById('pin-remember-chk')?.checked) {
             try { localStorage.setItem('swooz_vault_pin_v1', cleanPin); } catch (e) {}
           }
 
           if (PRESET_NFTS['ms-6915'] && wAddr) {
-            PRESET_NFTS['ms-6915'].title = 'Mini Supers #6915 (Owned by swooz.eth)';
+            PRESET_NFTS['ms-6915'].title = `Mini Supers #6915 (Owned by ${wEns})`;
             PRESET_NFTS['ms-6915'].rank = `🏆 #2 Whale Stack (${msCount} Held)`;
             PRESET_NFTS['ms-6915'].owner = wAddr;
           }
+          if (PRESET_NFTS['ms-305'] && wAddr) {
+            PRESET_NFTS['ms-305'].title = `Mini Supers #305 (Owned by ${wEns})`;
+            PRESET_NFTS['ms-305'].rank = `🦊 Held in ${wEns} Primary Vault`;
+            PRESET_NFTS['ms-305'].owner = wEns;
+          }
+          if (PRESET_NFTS['ms-928'] && coldVaults[0]?.address) {
+            const cvAddr = coldVaults[0].address;
+            PRESET_NFTS['ms-928'].rank = `🦸 Recovered Wallet ${cvAddr.slice(0, 6)}...${cvAddr.slice(-4)} (#133 Total)`;
+            PRESET_NFTS['ms-928'].owner = cvAddr;
+          }
 
-          // Switch Orbit Dashboard to Live 9-Leg + 7 Wallets mode on Owner Unlock
           ORBIT_PORTFOLIO_MODE = 'showcase';
           if (typeof toggleOrbitPortfolioMode === 'function') toggleOrbitPortfolioMode();
 
@@ -3317,17 +3343,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           renderWalletPnl();
           updateCalc();
           updateSkimCalc();
+          if (typeof renderOrbitHoldingsTable === 'function') renderOrbitHoldingsTable();
           return true;
-        }
-
-        if (!silent) {
-          const msg = document.getElementById('pin-status-msg');
-          if (msg) {
-            msg.textContent = '❌ Invalid PIN — Enter 4-Digit Owner PIN';
-            msg.className = 'text-rose-400 font-mono font-bold h-4';
-          }
-          PIN_INPUT_BUFFER = '';
-          updatePinDots();
         }
         return false;
       } finally {
@@ -5587,7 +5604,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     })();
 
     // ============================================================================================
-    // 🌌 ORBIT // SWOOZ.ETH TRACKER & MULTI-CHAIN DEX ENGINE (100% Live Active DEX Portfolio)
+    // 🌌 ORBIT // SWOOZ TRACKER & MULTI-CHAIN DEX ENGINE (100% Live Active DEX Portfolio)
     // ============================================================================================
     let ORBIT_PORTFOLIO_MODE = 'live';
     let ORBIT_PORTFOLIO_SCOPE = 'swooz'; // 'swooz' (7 Wallets: $1,604.07) | 'dex' (9-Leg DEX: $1,177.48) | 'kraken' | 'coinbase' | 'vaults' | 'combined' (+BobaTea: $2,820.77)
@@ -5721,14 +5738,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           id: 'vault-ms',
           symbol: 'MS-COLD',
           name: 'Mini Supers Cold Vaults',
-          sub: 'swooz.eth (132) + 0xae1c (#928)',
+          sub: (UNLOCKED_VAULT_DATA?.owner_ens || 'Primary Vault') + ' (132) + Cold Vault (#928)',
           chain: 'MATIC',
           scope: ['swooz', 'vaults', 'combined'],
           badgeBg: 'linear-gradient(135deg, #8247e5, #6d28d9)',
           badgeTxt: '🦸',
           netBg: '#1e293b',
           netIcon: '🦊',
-          platform: 'swooz.eth (132 / $397.32) + 0xae1c (#928 / $3.01) • Cold Hold',
+          platform: (UNLOCKED_VAULT_DATA?.owner_ens || 'Primary Vault') + ' (132 / $397.32) + Cold Vault (#928 / $3.01) • Cold Hold',
           amountTxt: '133 NFTs ($400.33)',
           usdVal: 400.33,
           targetUsd: 400.33,

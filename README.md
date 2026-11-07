@@ -1,7 +1,7 @@
-# 🌌 ORBIT // SWOOZ.ETH Tracker & Multi-Chain DEX (`v6.0`)
+# 🌌 ORBIT // SWOOZ Tracker & Multi-Chain DEX (`v6.0`)
 
 <p align="center">
-  <img src="orbit_dex_reference.jpg" alt="ORBIT // SWOOZ.ETH Tracker & DEX v6.0" width="920" />
+  <img src="orbit_dex_reference.jpg" alt="ORBIT // SWOOZ Tracker & DEX v6.0" width="920" />
 </p>
 
 <p align="center">
@@ -22,7 +22,7 @@
 
 ## 🌌 New in `v6.0`: Orbit Tracker & Multi-Chain DEX Bento Workspace
 
-Built 1:1 from the Flow UI architecture for **`swooz.eth`** (`PIN 1506`), **`BobaTeaisGood4Me`** (`PIN 1716`), and multi-chain traders across **Samsung Galaxy Z Fold 8**, **Galaxy S26 Ultra**, and desktop workstations:
+Built 1:1 from the Flow UI architecture for **`Encrypted Vault`** (`SHA-256 PIN Lock`), **`BobaTeaisGood4Me`** (`SHA-256 PIN Lock`), and multi-chain traders across **Samsung Galaxy Z Fold 8**, **Galaxy S26 Ultra**, and desktop workstations:
 
 1. **🧭 Left Sidebar Navigation (`ORBIT TRACKER & DEX`)**:
    - **7 Dedicated Workspaces**:
@@ -35,7 +35,7 @@ Built 1:1 from the Flow UI architecture for **`swooz.eth`** (`PIN 1506`), **`Bob
      - **`Settings`**: Encrypted **4-Digit Operator Vault PIN (`1506` / `1716`)** & Multi-Wallet Account Manager.
 
 2. **🔗 Top Telemetry Bar (`Connected Wallets`, 6-Chain Filter, Global Search & Live Gas)**:
-   - **`Connected Wallets (3)` Switcher**: Switch between **`0x6ddA...31b4 (swooz.eth)`**, **`Kraken + Coinbase (9 Legs)`**, **`0xB99A...93f6 (Boba #1716)`**, and **`0xae1c...39B0 (133 Mini Supers #2 Whale)`**, plus a 1-tap **`[Showcase ⇄ Live]`** toggle to flip between the `$143,628.45` Flow benchmark view and live exchange + on-chain balances.
+   - **`Connected Wallets (3)` Switcher**: Switch between **`Primary Vault (Encrypted) (Encrypted Vault)`**, **`Kraken + Coinbase (9 Legs)`**, **`Partner Vault (Encrypted) (Boba #1716)`**, and **`Cold Vault (Encrypted) (133 Mini Supers #2 Whale)`**, plus a 1-tap **`[Showcase ⇄ Live]`** toggle to flip between the `$143,628.45` Flow benchmark view and live exchange + on-chain balances.
    - **6 Multi-Chain Filter Buttons**: One-tap filtering across **Ethereum (`ETH`)**, **Solana (`SOL`)**, **Arbitrum (`ARB`)**, **Optimism (`OP`)**, **Polygon (`MATIC`)**, and **Base (`BASE`)**.
    - **Global Search & On-Chain Resolver (`Search tokens, NFTs, or wallets...`)**: Filter the token table in real time, or paste any `0x...` wallet address or Token ID (`1506`, `2313`, `9143`, `6915`) and press `Enter` to inspect it on Ethereum Mainnet.
    - **Live Mainnet Gas Pill (`Gas: 18 Gwei`)**: Polls Ethereum Mainnet JSON-RPC (`eth_gasPrice`) every 15 seconds.
