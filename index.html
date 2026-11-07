@@ -912,15 +912,15 @@
         <!-- ================= RIGHT PANE (6 Cols): GLOWE 3D HOLOGRAPHIC NFT STAGE + TRAIT INSPECTOR + ETH/USDC ASCII CHART ================= -->
         <div class="lg:col-span-6 flex flex-col justify-between gap-2.5">
 
-          <!-- TOP RIGHT WINDOW: GLOWE 3D HOLOGRAPHIC NFT STAGE -->
-          <div class="border border-[#00F0FF]/60 bg-[#02080a] p-2.5 relative overflow-hidden flex flex-col justify-between min-h-[305px] shadow-[inset_0_0_60px_rgba(0,240,255,0.12)]"
-               style="background-image: radial-gradient(circle at 54% 56%, rgba(0, 240, 255, 0.22) 0%, rgba(0, 255, 65, 0.08) 42%, transparent 72%), linear-gradient(to right, rgba(0, 240, 255, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.06) 1px, transparent 1px); background-size: 100% 100%, 16px 16px, 16px 16px;">
+          <!-- TOP RIGHT WINDOW: TRUE METADATA NFT VIEWER -->
+          <div class="border border-[#3a4d42] bg-[#05080c] p-2.5 relative overflow-hidden flex flex-col justify-between min-h-[305px]">
 
-            <!-- Stage Header Bar + Specimen Selector Pills (No Wireframe — Full-Color Backgroundless NFTs) -->
-            <div class="flex items-center justify-between flex-wrap gap-1.5 border-b border-[#00F0FF]/30 pb-1.5 relative z-20">
-              <div class="text-xs sm:text-sm font-bold tracking-wider uppercase">
-                <span class="text-[#00F0FF]" style="text-shadow: 0 0 10px rgba(0,240,255,0.55);">GLOWE 3D HOLOGRAPHIC</span>
-                <span class="text-[#00FF41] ml-1" style="text-shadow: 0 0 10px rgba(0,255,65,0.55);">NFT STAGE</span>
+            <!-- Stage Header Bar + Specimen Selector Pills -->
+            <div class="flex items-center justify-between flex-wrap gap-1.5 border-b border-white/10 pb-1.5 relative z-20">
+              <div class="text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2">
+                <span id="crt-stage-active-label" class="text-white">INVISIBLE FRIENDS #1506</span>
+                <span id="crt-stage-active-rank" class="text-[10px] text-emerald-400 font-mono">RANK #1,621 / 5,000</span>
+                <span id="crt-stage-active-bid" class="text-[10px] text-amber-400 font-mono">TARGET: 0.210 WETH</span>
               </div>
               <div class="flex items-center flex-wrap gap-1 text-[9px] font-mono">
                 <button type="button" onclick="selectCrtStageSpecimen('if-1506')" id="crt-spec-if-1506" class="px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer">IF #1506</button>
@@ -934,41 +934,10 @@
               </div>
             </div>
 
-            <!-- Corner Telemetry Readouts -->
-            <div class="absolute top-11 left-3 z-10 text-[9px] leading-[1.25] text-[#66d9ef] font-mono pointer-events-none">
-              <div class="text-[#9bb5a8]">HOLO_STAGE_ONLINE</div>
-              <div>AXIS: <span id="crt-axis-x">+20.5881</span></div>
-              <div>AXIS: <span id="crt-axis-y">-20.253</span></div>
-              <div>KHBRT: <span id="crt-khbrt">+13.885</span></div>
-              <div id="crt-stage-active-label" class="text-[#00FF41] font-bold mt-1">INVISIBLE FRIENDS #1506</div>
-            </div>
-            <div class="absolute top-11 right-3 z-10 text-[9px] text-[#9bb5a8] font-mono pointer-events-none text-right">
-              <div>HOLO_STAGE_ONLINE</div>
-              <div id="crt-stage-active-rank" class="text-[#00F0FF] mt-0.5">RANK #1,621 / 5,000</div>
-              <div id="crt-stage-active-bid" class="text-[#FFB000] mt-0.5">TARGET: 0.210 WETH</div>
-            </div>
-            <div class="absolute bottom-3 left-3 z-10 text-[9px] leading-[1.25] text-[#66d9ef] font-mono pointer-events-none">
-              <div>AXS: 2200, 0.8033</div>
-              <div>AXS: 2400, 0.8033</div>
-              <div>CODR.2430, 0.8030</div>
-              <div>DL07.2777 0.0808</div>
-            </div>
-            <div class="absolute bottom-3 right-3 z-10 text-[9px] text-[#9bb5a8] font-mono pointer-events-none">
-              HOLO_STAGE_ONLINE
-            </div>
-
-            <!-- Left & Right Vertical Caliper Bars -->
-            <div class="absolute left-3 top-1/2 -translate-y-1/2 h-24 w-2 border-l border-t border-b border-[#66d9ef]/50 pointer-events-none flex items-center">
-              <span class="text-[8px] text-[#66d9ef] -ml-2 bg-[#02080a] px-0.5">0</span>
-            </div>
-            <div class="absolute right-3 top-1/2 -translate-y-1/2 h-24 w-2 border-r border-t border-b border-[#66d9ef]/50 pointer-events-none flex items-center justify-end">
-              <span class="text-[8px] text-[#66d9ef] -mr-2 bg-[#02080a] px-0.5">1</span>
-            </div>
-
-            <!-- PURE TRUE-METADATA NFT SHOWCASE (No Grid, Rings, or Filters) -->
-            <div class="relative w-full h-[255px] flex items-center justify-center my-auto p-2">
-              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif" alt="NFT Specimen"
-                   class="h-full max-h-[240px] w-auto object-contain rounded-lg" />
+            <!-- PURE TRUE-METADATA NFT SHOWCASE (No Grid, Rings, Overlays, or Filters) -->
+            <div class="relative w-full h-[255px] flex items-center justify-center my-auto pt-2">
+              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif?v=57" alt="NFT Specimen"
+                   class="h-full max-h-[245px] w-auto object-contain rounded-lg" />
             </div>
           </div>
 
@@ -1849,7 +1818,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           <div class="sm:col-span-5 bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2.5 flex flex-col justify-between space-y-2">
             <!-- Pure NFT Artwork Container -->
             <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-[var(--card)] flex items-center justify-center">
-              <img id="stage-nft-img" src="nft-media/if_1506.gif" alt="NFT Artwork"
+              <img id="stage-nft-img" src="nft-media/if_1506.gif?v=57" alt="NFT Artwork"
                    class="w-full h-full object-contain rounded-lg" />
             </div>
 
@@ -2348,9 +2317,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=45', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=57', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
+      if (window.caches) {
+        caches.keys().then(keys => {
+          keys.forEach(k => {
+            if (k !== 'swooz-dex-v57') caches.delete(k);
+          });
+        }).catch(() => {});
+      }
     }
 
     let ETH_RATE = 2259.24;
@@ -2367,18 +2343,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         rank: 'Rank #1,621 / 5,000',
         owner: '0xC1eBE1C004F41E674953215395841b516A381880',
         priceNote: 'Target Bid: 0.210 WETH ($474.44)',
-        mediaUrl: 'nft-media/if_1506.gif',
+        mediaUrl: 'nft-media/if_1506.gif?v=57',
         badge: '🚶 LIVE WALKING GIF',
         traits: [
-          { trait_type: 'Upper Body', value: 'Lt Blue / Dk Blue Hoodie Up (0.90%)' },
-          { trait_type: 'Legs', value: 'Cream Fannypack (0.98%)' },
-          { trait_type: 'Eyes', value: 'Boomer Glasses (1.92%)' },
-          { trait_type: 'Mouth', value: 'Pipe' },
-          { trait_type: 'Feet', value: 'Light Blue Shoes' },
-          { trait_type: 'Sleeves', value: 'Short Sleeves' },
-          { trait_type: 'Right Arm', value: 'Phone' },
+          { trait_type: 'Upper Body', value: 'Light Blue / Dark Blue Hoodie Jacket with Hood Up' },
+          { trait_type: 'Fannypack', value: 'Cream Fannypack' },
+          { trait_type: 'Eyes', value: 'Boomer Glasses' },
+          { trait_type: 'Legs', value: 'Charcoal Pants' },
+          { trait_type: 'Feet', value: 'White Shoes' },
+          { trait_type: 'Sleeves', value: 'Long Sleeves' },
+          { trait_type: 'Right Arm', value: 'Swinging' },
           { trait_type: 'Left Arm', value: 'Swinging' },
-          { trait_type: 'Background', value: 'Yellow' }
+          { trait_type: 'Background', value: 'Purple' }
         ]
       },
       'if-1286': {
@@ -2389,17 +2365,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         rank: 'Rank #1,367 / 5,000',
         owner: '0xDf0fCfC1405d21723D3bcE5A05ABc59f55a06Bd4',
         priceNote: 'Sibling Backup #1 • 0.200 WETH ($451.85)',
-        mediaUrl: 'nft-media/if_1286.gif',
+        mediaUrl: 'nft-media/if_1286.gif?v=57',
         badge: '🚶 LIVE WALKING GIF',
         traits: [
-          { trait_type: 'Upper Body', value: 'Lt Blue / Dk Blue Hoodie Up (0.90%)' },
-          { trait_type: 'Legs', value: 'Cream Fannypack (0.98%)' },
-          { trait_type: 'Eyes', value: 'Red Glasses' },
-          { trait_type: 'Nose', value: 'Dart' },
-          { trait_type: 'Feet', value: 'Blue Shoes' },
-          { trait_type: 'Right Arm', value: 'Newspaper' },
-          { trait_type: 'Left Arm', value: 'Book' },
-          { trait_type: 'Background', value: 'Yellow' }
+          { trait_type: 'Upper Body', value: 'Light Blue / Dark Blue Hoodie Jacket with Hood Up' },
+          { trait_type: 'Fannypack', value: 'Cream Fannypack' },
+          { trait_type: 'Hat', value: 'Tan Bucket Hat' },
+          { trait_type: 'Eyes', value: 'Sunglasses' },
+          { trait_type: 'Legs', value: 'Red Sweatpants' },
+          { trait_type: 'Feet', value: 'Summer Night Sneakers' },
+          { trait_type: 'Sleeves', value: 'Long Sleeves' },
+          { trait_type: 'Right Arm', value: 'Swinging' },
+          { trait_type: 'Left Arm', value: 'Swinging' },
+          { trait_type: 'Background', value: 'Orange' }
         ]
       },
       'if-140': {
@@ -2410,17 +2388,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         rank: 'Rank #814 / 5,000',
         owner: '0x9a90b0B430acC2Aa6B9ffD442ED2D9BbF30E2e14',
         priceNote: 'Sibling Backup #2 • 0.200 WETH ($451.85)',
-        mediaUrl: 'nft-media/if_140.gif',
+        mediaUrl: 'nft-media/if_140.gif?v=57',
         badge: '🚶 LIVE WALKING GIF',
         traits: [
-          { trait_type: 'Upper Body', value: 'Lt Blue / Dk Blue Hoodie Down' },
-          { trait_type: 'Legs', value: 'Cream Fannypack (0.98%)' },
-          { trait_type: 'Hat', value: 'Backwards Cap' },
-          { trait_type: 'Eyes', value: 'Cobain Glasses' },
-          { trait_type: 'Right Arm', value: 'Gold Stake (Rare)' },
-          { trait_type: 'Left Arm', value: 'Toaster' },
-          { trait_type: 'Feet', value: 'Red Shoes' },
-          { trait_type: 'Background', value: 'Coral' }
+          { trait_type: 'Upper Body', value: 'Light Blue / Dark Blue Hoodie Jacket with Hood Down' },
+          { trait_type: 'Fannypack', value: 'Cream Fannypack' },
+          { trait_type: 'Hat', value: 'Big Hat' },
+          { trait_type: 'Eyes', value: 'White Nerd Glasses' },
+          { trait_type: 'Legs', value: 'Pink Skirt' },
+          { trait_type: 'Feet', value: 'Bleached Sand Sneakers' },
+          { trait_type: 'Sleeves', value: 'Long Sleeves' },
+          { trait_type: 'Left Arm', value: 'Stick Bag' },
+          { trait_type: 'Right Arm', value: 'Swinging' },
+          { trait_type: 'Background', value: 'Yellow' }
         ]
       },
       'if-42': {
@@ -2431,17 +2411,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         rank: 'Rank #489 / 5,000',
         owner: '0x93971b710bc2b1A0978802B9d5887df9b832F266',
         priceNote: 'Sibling Backup #3 • Early Mint #42',
-        mediaUrl: 'nft-media/if_42.gif',
+        mediaUrl: 'nft-media/if_42.gif?v=57',
         badge: '🚶 LIVE WALKING GIF',
         traits: [
-          { trait_type: 'Upper Body', value: 'Lt Blue / Dk Blue Hoodie Down' },
-          { trait_type: 'Legs', value: 'Cream Fannypack (0.98%)' },
-          { trait_type: 'Hat', value: 'Exposed Brain (Rare)' },
-          { trait_type: 'Eyes', value: 'Round Glasses' },
-          { trait_type: 'Right Arm', value: 'Basketball' },
-          { trait_type: 'Left Arm', value: 'Spray Can' },
-          { trait_type: 'Feet', value: 'Yellow Shoes' },
-          { trait_type: 'Background', value: 'Green' }
+          { trait_type: 'Upper Body', value: 'Light Blue / Dark Blue Hoodie Jacket with Hood Down' },
+          { trait_type: 'Fannypack', value: 'Cream Fannypack' },
+          { trait_type: 'Hat', value: 'White / Light Blue Headband' },
+          { trait_type: 'Eyes', value: 'Thief Mask' },
+          { trait_type: 'Mouth', value: 'Bing Bong Stick' },
+          { trait_type: 'Legs', value: 'Pink Shorts' },
+          { trait_type: 'Feet', value: 'Bubblegum Blue Sneakers' },
+          { trait_type: 'Right Arm', value: 'Book' },
+          { trait_type: 'Left Arm', value: 'Swinging' },
+          { trait_type: 'Background', value: 'Purple' }
         ]
       },
       'beast-2313-full': {
@@ -2609,10 +2591,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     function toNobgMediaUrl(url) {
       if (!url) return '';
       // Always return the true, original metadata image (never strip background via nobg/)
-      if (url.startsWith('nft-media/nobg/')) {
-        return url.replace('nft-media/nobg/', 'nft-media/');
+      let clean = url.replace('nft-media/nobg/', 'nft-media/');
+      if (clean.startsWith('nft-media/') && !clean.includes('?')) {
+        clean += '?v=57';
       }
-      return url;
+      return clean;
     }
 
     function renderStageNft(item) {
