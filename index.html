@@ -144,21 +144,14 @@
       text-transform: uppercase;
     }
 
-    @keyframes holoFloat {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-4px) scale(1.018); }
-    }
-
-    /* Full-Glory True-Color NFTs (No Grayscale Tint, No Square Background Box) */
+    /* Pure Unmodified True-Metadata NFTs (Zero Filters, Zero Drop-Shadows, Zero Floating Animation) */
     img[src*="nft-media/"],
     #stage-nft-img,
     #crt-holo-specimen-img,
     #wallet-nft-grid img,
     #custom-targets-list img {
-      animation: holoFloat 3.6s ease-in-out infinite;
-      background: transparent !important;
-      border: none !important;
-      filter: drop-shadow(0 8px 18px rgba(0, 240, 255, 0.32)) !important;
+      animation: none !important;
+      filter: none !important;
       box-shadow: none !important;
     }
 
@@ -640,7 +633,7 @@
                 <!-- 🚶‍♂️ THE WALK "3+3 BOT-FUNDED" HOUSE-MONEY PLAYBOOK BANNER -->
                 <div class="p-3 rounded-xl bg-[#0b101b] border border-emerald-500/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px]">
                   <div class="flex items-start sm:items-center gap-2.5">
-                    <img src="nft-media/nobg/the_walk_1.gif" alt="The Walk #1" class="w-10 h-10 rounded-lg object-contain bg-emerald-500/10 border border-emerald-500/30 shrink-0" />
+                    <img src="nft-media/the_walk_1.gif" alt="The Walk #1" class="w-10 h-10 rounded-lg object-contain bg-emerald-500/10 border border-emerald-500/30 shrink-0" />
                     <div class="space-y-0.5">
                       <div class="flex items-center gap-2 flex-wrap">
                         <span class="text-white font-bold">🚶‍♂️ The Walk #1 — 3 Editions Held in Primary Vault!</span>
@@ -972,77 +965,10 @@
               <span class="text-[8px] text-[#66d9ef] -mr-2 bg-[#02080a] px-0.5">1</span>
             </div>
 
-            <!-- 3D ISOMETRIC NEON-GREEN GRID PLATFORM + FULL-COLOR TRANSPARENT-BG NFT SHOWCASE -->
-            <div class="relative w-full h-[255px] flex items-center justify-center my-auto">
-              <svg viewBox="0 0 600 280" class="w-full h-full overflow-visible">
-                <defs>
-                  <filter id="neonGreenGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="3.5" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  <filter id="cyanHoloGlow" x="-25%" y="-25%" width="150%" height="150%">
-                    <feGaussianBlur stdDeviation="2.5" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                <!-- Isometric Axis Extension Lines & Labels (X / Y) -->
-                <line x1="110" y1="125" x2="465" y2="258" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.55" />
-                <line x1="135" y1="258" x2="490" y2="125" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.55" />
-                <text x="195" y="252" fill="#00F0FF" font-size="9" font-family="Courier New">X</text>
-                <text x="405" y="252" fill="#00F0FF" font-size="9" font-family="Courier New">X</text>
-                <text x="458" y="148" fill="#00F0FF" font-size="9" font-family="Courier New">Y</text>
-
-                <!-- Vertical Corner Reference Posts -->
-                <line x1="145" y1="185" x2="145" y2="95" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
-                <circle cx="145" cy="95" r="2" fill="#00F0FF" />
-                <line x1="225" y1="142" x2="225" y2="62" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
-                <circle cx="225" cy="62" r="2" fill="#00F0FF" />
-                <line x1="395" y1="142" x2="395" y2="62" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
-                <circle cx="395" cy="62" r="2" fill="#00F0FF" />
-                <line x1="455" y1="185" x2="455" y2="95" stroke="#00F0FF" stroke-width="0.8" opacity="0.45" />
-                <circle cx="455" cy="95" r="2" fill="#00F0FF" />
-
-                <!-- 3D Isometric Neon-Green Platform Base (Double-Bezel Glowing Diamond) -->
-                <polygon points="300,122 455,182 300,244 145,182" fill="rgba(0, 40, 22, 0.55)" stroke="#00FF41" stroke-width="2.4" filter="url(#neonGreenGlow)" />
-                <polygon points="300,129 455,189 300,252 145,189" fill="none" stroke="#00FF41" stroke-width="1.8" opacity="0.85" filter="url(#neonGreenGlow)" />
-
-                <!-- Internal Isometric Floor Grid Lines (8x8 Subdivisions) -->
-                <g stroke="#00F0FF" stroke-width="0.75" opacity="0.48">
-                  <line x1="280.6" y1="129.5" x2="435.6" y2="189.5" />
-                  <line x1="261.2" y1="137.0" x2="416.2" y2="197.0" />
-                  <line x1="241.8" y1="144.5" x2="396.8" y2="204.5" />
-                  <line x1="222.5" y1="152.0" x2="377.5" y2="212.0" />
-                  <line x1="203.1" y1="159.5" x2="358.1" y2="219.5" />
-                  <line x1="183.7" y1="167.0" x2="338.7" y2="227.0" />
-                  <line x1="164.3" y1="174.5" x2="319.3" y2="234.5" />
-
-                  <line x1="319.3" y1="129.5" x2="164.3" y2="189.5" />
-                  <line x1="338.7" y1="137.0" x2="183.7" y2="197.0" />
-                  <line x1="358.1" y1="144.5" x2="203.1" y2="204.5" />
-                  <line x1="377.5" y1="152.0" x2="222.5" y2="212.0" />
-                  <line x1="396.8" y1="159.5" x2="241.8" y2="219.5" />
-                  <line x1="416.2" y1="167.0" x2="261.2" y2="227.0" />
-                  <line x1="435.6" y1="174.5" x2="280.6" y2="234.5" />
-                </g>
-
-                <!-- Glowing Floor Pedestal Shadow Under NFT Feet -->
-                <ellipse cx="300" cy="180" rx="34" ry="12" fill="rgba(0, 255, 65, 0.22)" stroke="#00FF41" stroke-width="1" stroke-dasharray="4 3" filter="url(#neonGreenGlow)" />
-
-                <!-- Floating Cyan Orbital Ring Around Specimen -->
-                <ellipse cx="300" cy="112" rx="92" ry="34" fill="none" stroke="#00F0FF" stroke-width="1.5" opacity="0.85" filter="url(#cyanHoloGlow)" />
-                <ellipse cx="300" cy="112" rx="82" ry="29" fill="none" stroke="#00F0FF" stroke-width="0.75" stroke-dasharray="6 4" opacity="0.65" />
-              </svg>
-
-              <!-- Full-Color Backgroundless NFT Standing Directly on the 3D Isometric Stage -->
-              <img id="crt-holo-specimen-img" src="nft-media/nobg/if_1506.gif" alt="Hologram Specimen"
-                   class="absolute top-1 w-44 h-44 sm:w-48 sm:h-48 object-contain pointer-events-none z-10" />
+            <!-- PURE TRUE-METADATA NFT SHOWCASE (No Grid, Rings, or Filters) -->
+            <div class="relative w-full h-[255px] flex items-center justify-center my-auto p-2">
+              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif" alt="NFT Specimen"
+                   class="h-full max-h-[240px] w-auto object-contain rounded-lg" />
             </div>
           </div>
 
@@ -1919,15 +1845,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
 
         <!-- TAB 1: 3D HOLOGRAPHIC PROJECTION CHAMBER + Full Metadata & Trait Breakdown -->
         <div id="viewer-tab-stage" class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 items-start">
-          <!-- 3D NFT STAGE (Left 5 Cols — Clean Stage without Holo-Projector Header, Badge, Base Ring, Tint, or Scanlines) -->
-          <div class="sm:col-span-5 bg-black border border-white/25 p-3 flex flex-col justify-between relative overflow-hidden shadow-[0_0_50px_rgba(0,240,255,0.16)] space-y-2">
-            <!-- Upward Conical Light Cone -->
-            <div class="absolute inset-x-4 bottom-8 h-56 bg-[radial-gradient(ellipse_at_bottom,rgba(0,240,255,0.28)_0%,transparent_75%)] pointer-events-none"></div>
-
-            <!-- NFT Specimen Stage -->
-            <div class="relative w-full aspect-square overflow-hidden bg-black/60 border border-white/20 flex items-center justify-center z-10">
-              <img id="stage-nft-img" src="nft-media/if_1506.gif" alt="NFT Stage"
-                   class="w-[88%] h-[88%] object-contain transition-all duration-300" />
+          <!-- TRUE METADATA NFT VIEWER (Left 5 Cols — Pure Unmodified Artwork) -->
+          <div class="sm:col-span-5 bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2.5 flex flex-col justify-between space-y-2">
+            <!-- Pure NFT Artwork Container -->
+            <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-[var(--card)] flex items-center justify-center">
+              <img id="stage-nft-img" src="nft-media/if_1506.gif" alt="NFT Artwork"
+                   class="w-full h-full object-contain rounded-lg" />
             </div>
 
             <div class="w-full flex items-center justify-between gap-1 text-xs relative z-10">
@@ -2420,7 +2343,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v55') caches.delete(k);
+            if (k !== 'swooz-dex-v56') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -2685,8 +2608,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function toNobgMediaUrl(url) {
       if (!url) return '';
-      if (url.startsWith('nft-media/') && !url.startsWith('nft-media/nobg/')) {
-        return url.replace('nft-media/', 'nft-media/nobg/');
+      // Always return the true, original metadata image (never strip background via nobg/)
+      if (url.startsWith('nft-media/nobg/')) {
+        return url.replace('nft-media/nobg/', 'nft-media/');
       }
       return url;
     }

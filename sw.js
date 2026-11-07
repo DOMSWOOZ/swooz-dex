@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swooz-dex-v55';
+const CACHE_NAME = 'swooz-dex-v56';
 const ASSETS = [
   './',
   'index.html',
