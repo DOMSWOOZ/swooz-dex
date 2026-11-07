@@ -574,7 +574,7 @@
                       <div class="space-y-1.5 font-mono text-[10.5px]">
                         <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
                           <span><b class="text-white">L1A</b> KRK <b class="text-[#fbbf24]">0.1634 ETH</b></span>
-                          <span class="text-[#34d399]">@ $2,284 ↔ $2,234 (+$8.17)</span>
+                          <span class="text-[#34d399]">@ $2,284 ↔ $2,210 (+$12.09)</span>
                         </div>
                         <div class="p-1.5 rounded bg-white/5 flex justify-between items-center gap-1">
                           <span><b class="text-white">L1C</b> KRK <b class="text-[#fbbf24]">0.0817 ETH</b></span>
@@ -1076,7 +1076,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               </button>
               <button id="btn-pair-link" onclick="switchChartPair('LINKUSD')"
                       class="px-2.5 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition cursor-pointer">
-                🔗 LINK/USD ($10.65 ↔ $11.05)
+                🔗 LINK/USD ($10.65 ↔ $10.95)
               </button>
             </div>
 
@@ -1120,7 +1120,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 <button onclick="selectProTunerLeg('L1B')" id="pill-leg-L1B" class="px-2 py-0.5 rounded-md bg-emerald-500/20 hover:bg-emerald-500/35 border border-emerald-400/50 text-emerald-300 font-bold cursor-pointer transition">🦑 L1B $2,246 (+$3.10)</button>
                 <button onclick="selectProTunerLeg('L2')" id="pill-leg-L2" class="px-2 py-0.5 rounded-md bg-cyan-500/15 hover:bg-cyan-500/30 border border-cyan-400/40 text-cyan-300 font-bold cursor-pointer transition">🦑 L2 $2,252 (+$2.03)</button>
                 <button onclick="selectProTunerLeg('L4')" id="pill-leg-L4" class="px-2 py-0.5 rounded-md bg-sky-500/15 hover:bg-sky-500/30 border border-sky-400/40 text-sky-300 font-bold cursor-pointer transition">🔵 L4 $2,272 (+$2.18)</button>
-                <button onclick="selectProTunerLeg('L1A')" id="pill-leg-L1A" class="px-2 py-0.5 rounded-md bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-bold cursor-pointer transition">🦑 L1A $2,284 (+$8.17)</button>
+                <button onclick="selectProTunerLeg('L1A')" id="pill-leg-L1A" class="px-2 py-0.5 rounded-md bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-bold cursor-pointer transition">🦑 L1A $2,284 (+$12.09)</button>
                 <button onclick="selectProTunerLeg('L1C')" id="pill-leg-L1C" class="px-2 py-0.5 rounded-md bg-purple-500/15 hover:bg-purple-500/30 border border-purple-400/40 text-purple-300 font-bold cursor-pointer transition">🦑 L1C $2,312 (+$4.41)</button>
               </div>
               <div class="space-y-1 pt-0.5">
@@ -1226,12 +1226,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30">LEG #7 COINBASE (+$0.95/Swing)</span>
                       <button id="btn-expand-LINKUSD" onclick="switchChartPair(CHART_FILTER_MODE === 'LINKUSD' ? 'ALL' : 'LINKUSD')" class="text-[10.5px] font-sans font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-emerald-500/25 border border-white/15 hover:border-emerald-400/50 text-slate-200 hover:text-emerald-300 cursor-pointer transition">⛶ Expand</button>
                     </div>
-                    <div id="mc-hud-LINKUSD" class="text-[10px] font-mono text-slate-400">Hover/drag chart to inspect OHLCV &amp; exact distance to $11.05 Sell Wall</div>
+                    <div id="mc-hud-LINKUSD" class="text-[10px] font-mono text-slate-400">Hover/drag chart to inspect OHLCV &amp; exact distance to $10.95 Sell Wall</div>
                   </div>
                 </div>
                 <div class="text-right font-mono">
                   <div id="mc-spot-LINKUSD" class="text-sm sm:text-base font-extrabold text-white">$10.81</div>
-                  <div id="mc-dist-LINKUSD" class="text-[10px] font-bold text-sky-300">🎯 $0.24 (2.22%) to $11.05 Fill</div>
+                  <div id="mc-dist-LINKUSD" class="text-[10px] font-bold text-sky-300">🎯 $0.24 (2.22%) to $10.95 Fill</div>
                 </div>
               </div>
               <div class="relative">
@@ -1240,13 +1240,13 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               <!-- Clickable LINK Order Target Pills -->
               <div class="flex items-center gap-1.5 flex-wrap pt-0.5 font-mono text-[10px]">
                 <span class="text-slate-400 font-bold">CLICK TO TUNE:</span>
-                <button onclick="selectProTunerLeg('L7')" id="pill-leg-L7" class="px-2 py-0.5 rounded-md bg-sky-500/20 hover:bg-sky-500/35 border border-sky-400/50 text-sky-300 font-bold cursor-pointer transition">🔵 L7 SELL $11.05 ↔ REBUY $10.65 (+$0.95)</button>
+                <button onclick="selectProTunerLeg('L7')" id="pill-leg-L7" class="px-2 py-0.5 rounded-md bg-sky-500/20 hover:bg-sky-500/35 border border-sky-400/50 text-sky-300 font-bold cursor-pointer transition">🔵 L7 SELL $10.95 ↔ REBUY $10.65 (+$0.71)</button>
               </div>
               <div class="space-y-1 pt-0.5">
                 <div class="flex items-center justify-between text-[10px] font-mono">
                   <span class="text-amber-400 font-semibold">🔄 Buy Floor: $10.65</span>
-                  <span id="mc-pct-LINKUSD" class="text-cyan-300 font-bold">Channel Position: 40% to $11.05</span>
-                  <span class="text-emerald-400 font-semibold">🚀 Grid Sell: $11.05</span>
+                  <span id="mc-pct-LINKUSD" class="text-cyan-300 font-bold">Channel Position: 40% to $10.95</span>
+                  <span class="text-emerald-400 font-semibold">🚀 Grid Sell: $10.95</span>
                 </div>
                 <div class="w-full h-2 rounded-full bg-slate-800/90 overflow-hidden p-0.5">
                   <div id="mc-bar-LINKUSD" class="h-full rounded-full bg-gradient-to-r from-amber-400 via-sky-400 to-emerald-400 transition-all duration-300" style="width: 40%"></div>
@@ -1503,7 +1503,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $2,284.00</td>
                       <td class="py-1.5 px-2 font-bold">0.1634 ETH ($364.41)</td>
                       <td class="py-1.5 px-2 text-emerald-400 font-bold">$373.15 USD</td>
-                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,234.00 (+0.00233 ETH / +$8.17)</td>
+                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,210.00 (+0.00547 ETH / +$12.09)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OL4VXF) • ⚙️ Tune</td>
                     </tr>
                     <tr onclick="selectProTunerLeg('L1C')" class="bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer transition">
@@ -1557,11 +1557,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     </tr>
                     <tr onclick="selectProTunerLeg('L7')" class="bg-sky-500/10 hover:bg-sky-500/20 cursor-pointer transition">
                       <td class="py-1.5 pr-2 font-sans font-bold text-sky-400">🔵 L7 Coinbase LINK Local Reverse-Grid</td>
-                      <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $11.05</td>
-                      <td class="py-1.5 px-2 font-bold">2.3700 LINK ($25.57)</td>
-                      <td class="py-1.5 px-2 text-emerald-400 font-bold">$26.19 USDC</td>
-                      <td class="py-1.5 px-2 font-bold text-sky-400">Buys @ $10.65 (+0.068 LINK / +$0.95)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (1662fbe6) • ⚙️ Tune</td>
+                      <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $10.95</td>
+                      <td class="py-1.5 px-2 font-bold">2.3700 LINK ($25.78)</td>
+                      <td class="py-1.5 px-2 text-emerald-400 font-bold">$25.95 USDC</td>
+                      <td class="py-1.5 px-2 font-bold text-sky-400">Buys @ $10.65 (+0.067 LINK / +$0.71)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (d6c31f07) • ⚙️ Tune</td>
                     </tr>
                   </tbody>
                 </table>
@@ -2317,13 +2317,13 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=58', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=59', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v58') caches.delete(k);
+            if (k !== 'swooz-dex-v59') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -3766,7 +3766,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         targetBuy: 10.65,
         decimals: 2,
         sells: [
-          { price: 11.05, label: 'L7 CB SELL $11.05 (2.37 LINK)', color: '#10f1b6' }
+          { price: 10.95, label: 'L7 CB SELL $10.95 (2.37 LINK)', color: '#10f1b6' }
         ],
         buys: [
           { price: 10.65, label: 'L7 REBUY $10.65 (+$0.95/Swing)', color: '#fbbf24' }
@@ -3917,13 +3917,13 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       L1B: { id: 'L1B', name: '🦑 L1B ETH Ultra-Fast', title: 'Leg #1B — ETH Ultra-Fast Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.08168805, sell: 2246.00, buy: 2208.00, defaultSell: 2246.00, defaultBuy: 2208.00, minS: 2230, maxS: 2360, minB: 2170, maxB: 2245, step: 1, decimals: 2, color: '#00f5d4', orderId: 'OAL36D' },
       L2:  { id: 'L2',  name: '🦑 L2 ETH Fast Grid',   title: 'Leg #2 — ETH Fast Reverse-Grid',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.05085957, sell: 2252.00, buy: 2212.00, defaultSell: 2252.00, defaultBuy: 2212.00, minS: 2230, maxS: 2360, minB: 2170, maxB: 2250, step: 1, decimals: 2, color: '#10f1b6', orderId: 'O4QICY' },
       L4:  { id: 'L4',  name: '🔵 L4 ETH Local Grid',  title: 'Leg #4 — Coinbase ETH Reverse-Grid', exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.04357500, sell: 2272.00, buy: 2222.00, defaultSell: 2272.00, defaultBuy: 2222.00, minS: 2240, maxS: 2370, minB: 2175, maxB: 2260, step: 1, decimals: 2, color: '#38bdf8', orderId: 'e4a92d0b' },
-      L1A: { id: 'L1A', name: '🦑 L1A ETH Mid Wall',   title: 'Leg #1A — ETH Mid Channel Wall',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.16337609, sell: 2284.00, buy: 2234.00, defaultSell: 2284.00, defaultBuy: 2234.00, minS: 2245, maxS: 2380, minB: 2180, maxB: 2270, step: 1, decimals: 2, color: '#34d399', orderId: 'OL4VXF' },
+      L1A: { id: 'L1A', name: '🦑 L1A ETH Mid Wall',   title: 'Leg #1A — ETH Mid Channel Wall',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.16337609, sell: 2284.00, buy: 2210.00, defaultSell: 2284.00, defaultBuy: 2210.00, minS: 2245, maxS: 2380, minB: 2170, maxB: 2270, step: 1, decimals: 2, color: '#34d399', orderId: 'OL4VXF' },
       L1C: { id: 'L1C', name: '🦑 L1C ETH Upper Wall', title: 'Leg #1C — ETH Upper Channel Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.07368805, sell: 2312.00, buy: 2258.00, defaultSell: 2312.00, defaultBuy: 2258.00, minS: 2255, maxS: 2400, minB: 2190, maxB: 2295, step: 1, decimals: 2, color: '#fbbf24', orderId: 'OVWGRG' },
       L3:  { id: 'L3',  name: '🦑 L3 SOL Fast Grid',   title: 'Leg #3 — Kraken SOL Fast Scraper',   exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.13324100, sell: 91.80,   buy: 88.90,   defaultSell: 91.80,   defaultBuy: 88.90,   minS: 89.5, maxS: 99.0, minB: 85.0, maxB: 91.5, step: 0.1, decimals: 2, color: '#a855f7', orderId: 'OFFIKV' },
       L9:  { id: 'L9',  name: '🔵 L9 SOL Mid Grid',    title: 'Leg #9 — Coinbase SOL Mid Scraper',  exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.30250000, sell: 92.40,   buy: 89.20,   defaultSell: 92.40,   defaultBuy: 89.20,   minS: 89.8, maxS: 99.5, minB: 85.5, maxB: 92.0, step: 0.1, decimals: 2, color: '#c084fc', orderId: 'a3ca66c6' },
       L5:  { id: 'L5',  name: '🔵 L5 SOL Upper Grid',  title: 'Leg #5 — Coinbase SOL Upper Wall',   exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.28494619, sell: 94.80,   buy: 91.20,   defaultSell: 94.80,   defaultBuy: 91.20,   minS: 90.5, maxS: 102.0, minB: 86.0, maxB: 94.0, step: 0.1, decimals: 2, color: '#818cf8', orderId: '8aeeb1b6' },
       L6:  { id: 'L6',  name: '🔵 L6 BTC Local Grid',  title: 'Leg #6 — Coinbase BTC Range Scraper',exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'BTCUSD', asset: 'BTC', size: 0.00087620, sell: 76800.00,buy: 74800.00,defaultSell: 76800.00,defaultBuy: 74800.00,minS: 75200,maxS: 79500,minB: 72500,maxB: 76200,step: 50,  decimals: 0, color: '#f59e0b', orderId: '5a3235f8' },
-      L7:  { id: 'L7',  name: '🔵 L7 LINK Local Grid', title: 'Leg #7 — Coinbase LINK Range Scraper',exchange:'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'LINKUSD',asset: 'LINK',size: 2.37000000, sell: 11.05,   buy: 10.65,   defaultSell: 11.05,   defaultBuy: 10.65,   minS: 10.80,maxS: 12.20,minB: 10.10,maxB: 10.95,step: 0.05,decimals: 2, color: '#0ea5e9', orderId: '1662fbe6' }
+      L7:  { id: 'L7',  name: '🔵 L7 LINK Local Grid', title: 'Leg #7 — Coinbase LINK Range Scraper',exchange:'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'LINKUSD',asset: 'LINK',size: 2.37000000, sell: 10.95,   buy: 10.65,   defaultSell: 10.95,   defaultBuy: 10.65,   minS: 10.75,maxS: 12.20,minB: 10.10,maxB: 10.90,step: 0.05,decimals: 2, color: '#0ea5e9', orderId: 'd6c31f07' }
     };
 
     const LIVE_TICK_LOG = [
@@ -3931,7 +3931,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       { ts: 'LIVE', asset: 'BTC', ex: '🔵 CB',  msg: 'L6 BTC Sell ($76,800) tracking <1.5% from spot (+$1.75 swing)', hot: true },
       { ts: 'LIVE', asset: 'ETH', ex: '🦑 KRK', msg: 'L2 ETH Sell ($2,252.00) & L4 CB ETH ($2,272.00) channel walls active', hot: false },
       { ts: 'LIVE', asset: 'SOL', ex: '🦑+🔵',  msg: '3 SOL legs ($91.80 / $92.40 / $94.80) armed across Kraken & Coinbase', hot: false },
-      { ts: 'LIVE', asset: 'LINK',ex: '🔵 CB',  msg: 'L7 LINK Sell ($11.05 ↔ $10.65) Post-Only Maker 0% fee tier verified', hot: false }
+      { ts: 'LIVE', asset: 'LINK',ex: '🔵 CB',  msg: 'L7 LINK Sell ($10.95 ↔ $10.65) Post-Only Maker 0% fee tier verified', hot: false }
     ];
 
     function getLiveSpotForPair(pairKey) {
