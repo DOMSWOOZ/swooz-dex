@@ -237,6 +237,12 @@ def fetch_walk_total_supply() -> int:
     return val or 16969
 
 
+def fetch_swooz_walk_balance() -> int:
+    data = "0x00fdd58e" + SWOOZ_WALLET[2:].lower().zfill(64) + "1".zfill(64)
+    res = eth_call(WALK_CONTRACT, data)
+    return int(res, 16) if res and res != "0x0" else 0
+
+
 def fetch_erc721_owner(contract: str, token_id: int) -> str:
     hex_id = hex(token_id)[2:].zfill(64)
     res = eth_call(contract, "0x6352211e" + hex_id)
@@ -250,6 +256,7 @@ def get_snapshot() -> dict:
     cg_akcb = fetch_json("https://api.coingecko.com/api/v3/nfts/a-kid-called-beast")
     cg_clonex = fetch_json("https://api.coingecko.com/api/v3/nfts/clonex")
     walk_supply = fetch_walk_total_supply()
+    swooz_walk_held = fetch_swooz_walk_balance()
     walk_counters = fetch_json(f"https://eth.blockscout.com/api/v2/tokens/{WALK_CONTRACT}/counters")
 
     ms_tok = fetch_json(f"https://eth.blockscout.com/api/v2/tokens/{MINI_SUPERS_CONTRACT}")
@@ -359,6 +366,7 @@ def get_snapshot() -> dict:
             "contract": WALK_CONTRACT,
             "total_supply": walk_supply,
             "unique_holders": int(walk_counters.get("token_holders_count", 4994)),
+            "swooz_held": swooz_walk_held,
             "bid_eth": 0.0019,
             "bid_usd": round(0.0019 * eth_usd_rate, 2),
             "floor_eth": 0.0022,
@@ -578,6 +586,7 @@ def send_discord_webhook(snap: dict) -> int:
             {
                 "name": "🚶 \"The Walk\" Editions (Token #1)",
                 "value": (
+                    f"• **swooz.eth Held:** `{walk.get('swooz_held', 3)} Editions` (**Stage 1 3-Pack Active!**)\n"
                     f"• **Supply / Holders:** `{walk['total_supply']:,}` / `{walk['unique_holders']:,}`\n"
                     f"• **Bid / Floor:** `{walk['bid_eth']:.4f} WETH` (**${walk['bid_usd']:,.2f}**) – `{walk['floor_eth']:.4f} ETH` (**${walk['floor_usd']:,.2f}**)"
                 ),
