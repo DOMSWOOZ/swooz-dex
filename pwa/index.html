@@ -1206,7 +1206,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <div class="font-bold font-mono text-white text-xs sm:text-sm flex items-center gap-1.5">
                       <span>ETH/USD</span>
                       <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">5 ARMED LEGS (+$20.53/Cycle)</span>
-                      <button onclick="switchChartPair(CHART_FILTER_MODE === 'ETHUSD' ? 'ALL' : 'ETHUSD')" class="text-[10px] px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/15 text-slate-300 cursor-pointer">⛶ Expand</button>
+                      <button id="btn-expand-ETHUSD" onclick="switchChartPair(CHART_FILTER_MODE === 'ETHUSD' ? 'ALL' : 'ETHUSD')" class="text-[10.5px] font-sans font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-emerald-500/25 border border-white/15 hover:border-emerald-400/50 text-slate-200 hover:text-emerald-300 cursor-pointer transition">⛶ Expand</button>
                     </div>
                     <div id="mc-hud-ETHUSD" class="text-[10px] font-mono text-slate-400">Hover/drag chart to inspect OHLCV &amp; exact distance to all 5 ETH sell walls</div>
                   </div>
@@ -1217,7 +1217,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 </div>
               </div>
               <div class="relative">
-                <canvas id="chart-canvas-ETHUSD" width="540" height="230" class="w-full h-[205px] sm:h-[225px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5"></canvas>
+                <canvas id="chart-canvas-ETHUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
               <!-- Clickable ETH Order Target Pills (Click any pill to highlight on chart & load in Live Order Tuner) -->
               <div class="flex items-center gap-1.5 flex-wrap pt-0.5 font-mono text-[10px]">
@@ -1249,7 +1249,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <div class="font-bold font-mono text-white text-xs sm:text-sm flex items-center gap-1.5">
                       <span>SOL/USD</span>
                       <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">3 ARMED LEGS (+$2.39/Cycle)</span>
-                      <button onclick="switchChartPair(CHART_FILTER_MODE === 'SOLUSD' ? 'ALL' : 'SOLUSD')" class="text-[10px] px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/15 text-slate-300 cursor-pointer">⛶ Expand</button>
+                      <button id="btn-expand-SOLUSD" onclick="switchChartPair(CHART_FILTER_MODE === 'SOLUSD' ? 'ALL' : 'SOLUSD')" class="text-[10.5px] font-sans font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-emerald-500/25 border border-white/15 hover:border-emerald-400/50 text-slate-200 hover:text-emerald-300 cursor-pointer transition">⛶ Expand</button>
                     </div>
                     <div id="mc-hud-SOLUSD" class="text-[10px] font-mono text-slate-400">Hover/drag chart to inspect OHLCV &amp; exact distance to all 3 SOL sell walls</div>
                   </div>
@@ -1260,7 +1260,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 </div>
               </div>
               <div class="relative">
-                <canvas id="chart-canvas-SOLUSD" width="540" height="230" class="w-full h-[205px] sm:h-[225px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5"></canvas>
+                <canvas id="chart-canvas-SOLUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
               <!-- Clickable SOL Order Target Pills -->
               <div class="flex items-center gap-1.5 flex-wrap pt-0.5 font-mono text-[10px]">
@@ -1290,7 +1290,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <div class="font-bold font-mono text-white text-xs sm:text-sm flex items-center gap-1.5">
                       <span>BTC/USD</span>
                       <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">LEG #6 COINBASE (+$1.75/Swing)</span>
-                      <button onclick="switchChartPair(CHART_FILTER_MODE === 'BTCUSD' ? 'ALL' : 'BTCUSD')" class="text-[10px] px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/15 text-slate-300 cursor-pointer">⛶ Expand</button>
+                      <button id="btn-expand-BTCUSD" onclick="switchChartPair(CHART_FILTER_MODE === 'BTCUSD' ? 'ALL' : 'BTCUSD')" class="text-[10.5px] font-sans font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-emerald-500/25 border border-white/15 hover:border-emerald-400/50 text-slate-200 hover:text-emerald-300 cursor-pointer transition">⛶ Expand</button>
                     </div>
                     <div id="mc-hud-BTCUSD" class="text-[10px] font-mono text-slate-400">Hover/drag chart to inspect OHLCV &amp; exact distance to $76,800 Sell Wall</div>
                   </div>
@@ -1301,13 +1301,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 </div>
               </div>
               <div class="relative">
-                <canvas id="chart-canvas-BTCUSD" width="540" height="230" class="w-full h-[205px] sm:h-[225px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5"></canvas>
+                <canvas id="chart-canvas-BTCUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
               <!-- Clickable BTC Order Target Pills -->
               <div class="flex items-center gap-1.5 flex-wrap pt-0.5 font-mono text-[10px]">
                 <span class="text-slate-400 font-bold">CLICK TO TUNE:</span>
                 <button onclick="selectProTunerLeg('L6')" id="pill-leg-L6" class="px-2 py-0.5 rounded-md bg-amber-500/20 hover:bg-amber-500/35 border border-amber-400/50 text-amber-300 font-bold cursor-pointer transition">🔵 L6 SELL $76,800 ↔ REBUY $74,800 (+$1.75)</button>
-                <button onclick="selectProTunerLeg('L6'); simulateProLegFill('L6');" class="px-2 py-0.5 rounded-md bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-bold cursor-pointer transition">⚡ Sim BTC Fill</button>
               </div>
               <div class="space-y-1 pt-0.5">
                 <div class="flex items-center justify-between text-[10px] font-mono">
@@ -1330,7 +1329,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <div class="font-bold font-mono text-white text-xs sm:text-sm flex items-center gap-1.5">
                       <span>LINK/USD</span>
                       <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30">LEG #7 COINBASE (+$0.95/Swing)</span>
-                      <button onclick="switchChartPair(CHART_FILTER_MODE === 'LINKUSD' ? 'ALL' : 'LINKUSD')" class="text-[10px] px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/15 text-slate-300 cursor-pointer">⛶ Expand</button>
+                      <button id="btn-expand-LINKUSD" onclick="switchChartPair(CHART_FILTER_MODE === 'LINKUSD' ? 'ALL' : 'LINKUSD')" class="text-[10.5px] font-sans font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-emerald-500/25 border border-white/15 hover:border-emerald-400/50 text-slate-200 hover:text-emerald-300 cursor-pointer transition">⛶ Expand</button>
                     </div>
                     <div id="mc-hud-LINKUSD" class="text-[10px] font-mono text-slate-400">Hover/drag chart to inspect OHLCV &amp; exact distance to $11.05 Sell Wall</div>
                   </div>
@@ -1341,13 +1340,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 </div>
               </div>
               <div class="relative">
-                <canvas id="chart-canvas-LINKUSD" width="540" height="230" class="w-full h-[205px] sm:h-[225px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5"></canvas>
+                <canvas id="chart-canvas-LINKUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
               <!-- Clickable LINK Order Target Pills -->
               <div class="flex items-center gap-1.5 flex-wrap pt-0.5 font-mono text-[10px]">
                 <span class="text-slate-400 font-bold">CLICK TO TUNE:</span>
                 <button onclick="selectProTunerLeg('L7')" id="pill-leg-L7" class="px-2 py-0.5 rounded-md bg-sky-500/20 hover:bg-sky-500/35 border border-sky-400/50 text-sky-300 font-bold cursor-pointer transition">🔵 L7 SELL $11.05 ↔ REBUY $10.65 (+$0.95)</button>
-                <button onclick="selectProTunerLeg('L7'); simulateProLegFill('L7');" class="px-2 py-0.5 rounded-md bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-bold cursor-pointer transition">⚡ Sim LINK Fill</button>
               </div>
               <div class="space-y-1 pt-0.5">
                 <div class="flex items-center justify-between text-[10px] font-mono">
@@ -1374,7 +1372,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                       NEXT FILL: L1B ETH @ $2,254
                     </span>
                   </div>
-                  <div class="text-[10px] font-mono text-slate-400 mt-0.5">Click any leg to inspect on chart, tune Sell/Re-Buy targets, or simulate an instant swing fill</div>
+                  <div class="text-[10px] font-mono text-slate-400 mt-0.5">Click any leg to inspect on chart, focus its price channel, or tune Sell/Re-Buy targets</div>
                 </div>
                 <!-- Radar Exchange & Proximity Filter Pills -->
                 <div class="flex items-center gap-1 font-mono text-[10px] bg-[#0c121e] p-1 rounded-lg border border-white/10">
@@ -1399,7 +1397,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               <!-- Top Clickable Command Deck Tabs -->
               <div class="flex items-center justify-between gap-1 bg-[#0c121e] p-1 rounded-lg border border-white/10 font-mono text-[10.5px]">
                 <button id="btn-deck-tab-tuner" onclick="switchProCommandTab('tuner')" class="flex-1 py-1.5 px-2 rounded-md bg-emerald-500 text-white font-bold cursor-pointer transition text-center">
-                  ⚙️ Order Tuner &amp; Sim
+                  ⚙️ Live Order Tuner
                 </button>
                 <button id="btn-deck-tab-feed" onclick="switchProCommandTab('feed')" class="flex-1 py-1.5 px-2 rounded-md text-slate-400 hover:text-white font-bold cursor-pointer transition text-center">
                   📡 Live Tick Stream
@@ -1485,13 +1483,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   </div>
                 </div>
 
-                <!-- Action Buttons: Simulate Instant Fill OR Apply to Chart & Command CLI -->
+                <!-- Action Button: Apply Tuned Target to Chart -->
                 <div class="flex items-center gap-2">
-                  <button onclick="simulateProLegFill()" class="flex-1 py-2 px-3 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-400 hover:opacity-95 text-slate-950 font-extrabold text-xs cursor-pointer shadow-[0_0_15px_rgba(16,241,182,0.3)] transition">
-                    ⚡ Simulate Instant Fill (+Bank Profit)
-                  </button>
-                  <button onclick="commitProTunerToChart()" class="py-2 px-3 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/35 border border-cyan-400/50 text-cyan-300 font-bold text-xs cursor-pointer transition">
-                    🎯 Update Target on Chart
+                  <button onclick="commitProTunerToChart()" class="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-400 hover:opacity-95 text-slate-950 font-extrabold text-xs cursor-pointer shadow-[0_0_15px_rgba(16,241,182,0.25)] transition">
+                    🎯 Update Target on Chart &amp; Radar
                   </button>
                 </div>
                 <div id="tuner-status-msg" class="text-[10.5px] text-emerald-400 font-mono hidden"></div>
@@ -1528,9 +1523,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                     <div class="text-xs font-extrabold text-white">💰 Cumulative Swing Profit &amp; $75 Goal Curve</div>
                     <div id="sim-banked-summary-lbl" class="text-[10px] text-slate-400">Banked $18.86 + $25.62/Cycle across 10 Active Legs</div>
                   </div>
-                  <button onclick="resetSimulatedFills()" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-amber-300 text-[10px] font-bold cursor-pointer">
-                    ↺ Reset Sim
-                  </button>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[10px] font-bold">
+                    10/10 Armed
+                  </span>
                 </div>
                 <canvas id="chart-canvas-swing-yield" width="520" height="225" class="w-full h-[205px] sm:h-[220px] block rounded-lg bg-[#04070d] border border-white/5"></canvas>
                 <div class="bg-[#0d1422] border border-white/10 rounded-lg p-2.5 space-y-1">
@@ -1573,7 +1568,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
 
             <div class="vcd-pod bg-[var(--card)] rounded-lg p-3 space-y-2.5">
               <div class="flex items-center justify-between flex-wrap gap-1">
-                <span class="font-bold font-mono text-[var(--foreground)]">🎛️ 10-LEG DUAL-EXCHANGE EXECUTION MATRIX (CLICK ANY ROW TO TUNE OR SIMULATE)</span>
+                <span class="font-bold font-mono text-[var(--foreground)]">🎛️ 10-LEG DUAL-EXCHANGE EXECUTION MATRIX (CLICK ANY ROW TO INSPECT &amp; TUNE)</span>
                 <span id="ladder-summary-badge" class="text-emerald-400 font-mono font-semibold">🟢 10/10 POST-ONLY MAKER LEGS ARMED (5 KRAKEN + 5 COINBASE)</span>
               </div>
 
@@ -2433,7 +2428,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v52') caches.delete(k);
+            if (k !== 'swooz-dex-v53') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -3046,7 +3041,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let LATEST_SNAPSHOT = null;
     let PIN_INPUT_BUFFER = '';
 
-    // SHA-256 hash verification of Owner Vault PIN salted with 'swooz-dex-v6-vault' + encrypted fallback cipher
+    // SHA-256 hash verification of Owner Vault PIN salted with 'swooz-dex-v53-vault' + encrypted fallback cipher
     const OWNER_PIN_VERIFY_HASH = 'c114067b1a286a757e978d0c4c9128fb982616d69d91a6179271c96691e40aeb';
     const FALLBACK_VAULT_CIPHER = '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';
 
@@ -3243,7 +3238,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           } catch (e) {}
         }
 
-        const pinCheckBytes = await sha256Bytes(`${cleanPin}:swooz-dex-v6-vault`);
+        const pinCheckBytes = await sha256Bytes(`${cleanPin}:swooz-dex-v53-vault`);
         const pinCheckHex = Array.from(pinCheckBytes).map(b => b.toString(16).padStart(2, '0')).join('');
         if (pinCheckHex !== OWNER_PIN_VERIFY_HASH) {
           if (!silent) {
@@ -3260,10 +3255,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
         let decrypted = null;
         if (LATEST_SNAPSHOT && LATEST_SNAPSHOT.vault_cipher) {
-          decrypted = await decryptVaultCipher(LATEST_SNAPSHOT.vault_cipher, LATEST_SNAPSHOT.vault_salt || 'swooz-dex-v6-vault', cleanPin);
+          decrypted = await decryptVaultCipher(LATEST_SNAPSHOT.vault_cipher, LATEST_SNAPSHOT.vault_salt || 'swooz-dex-v53-vault', cleanPin);
         }
         if (!decrypted) {
-          decrypted = await decryptVaultCipher(FALLBACK_VAULT_CIPHER, 'swooz-dex-v6-vault', cleanPin);
+          decrypted = await decryptVaultCipher(FALLBACK_VAULT_CIPHER, 'swooz-dex-v53-vault', cleanPin);
         }
 
         if (decrypted) {
@@ -3836,7 +3831,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function switchChartPair(pair) {
       const idleCls = 'px-2.5 py-1 rounded-md text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold font-mono transition cursor-pointer';
+      const expandBtnIdleCls = 'text-[10.5px] font-sans font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-emerald-500/25 border border-white/15 hover:border-emerald-400/50 text-slate-200 hover:text-emerald-300 cursor-pointer transition';
+      const minimizeBtnActiveCls = 'text-[10.5px] font-sans font-bold px-2.5 py-0.5 rounded-md bg-emerald-500/25 hover:bg-emerald-500/40 border border-emerald-400 text-emerald-300 cursor-pointer transition shadow-[0_0_12px_rgba(16,241,182,0.25)]';
       const allBtn = document.getElementById('btn-pair-all');
+
       if (pair === 'ALL' || !VCD_PAIRS[pair]) {
         CHART_FILTER_MODE = 'ALL';
         CHART_PAIR = 'ETHUSD';
@@ -3846,6 +3844,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           if (b) b.className = idleCls;
           const card = document.getElementById('multi-chart-card-' + k);
           if (card) card.classList.remove('hidden', 'lg:col-span-2');
+          const expBtn = document.getElementById('btn-expand-' + k);
+          if (expBtn) {
+            expBtn.textContent = '⛶ Expand';
+            expBtn.className = expandBtnIdleCls;
+            expBtn.title = 'Expand this chart to full width';
+          }
+          const cvs = document.getElementById('chart-canvas-' + k);
+          if (cvs) {
+            cvs.classList.remove('h-[330px]', 'sm:h-[360px]');
+            cvs.classList.add('h-[225px]', 'sm:h-[240px]');
+          }
         });
       } else {
         CHART_FILTER_MODE = pair;
@@ -3855,13 +3864,32 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           const b = document.getElementById(VCD_PAIRS[k].btnId);
           if (b) b.className = k === pair ? VCD_PAIRS[k].activeCls : idleCls;
           const card = document.getElementById('multi-chart-card-' + k);
+          const expBtn = document.getElementById('btn-expand-' + k);
+          const cvs = document.getElementById('chart-canvas-' + k);
           if (card) {
             if (k === pair) {
               card.classList.remove('hidden');
               card.classList.add('lg:col-span-2');
+              if (expBtn) {
+                expBtn.textContent = '🗕 Minimize';
+                expBtn.className = minimizeBtnActiveCls;
+                expBtn.title = 'Minimize back to 2x2 All-Charts Grid';
+              }
+              if (cvs) {
+                cvs.classList.remove('h-[225px]', 'sm:h-[240px]');
+                cvs.classList.add('h-[330px]', 'sm:h-[360px]');
+              }
             } else {
               card.classList.add('hidden');
               card.classList.remove('lg:col-span-2');
+              if (expBtn) {
+                expBtn.textContent = '⛶ Expand';
+                expBtn.className = expandBtnIdleCls;
+              }
+              if (cvs) {
+                cvs.classList.remove('h-[330px]', 'sm:h-[360px]');
+                cvs.classList.add('h-[225px]', 'sm:h-[240px]');
+              }
             }
           }
         });
@@ -3869,7 +3897,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (MULTI_CANDLE_CACHE[CHART_PAIR]?.length) {
         LAST_CANDLES = MULTI_CANDLE_CACHE[CHART_PAIR];
       }
-      drawKrakenChart();
+      requestAnimationFrame(() => drawKrakenChart());
       fetchAndDrawKrakenOhlc();
     }
 
@@ -3939,7 +3967,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       L2:  { id: 'L2',  name: '🦑 L2 ETH Fast Grid',   title: 'Leg #2 — ETH Fast Reverse-Grid',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.05085957, sell: 2262.00, buy: 2216.00, defaultSell: 2262.00, defaultBuy: 2216.00, minS: 2235, maxS: 2360, minB: 2170, maxB: 2255, step: 1, decimals: 2, color: '#10f1b6', orderId: 'OUUDZ7' },
       L4:  { id: 'L4',  name: '🔵 L4 ETH Local Grid',  title: 'Leg #4 — Coinbase ETH Reverse-Grid', exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.04357500, sell: 2272.00, buy: 2222.00, defaultSell: 2272.00, defaultBuy: 2222.00, minS: 2240, maxS: 2370, minB: 2175, maxB: 2260, step: 1, decimals: 2, color: '#38bdf8', orderId: 'e4a92d0b' },
       L1A: { id: 'L1A', name: '🦑 L1A ETH Mid Wall',   title: 'Leg #1A — ETH Mid Channel Wall',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.16337609, sell: 2284.00, buy: 2234.00, defaultSell: 2284.00, defaultBuy: 2234.00, minS: 2245, maxS: 2380, minB: 2180, maxB: 2270, step: 1, decimals: 2, color: '#34d399', orderId: 'OL4VXF' },
-      L1C: { id: 'L1C', name: '🦑 L1C ETH Upper Wall', title: 'Leg #1C — ETH Upper Channel Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.08168805, sell: 2312.00, buy: 2258.00, defaultSell: 2312.00, defaultBuy: 2258.00, minS: 2255, maxS: 2400, minB: 2190, maxB: 2295, step: 1, decimals: 2, color: '#fbbf24', orderId: 'OKTWE3' },
+      L1C: { id: 'L1C', name: '🦑 L1C ETH Upper Wall', title: 'Leg #1C — ETH Upper Channel Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.07368805, sell: 2312.00, buy: 2258.00, defaultSell: 2312.00, defaultBuy: 2258.00, minS: 2255, maxS: 2400, minB: 2190, maxB: 2295, step: 1, decimals: 2, color: '#fbbf24', orderId: 'OVWGRG' },
       L3:  { id: 'L3',  name: '🦑 L3 SOL Fast Grid',   title: 'Leg #3 — Kraken SOL Fast Scraper',   exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.13324100, sell: 91.80,   buy: 88.90,   defaultSell: 91.80,   defaultBuy: 88.90,   minS: 89.5, maxS: 99.0, minB: 85.0, maxB: 91.5, step: 0.1, decimals: 2, color: '#a855f7', orderId: 'OFFIKV' },
       L9:  { id: 'L9',  name: '🔵 L9 SOL Mid Grid',    title: 'Leg #9 — Coinbase SOL Mid Scraper',  exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.30250000, sell: 92.40,   buy: 89.20,   defaultSell: 92.40,   defaultBuy: 89.20,   minS: 89.8, maxS: 99.5, minB: 85.5, maxB: 92.0, step: 0.1, decimals: 2, color: '#c084fc', orderId: 'a3ca66c6' },
       L5:  { id: 'L5',  name: '🔵 L5 SOL Upper Grid',  title: 'Leg #5 — Coinbase SOL Upper Wall',   exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.28494619, sell: 94.80,   buy: 91.20,   defaultSell: 94.80,   defaultBuy: 91.20,   minS: 90.5, maxS: 102.0, minB: 86.0, maxB: 94.0, step: 0.1, decimals: 2, color: '#818cf8', orderId: '8aeeb1b6' },
@@ -4250,7 +4278,57 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       renderLiveTickStream();
     }
 
+    const PRO_UI_FONT = '"Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+    function setupHiDpiCanvas(canvas, fallbackW, fallbackH) {
+      const rect = canvas.getBoundingClientRect();
+      const cssW = Math.max(280, Math.round(rect.width || fallbackW));
+      const cssH = Math.max(185, Math.round(rect.height || fallbackH));
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
+      const targetW = Math.round(cssW * dpr);
+      const targetH = Math.round(cssH * dpr);
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { ctx, W: cssW, H: cssH };
+    }
+
+    function drawPillBadge(ctx, text, x, y, textColor, borderColor, bgAlpha) {
+      ctx.save();
+      ctx.font = `600 11px ${PRO_UI_FONT}`;
+      const padX = 6;
+      const boxH = 17;
+      const textW = ctx.measureText(text).width;
+      const boxW = Math.ceil(textW + padX * 2);
+      ctx.fillStyle = `rgba(7, 11, 18, ${bgAlpha || 0.88})`;
+      ctx.strokeStyle = borderColor || textColor;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(x, y - boxH / 2, boxW, boxH, 4);
+      } else {
+        ctx.rect(x, y - boxH / 2, boxW, boxH);
+      }
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = textColor;
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, x + padX, y + 0.5);
+      ctx.restore();
+      return boxW;
+    }
+
+    let CHART_RESIZE_BOUND = false;
     function bindInteractiveChartCrosshairs() {
+      if (!CHART_RESIZE_BOUND) {
+        CHART_RESIZE_BOUND = true;
+        window.addEventListener('resize', () => {
+          requestAnimationFrame(() => drawKrakenChart());
+        });
+      }
       ['ETHUSD', 'SOLUSD', 'BTCUSD', 'LINKUSD'].forEach(pairKey => {
         const canvas = document.getElementById('chart-canvas-' + pairKey);
         if (!canvas || canvas.dataset.crosshairBound === '1') return;
@@ -4260,8 +4338,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           const rect = canvas.getBoundingClientRect();
           CHART_HOVER_STATE[pairKey] = {
             active: true,
-            x: ((clientX - rect.left) / rect.width) * canvas.width,
-            y: ((clientY - rect.top) / rect.height) * canvas.height
+            x: clientX - rect.left,
+            y: clientY - rect.top
           };
           drawSingleAssetOrderChart(pairKey);
         };
@@ -4324,10 +4402,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (pctEl) pctEl.textContent = `Channel Position: ${channelPct}% (${fmtPrice(firstBuy)} ➔ ${fmtPrice(firstSell)})`;
       if (barEl) barEl.style.width = `${channelPct}%`;
 
-      const ctx = canvas.getContext('2d');
-      const W = canvas.width;
-      const H = canvas.height;
+      // Native 1:1 Aspect Ratio + High-DPI Retina Scaling (Eliminates all stretching!)
+      const { ctx, W, H } = setupHiDpiCanvas(canvas, 640, 240);
       ctx.clearRect(0, 0, W, H);
+      const isExpanded = (CHART_FILTER_MODE === pairKey);
 
       const allPrices = [
         ...candles.map(c => c.low),
@@ -4337,89 +4415,49 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ];
       let minP = Math.min(...allPrices);
       let maxP = Math.max(...allPrices);
-      const pad = (maxP - minP) * 0.10 || 1;
+      const pad = (maxP - minP) * 0.12 || 1;
       minP -= pad;
       maxP += pad;
 
-      const cLeft = 10;
-      const cRight = W - 82;
-      const cTop = 16;
-      const cBot = H - 22;
+      const cLeft = 12;
+      const cRight = W - 86;
+      const cTop = 18;
+      const cBot = H - 24;
       const cW = cRight - cLeft;
       const cH = cBot - cTop;
       const yOf = (p) => cTop + ((maxP - p) / (maxP - minP)) * cH;
       const pOf = (y) => maxP - ((y - cTop) / cH) * (maxP - minP);
 
-      // 1. Subtle Grid Lines + Right Price Axis Labels
-      ctx.strokeStyle = 'rgba(148, 163, 184, 0.09)';
+      // 1. Subtle Grid Lines + Crisp Right Price Axis Labels
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.10)';
       ctx.lineWidth = 1;
-      ctx.fillStyle = '#94a3b8';
-      ctx.font = '10px JetBrains Mono, monospace';
-      for (let i = 0; i <= 4; i++) {
-        const pVal = minP + ((maxP - minP) * (4 - i)) / 4;
-        const y = yOf(pVal);
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = `600 11px ${PRO_UI_FONT}`;
+      const gridSteps = isExpanded ? 6 : 4;
+      for (let i = 0; i <= gridSteps; i++) {
+        const pVal = minP + ((maxP - minP) * (gridSteps - i)) / gridSteps;
+        const y = Math.round(yOf(pVal)) + 0.5;
         ctx.beginPath();
         ctx.moveTo(cLeft, y);
         ctx.lineTo(cRight, y);
         ctx.stroke();
-        ctx.fillText(fmtPrice(pVal), cRight + 6, y + 3.5);
+        ctx.fillText(fmtPrice(pVal), cRight + 8, y + 3.5);
       }
 
-      // 2. Shaded Ping-Pong Profit Corridor + Optional Depth Heat Zones
+      // 2. Shaded Ping-Pong Profit Corridor
       const yTopSell = yOf(firstSell);
       const yBotBuy = yOf(firstBuy);
       ctx.save();
       const grad = ctx.createLinearGradient(0, Math.min(yTopSell, yBotBuy), 0, Math.max(yTopSell, yBotBuy));
-      grad.addColorStop(0, PRO_CHART_STYLE === 'zones' ? 'rgba(16, 241, 182, 0.22)' : 'rgba(16, 241, 182, 0.11)');
-      grad.addColorStop(1, PRO_CHART_STYLE === 'zones' ? 'rgba(251, 191, 36, 0.18)' : 'rgba(251, 191, 36, 0.08)');
+      grad.addColorStop(0, PRO_CHART_STYLE === 'zones' ? 'rgba(16, 241, 182, 0.20)' : 'rgba(16, 241, 182, 0.09)');
+      grad.addColorStop(1, PRO_CHART_STYLE === 'zones' ? 'rgba(251, 191, 36, 0.16)' : 'rgba(251, 191, 36, 0.06)');
       ctx.fillStyle = grad;
       ctx.fillRect(cLeft, Math.min(yTopSell, yBotBuy), cW, Math.abs(yBotBuy - yTopSell));
       ctx.restore();
 
-      // 3. Draw Armed SELL Order Lines (Highlight currently selected Tuner Leg!)
-      cfg.sells.forEach((s, idx) => {
-        const y = yOf(s.price);
-        const isSelected = s.label.startsWith(SELECTED_TUNER_LEG + ' ');
-        ctx.save();
-        ctx.setLineDash(isSelected ? [] : [5, 3]);
-        ctx.strokeStyle = isSelected ? '#ffffff' : s.color;
-        ctx.lineWidth = isSelected ? 2.2 : 1.4;
-        ctx.beginPath();
-        ctx.moveTo(cLeft, y);
-        ctx.lineTo(cRight, y);
-        ctx.stroke();
-
-        if (PRO_CHART_STYLE === 'zones') {
-          ctx.fillStyle = s.color + '22';
-          ctx.fillRect(cRight - 65, y - 5, 65, 10);
-        }
-
-        ctx.fillStyle = isSelected ? '#ffffff' : s.color;
-        ctx.font = 'bold 9.5px JetBrains Mono, monospace';
-        ctx.fillText((isSelected ? '🎯 ' : '▲ ') + s.label, cLeft + 6 + (idx % 2) * 155, Math.max(11, y - 4));
-        ctx.restore();
-      });
-
-      // 4. Draw Auto-Reload BUY Lines
-      cfg.buys.forEach((b, idx) => {
-        const y = yOf(b.price);
-        ctx.save();
-        ctx.setLineDash([4, 4]);
-        ctx.strokeStyle = b.color;
-        ctx.lineWidth = 1.3;
-        ctx.beginPath();
-        ctx.moveTo(cLeft, y);
-        ctx.lineTo(cRight, y);
-        ctx.stroke();
-        ctx.fillStyle = b.color;
-        ctx.font = 'bold 9.5px JetBrains Mono, monospace';
-        ctx.fillText('▼ ' + b.label, cLeft + 6 + (idx % 2) * 155, Math.min(cBot - 3, y + 11));
-        ctx.restore();
-      });
-
-      // 5. Draw Candlesticks OR Glowing Area + EMA Ribbon + Bottom Volume Bars
+      // 3. Draw Candlesticks OR Glowing Area + EMA Ribbon + Bottom Volume Bars FIRST so order pills sit cleanly on top
       const stepX = cW / candles.length;
-      const bodyW = Math.max(4, Math.floor(stepX * 0.64));
+      const bodyW = Math.max(4, Math.min(18, Math.floor(stepX * 0.62)));
       const maxVol = Math.max(...candles.map(c => c.vol || 1), 1);
 
       if (PRO_CHART_STYLE === 'area') {
@@ -4439,25 +4477,25 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.lineTo(cLeft + stepX / 2, cBot);
         ctx.closePath();
         const aGrad = ctx.createLinearGradient(0, cTop, 0, cBot);
-        aGrad.addColorStop(0, 'rgba(0, 245, 212, 0.30)');
+        aGrad.addColorStop(0, 'rgba(0, 245, 212, 0.28)');
         aGrad.addColorStop(1, 'rgba(0, 245, 212, 0.01)');
         ctx.fillStyle = aGrad;
         ctx.fill();
         ctx.restore();
       } else {
         candles.forEach((c, idx) => {
-          const cx = cLeft + idx * stepX + stepX / 2;
+          const cx = Math.round(cLeft + idx * stepX + stepX / 2) + 0.5;
           const isBull = c.close >= c.open;
           const color = isBull ? '#10f1b6' : '#f43f5e';
 
           // Volume mini bar at bottom
-          const vH = Math.max(2, ((c.vol || 1) / maxVol) * 22);
-          ctx.fillStyle = isBull ? 'rgba(16, 241, 182, 0.16)' : 'rgba(244, 63, 94, 0.16)';
+          const vH = Math.max(2, ((c.vol || 1) / maxVol) * 20);
+          ctx.fillStyle = isBull ? 'rgba(16, 241, 182, 0.15)' : 'rgba(244, 63, 94, 0.15)';
           ctx.fillRect(cx - bodyW / 2, cBot - vH, bodyW, vH);
 
           // Wick
           ctx.strokeStyle = color;
-          ctx.lineWidth = 1.2;
+          ctx.lineWidth = 1.25;
           ctx.beginPath();
           ctx.moveTo(cx, yOf(c.high));
           ctx.lineTo(cx, yOf(c.low));
@@ -4467,16 +4505,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           const yOpen = yOf(c.open);
           const yClose = yOf(c.close);
           const topY = Math.min(yOpen, yClose);
-          const boxH = Math.max(2, Math.abs(yClose - yOpen));
+          const boxH = Math.max(2.5, Math.abs(yClose - yOpen));
           ctx.fillStyle = color;
           ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
         });
       }
 
-      // 6. Smooth 7-Period EMA Trend Line Overlay
+      // 4. Smooth 7-Period EMA Trend Line Overlay
       ctx.save();
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.65)';
-      ctx.lineWidth = 1.3;
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.70)';
+      ctx.lineWidth = 1.5;
       ctx.beginPath();
       let ema = candles[0].close;
       const kEma = 2 / (7 + 1);
@@ -4490,11 +4528,111 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.stroke();
       ctx.restore();
 
-      // 7. Live Spot Glowing Cyan Line + Right Price Pill
-      const ySpot = yOf(spot);
+      // 5. Draw Armed SELL & REBUY Order Lines + Smart Anti-Overlap Pill Badges
+      const occupiedY = [];
+      const canPlaceLabelAt = (yVal, minGap) => {
+        for (let i = 0; i < occupiedY.length; i++) {
+          if (Math.abs(occupiedY[i] - yVal) < minGap) return false;
+        }
+        occupiedY.push(yVal);
+        return true;
+      };
+
+      // Draw all horizontal lines first
+      cfg.sells.forEach((s) => {
+        const y = Math.round(yOf(s.price)) + 0.5;
+        const isSelected = s.label.startsWith(SELECTED_TUNER_LEG + ' ');
+        ctx.save();
+        ctx.setLineDash(isSelected ? [] : [5, 4]);
+        ctx.strokeStyle = isSelected ? '#ffffff' : s.color;
+        ctx.lineWidth = isSelected ? 2.0 : 1.3;
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y);
+        ctx.lineTo(cRight, y);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      cfg.buys.forEach((b) => {
+        const y = Math.round(yOf(b.price)) + 0.5;
+        const isSelected = b.label.startsWith(SELECTED_TUNER_LEG + ' ');
+        ctx.save();
+        ctx.setLineDash(isSelected ? [3, 2] : [4, 5]);
+        ctx.strokeStyle = isSelected ? '#fde047' : b.color;
+        ctx.lineWidth = isSelected ? 1.8 : 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y);
+        ctx.lineTo(cRight, y);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // Reserve Y space for live spot line so order badges don't collide with spot
+      const ySpot = Math.round(yOf(spot)) + 0.5;
+      occupiedY.push(ySpot);
+
+      // Prioritize selected leg first, then closest sell (#0) and top sell, then remaining legs if space permits
+      const minGap = isExpanded ? 18 : 19;
+      const sellOrderIndices = cfg.sells.map((_, i) => i).sort((a, b) => {
+        const aSel = cfg.sells[a].label.startsWith(SELECTED_TUNER_LEG + ' ') ? -10 : 0;
+        const bSel = cfg.sells[b].label.startsWith(SELECTED_TUNER_LEG + ' ') ? -10 : 0;
+        if (aSel !== bSel) return aSel - bSel;
+        if (a === 0) return -5;
+        if (b === 0) return 5;
+        if (a === cfg.sells.length - 1) return -3;
+        if (b === cfg.sells.length - 1) return 3;
+        return a - b;
+      });
+
+      sellOrderIndices.forEach((idx) => {
+        const s = cfg.sells[idx];
+        const y = Math.max(cTop + 9, Math.min(cBot - 9, Math.round(yOf(s.price))));
+        const isSelected = s.label.startsWith(SELECTED_TUNER_LEG + ' ');
+        if (isSelected || canPlaceLabelAt(y, minGap)) {
+          if (isSelected && !occupiedY.includes(y)) occupiedY.push(y);
+          const xOffset = cLeft + 6 + ((idx % 2) * (isExpanded ? 210 : 145));
+          drawPillBadge(
+            ctx,
+            (isSelected ? '🎯 ' : '▲ ') + s.label,
+            xOffset,
+            y,
+            isSelected ? '#ffffff' : s.color,
+            isSelected ? '#10f1b6' : s.color + '88',
+            isSelected ? 0.95 : 0.86
+          );
+        }
+      });
+
+      // Draw Re-Buy badges (prioritize selected leg's re-buy + lowest floor re-buy)
+      const buyOrderIndices = cfg.buys.map((_, i) => i).sort((a, b) => {
+        const aSel = cfg.buys[a].label.startsWith(SELECTED_TUNER_LEG + ' ') ? -10 : 0;
+        const bSel = cfg.buys[b].label.startsWith(SELECTED_TUNER_LEG + ' ') ? -10 : 0;
+        return aSel - bSel;
+      });
+
+      buyOrderIndices.forEach((idx) => {
+        const b = cfg.buys[idx];
+        const y = Math.max(cTop + 9, Math.min(cBot - 9, Math.round(yOf(b.price))));
+        const isSelected = b.label.startsWith(SELECTED_TUNER_LEG + ' ');
+        if (isSelected || canPlaceLabelAt(y, minGap)) {
+          if (isSelected && !occupiedY.includes(y)) occupiedY.push(y);
+          const xOffset = cLeft + 6 + ((idx % 2) * (isExpanded ? 210 : 145));
+          drawPillBadge(
+            ctx,
+            '▼ ' + b.label,
+            xOffset,
+            y,
+            isSelected ? '#fde047' : b.color,
+            isSelected ? '#fde047' : b.color + '77',
+            0.88
+          );
+        }
+      });
+
+      // 6. Live Spot Glowing Cyan Line + Crisp Right Price Tag
       ctx.save();
       ctx.strokeStyle = '#00f5d4';
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = 1.6;
       ctx.setLineDash([2, 2]);
       ctx.beginPath();
       ctx.moveTo(cLeft, ySpot);
@@ -4502,34 +4640,38 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.stroke();
 
       ctx.fillStyle = '#00f5d4';
-      ctx.fillRect(cRight + 2, ySpot - 8, 76, 16);
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(cRight + 4, ySpot - 9, 78, 18, 4);
+      else ctx.rect(cRight + 4, ySpot - 9, 78, 18);
+      ctx.fill();
       ctx.fillStyle = '#04070d';
-      ctx.font = 'bold 9.5px JetBrains Mono, monospace';
-      ctx.fillText(fmtPrice(spot), cRight + 5, ySpot + 3.5);
+      ctx.font = `700 11px ${PRO_UI_FONT}`;
+      ctx.textBaseline = 'middle';
+      ctx.fillText(fmtPrice(spot), cRight + 9, ySpot + 0.5);
       ctx.restore();
 
-      // 8. Bottom Time Axis Labels
-      ctx.fillStyle = '#64748b';
-      ctx.font = '9.5px JetBrains Mono, monospace';
+      // 7. Bottom Time Axis Labels (Crisp Sans Font)
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = `600 10.5px ${PRO_UI_FONT}`;
       [0, Math.floor(candles.length * 0.33), Math.floor(candles.length * 0.66), candles.length - 1].forEach(i => {
         if (!candles[i]) return;
         const d = new Date(candles[i].time * 1000);
         const lbl = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const x = cLeft + i * stepX;
-        ctx.fillText(lbl, Math.min(cRight - 36, Math.max(cLeft, x - 14)), H - 6);
+        ctx.fillText(lbl, Math.min(cRight - 46, Math.max(cLeft, x - 16)), H - 6);
       });
 
-      // 9. Interactive Magnetic Crosshair + Floating OHLCV & Order Distance HUD
+      // 8. Interactive Magnetic Crosshair + Floating OHLCV & Order Distance HUD
       const hover = CHART_HOVER_STATE[pairKey];
       if (hover && hover.active && hover.x >= cLeft && hover.x <= cRight && hover.y >= cTop && hover.y <= cBot) {
         const idx = Math.max(0, Math.min(candles.length - 1, Math.floor((hover.x - cLeft) / stepX)));
         const bar = candles[idx];
-        const snapX = cLeft + idx * stepX + stepX / 2;
+        const snapX = Math.round(cLeft + idx * stepX + stepX / 2) + 0.5;
         const cursorPrice = pOf(hover.y);
         const pctToFirstSell = ((firstSell - cursorPrice) / cursorPrice) * 100;
 
         ctx.save();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.50)';
         ctx.lineWidth = 1;
         ctx.setLineDash([3, 3]);
         ctx.beginPath();
@@ -4540,17 +4682,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.stroke();
 
         // Cursor price tag on right axis
-        ctx.fillStyle = '#1e293b';
+        ctx.fillStyle = '#0f172a';
         ctx.strokeStyle = '#38bdf8';
-        ctx.fillRect(cRight + 2, hover.y - 8, 76, 16);
-        ctx.strokeRect(cRight + 2, hover.y - 8, 76, 16);
+        ctx.lineWidth = 1.2;
+        ctx.fillRect(cRight + 4, hover.y - 9, 78, 18);
+        ctx.strokeRect(cRight + 4, hover.y - 9, 78, 18);
         ctx.fillStyle = '#38bdf8';
-        ctx.font = 'bold 9.5px JetBrains Mono, monospace';
-        ctx.fillText(fmtPrice(cursorPrice), cRight + 5, hover.y + 3.5);
+        ctx.font = `700 11px ${PRO_UI_FONT}`;
+        ctx.textBaseline = 'middle';
+        ctx.fillText(fmtPrice(cursorPrice), cRight + 9, hover.y + 0.5);
 
         // Highlighted dot on candle close
         ctx.beginPath();
-        ctx.arc(snapX, yOf(bar.close), 4, 0, Math.PI * 2);
+        ctx.arc(snapX, yOf(bar.close), 4.5, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
         ctx.fill();
         ctx.restore();
@@ -4600,7 +4744,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       updateHeroRow(3, PRO_10_LEGS.L2  ? legs.find(x => x.id === 'L2')  : legs[2]);
       updateHeroRow(4, PRO_10_LEGS.L4  ? legs.find(x => x.id === 'L4')  : legs[3]);
 
-      // Render Modern Clickable 10-Row Glassmorphic Radar GUI
+      // Render Modern Clickable 10-Row Glassmorphic Radar GUI (No Sim buttons — clean Focus & Tune controls!)
       const listEl = document.getElementById('interactive-10leg-radar-list');
       if (listEl) {
         const filtered = legs.filter(l => {
@@ -4614,25 +4758,27 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           const isSelected = l.id === SELECTED_TUNER_LEG;
           const fmtP = (v) => '$' + v.toLocaleString(undefined, { minimumFractionDigits: l.decimals, maximumFractionDigits: l.decimals });
           const rankBadge = idx === 0
-            ? `<span class="px-1.5 py-0.5 rounded bg-emerald-500 text-slate-950 font-extrabold text-[9px]">#1 NEXT</span>`
-            : `<span class="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-bold text-[9px]">#${idx + 1}</span>`;
+            ? `<span class="px-1.5 py-0.5 rounded bg-emerald-500 text-slate-950 font-extrabold text-[9.5px]">#1 NEXT</span>`
+            : `<span class="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-bold text-[9.5px]">#${idx + 1}</span>`;
+          const isExpandedPair = (CHART_FILTER_MODE === l.pairKey);
           return `
             <div onclick="selectProTunerLeg('${l.id}')"
-                 class="p-2 rounded-xl bg-[#0c1322] hover:bg-[#111c31] border ${isSelected ? 'border-emerald-400 shadow-[0_0_15px_rgba(16,241,182,0.2)]' : 'border-white/10'} transition cursor-pointer space-y-1.5">
-              <div class="flex items-center justify-between gap-2 flex-wrap text-[11px]">
+                 class="p-2.5 rounded-xl bg-[#0c1322] hover:bg-[#111c31] border ${isSelected ? 'border-emerald-400 shadow-[0_0_15px_rgba(16,241,182,0.2)]' : 'border-white/10'} transition cursor-pointer space-y-1.5">
+              <div class="flex items-center justify-between gap-2 flex-wrap text-xs font-sans">
                 <div class="flex items-center gap-1.5">
                   ${rankBadge}
-                  <span class="font-extrabold text-white">${l.name}</span>
-                  <span class="text-[10px] text-slate-400">(${fmtP(l.buy)} ➔ <b class="text-emerald-300">${fmtP(l.sell)}</b>)</span>
+                  <span class="font-bold text-white">${l.name}</span>
+                  <span class="text-[11px] font-mono text-slate-400">(${fmtP(l.buy)} ➔ <b class="text-emerald-300">${fmtP(l.sell)}</b>)</span>
                 </div>
-                <div class="flex items-center gap-1.5">
-                  <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[10px] font-bold">+$${l.netProfit.toFixed(2)}</span>
-                  <span class="text-[10.5px] font-extrabold ${l.pctAway < 1.5 ? 'text-emerald-400' : 'text-cyan-300'}">${fmtP(l.usdAway)} (${l.pctAway.toFixed(2)}%)</span>
-                  <button onclick="event.stopPropagation(); switchChartPair('${l.pairKey}');" class="px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/20 text-slate-300 text-[9.5px] cursor-pointer" title="Focus Asset Chart">🔍</button>
-                  <button onclick="event.stopPropagation(); simulateProLegFill('${l.id}');" class="px-1.5 py-0.5 rounded bg-amber-500/20 hover:bg-amber-500/35 text-amber-300 text-[9.5px] font-bold cursor-pointer" title="Simulate Instant Fill">⚡ Sim</button>
+                <div class="flex items-center gap-1.5 font-mono">
+                  <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[10.5px] font-bold">+$${l.netProfit.toFixed(2)}</span>
+                  <span class="text-[11px] font-extrabold ${l.pctAway < 1.5 ? 'text-emerald-400' : 'text-cyan-300'}">${fmtP(l.usdAway)} (${l.pctAway.toFixed(2)}%)</span>
+                  <button onclick="event.stopPropagation(); selectProTunerLeg('${l.id}'); switchChartPair(CHART_FILTER_MODE === '${l.pairKey}' ? 'ALL' : '${l.pairKey}');"
+                          class="px-2 py-0.5 rounded bg-white/10 hover:bg-emerald-500/25 border border-white/10 text-slate-200 hover:text-emerald-300 text-[10px] font-sans font-semibold cursor-pointer transition"
+                          title="Expand or Minimize ${l.asset} Chart">${isExpandedPair ? '🗕 Minimize' : '🔍 Chart'}</button>
                 </div>
               </div>
-              <!-- Animated Neon Progress Bar with Live Spot Playhead Dot -->
+              <!-- Animated Neon Progress Bar -->
               <div class="relative w-full h-2 rounded-full bg-slate-800/90 overflow-hidden">
                 <div class="h-full rounded-full transition-all duration-300"
                      style="width: ${Math.round(l.channelPct)}%; background: linear-gradient(90deg, #f59e0b 0%, ${l.color} 100%);"></div>
@@ -4646,13 +4792,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     function drawCumulativeSwingYieldChart() {
       const canvas = document.getElementById('chart-canvas-swing-yield');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const W = canvas.width;
-      const H = canvas.height;
+      const { ctx, W, H } = setupHiDpiCanvas(canvas, 520, 225);
       ctx.clearRect(0, 0, W, H);
 
       const cycleYield = Object.values(PRO_10_LEGS).reduce((acc, l) => acc + l.size * Math.max(0, l.sell - l.buy), 0);
-      const baseBanked = 18.86 + SIMULATED_EXTRA_BANKED;
+      const baseBanked = 18.86;
       const mult = CYCLE_SIM_MULTIPLIER || 3;
       const projectedTotal = baseBanked + cycleYield * mult;
 
@@ -4666,38 +4810,38 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (kpiEl) kpiEl.textContent = `+$${projectedTotal.toFixed(2)} NET RECOVERY`;
 
       const stages = [
-        { lbl: 'Banked', sub: SIMULATED_EXTRA_BANKED > 0 ? 'Incl. Sim' : 'Locked Cash', val: baseBanked, color: '#38bdf8' },
+        { lbl: 'Banked', sub: 'Locked Cash', val: baseBanked, color: '#38bdf8' },
         { lbl: 'Cycle 1', sub: `+$${cycleYield.toFixed(1)}`, val: baseBanked + cycleYield * 1, color: '#10f1b6' },
         { lbl: 'Cycle 2', sub: '2x Cycles', val: baseBanked + cycleYield * 2, color: '#34d399' },
         { lbl: 'Cycle 3', sub: 'Goal Beat!', val: baseBanked + cycleYield * 3, color: '#fbbf24' },
-        { lbl: `Cycle ${Math.max(4, mult)}`, sub: 'Selected Sim', val: baseBanked + cycleYield * Math.max(4, mult), color: '#00f5d4' }
+        { lbl: `Cycle ${Math.max(4, mult)}`, sub: `${Math.max(4, mult)}x Cycles`, val: baseBanked + cycleYield * Math.max(4, mult), color: '#00f5d4' }
       ];
 
-      const maxVal = Math.max(135, stages[stages.length - 1].val * 1.15);
-      const cLeft = 44;
+      const maxVal = Math.max(135, stages[stages.length - 1].val * 1.18);
+      const cLeft = 46;
       const cRight = W - 18;
-      const cTop = 22;
-      const cBot = H - 34;
+      const cTop = 24;
+      const cBot = H - 36;
       const cW = cRight - cLeft;
       const cH = cBot - cTop;
       const yOf = (v) => cTop + ((maxVal - v) / maxVal) * cH;
 
       // Grid lines
       ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
-      ctx.fillStyle = '#94a3b8';
-      ctx.font = '9.5px JetBrains Mono, monospace';
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = `600 10.5px ${PRO_UI_FONT}`;
       [0, 25, 50, 75, 100].forEach(v => {
         if (v > maxVal) return;
-        const y = yOf(v);
+        const y = Math.round(yOf(v)) + 0.5;
         ctx.beginPath();
         ctx.moveTo(cLeft, y);
         ctx.lineTo(cRight, y);
         ctx.stroke();
-        ctx.fillText('$' + v, 6, y + 3.5);
+        ctx.fillText('$' + v, 8, y + 3.5);
       });
 
       // $75.00 3-Hour Shift Recovery Goal Line
-      const yGoal = yOf(75);
+      const yGoal = Math.round(yOf(75)) + 0.5;
       ctx.save();
       ctx.setLineDash([6, 4]);
       ctx.strokeStyle = '#fbbf24';
@@ -4706,18 +4850,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.moveTo(cLeft, yGoal);
       ctx.lineTo(cRight, yGoal);
       ctx.stroke();
-      ctx.fillStyle = '#fbbf24';
-      ctx.font = 'bold 10px JetBrains Mono, monospace';
-      ctx.fillText('🏆 $75.00 SHIFT RECOVERY GOAL (3 HRS WORK EQUIV)', cLeft + 8, yGoal - 5);
+      drawPillBadge(ctx, '🏆 $75.00 SHIFT RECOVERY GOAL', cLeft + 8, yGoal - 11, '#fbbf24', '#fbbf2488', 0.90);
       ctx.restore();
 
       const stepX = cW / stages.length;
-      const barW = Math.min(48, Math.floor(stepX * 0.56));
+      const barW = Math.min(48, Math.floor(stepX * 0.54));
       const pts = [];
 
       stages.forEach((s, idx) => {
-        const cx = cLeft + idx * stepX + stepX / 2;
-        const y = yOf(s.val);
+        const cx = Math.round(cLeft + idx * stepX + stepX / 2);
+        const y = Math.round(yOf(s.val));
         const bH = cBot - y;
         pts.push({ x: cx, y });
 
@@ -4728,15 +4870,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.strokeRect(cx - barW / 2, y, barW, bH);
 
         ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 10px JetBrains Mono, monospace';
-        ctx.fillText('+$' + s.val.toFixed(2), cx - 24, y - 6);
+        ctx.font = `700 10.5px ${PRO_UI_FONT}`;
+        ctx.textAlign = 'center';
+        ctx.fillText('+$' + s.val.toFixed(2), cx, y - 7);
 
         ctx.fillStyle = '#e2e8f0';
-        ctx.font = 'bold 9.5px JetBrains Mono, monospace';
-        ctx.fillText(s.lbl, cx - 20, cBot + 13);
-        ctx.fillStyle = '#64748b';
-        ctx.font = '8.5px JetBrains Mono, monospace';
-        ctx.fillText(s.sub, cx - 22, cBot + 24);
+        ctx.font = `700 10.5px ${PRO_UI_FONT}`;
+        ctx.fillText(s.lbl, cx, cBot + 14);
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = `500 9.5px ${PRO_UI_FONT}`;
+        ctx.fillText(s.sub, cx, cBot + 26);
+        ctx.textAlign = 'start';
       });
 
       // Connect tops with glowing trajectory curve
