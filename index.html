@@ -1928,14 +1928,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
             <div class="relative w-full aspect-square overflow-hidden bg-black/60 border border-white/20 flex items-center justify-center z-10">
               <img id="stage-nft-img" src="nft-media/if_1506.gif" alt="NFT Stage"
                    class="w-[88%] h-[88%] object-contain transition-all duration-300" />
-
-              <!-- Isometric CAD Wireframe Bounding Mesh Overlay -->
-              <svg id="holo-cad-mesh-overlay" viewBox="0 0 240 240" class="absolute inset-0 w-full h-full pointer-events-none opacity-75">
-                <polygon points="35,28 205,28 218,42 218,195 48,195 35,180" fill="none" stroke="var(--holo-stroke)" stroke-width="1" stroke-dasharray="4 3" opacity="0.65" />
-                <rect x="48" y="42" width="155" height="140" fill="none" stroke="var(--holo-stroke)" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.45" />
-                <line x1="120" y1="18" x2="120" y2="205" stroke="var(--holo-stroke)" stroke-width="0.6" stroke-dasharray="2 5" opacity="0.4" />
-                <line x1="22" y1="112" x2="218" y2="112" stroke="var(--holo-stroke)" stroke-width="0.6" stroke-dasharray="2 5" opacity="0.4" />
-              </svg>
             </div>
 
             <div class="w-full flex items-center justify-between gap-1 text-xs relative z-10">
@@ -2428,7 +2420,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v54') caches.delete(k);
+            if (k !== 'swooz-dex-v55') caches.delete(k);
           });
         }).catch(() => {});
       }
