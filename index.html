@@ -411,18 +411,11 @@
               </div>
             </div>
 
-            <!-- Gemini Voice Copilot: 1-Click Spoken Briefing + 2-Way Voice Command Mic -->
-            <button onclick="speakOrbitBriefing()" id="btn-orbit-voice-brief" title="Hear Live Gemini Voice Portfolio & Strategy Briefing"
-                    class="px-2.5 py-2 rounded-xl bg-[#10b981]/15 hover:bg-[#10b981]/30 border border-[#10b981]/40 text-xs text-[#10f1b6] font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0">
-              <span id="orbit-voice-speaker-icon">🔊</span>
-              <span class="hidden sm:inline">Briefing</span>
-            </button>
-
-            <button onclick="toggleOrbitVoiceMic()" id="btn-orbit-voice-mic" title="Talk to SWOOZ Gemini Voice Copilot (Say: 'Update', 'Orders', 'ETH', 'NFTs')"
-                    class="px-2.5 py-2 rounded-xl bg-[#3b82f6]/15 hover:bg-[#3b82f6]/30 border border-[#3b82f6]/40 text-xs text-[#60a5fa] font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0">
-              <span id="orbit-voice-mic-icon">🎙️</span>
-              <span id="orbit-voice-mic-lbl" class="hidden sm:inline">Ask AI</span>
-            </button>
+            <!-- Voice Copilot Muted/Hidden per user preference -->
+            <div class="hidden" aria-hidden="true">
+              <button id="btn-orbit-voice-brief"><span id="orbit-voice-speaker-icon">🔇</span></button>
+              <button id="btn-orbit-voice-mic"><span id="orbit-voice-mic-icon">🎙️</span><span id="orbit-voice-mic-lbl">Muted</span></button>
+            </div>
 
             <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN 5284)"
                     class="px-2.5 py-2 rounded-xl bg-[#131722] hover:bg-[#1c2233] border border-white/10 text-xs text-[#8b95a9] hover:text-white flex items-center gap-1.5 transition cursor-pointer shrink-0">
@@ -6613,30 +6606,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     }
 
     function speakGeminiText(text) {
-      if (!('speechSynthesis' in window)) return;
-      try {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        const bestVoice = pickBestGeminiVoice();
-        if (bestVoice) u.voice = bestVoice;
-        u.rate = 1.04;
-        u.pitch = 1.02;
-        const btn = document.getElementById('btn-orbit-voice-brief');
-        const icon = document.getElementById('orbit-voice-speaker-icon');
-        u.onstart = () => {
-          ORBIT_VOICE_SPEAKING = true;
-          if (icon) icon.textContent = '🗣️';
-          if (btn) btn.className = 'px-2.5 py-2 rounded-xl bg-[#10b981]/35 border border-[#10f1b6] text-xs text-white font-bold flex items-center gap-1.5 transition cursor-pointer shrink-0 shadow-[0_0_15px_rgba(16,241,182,0.5)]';
-        };
-        const resetUi = () => {
-          ORBIT_VOICE_SPEAKING = false;
-          if (icon) icon.textContent = '🔊';
-          if (btn) btn.className = 'px-2.5 py-2 rounded-xl bg-[#10b981]/15 hover:bg-[#10b981]/30 border border-[#10b981]/40 text-xs text-[#10f1b6] font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0';
-        };
-        u.onend = resetUi;
-        u.onerror = resetUi;
-        window.speechSynthesis.speak(u);
-      } catch (e) {}
+      // Voice TTS disabled per user preference
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch (e) {}
+      }
+      return;
     }
 
     function speakOrbitBriefing() {
