@@ -391,6 +391,12 @@
               <span class="whitespace-nowrap">10-Leg Bot Plan</span>
             </button>
 
+            <button id="orbit-nav-briefing" onclick="switchOrbitSidebar('orbit'); switchOrbitCard2Tab('briefing');"
+                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
+              <span class="text-sm shrink-0">🧠</span>
+              <span class="whitespace-nowrap">Quant Briefing</span>
+            </button>
+
             <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
                     class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
               <span class="text-xs shrink-0">🗄️</span>
@@ -673,14 +679,18 @@
             <!-- CARD 2: 10-Leg Automated Profit Scraper Plan (Default Forefront Tab) + Asset Tracker Table -->
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 flex-wrap">
                   <button onclick="switchOrbitCard2Tab('plan')" id="orbit-card2-btn-plan"
                           class="text-sm sm:text-base font-bold text-white border-b-2 border-[#00f5d4] pb-1 transition cursor-pointer flex items-center gap-1">
                     <span>⚡ 10-Leg Profit Scraper Plan</span>
                   </button>
+                  <button onclick="switchOrbitCard2Tab('briefing')" id="orbit-card2-btn-briefing"
+                          class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1">
+                    <span>🧠 Quant Briefing</span>
+                  </button>
                   <button onclick="switchOrbitCard2Tab('tokens')" id="orbit-card2-btn-tokens"
-                          class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer">
-                    Asset Holdings
+                          class="text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1">
+                    <span>Asset Holdings</span>
                   </button>
                 </div>
 
@@ -845,6 +855,152 @@
                     <!-- Populated dynamically by renderOrbitTokensTable() -->
                   </tbody>
                 </table>
+              </div>
+
+              <!-- TAB C: QUANT BRIEFING — INTERACTIVE 3-TAB STRATEGY EXPLAINER (from strategy_explainer_visual.html) -->
+              <div id="orbit-card2-briefing-view" class="hidden space-y-3.5 text-xs">
+                <!-- Header + 3 Interactive Walkthrough Sub-Tabs -->
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10.5px] font-bold font-mono">QUANT BRIEFING</span>
+                      <h3 id="quant-briefing-heading" class="font-bold text-sm sm:text-base text-white">The Dual-Exchange Automated Straddle Engine</h3>
+                    </div>
+                    <p id="quant-briefing-sub" class="text-[11px] text-[#8b95a9] mt-0.5">
+                      How $1,223.11 in active capital is turned into a 24/7 automated market-making straddle to compound ETH &amp; fund blue-chip NFTs
+                    </p>
+                  </div>
+
+                  <div class="inline-flex rounded-xl bg-[#0e121b] border border-white/10 p-1 text-[11px] font-semibold">
+                    <button id="qb-tab-1" onclick="showQuantBriefingTab(1)" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white transition cursor-pointer">1. The Capital Map</button>
+                    <button id="qb-tab-2" onclick="showQuantBriefingTab(2)" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">2. Straddle Math</button>
+                    <button id="qb-tab-3" onclick="showQuantBriefingTab(3)" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">3. NFT End-Game</button>
+                  </div>
+                </div>
+
+                <!-- ================= SUB-TAB 1: THE $1,223.11 CAPITAL ARCHITECTURE ================= -->
+                <div id="qb-view-1" class="space-y-3 text-xs">
+                  <!-- Top 3 Summary KPIs -->
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <div class="bg-[#0e121b] border border-white/10 rounded-xl p-2.5">
+                      <div class="text-[#8b95a9] text-[11px]">Total Active Capital</div>
+                      <div id="qb-kpi-total" class="text-base font-bold font-mono text-emerald-400 mt-0.5">$1,223.11 USD</div>
+                      <div class="text-[#8b95a9] text-[10.5px]">100% Deployed in Limit Orders</div>
+                    </div>
+                    <div class="bg-[#0e121b] border border-emerald-500/30 rounded-xl p-2.5">
+                      <div class="text-[#8b95a9] text-[11px]">Upside Sell Inventory (82%)</div>
+                      <div id="qb-kpi-upside" class="text-base font-bold font-mono text-white mt-0.5">$1,007.13 Crypto</div>
+                      <div class="text-emerald-400 text-[10.5px]">5 Limit Sells Waiting at Top</div>
+                    </div>
+                    <div class="bg-[#0e121b] border border-amber-500/30 rounded-xl p-2.5">
+                      <div class="text-[#8b95a9] text-[11px]">Downside Dip Ammo (18%)</div>
+                      <div id="qb-kpi-dip" class="text-base font-bold font-mono text-white mt-0.5">$215.98 Cash</div>
+                      <div class="text-amber-400 text-[10.5px]">4 Limit Buys Waiting at Bottom</div>
+                    </div>
+                  </div>
+
+                  <!-- Visual Allocation Bar -->
+                  <div class="space-y-1">
+                    <div class="flex justify-between font-mono text-[11px] flex-wrap gap-1">
+                      <span id="qb-bar-lbl-up" class="text-emerald-400 font-bold">▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)</span>
+                      <span id="qb-bar-lbl-dip" class="text-amber-400 font-bold">▼ DIP CASH AMMO: $215.98 (17.7%)</span>
+                    </div>
+                    <div class="w-full h-3.5 rounded-full overflow-hidden flex border border-white/10 bg-[#0e121b]">
+                      <div style="width: 63.1%" class="bg-emerald-500 h-full" title="Kraken ETH Upside ($771.51)"></div>
+                      <div style="width: 19.2%" class="bg-sky-500 h-full" title="Coinbase Crypto Upside ($235.62)"></div>
+                      <div style="width: 10.8%" class="bg-amber-500 h-full" title="Kraken Cash Dip Ammo ($132.51)"></div>
+                      <div style="width: 6.9%" class="bg-purple-500 h-full" title="Coinbase USDC Dip Ammo ($83.47)"></div>
+                    </div>
+                    <div id="qb-bar-foot" class="flex flex-wrap justify-between gap-2 text-[11px] text-[#8b95a9] pt-0.5">
+                      <span>🟢 <strong class="text-white">Kraken Pro ($904.02)</strong>: 0.37 ETH ($826.63) + SOL ($12.05)</span>
+                      <span>🔵 <strong class="text-white">Coinbase Adv ($124.61)</strong>: 0.0559 ETH Consolidating</span>
+                    </div>
+                  </div>
+
+                  <!-- Why This Beats "Just Holding" -->
+                  <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <div class="font-bold text-white">❌ Normal Investor ("Passive Hold")</div>
+                      <p class="text-[#8b95a9] mt-0.5 leading-relaxed">
+                        Leaves capital sitting idle. If crypto drops 3%, they lose money and have $0 cash to buy the dip. If crypto spikes 2% and drops back down, they captured $0 of the spike.
+                      </p>
+                    </div>
+                    <div>
+                      <div class="font-bold text-emerald-400">✅ Our Automated Straddle ("Market Maker")</div>
+                      <p class="text-[#8b95a9] mt-0.5 leading-relaxed">
+                        Splits capital into <strong class="text-white">82% Upside Inventory</strong> + <strong class="text-white">18% Cash Ammo</strong>. Every time the market wiggles up OR down, an order fills and our Python bot automatically places the opposite trade to lock in the spread.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================= SUB-TAB 2: INTERACTIVE STRADDLE & FEE MATH SIMULATOR ================= -->
+                <div id="qb-view-2" class="hidden space-y-3 text-xs">
+                  <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-2.5">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                      <div>
+                        <div class="font-bold text-white">🎛️ Test What Happens When the Market Moves:</div>
+                        <div class="text-[#8b95a9] text-[11px]">Click a market scenario below to see how the Automated Bot reacts in real time</div>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        <button id="qb-sim-btn-pump" onclick="setQuantScenario('pump')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold cursor-pointer transition">📈 Scenario A: Market Pumps +1.5%</button>
+                        <button id="qb-sim-btn-dip" onclick="setQuantScenario('dip')" class="px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white font-bold cursor-pointer transition">📉 Scenario B: Market Dips -2.2%</button>
+                        <button id="qb-sim-btn-chop" onclick="setQuantScenario('chop')" class="px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white font-bold cursor-pointer transition">🔄 Scenario C: Both Sides Hit</button>
+                      </div>
+                    </div>
+
+                    <div id="qb-sim-output" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+                      <!-- Populated dynamically by setQuantScenario() -->
+                    </div>
+                  </div>
+
+                  <!-- The "Post-Only Maker" Fee Edge -->
+                  <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                    <div>
+                      <div class="font-bold text-white">🛡️ Why All Orders Use <code class="font-mono text-emerald-400">post_only=True</code> (Maker Fee Protection)</div>
+                      <div class="text-[#8b95a9] text-[11px] mt-0.5">
+                        Retail "Market Orders" pay <strong class="text-white">0.80%–0.90% Taker fees</strong>. By forcing <code class="font-mono text-cyan-300">Post-Only</code> on the orderbook, we cut fees in half (<strong class="text-white">0.25%–0.40% Kraken / 0.50% Coinbase</strong>), saving ~$9.50 per full rotation.
+                      </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono font-bold shrink-0">
+                      50% Fee Reduction
+                    </span>
+                  </div>
+                </div>
+
+                <!-- ================= SUB-TAB 3: THE BLUE-CHIP NFT END-GAME ================= -->
+                <div id="qb-view-3" class="hidden space-y-3 text-xs">
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <div class="bg-[#0e121b] border border-emerald-500/30 rounded-xl p-3 space-y-1">
+                      <div class="text-emerald-400 font-bold">1. Dual Purchasing-Power Win</div>
+                      <div class="text-sm font-bold font-mono text-white">NFT Floors Down -26%</div>
+                      <p class="text-[#8b95a9] leading-relaxed">
+                        Since Oct 28, ETH rose while NFT floors dropped: <strong class="text-white">Invisible Friends (0.230 ETH) + CloneX (0.130 ETH) = 0.360 ETH (~$806)</strong> for BOTH blue-chip NFTs combined.
+                      </p>
+                    </div>
+                    <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-1">
+                      <div class="text-amber-400 font-bold">2. Continuous Spread Harvest</div>
+                      <div class="text-sm font-bold font-mono text-white">24/7 Kraken Maker Grid</div>
+                      <p class="text-[#8b95a9] leading-relaxed">
+                        While waiting for sniper bids to fill, the Python daemon harvests extra ETH &amp; USD spread across tight maker channels ($2,246 / $2,252 / $2,284 / $2,312).
+                      </p>
+                    </div>
+                    <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-1">
+                      <div class="text-sky-400 font-bold">3. WETH Sniper Bid Execution</div>
+                      <div class="text-sm font-bold font-mono text-white">Bid 10–14% Below Floor</div>
+                      <p class="text-[#8b95a9] leading-relaxed">
+                        Instead of paying full asking price on OpenSea, we place WETH bidding ladders on <strong class="text-white">IF #1506 (0.210 WETH)</strong> &amp; <strong class="text-white">BEAST #2313 (0.060 WETH)</strong>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 flex items-center justify-between flex-wrap gap-2">
+                    <div class="text-[#8b95a9] text-[11px]">
+                      🔒 <strong class="text-white">Privacy &amp; Security Architecture:</strong> Hosted on GitHub Pages with a <strong class="text-emerald-400">SHA-256 PIN-Encrypted Vault</strong> + Eye Privacy Masking + trade-only API keys (withdrawals disabled).
+                    </div>
+                    <span id="qb-foot-stack" class="font-mono font-bold text-emerald-400">Combined Stack: 0.427 ETH + 139 NFTs</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -2482,18 +2638,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v62') caches.delete(k);
+            if (k !== 'swooz-dex-v63') caches.delete(k);
           });
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=62', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=63', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v62') caches.delete(k);
+            if (k !== 'swooz-dex-v63') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -6329,6 +6485,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           ? `••• Held <span class="text-[#34d399]">($••••)</span>`
           : `133 Held <span class="text-[#34d399]">($400.33)</span>`;
       }
+      if (typeof updateQuantBriefingPrivacyUi === 'function') updateQuantBriefingPrivacyUi();
     }
 
     function drawOrbitNetworthChart() {
@@ -6780,13 +6937,147 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       renderOrbitTokensTable();
     }
 
+    const QUANT_BRIEFING_SCENARIOS = {
+      pump: [
+        {
+          title: '1. Upside Maker Sells Trigger',
+          val: '$1,020.02 Gross Cash',
+          desc: 'ETH hits $2,246 / $2,252 / $2,284 / $2,312 and SOL hits $90.40. Maker sell walls cash out into USD with 0% slippage.'
+        },
+        {
+          title: '2. Bot Auto-Flips to Dip Buys',
+          val: 'Re-Sets 1.7%–3.1% Lower',
+          desc: 'Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,208–$2,212 ETH and $88.40 SOL.'
+        },
+        {
+          title: '3. Net Result on Pullback',
+          val: '+$18.74–$25.62 / Cycle',
+          desc: 'We end up owning MORE ETH & SOL than we started with, without adding a single dollar from the bank.'
+        }
+      ],
+      dip: [
+        {
+          title: '1. Cash Dip-Catchers Trigger',
+          val: '$215.98 Cash Deployed',
+          desc: 'When ETH dips into our reload floor ($2,208–$2,212) and SOL dips to $88.40, our resting maker buy orders scoop the discount.'
+        },
+        {
+          title: '2. Bot Auto-Flips to Top Sells',
+          val: 'Targets $2,246–$2,284 & $90.40',
+          desc: 'The moment the dip buys fill, the daemon automatically lists that newly bought ETH and SOL back at our upper sell walls.'
+        },
+        {
+          title: '3. Net Result on Bounce',
+          val: '+$6.85–$13.94 Bounce Yield',
+          desc: 'Even when the market dips first, our reload floors turn the drop into an automatic maker bounce profit.'
+        }
+      ],
+      chop: [
+        {
+          title: '1. Sideways Volatility Harvest',
+          val: 'Tight Maker Order Traps',
+          desc: 'Crypto spends 70%+ of the time bouncing inside a 1.5%–3.5% chop range ($2,208 <-> $2,252 ETH and $88.40 <-> $90.40 SOL).'
+        },
+        {
+          title: '2. Compounding Loop',
+          val: '~2.1%–2.7% Net Per Cycle',
+          desc: 'After subtracting the low Post-Only Maker fees on both sides, each full round-trip compounds net USD/ETH gain.'
+        },
+        {
+          title: '3. Funding the NFT Snipes',
+          val: 'Free "The Walk" + Bid Padding',
+          desc: 'Every single ETH/SOL cycle pays for another Markus Magnusson "The Walk" Edition NFT ($4.92) out of pure house money.'
+        }
+      ]
+    };
+
+    let ACTIVE_QUANT_SCENARIO = 'pump';
+
+    function setQuantScenario(key) {
+      ACTIVE_QUANT_SCENARIO = key || 'pump';
+      ['pump', 'dip', 'chop'].forEach(k => {
+        const b = document.getElementById('qb-sim-btn-' + k);
+        if (b) {
+          b.className = k === ACTIVE_QUANT_SCENARIO
+            ? 'px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold cursor-pointer transition'
+            : 'px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white hover:border-emerald-400/40 font-bold cursor-pointer transition';
+        }
+      });
+      const out = document.getElementById('qb-sim-output');
+      if (!out) return;
+      const list = QUANT_BRIEFING_SCENARIOS[ACTIVE_QUANT_SCENARIO] || QUANT_BRIEFING_SCENARIOS.pump;
+      out.innerHTML = list.map(item => {
+        const valMasked = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
+          ? item.val.replace(/\$[0-9,.]+/g, '$••••')
+          : item.val;
+        return `
+          <div class="bg-[#141926] border border-white/10 rounded-xl p-2.5 space-y-1">
+            <div class="text-emerald-400 font-bold">${item.title}</div>
+            <div class="text-sm font-bold font-mono text-white">${valMasked}</div>
+            <p class="text-[#8b95a9] leading-relaxed">${item.desc}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showQuantBriefingTab(n) {
+      [1, 2, 3].forEach(i => {
+        const v = document.getElementById('qb-view-' + i);
+        const t = document.getElementById('qb-tab-' + i);
+        if (v) v.classList.toggle('hidden', i !== n);
+        if (t) {
+          t.className = i === n
+            ? 'px-2.5 py-1 rounded-lg bg-emerald-500 text-white transition cursor-pointer'
+            : 'px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer';
+        }
+      });
+      if (n === 2) setQuantScenario(ACTIVE_QUANT_SCENARIO);
+    }
+
+    function updateQuantBriefingPrivacyUi() {
+      const hEl = document.getElementById('quant-briefing-heading');
+      const ensLbl = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens && !PRIVACY_HIDE_MODE)
+        ? UNLOCKED_VAULT_DATA.owner_ens.toUpperCase()
+        : 'SWOOZ';
+      if (hEl) hEl.textContent = `The ${ensLbl} Dual-Exchange Automated Straddle Engine`;
+
+      const kpiTotal = document.getElementById('qb-kpi-total');
+      const kpiUp = document.getElementById('qb-kpi-upside');
+      const kpiDip = document.getElementById('qb-kpi-dip');
+      const barUp = document.getElementById('qb-bar-lbl-up');
+      const barDip = document.getElementById('qb-bar-lbl-dip');
+      const subEl = document.getElementById('quant-briefing-sub');
+      const footStack = document.getElementById('qb-foot-stack');
+
+      if (PRIVACY_HIDE_MODE) {
+        if (kpiTotal) kpiTotal.textContent = '$•••••• USD';
+        if (kpiUp) kpiUp.textContent = '$•••••• Crypto';
+        if (kpiDip) kpiDip.textContent = '$•••••• Cash';
+        if (barUp) barUp.textContent = '▲ UPSIDE CRYPTO INVENTORY: $•••••• (82.3%)';
+        if (barDip) barDip.textContent = '▼ DIP CASH AMMO: $•••••• (17.7%)';
+        if (subEl) subEl.textContent = 'How active capital is turned into a 24/7 automated market-making straddle to compound ETH & fund blue-chip NFTs';
+        if (footStack) footStack.textContent = 'Combined Stack: •••• ETH + ••• NFTs';
+      } else {
+        if (kpiTotal) kpiTotal.textContent = '$1,223.11 USD';
+        if (kpiUp) kpiUp.textContent = '$1,007.13 Crypto';
+        if (kpiDip) kpiDip.textContent = '$215.98 Cash';
+        if (barUp) barUp.textContent = '▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)';
+        if (barDip) barDip.textContent = '▼ DIP CASH AMMO: $215.98 (17.7%)';
+        if (subEl) subEl.textContent = 'How $1,223.11 in active capital is turned into a 24/7 automated market-making straddle to compound ETH & fund blue-chip NFTs';
+        if (footStack) footStack.textContent = 'Combined Stack: 0.427 ETH + 139 NFTs ($1,365+)';
+      }
+      setQuantScenario(ACTIVE_QUANT_SCENARIO);
+    }
+
     function switchOrbitCard2Tab(tab) {
       ORBIT_CARD2_TAB = tab;
       if (typeof window.playBeep === 'function') window.playBeep();
       const planView = document.getElementById('orbit-card2-plan-view');
+      const briefingView = document.getElementById('orbit-card2-briefing-view');
       const tokensView = document.getElementById('orbit-card2-tokens-view');
       const msflipView = document.getElementById('orbit-card2-msflip-view');
       const btnPlan = document.getElementById('orbit-card2-btn-plan');
+      const btnBriefing = document.getElementById('orbit-card2-btn-briefing');
       const btnTokens = document.getElementById('orbit-card2-btn-tokens');
       const btnMsflip = document.getElementById('orbit-card2-btn-msflip');
 
@@ -6794,14 +7085,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const idleCls = 'text-xs font-semibold text-[#8b95a9] hover:text-white pb-1 transition cursor-pointer flex items-center gap-1';
 
       if (planView) planView.classList.toggle('hidden', tab !== 'plan');
+      if (briefingView) briefingView.classList.toggle('hidden', tab !== 'briefing');
       if (tokensView) tokensView.classList.toggle('hidden', tab !== 'tokens');
       if (msflipView) msflipView.classList.toggle('hidden', tab !== 'msflip');
 
-      if (btnTokens) btnTokens.className = tab === 'tokens' ? activeCls : idleCls;
       if (btnPlan) btnPlan.className = tab === 'plan' ? activeCls : idleCls;
+      if (btnBriefing) btnBriefing.className = tab === 'briefing' ? activeCls : idleCls;
+      if (btnTokens) btnTokens.className = tab === 'tokens' ? activeCls : idleCls;
       if (btnMsflip) btnMsflip.className = tab === 'msflip' ? activeCls : idleCls;
 
       if (tab === 'tokens') renderOrbitTokensTable();
+      if (tab === 'briefing') updateQuantBriefingPrivacyUi();
     }
 
     function setOrbitChartTf(tf) {
