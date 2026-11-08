@@ -603,9 +603,9 @@
                 <div class="flex flex-wrap items-center gap-2">
                   <select id="orbit-portfolio-scope" onchange="setOrbitPortfolioScope(this.value)"
                           class="px-2.5 py-1.5 rounded-lg bg-[#1a2030] border border-white/10 text-xs text-[#c5cee0] font-medium outline-none cursor-pointer">
-                    <option id="orbit-scope-opt-swooz" value="swooz">All Wallets (6 • $1,587.97)</option>
-                    <option id="orbit-scope-opt-dex" value="dex">9-Leg DEX Only ($1,177.48)</option>
-                    <option id="orbit-scope-opt-vaults" value="vaults">On-Chain Vaults (4 • $410.49)</option>
+                    <option id="orbit-scope-opt-swooz" value="swooz">Active Trading DEX ($956.85)</option>
+                    <option id="orbit-scope-opt-dex" value="kraken">Kraken Pro Only ($831.95)</option>
+                    <option id="orbit-scope-opt-vaults" value="vaults">MetaMask &amp; Vaults ($402.49)</option>
                   </select>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[10.5px] font-semibold font-mono">
@@ -631,10 +631,10 @@
                 <!-- Left 5 Cols: Total Net Worth & Today's Straddle Gain -->
                 <div class="sm:col-span-5 space-y-1.5">
                   <div class="flex items-center justify-between gap-2">
-                    <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Total Net Worth (Active DEX + 4 Real Vaults)</div>
+                    <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Active DEX Capital (Kraken Pro + Coinbase)</div>
                   </div>
                   <div class="flex items-center gap-2.5">
-                    <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$1,604.07</div>
+                    <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$956.85</div>
                     <button id="btn-privacy-eye-hero" onclick="togglePrivacyHideMode()" title="Hide / Show Total Net Worth &amp; Sensitive Info"
                             aria-label="Hide or Show Total Net Worth"
                             class="w-8 h-8 rounded-xl bg-[#181f30] hover:bg-[#232d45] border border-white/15 hover:border-[#00f5d4]/50 text-[#00f5d4] flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm active:scale-95">
@@ -647,8 +647,16 @@
                     </button>
                   </div>
                   <div id="orbit-networth-badge" class="text-xs font-semibold text-[#10f1b6] flex items-center gap-1 flex-wrap">
-                    <span>+5.71% (+$91.68 at $2,435 Bounce)</span>
+                    <span>+4.24% (+$40.58 Hybrid Target)</span>
                     <span class="text-[#8b95a9] font-normal">today</span>
+                  </div>
+                  <!-- Separate Smaller Number for Primary ENS + MetaMask Wallets -->
+                  <div id="orbit-metamask-sub-row" class="mt-1 px-2.5 py-1.5 rounded-lg bg-[#141926] border border-amber-500/25 flex items-center justify-between gap-2 text-[11px] font-mono">
+                    <span id="orbit-metamask-sub-lbl" class="text-[#8b95a9] flex items-center gap-1.5 truncate">
+                      <span>🦊</span>
+                      <span>Primary + MetaMask Vaults:</span>
+                    </span>
+                    <span id="orbit-metamask-sub-val" class="text-amber-300 font-bold shrink-0">$402.49 <span class="text-[#8b95a9] font-normal text-[10px]">(133 NFTs + ETH)</span></span>
                   </div>
                   <span id="hdr-total-eth" class="hidden">0.4212 ETH ($947.87)</span>
 
@@ -2770,7 +2778,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=66', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=67', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -7235,22 +7243,36 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function updateOrbitPortfolioTotals() {
       applyPrivacyEyeIcons();
-      const assets = getLiveOrbitAssets().filter(a => a.scope.includes(ORBIT_PORTFOLIO_SCOPE));
-      const spotTotal = assets.reduce((s, a) => s + a.usdVal, 0);
-      const targetTotal = assets.reduce((s, a) => s + a.targetUsd, 0);
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
+      const krkTotal = 0.371216 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97;
+      const cbTotal = 0.055921 * ethSpot + 1.03;
+      const dexSpotTotal = krkTotal + cbTotal;
+      const dexTargetTotal = 848.09 + 12.05 + 6.97 + (0.055921 * 2312.00) + 1.03;
+      const vaultsTotal = 402.49; // 133 Mini Supers ($400.33) + 4 MetaMask On-Chain ETH ($2.16)
+
+      // Large headline number at top of DEX (#orbit-networth-val) excludes MetaMask / swooz.eth vaults by default
+      let spotTotal = dexSpotTotal;
+      let targetTotal = dexTargetTotal;
+      if (ORBIT_PORTFOLIO_SCOPE === 'kraken') {
+        spotTotal = krkTotal;
+        targetTotal = 848.09 + 12.05 + 6.97;
+      } else if (ORBIT_PORTFOLIO_SCOPE === 'coinbase') {
+        spotTotal = cbTotal;
+        targetTotal = (0.055921 * 2312.00) + 1.03;
+      } else if (ORBIT_PORTFOLIO_SCOPE === 'vaults') {
+        spotTotal = vaultsTotal;
+        targetTotal = vaultsTotal;
+      }
+
       CACHED_ORBIT_SPOT_TOTAL = spotTotal;
       CACHED_ORBIT_TARGET_TOTAL = targetTotal;
       const upsideUsd = Math.max(0, targetTotal - spotTotal);
-      const upsidePct = spotTotal > 0 ? ((upsideUsd / spotTotal) * 100).toFixed(2) : '5.52';
+      const upsidePct = spotTotal > 0 ? ((upsideUsd / spotTotal) * 100).toFixed(2) : '4.24';
 
       if (PREV_NETWORTH_USD > 0 && Math.abs(spotTotal - PREV_NETWORTH_USD) >= 0.01) {
         LAST_TICK_DELTA_USD = spotTotal - PREV_NETWORTH_USD;
       }
       PREV_NETWORTH_USD = spotTotal;
-
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
-      const krkTotal = 0.371216 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97;
-      const cbTotal = 0.055921 * ethSpot + 1.03;
 
       const nwEl = document.getElementById('orbit-networth-val');
       if (nwEl) {
@@ -7263,6 +7285,21 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         badgeEl.innerHTML = PRIVACY_HIDE_MODE
           ? `<span>+•.••% (+$•••• Hybrid Target)</span> <span class="text-[#8b95a9] font-normal">today</span>`
           : `<span>+${upsidePct}% (+$${upsideUsd.toFixed(2)} Hybrid Target)</span> <span class="text-[#8b95a9] font-normal">today</span>`;
+      }
+
+      // Separate Smaller Number for swooz.eth & MetaMask Wallets
+      const mmLblEl = document.getElementById('orbit-metamask-sub-lbl');
+      const mmValEl = document.getElementById('orbit-metamask-sub-val');
+      const ensUnlockedName = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens) ? UNLOCKED_VAULT_DATA.owner_ens : 'Primary Vault';
+      if (mmLblEl) {
+        mmLblEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `<span>🦊</span><span>••••.eth + MetaMask:</span>`
+          : `<span>🦊</span><span>${ensUnlockedName} + MetaMask:</span>`;
+      }
+      if (mmValEl) {
+        mmValEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `$•••••• <span class="text-[#8b95a9] font-normal text-[10px]">(••• NFTs + •••• ETH)</span>`
+          : `$${vaultsTotal.toFixed(2)} <span class="text-[#8b95a9] font-normal text-[10px]">(133 NFTs $400.33 + $2.16 ETH)</span>`;
       }
 
       const ethPill = document.getElementById('orbit-live-eth-pill');
@@ -7281,22 +7318,21 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const scopeVaults = document.getElementById('orbit-scope-opt-vaults');
 
       if (PRIVACY_HIDE_MODE) {
-        if (optAll) optAll.textContent = '6 Wallets (••••.eth • $••••••)';
+        if (optAll) optAll.textContent = 'DEX: $•••••• (+$•••• ••••.eth / MetaMask)';
         if (optKrk) optKrk.textContent = 'Kraken Pro (•••• ETH / $•••• + •••• SOL)';
-        if (optCb) optCb.textContent = 'Coinbase Adv (•••• ETH / $•••• + Alts)';
-        if (optVaults) optVaults.textContent = '4 On-Chain Vaults (••• NFTs • $••••••)';
-        if (scopeSwooz) scopeSwooz.textContent = 'All Wallets (6 • $••••••)';
-        if (scopeDex) scopeDex.textContent = 'DEX Only ($••••••)';
-        if (scopeVaults) scopeVaults.textContent = 'On-Chain Vaults (4 • $••••••)';
+        if (optCb) optCb.textContent = 'Coinbase Adv (•••• ETH / $•••• Consolidated)';
+        if (optVaults) optVaults.textContent = 'MetaMask & Vaults (••• NFTs • $••••••)';
+        if (scopeSwooz) scopeSwooz.textContent = 'Active Trading DEX ($••••••)';
+        if (scopeDex) scopeDex.textContent = 'Kraken Pro Only ($••••••)';
+        if (scopeVaults) scopeVaults.textContent = 'MetaMask & Vaults ($••••••)';
       } else {
-        const ensName = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens) ? UNLOCKED_VAULT_DATA.owner_ens : 'Encrypted Vault';
-        if (optAll) optAll.textContent = `6 Wallets (${ensName} • $${spotTotal.toFixed(2)} USD)`;
-        if (optKrk) optKrk.textContent = `Kraken Pro (0.3776 ETH / $${(0.377612 * ethSpot).toFixed(2)} + 0.1332 SOL / $${(0.133241 * LIVE_SOL_RATE).toFixed(2)})`;
-        if (optCb) optCb.textContent = `Coinbase Adv (0.0436 ETH / $${(0.043575 * ethSpot).toFixed(2)} + Alts / $${(cbTotal - 0.043575 * ethSpot).toFixed(2)})`;
-        if (optVaults) optVaults.textContent = `4 On-Chain Vaults (133 Mini Supers • $402.49 USD)`;
-        if (scopeSwooz) scopeSwooz.textContent = `All Wallets (6 • $${spotTotal.toFixed(2)})`;
-        if (scopeDex) scopeDex.textContent = `DEX Only ($${(krkTotal + cbTotal).toFixed(2)})`;
-        if (scopeVaults) scopeVaults.textContent = `On-Chain Vaults (4 • $410.49)`;
+        if (optAll) optAll.textContent = `Active DEX: $${dexSpotTotal.toFixed(2)} (+$${vaultsTotal.toFixed(2)} ${ensUnlockedName} / MetaMask)`;
+        if (optKrk) optKrk.textContent = `Kraken Pro (0.3712 ETH / $${(0.371216 * ethSpot).toFixed(2)} + 0.1332 SOL / $${(0.133241 * LIVE_SOL_RATE).toFixed(2)})`;
+        if (optCb) optCb.textContent = `Coinbase Adv (0.0559 ETH / $${(0.055921 * ethSpot).toFixed(2)} Consolidated)`;
+        if (optVaults) optVaults.textContent = `${ensUnlockedName} + MetaMask (133 NFTs • $${vaultsTotal.toFixed(2)} USD)`;
+        if (scopeSwooz) scopeSwooz.textContent = `Active Trading DEX ($${dexSpotTotal.toFixed(2)})`;
+        if (scopeDex) scopeDex.textContent = `Kraken Pro Only ($${krkTotal.toFixed(2)})`;
+        if (scopeVaults) scopeVaults.textContent = `MetaMask & Vaults ($${vaultsTotal.toFixed(2)})`;
       }
 
       const krkValEl = document.getElementById('orbit-plat-kraken-val');
@@ -7833,11 +7869,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const lbl = document.getElementById('orbit-chart-title-lbl');
       if (lbl) {
         const titles = {
-          swooz: 'Total Net Worth (Active DEX + 4 Vaults)',
-          dex: 'Total Net Worth (9-Leg Active DEX Only)',
-          kraken: 'Total Net Worth (Kraken Pro 3 Active Legs)',
-          coinbase: 'Total Net Worth (Coinbase Adv 6 Active Legs)',
-          vaults: 'Total Net Worth (4 On-Chain Ethereum Vaults)'
+          swooz: 'Active DEX Capital (Kraken Pro + Coinbase)',
+          dex: 'Active DEX Capital (Kraken Pro + Coinbase)',
+          kraken: 'Kraken Pro Active Capital (5 Maker Legs)',
+          coinbase: 'Coinbase Consolidated ETH Reserve',
+          vaults: 'On-Chain MetaMask & Vaults (133 NFTs + ETH Gas)'
         };
         lbl.textContent = titles[ORBIT_PORTFOLIO_SCOPE] || titles.swooz;
       }
