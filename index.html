@@ -195,6 +195,126 @@
     .text-apple-amber\/60 { color: rgba(255, 176, 0, 0.72) !important; }
     .text-matrix-green { color: #00FF41 !important; }
     .placeholder-matrix-green\/30::placeholder { color: rgba(0, 255, 65, 0.35) !important; }
+
+    /* ============================================================================
+       📱 AUTOMATIC FOLDABLE (COVER SCREEN + INSIDE UNFOLDED SCREEN) & ORIENTATION ENGINE
+       Automatically adapts to:
+       1. Fold Cover Screen Portrait (< 600px width)
+       2. Fold Cover Screen Landscape (< 940px width & <= 500px height)
+       3. Fold Inside Unfolded Screen Portrait & Landscape (600px - 1179px width)
+       4. Ultra-Wide Desktop (>= 1180px width)
+       ============================================================================ */
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+      -webkit-text-size-adjust: 100%;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Compact single-line horizontal nav strip on Cover Screen & Inside Unfolded Screen (< 1180px) */
+    @media (max-width: 1179px) {
+      #orbit-sidebar-aside {
+        padding: 0.65rem 0.75rem !important;
+        min-height: auto !important;
+      }
+      #orbit-sidebar-brand-row {
+        padding-bottom: 0.45rem !important;
+        margin-bottom: 0.45rem !important;
+      }
+      .iso-swooz-pre {
+        font-size: 3.6px !important;
+        line-height: 1.02 !important;
+      }
+    }
+
+    /* Fold Cover Screen Portrait (< 600px): Ultra-clean fit, zero right-edge clipping */
+    @media (max-width: 599px) {
+      #orbit-app-wrapper {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        padding-top: 0.45rem !important;
+      }
+      .orbit-card {
+        padding: 0.85rem !important;
+        border-radius: 14px !important;
+      }
+      #orbit-top-bar {
+        gap: 0.45rem !important;
+      }
+      #orbit-top-wallets-row {
+        width: 100% !important;
+        justify-content: space-between !important;
+        gap: 0.375rem !important;
+      }
+      #orbit-wallet-pill-box {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
+        padding: 0.45rem 0.6rem !important;
+      }
+      #orbit-wallet-select {
+        width: 100% !important;
+        min-width: 0 !important;
+        font-size: 11px !important;
+        text-overflow: ellipsis !important;
+      }
+      #orbit-chains-bar {
+        width: 100% !important;
+        justify-content: space-between !important;
+        padding: 0.35rem 0.6rem !important;
+      }
+    }
+
+    /* Fold Cover Screen Landscape (Rotated sideways: height <= 520px and width >= 560px) */
+    @media (orientation: landscape) and (max-height: 520px) {
+      #orbit-bento-dashboard {
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      }
+      #orbit-bento-left {
+        grid-column: span 7 / span 7 !important;
+      }
+      #orbit-bento-right {
+        grid-column: span 5 / span 5 !important;
+      }
+      #multi-asset-charts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      #pro-radar-tuner-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      }
+      #pro-radar-col {
+        grid-column: span 7 / span 7 !important;
+      }
+      #pro-tuner-col {
+        grid-column: span 5 / span 5 !important;
+      }
+    }
+
+    /* Fold Inside Unfolded Screen (Portrait & Landscape: 600px to 1179px):
+       Automatically activates full 12-Col Split Bento Dashboard & 2x2 Multi-Asset Chart Grid! */
+    @media (min-width: 600px) {
+      #orbit-bento-dashboard {
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      }
+      #orbit-bento-left {
+        grid-column: span 7 / span 7 !important;
+      }
+      #orbit-bento-right {
+        grid-column: span 5 / span 5 !important;
+      }
+      #multi-asset-charts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      #pro-radar-tuner-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      }
+      #pro-radar-col {
+        grid-column: span 7 / span 7 !important;
+      }
+      #pro-tuner-col {
+        grid-column: span 5 / span 5 !important;
+      }
+    }
   </style>
 </head>
 <body data-holo-tint="cyan" class="bg-[var(--background)] text-[var(--foreground)] antialiased select-none pb-20">
@@ -203,14 +323,14 @@
        🌌 ORBIT // SWOOZ TRACKER & MULTI-CHAIN DEX v6.0 (FLOW RENDER FULL-FEATURED DASHBOARD)
        1:1 Visual, GUI & UX Implementation of the Flow Render + Full README Feature Integration
        ========================================================================================== -->
-  <div id="orbit-app-wrapper" class="max-w-[1640px] mx-auto px-2 sm:px-4 pt-3 pb-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
-    <div class="flex flex-col lg:flex-row gap-4 items-start">
+  <div id="orbit-app-wrapper" class="max-w-[1640px] mx-auto px-2 sm:px-4 pt-2 sm:pt-3 pb-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
+    <div class="flex flex-col xl:flex-row gap-3 sm:gap-4 items-start">
 
-      <!-- ================= LEFT SIDEBAR NAVIGATION (Exact Match to Flow Render) ================= -->
-      <aside class="w-full lg:w-[225px] shrink-0 orbit-card p-3.5 flex flex-col justify-between lg:min-h-[810px]">
+      <!-- ================= ADAPTIVE NAVIGATION (Compact Single-Row Ribbon on Cover & Inner Fold, Left Sidebar on Desktop >=1180px) ================= -->
+      <aside id="orbit-sidebar-aside" class="w-full xl:w-[225px] shrink-0 orbit-card p-3.5 flex flex-col justify-between xl:min-h-[810px]">
         <div>
           <!-- SWOOZ Isometric1 Shirt Screenprint Brand Header -->
-          <div class="flex items-center justify-between lg:justify-start gap-2 px-0.5 pb-3.5 mb-3 border-b border-white/10 overflow-hidden">
+          <div id="orbit-sidebar-brand-row" class="flex items-center justify-between xl:justify-start gap-2 px-0.5 pb-3 mb-2.5 border-b border-white/10 overflow-hidden">
             <div class="ansi-logo-wrap cursor-pointer select-none" onclick="switchOrbitSidebar('dashboard')" title="SWOOZ // Isometric1 Screenprint Logo">
               <svg class="w-0 h-0 absolute pointer-events-none" aria-hidden="true">
                 <defs>
@@ -232,54 +352,77 @@
    \:\/:/  /     \:\/:/  /     \:\/:/  /     \:\/:/  /     \:\  \     
     \::/  /       \::/  /       \::/  /       \::/  /       \:\__\    
      \/__/         \/__/         \/__/         \/__/         \/__/    </pre>
-              <div class="mt-1.5 pt-1 border-t border-[#93c5fd]/20 text-[7px] font-mono tracking-wider text-[#93c5fd]/80 uppercase truncate">
+              <div class="mt-1 pt-0.5 border-t border-[#93c5fd]/20 text-[7px] font-mono tracking-wider text-[#93c5fd]/80 uppercase truncate">
                 SWOOZY WORLD ORDER // DEX v6.0
               </div>
             </div>
 
-            <!-- Mobile Quick Vault Unlock Button -->
-            <button onclick="onVaultButtonClick()" class="lg:hidden px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-xs font-bold text-[#2dd4bf] shrink-0">
-              🔐 PIN
-            </button>
+            <!-- Live Posture Status Badge + Quick PIN Button on Mobile/Fold -->
+            <div class="flex items-center gap-1.5 xl:hidden shrink-0">
+              <span id="fold-posture-badge" class="px-2 py-1 rounded-lg bg-[#10b981]/15 border border-[#10b981]/30 text-[10px] font-mono font-bold text-[#34d399]">
+                AUTO FIT
+              </span>
+              <button onclick="onVaultButtonClick()" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/15 text-xs font-bold text-[#2dd4bf] shrink-0">
+                🔐 PIN
+              </button>
+            </div>
           </div>
 
-          <!-- Left Sidebar Navigation Categories (Automated Trading Forefront + NFT Archive Background) -->
-          <div class="text-[10px] font-mono uppercase tracking-wider text-[#10f1b6] px-2 pb-1 font-bold">
+          <!-- Left Sidebar Navigation Categories (Single Horizontal Scroll Pill Bar on Mobile/Fold, Vertical Stack on XL Desktop) -->
+          <div class="hidden xl:block text-[10px] font-mono uppercase tracking-wider text-[#10f1b6] px-2 pb-1 font-bold">
             ⚡ Automated Trading
           </div>
-          <nav class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-1.5 text-[13px] font-semibold">
+          <nav class="flex xl:grid xl:grid-cols-1 items-center gap-1.5 overflow-x-auto no-scrollbar text-xs xl:text-[13px] font-semibold pb-0.5 xl:pb-0">
             <button id="orbit-nav-orbit" onclick="switchOrbitSidebar('orbit')"
-                    class="orbit-nav-active flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition cursor-pointer">
+                    class="orbit-nav-active flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-left transition cursor-pointer shrink-0">
               <span class="text-sm shrink-0">⚡</span>
-              <span>Trading Command</span>
+              <span class="whitespace-nowrap">Trading Command</span>
             </button>
 
             <button id="orbit-nav-trade" onclick="switchOrbitSidebar('trade')"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
               <span class="text-sm shrink-0">📈</span>
-              <span>4-Asset Charts</span>
+              <span class="whitespace-nowrap">4-Asset Charts</span>
             </button>
 
             <button id="orbit-nav-plan" onclick="switchOrbitSidebar('orbit'); switchOrbitCard2Tab('plan');"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
+                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
               <span class="text-sm shrink-0">🤖</span>
-              <span>10-Leg Bot Plan</span>
+              <span class="whitespace-nowrap">10-Leg Bot Plan</span>
+            </button>
+
+            <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
+                    class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
+              <span class="text-xs shrink-0">🗄️</span>
+              <span class="whitespace-nowrap">NFT Vaults</span>
+            </button>
+
+            <button id="orbit-nav-targets-mob" onclick="switchOrbitSidebar('targets')"
+                    class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
+              <span class="text-xs shrink-0">🎯</span>
+              <span class="whitespace-nowrap">Watchlist</span>
+            </button>
+
+            <button id="orbit-nav-markets-mob" onclick="switchOrbitSidebar('markets')"
+                    class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
+              <span class="text-xs shrink-0">📊</span>
+              <span class="whitespace-nowrap">Floors</span>
             </button>
 
             <button id="orbit-nav-install" onclick="toggleInstallModal()"
-                    class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-amber-400 hover:text-white hover:bg-amber-500/15 text-left transition cursor-pointer">
+                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-amber-400 hover:text-white hover:bg-amber-500/15 text-left transition cursor-pointer shrink-0">
               <span class="text-sm shrink-0">📲</span>
-              <span>Install App</span>
+              <span class="whitespace-nowrap">Install App</span>
             </button>
           </nav>
 
-          <!-- Background Archive Section: Legacy NFT Vaults & Watchlist -->
-          <div class="mt-4 pt-3 border-t border-white/10">
+          <!-- Background Archive Section: Full Vertical List on XL Desktop -->
+          <div class="hidden xl:block mt-4 pt-3 border-t border-white/10">
             <div class="text-[9.5px] font-mono uppercase tracking-wider text-[#8b95a9]/70 px-2 pb-1 font-semibold">
               🗄️ Background NFT Archive
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-1 text-[11.5px] font-medium">
-              <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
+            <div class="grid grid-cols-1 gap-1 text-[11.5px] font-medium">
+              <button onclick="switchOrbitSidebar('viewer')"
                       class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
                 <span class="text-xs shrink-0">🗄️</span>
                 <span>NFT Vaults (Bg)</span>
@@ -305,11 +448,11 @@
             </div>
           </div>
 
-                    <span id="hdr-eth-rate" class="hidden">2,250.41</span>
+          <span id="hdr-eth-rate" class="hidden">2,250.41</span>
         </div>
 
-        <!-- Bottom Pinned Settings / Vault Lock Button (Exact Match to Flow Render Bottom-Left) -->
-        <div class="hidden lg:flex flex-col gap-2 pt-4 border-t border-white/10">
+        <!-- Bottom Pinned Settings / Vault Lock Button (Desktop XL) -->
+        <div class="hidden xl:flex flex-col gap-2 pt-4 border-t border-white/10">
           <button id="btn-vault-lock" onclick="onVaultButtonClick()"
                   class="w-full px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center gap-2 transition cursor-pointer">
             <span id="vault-btn-icon">🔒</span>
@@ -330,21 +473,21 @@
       <div class="flex-1 w-full min-w-0 space-y-4">
 
         <!-- TOP BAR: Search Input (Left) + All Networks Filter Bar (Center) + Connected Wallets & Vault PIN Lock (Right) -->
-        <div class="flex flex-wrap items-center justify-between gap-3">
+        <div id="orbit-top-bar" class="flex flex-wrap items-center justify-between gap-2 sm:gap-3">
 
           <!-- 1. Left Search Input (Matches Omni Tracker Top-Left Search) -->
-          <div class="relative flex-1 min-w-[210px] sm:max-w-[290px]">
+          <div class="relative flex-1 min-w-[175px] sm:max-w-[280px]">
             <svg class="w-4 h-4 text-[#8b95a9] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8" />
               <path stroke-linecap="round" d="M21 21l-4.35-4.35" />
             </svg>
             <input id="orbit-global-search" type="text" oninput="onOrbitSearchInput(this.value)" onkeydown="if(event.key==='Enter') onOrbitSearchSubmit(this.value)"
                    placeholder="Search tokens, NFTs, or wallets..."
-                   class="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#131722] border border-white/10 focus:border-[#00f5d4] text-xs text-white placeholder-[#8b95a9] outline-none transition" />
+                   class="w-full pl-9 pr-3 py-2 rounded-xl bg-[#131722] border border-white/10 focus:border-[#00f5d4] text-xs text-white placeholder-[#8b95a9] outline-none transition" />
           </div>
 
-          <!-- 2. Center "All Networks" Pill Bar with Chain Filter Icons (Exact Match to Reference Render) -->
-          <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#131722] border border-white/10 flex-wrap">
+          <!-- 2. Center "All Networks" Pill Bar with Chain Filter Icons -->
+          <div id="orbit-chains-bar" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#131722] border border-white/10 flex-wrap">
             <!-- Green All-Networks Toggle Pill -->
             <button onclick="filterOrbitChain('ALL')" id="orbit-chain-ALL"
                     class="flex items-center gap-2 pr-2 border-r border-white/10 cursor-pointer group">
@@ -386,19 +529,19 @@
             </button>
           </div>
 
-          <!-- 3. Right Connected Wallets Pill + Vault Lock/Unlock  + Gas Bell -->
-          <div class="flex items-center gap-2.5">
-            <div class="px-3.5 py-2 rounded-xl bg-[#131722] border border-white/10 flex items-center gap-2.5">
-              <span class="text-xs text-[#8b95a9] font-medium hidden sm:inline">Connected:</span>
+          <!-- 3. Right Connected Wallets Pill + Eye Privacy Hide + Vault Lock/Unlock + Gas Bell -->
+          <div id="orbit-top-wallets-row" class="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto min-w-0">
+            <div id="orbit-wallet-pill-box" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-[#131722] border border-white/10 flex items-center gap-1.5 sm:gap-2.5 flex-1 sm:flex-initial min-w-0">
+              <span class="text-xs text-[#8b95a9] font-medium hidden md:inline shrink-0">Connected:</span>
               <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
-                      class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
+                      class="bg-transparent text-white text-[11px] sm:text-xs font-mono font-semibold outline-none cursor-pointer w-full sm:w-auto min-w-0 truncate">
                 <option id="orbit-opt-all-wallets" value="all" class="bg-[#131722] text-white">6 Wallets (Encrypted Vault • PIN Locked)</option>
                 <option id="orbit-opt-krk-wallet" value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
                 <option id="orbit-opt-cb-wallet" value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0436 ETH / $97.55 + Alts / $148.03)</option>
                 <option id="orbit-opt-vaults-wallet" value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
                 <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN ...</option>
               </select>
-              <div class="flex items-center gap-1 pl-1 border-l border-white/10">
+              <div class="hidden sm:flex items-center gap-1 pl-1 border-l border-white/10 shrink-0">
                 <span class="w-5 h-5 rounded-md bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-[11px]" title="Primary On-Chain Vault (Encrypted)">🦊</span>
                 <span class="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-[10px] text-emerald-300 font-mono" title="Kraken Pro + Coinbase Adv">☷</span>
               </div>
@@ -431,11 +574,11 @@
           </div>
         </div>
 
-        <!-- ================= BENTO DASHBOARD GRID (12 Columns — Exact Match to Omni Tracker Render + Live Active DEX) ================= -->
-        <section id="orbit-bento-dashboard" class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        <!-- ================= BENTO DASHBOARD GRID (12 Columns — Automatically Splits on Fold Inside Screen >=600px & Landscape) ================= -->
+        <section id="orbit-bento-dashboard" class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-stretch">
 
           <!-- LEFT COLUMN (7 Cols): MULTI-CHAIN PORTFOLIO CARD + ASSET TRACKER TABLE -->
-          <div class="lg:col-span-7 flex flex-col gap-4 justify-between">
+          <div id="orbit-bento-left" class="md:col-span-7 flex flex-col gap-3 sm:gap-4 justify-between min-w-0">
 
             <!-- CARD 1: Multi-Chain Portfolio (Left: Total Net Worth & Gain | Right: Dual-Line Spline / Straddle Chart) -->
             <div class="orbit-card p-5 flex flex-col justify-between">
@@ -708,7 +851,7 @@
           </div>
 
           <!-- RIGHT COLUMN (5 Cols): LIVE AUTOMATED PROFIT-SCRAPER ENGINE + CONNECTED EXCHANGES -->
-          <div class="lg:col-span-5 flex flex-col gap-4 justify-between">
+          <div id="orbit-bento-right" class="md:col-span-5 flex flex-col gap-3 sm:gap-4 justify-between min-w-0">
 
             <!-- CARD 3: Automated Profit-Scraper Telemetry & Next-Fill Countdown (Replaces old NFT Showcase!) -->
             <div class="orbit-card p-5 flex flex-col justify-between">
@@ -1283,9 +1426,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           </div>
 
           <!-- 🎯 CHART DECK #2: MODERN CLICKABLE 10-LEG FILL PROXIMITY RADAR GUI + INTERACTIVE COMMAND & LIVE FEED DECK -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 pt-1">
+          <div id="pro-radar-tuner-grid" class="grid grid-cols-1 md:grid-cols-12 gap-3 pt-1">
             <!-- LEFT (7 Cols): MODERN INTERACTIVE 10-LEG FILL PROXIMITY RADAR GUI (Clickable Cards, Filter Pills, Playhead Dots) -->
-            <div class="lg:col-span-7 vcd-pod bg-[#070b12] border border-emerald-500/30 rounded-xl p-3.5 space-y-2.5 flex flex-col justify-between">
+            <div id="pro-radar-col" class="md:col-span-7 vcd-pod bg-[#070b12] border border-emerald-500/30 rounded-xl p-3.5 space-y-2.5 flex flex-col justify-between min-w-0">
               <div class="flex items-center justify-between flex-wrap gap-2 border-b border-white/10 pb-2">
                 <div>
                   <div class="flex items-center gap-2">
@@ -1315,7 +1458,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
             </div>
 
             <!-- RIGHT (5 Cols): TABBED INTERACTIVE COMMAND DECK (1. Live Order Tuner & Sim | 2. Live Exchange Tick Stream | 3. Compounding Curve) -->
-            <div class="lg:col-span-5 vcd-pod bg-[#070b12] border border-cyan-500/30 rounded-xl p-3.5 space-y-3 flex flex-col justify-between">
+            <div id="pro-tuner-col" class="md:col-span-5 vcd-pod bg-[#070b12] border border-cyan-500/30 rounded-xl p-3.5 space-y-3 flex flex-col justify-between min-w-0">
               <!-- Top Clickable Command Deck Tabs -->
               <div class="flex items-center justify-between gap-1 bg-[#0c121e] p-1 rounded-lg border border-white/10 font-mono text-[10.5px]">
                 <button id="btn-deck-tab-tuner" onclick="switchProCommandTab('tuner')" class="flex-1 py-1.5 px-2 rounded-md bg-emerald-500 text-white font-bold cursor-pointer transition text-center">
@@ -2244,7 +2387,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         <div class="flex items-center gap-2">
           <img src="icon-192.png?v=4" alt="Icon" class="w-8 h-8 rounded-lg" />
           <div>
-            <div class="font-bold text-sm text-[var(--foreground)]">📲 Install SWOOZ DEX on Fold 8 &amp; S26 Ultra</div>
+            <div class="font-bold text-sm text-[var(--foreground)]">📲 Install SWOOZ DEX App (Auto-Adaptive Foldable &amp; Mobile)</div>
             <div class="text-[var(--muted-foreground)]">Permanent 24/7 GitHub Pages + Local LAN Links</div>
           </div>
         </div>
@@ -2339,18 +2482,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v61') caches.delete(k);
+            if (k !== 'swooz-dex-v62') caches.delete(k);
           });
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=61', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=62', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v61') caches.delete(k);
+            if (k !== 'swooz-dex-v62') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -3645,18 +3788,56 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
     }
 
-    function setLayoutMode(mode) {
-      const btnFold = document.getElementById('btn-mode-auto');
-      const btnS26 = document.getElementById('btn-mode-s26u');
-      if (mode === 's26u') {
-        btnS26.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
-        btnFold.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
-        switchMainView(ACTIVE_MAIN_VIEW === 'split' ? 'trade' : ACTIVE_MAIN_VIEW);
-      } else {
-        btnFold.className = 'px-2.5 py-1 rounded-md font-semibold bg-emerald-500 text-white transition';
-        btnS26.className = 'px-2.5 py-1 rounded-md font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition';
-        switchMainView('split');
+    // Automatic Foldable (Front Cover vs Inside Unfolded) & Multi-Orientation Resolution Engine
+    let LAST_FOLD_POSTURE = '';
+    function syncFoldableViewportLayout() {
+      const vw = Math.round(window.visualViewport ? window.visualViewport.width : window.innerWidth);
+      const vh = Math.round(window.visualViewport ? window.visualViewport.height : window.innerHeight);
+      const isLandscape = vw > vh;
+
+      let posture = 'desktop';
+      let badgeTxt = '🖥️ DESKTOP';
+      if (vw < 600 && !isLandscape) {
+        posture = 'cover-portrait';
+        badgeTxt = `📱 COVER ${vw}px`;
+      } else if (vh <= 520 && isLandscape) {
+        posture = 'cover-landscape';
+        badgeTxt = `📱 LANDSCAPE ${vw}×${vh}`;
+      } else if (vw >= 600 && vw < 1180) {
+        posture = isLandscape ? 'inner-landscape' : 'inner-portrait';
+        badgeTxt = `📖 UNFOLDED ${vw}×${vh}`;
       }
+
+      document.body.dataset.posture = posture;
+      document.body.dataset.orient = isLandscape ? 'landscape' : 'portrait';
+
+      const badge = document.getElementById('fold-posture-badge');
+      if (badge) badge.textContent = badgeTxt;
+
+      // Dynamically match #orbit-networth-canvas resolution to its container width so curves & text never stretch
+      const nwCanvas = document.getElementById('orbit-networth-canvas');
+      if (nwCanvas && nwCanvas.parentElement) {
+        const boxW = Math.max(260, Math.min(720, Math.round(nwCanvas.parentElement.clientWidth)));
+        if (Math.abs(nwCanvas.width - boxW) > 12) {
+          nwCanvas.width = boxW;
+          nwCanvas.height = 168;
+        }
+      }
+
+      if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
+      if (posture !== LAST_FOLD_POSTURE) {
+        LAST_FOLD_POSTURE = posture;
+        if (typeof drawKrakenChart === 'function') drawKrakenChart();
+      }
+    }
+
+    window.addEventListener('resize', syncFoldableViewportLayout);
+    window.addEventListener('orientationchange', () => {
+      setTimeout(syncFoldableViewportLayout, 80);
+      setTimeout(syncFoldableViewportLayout, 260);
+    });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', syncFoldableViewportLayout);
     }
 
     function scrollToSec(id) {
@@ -6871,6 +7052,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
 
       setTimeout(() => {
+        if (typeof syncFoldableViewportLayout === 'function') syncFoldableViewportLayout();
         updateOrbitPortfolioTotals();
         drawOrbitNetworthChart();
         renderOrbitTokensTable();
