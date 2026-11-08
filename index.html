@@ -857,80 +857,108 @@
                 </table>
               </div>
 
-              <!-- TAB C: QUANT BRIEFING — INTERACTIVE 3-TAB STRATEGY EXPLAINER (from strategy_explainer_visual.html) -->
+              <!-- TAB C: QUANT BRIEFING — LIVE-TRACKED 3-TAB STRATEGY EXPLAINER (from strategy_explainer_visual.html) -->
               <div id="orbit-card2-briefing-view" class="hidden space-y-3.5 text-xs">
                 <!-- Header + 3 Interactive Walkthrough Sub-Tabs -->
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
                   <div>
                     <div class="flex items-center gap-2 flex-wrap">
-                      <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10.5px] font-bold font-mono">QUANT BRIEFING</span>
+                      <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10.5px] font-bold font-mono flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        LIVE QUANT BRIEFING (5s TICK)
+                      </span>
                       <h3 id="quant-briefing-heading" class="font-bold text-sm sm:text-base text-white">The Dual-Exchange Automated Straddle Engine</h3>
                     </div>
                     <p id="quant-briefing-sub" class="text-[11px] text-[#8b95a9] mt-0.5">
-                      How $1,223.11 in active capital is turned into a 24/7 automated market-making straddle to compound ETH &amp; fund blue-chip NFTs
+                      Live telemetry tracking your 5 Kraken Pro Maker Legs + Consolidated Coinbase ETH Reserve against strategy targets
                     </p>
                   </div>
 
                   <div class="inline-flex rounded-xl bg-[#0e121b] border border-white/10 p-1 text-[11px] font-semibold">
-                    <button id="qb-tab-1" onclick="showQuantBriefingTab(1)" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white transition cursor-pointer">1. The Capital Map</button>
+                    <button id="qb-tab-1" onclick="showQuantBriefingTab(1)" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white transition cursor-pointer">1. Live Capital &amp; Grid</button>
                     <button id="qb-tab-2" onclick="showQuantBriefingTab(2)" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">2. Straddle Math</button>
                     <button id="qb-tab-3" onclick="showQuantBriefingTab(3)" class="px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer">3. NFT End-Game</button>
                   </div>
                 </div>
 
-                <!-- ================= SUB-TAB 1: THE $1,223.11 CAPITAL ARCHITECTURE ================= -->
+                <!-- LIVE TELEMETRY VS STRATEGY BENCHMARK RIBBON (Updates every 5s from Kraken Ticker) -->
+                <div class="bg-[#0b101b] border border-[#00f5d4]/30 rounded-xl p-2.5 space-y-2">
+                  <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="px-1.5 py-0.5 rounded bg-[#00f5d4]/15 text-[#00f5d4] font-bold">⚡ LIVE VS STRATEGY</span>
+                      <span id="qb-live-spot-banner" class="text-white font-bold">ETH $2,237.30 • SOL $89.10</span>
+                    </div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span id="qb-live-next-trigger" class="text-emerald-400 font-bold">Next Trigger: L1B @ $2,246.00 ($8.70 / 0.39% away)</span>
+                    </div>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div id="qb-live-prog-bar" class="h-full bg-gradient-to-r from-amber-400 via-[#00f5d4] to-emerald-400 rounded-full transition-all duration-300" style="width: 88%"></div>
+                  </div>
+                  <div class="flex flex-wrap items-center justify-between gap-2 text-[10.5px] font-mono text-[#8b95a9]">
+                    <span id="qb-live-banked-pill">✅ Realized Banked: <b class="text-[#10f1b6]">+$18.86 USD (+0.00782 Free ETH)</b></span>
+                    <span id="qb-live-cycle-pill">🎯 Active 5-Leg Kraken Cycle Yield: <b class="text-amber-300">+$20.89 USD / Swing</b></span>
+                  </div>
+                </div>
+
+                <!-- ================= SUB-TAB 1: LIVE CAPITAL MAP & STRATEGY SCORECARD ================= -->
                 <div id="qb-view-1" class="space-y-3 text-xs">
-                  <!-- Top 3 Summary KPIs -->
+                  <!-- Top 3 Live Summary KPIs -->
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <div class="bg-[#0e121b] border border-white/10 rounded-xl p-2.5">
-                      <div class="text-[#8b95a9] text-[11px]">Total Active Capital</div>
-                      <div id="qb-kpi-total" class="text-base font-bold font-mono text-emerald-400 mt-0.5">$1,223.11 USD</div>
-                      <div class="text-[#8b95a9] text-[10.5px]">100% Deployed in Limit Orders</div>
+                      <div class="text-[#8b95a9] text-[11px]">Live Active DEX Capital</div>
+                      <div id="qb-kpi-total" class="text-base font-bold font-mono text-emerald-400 mt-0.5">$978.40 USD</div>
+                      <div id="qb-kpi-total-sub" class="text-[#8b95a9] text-[10.5px]">+$402.49 On-Chain Vaults = $1,380.89</div>
                     </div>
                     <div class="bg-[#0e121b] border border-emerald-500/30 rounded-xl p-2.5">
-                      <div class="text-[#8b95a9] text-[11px]">Upside Sell Inventory (82%)</div>
-                      <div id="qb-kpi-upside" class="text-base font-bold font-mono text-white mt-0.5">$1,007.13 Crypto</div>
-                      <div class="text-emerald-400 text-[10.5px]">5 Limit Sells Waiting at Top</div>
+                      <div class="text-[#8b95a9] text-[11px]">5 Kraken Pro Maker Sells</div>
+                      <div id="qb-kpi-upside" class="text-base font-bold font-mono text-white mt-0.5">$845.10 → $860.13</div>
+                      <div id="qb-kpi-upside-sub" class="text-emerald-400 text-[10.5px]">0.3712 ETH + 0.1332 SOL Armed</div>
                     </div>
-                    <div class="bg-[#0e121b] border border-amber-500/30 rounded-xl p-2.5">
-                      <div class="text-[#8b95a9] text-[11px]">Downside Dip Ammo (18%)</div>
-                      <div id="qb-kpi-dip" class="text-base font-bold font-mono text-white mt-0.5">$215.98 Cash</div>
-                      <div class="text-amber-400 text-[10.5px]">4 Limit Buys Waiting at Bottom</div>
+                    <div class="bg-[#0e121b] border border-sky-500/30 rounded-xl p-2.5">
+                      <div class="text-[#8b95a9] text-[11px]">Coinbase Consolidated ETH</div>
+                      <div id="qb-kpi-dip" class="text-base font-bold font-mono text-white mt-0.5">0.0559 ETH ($125.11)</div>
+                      <div id="qb-kpi-dip-sub" class="text-sky-400 text-[10.5px]">100% ETH Free + $8.00 Cash Reserve</div>
                     </div>
                   </div>
 
-                  <!-- Visual Allocation Bar -->
+                  <!-- Live Dynamic Visual Allocation Bar -->
                   <div class="space-y-1">
                     <div class="flex justify-between font-mono text-[11px] flex-wrap gap-1">
-                      <span id="qb-bar-lbl-up" class="text-emerald-400 font-bold">▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)</span>
-                      <span id="qb-bar-lbl-dip" class="text-amber-400 font-bold">▼ DIP CASH AMMO: $215.98 (17.7%)</span>
+                      <span id="qb-bar-lbl-up" class="text-emerald-400 font-bold">▲ KRAKEN 5-LEG GRID: $845.10 (86.4%)</span>
+                      <span id="qb-bar-lbl-dip" class="text-sky-400 font-bold">🔵 COINBASE ETH + CASH: $133.11 (13.6%)</span>
                     </div>
                     <div class="w-full h-3.5 rounded-full overflow-hidden flex border border-white/10 bg-[#0e121b]">
-                      <div style="width: 63.1%" class="bg-emerald-500 h-full" title="Kraken ETH Upside ($771.51)"></div>
-                      <div style="width: 19.2%" class="bg-sky-500 h-full" title="Coinbase Crypto Upside ($235.62)"></div>
-                      <div style="width: 10.8%" class="bg-amber-500 h-full" title="Kraken Cash Dip Ammo ($132.51)"></div>
-                      <div style="width: 6.9%" class="bg-purple-500 h-full" title="Coinbase USDC Dip Ammo ($83.47)"></div>
+                      <div id="qb-bar-seg-krk" style="width: 85.0%" class="bg-emerald-500 h-full transition-all duration-300" title="Kraken 5-Leg Maker Grid"></div>
+                      <div id="qb-bar-seg-cb" style="width: 14.2%" class="bg-sky-500 h-full transition-all duration-300" title="Coinbase Consolidated ETH"></div>
+                      <div id="qb-bar-seg-cash" style="width: 0.8%" class="bg-amber-500 h-full transition-all duration-300" title="USD Cash Reserve"></div>
                     </div>
                     <div id="qb-bar-foot" class="flex flex-wrap justify-between gap-2 text-[11px] text-[#8b95a9] pt-0.5">
-                      <span>🟢 <strong class="text-white">Kraken Pro ($904.02)</strong>: 0.37 ETH ($826.63) + SOL ($12.05)</span>
-                      <span>🔵 <strong class="text-white">Coinbase Adv ($124.61)</strong>: 0.0559 ETH Consolidating</span>
+                      <span>🟢 <strong class="text-white">Kraken Pro</strong>: 0.3712 ETH + 0.1332 SOL (5 Post-Only Sells)</span>
+                      <span>🔵 <strong class="text-white">Coinbase Adv</strong>: 0.05592 ETH (100% Consolidated via Maker Fills)</span>
                     </div>
                   </div>
 
-                  <!-- Why This Beats "Just Holding" -->
-                  <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <div class="font-bold text-white">❌ Normal Investor ("Passive Hold")</div>
-                      <p class="text-[#8b95a9] mt-0.5 leading-relaxed">
-                        Leaves capital sitting idle. If crypto drops 3%, they lose money and have $0 cash to buy the dip. If crypto spikes 2% and drops back down, they captured $0 of the spike.
-                      </p>
+                  <!-- LIVE STRATEGY EXECUTION SCORECARD TABLE (Tracks each leg live vs target) -->
+                  <div class="bg-[#0e121b] border border-white/10 rounded-xl p-2.5 overflow-x-auto">
+                    <div class="flex items-center justify-between mb-1.5">
+                      <span class="font-bold text-white text-[11px]">📊 Live Strategy Scorecard (Click any leg to open Order Tuner)</span>
+                      <span class="text-[10px] font-mono text-[#00f5d4]">Auto-Updates Every 5s</span>
                     </div>
-                    <div>
-                      <div class="font-bold text-emerald-400">✅ Our Automated Straddle ("Market Maker")</div>
-                      <p class="text-[#8b95a9] mt-0.5 leading-relaxed">
-                        Splits capital into <strong class="text-white">82% Upside Inventory</strong> + <strong class="text-white">18% Cash Ammo</strong>. Every time the market wiggles up OR down, an order fills and our Python bot automatically places the opposite trade to lock in the spread.
-                      </p>
-                    </div>
+                    <table class="w-full text-left border-collapse font-mono text-[10.5px]">
+                      <thead>
+                        <tr class="text-[#8b95a9] border-b border-white/10">
+                          <th class="pb-1.5">Leg / Size</th>
+                          <th class="pb-1.5">Live Spot</th>
+                          <th class="pb-1.5">Strategy Sell → Reload</th>
+                          <th class="pb-1.5 text-right">Live Distance</th>
+                          <th class="pb-1.5 text-right">Cycle Yield</th>
+                        </tr>
+                      </thead>
+                      <tbody id="qb-live-strategy-tbody" class="divide-y divide-white/5">
+                        <!-- Populated dynamically every 5s by updateQuantBriefingPrivacyUi() -->
+                      </tbody>
+                    </table>
                   </div>
                 </div>
 
@@ -939,18 +967,18 @@
                   <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-2.5">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                       <div>
-                        <div class="font-bold text-white">🎛️ Test What Happens When the Market Moves:</div>
-                        <div class="text-[#8b95a9] text-[11px]">Click a market scenario below to see how the Automated Bot reacts in real time</div>
+                        <div class="font-bold text-white">🎛️ Live Strategy Simulator (Calculated from Live Spot Prices):</div>
+                        <div class="text-[#8b95a9] text-[11px]">Click a scenario below to see exact payouts from current live spot prices</div>
                       </div>
                       <div class="flex flex-wrap gap-1.5">
-                        <button id="qb-sim-btn-pump" onclick="setQuantScenario('pump')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold cursor-pointer transition">📈 Scenario A: Market Pumps +1.5%</button>
-                        <button id="qb-sim-btn-dip" onclick="setQuantScenario('dip')" class="px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white font-bold cursor-pointer transition">📉 Scenario B: Market Dips -2.2%</button>
-                        <button id="qb-sim-btn-chop" onclick="setQuantScenario('chop')" class="px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white font-bold cursor-pointer transition">🔄 Scenario C: Both Sides Hit</button>
+                        <button id="qb-sim-btn-pump" onclick="setQuantScenario('pump')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold cursor-pointer transition">📈 Scenario A: Hit Sell Walls</button>
+                        <button id="qb-sim-btn-dip" onclick="setQuantScenario('dip')" class="px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white font-bold cursor-pointer transition">📉 Scenario B: Pullback Reload</button>
+                        <button id="qb-sim-btn-chop" onclick="setQuantScenario('chop')" class="px-2.5 py-1 rounded-lg bg-[#161c2a] border border-white/10 text-white font-bold cursor-pointer transition">🔄 Scenario C: Multi-Cycle Chop</button>
                       </div>
                     </div>
 
                     <div id="qb-sim-output" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-                      <!-- Populated dynamically by setQuantScenario() -->
+                      <!-- Populated dynamically with live numbers by setQuantScenario() -->
                     </div>
                   </div>
 
@@ -959,37 +987,37 @@
                     <div>
                       <div class="font-bold text-white">🛡️ Why All Orders Use <code class="font-mono text-emerald-400">post_only=True</code> (Maker Fee Protection)</div>
                       <div class="text-[#8b95a9] text-[11px] mt-0.5">
-                        Retail "Market Orders" pay <strong class="text-white">0.80%–0.90% Taker fees</strong>. By forcing <code class="font-mono text-cyan-300">Post-Only</code> on the orderbook, we cut fees in half (<strong class="text-white">0.25%–0.40% Kraken / 0.50% Coinbase</strong>), saving ~$9.50 per full rotation.
+                        Retail "Market Orders" pay <strong class="text-white">0.60%–0.90% Taker fees</strong>. By forcing <code class="font-mono text-cyan-300">Post-Only</code> on Kraken Pro &amp; Coinbase Advanced, we pay <strong class="text-white">0.25% Maker</strong>, keeping 2x more spread per cycle.
                       </div>
                     </div>
                     <span class="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono font-bold shrink-0">
-                      50% Fee Reduction
+                      0.25% Maker Edge
                     </span>
                   </div>
                 </div>
 
-                <!-- ================= SUB-TAB 3: THE BLUE-CHIP NFT END-GAME ================= -->
+                <!-- ================= SUB-TAB 3: THE BLUE-CHIP NFT END-GAME (LIVE ETH PURCHASING POWER) ================= -->
                 <div id="qb-view-3" class="hidden space-y-3 text-xs">
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <div class="bg-[#0e121b] border border-emerald-500/30 rounded-xl p-3 space-y-1">
-                      <div class="text-emerald-400 font-bold">1. Dual Purchasing-Power Win</div>
-                      <div class="text-sm font-bold font-mono text-white">NFT Floors Down -26%</div>
-                      <p class="text-[#8b95a9] leading-relaxed">
-                        Since Oct 28, ETH rose while NFT floors dropped: <strong class="text-white">Invisible Friends (0.230 ETH) + CloneX (0.130 ETH) = 0.360 ETH (~$806)</strong> for BOTH blue-chip NFTs combined.
+                      <div class="text-emerald-400 font-bold">1. Live Combined ETH Stack</div>
+                      <div id="qb-nft-stack-val" class="text-sm font-bold font-mono text-white">0.4271 ETH ($955.55)</div>
+                      <p id="qb-nft-stack-desc" class="text-[#8b95a9] leading-relaxed">
+                        0.3712 ETH on Kraken Pro + 0.0559 ETH consolidated on Coinbase = <strong class="text-white">0.4271 ETH</strong> total liquid sniper power.
                       </p>
                     </div>
                     <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-1">
-                      <div class="text-amber-400 font-bold">2. Continuous Spread Harvest</div>
-                      <div class="text-sm font-bold font-mono text-white">24/7 Kraken Maker Grid</div>
-                      <p class="text-[#8b95a9] leading-relaxed">
-                        While waiting for sniper bids to fill, the Python daemon harvests extra ETH &amp; USD spread across tight maker channels ($2,246 / $2,252 / $2,284 / $2,312).
+                      <div class="text-amber-400 font-bold">2. Target WETH Sniper Bids</div>
+                      <div id="qb-nft-bids-val" class="text-sm font-bold font-mono text-white">0.2700 WETH ($604.07)</div>
+                      <p id="qb-nft-bids-desc" class="text-[#8b95a9] leading-relaxed">
+                        <strong class="text-white">IF #1506 (0.210 WETH)</strong> + <strong class="text-white">BEAST #2313 (0.060 WETH)</strong> require just 0.270 ETH combined (63% of our current ETH stack).
                       </p>
                     </div>
-                    <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-1">
-                      <div class="text-sky-400 font-bold">3. WETH Sniper Bid Execution</div>
-                      <div class="text-sm font-bold font-mono text-white">Bid 10–14% Below Floor</div>
-                      <p class="text-[#8b95a9] leading-relaxed">
-                        Instead of paying full asking price on OpenSea, we place WETH bidding ladders on <strong class="text-white">IF #1506 (0.210 WETH)</strong> &amp; <strong class="text-white">BEAST #2313 (0.060 WETH)</strong>.
+                    <div class="bg-[#0e121b] border border-sky-500/30 rounded-xl p-3 space-y-1">
+                      <div class="text-sky-400 font-bold">3. Post-Snipe ETH Surplus</div>
+                      <div id="qb-nft-surplus-val" class="text-sm font-bold font-mono text-emerald-400">+0.1571 ETH ($351.48)</div>
+                      <p id="qb-nft-surplus-desc" class="text-[#8b95a9] leading-relaxed">
+                        Even if both blue-chip sniper bids fill today, you retain <strong class="text-white">0.1571 ETH + 139 Vault NFTs</strong> while the Kraken bot keeps compounding.
                       </p>
                     </div>
                   </div>
@@ -998,7 +1026,7 @@
                     <div class="text-[#8b95a9] text-[11px]">
                       🔒 <strong class="text-white">Privacy &amp; Security Architecture:</strong> Hosted on GitHub Pages with a <strong class="text-emerald-400">SHA-256 PIN-Encrypted Vault</strong> + Eye Privacy Masking + trade-only API keys (withdrawals disabled).
                     </div>
-                    <span id="qb-foot-stack" class="font-mono font-bold text-emerald-400">Combined Stack: 0.427 ETH + 139 NFTs</span>
+                    <span id="qb-foot-stack" class="font-mono font-bold text-emerald-400">Combined Stack: 0.4271 ETH + 139 NFTs</span>
                   </div>
                 </div>
               </div>
@@ -2643,7 +2671,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=63', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=64', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -6090,16 +6118,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let ORBIT_HOVER_X = null; // Mouse or touch X coordinate on #orbit-networth-canvas
 
     function getLiveOrbitAssets() {
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
       const solSpot = LIVE_SOL_RATE;
-      const btcSpot = LIVE_BTC_RATE;
-      const linkSpot = LIVE_LINK_RATE;
 
-      const krkEthVal = 0.377612 * ethSpot;
-      const cbEthVal = 0.043575 * ethSpot;
-      const solVal = 0.720671 * solSpot;
-      const btcVal = 0.0008762 * btcSpot;
-      const linkVal = 2.370000 * linkSpot;
+      const krkEthVal = 0.371216 * ethSpot;
+      const cbEthVal = 0.055921 * ethSpot;
+      const solVal = 0.133241 * solSpot;
       const msVal = 400.33; // 133 Mini Supers @ $3.01 floor
       const cashSabiVal = 6.97 + 1.03 + 2.16; // $8.00 ZUSD/USDC + $2.16 On-Chain ETH across 4 Vaults
 
@@ -6107,97 +6131,59 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         {
           id: 'krk-eth',
           symbol: 'ETH',
-          name: 'Ethereum',
-          sub: 'ETH • Kraken Pro',
+          name: 'Ethereum (Kraken Pro)',
+          sub: 'ETH • 4 Active Maker Legs',
           chain: 'ETH',
           scope: ['swooz', 'dex', 'kraken', 'combined'],
           badgeBg: 'linear-gradient(135deg, #627eea, #3b82f6)',
           badgeTxt: '⟠',
           netBg: '#f59e0b',
           netIcon: '🦑',
-          platform: 'Kraken Pro (3 Legs: $2,262 & $2,284 Reverse-Grid + $2,385 Breakout)',
-          amountTxt: `0.3776 ETH ($${krkEthVal.toFixed(2)})`,
+          platform: 'Kraken Pro (4 Legs: $2,246 / $2,252 / $2,284 / $2,312)',
+          amountTxt: `0.3712 ETH ($${krkEthVal.toFixed(2)})`,
           usdVal: krkEthVal,
-          targetUsd: 877.84,
-          chgTxt: `+$${Math.max(0, 2262.00 - ethSpot).toFixed(0)} to $2,262`,
+          targetUsd: 848.09,
+          chgTxt: `+$${Math.max(0, 2246.00 - ethSpot).toFixed(2)} to $2,246`,
           isUp: true,
           pair: 'ETHUSD'
         },
         {
           id: 'cb-eth',
           symbol: 'ETH',
-          name: 'Ethereum',
-          sub: 'ETH • Coinbase Adv',
+          name: 'Ethereum (Coinbase Consolidated)',
+          sub: 'ETH • 100% Unlocked Reserve',
           chain: 'BASE',
           scope: ['swooz', 'dex', 'coinbase', 'combined'],
           badgeBg: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
           badgeTxt: '⟠',
           netBg: '#0052ff',
           netIcon: '🔵',
-          platform: 'Coinbase Adv (Leg #4 Breakout SELL @ $2,448.00)',
-          amountTxt: `0.0436 ETH ($${cbEthVal.toFixed(2)})`,
+          platform: 'Coinbase Adv (Consolidated SOL+LINK+BTC → 0.05592 ETH)',
+          amountTxt: `0.0559 ETH ($${cbEthVal.toFixed(2)})`,
           usdVal: cbEthVal,
-          targetUsd: 0.043575 * 2448.00,
-          chgTxt: `+${(((2448.00 - ethSpot) / ethSpot) * 100).toFixed(1)}% to $2,448`,
+          targetUsd: 0.055921 * 2312.00,
+          chgTxt: `100% ETH Free (0 Hold)`,
           isUp: true,
           pair: 'ETHUSD'
         },
         {
           id: 'all-sol',
           symbol: 'SOL',
-          name: 'Solana',
-          sub: 'SOL • 3 Active Legs',
+          name: 'Solana (Kraken L3)',
+          sub: 'SOL • Active Scalper',
           chain: 'SOL',
-          scope: ['swooz', 'dex', 'kraken', 'coinbase', 'combined'],
+          scope: ['swooz', 'dex', 'kraken', 'combined'],
           badgeBg: 'linear-gradient(135deg, #14f1b6, #9333ea)',
           badgeTxt: '≡',
           netBg: '#1e1b4b',
           netIcon: '◎',
-          platform: '3 SOL Legs ($91.80 KRK & $92.40 CB Reverse-Grid + $99.40 Breakout)',
-          amountTxt: `0.7207 SOL ($${solVal.toFixed(2)})`,
+          platform: 'Kraken Pro (Leg #3 SELL @ $90.40 ↔ Rebuy $88.40)',
+          amountTxt: `0.1332 SOL ($${solVal.toFixed(2)})`,
           usdVal: solVal,
-          targetUsd: 68.50,
-          chgTxt: `+$${Math.max(0, 91.80 - solSpot).toFixed(2)} to $90.40`,
+          targetUsd: 12.05,
+          chgTxt: `+$${Math.max(0, 90.40 - solSpot).toFixed(2)} to $90.40`,
           isUp: true,
           pair: 'SOLUSD'
-        },
-        {
-          id: 'cb-btc',
-          symbol: 'BTC',
-          name: 'Bitcoin',
-          sub: 'BTC • Leg #6',
-          chain: 'BASE',
-          scope: ['swooz', 'dex', 'coinbase', 'combined'],
-          badgeBg: 'linear-gradient(135deg, #f7931a, #ea580c)',
-          badgeTxt: '₿',
-          netBg: '#f7931a',
-          netIcon: '₿',
-          platform: 'Coinbase Adv (Leg #6 SELL @ $81,800)',
-          amountTxt: `0.00088 BTC ($${btcVal.toFixed(2)})`,
-          usdVal: btcVal,
-          targetUsd: 0.0008762 * 81800,
-          chgTxt: `+${(((81800 - btcSpot) / btcSpot) * 100).toFixed(1)}% to $81.8k`,
-          isUp: true,
-          pair: 'BTCUSD'
-        },
-        {
-          id: 'cb-link',
-          symbol: 'LINK',
-          name: 'Chainlink',
-          sub: 'LINK • Leg #7',
-          chain: 'ARB',
-          scope: ['swooz', 'dex', 'coinbase', 'combined'],
-          badgeBg: 'linear-gradient(135deg, #28a0f0, #2563eb)',
-          badgeTxt: '⬡',
-          netBg: '#2563eb',
-          netIcon: '⬡',
-          platform: 'Coinbase Adv (Leg #7 SELL @ $11.85)',
-          amountTxt: `2.3700 LINK ($${linkVal.toFixed(2)})`,
-          usdVal: linkVal,
-          targetUsd: 2.37 * 11.85,
-          chgTxt: `+${(((11.85 - linkSpot) / linkSpot) * 100).toFixed(1)}% to $11.85`,
-          isUp: true,
-          pair: 'LINKUSD'
         },
         {
           id: 'vault-ms',
@@ -6238,7 +6224,6 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           pair: 'ETHUSD'
         }
       ];
-
 
       return list;
     }
@@ -6382,9 +6367,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
       PREV_NETWORTH_USD = spotTotal;
 
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
-      const krkTotal = 0.377612 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97;
-      const cbTotal = 0.043575 * ethSpot + 0.58743 * LIVE_SOL_RATE + (0.0008762 * LIVE_BTC_RATE) + (2.37 * LIVE_LINK_RATE) + 1.03;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
+      const krkTotal = 0.371216 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97;
+      const cbTotal = 0.055921 * ethSpot + 1.03;
 
       const nwEl = document.getElementById('orbit-networth-val');
       if (nwEl) {
@@ -6465,19 +6450,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (pillEthEl) {
         pillEthEl.innerHTML = PRIVACY_HIDE_MODE
           ? `•••• ETH <span class="text-[#34d399]">($••••)</span>`
-          : `0.4212 ETH <span class="text-[#34d399]">($${(0.421187 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
+          : `0.4271 ETH <span class="text-[#34d399]">($${(0.427137 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
       }
       const pillSolEl = document.getElementById('orbit-pill-sol-val');
       if (pillSolEl) {
         pillSolEl.innerHTML = PRIVACY_HIDE_MODE
           ? `•••• SOL <span class="text-[#34d399]">($••••)</span>`
-          : `0.7207 SOL <span class="text-[#34d399]">($${(0.720671 * LIVE_SOL_RATE).toFixed(2)})</span>`;
+          : `0.1332 SOL <span class="text-[#34d399]">($${(0.133241 * LIVE_SOL_RATE).toFixed(2)})</span>`;
       }
       const pillAltsEl = document.getElementById('orbit-pill-alts-val');
       if (pillAltsEl) {
         pillAltsEl.innerHTML = PRIVACY_HIDE_MODE
-          ? `•••• / •••• <span class="text-[#34d399]">($••••)</span>`
-          : `0.00088 / 2.37 <span class="text-[#34d399]">($${(0.0008762 * LIVE_BTC_RATE + 2.37 * LIVE_LINK_RATE).toFixed(2)})</span>`;
+          ? `•••• ETH <span class="text-[#34d399]">($••••)</span>`
+          : `CB 0.0559 ETH <span class="text-[#34d399]">($${(0.055921 * ethSpot).toFixed(2)})</span>`;
       }
       const pillNftsEl = document.getElementById('orbit-pill-nfts-val');
       if (pillNftsEl) {
@@ -6937,61 +6922,56 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       renderOrbitTokensTable();
     }
 
-    const QUANT_BRIEFING_SCENARIOS = {
-      pump: [
-        {
-          title: '1. Upside Maker Sells Trigger',
-          val: '$1,020.02 Gross Cash',
-          desc: 'ETH hits $2,246 / $2,252 / $2,284 / $2,312 and SOL hits $90.40. Maker sell walls cash out into USD with 0% slippage.'
-        },
-        {
-          title: '2. Bot Auto-Flips to Dip Buys',
-          val: 'Re-Sets 1.7%–3.1% Lower',
-          desc: 'Within 20 seconds, the Python daemon automatically places Post-Only Buy orders at $2,208–$2,212 ETH and $88.40 SOL.'
-        },
-        {
-          title: '3. Net Result on Pullback',
-          val: '+$18.74–$25.62 / Cycle',
-          desc: 'We end up owning MORE ETH & SOL than we started with, without adding a single dollar from the bank.'
-        }
-      ],
-      dip: [
-        {
-          title: '1. Cash Dip-Catchers Trigger',
-          val: '$215.98 Cash Deployed',
-          desc: 'When ETH dips into our reload floor ($2,208–$2,212) and SOL dips to $88.40, our resting maker buy orders scoop the discount.'
-        },
-        {
-          title: '2. Bot Auto-Flips to Top Sells',
-          val: 'Targets $2,246–$2,284 & $90.40',
-          desc: 'The moment the dip buys fill, the daemon automatically lists that newly bought ETH and SOL back at our upper sell walls.'
-        },
-        {
-          title: '3. Net Result on Bounce',
-          val: '+$6.85–$13.94 Bounce Yield',
-          desc: 'Even when the market dips first, our reload floors turn the drop into an automatic maker bounce profit.'
-        }
-      ],
-      chop: [
-        {
-          title: '1. Sideways Volatility Harvest',
-          val: 'Tight Maker Order Traps',
-          desc: 'Crypto spends 70%+ of the time bouncing inside a 1.5%–3.5% chop range ($2,208 <-> $2,252 ETH and $88.40 <-> $90.40 SOL).'
-        },
-        {
-          title: '2. Compounding Loop',
-          val: '~2.1%–2.7% Net Per Cycle',
-          desc: 'After subtracting the low Post-Only Maker fees on both sides, each full round-trip compounds net USD/ETH gain.'
-        },
-        {
-          title: '3. Funding the NFT Snipes',
-          val: 'Free "The Walk" + Bid Padding',
-          desc: 'Every single ETH/SOL cycle pays for another Markus Magnusson "The Walk" Edition NFT ($4.92) out of pure house money.'
-        }
-      ]
-    };
-
     let ACTIVE_QUANT_SCENARIO = 'pump';
+
+    function getLiveQuantBriefingStats() {
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
+      const solSpot = (typeof LIVE_SOL_RATE === 'number' && LIVE_SOL_RATE > 5) ? LIVE_SOL_RATE : 89.10;
+
+      const krkEthQty = 0.371216;
+      const krkSolQty = 0.133241;
+      const cbEthQty = 0.055921;
+      const cashUsd = 8.00; // $6.97 ZUSD + $1.03 USDC
+      const vaultsUsd = 402.49;
+
+      const krkGridSpotUsd = krkEthQty * ethSpot + krkSolQty * solSpot;
+      const krkGridTargetUsd = 169.10 + 114.61 + 373.15 + 191.22 + 12.05; // $860.13
+      const cbEthSpotUsd = cbEthQty * ethSpot;
+      const dexActiveUsd = krkGridSpotUsd + cbEthSpotUsd + cashUsd;
+      const totalPortfolioUsd = dexActiveUsd + vaultsUsd;
+
+      const distL1B = Math.max(0, 2246.00 - ethSpot);
+      const pctL1B = (distL1B / ethSpot) * 100;
+      const progL1B = Math.max(12, Math.min(99, 100 - pctL1B * 22));
+
+      const legs = [
+        { id: 'L1B', label: '🦑 L1B Fast Scalp', qtyTxt: '0.0753 ETH', spot: ethSpot, isSol: false, sell: 2246.00, buy: 2208.00, yieldUsd: 2.86 },
+        { id: 'L2',  label: '🦑 L2 Tight Grid',  qtyTxt: '0.0509 ETH', spot: ethSpot, isSol: false, sell: 2252.00, buy: 2212.00, yieldUsd: 2.04 },
+        { id: 'L1A', label: '🦑 L1A Main Core',  qtyTxt: '0.1634 ETH', spot: ethSpot, isSol: false, sell: 2284.00, buy: 2210.00, yieldUsd: 12.09 },
+        { id: 'L1C', label: '🦑 L1C Upper Swing',qtyTxt: '0.0817 ETH', spot: ethSpot, isSol: false, sell: 2312.00, buy: 2258.00, yieldUsd: 4.41 },
+        { id: 'L3',  label: '◎ L3 SOL Scalper', qtyTxt: '0.1332 SOL', spot: solSpot, isSol: true,  sell: 90.40,   buy: 88.40,   yieldUsd: 0.27 }
+      ];
+
+      return {
+        ethSpot,
+        solSpot,
+        krkEthQty,
+        krkSolQty,
+        cbEthQty,
+        totalEthQty: krkEthQty + cbEthQty,
+        cashUsd,
+        vaultsUsd,
+        krkGridSpotUsd,
+        krkGridTargetUsd,
+        cbEthSpotUsd,
+        dexActiveUsd,
+        totalPortfolioUsd,
+        distL1B,
+        pctL1B,
+        progL1B,
+        legs
+      };
+    }
 
     function setQuantScenario(key) {
       ACTIVE_QUANT_SCENARIO = key || 'pump';
@@ -7005,16 +6985,76 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       });
       const out = document.getElementById('qb-sim-output');
       if (!out) return;
-      const list = QUANT_BRIEFING_SCENARIOS[ACTIVE_QUANT_SCENARIO] || QUANT_BRIEFING_SCENARIOS.pump;
+
+      const s = getLiveQuantBriefingStats();
+      const upsideToTarget = Math.max(0, s.krkGridTargetUsd - s.krkGridSpotUsd);
+      const scenarios = {
+        pump: [
+          {
+            title: '1. 5 Kraken Sells Trigger',
+            val: `$${s.krkGridTargetUsd.toFixed(2)} Gross Exit (+$${upsideToTarget.toFixed(2)} vs Spot)`,
+            desc: `From live ETH ($${s.ethSpot.toFixed(2)}) & SOL ($${s.solSpot.toFixed(2)}), hitting $2,246–$2,312 & $90.40 cashes out $${s.krkGridSpotUsd.toFixed(2)} into $${s.krkGridTargetUsd.toFixed(2)} USD.`
+          },
+          {
+            title: '2. Bot Auto-Flips to Dip Buys',
+            val: 'Re-Arms at $2,208–$2,258 & $88.40',
+            desc: 'Within 20 seconds, auto_flip_eth.py places Post-Only Maker Buy orders 1.7%–3.2% lower to scoop the pullback.'
+          },
+          {
+            title: '3. Net Cycle Yield + Banked',
+            val: '+$20.89 Cycle (+$39.75 Total)',
+            desc: 'Combined with your +$18.86 already banked, completing 1 Kraken rotation brings cumulative bot profit to +$39.75 USD.'
+          }
+        ],
+        dip: [
+          {
+            title: '1. Reload Floors Catch Pullback',
+            val: `$2,208 / $2,210 / $2,212 Support`,
+            desc: `If ETH pulls back from $${s.ethSpot.toFixed(2)} after any top leg fills, resting Post-Only Buy walls accumulate cheaper ETH automatically.`
+          },
+          {
+            title: '2. Coinbase Consolidated Shield',
+            val: `0.0559 ETH ($${s.cbEthSpotUsd.toFixed(2)}) Unencumbered`,
+            desc: 'Because Coinbase was consolidated 100% into ETH via Maker fills (0 hold), you have instant liquidity to deploy or withdraw anytime.'
+          },
+          {
+            title: '3. Instant Re-List at Top Walls',
+            val: '+$2.86 to +$12.09 Per Leg',
+            desc: 'Every dip fill is automatically re-listed at its upper Maker Sell target with 0.25% Post-Only fee protection.'
+          }
+        ],
+        chop: [
+          {
+            title: '1. Fast-Scalp Channel ($2,246 / $2,252)',
+            val: `Only $${s.distL1B.toFixed(2)} (${s.pctL1B.toFixed(2)}%) Away Now`,
+            desc: `L1B ($2,246) and L2 ($2,252) sit right above live spot ($${s.ethSpot.toFixed(2)}) to harvest routine intraday oscillations.`
+          },
+          {
+            title: '2. Compounding Math Across Cycles',
+            val: '1x: +$20.89 • 2x: +$41.78 • 3x: +$62.67',
+            desc: 'Including your +$18.86 already banked, 3 cycles generate +$81.53 USD in pure spread without adding outside capital.'
+          },
+          {
+            title: '3. House-Money NFT Funding',
+            val: '4x "The Walk" Editions Per Cycle',
+            desc: 'Each $20.89 Kraken rotation covers 4x Markus Magnusson "The Walk" NFTs ($4.92 floor) or pads your WETH sniper bids.'
+          }
+        ]
+      };
+
+      const list = scenarios[ACTIVE_QUANT_SCENARIO] || scenarios.pump;
       out.innerHTML = list.map(item => {
         const valMasked = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
           ? item.val.replace(/\$[0-9,.]+/g, '$••••')
           : item.val;
+        const descMasked = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
+          ? item.desc.replace(/\$[0-9,.]+/g, '$••••')
+          : item.desc;
         return `
           <div class="bg-[#141926] border border-white/10 rounded-xl p-2.5 space-y-1">
             <div class="text-emerald-400 font-bold">${item.title}</div>
             <div class="text-sm font-bold font-mono text-white">${valMasked}</div>
-            <p class="text-[#8b95a9] leading-relaxed">${item.desc}</p>
+            <p class="text-[#8b95a9] leading-relaxed">${descMasked}</p>
           </div>
         `;
       }).join('');
@@ -7031,41 +7071,140 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             : 'px-2.5 py-1 rounded-lg text-[#8b95a9] hover:text-white transition cursor-pointer';
         }
       });
-      if (n === 2) setQuantScenario(ACTIVE_QUANT_SCENARIO);
+      updateQuantBriefingPrivacyUi();
     }
 
     function updateQuantBriefingPrivacyUi() {
+      const s = getLiveQuantBriefingStats();
+      const hide = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE);
+
       const hEl = document.getElementById('quant-briefing-heading');
-      const ensLbl = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens && !PRIVACY_HIDE_MODE)
+      const ensLbl = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens && !hide)
         ? UNLOCKED_VAULT_DATA.owner_ens.toUpperCase()
         : 'SWOOZ';
       if (hEl) hEl.textContent = `The ${ensLbl} Dual-Exchange Automated Straddle Engine`;
 
+      // Top Live Telemetry vs Strategy Ribbon
+      const spotBanner = document.getElementById('qb-live-spot-banner');
+      const nextTrig = document.getElementById('qb-live-next-trigger');
+      const progBar = document.getElementById('qb-live-prog-bar');
+      const bankedPill = document.getElementById('qb-live-banked-pill');
+      const cyclePill = document.getElementById('qb-live-cycle-pill');
+
+      if (spotBanner) {
+        spotBanner.textContent = `ETH $${s.ethSpot.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} • SOL $${s.solSpot.toFixed(2)}`;
+      }
+      if (nextTrig) {
+        if (s.distL1B <= 0.01) {
+          nextTrig.textContent = `🔥 L1B @ $2,246.00 IN FILL ZONE NOW!`;
+        } else {
+          nextTrig.textContent = `Next Trigger: L1B @ $2,246.00 ($${s.distL1B.toFixed(2)} / ${s.pctL1B.toFixed(2)}% away)`;
+        }
+      }
+      if (progBar) progBar.style.width = `${s.progL1B.toFixed(1)}%`;
+      if (bankedPill) {
+        bankedPill.innerHTML = hide
+          ? `✅ Realized Banked: <b class="text-[#10f1b6]">+$•••• USD (+•••••• ETH)</b>`
+          : `✅ Realized Banked: <b class="text-[#10f1b6]">+$18.86 USD (+0.00782 Free ETH)</b>`;
+      }
+      if (cyclePill) {
+        cyclePill.innerHTML = hide
+          ? `🎯 Active 5-Leg Kraken Cycle Yield: <b class="text-amber-300">+$•••• USD / Swing</b>`
+          : `🎯 Active 5-Leg Kraken Cycle Yield: <b class="text-amber-300">+$20.89 USD / Swing</b>`;
+      }
+
+      // Sub-Tab 1 KPIs & Allocation Bar
       const kpiTotal = document.getElementById('qb-kpi-total');
+      const kpiTotalSub = document.getElementById('qb-kpi-total-sub');
       const kpiUp = document.getElementById('qb-kpi-upside');
+      const kpiUpSub = document.getElementById('qb-kpi-upside-sub');
       const kpiDip = document.getElementById('qb-kpi-dip');
+      const kpiDipSub = document.getElementById('qb-kpi-dip-sub');
       const barUp = document.getElementById('qb-bar-lbl-up');
       const barDip = document.getElementById('qb-bar-lbl-dip');
+      const segKrk = document.getElementById('qb-bar-seg-krk');
+      const segCb = document.getElementById('qb-bar-seg-cb');
+      const segCash = document.getElementById('qb-bar-seg-cash');
       const subEl = document.getElementById('quant-briefing-sub');
       const footStack = document.getElementById('qb-foot-stack');
 
-      if (PRIVACY_HIDE_MODE) {
+      const krkPct = ((s.krkGridSpotUsd / s.dexActiveUsd) * 100).toFixed(1);
+      const cbPct = (((s.cbEthSpotUsd + s.cashUsd) / s.dexActiveUsd) * 100).toFixed(1);
+      if (segKrk) segKrk.style.width = `${krkPct}%`;
+      if (segCb) segCb.style.width = `${((s.cbEthSpotUsd / s.dexActiveUsd) * 100).toFixed(1)}%`;
+      if (segCash) segCash.style.width = `${((s.cashUsd / s.dexActiveUsd) * 100).toFixed(1)}%`;
+
+      if (hide) {
         if (kpiTotal) kpiTotal.textContent = '$•••••• USD';
-        if (kpiUp) kpiUp.textContent = '$•••••• Crypto';
-        if (kpiDip) kpiDip.textContent = '$•••••• Cash';
-        if (barUp) barUp.textContent = '▲ UPSIDE CRYPTO INVENTORY: $•••••• (82.3%)';
-        if (barDip) barDip.textContent = '▼ DIP CASH AMMO: $•••••• (17.7%)';
-        if (subEl) subEl.textContent = 'How active capital is turned into a 24/7 automated market-making straddle to compound ETH & fund blue-chip NFTs';
+        if (kpiTotalSub) kpiTotalSub.textContent = '+$•••••• On-Chain Vaults = $••••••';
+        if (kpiUp) kpiUp.textContent = '$•••••• → $••••••';
+        if (kpiUpSub) kpiUpSub.textContent = '•••• ETH + •••• SOL Armed';
+        if (kpiDip) kpiDip.textContent = '•••• ETH ($••••••)';
+        if (kpiDipSub) kpiDipSub.textContent = '100% ETH Free + $•••• Cash Reserve';
+        if (barUp) barUp.textContent = `▲ KRAKEN 5-LEG GRID: $•••••• (${krkPct}%)`;
+        if (barDip) barDip.textContent = `🔵 COINBASE ETH + CASH: $•••••• (${cbPct}%)`;
+        if (subEl) subEl.textContent = 'Live telemetry tracking your 5 Kraken Pro Maker Legs + Consolidated Coinbase ETH Reserve against strategy targets';
         if (footStack) footStack.textContent = 'Combined Stack: •••• ETH + ••• NFTs';
       } else {
-        if (kpiTotal) kpiTotal.textContent = '$1,223.11 USD';
-        if (kpiUp) kpiUp.textContent = '$1,007.13 Crypto';
-        if (kpiDip) kpiDip.textContent = '$215.98 Cash';
-        if (barUp) barUp.textContent = '▲ UPSIDE CRYPTO INVENTORY: $1,007.13 (82.3%)';
-        if (barDip) barDip.textContent = '▼ DIP CASH AMMO: $215.98 (17.7%)';
-        if (subEl) subEl.textContent = 'How $1,223.11 in active capital is turned into a 24/7 automated market-making straddle to compound ETH & fund blue-chip NFTs';
-        if (footStack) footStack.textContent = 'Combined Stack: 0.427 ETH + 139 NFTs ($1,365+)';
+        const upSpread = Math.max(0, s.krkGridTargetUsd - s.krkGridSpotUsd);
+        if (kpiTotal) kpiTotal.textContent = `$${s.dexActiveUsd.toFixed(2)} USD`;
+        if (kpiTotalSub) kpiTotalSub.textContent = `+$${s.vaultsUsd.toFixed(2)} Vaults = $${s.totalPortfolioUsd.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+        if (kpiUp) kpiUp.textContent = `$${s.krkGridSpotUsd.toFixed(2)} → $${s.krkGridTargetUsd.toFixed(2)}`;
+        if (kpiUpSub) kpiUpSub.textContent = `+$${upSpread.toFixed(2)} to Exit (0.3712 ETH + 0.1332 SOL)`;
+        if (kpiDip) kpiDip.textContent = `0.0559 ETH ($${s.cbEthSpotUsd.toFixed(2)})`;
+        if (kpiDipSub) kpiDipSub.textContent = `100% ETH Free + $${s.cashUsd.toFixed(2)} Cash Reserve`;
+        if (barUp) barUp.textContent = `▲ KRAKEN 5-LEG GRID: $${s.krkGridSpotUsd.toFixed(2)} (${krkPct}%)`;
+        if (barDip) barDip.textContent = `🔵 COINBASE ETH + CASH: $${(s.cbEthSpotUsd + s.cashUsd).toFixed(2)} (${cbPct}%)`;
+        if (subEl) subEl.textContent = `Live telemetry tracking $${s.dexActiveUsd.toFixed(2)} active DEX capital ($${s.totalPortfolioUsd.toFixed(2)} w/ Vaults) @ ETH $${s.ethSpot.toFixed(2)}`;
+        if (footStack) footStack.textContent = `Combined Stack: ${s.totalEthQty.toFixed(4)} ETH ($${(s.totalEthQty * s.ethSpot).toFixed(2)}) + 139 NFTs`;
       }
+
+      // Live Strategy Scorecard Table in Sub-Tab 1
+      const tbody = document.getElementById('qb-live-strategy-tbody');
+      if (tbody) {
+        const legRowsHtml = s.legs.map(l => {
+          const dist = Math.max(0, l.sell - l.spot);
+          const pct = (dist / l.spot) * 100;
+          const qtyDisp = hide ? '••••' : l.qtyTxt;
+          const yieldDisp = hide ? '+$••••' : `+$${l.yieldUsd.toFixed(2)}`;
+          const distColor = pct <= 0.6 ? 'text-[#10f1b6]' : pct <= 2.2 ? 'text-amber-300' : 'text-sky-300';
+          return `
+            <tr onclick="selectProTunerLeg('${l.id}', true)" class="hover:bg-white/5 transition cursor-pointer">
+              <td class="py-1.5 pr-2 font-bold text-white">${l.label} <span class="text-[#8b95a9] font-normal">(${qtyDisp})</span></td>
+              <td class="py-1.5 px-2 text-white">$${l.spot.toFixed(2)}</td>
+              <td class="py-1.5 px-2 text-emerald-400">SELL $${l.sell.toFixed(2)} <span class="text-[#8b95a9]">→</span> <span class="text-cyan-300">BUY $${l.buy.toFixed(2)}</span></td>
+              <td class="py-1.5 px-2 text-right font-bold ${distColor}">+$${dist.toFixed(2)} (${pct.toFixed(2)}%)</td>
+              <td class="py-1.5 pl-2 text-right font-bold text-[#10f1b6]">${yieldDisp}</td>
+            </tr>
+          `;
+        }).join('');
+
+        const cbRowHtml = `
+          <tr class="bg-sky-500/5">
+            <td class="py-1.5 pr-2 font-bold text-sky-300">🔵 CB Consolidated Reserve <span class="text-[#8b95a9] font-normal">(${hide ? '••••' : '0.0559 ETH'})</span></td>
+            <td class="py-1.5 px-2 text-white">$${s.ethSpot.toFixed(2)}</td>
+            <td class="py-1.5 px-2 text-sky-300">100% Consolidated via Maker Fills (0 Hold)</td>
+            <td class="py-1.5 px-2 text-right font-bold text-emerald-400">✅ FILLED</td>
+            <td class="py-1.5 pl-2 text-right font-bold text-sky-300">${hide ? '$••••••' : ('$' + s.cbEthSpotUsd.toFixed(2))}</td>
+          </tr>
+        `;
+        tbody.innerHTML = legRowsHtml + cbRowHtml;
+      }
+
+      // Sub-Tab 3 Live NFT End-Game Purchasing Power
+      const stackValEl = document.getElementById('qb-nft-stack-val');
+      const bidsValEl = document.getElementById('qb-nft-bids-val');
+      const surpValEl = document.getElementById('qb-nft-surplus-val');
+      const totalEthUsd = s.totalEthQty * s.ethSpot;
+      const bidsEth = 0.2700; // 0.210 IF #1506 + 0.060 BEAST #2313
+      const bidsUsd = bidsEth * s.ethSpot;
+      const surpEth = s.totalEthQty - bidsEth;
+      const surpUsd = surpEth * s.ethSpot;
+
+      if (stackValEl) stackValEl.textContent = hide ? '•••• ETH ($••••••)' : `${s.totalEthQty.toFixed(4)} ETH ($${totalEthUsd.toFixed(2)})`;
+      if (bidsValEl) bidsValEl.textContent = hide ? '0.2700 WETH ($••••••)' : `0.2700 WETH ($${bidsUsd.toFixed(2)})`;
+      if (surpValEl) surpValEl.textContent = hide ? '+•••• ETH ($••••••)' : `+${surpEth.toFixed(4)} ETH ($${surpUsd.toFixed(2)})`;
+
       setQuantScenario(ACTIVE_QUANT_SCENARIO);
     }
 
