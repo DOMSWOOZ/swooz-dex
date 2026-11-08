@@ -1438,13 +1438,41 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               </button>
             </div>
 
-            <!-- Timeframe Selector: 15m | 1H | 4H | 1D -->
-            <div class="flex items-center gap-1 font-mono">
-              <span class="text-[10px] text-slate-400 mr-1 hidden sm:inline">Hover/Touch Chart for Crosshair HUD •</span>
+            <!-- Timeframe Selector: 3m | 5m | 15m (Scalper TA) + 1H | 4H | 1D -->
+            <div class="flex items-center gap-1 font-mono flex-wrap">
+              <span class="px-1.5 py-0.5 rounded bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 text-[9.5px] font-bold">⚡ SCALP TA:</span>
+              <button id="btn-tf-3" onclick="switchChartTf(3)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold cursor-pointer">3m</button>
+              <button id="btn-tf-5" onclick="switchChartTf(5)" class="px-2 py-1 rounded bg-emerald-500 text-white font-bold cursor-pointer">5m</button>
               <button id="btn-tf-15" onclick="switchChartTf(15)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold cursor-pointer">15m</button>
-              <button id="btn-tf-60" onclick="switchChartTf(60)" class="px-2 py-1 rounded bg-emerald-500 text-white font-bold cursor-pointer">1H</button>
+              <span class="text-white/20 mx-0.5">|</span>
+              <button id="btn-tf-60" onclick="switchChartTf(60)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold cursor-pointer">1H</button>
               <button id="btn-tf-240" onclick="switchChartTf(240)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold cursor-pointer">4H</button>
               <button id="btn-tf-1440" onclick="switchChartTf(1440)" class="px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold cursor-pointer">1D</button>
+            </div>
+          </div>
+
+          <!-- 📐 TECHNICAL ANALYST (TA) OVERLAY CONTROL RIBBON (3m / 5m / 15m Live Trendlines, EMA 9/21, VWAP, Bollinger, Fib) -->
+          <div id="ta-overlay-toolbar" class="flex items-center justify-between flex-wrap gap-2 bg-[#070c16] border border-cyan-500/30 rounded-lg px-2.5 py-1.5 font-mono text-[10.5px]">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="text-cyan-300 font-bold">📐 KRAKEN TA LINES:</span>
+              <button id="btn-ta-trendlines" onclick="toggleTaLayer('trendlines')" class="px-2 py-0.5 rounded bg-emerald-500/25 border border-emerald-400/60 text-emerald-300 font-bold cursor-pointer transition">
+                ✓ Auto S/R Trendlines
+              </button>
+              <button id="btn-ta-ema" onclick="toggleTaLayer('ema')" class="px-2 py-0.5 rounded bg-amber-500/25 border border-amber-400/60 text-amber-300 font-bold cursor-pointer transition">
+                ✓ EMA 9 / 21 + Cross
+              </button>
+              <button id="btn-ta-vwap" onclick="toggleTaLayer('vwap')" class="px-2 py-0.5 rounded bg-purple-500/25 border border-purple-400/60 text-purple-300 font-bold cursor-pointer transition">
+                ✓ Session VWAP
+              </button>
+              <button id="btn-ta-bbands" onclick="toggleTaLayer('bbands')" class="px-2 py-0.5 rounded bg-sky-500/25 border border-sky-400/60 text-sky-300 font-bold cursor-pointer transition">
+                ✓ Bollinger (20,2σ)
+              </button>
+              <button id="btn-ta-fib" onclick="toggleTaLayer('fib')" class="px-2 py-0.5 rounded bg-pink-500/25 border border-pink-400/60 text-pink-300 font-bold cursor-pointer transition">
+                ✓ Fib 0.618 + RSI(14)
+              </button>
+            </div>
+            <div id="ta-global-summary-pill" class="text-[10px] text-slate-300">
+              Active TF: <b class="text-emerald-400">5m</b> • <span class="text-amber-300">━ EMA9</span> <span class="text-sky-300">━ EMA21</span> <span class="text-purple-300">┈ VWAP</span> <span class="text-rose-400">╱ Res Trend</span> <span class="text-cyan-300">╲ Sup Trend</span>
             </div>
           </div>
 
@@ -1469,6 +1497,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   <div id="mc-dist-ETHUSD" class="text-[10px] font-bold text-emerald-400">🎯 $22.50 (1.01%) to $2,246 Fill</div>
                 </div>
               </div>
+              <div id="mc-ta-strip-ETHUSD" class="px-2 py-1 rounded bg-[#0b1220] border border-white/10 font-mono text-[10px] text-slate-300 flex items-center justify-between flex-wrap gap-1"><span>📐 <b>[5m TA]</b> Loading EMA 9/21, VWAP, RSI(14) &amp; Swing Trendlines...</span></div>
               <div class="relative">
                 <canvas id="chart-canvas-ETHUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
@@ -1512,6 +1541,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   <div id="mc-dist-SOLUSD" class="text-[10px] font-bold text-purple-300">🎯 $2.55 (2.86%) to $90.40 Fill</div>
                 </div>
               </div>
+              <div id="mc-ta-strip-SOLUSD" class="px-2 py-1 rounded bg-[#0b1220] border border-white/10 font-mono text-[10px] text-slate-300 flex items-center justify-between flex-wrap gap-1"><span>📐 <b>[5m TA]</b> Loading EMA 9/21, VWAP, RSI(14) &amp; Swing Trendlines...</span></div>
               <div class="relative">
                 <canvas id="chart-canvas-SOLUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
@@ -1553,6 +1583,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   <div id="mc-dist-BTCUSD" class="text-[10px] font-bold text-amber-300">🎯 $1,305 (1.73%) to $76,200 Fill</div>
                 </div>
               </div>
+              <div id="mc-ta-strip-BTCUSD" class="px-2 py-1 rounded bg-[#0b1220] border border-white/10 font-mono text-[10px] text-slate-300 flex items-center justify-between flex-wrap gap-1"><span>📐 <b>[5m TA]</b> Loading EMA 9/21, VWAP, RSI(14) &amp; Swing Trendlines...</span></div>
               <div class="relative">
                 <canvas id="chart-canvas-BTCUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
@@ -1592,6 +1623,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   <div id="mc-dist-LINKUSD" class="text-[10px] font-bold text-sky-300">🎯 $0.24 (2.22%) to $10.89 Fill</div>
                 </div>
               </div>
+              <div id="mc-ta-strip-LINKUSD" class="px-2 py-1 rounded bg-[#0b1220] border border-white/10 font-mono text-[10px] text-slate-300 flex items-center justify-between flex-wrap gap-1"><span>📐 <b>[5m TA]</b> Loading EMA 9/21, VWAP, RSI(14) &amp; Swing Trendlines...</span></div>
               <div class="relative">
                 <canvas id="chart-canvas-LINKUSD" width="680" height="240" class="w-full h-[225px] sm:h-[240px] block rounded-lg bg-[#04070d] cursor-crosshair border border-white/5 transition-all duration-200"></canvas>
               </div>
@@ -2675,7 +2707,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=65', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=66', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -3869,7 +3901,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     let ACTIVE_MAIN_VIEW = 'trade';
     let CHART_PAIR = 'ETHUSD';
-    let CHART_TF = 60;
+    let CHART_TF = 5;
     let LAST_CANDLES = [];
 
     function switchMainView(view) {
@@ -4254,9 +4286,44 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       fetchAndDrawKrakenOhlc();
     }
 
+    const TA_LAYERS = {
+      trendlines: true,
+      ema: true,
+      vwap: true,
+      bbands: true,
+      fib: true
+    };
+
+    function getTfLabel(tf) {
+      const map = { 3: '3m', 5: '5m', 15: '15m', 60: '1H', 240: '4H', 1440: '1D' };
+      return map[tf] || (tf + 'm');
+    }
+
+    function toggleTaLayer(layerKey) {
+      if (typeof TA_LAYERS[layerKey] === 'boolean') {
+        TA_LAYERS[layerKey] = !TA_LAYERS[layerKey];
+      }
+      const styles = {
+        trendlines: { label: 'Auto S/R Trendlines', on: 'px-2 py-0.5 rounded bg-emerald-500/25 border border-emerald-400/60 text-emerald-300 font-bold cursor-pointer transition' },
+        ema:        { label: 'EMA 9 / 21 + Cross',  on: 'px-2 py-0.5 rounded bg-amber-500/25 border border-amber-400/60 text-amber-300 font-bold cursor-pointer transition' },
+        vwap:       { label: 'Session VWAP',        on: 'px-2 py-0.5 rounded bg-purple-500/25 border border-purple-400/60 text-purple-300 font-bold cursor-pointer transition' },
+        bbands:     { label: 'Bollinger (20,2σ)',   on: 'px-2 py-0.5 rounded bg-sky-500/25 border border-sky-400/60 text-sky-300 font-bold cursor-pointer transition' },
+        fib:        { label: 'Fib 0.618 + RSI(14)', on: 'px-2 py-0.5 rounded bg-pink-500/25 border border-pink-400/60 text-pink-300 font-bold cursor-pointer transition' }
+      };
+      const offCls = 'px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400 hover:text-white font-semibold cursor-pointer transition';
+      Object.keys(styles).forEach(k => {
+        const btn = document.getElementById('btn-ta-' + k);
+        if (btn) {
+          btn.className = TA_LAYERS[k] ? styles[k].on : offCls;
+          btn.textContent = (TA_LAYERS[k] ? '✓ ' : '+ ') + styles[k].label;
+        }
+      });
+      drawKrakenChart();
+    }
+
     function switchChartTf(tf) {
       CHART_TF = tf;
-      [15, 60, 240, 1440].forEach(val => {
+      [3, 5, 15, 60, 240, 1440].forEach(val => {
         const b = document.getElementById('btn-tf-' + val);
         if (b) {
           b.className = val === tf
@@ -4264,6 +4331,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             : 'px-2 py-1 rounded text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-bold cursor-pointer';
         }
       });
+      const sumPill = document.getElementById('ta-global-summary-pill');
+      if (sumPill) {
+        sumPill.innerHTML = `Active TF: <b class="text-emerald-400">${getTfLabel(CHART_TF)}</b> • <span class="text-amber-300">━ EMA9</span> <span class="text-sky-300">━ EMA21</span> <span class="text-purple-300">┈ VWAP</span> <span class="text-rose-400">╱ Res Trend</span> <span class="text-cyan-300">╲ Sup Trend</span>`;
+      }
       fetchAndDrawKrakenOhlc();
     }
 
@@ -4271,24 +4342,44 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       // Always render immediately from cache so charts are never blank
       drawKrakenChart();
       const pairs = Object.keys(VCD_PAIRS);
+      // Kraken native intervals: 1, 5, 15, 30, 60, 240, 1440. For 3m (CHART_TF === 3), fetch 1m and aggregate 3x 1m bars!
+      const apiInterval = (CHART_TF === 3) ? 1 : CHART_TF;
       await Promise.all(pairs.map(async (pairKey) => {
         const cfg = VCD_PAIRS[pairKey];
         try {
-          const res = await fetch(`https://api.kraken.com/0/public/OHLC?pair=${cfg.kPair}&interval=${CHART_TF}`);
+          const res = await fetch(`https://api.kraken.com/0/public/OHLC?pair=${cfg.kPair}&interval=${apiInterval}`, { cache: 'no-store' });
           if (res.ok) {
             const data = await res.json();
             const resObj = data.result || {};
             const key = Object.keys(resObj).find(k => k !== 'last');
             if (key && Array.isArray(resObj[key]) && resObj[key].length >= 8) {
-              const raw = resObj[key].slice(-36);
-              MULTI_CANDLE_CACHE[pairKey] = raw.map(c => ({
-                time: Number(c[0]),
-                open: parseFloat(c[1]),
-                high: parseFloat(c[2]),
-                low: parseFloat(c[3]),
-                close: parseFloat(c[4]),
-                vol: parseFloat(c[6])
-              }));
+              if (CHART_TF === 3) {
+                const raw1m = resObj[key].slice(-108);
+                const agg = [];
+                for (let i = 0; i < raw1m.length; i += 3) {
+                  const chunk = raw1m.slice(i, i + 3);
+                  if (!chunk.length) continue;
+                  const open = parseFloat(chunk[0][1]);
+                  const close = parseFloat(chunk[chunk.length - 1][4]);
+                  const high = Math.max(...chunk.map(x => parseFloat(x[2])));
+                  const low = Math.min(...chunk.map(x => parseFloat(x[3])));
+                  const vol = chunk.reduce((acc, x) => acc + parseFloat(x[6] || 0), 0);
+                  agg.push({ time: Number(chunk[0][0]), open, high, low, close, vol });
+                }
+                if (agg.length >= 8) {
+                  MULTI_CANDLE_CACHE[pairKey] = agg.slice(-36);
+                }
+              } else {
+                const raw = resObj[key].slice(-36);
+                MULTI_CANDLE_CACHE[pairKey] = raw.map(c => ({
+                  time: Number(c[0]),
+                  open: parseFloat(c[1]),
+                  high: parseFloat(c[2]),
+                  low: parseFloat(c[3]),
+                  close: parseFloat(c[4]),
+                  vol: parseFloat(c[6])
+                }));
+              }
             }
           }
         } catch (e) {}
@@ -4864,22 +4955,302 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         });
       }
 
-      // 4. Smooth 7-Period EMA Trend Line Overlay
-      ctx.save();
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.70)';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      let ema = candles[0].close;
-      const kEma = 2 / (7 + 1);
+      // 4. TECHNICAL ANALYST (TA) ENGINE FOR 3m / 5m / 15m+ KRAKEN CHARTS
+      // Computes EMA 9, EMA 21, Session VWAP, Bollinger Bands (20, 2σ), RSI(14), Fib 0.618, and Auto S/R Pivot Trendlines
+      const nBars = candles.length;
+      const ema9Arr = [];
+      const ema21Arr = [];
+      const vwapArr = [];
+      const bbUpper = [];
+      const bbLower = [];
+
+      let e9 = candles[0].close;
+      let e21 = candles[0].close;
+      const k9 = 2 / (9 + 1);
+      const k21 = 2 / (21 + 1);
+      let cumPV = 0;
+      let cumV = 0;
+
       candles.forEach((c, idx) => {
-        ema = c.close * kEma + ema * (1 - kEma);
-        const cx = cLeft + idx * stepX + stepX / 2;
-        const cy = yOf(ema);
-        if (idx === 0) ctx.moveTo(cx, cy);
-        else ctx.lineTo(cx, cy);
+        e9 = idx === 0 ? c.close : (c.close * k9 + e9 * (1 - k9));
+        e21 = idx === 0 ? c.close : (c.close * k21 + e21 * (1 - k21));
+        ema9Arr.push(e9);
+        ema21Arr.push(e21);
+
+        const typ = (c.high + c.low + c.close) / 3;
+        const v = Math.max(0.1, c.vol || 1);
+        cumPV += typ * v;
+        cumV += v;
+        vwapArr.push(cumPV / cumV);
+
+        const win = candles.slice(Math.max(0, idx - 19), idx + 1);
+        const mean = win.reduce((s, x) => s + x.close, 0) / win.length;
+        const variance = win.reduce((s, x) => s + Math.pow(x.close - mean, 2), 0) / win.length;
+        const sd = Math.sqrt(variance);
+        bbUpper.push(mean + 2 * sd);
+        bbLower.push(mean - 2 * sd);
       });
-      ctx.stroke();
-      ctx.restore();
+
+      // Compute 14-Period RSI
+      let gains = 0, losses = 0;
+      const rsiPeriod = Math.min(14, nBars - 1);
+      for (let i = nBars - rsiPeriod; i < nBars; i++) {
+        if (i <= 0) continue;
+        const diff = candles[i].close - candles[i - 1].close;
+        if (diff >= 0) gains += diff;
+        else losses -= diff;
+      }
+      const avgGain = gains / Math.max(1, rsiPeriod);
+      const avgLoss = losses / Math.max(1, rsiPeriod);
+      const rsiVal = avgLoss === 0 ? 72.5 : (100 - (100 / (1 + avgGain / avgLoss)));
+
+      // 4A. Bollinger Bands (20, 2σ) Cloud & Envelope
+      if (TA_LAYERS.bbands && nBars >= 4) {
+        ctx.save();
+        ctx.beginPath();
+        for (let i = 0; i < nBars; i++) {
+          const cx = cLeft + i * stepX + stepX / 2;
+          const cy = yOf(bbUpper[i]);
+          if (i === 0) ctx.moveTo(cx, cy);
+          else ctx.lineTo(cx, cy);
+        }
+        for (let i = nBars - 1; i >= 0; i--) {
+          const cx = cLeft + i * stepX + stepX / 2;
+          const cy = yOf(bbLower[i]);
+          ctx.lineTo(cx, cy);
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.055)';
+        ctx.fill();
+
+        ctx.setLineDash([2, 3]);
+        ctx.lineWidth = 1.0;
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.42)';
+        ctx.beginPath();
+        for (let i = 0; i < nBars; i++) {
+          const cx = cLeft + i * stepX + stepX / 2;
+          if (i === 0) ctx.moveTo(cx, yOf(bbUpper[i]));
+          else ctx.lineTo(cx, yOf(bbUpper[i]));
+        }
+        for (let i = 0; i < nBars; i++) {
+          const cx = cLeft + i * stepX + stepX / 2;
+          if (i === 0) ctx.moveTo(cx, yOf(bbLower[i]));
+          else ctx.lineTo(cx, yOf(bbLower[i]));
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 4B. Fibonacci 0.618 Golden Pocket & 0.382 Level
+      const swingHi = Math.max(...candles.map(c => c.high));
+      const swingLo = Math.min(...candles.map(c => c.low));
+      const fib618 = swingHi - (swingHi - swingLo) * 0.618;
+      const fib382 = swingHi - (swingHi - swingLo) * 0.382;
+      if (TA_LAYERS.fib && (swingHi - swingLo) > 0) {
+        ctx.save();
+        ctx.setLineDash([1, 4]);
+        ctx.lineWidth = 1.1;
+        // 0.618 Golden Pocket
+        const y618 = Math.round(yOf(fib618)) + 0.5;
+        ctx.strokeStyle = 'rgba(244, 114, 182, 0.55)';
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y618);
+        ctx.lineTo(cRight, y618);
+        ctx.stroke();
+        ctx.font = `600 9.5px ${PRO_UI_FONT}`;
+        ctx.fillStyle = '#f472b6';
+        ctx.fillText(`FIB 0.618 (${fmtPrice(fib618)})`, cLeft + 6, y618 - 4);
+
+        // 0.382 Retracement
+        const y382 = Math.round(yOf(fib382)) + 0.5;
+        ctx.strokeStyle = 'rgba(192, 132, 252, 0.45)';
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y382);
+        ctx.lineTo(cRight, y382);
+        ctx.stroke();
+        ctx.fillStyle = '#c084fc';
+        ctx.fillText(`FIB 0.382 (${fmtPrice(fib382)})`, cLeft + 6, y382 - 4);
+        ctx.restore();
+      }
+
+      // 4C. Session VWAP Line (Neon Purple Dotted)
+      if (TA_LAYERS.vwap && nBars >= 2) {
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.strokeStyle = '#c084fc';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        vwapArr.forEach((v, idx) => {
+          const cx = cLeft + idx * stepX + stepX / 2;
+          const cy = yOf(v);
+          if (idx === 0) ctx.moveTo(cx, cy);
+          else ctx.lineTo(cx, cy);
+        });
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 4D. EMA 9 (Fast Gold) & EMA 21 (Slow Sky Blue) + Crossover Markers
+      let lastCrossType = null;
+      if (TA_LAYERS.ema && nBars >= 2) {
+        // EMA 21
+        ctx.save();
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ema21Arr.forEach((v, idx) => {
+          const cx = cLeft + idx * stepX + stepX / 2;
+          const cy = yOf(v);
+          if (idx === 0) ctx.moveTo(cx, cy);
+          else ctx.lineTo(cx, cy);
+        });
+        ctx.stroke();
+
+        // EMA 9
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ema9Arr.forEach((v, idx) => {
+          const cx = cLeft + idx * stepX + stepX / 2;
+          const cy = yOf(v);
+          if (idx === 0) ctx.moveTo(cx, cy);
+          else ctx.lineTo(cx, cy);
+        });
+        ctx.stroke();
+
+        // Detect & plot latest EMA 9 / 21 Crossover marker
+        for (let i = 2; i < nBars; i++) {
+          const prevDiff = ema9Arr[i - 1] - ema21Arr[i - 1];
+          const currDiff = ema9Arr[i] - ema21Arr[i];
+          if ((prevDiff <= 0 && currDiff > 0) || (prevDiff >= 0 && currDiff < 0)) {
+            const isBullCross = currDiff > 0;
+            lastCrossType = isBullCross ? 'BULL CROSS ▲' : 'BEAR CROSS ▼';
+            if (i >= nBars - 16) {
+              const cx = cLeft + i * stepX + stepX / 2;
+              const cy = yOf(ema9Arr[i]);
+              ctx.beginPath();
+              ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+              ctx.fillStyle = isBullCross ? '#10f1b6' : '#fb7185';
+              ctx.fill();
+              ctx.strokeStyle = '#04070d';
+              ctx.lineWidth = 1.2;
+              ctx.stroke();
+            }
+          }
+        }
+        ctx.restore();
+      }
+
+      // 4E. Auto Support & Resistance Swing Trendlines (2-Point Pivot Rays across first half -> second half)
+      let projResPrice = swingHi;
+      let projSupPrice = swingLo;
+      if (TA_LAYERS.trendlines && nBars >= 8) {
+        const splitIdx = Math.max(3, Math.floor(nBars * 0.48));
+        // Find Pivot High 1 in [1 .. splitIdx-1] and Pivot High 2 in [splitIdx .. nBars-2]
+        let ph1Idx = 1, ph2Idx = splitIdx;
+        for (let i = 1; i < splitIdx; i++) {
+          if (candles[i].high >= candles[ph1Idx].high) ph1Idx = i;
+        }
+        for (let i = splitIdx; i < nBars - 1; i++) {
+          if (candles[i].high >= candles[ph2Idx].high) ph2Idx = i;
+        }
+        // Find Pivot Low 1 in [1 .. splitIdx-1] and Pivot Low 2 in [splitIdx .. nBars-2]
+        let pl1Idx = 1, pl2Idx = splitIdx;
+        for (let i = 1; i < splitIdx; i++) {
+          if (candles[i].low <= candles[pl1Idx].low) pl1Idx = i;
+        }
+        for (let i = splitIdx; i < nBars - 1; i++) {
+          if (candles[i].low <= candles[pl2Idx].low) pl2Idx = i;
+        }
+
+        const xOfIdx = (idx) => cLeft + idx * stepX + stepX / 2;
+        const lastIdx = nBars - 1;
+
+        // Upper Resistance Trendline Ray
+        const resSlope = (candles[ph2Idx].high - candles[ph1Idx].high) / Math.max(1, ph2Idx - ph1Idx);
+        const resStartPrice = candles[ph1Idx].high - resSlope * ph1Idx;
+        projResPrice = candles[ph1Idx].high + resSlope * (lastIdx - ph1Idx);
+
+        ctx.save();
+        ctx.strokeStyle = '#fb7185';
+        ctx.lineWidth = 2.0;
+        ctx.shadowColor = 'rgba(251, 113, 133, 0.45)';
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        ctx.moveTo(xOfIdx(0), Math.max(cTop + 2, Math.min(cBot - 2, yOf(resStartPrice))));
+        ctx.lineTo(cRight, Math.max(cTop + 2, Math.min(cBot - 2, yOf(projResPrice))));
+        ctx.stroke();
+
+        // Lower Support Trendline Ray
+        const supSlope = (candles[pl2Idx].low - candles[pl1Idx].low) / Math.max(1, pl2Idx - pl1Idx);
+        const supStartPrice = candles[pl1Idx].low - supSlope * pl1Idx;
+        projSupPrice = candles[pl1Idx].low + supSlope * (lastIdx - pl1Idx);
+
+        ctx.strokeStyle = '#22d3ee';
+        ctx.lineWidth = 2.0;
+        ctx.shadowColor = 'rgba(34, 211, 238, 0.45)';
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        ctx.moveTo(xOfIdx(0), Math.max(cTop + 2, Math.min(cBot - 2, yOf(supStartPrice))));
+        ctx.lineTo(cRight, Math.max(cTop + 2, Math.min(cBot - 2, yOf(projSupPrice))));
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Draw Pivot Diamonds on the 4 anchor wicks
+        [
+          { idx: ph1Idx, p: candles[ph1Idx].high, col: '#fb7185' },
+          { idx: ph2Idx, p: candles[ph2Idx].high, col: '#fb7185' },
+          { idx: pl1Idx, p: candles[pl1Idx].low,  col: '#22d3ee' },
+          { idx: pl2Idx, p: candles[pl2Idx].low,  col: '#22d3ee' }
+        ].forEach(pt => {
+          const px = xOfIdx(pt.idx);
+          const py = yOf(pt.p);
+          ctx.fillStyle = pt.col;
+          ctx.beginPath();
+          ctx.moveTo(px, py - 4);
+          ctx.lineTo(px + 4, py);
+          ctx.lineTo(px, py + 4);
+          ctx.lineTo(px - 4, py);
+          ctx.closePath();
+          ctx.fill();
+        });
+
+        // Compact Trendline Price Tags on Right Side of Chart
+        const yResEnd = Math.max(cTop + 10, Math.min(cBot - 22, Math.round(yOf(projResPrice))));
+        const ySupEnd = Math.max(cTop + 22, Math.min(cBot - 10, Math.round(yOf(projSupPrice))));
+        ctx.font = `700 9.5px ${PRO_UI_FONT}`;
+        ctx.fillStyle = '#fb7185';
+        ctx.fillText(`╲ RES ${fmtPrice(projResPrice)}`, cRight - 96, yResEnd - 5);
+        ctx.fillStyle = '#22d3ee';
+        ctx.fillText(`╱ SUP ${fmtPrice(projSupPrice)}`, cRight - 96, ySupEnd + 11);
+        ctx.restore();
+      }
+
+      // 4F. Update Live Technical Analyst Strip above Canvas (#mc-ta-strip-<pairKey>)
+      const taStrip = document.getElementById('mc-ta-strip-' + pairKey);
+      if (taStrip) {
+        const tfLbl = getTfLabel(CHART_TF);
+        const lastE9 = ema9Arr[nBars - 1] || spot;
+        const lastE21 = ema21Arr[nBars - 1] || spot;
+        const lastVwap = vwapArr[nBars - 1] || spot;
+        const emaState = lastE9 >= lastE21
+          ? `<span class="text-emerald-400 font-bold">BULL (EMA9 &gt; EMA21)</span>`
+          : `<span class="text-rose-400 font-bold">PULLBACK (EMA9 &lt; EMA21)</span>`;
+        const rsiCol = rsiVal >= 68 ? 'text-amber-300' : rsiVal <= 35 ? 'text-emerald-400' : 'text-cyan-300';
+        taStrip.innerHTML = `
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">[${tfLbl} TA]</span>
+            <span>EMA9: <b class="text-amber-300">${fmtPrice(lastE9)}</b></span>
+            <span>EMA21: <b class="text-sky-300">${fmtPrice(lastE21)}</b></span>
+            <span>VWAP: <b class="text-purple-300">${fmtPrice(lastVwap)}</b></span>
+            <span>RSI(14): <b class="${rsiCol}">${rsiVal.toFixed(1)}</b></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span>Sup: <b class="text-cyan-300">${fmtPrice(projSupPrice)}</b> ↔ Res: <b class="text-rose-400">${fmtPrice(projResPrice)}</b></span>
+            ${emaState}
+          </div>
+        `;
+      }
 
       // 5. Draw Armed SELL & REBUY Order Lines + Smart Anti-Overlap Pill Badges
       const occupiedY = [];
