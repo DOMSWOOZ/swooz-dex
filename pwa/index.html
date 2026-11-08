@@ -393,9 +393,9 @@
               <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
                       class="bg-transparent text-white text-xs font-mono font-semibold outline-none cursor-pointer">
                 <option id="orbit-opt-all-wallets" value="all" class="bg-[#131722] text-white">6 Wallets (Encrypted Vault • PIN Locked)</option>
-                <option value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
-                <option value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0436 ETH / $97.55 + Alts / $148.03)</option>
-                <option value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
+                <option id="orbit-opt-krk-wallet" value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
+                <option id="orbit-opt-cb-wallet" value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0436 ETH / $97.55 + Alts / $148.03)</option>
+                <option id="orbit-opt-vaults-wallet" value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
                 <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN ...</option>
               </select>
               <div class="flex items-center gap-1 pl-1 border-l border-white/10">
@@ -403,6 +403,19 @@
                 <span class="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-[10px] text-emerald-300 font-mono" title="Kraken Pro + Coinbase Adv">☷</span>
               </div>
             </div>
+
+            <!-- Eye Privacy Hide Button (Top Header Bar) -->
+            <button id="btn-privacy-eye-top" onclick="togglePrivacyHideMode()" title="Hide / Show Total Money &amp; Sensitive Info"
+                    aria-label="Toggle Privacy Hide Mode"
+                    class="px-2.5 py-2 rounded-xl bg-[#131722] hover:bg-[#1c2233] border border-white/10 text-xs text-[#c5cee0] hover:text-white flex items-center gap-1.5 transition cursor-pointer shrink-0">
+              <span id="privacy-eye-icon-top" class="flex items-center justify-center w-4 h-4 text-[#00f5d4]">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </span>
+              <span id="privacy-eye-lbl-top" class="hidden md:inline font-mono text-[11px]">Hide $</span>
+            </button>
 
             <!-- Voice Copilot Muted/Hidden per user preference -->
             <div class="hidden" aria-hidden="true">
@@ -441,9 +454,9 @@
                 <div class="flex flex-wrap items-center gap-2">
                   <select id="orbit-portfolio-scope" onchange="setOrbitPortfolioScope(this.value)"
                           class="px-2.5 py-1.5 rounded-lg bg-[#1a2030] border border-white/10 text-xs text-[#c5cee0] font-medium outline-none cursor-pointer">
-                    <option value="swooz">All Wallets (6 • $1,587.97)</option>
-                    <option value="dex">9-Leg DEX Only ($1,177.48)</option>
-                    <option value="vaults">On-Chain Vaults (4 • $410.49)</option>
+                    <option id="orbit-scope-opt-swooz" value="swooz">All Wallets (6 • $1,587.97)</option>
+                    <option id="orbit-scope-opt-dex" value="dex">9-Leg DEX Only ($1,177.48)</option>
+                    <option id="orbit-scope-opt-vaults" value="vaults">On-Chain Vaults (4 • $410.49)</option>
                   </select>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
@@ -464,8 +477,22 @@
               <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
                 <!-- Left 5 Cols: Total Net Worth & Today's Straddle Gain -->
                 <div class="sm:col-span-5 space-y-1.5">
-                  <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Total Net Worth (Active DEX + 4 Real Vaults)</div>
-                  <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$1,604.07</div>
+                  <div class="flex items-center justify-between gap-2">
+                    <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Total Net Worth (Active DEX + 4 Real Vaults)</div>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$1,604.07</div>
+                    <button id="btn-privacy-eye-hero" onclick="togglePrivacyHideMode()" title="Hide / Show Total Net Worth &amp; Sensitive Info"
+                            aria-label="Hide or Show Total Net Worth"
+                            class="w-8 h-8 rounded-xl bg-[#181f30] hover:bg-[#232d45] border border-white/15 hover:border-[#00f5d4]/50 text-[#00f5d4] flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm active:scale-95">
+                      <span id="privacy-eye-icon-hero" class="flex items-center justify-center w-4 h-4">
+                        <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
                   <div id="orbit-networth-badge" class="text-xs font-semibold text-[#10f1b6] flex items-center gap-1 flex-wrap">
                     <span>+5.71% (+$91.68 at $2,435 Bounce)</span>
                     <span class="text-[#8b95a9] font-normal">today</span>
@@ -702,13 +729,13 @@
               <div class="grid grid-cols-2 gap-2.5 mb-3 font-mono">
                 <div class="bg-[#181d2c] border border-white/10 rounded-xl p-2.5">
                   <div class="text-[10px] text-[#8b95a9] uppercase">Banked Realized Profit</div>
-                  <div class="text-base font-extrabold text-[#10f1b6] mt-0.5">+$18.86 USD</div>
-                  <div class="text-[10px] text-slate-400">+0.00782 Free ETH Locked</div>
+                  <div id="orbit-kpi-banked-usd" class="text-base font-extrabold text-[#10f1b6] mt-0.5">+$18.86 USD</div>
+                  <div id="orbit-kpi-banked-eth" class="text-[10px] text-slate-400">+0.00782 Free ETH Locked</div>
                 </div>
                 <div class="bg-[#181d2c] border border-white/10 rounded-xl p-2.5">
                   <div class="text-[10px] text-[#8b95a9] uppercase">Yield Per 10-Leg Cycle</div>
-                  <div class="text-base font-extrabold text-amber-400 mt-0.5">+$25.62 USD</div>
-                  <div class="text-[10px] text-emerald-400">+$20.53 ETH + $5.09 Alts</div>
+                  <div id="orbit-kpi-cycle-usd" class="text-base font-extrabold text-amber-400 mt-0.5">+$25.62 USD</div>
+                  <div id="orbit-kpi-cycle-sub" class="text-[10px] text-emerald-400">+$20.53 ETH + $5.09 Alts</div>
                 </div>
               </div>
 
@@ -778,7 +805,7 @@
 
               <!-- Subtle Background NFT Vault Archive Link -->
               <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10.5px] text-[#8b95a9]">
-                <span>🗄️ Background NFT Vaults: 133 Mini Supers + 6 OG ($400.33)</span>
+                <span id="orbit-card3-bg-vaults">🗄️ Background NFT Vaults: 133 Mini Supers + 6 OG ($400.33)</span>
                 <button onclick="switchOrbitSidebar('viewer')" class="text-[#8b95a9] hover:text-white underline cursor-pointer">Archive ↗</button>
               </div>
               <div class="hidden" aria-hidden="true">
@@ -791,8 +818,8 @@
             <!-- CARD 4: Connected Exchanges & Automated Capital Allocation -->
             <div class="orbit-card p-5 flex-1 flex flex-col justify-between">
               <div class="flex items-center justify-between mb-3">
-                <h3 class="text-base font-bold text-white">Exchange Allocation <span class="text-xs font-normal text-[#8b95a9]">(10 Active Legs)</span></h3>
-                <span class="text-[#10f1b6] text-xs font-mono font-bold">100% Deployed ▴</span>
+                <h3 class="text-base font-bold text-white">Exchange Allocation <span class="text-xs font-normal text-[#8b95a9]">(5 Kraken Active • CB Unlocked)</span></h3>
+                <span class="text-[#10f1b6] text-xs font-mono font-bold">Live Sync ▴</span>
               </div>
 
               <div class="space-y-2.5 text-xs my-auto">
@@ -801,19 +828,19 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#4f6ef7]/25 border border-[#4f6ef7] text-[#60a5fa] flex items-center justify-center text-xs font-bold shrink-0">🦑</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span class="text-[#8b95a9] font-normal">(0.3776 ETH / $844 + 0.1332 SOL / $12)</span></div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span id="orbit-plat-kraken-sub" class="text-[#8b95a9] font-normal">(0.3776 ETH / $844 + 0.1332 SOL / $12)</span></div>
                       <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,246 • $2,252 • $2,284 • $2,312 + SOL @ $90.40 (+$18.74/cycle)</div>
                     </div>
                   </div>
                   <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$863.20</div>
                 </div>
 
-                <!-- Platform 2: Coinbase Advanced (5 Active Legs) -->
+                <!-- Platform 2: Coinbase Advanced (Unlocked) -->
                 <div onclick="setOrbitPortfolioScope('coinbase')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer">
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#a855f7]/25 border border-[#a855f7] text-[#c084fc] flex items-center justify-center text-xs font-bold shrink-0">🔵</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span class="text-[#8b95a9] font-normal">(0.0436 ETH + 0.5874 SOL + BTC + LINK)</span></div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span id="orbit-plat-cb-sub" class="text-[#8b95a9] font-normal">(0.0436 ETH + 0.5874 SOL + BTC + LINK)</span></div>
                       <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,272 • SOL @ $92.40 / $94.80 • BTC @ $76.8k • LINK @ $11.05 (+$6.88/cycle)</div>
                     </div>
                   </div>
@@ -2312,18 +2339,18 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if ('caches' in window) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v56') caches.delete(k);
+            if (k !== 'swooz-dex-v61') caches.delete(k);
           });
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=60', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=61', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
         caches.keys().then(keys => {
           keys.forEach(k => {
-            if (k !== 'swooz-dex-v60') caches.delete(k);
+            if (k !== 'swooz-dex-v61') caches.delete(k);
           });
         }).catch(() => {});
       }
@@ -3052,11 +3079,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const optAll = document.getElementById('orbit-opt-all-wallets');
 
       if (VAULT_UNLOCKED && ACTIVE_VAULT_ROLE === 'owner') {
-        const ensName = UNLOCKED_VAULT_DATA?.owner_ens || 'Vault';
+        const ensName = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
+          ? '••••.eth'
+          : (UNLOCKED_VAULT_DATA?.owner_ens || 'Vault');
         if (btn) btn.className = 'px-2.5 py-1 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-400 text-xs font-bold flex items-center gap-1 transition';
         if (icon) icon.textContent = '🔓';
         if (lbl) lbl.textContent = `${ensName} Unlocked (Tap to Lock)`;
-        if (optAll) optAll.textContent = `6 Wallets (${ensName} • $1,587.97 USD)`;
+        if (optAll) {
+          optAll.textContent = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
+            ? '6 Wallets (••••.eth • $••••••)'
+            : `6 Wallets (${ensName} • $1,587.97 USD)`;
+        }
         ownerEls.forEach(el => el.classList.remove('hidden'));
         lockTargets.forEach(id => {
           const el = document.getElementById(id);
@@ -5938,8 +5971,67 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     let CACHED_ORBIT_SPOT_TOTAL = 1606.96;
     let CACHED_ORBIT_TARGET_TOTAL = 1695.66;
+    let PRIVACY_HIDE_MODE = (function() {
+      try { return localStorage.getItem('swooz_privacy_hide_v1') === '1'; } catch (e) { return false; }
+    })();
+
+    const EYE_OPEN_SVG = `<svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+    const EYE_CLOSED_SVG = `<svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+
+    function applyPrivacyEyeIcons() {
+      const iconHero = document.getElementById('privacy-eye-icon-hero');
+      const iconTop = document.getElementById('privacy-eye-icon-top');
+      const btnHero = document.getElementById('btn-privacy-eye-hero');
+      const btnTop = document.getElementById('btn-privacy-eye-top');
+      const lblTop = document.getElementById('privacy-eye-lbl-top');
+
+      const svgHtml = PRIVACY_HIDE_MODE ? EYE_CLOSED_SVG : EYE_OPEN_SVG;
+      if (iconHero) iconHero.innerHTML = svgHtml;
+      if (iconTop) iconTop.innerHTML = svgHtml;
+      if (lblTop) lblTop.textContent = PRIVACY_HIDE_MODE ? 'Hidden' : 'Hide $';
+
+      if (btnHero) {
+        btnHero.className = PRIVACY_HIDE_MODE
+          ? 'w-8 h-8 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/50 text-amber-300 flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm active:scale-95'
+          : 'w-8 h-8 rounded-xl bg-[#181f30] hover:bg-[#232d45] border border-white/15 hover:border-[#00f5d4]/50 text-[#00f5d4] flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm active:scale-95';
+      }
+      if (btnTop) {
+        btnTop.className = PRIVACY_HIDE_MODE
+          ? 'px-2.5 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/50 text-xs text-amber-300 font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0'
+          : 'px-2.5 py-2 rounded-xl bg-[#131722] hover:bg-[#1c2233] border border-white/10 text-xs text-[#c5cee0] hover:text-white flex items-center gap-1.5 transition cursor-pointer shrink-0';
+      }
+
+      // Also blur/mask lower wallet P&L cards when privacy mode is on
+      const lowerSensitiveIds = [
+        'wallet-pnl-grid', 'out-total-usd', 'out-total-eth', 'out-left-eth', 'out-left-usd',
+        'skim-net-eth', 'skim-net-usd', 'hdr-total-eth'
+      ];
+      lowerSensitiveIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (PRIVACY_HIDE_MODE) {
+            el.classList.add('blur-md', 'select-none');
+          } else {
+            el.classList.remove('blur-md', 'select-none');
+          }
+        }
+      });
+    }
+
+    function togglePrivacyHideMode() {
+      PRIVACY_HIDE_MODE = !PRIVACY_HIDE_MODE;
+      try {
+        localStorage.setItem('swooz_privacy_hide_v1', PRIVACY_HIDE_MODE ? '1' : '0');
+      } catch (e) {}
+      applyPrivacyEyeIcons();
+      applyVaultUiState();
+      updateOrbitPortfolioTotals();
+      renderOrbitTokensTable();
+      drawOrbitNetworthChart();
+    }
 
     function updateOrbitPortfolioTotals() {
+      applyPrivacyEyeIcons();
       const assets = getLiveOrbitAssets().filter(a => a.scope.includes(ORBIT_PORTFOLIO_SCOPE));
       const spotTotal = assets.reduce((s, a) => s + a.usdVal, 0);
       const targetTotal = assets.reduce((s, a) => s + a.targetUsd, 0);
@@ -5953,36 +6045,109 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
       PREV_NETWORTH_USD = spotTotal;
 
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
+      const krkTotal = 0.377612 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97;
+      const cbTotal = 0.043575 * ethSpot + 0.58743 * LIVE_SOL_RATE + (0.0008762 * LIVE_BTC_RATE) + (2.37 * LIVE_LINK_RATE) + 1.03;
+
       const nwEl = document.getElementById('orbit-networth-val');
       if (nwEl) {
-        nwEl.textContent = '$' + spotTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        nwEl.textContent = PRIVACY_HIDE_MODE
+          ? '$••••••'
+          : ('$' + spotTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
       }
       const badgeEl = document.getElementById('orbit-networth-badge');
       if (badgeEl) {
-        badgeEl.innerHTML = `<span>+${upsidePct}% (+$${upsideUsd.toFixed(2)} Hybrid Target)</span> <span class="text-[#8b95a9] font-normal">today</span>`;
+        badgeEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `<span>+•.••% (+$•••• Hybrid Target)</span> <span class="text-[#8b95a9] font-normal">today</span>`
+          : `<span>+${upsidePct}% (+$${upsideUsd.toFixed(2)} Hybrid Target)</span> <span class="text-[#8b95a9] font-normal">today</span>`;
       }
 
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2250.41;
       const ethPill = document.getElementById('orbit-live-eth-pill');
       if (ethPill) {
-        const upsideToGrid = Math.max(0, 2262.00 - ethSpot).toFixed(2);
-        ethPill.textContent = `ETH $${ethSpot.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 9 Legs Armed ✓ • +$${upsideToGrid} to $2,262 Grid`;
+        const upsideToGrid = Math.max(0, 2246.00 - ethSpot).toFixed(2);
+        ethPill.textContent = `ETH $${ethSpot.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 5 Kraken Legs Armed ✓ • +$${upsideToGrid} to $2,246`;
       }
+
+      // Top Dropdowns (Connected Wallets + Scope)
+      const optAll = document.getElementById('orbit-opt-all-wallets');
+      const optKrk = document.getElementById('orbit-opt-krk-wallet');
+      const optCb = document.getElementById('orbit-opt-cb-wallet');
+      const optVaults = document.getElementById('orbit-opt-vaults-wallet');
+      const scopeSwooz = document.getElementById('orbit-scope-opt-swooz');
+      const scopeDex = document.getElementById('orbit-scope-opt-dex');
+      const scopeVaults = document.getElementById('orbit-scope-opt-vaults');
+
+      if (PRIVACY_HIDE_MODE) {
+        if (optAll) optAll.textContent = '6 Wallets (••••.eth • $••••••)';
+        if (optKrk) optKrk.textContent = 'Kraken Pro (•••• ETH / $•••• + •••• SOL)';
+        if (optCb) optCb.textContent = 'Coinbase Adv (•••• ETH / $•••• + Alts)';
+        if (optVaults) optVaults.textContent = '4 On-Chain Vaults (••• NFTs • $••••••)';
+        if (scopeSwooz) scopeSwooz.textContent = 'All Wallets (6 • $••••••)';
+        if (scopeDex) scopeDex.textContent = 'DEX Only ($••••••)';
+        if (scopeVaults) scopeVaults.textContent = 'On-Chain Vaults (4 • $••••••)';
+      } else {
+        const ensName = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens) ? UNLOCKED_VAULT_DATA.owner_ens : 'Encrypted Vault';
+        if (optAll) optAll.textContent = `6 Wallets (${ensName} • $${spotTotal.toFixed(2)} USD)`;
+        if (optKrk) optKrk.textContent = `Kraken Pro (0.3776 ETH / $${(0.377612 * ethSpot).toFixed(2)} + 0.1332 SOL / $${(0.133241 * LIVE_SOL_RATE).toFixed(2)})`;
+        if (optCb) optCb.textContent = `Coinbase Adv (0.0436 ETH / $${(0.043575 * ethSpot).toFixed(2)} + Alts / $${(cbTotal - 0.043575 * ethSpot).toFixed(2)})`;
+        if (optVaults) optVaults.textContent = `4 On-Chain Vaults (133 Mini Supers • $402.49 USD)`;
+        if (scopeSwooz) scopeSwooz.textContent = `All Wallets (6 • $${spotTotal.toFixed(2)})`;
+        if (scopeDex) scopeDex.textContent = `DEX Only ($${(krkTotal + cbTotal).toFixed(2)})`;
+        if (scopeVaults) scopeVaults.textContent = `On-Chain Vaults (4 • $410.49)`;
+      }
+
       const krkValEl = document.getElementById('orbit-plat-kraken-val');
-      if (krkValEl) krkValEl.textContent = '$' + (0.377612 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97).toFixed(2);
+      if (krkValEl) krkValEl.textContent = PRIVACY_HIDE_MODE ? '$••••••' : ('$' + krkTotal.toFixed(2));
       const cbValEl = document.getElementById('orbit-plat-cb-val');
-      if (cbValEl) cbValEl.textContent = '$' + (0.043575 * ethSpot + 0.58743 * LIVE_SOL_RATE + (0.0008762 * LIVE_BTC_RATE) + (2.37 * LIVE_LINK_RATE) + 1.03).toFixed(2);
+      if (cbValEl) cbValEl.textContent = PRIVACY_HIDE_MODE ? '$••••••' : ('$' + cbTotal.toFixed(2));
+      const vltValEl = document.getElementById('orbit-plat-vaults-val');
+      if (vltValEl) vltValEl.textContent = PRIVACY_HIDE_MODE ? '$••••••' : '$402.49';
+
+      const krkSubEl = document.getElementById('orbit-plat-kraken-sub');
+      if (krkSubEl) krkSubEl.textContent = PRIVACY_HIDE_MODE ? '(•••• ETH / $•••• + •••• SOL)' : `(0.3776 ETH / $${Math.round(0.377612 * ethSpot)} + 0.1332 SOL / $${Math.round(0.133241 * LIVE_SOL_RATE)})`;
+      const cbSubEl = document.getElementById('orbit-plat-cb-sub');
+      if (cbSubEl) cbSubEl.textContent = PRIVACY_HIDE_MODE ? '(•••• ETH + •••• SOL + BTC + LINK)' : '(0.0436 ETH + 0.5874 SOL + BTC + LINK)';
+      const bgVltEl = document.getElementById('orbit-card3-bg-vaults');
+      if (bgVltEl) bgVltEl.textContent = PRIVACY_HIDE_MODE ? '🗄️ Background NFT Vaults: ••• NFTs ($••••••)' : '🗄️ Background NFT Vaults: 133 Mini Supers + 6 OG ($400.33)';
+
+      const kpiBankedUsd = document.getElementById('orbit-kpi-banked-usd');
+      const kpiBankedEth = document.getElementById('orbit-kpi-banked-eth');
+      const kpiCycleUsd = document.getElementById('orbit-kpi-cycle-usd');
+      const kpiCycleSub = document.getElementById('orbit-kpi-cycle-sub');
+      if (kpiBankedUsd) kpiBankedUsd.textContent = PRIVACY_HIDE_MODE ? '+$•••• USD' : '+$18.86 USD';
+      if (kpiBankedEth) kpiBankedEth.textContent = PRIVACY_HIDE_MODE ? '+•••••• Free ETH Locked' : '+0.00782 Free ETH Locked';
+      if (kpiCycleUsd) kpiCycleUsd.textContent = PRIVACY_HIDE_MODE ? '+$•••• USD' : '+$25.62 USD';
+      if (kpiCycleSub) kpiCycleSub.textContent = PRIVACY_HIDE_MODE ? '+$•••• ETH + $•••• Alts' : '+$20.53 ETH + $5.09 Alts';
+
       const ifFloorEl = document.getElementById('orbit-nft-floor-if');
       if (ifFloorEl) ifFloorEl.textContent = `Floor: 0.237 ETH ($${Math.round(0.237 * ethSpot)})`;
       const beastFloorEl = document.getElementById('orbit-nft-floor-beast');
       if (beastFloorEl) beastFloorEl.textContent = `Floor: 0.0695 ETH ($${Math.round(0.0695 * ethSpot)})`;
 
       const pillEthEl = document.getElementById('orbit-pill-eth-val');
-      if (pillEthEl) pillEthEl.innerHTML = `0.4212 ETH <span class="text-[#34d399]">($${(0.421187 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
+      if (pillEthEl) {
+        pillEthEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `•••• ETH <span class="text-[#34d399]">($••••)</span>`
+          : `0.4212 ETH <span class="text-[#34d399]">($${(0.421187 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
+      }
       const pillSolEl = document.getElementById('orbit-pill-sol-val');
-      if (pillSolEl) pillSolEl.innerHTML = `0.7207 SOL <span class="text-[#34d399]">($${(0.720671 * LIVE_SOL_RATE).toFixed(2)})</span>`;
+      if (pillSolEl) {
+        pillSolEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `•••• SOL <span class="text-[#34d399]">($••••)</span>`
+          : `0.7207 SOL <span class="text-[#34d399]">($${(0.720671 * LIVE_SOL_RATE).toFixed(2)})</span>`;
+      }
       const pillAltsEl = document.getElementById('orbit-pill-alts-val');
-      if (pillAltsEl) pillAltsEl.innerHTML = `0.00088 / 2.37 <span class="text-[#34d399]">($${(0.0008762 * LIVE_BTC_RATE + 2.37 * LIVE_LINK_RATE).toFixed(2)})</span>`;
+      if (pillAltsEl) {
+        pillAltsEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `•••• / •••• <span class="text-[#34d399]">($••••)</span>`
+          : `0.00088 / 2.37 <span class="text-[#34d399]">($${(0.0008762 * LIVE_BTC_RATE + 2.37 * LIVE_LINK_RATE).toFixed(2)})</span>`;
+      }
+      const pillNftsEl = document.getElementById('orbit-pill-nfts-val');
+      if (pillNftsEl) {
+        pillNftsEl.innerHTML = PRIVACY_HIDE_MODE
+          ? `••• Held <span class="text-[#34d399]">($••••)</span>`
+          : `133 Held <span class="text-[#34d399]">($400.33)</span>`;
+      }
     }
 
     function drawOrbitNetworthChart() {
@@ -6246,7 +6411,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
           ctx.font = '9.5px JetBrains Mono, monospace';
           ctx.fillStyle = '#ffffff';
-          ctx.fillText(`Spot: $${meta.nw.toFixed(2)} → Tgt: $${meta.tgt.toFixed(2)}`, boxX + 8, boxY + 26);
+          const spotAndTgtTxt = PRIVACY_HIDE_MODE
+            ? 'Spot: $•••••• → Tgt: $••••••'
+            : `Spot: $${meta.nw.toFixed(2)} → Tgt: $${meta.tgt.toFixed(2)}`;
+          ctx.fillText(spotAndTgtTxt, boxX + 8, boxY + 26);
 
           ctx.font = '9px Plus Jakarta Sans, sans-serif';
           ctx.fillStyle = '#34d399';
@@ -6486,7 +6654,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       });
 
       tbody.innerHTML = assets.map(t => {
-        const valTxt = '$' + t.usdVal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const valTxt = PRIVACY_HIDE_MODE
+          ? '$••••••'
+          : ('$' + t.usdVal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        const amtTxt = PRIVACY_HIDE_MODE ? `•••• ${t.symbol} ($••••)` : t.amountTxt;
+        const platTxt = PRIVACY_HIDE_MODE ? t.platform.replace(/\$[0-9,.]+/g, '$••••') : t.platform;
         const chgColor = t.isUp === true ? 'text-[#10f1b6]' : t.isUp === false ? 'text-[#f43f5e]' : 'text-[#8b95a9]';
 
         return `
@@ -6506,11 +6678,11 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
               <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-sm"
                     style="background:${t.netBg}">${t.netIcon}</span>
             </td>
-            <td class="py-3 px-2 text-[#c5cee0] text-xs font-medium max-w-[210px] truncate" title="${t.platform}">
-              ${t.platform}
+            <td class="py-3 px-2 text-[#c5cee0] text-xs font-medium max-w-[210px] truncate" title="${platTxt}">
+              ${platTxt}
             </td>
             <td class="py-3 px-2 text-right font-mono text-white font-semibold text-xs whitespace-nowrap">
-              ${t.amountTxt}
+              ${amtTxt}
             </td>
             <td class="py-3 pl-2 text-right font-mono whitespace-nowrap">
               <div class="text-white font-bold text-xs">${valTxt}</div>
