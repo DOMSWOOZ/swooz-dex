@@ -960,6 +960,10 @@
                       </tbody>
                     </table>
                   </div>
+
+                  <!-- 45% PAYCHECK INFLOW -> KRAKEN CONSOLIDATION + 3 ENS ACQUISITION CARD (Populated dynamically by updateQuantBriefingPrivacyUi) -->
+                  <div id="qb-ens-pipeline-card" class="bg-[#0b101b] border border-emerald-500/35 rounded-xl p-3 space-y-2.5">
+                  </div>
                 </div>
 
                 <!-- ================= SUB-TAB 2: INTERACTIVE STRADDLE & FEE MATH SIMULATOR ================= -->
@@ -2671,7 +2675,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=64', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=65', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -7204,6 +7208,81 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (stackValEl) stackValEl.textContent = hide ? '•••• ETH ($••••••)' : `${s.totalEthQty.toFixed(4)} ETH ($${totalEthUsd.toFixed(2)})`;
       if (bidsValEl) bidsValEl.textContent = hide ? '0.2700 WETH ($••••••)' : `0.2700 WETH ($${bidsUsd.toFixed(2)})`;
       if (surpValEl) surpValEl.textContent = hide ? '+•••• ETH ($••••••)' : `+${surpEth.toFixed(4)} ETH ($${surpUsd.toFixed(2)})`;
+
+      const ensCard = document.getElementById('qb-ens-pipeline-card');
+      if (ensCard) {
+        const isUnlockedOwner = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens && !hide);
+        const baseEns = isUnlockedOwner ? UNLOCKED_VAULT_DATA.owner_ens : '••••.eth';
+        const rootPrefix = isUnlockedOwner ? UNLOCKED_VAULT_DATA.owner_ens.replace('.eth', '') : '••••';
+        const ens2 = isUnlockedOwner ? (rootPrefix + 'yboy.eth') : '•••••••.eth';
+        const ens3 = isUnlockedOwner ? (rootPrefix + 'yworldorder.eth') : '••••••••••••••.eth';
+        const ensCostEth = 0.002242;
+        const ensCostUsd = (ensCostEth * s.ethSpot).toFixed(2);
+        const total3Usd = (ensCostEth * 3 * s.ethSpot).toFixed(2);
+        const topUpUsd = (0.0100 * s.ethSpot).toFixed(2);
+        const krkMoveUsd = (0.045921 * s.ethSpot).toFixed(2);
+
+        ensCard.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-mono text-[10px] font-bold">🚀 45% EARNINGS PIPELINE (UP FROM 35%)</span>
+              <span class="font-bold text-white text-xs">100% Kraken Pro Scraper Consolidation + 3 ENS Domain Acquisitions</span>
+            </div>
+            <span class="font-mono text-[10.5px] text-[#00f5d4]">All 3 ENS Available On-Chain ✓ (0.00673 ETH / ${hide ? '$••••' : ('~$' + total3Usd)} Total)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-[10.5px]">
+            <div class="p-2 rounded-lg bg-[#131926] border border-emerald-500/30 flex flex-col justify-between gap-1.5">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-white font-bold text-xs">🏷️ ${baseEns}</span>
+                  <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9.5px] font-bold">AVAILABLE ✓</span>
+                </div>
+                <div class="text-[#8b95a9] text-[10px] mt-0.5">Primary NFT Vault (#1)</div>
+                <div class="text-emerald-400 text-[10px] mt-0.5">Cost: 0.00224 ETH/yr (${hide ? '$••••' : ('~$' + ensCostUsd)})</div>
+              </div>
+              <a href="https://app.ens.domains/${isUnlockedOwner ? baseEns + '/register' : ''}" target="_blank"
+                 class="w-full text-center py-1 rounded bg-emerald-500/20 hover:bg-emerald-500/35 border border-emerald-500/40 text-emerald-300 font-bold transition">
+                Register Primary ENS ↗
+              </a>
+            </div>
+
+            <div class="p-2 rounded-lg bg-[#131926] border border-cyan-500/30 flex flex-col justify-between gap-1.5">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-white font-bold text-xs">🏷️ ${ens2}</span>
+                  <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9.5px] font-bold">AVAILABLE ✓</span>
+                </div>
+                <div class="text-[#8b95a9] text-[10px] mt-0.5">2nd NFT Sweeping Wallet (#2)</div>
+                <div class="text-cyan-300 text-[10px] mt-0.5">Cost: 0.00224 ETH/yr (${hide ? '$••••' : ('~$' + ensCostUsd)})</div>
+              </div>
+              <a href="https://app.ens.domains/${isUnlockedOwner ? ens2 + '/register' : ''}" target="_blank"
+                 class="w-full text-center py-1 rounded bg-cyan-500/20 hover:bg-cyan-500/35 border border-cyan-500/40 text-cyan-300 font-bold transition">
+                Register Sweeper ENS ↗
+              </a>
+            </div>
+
+            <div class="p-2 rounded-lg bg-[#131926] border border-purple-500/30 flex flex-col justify-between gap-1.5">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-white font-bold text-xs">🏷️ ${ens3}</span>
+                  <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9.5px] font-bold">AVAILABLE ✓</span>
+                </div>
+                <div class="text-[#8b95a9] text-[10px] mt-0.5">Flagship Brand / Cold Vault (#3)</div>
+                <div class="text-purple-300 text-[10px] mt-0.5">Cost: 0.00224 ETH/yr (${hide ? '$••••' : ('~$' + ensCostUsd)})</div>
+              </div>
+              <a href="https://app.ens.domains/${isUnlockedOwner ? ens3 + '/register' : ''}" target="_blank"
+                 class="w-full text-center py-1 rounded bg-purple-500/20 hover:bg-purple-500/35 border border-purple-500/40 text-purple-300 font-bold transition">
+                Register Brand ENS ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="text-[10.5px] text-[#c5cee0] font-mono bg-white/5 rounded-lg p-2 flex flex-wrap items-center justify-between gap-1">
+            <span>💡 <b class="text-white">Coinbase 0.05592 ETH (${hide ? '$••••••' : ('$' + s.cbEthSpotUsd.toFixed(2))}) Split:</b> Send <b class="text-emerald-400">0.0100 ETH (${hide ? '$••••' : ('~$' + topUpUsd)})</b> → Primary Vault (registers all 3 ENS + gas) • Send <b class="text-amber-300">0.0459 ETH (${hide ? '$••••' : ('~$' + krkMoveUsd)})</b> → <b class="text-white">Kraken Pro</b> to scale up the 0.25% Maker Scraper!</span>
+          </div>
+        `;
+      }
 
       setQuantScenario(ACTIVE_QUANT_SCENARIO);
     }
