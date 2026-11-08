@@ -608,15 +608,19 @@
                     <option id="orbit-scope-opt-vaults" value="vaults">On-Chain Vaults (4 • $410.49)</option>
                   </select>
 
-                  <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[11px] font-semibold">
-                    <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-2 py-1 rounded-md bg-[#2a334b] text-white transition cursor-pointer">24h</button>
-                    <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer">7d</button>
-                    <button onclick="setOrbitChartTf('1M')" id="orbit-tf-1M" class="px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer">30d</button>
+                  <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[10.5px] font-semibold font-mono">
+                    <button onclick="setOrbitChartTf('3m')" id="orbit-tf-3m" class="px-1.5 py-1 rounded-md text-cyan-300 hover:text-white transition cursor-pointer" title="Kraken 3-Minute Technical Analysis">3m</button>
+                    <button onclick="setOrbitChartTf('5m')" id="orbit-tf-5m" class="px-1.5 py-1 rounded-md text-cyan-300 hover:text-white transition cursor-pointer" title="Kraken 5-Minute Technical Analysis">5m</button>
+                    <button onclick="setOrbitChartTf('15m')" id="orbit-tf-15m" class="px-1.5 py-1 rounded-md text-cyan-300 hover:text-white transition cursor-pointer" title="Kraken 15-Minute Technical Analysis">15m</button>
+                    <span class="text-white/15 px-0.5">|</span>
+                    <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-1.5 py-1 rounded-md bg-[#2a334b] text-white transition cursor-pointer">24h</button>
+                    <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-1.5 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer">7d</button>
                   </div>
 
                   <div class="flex items-center gap-0.5 bg-[#1a2030] border border-white/10 rounded-lg p-0.5 text-[10.5px] font-semibold">
                     <button onclick="setOrbitChartMode('networth')" id="orbit-cmode-networth" class="px-2 py-1 rounded-md bg-[#10b981]/25 text-[#34d399] transition cursor-pointer" title="Clean Dual-Line Portfolio &amp; Target Curve">📈 Curve</button>
-                    <button onclick="setOrbitChartMode('straddle')" id="orbit-cmode-straddle" class="px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer" title="ETH Straddle Price Zones ($2,350 - $2,435)">🎯 Zones</button>
+                    <button onclick="setOrbitChartMode('ta')" id="orbit-cmode-ta" class="px-2 py-1 rounded-md text-cyan-300 hover:text-white transition cursor-pointer" title="Kraken 3m/5m/15m Technical Analyst Lines">📐 TA</button>
+                    <button onclick="setOrbitChartMode('straddle')" id="orbit-cmode-straddle" class="px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer" title="ETH Straddle Price Zones">🎯 Zones</button>
                     <button onclick="setOrbitChartMode('candles')" id="orbit-cmode-candles" class="px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer" title="Live ETH/USD Candlesticks">🕯️</button>
                   </div>
                 </div>
@@ -1451,12 +1455,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
             </div>
           </div>
 
-          <!-- 📐 TECHNICAL ANALYST (TA) OVERLAY CONTROL RIBBON (3m / 5m / 15m Live Trendlines, EMA 9/21, VWAP, Bollinger, Fib) -->
+          <!-- 📐 TECHNICAL ANALYST (TA) OVERLAY CONTROL RIBBON (3m / 5m / 15m Live Trendlines, Reg Channel, EMA 9/21, VWAP, Bollinger, Fib) -->
           <div id="ta-overlay-toolbar" class="flex items-center justify-between flex-wrap gap-2 bg-[#070c16] border border-cyan-500/30 rounded-lg px-2.5 py-1.5 font-mono text-[10.5px]">
             <div class="flex items-center gap-1.5 flex-wrap">
               <span class="text-cyan-300 font-bold">📐 KRAKEN TA LINES:</span>
               <button id="btn-ta-trendlines" onclick="toggleTaLayer('trendlines')" class="px-2 py-0.5 rounded bg-emerald-500/25 border border-emerald-400/60 text-emerald-300 font-bold cursor-pointer transition">
                 ✓ Auto S/R Trendlines
+              </button>
+              <button id="btn-ta-regchan" onclick="toggleTaLayer('regchan')" class="px-2 py-0.5 rounded bg-cyan-500/25 border border-cyan-400/60 text-cyan-300 font-bold cursor-pointer transition">
+                ✓ Reg Channel (±1.5σ)
               </button>
               <button id="btn-ta-ema" onclick="toggleTaLayer('ema')" class="px-2 py-0.5 rounded bg-amber-500/25 border border-amber-400/60 text-amber-300 font-bold cursor-pointer transition">
                 ✓ EMA 9 / 21 + Cross
@@ -1470,9 +1477,65 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
               <button id="btn-ta-fib" onclick="toggleTaLayer('fib')" class="px-2 py-0.5 rounded bg-pink-500/25 border border-pink-400/60 text-pink-300 font-bold cursor-pointer transition">
                 ✓ Fib 0.618 + RSI(14)
               </button>
+              <button id="btn-ta-zoom" onclick="toggleTaZoomMode()" class="px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-bold cursor-pointer transition" title="Toggle between Auto-Zoomed TA Candles vs Full Order Ladder Y-Axis">
+                🔍 Zoom: TA Action
+              </button>
             </div>
             <div id="ta-global-summary-pill" class="text-[10px] text-slate-300">
-              Active TF: <b class="text-emerald-400">5m</b> • <span class="text-amber-300">━ EMA9</span> <span class="text-sky-300">━ EMA21</span> <span class="text-purple-300">┈ VWAP</span> <span class="text-rose-400">╱ Res Trend</span> <span class="text-cyan-300">╲ Sup Trend</span>
+              Active TF: <b class="text-emerald-400">5m</b> • <span class="text-amber-300">━ EMA9</span> <span class="text-sky-300">━ EMA21</span> <span class="text-purple-300">┈ VWAP</span> <span class="text-rose-400">╲ Res</span> <span class="text-cyan-300">╱ Sup</span> <span class="text-emerald-300">═ RegChan</span>
+            </div>
+          </div>
+
+          <!-- 🦑 KRAKEN PRO SIMULTANEOUS 3m + 5m + 15m MULTI-TIMEFRAME TECHNICAL ANALYSIS DECK -->
+          <div id="kraken-mtf-ta-deck" class="vcd-pod bg-[#060a12] border border-cyan-500/35 rounded-xl p-3 space-y-2.5">
+            <div class="flex items-center justify-between flex-wrap gap-2 border-b border-white/10 pb-2">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2 py-0.5 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-mono text-[10px] font-bold">🦑 KRAKEN MULTI-TIMEFRAME TA</span>
+                <span class="font-bold font-mono text-white text-xs sm:text-sm">Simultaneous 3m • 5m • 15m Technical Analyst Suite</span>
+                <span class="text-[10.5px] font-mono text-[#8b95a9]">(Auto S/R Trendlines • Linear Regression Channel • EMA 9/21 • VWAP • Fib 0.618 • RSI)</span>
+              </div>
+              <div class="flex items-center gap-1.5 font-mono text-[10.5px]">
+                <button id="btn-mtf-pair-ETHUSD" onclick="setKrakenMtfPair('ETHUSD')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold cursor-pointer transition">💎 Kraken ETH/USD (4 Legs)</button>
+                <button id="btn-mtf-pair-SOLUSD" onclick="setKrakenMtfPair('SOLUSD')" class="px-2.5 py-1 rounded-lg bg-[#131926] border border-white/10 text-slate-300 hover:text-white font-bold cursor-pointer transition">☀️ Kraken SOL/USD (L3)</button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2.5">
+              <!-- Panel 1: 3-Minute (3m) Kraken Micro-Scalp TA -->
+              <div class="bg-[#090e1a] border border-emerald-500/30 rounded-xl p-2.5 space-y-1.5">
+                <div class="flex items-center justify-between font-mono text-[10.5px]">
+                  <span class="font-bold text-emerald-400">⚡ 3-MINUTE (3m) MICRO-SCALP</span>
+                  <span id="mtf-badge-3" class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[9.5px] font-bold">SYNCING...</span>
+                </div>
+                <div id="mtf-stats-3" class="text-[10px] font-mono text-slate-300 flex items-center justify-between flex-wrap gap-1 bg-black/30 px-2 py-1 rounded">
+                  <span>EMA9/21 • VWAP • RSI(14)</span>
+                </div>
+                <canvas id="kraken-mtf-canvas-3" width="460" height="195" class="w-full h-[185px] sm:h-[195px] block rounded-lg bg-[#04070d] border border-white/5"></canvas>
+              </div>
+
+              <!-- Panel 2: 5-Minute (5m) Kraken Intraday Momentum TA -->
+              <div class="bg-[#090e1a] border border-cyan-500/30 rounded-xl p-2.5 space-y-1.5">
+                <div class="flex items-center justify-between font-mono text-[10.5px]">
+                  <span class="font-bold text-cyan-300">📐 5-MINUTE (5m) INTRADAY TA</span>
+                  <span id="mtf-badge-5" class="px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 text-[9.5px] font-bold">SYNCING...</span>
+                </div>
+                <div id="mtf-stats-5" class="text-[10px] font-mono text-slate-300 flex items-center justify-between flex-wrap gap-1 bg-black/30 px-2 py-1 rounded">
+                  <span>EMA9/21 • VWAP • RSI(14)</span>
+                </div>
+                <canvas id="kraken-mtf-canvas-5" width="460" height="195" class="w-full h-[185px] sm:h-[195px] block rounded-lg bg-[#04070d] border border-white/5"></canvas>
+              </div>
+
+              <!-- Panel 3: 15-Minute (15m) Kraken Channel Structure TA -->
+              <div class="bg-[#090e1a] border border-purple-500/30 rounded-xl p-2.5 space-y-1.5">
+                <div class="flex items-center justify-between font-mono text-[10.5px]">
+                  <span class="font-bold text-purple-300">🏛️ 15-MINUTE (15m) CHANNEL TA</span>
+                  <span id="mtf-badge-15" class="px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 text-[9.5px] font-bold">SYNCING...</span>
+                </div>
+                <div id="mtf-stats-15" class="text-[10px] font-mono text-slate-300 flex items-center justify-between flex-wrap gap-1 bg-black/30 px-2 py-1 rounded">
+                  <span>EMA9/21 • VWAP • RSI(14)</span>
+                </div>
+                <canvas id="kraken-mtf-canvas-15" width="460" height="195" class="w-full h-[185px] sm:h-[195px] block rounded-lg bg-[#04070d] border border-white/5"></canvas>
+              </div>
             </div>
           </div>
 
@@ -4288,15 +4351,55 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     const TA_LAYERS = {
       trendlines: true,
+      regchan: true,
       ema: true,
       vwap: true,
       bbands: true,
       fib: true
     };
+    let TA_ZOOM_MODE = true; // Auto-zooms Y-axis on 3m/5m/15m to candles + TA + #1 closest order so TA lines never squish
+    let KRAKEN_MTF_PAIR = 'ETHUSD'; // 'ETHUSD' | 'SOLUSD'
+    const MTF_CANDLE_CACHE = {
+      ETHUSD: {
+        3: buildSeededCandles(2236.50, 3.80),
+        5: buildSeededCandles(2236.50, 5.20),
+        15: buildSeededCandles(2236.50, 8.90)
+      },
+      SOLUSD: {
+        3: buildSeededCandles(89.15, 0.28),
+        5: buildSeededCandles(89.15, 0.42),
+        15: buildSeededCandles(89.15, 0.72)
+      }
+    };
 
     function getTfLabel(tf) {
       const map = { 3: '3m', 5: '5m', 15: '15m', 60: '1H', 240: '4H', 1440: '1D' };
       return map[tf] || (tf + 'm');
+    }
+
+    function toggleTaZoomMode() {
+      TA_ZOOM_MODE = !TA_ZOOM_MODE;
+      const btn = document.getElementById('btn-ta-zoom');
+      if (btn) {
+        btn.textContent = TA_ZOOM_MODE ? '🔍 Zoom: TA Action' : '🗺️ Zoom: All Orders';
+        btn.className = TA_ZOOM_MODE
+          ? 'px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-bold cursor-pointer transition'
+          : 'px-2 py-0.5 rounded bg-amber-500/20 border border-amber-400/50 text-amber-300 font-bold cursor-pointer transition';
+      }
+      drawKrakenChart();
+    }
+
+    function setKrakenMtfPair(pairKey) {
+      KRAKEN_MTF_PAIR = (pairKey === 'SOLUSD') ? 'SOLUSD' : 'ETHUSD';
+      ['ETHUSD', 'SOLUSD'].forEach(k => {
+        const b = document.getElementById('btn-mtf-pair-' + k);
+        if (b) {
+          b.className = (k === KRAKEN_MTF_PAIR)
+            ? 'px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold cursor-pointer transition'
+            : 'px-2.5 py-1 rounded-lg bg-[#131926] border border-white/10 text-slate-300 hover:text-white font-bold cursor-pointer transition';
+        }
+      });
+      drawKrakenMtfTaDeck();
     }
 
     function toggleTaLayer(layerKey) {
@@ -4305,6 +4408,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
       const styles = {
         trendlines: { label: 'Auto S/R Trendlines', on: 'px-2 py-0.5 rounded bg-emerald-500/25 border border-emerald-400/60 text-emerald-300 font-bold cursor-pointer transition' },
+        regchan:    { label: 'Reg Channel (±1.5σ)', on: 'px-2 py-0.5 rounded bg-cyan-500/25 border border-cyan-400/60 text-cyan-300 font-bold cursor-pointer transition' },
         ema:        { label: 'EMA 9 / 21 + Cross',  on: 'px-2 py-0.5 rounded bg-amber-500/25 border border-amber-400/60 text-amber-300 font-bold cursor-pointer transition' },
         vwap:       { label: 'Session VWAP',        on: 'px-2 py-0.5 rounded bg-purple-500/25 border border-purple-400/60 text-purple-300 font-bold cursor-pointer transition' },
         bbands:     { label: 'Bollinger (20,2σ)',   on: 'px-2 py-0.5 rounded bg-sky-500/25 border border-sky-400/60 text-sky-300 font-bold cursor-pointer transition' },
@@ -4319,6 +4423,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }
       });
       drawKrakenChart();
+      if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
     }
 
     function switchChartTf(tf) {
@@ -4386,6 +4491,56 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }));
       LAST_CANDLES = MULTI_CANDLE_CACHE[CHART_PAIR] || MULTI_CANDLE_CACHE.ETHUSD;
       drawKrakenChart();
+      if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
+      fetchKrakenMtf3m5m15m();
+    }
+
+    async function fetchKrakenMtf3m5m15m() {
+      const mtfPairs = [
+        { key: 'ETHUSD', kPair: 'XETHZUSD' },
+        { key: 'SOLUSD', kPair: 'SOLUSD' }
+      ];
+      for (const p of mtfPairs) {
+        // Fetch 1m (for 3m aggregation), 5m, and 15m in parallel
+        await Promise.all([1, 5, 15].map(async (intv) => {
+          try {
+            const res = await fetch(`https://api.kraken.com/0/public/OHLC?pair=${p.kPair}&interval=${intv}`, { cache: 'no-store' });
+            if (!res.ok) return;
+            const data = await res.json();
+            const resObj = data.result || {};
+            const rKey = Object.keys(resObj).find(k => k !== 'last');
+            if (!rKey || !Array.isArray(resObj[rKey]) || resObj[rKey].length < 12) return;
+            if (intv === 1) {
+              const raw1m = resObj[rKey].slice(-108);
+              const agg3m = [];
+              for (let i = 0; i < raw1m.length; i += 3) {
+                const chunk = raw1m.slice(i, i + 3);
+                if (!chunk.length) continue;
+                agg3m.push({
+                  time: Number(chunk[0][0]),
+                  open: parseFloat(chunk[0][1]),
+                  high: Math.max(...chunk.map(x => parseFloat(x[2]))),
+                  low: Math.min(...chunk.map(x => parseFloat(x[3]))),
+                  close: parseFloat(chunk[chunk.length - 1][4]),
+                  vol: chunk.reduce((a, x) => a + parseFloat(x[6] || 0), 0)
+                });
+              }
+              if (agg3m.length >= 8) MTF_CANDLE_CACHE[p.key][3] = agg3m.slice(-32);
+            } else {
+              const raw = resObj[rKey].slice(-32);
+              MTF_CANDLE_CACHE[p.key][intv] = raw.map(c => ({
+                time: Number(c[0]),
+                open: parseFloat(c[1]),
+                high: parseFloat(c[2]),
+                low: parseFloat(c[3]),
+                close: parseFloat(c[4]),
+                vol: parseFloat(c[6])
+              }));
+            }
+          } catch (e) {}
+        }));
+      }
+      drawKrakenMtfTaDeck();
       if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
     }
 
@@ -4851,15 +5006,22 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.clearRect(0, 0, W, H);
       const isExpanded = (CHART_FILTER_MODE === pairKey);
 
-      const allPrices = [
-        ...candles.map(c => c.low),
-        ...candles.map(c => c.high),
-        ...cfg.sells.map(s => s.price),
-        ...cfg.buys.map(b => b.price)
-      ];
+      const allPrices = TA_ZOOM_MODE
+        ? [
+            ...candles.map(c => c.low),
+            ...candles.map(c => c.high),
+            firstSell,
+            Math.max(firstBuy, Math.min(...candles.map(c => c.low)) * 0.996)
+          ]
+        : [
+            ...candles.map(c => c.low),
+            ...candles.map(c => c.high),
+            ...cfg.sells.map(s => s.price),
+            ...cfg.buys.map(b => b.price)
+          ];
       let minP = Math.min(...allPrices);
       let maxP = Math.max(...allPrices);
-      const pad = (maxP - minP) * 0.12 || 1;
+      const pad = (maxP - minP) * 0.14 || (spot * 0.003);
       minP -= pad;
       maxP += pad;
 
@@ -5037,6 +5199,67 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           if (i === 0) ctx.moveTo(cx, yOf(bbLower[i]));
           else ctx.lineTo(cx, yOf(bbLower[i]));
         }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 4A-2. Least-Squares Linear Regression Trend Channel (Midline + Upper/Lower ±1.5σ Parallel Rays)
+      if (TA_LAYERS.regchan && nBars >= 6) {
+        let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+        for (let i = 0; i < nBars; i++) {
+          sumX += i;
+          sumY += candles[i].close;
+          sumXY += i * candles[i].close;
+          sumXX += i * i;
+        }
+        const denom = (nBars * sumXX - sumX * sumX) || 1;
+        const regSlope = (nBars * sumXY - sumX * sumY) / denom;
+        const regIntercept = (sumY - regSlope * sumX) / nBars;
+        let sqErr = 0;
+        for (let i = 0; i < nBars; i++) {
+          const fit = regIntercept + regSlope * i;
+          sqErr += Math.pow(candles[i].close - fit, 2);
+        }
+        const regStd = Math.sqrt(sqErr / nBars) * 1.5;
+
+        const x0 = cLeft + stepX / 2;
+        const x1 = cLeft + (nBars - 1) * stepX + stepX / 2;
+        const yMid0 = yOf(regIntercept);
+        const yMid1 = yOf(regIntercept + regSlope * (nBars - 1));
+        const yUp0 = yOf(regIntercept + regStd);
+        const yUp1 = yOf(regIntercept + regSlope * (nBars - 1) + regStd);
+        const yLo0 = yOf(regIntercept - regStd);
+        const yLo1 = yOf(regIntercept + regSlope * (nBars - 1) - regStd);
+
+        ctx.save();
+        // Shaded Regression Channel Corridor
+        ctx.beginPath();
+        ctx.moveTo(x0, yUp0);
+        ctx.lineTo(x1, yUp1);
+        ctx.lineTo(x1, yLo1);
+        ctx.lineTo(x0, yLo0);
+        ctx.closePath();
+        ctx.fillStyle = regSlope >= 0 ? 'rgba(16, 241, 182, 0.05)' : 'rgba(251, 113, 133, 0.05)';
+        ctx.fill();
+
+        // Upper & Lower Parallel Regression Channel Boundaries
+        ctx.setLineDash([5, 3]);
+        ctx.lineWidth = 1.25;
+        ctx.strokeStyle = 'rgba(34, 211, 238, 0.65)';
+        ctx.beginPath();
+        ctx.moveTo(x0, yUp0);
+        ctx.lineTo(x1, yUp1);
+        ctx.moveTo(x0, yLo0);
+        ctx.lineTo(x1, yLo1);
+        ctx.stroke();
+
+        // Center Linear Regression Axis Line
+        ctx.setLineDash([2, 2]);
+        ctx.lineWidth = 1.4;
+        ctx.strokeStyle = regSlope >= 0 ? '#10f1b6' : '#fbbf24';
+        ctx.beginPath();
+        ctx.moveTo(x0, yMid0);
+        ctx.lineTo(x1, yMid1);
         ctx.stroke();
         ctx.restore();
       }
@@ -5626,8 +5849,291 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.restore();
     }
 
+    function drawSingleKrakenMtfCanvas(tf) {
+      const canvas = document.getElementById('kraken-mtf-canvas-' + tf);
+      if (!canvas) return;
+      const pairKey = KRAKEN_MTF_PAIR || 'ETHUSD';
+      const cfg = VCD_PAIRS[pairKey] || VCD_PAIRS.ETHUSD;
+      const candles = (MTF_CANDLE_CACHE[pairKey] && MTF_CANDLE_CACHE[pairKey][tf] && MTF_CANDLE_CACHE[pairKey][tf].length >= 8)
+        ? MTF_CANDLE_CACHE[pairKey][tf]
+        : buildSeededCandles(getLiveSpotForPair(pairKey), pairKey === 'SOLUSD' ? 0.35 : 4.5);
+
+      const spot = getLiveSpotForPair(pairKey);
+      const lastBar = candles[candles.length - 1];
+      lastBar.close = spot;
+      if (spot > lastBar.high) lastBar.high = spot;
+      if (spot < lastBar.low) lastBar.low = spot;
+
+      const { ctx, W, H } = setupHiDpiCanvas(canvas, 440, 195);
+      ctx.clearRect(0, 0, W, H);
+      const fmtP = (v) => '$' + v.toLocaleString(undefined, { minimumFractionDigits: cfg.decimals, maximumFractionDigits: cfg.decimals });
+
+      const firstSell = cfg.sells[0].price;
+      const nBars = candles.length;
+      const cLow = Math.min(...candles.map(c => c.low));
+      const cHigh = Math.max(...candles.map(c => c.high));
+      const includeSell = Math.abs(firstSell - spot) / spot < 0.018 ? [firstSell] : [];
+      let minP = Math.min(cLow, ...includeSell);
+      let maxP = Math.max(cHigh, ...includeSell);
+      const pad = (maxP - minP) * 0.16 || (spot * 0.0025);
+      minP -= pad;
+      maxP += pad;
+
+      const cLeft = 8;
+      const cRight = W - 66;
+      const cTop = 14;
+      const cBot = H - 18;
+      const cW = cRight - cLeft;
+      const cH = cBot - cTop;
+      const yOf = (p) => cTop + ((maxP - p) / (maxP - minP)) * cH;
+      const stepX = cW / nBars;
+      const bodyW = Math.max(3.5, Math.min(13, Math.floor(stepX * 0.62)));
+
+      // Grid + Right Price Labels
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.09)';
+      ctx.lineWidth = 1;
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = `600 9.5px ${PRO_UI_FONT}`;
+      for (let i = 0; i <= 3; i++) {
+        const pVal = minP + ((maxP - minP) * (3 - i)) / 3;
+        const y = Math.round(yOf(pVal)) + 0.5;
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y);
+        ctx.lineTo(cRight, y);
+        ctx.stroke();
+        ctx.fillText(fmtP(pVal), cRight + 5, y + 3);
+      }
+
+      // Compute EMA9, EMA21, VWAP, BBands, RSI(14), Linear Regression Channel, and Swing S/R Trendlines
+      const ema9 = [], ema21 = [], vwap = [], bbU = [], bbL = [];
+      let e9 = candles[0].close, e21 = candles[0].close;
+      const k9 = 2 / 10, k21 = 2 / 22;
+      let cumPV = 0, cumV = 0;
+      let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+
+      candles.forEach((c, idx) => {
+        e9 = idx === 0 ? c.close : (c.close * k9 + e9 * (1 - k9));
+        e21 = idx === 0 ? c.close : (c.close * k21 + e21 * (1 - k21));
+        ema9.push(e9);
+        ema21.push(e21);
+        const typ = (c.high + c.low + c.close) / 3;
+        const v = Math.max(0.1, c.vol || 1);
+        cumPV += typ * v;
+        cumV += v;
+        vwap.push(cumPV / cumV);
+
+        const win = candles.slice(Math.max(0, idx - 19), idx + 1);
+        const mean = win.reduce((s, x) => s + x.close, 0) / win.length;
+        const sd = Math.sqrt(win.reduce((s, x) => s + Math.pow(x.close - mean, 2), 0) / win.length);
+        bbU.push(mean + 2 * sd);
+        bbL.push(mean - 2 * sd);
+
+        sumX += idx;
+        sumY += c.close;
+        sumXY += idx * c.close;
+        sumXX += idx * idx;
+      });
+
+      // RSI(14)
+      let gains = 0, losses = 0;
+      const rsiP = Math.min(14, nBars - 1);
+      for (let i = nBars - rsiP; i < nBars; i++) {
+        if (i <= 0) continue;
+        const d = candles[i].close - candles[i - 1].close;
+        if (d >= 0) gains += d; else losses -= d;
+      }
+      const rsi = losses === 0 ? 70 : (100 - (100 / (1 + (gains / rsiP) / (losses / rsiP))));
+
+      // Candlesticks
+      candles.forEach((c, idx) => {
+        const cx = Math.round(cLeft + idx * stepX + stepX / 2) + 0.5;
+        const isBull = c.close >= c.open;
+        const col = isBull ? '#10f1b6' : '#f43f5e';
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 1.15;
+        ctx.beginPath();
+        ctx.moveTo(cx, yOf(c.high));
+        ctx.lineTo(cx, yOf(c.low));
+        ctx.stroke();
+        const topY = Math.min(yOf(c.open), yOf(c.close));
+        const bH = Math.max(2, Math.abs(yOf(c.close) - yOf(c.open)));
+        ctx.fillStyle = col;
+        ctx.fillRect(cx - bodyW / 2, topY, bodyW, bH);
+      });
+
+      // Linear Regression Channel (±1.5σ)
+      const denom = (nBars * sumXX - sumX * sumX) || 1;
+      const rSlope = (nBars * sumXY - sumX * sumY) / denom;
+      const rInt = (sumY - rSlope * sumX) / nBars;
+      let sqE = 0;
+      for (let i = 0; i < nBars; i++) sqE += Math.pow(candles[i].close - (rInt + rSlope * i), 2);
+      const rStd = Math.sqrt(sqE / nBars) * 1.5;
+
+      if (TA_LAYERS.regchan) {
+        const x0 = cLeft + stepX / 2;
+        const x1 = cLeft + (nBars - 1) * stepX + stepX / 2;
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.strokeStyle = 'rgba(34, 211, 238, 0.55)';
+        ctx.lineWidth = 1.1;
+        ctx.beginPath();
+        ctx.moveTo(x0, yOf(rInt + rStd));
+        ctx.lineTo(x1, yOf(rInt + rSlope * (nBars - 1) + rStd));
+        ctx.moveTo(x0, yOf(rInt - rStd));
+        ctx.lineTo(x1, yOf(rInt + rSlope * (nBars - 1) - rStd));
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Fib 0.618 Golden Pocket
+      const fib618 = cHigh - (cHigh - cLow) * 0.618;
+      if (TA_LAYERS.fib) {
+        const y618 = Math.round(yOf(fib618)) + 0.5;
+        ctx.save();
+        ctx.setLineDash([1, 3]);
+        ctx.strokeStyle = 'rgba(244, 114, 182, 0.60)';
+        ctx.beginPath();
+        ctx.moveTo(cLeft, y618);
+        ctx.lineTo(cRight, y618);
+        ctx.stroke();
+        ctx.fillStyle = '#f472b6';
+        ctx.font = `600 8.5px ${PRO_UI_FONT}`;
+        ctx.fillText(`FIB .618 (${fmtP(fib618)})`, cLeft + 4, y618 - 3);
+        ctx.restore();
+      }
+
+      // Session VWAP
+      if (TA_LAYERS.vwap) {
+        ctx.save();
+        ctx.setLineDash([3, 3]);
+        ctx.strokeStyle = '#c084fc';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        vwap.forEach((v, i) => {
+          const cx = cLeft + i * stepX + stepX / 2;
+          if (i === 0) ctx.moveTo(cx, yOf(v)); else ctx.lineTo(cx, yOf(v));
+        });
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // EMA 9 & EMA 21
+      if (TA_LAYERS.ema) {
+        ctx.save();
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ema21.forEach((v, i) => {
+          const cx = cLeft + i * stepX + stepX / 2;
+          if (i === 0) ctx.moveTo(cx, yOf(v)); else ctx.lineTo(cx, yOf(v));
+        });
+        ctx.stroke();
+
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ema9.forEach((v, i) => {
+          const cx = cLeft + i * stepX + stepX / 2;
+          if (i === 0) ctx.moveTo(cx, yOf(v)); else ctx.lineTo(cx, yOf(v));
+        });
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Auto Support & Resistance Pivot Trendlines
+      const splitIdx = Math.max(3, Math.floor(nBars * 0.48));
+      let ph1 = 1, ph2 = splitIdx, pl1 = 1, pl2 = splitIdx;
+      for (let i = 1; i < splitIdx; i++) {
+        if (candles[i].high >= candles[ph1].high) ph1 = i;
+        if (candles[i].low <= candles[pl1].low) pl1 = i;
+      }
+      for (let i = splitIdx; i < nBars - 1; i++) {
+        if (candles[i].high >= candles[ph2].high) ph2 = i;
+        if (candles[i].low <= candles[pl2].low) pl2 = i;
+      }
+      const resSlope = (candles[ph2].high - candles[ph1].high) / Math.max(1, ph2 - ph1);
+      const resStart = candles[ph1].high - resSlope * ph1;
+      const projRes = candles[ph1].high + resSlope * (nBars - 1 - ph1);
+
+      const supSlope = (candles[pl2].low - candles[pl1].low) / Math.max(1, pl2 - pl1);
+      const supStart = candles[pl1].low - supSlope * pl1;
+      const projSup = candles[pl1].low + supSlope * (nBars - 1 - pl1);
+
+      if (TA_LAYERS.trendlines) {
+        const xOf = (idx) => cLeft + idx * stepX + stepX / 2;
+        ctx.save();
+        ctx.strokeStyle = '#fb7185';
+        ctx.lineWidth = 1.9;
+        ctx.beginPath();
+        ctx.moveTo(xOf(0), Math.max(cTop + 2, Math.min(cBot - 2, yOf(resStart))));
+        ctx.lineTo(cRight, Math.max(cTop + 2, Math.min(cBot - 2, yOf(projRes))));
+        ctx.stroke();
+
+        ctx.strokeStyle = '#22d3ee';
+        ctx.lineWidth = 1.9;
+        ctx.beginPath();
+        ctx.moveTo(xOf(0), Math.max(cTop + 2, Math.min(cBot - 2, yOf(supStart))));
+        ctx.lineTo(cRight, Math.max(cTop + 2, Math.min(cBot - 2, yOf(projSup))));
+        ctx.stroke();
+
+        ctx.font = `700 9px ${PRO_UI_FONT}`;
+        ctx.fillStyle = '#fb7185';
+        ctx.fillText(`╲ RES ${fmtP(projRes)}`, cRight - 82, Math.max(cTop + 10, Math.min(cBot - 16, yOf(projRes) - 4)));
+        ctx.fillStyle = '#22d3ee';
+        ctx.fillText(`╱ SUP ${fmtP(projSup)}`, cRight - 82, Math.max(cTop + 18, Math.min(cBot - 6, yOf(projSup) + 10)));
+        ctx.restore();
+      }
+
+      // Closest Armed Kraken Order Line (if within visible range or clamped at top)
+      if (firstSell >= minP && firstSell <= maxP) {
+        const yS = Math.round(yOf(firstSell)) + 0.5;
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.strokeStyle = '#00f5d4';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(cLeft, yS);
+        ctx.lineTo(cRight, yS);
+        ctx.stroke();
+        drawPillBadge(ctx, `🎯 SELL ${fmtP(firstSell)}`, cLeft + 6, Math.max(cTop + 10, yS), '#00f5d4', '#00f5d488', 0.90);
+        ctx.restore();
+      }
+
+      // Live Spot Tag on Right Axis
+      const ySpot = Math.max(cTop + 8, Math.min(cBot - 8, Math.round(yOf(spot))));
+      ctx.fillStyle = '#00f5d4';
+      ctx.fillRect(cRight + 3, ySpot - 8, 60, 16);
+      ctx.fillStyle = '#04070d';
+      ctx.font = `700 9.5px ${PRO_UI_FONT}`;
+      ctx.fillText(fmtP(spot), cRight + 6, ySpot + 3);
+
+      // Update Header Badge & Stats Strip for this Timeframe
+      const badgeEl = document.getElementById('mtf-badge-' + tf);
+      const statsEl = document.getElementById('mtf-stats-' + tf);
+      const isBullEma = ema9[nBars - 1] >= ema21[nBars - 1];
+      if (badgeEl) {
+        badgeEl.textContent = isBullEma ? `▲ BULL (${tf}m EMA9>21)` : `▼ PULLBACK (${tf}m EMA9<21)`;
+        badgeEl.className = isBullEma
+          ? 'px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9.5px] font-bold'
+          : 'px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[9.5px] font-bold';
+      }
+      if (statsEl) {
+        statsEl.innerHTML = `
+          <span>EMA9 <b class="text-amber-300">${fmtP(ema9[nBars - 1])}</b></span>
+          <span>VWAP <b class="text-purple-300">${fmtP(vwap[nBars - 1])}</b></span>
+          <span>RSI <b class="text-cyan-300">${rsi.toFixed(0)}</b></span>
+          <span>Sup <b class="text-cyan-300">${fmtP(projSup)}</b> / Res <b class="text-rose-400">${fmtP(projRes)}</b></span>
+        `;
+      }
+    }
+
+    function drawKrakenMtfTaDeck() {
+      [3, 5, 15].forEach(drawSingleKrakenMtfCanvas);
+    }
+
     function drawKrakenChart() {
       ['ETHUSD', 'SOLUSD', 'BTCUSD', 'LINKUSD'].forEach(drawSingleAssetOrderChart);
+      drawKrakenMtfTaDeck();
       draw9LegProximityRadarChart();
       drawCumulativeSwingYieldChart();
       renderLiveTickStream();
@@ -7122,34 +7628,43 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       }
 
       // =========================================================================
-      // MODE 2 & 3: 'straddle' (Dynamic Y-Axis ETH Zones) & 'candles' (Clean OHLC)
-      // Automatically scales Y-axis to current ETH price so it NEVER clips or overlaps!
+      // MODE 2, 3 & 'ta': Kraken 3m / 5m / 15m Technical Analysis + Straddle Zones
       // =========================================================================
-      const cLeft = 48;
-      const cRight = W - 148;
-      const cTop = 10;
-      const cBot = H - 20;
+      const activeTfNum = ORBIT_CHART_TF === '3m' ? 3 : ORBIT_CHART_TF === '5m' ? 5 : ORBIT_CHART_TF === '15m' ? 15 : (CHART_TF || 5);
+      const mtfBars = (typeof MTF_CANDLE_CACHE !== 'undefined' && MTF_CANDLE_CACHE.ETHUSD && MTF_CANDLE_CACHE.ETHUSD[activeTfNum]?.length >= 8)
+        ? MTF_CANDLE_CACHE.ETHUSD[activeTfNum].slice(-24)
+        : liveCandles;
+
+      const cLeft = 44;
+      const cRight = W - 118;
+      const cTop = 22;
+      const cBot = H - 18;
       const cW = cRight - cLeft;
       const cH = cBot - cTop;
 
-      const allLows = liveCandles.map(c => c.low).concat([spotEth, 2345]);
-      const allHighs = liveCandles.map(c => c.high).concat([spotEth, 2442]);
-      const minP = Math.floor((Math.min(...allLows) - 15) / 10) * 10;
-      const maxP = Math.ceil((Math.max(...allHighs) + 12) / 10) * 10;
-      const yOf = p => cTop + ((maxP - p) / Math.max(1, maxP - minP)) * cH;
+      const barLows = mtfBars.map(c => c.low).concat([spotEth]);
+      const barHighs = mtfBars.map(c => c.high).concat([spotEth, 2246.00]);
+      const minP = Math.min(...barLows) - 3.5;
+      const maxP = Math.max(...barHighs) + 3.5;
+      const yOf = p => cTop + ((maxP - p) / Math.max(0.5, maxP - minP)) * cH;
+
+      // Top Live Kraken TA Telemetry Pill
+      drawOrbitRoundedPill(ctx, cLeft, 2, W - cLeft - 6, 17, 5, 'rgba(11, 18, 32, 0.90)', 'rgba(34, 211, 238, 0.35)');
+      ctx.font = 'bold 9px JetBrains Mono, monospace';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#22d3ee';
+      ctx.fillText(`📐 KRAKEN [${activeTfNum}m TA] • ETH $${spotEth.toFixed(2)} • EMA9/21 • VWAP • S/R Trendlines • L1B Sell $2,246`, cLeft + 7, 13.5);
 
       // 4 Evenly-Spaced Dollar Y-Axis Ticks
-      ctx.font = '9.5px JetBrains Mono, monospace';
+      ctx.font = '9px JetBrains Mono, monospace';
       ctx.textAlign = 'right';
       for (let i = 0; i <= 3; i++) {
-        const p = Math.round(maxP - (i / 3) * (maxP - minP));
+        const p = maxP - (i / 3) * (maxP - minP);
         const y = yOf(p);
         ctx.fillStyle = '#8b95a9';
-        ctx.fillText('$' + p.toLocaleString(), cLeft - 6, y + 3);
-
+        ctx.fillText('$' + p.toFixed(0), cLeft - 5, y + 3);
         ctx.save();
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-        ctx.lineWidth = 1;
         ctx.setLineDash([2, 3]);
         ctx.beginPath();
         ctx.moveTo(cLeft, y);
@@ -7158,96 +7673,30 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         ctx.restore();
       }
 
-      // Non-overlapping Right-Hand Straddle Zone Pills
-      const rawZones = [
-        {
-          price: 2385.00,
-          color: '#fbbf24',
-          bg: 'rgba(245, 158, 11, 0.14)',
-          border: 'rgba(251, 191, 36, 0.45)',
-          title: '🔥 BREAKOUT @ $2,385/$2,448',
-          sub: '0.2070 ETH → $496.32'
-        },
-        {
-          price: 2284.00,
-          color: '#00f5d4',
-          bg: 'rgba(0, 245, 212, 0.14)',
-          border: 'rgba(0, 245, 212, 0.45)',
-          title: '⚔️ SHORT/RELOAD @ $2,284',
-          sub: '0.1634 ETH ↔ Buy $2,234'
-        },
-        {
-          price: 2262.00,
-          color: '#10f1b6',
-          bg: 'rgba(16, 185, 129, 0.15)',
-          border: 'rgba(16, 241, 182, 0.45)',
-          title: '⚡ FAST SCALP @ $2,262',
-          sub: '0.0509 ETH ↔ Buy $2,216'
-        }
-      ];
+      const nB = mtfBars.length;
+      const stepX = cW / nB;
+      const bodyW = Math.max(3.5, Math.floor(stepX * 0.6));
 
-      let lastPillBottom = -10;
-      rawZones.forEach(z => {
-        const y = yOf(z.price);
-        ctx.save();
-        ctx.setLineDash([4, 3]);
-        ctx.strokeStyle = z.color;
-        ctx.lineWidth = 1.2;
-        ctx.beginPath();
-        ctx.moveTo(cLeft, y);
-        ctx.lineTo(cRight + 4, y);
-        ctx.stroke();
-        ctx.restore();
-
-        const pillX = cRight + 6;
-        let pillY = Math.max(2, Math.min(H - 30, y - 13));
-        if (pillY < lastPillBottom + 3) {
-          pillY = Math.min(H - 28, lastPillBottom + 3);
-        }
-        lastPillBottom = pillY + 26;
-
-        drawOrbitRoundedPill(ctx, pillX, pillY, 138, 26, 6, z.bg, z.border);
-        ctx.textAlign = 'left';
-        ctx.font = 'bold 9px Plus Jakarta Sans, sans-serif';
-        ctx.fillStyle = z.color;
-        ctx.fillText(z.title, pillX + 6, pillY + 10.5);
-        ctx.font = '8.5px JetBrains Mono, monospace';
-        ctx.fillStyle = '#e2e8f0';
-        ctx.fillText(z.sub, pillX + 6, pillY + 21);
-      });
-
+      // Candlesticks or Straddle Spline
       if (ORBIT_CHART_MODE === 'straddle') {
-        const coords = liveCandles.map((c, i) => ({
-          x: cLeft + (i / Math.max(1, liveCandles.length - 1)) * cW,
+        const coords = mtfBars.map((c, i) => ({
+          x: cLeft + i * stepX + stepX / 2,
           y: yOf(c.close)
         }));
-
         ctx.save();
         ctx.beginPath();
         traceSmoothSpline(ctx, coords);
         ctx.strokeStyle = '#00f5d4';
-        ctx.lineWidth = 2.5;
-        ctx.shadowColor = '#00f5d4';
-        ctx.shadowBlur = 10;
+        ctx.lineWidth = 2.2;
         ctx.stroke();
         ctx.restore();
-
-        const tip = coords[coords.length - 1];
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(tip.x, tip.y, 4.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#00f5d4';
-        ctx.fill();
-        ctx.restore();
       } else {
-        const stepX = cW / liveCandles.length;
-        const bodyW = Math.max(4, Math.floor(stepX * 0.6));
-        liveCandles.forEach((c, idx) => {
+        mtfBars.forEach((c, idx) => {
           const cx = cLeft + idx * stepX + stepX / 2;
           const isBull = c.close >= c.open;
           const col = isBull ? '#10f1b6' : '#f43f5e';
           ctx.strokeStyle = col;
-          ctx.lineWidth = 1.2;
+          ctx.lineWidth = 1.15;
           ctx.beginPath();
           ctx.moveTo(cx, yOf(c.high));
           ctx.lineTo(cx, yOf(c.low));
@@ -7258,12 +7707,112 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           ctx.fillRect(cx - bodyW / 2, topY, bodyW, boxH);
         });
       }
+
+      // Compute & Draw EMA 9, EMA 21, VWAP, and Auto S/R Trendlines on Card 1 Canvas
+      let e9 = mtfBars[0].close, e21 = mtfBars[0].close;
+      let cumPV = 0, cumV = 0;
+      const ema9Pts = [], ema21Pts = [], vwapPts = [];
+      mtfBars.forEach((c, i) => {
+        e9 = i === 0 ? c.close : (c.close * (2/10) + e9 * (8/10));
+        e21 = i === 0 ? c.close : (c.close * (2/22) + e21 * (20/22));
+        const cx = cLeft + i * stepX + stepX / 2;
+        ema9Pts.push({ x: cx, y: yOf(e9) });
+        ema21Pts.push({ x: cx, y: yOf(e21) });
+        const typ = (c.high + c.low + c.close) / 3;
+        const v = Math.max(0.1, c.vol || 1);
+        cumPV += typ * v;
+        cumV += v;
+        vwapPts.push({ x: cx, y: yOf(cumPV / cumV) });
+      });
+
+      // VWAP (Purple Dotted)
+      ctx.save();
+      ctx.setLineDash([3, 3]);
+      ctx.strokeStyle = '#c084fc';
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      vwapPts.forEach((pt, i) => { if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); });
+      ctx.stroke();
+      ctx.restore();
+
+      // EMA 21 (Sky) & EMA 9 (Gold)
+      ctx.save();
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ema21Pts.forEach((pt, i) => { if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); });
+      ctx.stroke();
+
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ema9Pts.forEach((pt, i) => { if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); });
+      ctx.stroke();
+      ctx.restore();
+
+      // Auto Support & Resistance Swing Trendlines
+      const splitI = Math.max(2, Math.floor(nB * 0.48));
+      let ph1 = 0, ph2 = splitI, pl1 = 0, pl2 = splitI;
+      for (let i = 0; i < splitI; i++) {
+        if (mtfBars[i].high >= mtfBars[ph1].high) ph1 = i;
+        if (mtfBars[i].low <= mtfBars[pl1].low) pl1 = i;
+      }
+      for (let i = splitI; i < nB; i++) {
+        if (mtfBars[i].high >= mtfBars[ph2].high) ph2 = i;
+        if (mtfBars[i].low <= mtfBars[pl2].low) pl2 = i;
+      }
+      const rSlp = (mtfBars[ph2].high - mtfBars[ph1].high) / Math.max(1, ph2 - ph1);
+      const rSt = mtfBars[ph1].high - rSlp * ph1;
+      const rEnd = mtfBars[ph1].high + rSlp * (nB - 1 - ph1);
+
+      const sSlp = (mtfBars[pl2].low - mtfBars[pl1].low) / Math.max(1, pl2 - pl1);
+      const sSt = mtfBars[pl1].low - sSlp * pl1;
+      const sEnd = mtfBars[pl1].low + sSlp * (nB - 1 - pl1);
+
+      ctx.save();
+      ctx.strokeStyle = '#fb7185';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(cLeft, Math.max(cTop + 2, Math.min(cBot - 2, yOf(rSt))));
+      ctx.lineTo(cRight, Math.max(cTop + 2, Math.min(cBot - 2, yOf(rEnd))));
+      ctx.stroke();
+
+      ctx.strokeStyle = '#22d3ee';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(cLeft, Math.max(cTop + 2, Math.min(cBot - 2, yOf(sSt))));
+      ctx.lineTo(cRight, Math.max(cTop + 2, Math.min(cBot - 2, yOf(sEnd))));
+      ctx.stroke();
+      ctx.restore();
+
+      // Right-hand Pills for L1B Sell ($2,246), Res Trendline, and Sup Trendline
+      const rightBadges = [
+        { p: 2246.00, col: '#10f1b6', bg: 'rgba(16, 185, 129, 0.16)', bdr: 'rgba(16, 241, 182, 0.50)', t1: '🎯 L1B SELL $2,246', t2: `+$${Math.max(0, 2246 - spotEth).toFixed(2)} away` },
+        { p: rEnd,    col: '#fb7185', bg: 'rgba(244, 63, 94, 0.14)',  bdr: 'rgba(251, 113, 133, 0.45)', t1: `╲ RES $${rEnd.toFixed(1)}`, t2: `EMA9 $${e9.toFixed(1)}` },
+        { p: sEnd,    col: '#22d3ee', bg: 'rgba(34, 211, 238, 0.14)', bdr: 'rgba(34, 211, 238, 0.45)', t1: `╱ SUP $${sEnd.toFixed(1)}`, t2: `VWAP $${(cumPV/cumV).toFixed(1)}` }
+      ].sort((a, b) => b.p - a.p);
+
+      let lastBot = cTop - 2;
+      rightBadges.forEach(b => {
+        const y = yOf(b.p);
+        let py = Math.max(cTop, Math.min(H - 28, y - 12));
+        if (py < lastBot + 3) py = Math.min(H - 26, lastBot + 3);
+        lastBot = py + 24;
+        drawOrbitRoundedPill(ctx, cRight + 5, py, 110, 24, 5, b.bg, b.bdr);
+        ctx.textAlign = 'left';
+        ctx.font = 'bold 8.5px Plus Jakarta Sans, sans-serif';
+        ctx.fillStyle = b.col;
+        ctx.fillText(b.t1, cRight + 10, py + 10);
+        ctx.font = '8px JetBrains Mono, monospace';
+        ctx.fillStyle = '#e2e8f0';
+        ctx.fillText(b.t2, cRight + 10, py + 20);
+      });
     }
 
     function setOrbitChartMode(mode) {
       ORBIT_CHART_MODE = mode;
       if (typeof window.playBeep === 'function') window.playBeep();
-      ['networth', 'straddle', 'candles'].forEach(m => {
+      ['networth', 'ta', 'straddle', 'candles'].forEach(m => {
         const b = document.getElementById('orbit-cmode-' + m);
         if (b) {
           b.className = m === mode
@@ -7689,16 +8238,26 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function setOrbitChartTf(tf) {
       ORBIT_CHART_TF = tf;
-      if (typeof window.playBeep === 'function') window.playBeep();
-      ['1D', '1W', '1M'].forEach(k => {
+      if (['3m', '5m', '15m'].includes(tf)) {
+        ORBIT_CHART_MODE = 'ta';
+        ['networth', 'ta', 'straddle', 'candles'].forEach(m => {
+          const b = document.getElementById('orbit-cmode-' + m);
+          if (b) {
+            b.className = m === 'ta'
+              ? 'px-2 py-1 rounded-md bg-[#10b981]/25 text-[#34d399] transition cursor-pointer'
+              : 'px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer';
+          }
+        });
+      }
+      ['3m', '5m', '15m', '1D', '1W'].forEach(k => {
         const b = document.getElementById('orbit-tf-' + k);
         if (b) {
           b.className = k === tf
-            ? 'px-2 py-1 rounded-md bg-[#2a334b] text-white transition cursor-pointer'
-            : 'px-2 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer';
+            ? 'px-1.5 py-1 rounded-md bg-[#2a334b] text-white transition cursor-pointer'
+            : (['3m','5m','15m'].includes(k) ? 'px-1.5 py-1 rounded-md text-cyan-300 hover:text-white transition cursor-pointer' : 'px-1.5 py-1 rounded-md text-[#8b95a9] hover:text-white transition cursor-pointer');
         }
       });
-      const tfMap = { '1D': 15, '1W': 60, '1M': 240 };
+      const tfMap = { '3m': 3, '5m': 5, '15m': 15, '1D': 15, '1W': 60, '1M': 240 };
       if (tfMap[tf] && typeof switchChartTf === 'function') {
         switchChartTf(tfMap[tf]);
       }
@@ -7941,7 +8500,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         renderOrbitTokensTable();
         if (typeof selectProTunerLeg === 'function') selectProTunerLeg('L1B', false);
         pollLiveKrakenMultiTicker();
+        if (typeof fetchKrakenMtf3m5m15m === 'function') fetchKrakenMtf3m5m15m();
         setInterval(pollLiveKrakenMultiTicker, 5000);
+        setInterval(() => { if (typeof fetchKrakenMtf3m5m15m === 'function') fetchKrakenMtf3m5m15m(); }, 25000);
         requestAnimationFrame(animateOrbitChartFrame);
       }, 40);
     })();
