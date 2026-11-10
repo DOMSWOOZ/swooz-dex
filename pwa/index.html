@@ -542,8 +542,8 @@
               <select id="orbit-wallet-select" onchange="onOrbitWalletSelectChange(this.value)"
                       class="bg-transparent text-white text-[11px] sm:text-xs font-mono font-semibold outline-none cursor-pointer w-full sm:w-auto min-w-0 truncate">
                 <option id="orbit-opt-all-wallets" value="all" class="bg-[#131722] text-white">6 Wallets (Encrypted Vault • PIN Locked)</option>
-                <option id="orbit-opt-krk-wallet" value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3776 ETH / $849.78 + 0.1332 SOL / $12.06)</option>
-                <option id="orbit-opt-cb-wallet" value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0436 ETH / $97.55 + Alts / $148.03)</option>
+                <option id="orbit-opt-krk-wallet" value="kraken-only" class="bg-[#131722] text-white">Kraken Pro (0.3225 ETH / $685.23 + 0.1332 SOL / $11.51)</option>
+                <option id="orbit-opt-cb-wallet" value="coinbase-only" class="bg-[#131722] text-white">Coinbase Adv (0.0051 ETH / $10.92 Reserve)</option>
                 <option id="orbit-opt-vaults-wallet" value="vaults-only" class="bg-[#131722] text-white">4 On-Chain Vaults (133 Mini Supers • $402.49 USD)</option>
                 <option value="unlock-pin" class="bg-[#131722] text-[#2dd4bf]">🔐 Unlock PIN ...</option>
               </select>
@@ -603,8 +603,8 @@
                 <div class="flex flex-wrap items-center gap-2">
                   <select id="orbit-portfolio-scope" onchange="setOrbitPortfolioScope(this.value)"
                           class="px-2.5 py-1.5 rounded-lg bg-[#1a2030] border border-white/10 text-xs text-[#c5cee0] font-medium outline-none cursor-pointer">
-                    <option id="orbit-scope-opt-swooz" value="swooz">Active Trading DEX ($956.85)</option>
-                    <option id="orbit-scope-opt-dex" value="kraken">Kraken Pro Only ($831.95)</option>
+                    <option id="orbit-scope-opt-swooz" value="swooz">Active Trading DEX ($707.66)</option>
+                    <option id="orbit-scope-opt-dex" value="kraken">Kraken Pro Only ($696.74)</option>
                     <option id="orbit-scope-opt-vaults" value="vaults">MetaMask &amp; Vaults ($402.49)</option>
                   </select>
 
@@ -634,7 +634,7 @@
                     <div id="orbit-chart-title-lbl" class="text-xs text-[#8b95a9] font-medium">Active DEX Capital (Kraken Pro + Coinbase)</div>
                   </div>
                   <div class="flex items-center gap-2.5">
-                    <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$956.85</div>
+                    <div id="orbit-networth-val" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">$707.66</div>
                     <button id="btn-privacy-eye-hero" onclick="togglePrivacyHideMode()" title="Hide / Show Total Net Worth &amp; Sensitive Info"
                             aria-label="Hide or Show Total Net Worth"
                             class="w-8 h-8 rounded-xl bg-[#181f30] hover:bg-[#232d45] border border-white/15 hover:border-[#00f5d4]/50 text-[#00f5d4] flex items-center justify-center transition cursor-pointer shrink-0 shadow-sm active:scale-95">
@@ -658,21 +658,21 @@
                     </span>
                     <span id="orbit-metamask-sub-val" class="text-amber-300 font-bold shrink-0">$402.49 <span class="text-[#8b95a9] font-normal text-[10px]">(133 NFTs + ETH)</span></span>
                   </div>
-                  <span id="hdr-total-eth" class="hidden">0.4212 ETH ($947.87)</span>
+                  <span id="hdr-total-eth" class="hidden">0.3275 ETH ($695.96)</span>
 
                   <!-- Mini Active Position Summary Pills (Token Amount + Live $USD Reference) -->
                   <div class="pt-2 grid grid-cols-2 gap-1.5 text-[10px] font-mono">
                     <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">ETH:</span>
-                      <span id="orbit-pill-eth-val" class="text-white font-bold">0.4212 ETH <span class="text-[#34d399]">($947.87)</span></span>
+                      <span id="orbit-pill-eth-val" class="text-white font-bold">0.3275 ETH <span class="text-[#34d399]">($695.96)</span></span>
                     </div>
                     <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">SOL:</span>
-                      <span id="orbit-pill-sol-val" class="text-white font-bold">0.7207 SOL <span class="text-[#34d399]">($65.23)</span></span>
+                      <span id="orbit-pill-sol-val" class="text-white font-bold">0.1332 SOL <span class="text-[#34d399]">($11.51)</span></span>
                     </div>
                     <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">CB ETH:</span>
-                      <span id="orbit-pill-alts-val" class="text-white font-bold">0.00088 / 2.37 <span class="text-[#34d399]">($94.80)</span></span>
+                      <span id="orbit-pill-alts-val" class="text-white font-bold">CB 0.0051 ETH <span class="text-[#34d399]">($10.92)</span></span>
                     </div>
                     <div class="px-2 py-1 rounded-lg bg-[#0e121b] border border-white/10 flex justify-between items-center gap-1">
                       <span class="text-[#8b95a9]">NFTs:</span>
@@ -919,26 +919,26 @@
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <div class="bg-[#0e121b] border border-white/10 rounded-xl p-2.5">
                       <div class="text-[#8b95a9] text-[11px]">Live Active DEX Capital</div>
-                      <div id="qb-kpi-total" class="text-base font-bold font-mono text-emerald-400 mt-0.5">$978.40 USD</div>
-                      <div id="qb-kpi-total-sub" class="text-[#8b95a9] text-[10.5px]">+$402.49 On-Chain Vaults = $1,380.89</div>
+                      <div id="qb-kpi-total" class="text-base font-bold font-mono text-emerald-400 mt-0.5">$707.66 USD</div>
+                      <div id="qb-kpi-total-sub" class="text-[#8b95a9] text-[10.5px]">+$402.49 On-Chain Vaults = $1,110.15</div>
                     </div>
                     <div class="bg-[#0e121b] border border-emerald-500/30 rounded-xl p-2.5">
                       <div class="text-[#8b95a9] text-[11px]">5 Kraken Pro Maker Sells</div>
-                      <div id="qb-kpi-upside" class="text-base font-bold font-mono text-white mt-0.5">$845.10 → $860.13</div>
-                      <div id="qb-kpi-upside-sub" class="text-emerald-400 text-[10.5px]">0.3712 ETH + 0.1332 SOL Armed</div>
+                      <div id="qb-kpi-upside" class="text-base font-bold font-mono text-white mt-0.5">$696.74 → $736.70</div>
+                      <div id="qb-kpi-upside-sub" class="text-emerald-400 text-[10.5px]">0.3225 ETH + 0.1332 SOL Armed</div>
                     </div>
                     <div class="bg-[#0e121b] border border-sky-500/30 rounded-xl p-2.5">
                       <div class="text-[#8b95a9] text-[11px]">Coinbase Consolidated ETH</div>
-                      <div id="qb-kpi-dip" class="text-base font-bold font-mono text-white mt-0.5">0.0559 ETH ($125.11)</div>
-                      <div id="qb-kpi-dip-sub" class="text-sky-400 text-[10.5px]">100% ETH Free + $8.00 Cash Reserve</div>
+                      <div id="qb-kpi-dip" class="text-base font-bold font-mono text-white mt-0.5">0.0051 ETH ($10.92)</div>
+                      <div id="qb-kpi-dip-sub" class="text-sky-400 text-[10.5px]">100% ETH Free + $0.19 Cash Reserve</div>
                     </div>
                   </div>
 
                   <!-- Live Dynamic Visual Allocation Bar -->
                   <div class="space-y-1">
                     <div class="flex justify-between font-mono text-[11px] flex-wrap gap-1">
-                      <span id="qb-bar-lbl-up" class="text-emerald-400 font-bold">▲ KRAKEN 5-LEG GRID: $845.10 (86.4%)</span>
-                      <span id="qb-bar-lbl-dip" class="text-sky-400 font-bold">🔵 COINBASE ETH + CASH: $133.11 (13.6%)</span>
+                      <span id="qb-bar-lbl-up" class="text-emerald-400 font-bold">▲ KRAKEN 5-LEG GRID: $696.74 (98.5%)</span>
+                      <span id="qb-bar-lbl-dip" class="text-sky-400 font-bold">🔵 COINBASE ETH + CASH: $10.92 (1.5%)</span>
                     </div>
                     <div class="w-full h-3.5 rounded-full overflow-hidden flex border border-white/10 bg-[#0e121b]">
                       <div id="qb-bar-seg-krk" style="width: 85.0%" class="bg-emerald-500 h-full transition-all duration-300" title="Kraken 5-Leg Maker Grid"></div>
@@ -946,8 +946,8 @@
                       <div id="qb-bar-seg-cash" style="width: 0.8%" class="bg-amber-500 h-full transition-all duration-300" title="USD Cash Reserve"></div>
                     </div>
                     <div id="qb-bar-foot" class="flex flex-wrap justify-between gap-2 text-[11px] text-[#8b95a9] pt-0.5">
-                      <span>🟢 <strong class="text-white">Kraken Pro</strong>: 0.3712 ETH + 0.1332 SOL (5 Post-Only Sells)</span>
-                      <span>🔵 <strong class="text-white">Coinbase Adv</strong>: 0.05592 ETH (100% Consolidated via Maker Fills)</span>
+                      <span>🟢 <strong class="text-white">Kraken Pro</strong>: 0.3225 ETH + 0.1332 SOL (5 Post-Only Sells)</span>
+                      <span>🔵 <strong class="text-white">Coinbase Adv</strong>: 0.00506 ETH ($10.92 Unlocked Reserve)</span>
                     </div>
                   </div>
 
@@ -1017,9 +1017,9 @@
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <div class="bg-[#0e121b] border border-emerald-500/30 rounded-xl p-3 space-y-1">
                       <div class="text-emerald-400 font-bold">1. Live Combined ETH Stack</div>
-                      <div id="qb-nft-stack-val" class="text-sm font-bold font-mono text-white">0.4271 ETH ($955.55)</div>
+                      <div id="qb-nft-stack-val" class="text-sm font-bold font-mono text-white">0.3275 ETH ($695.96)</div>
                       <p id="qb-nft-stack-desc" class="text-[#8b95a9] leading-relaxed">
-                        0.3712 ETH on Kraken Pro + 0.0559 ETH consolidated on Coinbase = <strong class="text-white">0.4271 ETH</strong> total liquid sniper power.
+                        0.3225 ETH on Kraken Pro + 0.0051 ETH on Coinbase = <strong class="text-white">0.3275 ETH</strong> total liquid sniper power.
                       </p>
                     </div>
                     <div class="bg-[#0e121b] border border-white/10 rounded-xl p-3 space-y-1">
@@ -1042,7 +1042,7 @@
                     <div class="text-[#8b95a9] text-[11px]">
                       🔒 <strong class="text-white">Privacy &amp; Security Architecture:</strong> Hosted on GitHub Pages with a <strong class="text-emerald-400">SHA-256 PIN-Encrypted Vault</strong> + Eye Privacy Masking + trade-only API keys (withdrawals disabled).
                     </div>
-                    <span id="qb-foot-stack" class="font-mono font-bold text-emerald-400">Combined Stack: 0.4271 ETH + 139 NFTs</span>
+                    <span id="qb-foot-stack" class="font-mono font-bold text-emerald-400">Combined Stack: 0.3275 ETH + 139 NFTs</span>
                   </div>
                 </div>
               </div>
@@ -1171,11 +1171,11 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#4f6ef7]/25 border border-[#4f6ef7] text-[#60a5fa] flex items-center justify-center text-xs font-bold shrink-0">🦑</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span id="orbit-plat-kraken-sub" class="text-[#8b95a9] font-normal">(0.3776 ETH / $844 + 0.1332 SOL / $12)</span></div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,162 • $2,208 • $2,284 • $2,312 + SOL @ $90.40 (+$18.74/cycle)</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span id="orbit-plat-kraken-sub" class="text-[#8b95a9] font-normal">(0.3225 ETH / $685 + 0.1332 SOL / $12)</span></div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,162 • $2,208 • $2,284 • $2,312 + SOL @ $90.40 (+$14.93/cycle)</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$863.20</div>
+                  <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$696.74</div>
                 </div>
 
                 <!-- Platform 2: Coinbase Advanced (Unlocked) -->
@@ -1183,11 +1183,11 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#a855f7]/25 border border-[#a855f7] text-[#c084fc] flex items-center justify-center text-xs font-bold shrink-0">🔵</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span id="orbit-plat-cb-sub" class="text-[#8b95a9] font-normal">(0.0436 ETH + 0.5874 SOL + BTC + LINK)</span></div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,272 • SOL @ $92.40 / $94.80 • BTC @ $76.8k • LINK @ $11.05 (+$6.88/cycle)</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span id="orbit-plat-cb-sub" class="text-[#8b95a9] font-normal">(0.0051 ETH + $0.19 Reserve)</span></div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">Unlocked ETH Reserve (0.00506 ETH • $88.00 Kraken Transfer Completed ✓)</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$242.71</div>
+                  <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$10.92</div>
                 </div>
 
                 <!-- Platform 3: Background Ethereum Vaults -->
@@ -2778,7 +2778,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=70', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=71', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -3403,7 +3403,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     // SHA-256 hash verification of Owner Vault PIN salted with 'swooz-dex-v6-vault' + encrypted fallback cipher
     const OWNER_PIN_VERIFY_HASH = 'c114067b1a286a757e978d0c4c9128fb982616d69d91a6179271c96691e40aeb';
-    const FALLBACK_VAULT_CIPHER = '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';
+    const FALLBACK_VAULT_CIPHER = '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';
 
     function pureJsSha256Bytes(asciiStr) {
       const K = [
@@ -3522,7 +3522,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (optAll) {
           optAll.textContent = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
             ? '6 Wallets (••••.eth • $••••••)'
-            : `6 Wallets (${ensName} • $1,587.97 USD)`;
+            : `6 Wallets (${ensName} • $${(CACHED_ORBIT_SPOT_TOTAL + 402.49).toFixed(2)} USD)`;
         }
         ownerEls.forEach(el => el.classList.remove('hidden'));
         lockTargets.forEach(id => {
@@ -3685,35 +3685,39 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           UNLOCKED_VAULT_DATA = decrypted;
           closePinModal();
 
-          const kEth = decrypted.kraken?.eth_balance || decrypted.kraken_eth || 0.3712;
-          const kZusd = decrypted.kraken?.usd_balance || 6.97;
-          const kTotalEthEquiv = kEth + (ETH_RATE > 0 ? (kZusd + 12.06) / ETH_RATE : 0);
+          const kEth = decrypted.kraken?.eth_balance ?? decrypted.kraken_eth ?? 0.322462;
+          const kSol = decrypted.kraken?.sol_balance ?? 0.133241;
+          const kZusd = decrypted.kraken?.usd_balance ?? 0.0022;
+          const kSolUsd = kSol * (typeof LIVE_SOL_RATE === 'number' && LIVE_SOL_RATE > 5 ? LIVE_SOL_RATE : 86.40);
+          const kTotalEthEquiv = kEth + (ETH_RATE > 0 ? (kZusd + kSolUsd) / ETH_RATE : 0);
           const wAddr = decrypted.owner_wallet || '';
           const wEns = decrypted.owner_ens || 'Primary Vault';
           const wEth = (decrypted.swooz_onchain?.eth || 0) + (decrypted.swooz_onchain?.weth || 0) || 0.00098;
           const msCount = decrypted.mini_supers_held || 132;
 
-          const cbTotalUsd = decrypted.coinbase?.total_usd || 242.38;
-          const cbEthEquiv = ETH_RATE > 0 ? cbTotalUsd / ETH_RATE : 0.10869;
+          const cbEth = decrypted.coinbase?.eth_balance ?? 0.005061;
+          const cbCash = decrypted.coinbase?.usdc_balance ?? 0.19;
+          const cbTotalUsd = decrypted.coinbase?.total_usd ?? (cbEth * ETH_RATE + cbCash);
+          const cbEthEquiv = ETH_RATE > 0 ? cbTotalUsd / ETH_RATE : cbEth;
 
           const coldVaults = Array.isArray(decrypted.cold_vaults) ? decrypted.cold_vaults : [];
 
           ACCOUNTS = [
             {
               id: 'kraken-main',
-              label: '🦑 Kraken Pro Profit-Scraper (5 Active Legs: L1B, L2, L1A, L1C, L4)',
-              address: '0.0566 ETH @ $2,254 | 0.0520 ETH @ $2,262 | 0.1151 ETH @ $2,284 | 0.0737 ETH @ $2,312 | 0.1332 SOL @ $90.40',
+              label: '🦑 Kraken Pro Profit-Scraper (5 Active Legs: L1B, L2, L1A, L1C, L3)',
+              address: '0.0817 ETH @ $2,162 | 0.0520 ETH @ $2,208 | 0.1151 ETH @ $2,284 | 0.0737 ETH @ $2,312 | 0.1332 SOL @ $90.40',
               eth: kTotalEthEquiv,
-              costUsd: 900.00,
+              costUsd: 812.00,
               miniSupers: 0,
               isOnChain: false
             },
             {
               id: 'coinbase-adv',
-              label: '🔵 Coinbase Advanced Profit-Scraper (5 Active Legs: L3, L5, L6, L7, L9)',
-              address: '0.0436 ETH @ $2,308 | 0.3025 SOL @ $92.40 | 0.2849 SOL @ $94.80 | BTC @ $76.8k | LINK @ $9.88',
+              label: '🔵 Coinbase Advanced Reserve (Unlocked ETH + Cash)',
+              address: '0.0051 ETH ($10.73) + $0.19 USDC/LINK Reserve ($88.00 Withdrawal Complete ✓)',
               eth: cbEthEquiv,
-              costUsd: 240.00,
+              costUsd: 11.00,
               miniSupers: 0,
               isOnChain: false
             },
@@ -3749,8 +3753,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             PRESET_NFTS['ms-928'].owner = cvAddr;
           }
 
-          ORBIT_PORTFOLIO_MODE = 'showcase';
-          if (typeof toggleOrbitPortfolioMode === 'function') toggleOrbitPortfolioMode();
+          ORBIT_PORTFOLIO_SCOPE = 'swooz';
+          if (typeof updateOrbitPortfolioTotals === 'function') updateOrbitPortfolioTotals();
+          if (typeof renderOrbitTokensTable === 'function') renderOrbitTokensTable();
+          if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
 
           applyVaultUiState();
           renderWalletPnl();
@@ -7007,14 +7013,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let ORBIT_HOVER_X = null; // Mouse or touch X coordinate on #orbit-networth-canvas
 
     function getLiveOrbitAssets() {
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2125.00;
       const solSpot = LIVE_SOL_RATE;
 
-      const krkEthVal = 0.371216 * ethSpot;
-      const cbEthVal = 0.055921 * ethSpot;
-      const solVal = 0.133241 * solSpot;
+      const krkEthQty = UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? 0.322462;
+      const cbEthQty = UNLOCKED_VAULT_DATA?.coinbase?.eth_balance ?? 0.005061;
+      const krkSolQty = UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.133241;
+      const krkEthVal = krkEthQty * ethSpot;
+      const cbEthVal = cbEthQty * ethSpot;
+      const solVal = krkSolQty * solSpot;
       const msVal = 400.33; // 133 Mini Supers @ $3.01 floor
-      const cashSabiVal = 6.97 + 1.03 + 2.16; // $8.00 ZUSD/USDC + $2.16 On-Chain ETH across 4 Vaults
+      const cashSabiVal = 0.0022 + 0.19 + 2.16; // Kraken ZUSD + Coinbase USDC/USD + $2.16 On-Chain ETH across 4 Vaults
 
       const list = [
         {
@@ -7029,9 +7038,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           netBg: '#f59e0b',
           netIcon: '🦑',
           platform: 'Kraken Pro (4 Legs: $2,162 / $2,208 / $2,284 / $2,312)',
-          amountTxt: `0.3712 ETH ($${krkEthVal.toFixed(2)})`,
+          amountTxt: `${krkEthQty.toFixed(4)} ETH ($${krkEthVal.toFixed(2)})`,
           usdVal: krkEthVal,
-          targetUsd: 848.09,
+          targetUsd: 724.65,
           chgTxt: `+$${Math.max(0, 2162.00 - ethSpot).toFixed(2)} to $2,162`,
           isUp: true,
           pair: 'ETHUSD'
@@ -7039,7 +7048,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         {
           id: 'cb-eth',
           symbol: 'ETH',
-          name: 'Ethereum (Coinbase Consolidated)',
+          name: 'Ethereum (Coinbase Reserve)',
           sub: 'ETH • 100% Unlocked Reserve',
           chain: 'BASE',
           scope: ['swooz', 'dex', 'coinbase', 'combined'],
@@ -7047,10 +7056,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           badgeTxt: '⟠',
           netBg: '#0052ff',
           netIcon: '🔵',
-          platform: 'Coinbase Adv (Consolidated SOL+LINK+BTC → 0.05592 ETH)',
-          amountTxt: `0.0559 ETH ($${cbEthVal.toFixed(2)})`,
+          platform: 'Coinbase Adv (0.00506 ETH Unlocked Reserve)',
+          amountTxt: `${cbEthQty.toFixed(4)} ETH ($${cbEthVal.toFixed(2)})`,
           usdVal: cbEthVal,
-          targetUsd: 0.055921 * 2312.00,
+          targetUsd: cbEthQty * 2312.00,
           chgTxt: `100% ETH Free (0 Hold)`,
           isUp: true,
           pair: 'ETHUSD'
@@ -7104,8 +7113,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           badgeTxt: '$',
           netBg: '#0f766e',
           netIcon: '🛡️',
-          platform: 'Kraken ($6.97 ZUSD) • Coinbase ($1.03 USDC) • 4 Vaults ($2.16 ETH)',
-          amountTxt: 'Cash + Gas ($10.16)',
+          platform: 'Kraken ($0.00 ZUSD) • Coinbase ($0.19 USDC) • 4 Vaults ($2.16 ETH)',
+          amountTxt: 'Cash + Gas ($2.35)',
           usdVal: cashSabiVal,
           targetUsd: cashSabiVal,
           chgTxt: '0.0% Reserve',
@@ -7180,8 +7189,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       ctx.restore();
     }
 
-    let CACHED_ORBIT_SPOT_TOTAL = 1606.96;
-    let CACHED_ORBIT_TARGET_TOTAL = 1695.66;
+    let CACHED_ORBIT_SPOT_TOTAL = 707.66;
+    let CACHED_ORBIT_TARGET_TOTAL = 748.59;
     let PRIVACY_HIDE_MODE = (function() {
       try { return localStorage.getItem('swooz_privacy_hide_v1') === '1'; } catch (e) { return false; }
     })();
@@ -7243,22 +7252,30 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
     function updateOrbitPortfolioTotals() {
       applyPrivacyEyeIcons();
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
-      const krkTotal = 0.371216 * ethSpot + 0.133241 * LIVE_SOL_RATE + 6.97;
-      const cbTotal = 0.055921 * ethSpot + 1.03;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2125.00;
+      const krkEthQty = UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? 0.322462;
+      const krkSolQty = UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.133241;
+      const krkZusd = UNLOCKED_VAULT_DATA?.kraken?.usd_balance ?? 0.0022;
+      const cbEthQty = UNLOCKED_VAULT_DATA?.coinbase?.eth_balance ?? 0.005061;
+      const cbCash = UNLOCKED_VAULT_DATA?.coinbase?.usdc_balance ?? 0.19;
+
+      const krkTotal = krkEthQty * ethSpot + krkSolQty * LIVE_SOL_RATE + krkZusd;
+      const cbTotal = cbEthQty * ethSpot + cbCash;
       const dexSpotTotal = krkTotal + cbTotal;
-      const dexTargetTotal = 848.09 + 12.05 + 6.97 + (0.055921 * 2312.00) + 1.03;
+      const krkTargetUsd = 724.65 + 12.05 + krkZusd; // $736.70 across 5 Kraken legs
+      const cbTargetUsd = (cbEthQty * 2312.00) + cbCash;
+      const dexTargetTotal = krkTargetUsd + cbTargetUsd;
       const vaultsTotal = 402.49; // 133 Mini Supers ($400.33) + 4 MetaMask On-Chain ETH ($2.16)
 
-      // Large headline number at top of DEX (#orbit-networth-val) excludes MetaMask / swooz.eth vaults by default
+      // Large headline number at top of DEX (#orbit-networth-val) excludes MetaMask / Primary vaults by default
       let spotTotal = dexSpotTotal;
       let targetTotal = dexTargetTotal;
       if (ORBIT_PORTFOLIO_SCOPE === 'kraken') {
         spotTotal = krkTotal;
-        targetTotal = 848.09 + 12.05 + 6.97;
+        targetTotal = krkTargetUsd;
       } else if (ORBIT_PORTFOLIO_SCOPE === 'coinbase') {
         spotTotal = cbTotal;
-        targetTotal = (0.055921 * 2312.00) + 1.03;
+        targetTotal = cbTargetUsd;
       } else if (ORBIT_PORTFOLIO_SCOPE === 'vaults') {
         spotTotal = vaultsTotal;
         targetTotal = vaultsTotal;
@@ -7287,7 +7304,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           : `<span>+${upsidePct}% (+$${upsideUsd.toFixed(2)} Hybrid Target)</span> <span class="text-[#8b95a9] font-normal">today</span>`;
       }
 
-      // Separate Smaller Number for swooz.eth & MetaMask Wallets
+      // Separate Smaller Number for Primary Vault & MetaMask Wallets
       const mmLblEl = document.getElementById('orbit-metamask-sub-lbl');
       const mmValEl = document.getElementById('orbit-metamask-sub-val');
       const ensUnlockedName = (VAULT_UNLOCKED && UNLOCKED_VAULT_DATA?.owner_ens) ? UNLOCKED_VAULT_DATA.owner_ens : 'Primary Vault';
@@ -7327,8 +7344,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (scopeVaults) scopeVaults.textContent = 'MetaMask & Vaults ($••••••)';
       } else {
         if (optAll) optAll.textContent = `Active DEX: $${dexSpotTotal.toFixed(2)} (+$${vaultsTotal.toFixed(2)} ${ensUnlockedName} / MetaMask)`;
-        if (optKrk) optKrk.textContent = `Kraken Pro (0.3712 ETH / $${(0.371216 * ethSpot).toFixed(2)} + 0.1332 SOL / $${(0.133241 * LIVE_SOL_RATE).toFixed(2)})`;
-        if (optCb) optCb.textContent = `Coinbase Adv (0.0559 ETH / $${(0.055921 * ethSpot).toFixed(2)} Consolidated)`;
+        if (optKrk) optKrk.textContent = `Kraken Pro (${krkEthQty.toFixed(4)} ETH / $${(krkEthQty * ethSpot).toFixed(2)} + ${krkSolQty.toFixed(4)} SOL / $${(krkSolQty * LIVE_SOL_RATE).toFixed(2)})`;
+        if (optCb) optCb.textContent = `Coinbase Adv (${cbEthQty.toFixed(4)} ETH / $${cbTotal.toFixed(2)} Reserve)`;
         if (optVaults) optVaults.textContent = `${ensUnlockedName} + MetaMask (133 NFTs • $${vaultsTotal.toFixed(2)} USD)`;
         if (scopeSwooz) scopeSwooz.textContent = `Active Trading DEX ($${dexSpotTotal.toFixed(2)})`;
         if (scopeDex) scopeDex.textContent = `Kraken Pro Only ($${krkTotal.toFixed(2)})`;
@@ -7343,9 +7360,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       if (vltValEl) vltValEl.textContent = PRIVACY_HIDE_MODE ? '$••••••' : '$402.49';
 
       const krkSubEl = document.getElementById('orbit-plat-kraken-sub');
-      if (krkSubEl) krkSubEl.textContent = PRIVACY_HIDE_MODE ? '(•••• ETH / $•••• + •••• SOL)' : `(0.3776 ETH / $${Math.round(0.377612 * ethSpot)} + 0.1332 SOL / $${Math.round(0.133241 * LIVE_SOL_RATE)})`;
+      if (krkSubEl) krkSubEl.textContent = PRIVACY_HIDE_MODE ? '(•••• ETH / $•••• + •••• SOL)' : `(${krkEthQty.toFixed(4)} ETH / $${Math.round(krkEthQty * ethSpot)} + ${krkSolQty.toFixed(4)} SOL / $${Math.round(krkSolQty * LIVE_SOL_RATE)})`;
       const cbSubEl = document.getElementById('orbit-plat-cb-sub');
-      if (cbSubEl) cbSubEl.textContent = PRIVACY_HIDE_MODE ? '(•••• ETH + •••• SOL + BTC + LINK)' : '(0.0436 ETH + 0.5874 SOL + BTC + LINK)';
+      if (cbSubEl) cbSubEl.textContent = PRIVACY_HIDE_MODE ? '(•••• ETH + $•••• Reserve)' : `(${cbEthQty.toFixed(4)} ETH + $${cbCash.toFixed(2)} Reserve)`;
       const bgVltEl = document.getElementById('orbit-card3-bg-vaults');
       if (bgVltEl) bgVltEl.textContent = PRIVACY_HIDE_MODE ? '🗄️ Background NFT Vaults: ••• NFTs ($••••••)' : '🗄️ Background NFT Vaults: 133 Mini Supers + 6 OG ($400.33)';
 
@@ -7355,31 +7372,32 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const kpiCycleSub = document.getElementById('orbit-kpi-cycle-sub');
       if (kpiBankedUsd) kpiBankedUsd.textContent = PRIVACY_HIDE_MODE ? '+$•••• USD' : '+$18.86 USD';
       if (kpiBankedEth) kpiBankedEth.textContent = PRIVACY_HIDE_MODE ? '+•••••• Free ETH Locked' : '+0.00782 Free ETH Locked';
-      if (kpiCycleUsd) kpiCycleUsd.textContent = PRIVACY_HIDE_MODE ? '+$•••• USD' : '+$25.62 USD';
-      if (kpiCycleSub) kpiCycleSub.textContent = PRIVACY_HIDE_MODE ? '+$•••• ETH + $•••• Alts' : '+$20.53 ETH + $5.09 Alts';
+      if (kpiCycleUsd) kpiCycleUsd.textContent = PRIVACY_HIDE_MODE ? '+$•••• USD' : '+$14.93 USD';
+      if (kpiCycleSub) kpiCycleSub.textContent = PRIVACY_HIDE_MODE ? '+$•••• ETH + $•••• SOL' : '+$14.76 ETH + $0.17 SOL';
 
       const ifFloorEl = document.getElementById('orbit-nft-floor-if');
       if (ifFloorEl) ifFloorEl.textContent = `Floor: 0.237 ETH ($${Math.round(0.237 * ethSpot)})`;
       const beastFloorEl = document.getElementById('orbit-nft-floor-beast');
       if (beastFloorEl) beastFloorEl.textContent = `Floor: 0.0695 ETH ($${Math.round(0.0695 * ethSpot)})`;
 
+      const totalEthCombined = krkEthQty + cbEthQty;
       const pillEthEl = document.getElementById('orbit-pill-eth-val');
       if (pillEthEl) {
         pillEthEl.innerHTML = PRIVACY_HIDE_MODE
           ? `•••• ETH <span class="text-[#34d399]">($••••)</span>`
-          : `0.4271 ETH <span class="text-[#34d399]">($${(0.427137 * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
+          : `${totalEthCombined.toFixed(4)} ETH <span class="text-[#34d399]">($${(totalEthCombined * ethSpot).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})</span>`;
       }
       const pillSolEl = document.getElementById('orbit-pill-sol-val');
       if (pillSolEl) {
         pillSolEl.innerHTML = PRIVACY_HIDE_MODE
           ? `•••• SOL <span class="text-[#34d399]">($••••)</span>`
-          : `0.1332 SOL <span class="text-[#34d399]">($${(0.133241 * LIVE_SOL_RATE).toFixed(2)})</span>`;
+          : `${krkSolQty.toFixed(4)} SOL <span class="text-[#34d399]">($${(krkSolQty * LIVE_SOL_RATE).toFixed(2)})</span>`;
       }
       const pillAltsEl = document.getElementById('orbit-pill-alts-val');
       if (pillAltsEl) {
         pillAltsEl.innerHTML = PRIVACY_HIDE_MODE
           ? `•••• ETH <span class="text-[#34d399]">($••••)</span>`
-          : `CB 0.0559 ETH <span class="text-[#34d399]">($${(0.055921 * ethSpot).toFixed(2)})</span>`;
+          : `CB ${cbEthQty.toFixed(4)} ETH <span class="text-[#34d399]">($${cbTotal.toFixed(2)})</span>`;
       }
       const pillNftsEl = document.getElementById('orbit-pill-nfts-val');
       if (pillNftsEl) {
@@ -7885,17 +7903,17 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     let ACTIVE_QUANT_SCENARIO = 'pump';
 
     function getLiveQuantBriefingStats() {
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2237.30;
-      const solSpot = (typeof LIVE_SOL_RATE === 'number' && LIVE_SOL_RATE > 5) ? LIVE_SOL_RATE : 89.10;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2125.00;
+      const solSpot = (typeof LIVE_SOL_RATE === 'number' && LIVE_SOL_RATE > 5) ? LIVE_SOL_RATE : 86.40;
 
-      const krkEthQty = 0.371216;
-      const krkSolQty = 0.133241;
-      const cbEthQty = 0.055921;
-      const cashUsd = 8.00; // $6.97 ZUSD + $1.03 USDC
+      const krkEthQty = UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? 0.322462;
+      const krkSolQty = UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.133241;
+      const cbEthQty = UNLOCKED_VAULT_DATA?.coinbase?.eth_balance ?? 0.005061;
+      const cashUsd = (UNLOCKED_VAULT_DATA?.kraken?.usd_balance ?? 0.0022) + (UNLOCKED_VAULT_DATA?.coinbase?.usdc_balance ?? 0.19);
       const vaultsUsd = 402.49;
 
       const krkGridSpotUsd = krkEthQty * ethSpot + krkSolQty * solSpot;
-      const krkGridTargetUsd = 169.10 + 114.61 + 373.15 + 191.22 + 12.05; // $860.13
+      const krkGridTargetUsd = 176.61 + 114.82 + 262.86 + 170.37 + 12.05; // $736.70
       const cbEthSpotUsd = cbEthQty * ethSpot;
       const dexActiveUsd = krkGridSpotUsd + cbEthSpotUsd + cashUsd;
       const totalPortfolioUsd = dexActiveUsd + vaultsUsd;
@@ -7907,9 +7925,9 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       const legs = [
         { id: 'L1B', label: '🦑 L1B Fast Bounce', qtyTxt: '0.0817 ETH', spot: ethSpot, isSol: false, sell: 2162.00, buy: 2112.00, yieldUsd: 3.18 },
         { id: 'L2',  label: '🦑 L2 Mid Recovery', qtyTxt: '0.0520 ETH', spot: ethSpot, isSol: false, sell: 2208.00, buy: 2158.00, yieldUsd: 2.02 },
-        { id: 'L1A', label: '🦑 L1A Main Core',  qtyTxt: '0.1151 ETH', spot: ethSpot, isSol: false, sell: 2284.00, buy: 2210.00, yieldUsd: 12.09 },
-        { id: 'L1C', label: '🦑 L1C Upper Swing',qtyTxt: '0.0817 ETH', spot: ethSpot, isSol: false, sell: 2312.00, buy: 2258.00, yieldUsd: 4.41 },
-        { id: 'L3',  label: '◎ L3 SOL Scalper', qtyTxt: '0.1332 SOL', spot: solSpot, isSol: true,  sell: 90.40,   buy: 88.40,   yieldUsd: 0.27 }
+        { id: 'L1A', label: '🦑 L1A Main Core',  qtyTxt: '0.1151 ETH', spot: ethSpot, isSol: false, sell: 2284.00, buy: 2210.00, yieldUsd: 6.47 },
+        { id: 'L1C', label: '🦑 L1C Upper Swing',qtyTxt: '0.0737 ETH', spot: ethSpot, isSol: false, sell: 2312.00, buy: 2258.00, yieldUsd: 3.09 },
+        { id: 'L3',  label: '◎ L3 SOL Scalper', qtyTxt: '0.1332 SOL', spot: solSpot, isSol: true,  sell: 90.40,   buy: 88.40,   yieldUsd: 0.17 }
       ];
 
       return {
@@ -8110,8 +8128,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (kpiTotal) kpiTotal.textContent = `$${s.dexActiveUsd.toFixed(2)} USD`;
         if (kpiTotalSub) kpiTotalSub.textContent = `+$${s.vaultsUsd.toFixed(2)} Vaults = $${s.totalPortfolioUsd.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
         if (kpiUp) kpiUp.textContent = `$${s.krkGridSpotUsd.toFixed(2)} → $${s.krkGridTargetUsd.toFixed(2)}`;
-        if (kpiUpSub) kpiUpSub.textContent = `+$${upSpread.toFixed(2)} to Exit (0.3712 ETH + 0.1332 SOL)`;
-        if (kpiDip) kpiDip.textContent = `0.0559 ETH ($${s.cbEthSpotUsd.toFixed(2)})`;
+        if (kpiUpSub) kpiUpSub.textContent = `+$${upSpread.toFixed(2)} to Exit (${s.krkEthQty.toFixed(4)} ETH + ${s.krkSolQty.toFixed(4)} SOL)`;
+        if (kpiDip) kpiDip.textContent = `${s.cbEthQty.toFixed(4)} ETH ($${s.cbEthSpotUsd.toFixed(2)})`;
         if (kpiDipSub) kpiDipSub.textContent = `100% ETH Free + $${s.cashUsd.toFixed(2)} Cash Reserve`;
         if (barUp) barUp.textContent = `▲ KRAKEN 5-LEG GRID: $${s.krkGridSpotUsd.toFixed(2)} (${krkPct}%)`;
         if (barDip) barDip.textContent = `🔵 COINBASE ETH + CASH: $${(s.cbEthSpotUsd + s.cashUsd).toFixed(2)} (${cbPct}%)`;
@@ -8141,7 +8159,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
 
         const cbRowHtml = `
           <tr class="bg-sky-500/5">
-            <td class="py-1.5 pr-2 font-bold text-sky-300">🔵 CB Consolidated Reserve <span class="text-[#8b95a9] font-normal">(${hide ? '••••' : '0.0559 ETH'})</span></td>
+            <td class="py-1.5 pr-2 font-bold text-sky-300">🔵 CB Unlocked Reserve <span class="text-[#8b95a9] font-normal">(${hide ? '••••' : (s.cbEthQty.toFixed(4) + ' ETH')})</span></td>
             <td class="py-1.5 px-2 text-white">$${s.ethSpot.toFixed(2)}</td>
             <td class="py-1.5 px-2 text-sky-300">100% Consolidated via Maker Fills (0 Hold)</td>
             <td class="py-1.5 px-2 text-right font-bold text-emerald-400">✅ FILLED</td>
