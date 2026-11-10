@@ -2778,7 +2778,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=71', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=72', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -3601,6 +3601,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     }
 
     let PIN_UNLOCK_BUSY = false;
+    let ACTIVE_SESSION_PIN = '';
 
     function pressPinDigit(d) {
       if (PIN_UNLOCK_BUSY) return;
@@ -3683,6 +3684,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
           VAULT_UNLOCKED = true;
           ACTIVE_VAULT_ROLE = 'owner';
           UNLOCKED_VAULT_DATA = decrypted;
+          ACTIVE_SESSION_PIN = cleanPin;
           closePinModal();
 
           const kEth = decrypted.kraken?.eth_balance ?? decrypted.kraken_eth ?? 0.322462;
@@ -6168,20 +6170,30 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     // Direct Browser Live Telemetry (Works 24/7 on GitHub Pages even when PC is off!)
     async function refreshTelemetry() {
       const btn = document.getElementById('btn-refresh');
-      btn.textContent = '⏳ Syncing...';
+      if (btn) btn.textContent = '⏳ Syncing...';
       try {
-        // 1. Try local/repo snapshot first if available
+        // 0. Purge any outdated Service Worker caches so live updates take effect immediately
         try {
-          const snapRes = await fetch('snapshot.json?t=' + Date.now());
+          if ('caches' in window) {
+            const keys = await caches.keys();
+            await Promise.all(keys.filter(k => k !== 'swooz-dex-v72').map(k => caches.delete(k)));
+          }
+          if ('serviceWorker' in navigator) {
+            const regs = await navigator.serviceWorker.getRegistrations();
+            regs.forEach(r => r.update());
+          }
+        } catch (e) {}
+
+        // 1. Fetch fresh snapshot.json with no-store cache busting
+        try {
+          const snapRes = await fetch('snapshot.json?t=' + Date.now(), { cache: 'no-store' });
           if (snapRes.ok) {
             const snap = await snapRes.json();
             LATEST_SNAPSHOT = snap;
             if (snap.eth_usd_rate) ETH_RATE = snap.eth_usd_rate;
-            const savedPin = localStorage.getItem('swooz_vault_pin_v1');
-            if (savedPin && !VAULT_UNLOCKED) {
-              await unlockWithPin(savedPin, true);
-            } else if (VAULT_UNLOCKED && savedPin) {
-              await unlockWithPin(savedPin, true);
+            const activePin = ACTIVE_SESSION_PIN || localStorage.getItem('swooz_vault_pin_v1');
+            if (activePin) {
+              await unlockWithPin(activePin, true);
             }
           }
         } catch (e) {}
@@ -6222,12 +6234,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (skimSellInput && document.activeElement !== skimSellInput) {
           skimSellInput.value = Math.round(ETH_RATE);
         }
+        if (typeof pollLiveKrakenMultiTicker === 'function') await pollLiveKrakenMultiTicker();
+        if (typeof updateOrbitPortfolioTotals === 'function') updateOrbitPortfolioTotals();
+        if (typeof renderOrbitTokensTable === 'function') renderOrbitTokensTable();
+        if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
         renderWalletPnl();
         updateCalc();
         updatePartnerStraddleCalc();
         updateSkimCalc();
       } catch (e) {}
-      btn.innerHTML = '<span>🔄</span> <span class="hidden sm:inline">Sync Live</span>';
+      if (btn) btn.innerHTML = '<span>🔄</span> <span class="hidden sm:inline">Sync Live ✓</span>';
     }
 
     ['in-if', 'in-cx', 'in-beast', 'in-walk'].forEach(id => {
