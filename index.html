@@ -316,42 +316,277 @@
       }
     }
 
+
     /* ============================================================================
-       🛸 SWOOZ // CYBERPUNK TACTICAL HUD v73.0 (FULL-APP 3-TAB COMMAND DECK)
+       🔩 GOOGLE FLOW EDITION // X-TRADER PANEL V4.2 RUGGEDIZED TACTICAL CHASSIS (v76.0)
        ============================================================================ */
     body {
-      background-color: #06080f !important;
+      background-color: #070b0e !important;
       background-image:
-        linear-gradient(rgba(0, 245, 212, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 245, 212, 0.025) 1px, transparent 1px),
-        radial-gradient(circle at 15% 10%, rgba(0, 245, 212, 0.09) 0%, transparent 40%),
-        radial-gradient(circle at 85% 20%, rgba(255, 42, 133, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(56, 189, 248, 0.07) 0%, transparent 50%) !important;
-      background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%, 100% 100% !important;
+        radial-gradient(ellipse at 12% 35%, rgba(180, 115, 40, 0.14) 0%, transparent 45%),
+        radial-gradient(ellipse at 88% 35%, rgba(28, 120, 88, 0.14) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, #10181d 0%, #06090c 100%) !important;
+      background-attachment: fixed !important;
     }
 
-    .orbit-card, .vcd-pod, #sec-targets, #sec-viewer, #sec-markets, #sec-calc, #sec-sales {
-      background: linear-gradient(180deg, rgba(14, 19, 31, 0.95) 0%, rgba(9, 13, 22, 0.98) 100%) !important;
-      border: 1px solid rgba(0, 245, 212, 0.18) !important;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(0, 245, 212, 0.12) !important;
+    /* Outer Rugged Gunmetal Monitor Frame */
+    .xtrader-chassis-shell {
+      position: relative;
+      max-width: 1700px;
+      margin: 10px auto 28px auto;
+      padding: 44px 22px 24px 22px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #2b3137 0%, #1e2328 35%, #171b1f 75%, #121619 100%);
+      border: 2.5px solid #3a424a;
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.92),
+        0 0 0 4px #0e1114,
+        inset 0 2px 1px rgba(255, 255, 255, 0.14),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Compact mode on small mobile screens (< 768px) unless toggled */
+    @media (max-width: 767px) {
+      .xtrader-chassis-shell {
+        margin: 4px auto 16px auto;
+        padding: 36px 8px 12px 8px;
+        border-radius: 18px;
+      }
+      .xtrader-side-clamp {
+        display: none !important;
+      }
+    }
+
+    body.bezel-compact-mode .xtrader-chassis-shell {
+      padding: 8px !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    body.bezel-compact-mode .xtrader-top-bezel,
+    body.bezel-compact-mode .xtrader-corner-clamp,
+    body.bezel-compact-mode .xtrader-side-clamp,
+    body.bezel-compact-mode .xtrader-bottom-stand {
+      display: none !important;
+    }
+
+    /* Machined Corner Gusset Clamps */
+    .xtrader-corner-clamp {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #384047 0%, #22272c 100%);
+      border: 1.5px solid #4a545d;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.18);
+      z-index: 30;
+      pointer-events: none;
+    }
+    .xtrader-corner-tl { top: -4px; left: -4px; border-radius: 20px 6px 12px 6px; }
+    .xtrader-corner-tr { top: -4px; right: -4px; border-radius: 6px 20px 6px 12px; }
+    .xtrader-corner-bl { bottom: -4px; left: -4px; border-radius: 6px 12px 6px 20px; }
+    .xtrader-corner-br { bottom: -4px; right: -4px; border-radius: 12px 6px 20px 6px; }
+
+    /* Hex Socket Bolt Heads */
+    .xtrader-bolt {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #58626b 0%, #1c2024 75%);
+      border: 1px solid #101316;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    /* Mid-Rail Side Clamps */
+    .xtrader-side-clamp {
+      position: absolute;
+      width: 24px;
+      height: 68px;
+      background: linear-gradient(90deg, #323940 0%, #20252a 100%);
+      border: 1.5px solid #454f58;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.14);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      z-index: 30;
+      pointer-events: none;
+    }
+    .xtrader-side-left-top { left: -7px; top: 28%; }
+    .xtrader-side-left-bot { left: -7px; top: 66%; }
+    .xtrader-side-right-top { right: -7px; top: 28%; }
+    .xtrader-side-right-bot { right: -7px; top: 66%; }
+
+    /* Top Hardware Sensor & Telemetry Bar */
+    .xtrader-top-bezel {
+      position: absolute;
+      top: 0;
+      left: 44px;
+      right: 44px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      z-index: 35;
+      user-select: none;
+    }
+
+    /* Left LED Array & Grille Pod */
+    .xtrader-led-pod {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(180deg, #13171a 0%, #1b2025 100%);
+      border: 1px solid #343c44;
+      border-radius: 7px;
+      padding: 4px 12px;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.85);
+    }
+    .xtrader-led-amber {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fbbf24;
+      box-shadow: 0 0 8px #f59e0b, 0 0 14px rgba(245, 158, 11, 0.7);
+    }
+    .xtrader-led-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #10b981, 0 0 14px rgba(16, 185, 129, 0.7);
+    }
+    .xtrader-speaker-mesh {
+      width: 48px;
+      height: 11px;
+      background-image: radial-gradient(#090b0d 1.25px, transparent 1.25px);
+      background-size: 4px 4px;
+      opacity: 0.85;
+    }
+
+    /* Center Optical Sensor + Coax Assembly */
+    .xtrader-optic-assembly {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+    .xtrader-coax-cables {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-right: -2px;
+    }
+    .xtrader-coax-line {
+      width: 44px;
+      height: 5px;
+      border-radius: 3px 0 0 3px;
+      background: repeating-linear-gradient(90deg, #16191d 0px, #16191d 3px, #262c32 3px, #262c32 5px);
+      border-top: 1px solid #3a424a;
+      border-bottom: 1px solid #0b0d0f;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .xtrader-coax-ferrule {
+      width: 10px;
+      height: 6px;
+      background: linear-gradient(180deg, #cbd5e1 0%, #64748b 50%, #334155 100%);
+      border: 1px solid #1e293b;
+      border-radius: 1px;
+    }
+    .xtrader-optic-pod {
+      background: linear-gradient(180deg, #2a3036 0%, #191d21 100%);
+      border: 1.5px solid #454e57;
+      border-radius: 7px;
+      padding: 4px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+    .xtrader-optic-lens {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 35%, #38bdf8 0%, #0f172a 45%, #020617 80%);
+      border: 2.5px solid #333b42;
+      box-shadow: inset 0 0 5px rgba(56, 189, 248, 0.6), 0 0 6px rgba(0,0,0,0.9);
+    }
+
+    /* Right Diagonal Louver Vent + AUTOMATED Stencil */
+    .xtrader-louver-box {
+      width: 150px;
+      height: 20px;
+      border-radius: 5px;
+      background: repeating-linear-gradient(
+        -58deg,
+        #111518 0px,
+        #111518 5px,
+        #252b31 5px,
+        #252b31 9px
+      );
+      border: 1px solid #343c44;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.85);
+    }
+
+    /* Inner Petrol-Slate Screen Display Surface */
+    .xtrader-screen-surface {
+      background:
+        radial-gradient(ellipse at 50% 8%, rgba(36, 82, 92, 0.34) 0%, transparent 58%),
+        radial-gradient(ellipse at 85% 22%, rgba(194, 112, 48, 0.10) 0%, transparent 48%),
+        linear-gradient(180deg, #101d23 0%, #0c161b 55%, #091115 100%) !important;
+      border: 2px solid #0a0e11;
+      border-radius: 16px;
+      box-shadow:
+        inset 0 0 32px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(148, 184, 194, 0.12);
+      padding: 14px 16px 20px 16px;
       position: relative;
     }
 
-    /* Tactical HUD Corner Brackets on Main Cards */
+    /* Interior Cards: Google Flow Deep Petrol-Slate & Warm Gunmetal Surface */
+    .orbit-card, .vcd-pod, #sec-targets, #sec-viewer, #sec-markets, #sec-calc, #sec-sales {
+      background: linear-gradient(180deg, rgba(21, 34, 41, 0.94) 0%, rgba(14, 24, 30, 0.97) 100%) !important;
+      border: 1px solid rgba(138, 178, 190, 0.16) !important;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+      position: relative;
+    }
+
+    /* Left Floating Sidebar Panel (Matches Google Flow Render) */
+    #orbit-sidebar-aside {
+      background: linear-gradient(180deg, #192931 0%, #132027 65%, #101b21 100%) !important;
+      border: 1px solid rgba(148, 188, 198, 0.18) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Sage-Emerald Active Sidebar Pill (Matches Google Flow Render) */
+    .orbit-nav-active {
+      background: linear-gradient(90deg, rgba(45, 168, 126, 0.36) 0%, rgba(32, 118, 90, 0.18) 100%) !important;
+      border: 1px solid rgba(74, 222, 172, 0.45) !important;
+      color: #6ee7b7 !important;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.18), inset 3px 0 0 #34d399 !important;
+    }
+
+    /* Tactical HUD Bracket Cards */
     .hud-bracket-card {
       position: relative;
-      background: linear-gradient(180deg, rgba(13, 18, 30, 0.96) 0%, rgba(8, 11, 20, 0.99) 100%);
-      border: 1px solid rgba(0, 245, 212, 0.24);
+      background: linear-gradient(180deg, rgba(19, 31, 38, 0.96) 0%, rgba(13, 22, 28, 0.99) 100%);
+      border: 1px solid rgba(138, 178, 190, 0.22);
       border-radius: 14px;
-      box-shadow: 0 0 28px rgba(0, 245, 212, 0.07), 0 14px 36px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
     .hud-bracket-card::before {
       content: '';
       position: absolute;
       top: -1px; left: -1px;
       width: 14px; height: 14px;
-      border-top: 2px solid #00f5d4;
-      border-left: 2px solid #00f5d4;
+      border-top: 2px solid #34d399;
+      border-left: 2px solid #34d399;
       border-top-left-radius: 14px;
       pointer-events: none;
     }
@@ -360,48 +595,67 @@
       position: absolute;
       bottom: -1px; right: -1px;
       width: 14px; height: 14px;
-      border-bottom: 2px solid #ff2a85;
-      border-right: 2px solid #ff2a85;
+      border-bottom: 2px solid #e07a47;
+      border-right: 2px solid #e07a47;
       border-bottom-right-radius: 14px;
       pointer-events: none;
     }
 
-    /* Tactical Top Mode Tab Buttons */
+    /* 3-Tab Command Deck Buttons (Matches Google Flow Render) */
     .cyber-tab-btn {
       position: relative;
-      background: rgba(15, 21, 35, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(16, 26, 32, 0.92);
+      border: 1px solid rgba(148, 184, 194, 0.16);
       color: #94a3b8;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .cyber-tab-btn:hover {
-      border-color: rgba(0, 245, 212, 0.45);
+      border-color: rgba(224, 122, 71, 0.55);
       color: #f8fafc;
       transform: translateY(-1px);
     }
     .cyber-tab-active {
-      background: linear-gradient(135deg, rgba(0, 245, 212, 0.18) 0%, rgba(56, 189, 248, 0.12) 55%, rgba(255, 42, 133, 0.15) 100%) !important;
-      border: 1px solid #00f5d4 !important;
+      background: linear-gradient(135deg, rgba(45, 168, 126, 0.22) 0%, rgba(28, 88, 96, 0.24) 100%) !important;
+      border: 1.5px solid #34d399 !important;
       color: #ffffff !important;
-      box-shadow: 0 0 22px rgba(0, 245, 212, 0.22), inset 0 0 12px rgba(0, 245, 212, 0.1) !important;
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.18), inset 0 0 12px rgba(52, 211, 153, 0.08) !important;
+    }
+    /* When Tab 03 (NFT Command Studio) is active, give it the warm Copper-Amber glow from the Google Flow render! */
+    #cyber-tab-3.cyber-tab-active {
+      background: linear-gradient(135deg, rgba(217, 107, 56, 0.24) 0%, rgba(140, 58, 38, 0.20) 60%, rgba(28, 44, 52, 0.9) 100%) !important;
+      border: 1.5px solid #e07a47 !important;
+      box-shadow: 0 0 22px rgba(224, 122, 71, 0.25), inset 0 0 12px rgba(224, 122, 71, 0.10) !important;
     }
 
-    /* NFT Studio Interactive Card */
+    /* Google Flow Physical Gunmetal NFT Cards with Inset Off-White/Silver Mat Frame */
     .cyber-nft-card {
-      background: linear-gradient(180deg, rgba(17, 23, 38, 0.95) 0%, rgba(10, 14, 24, 0.98) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 14px;
+      background: linear-gradient(180deg, #232d35 0%, #192127 60%, #141b20 100%);
+      border: 1.5px solid rgba(168, 190, 202, 0.22);
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.09);
       transition: all 0.2s ease;
     }
     .cyber-nft-card:hover {
-      border-color: #00f5d4;
+      border-color: #5eead4;
       transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(0, 245, 212, 0.18);
+      box-shadow: 0 12px 28px rgba(45, 212, 191, 0.22);
     }
     .cyber-nft-card-active {
-      border: 1.5px solid #00f5d4 !important;
-      box-shadow: 0 0 24px rgba(0, 245, 212, 0.28) !important;
+      border: 2px solid #5eead4 !important;
+      box-shadow: 0 0 26px rgba(94, 234, 212, 0.32), inset 0 0 10px rgba(94, 234, 212, 0.12) !important;
     }
+    .cyber-nft-img-mat {
+      padding: 5px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+    .cyber-nft-img-mat img {
+      border-radius: 6px;
+    }
+
+
 
   </style>
 </head>
@@ -411,7 +665,80 @@
        🌌 ORBIT // SWOOZ TRACKER & MULTI-CHAIN DEX v6.0 (FLOW RENDER FULL-FEATURED DASHBOARD)
        1:1 Visual, GUI & UX Implementation of the Flow Render + Full README Feature Integration
        ========================================================================================== -->
-  <div id="orbit-app-wrapper" class="max-w-[1640px] mx-auto px-2 sm:px-4 pt-2 sm:pt-3 pb-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
+  <div id="orbit-app-wrapper" class="px-1 sm:px-3 pt-1 pb-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
+    <!-- 🔩 GOOGLE FLOW X-TRADER PANEL V4.2 RUGGEDIZED MONITOR CHASSIS -->
+    <div id="xtrader-chassis-shell" class="xtrader-chassis-shell">
+      <!-- 4 Corner Machined Steel Clamps with Hex Bolts -->
+      <div class="xtrader-corner-clamp xtrader-corner-tl flex items-start justify-between p-2">
+        <span class="xtrader-bolt"></span><span class="xtrader-bolt"></span>
+      </div>
+      <div class="xtrader-corner-clamp xtrader-corner-tr flex items-start justify-between p-2">
+        <span class="xtrader-bolt"></span><span class="xtrader-bolt"></span>
+      </div>
+      <div class="xtrader-corner-clamp xtrader-corner-bl flex items-end justify-between p-2">
+        <span class="xtrader-bolt"></span><span class="xtrader-bolt"></span>
+      </div>
+      <div class="xtrader-corner-clamp xtrader-corner-br flex items-end justify-between p-2">
+        <span class="xtrader-bolt"></span><span class="xtrader-bolt"></span>
+      </div>
+
+      <!-- 4 Side Mid-Rail Clamps -->
+      <div class="xtrader-side-clamp xtrader-side-left-top"><span class="xtrader-bolt"></span><span class="xtrader-bolt"></span></div>
+      <div class="xtrader-side-clamp xtrader-side-left-bot"><span class="xtrader-bolt"></span><span class="xtrader-bolt"></span></div>
+      <div class="xtrader-side-clamp xtrader-side-right-top"><span class="xtrader-bolt"></span><span class="xtrader-bolt"></span></div>
+      <div class="xtrader-side-clamp xtrader-side-right-bot"><span class="xtrader-bolt"></span><span class="xtrader-bolt"></span></div>
+
+      <!-- Top Hardware Telemetry & Optical Sensor Bar (X-TRADER PANEL V4.2 // AUTOMATED) -->
+      <div class="xtrader-top-bezel">
+        <!-- Left LED Status Cluster + Speaker Mesh + Engraved Model Label -->
+        <div class="flex items-center gap-3">
+          <div class="xtrader-led-pod" title="Hardware Telemetry LEDs: Power, Kraken Pro API, Ethereum RPC, Scraper Daemon">
+            <span class="xtrader-led-amber"></span>
+            <span class="xtrader-led-amber"></span>
+            <span class="xtrader-led-green animate-pulse"></span>
+            <span class="xtrader-led-green"></span>
+            <div class="xtrader-speaker-mesh hidden sm:block ml-1"></div>
+          </div>
+          <div class="hidden md:flex flex-col leading-none">
+            <span class="font-mono text-[10px] font-extrabold tracking-[0.18em] text-slate-300/90">X-TRADER PANEL V4.2</span>
+            <span class="font-mono text-[8px] tracking-[0.12em] text-slate-400/70">SWOOZ TACTICAL WORKSTATION</span>
+          </div>
+        </div>
+
+        <!-- Center Twin Coax Cable & Optical Sensor Module -->
+        <div class="hidden sm:flex items-center gap-4">
+          <div class="hidden lg:flex flex-col gap-1 w-24 px-2 py-1 rounded bg-[#121619] border border-[#2e353d]">
+            <div class="h-0.5 bg-[#2a3138] rounded"></div>
+            <div class="h-0.5 bg-[#2a3138] rounded"></div>
+          </div>
+          <div class="xtrader-optic-assembly">
+            <div class="xtrader-coax-cables">
+              <div class="xtrader-coax-line"><span class="xtrader-coax-ferrule"></span></div>
+              <div class="xtrader-coax-line"><span class="xtrader-coax-ferrule"></span></div>
+            </div>
+            <div class="xtrader-optic-pod">
+              <span class="xtrader-bolt"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+              <div class="xtrader-optic-lens"></div>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="xtrader-bolt"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Diagonal Cooling Louvers + AUTOMATED Stencil + Bezel Toggle -->
+        <div class="flex items-center gap-3">
+          <div class="xtrader-louver-box hidden xl:block"></div>
+          <button type="button" onclick="document.body.classList.toggle('bezel-compact-mode')"
+                  title="Click to Toggle Ruggedized Hardware Chassis Bezel"
+                  class="px-2.5 py-1 rounded bg-[#181d22] hover:bg-[#222930] border border-[#3a434c] font-mono text-[10px] font-extrabold tracking-[0.2em] text-slate-300 hover:text-amber-300 transition cursor-pointer">
+            AUTOMATED
+          </button>
+        </div>
+      </div>
+
+      <!-- Inner Curved Petrol-Slate Display Screen -->
+      <div class="xtrader-screen-surface">
     <div class="flex flex-col xl:flex-row gap-3 sm:gap-4 items-start">
 
       <!-- ================= ADAPTIVE NAVIGATION (Compact Single-Row Ribbon on Cover & Inner Fold, Left Sidebar on Desktop >=1180px) ================= -->
@@ -419,7 +746,19 @@
         <div>
           <!-- SWOOZ Isometric1 Shirt Screenprint Brand Header -->
           <div id="orbit-sidebar-brand-row" class="flex items-center justify-between xl:justify-start gap-2 px-0.5 pb-3 mb-2.5 border-b border-white/10 overflow-hidden">
-            <div class="ansi-logo-wrap cursor-pointer select-none" onclick="switchOrbitSidebar('dashboard')" title="SWOOZ // Isometric1 Screenprint Logo">
+            <div class="ansi-logo-wrap w-full cursor-pointer select-none flex flex-col items-center" onclick="switchOrbitSidebar('dashboard')" title="SWOOZ // X-TRADER PANEL V4.2">
+              <!-- Google Flow 3D Isometric Layered Hex-Shield Emblem -->
+              <div class="hidden xl:flex flex-col items-center justify-center py-1.5">
+                <svg class="w-11 h-11 drop-shadow-[0_4px_12px_rgba(245,158,11,0.22)]" viewBox="0 0 64 64" fill="none">
+                  <polygon points="32,4 54,18 32,32 10,18" fill="#cbd5e1" opacity="0.92"/>
+                  <polygon points="10,18 32,32 32,58 10,42" fill="#94a3b8" opacity="0.88"/>
+                  <polygon points="54,18 32,32 32,58 54,42" fill="#64748b" opacity="0.92"/>
+                  <line x1="18" y1="13" x2="40" y2="27" stroke="#0f172a" stroke-width="2"/>
+                  <line x1="25" y1="9" x2="47" y2="23" stroke="#0f172a" stroke-width="2"/>
+                  <line x1="32" y1="32" x2="32" y2="58" stroke="#0f172a" stroke-width="2.2"/>
+                  <polygon points="32,12 44,20 32,28 20,20" fill="#f59e0b" opacity="0.85"/>
+                </svg>
+              </div>
               <svg class="w-0 h-0 absolute pointer-events-none" aria-hidden="true">
                 <defs>
                   <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -486,8 +825,8 @@
             </button>
 
             <button id="orbit-nav-viewer" onclick="switchOrbitSidebar('viewer')"
-                    class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
-              <span class="text-xs shrink-0">🗄️</span>
+                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
+              <span class="text-sm shrink-0">🗄️</span>
               <span class="whitespace-nowrap">NFT Vaults</span>
             </button>
 
@@ -660,10 +999,11 @@
               <button id="btn-orbit-voice-mic"><span id="orbit-voice-mic-icon">🎙️</span><span id="orbit-voice-mic-lbl">Muted</span></button>
             </div>
 
-            <button onclick="onVaultButtonClick()" title="Unlock Owner Vault (PIN Locked)"
-                    class="px-2.5 py-2 rounded-xl bg-[#131722] hover:bg-[#1c2233] border border-white/10 text-xs text-[#8b95a9] hover:text-white flex items-center gap-1.5 transition cursor-pointer shrink-0">
+            <button onclick="onVaultButtonClick()" title="Mainnet Gas Telemetry &amp; Vault Lock"
+                    style="background: linear-gradient(180deg, #d99132 0%, #a86819 100%); border-color: #f3b55a;"
+                    class="px-3 py-2 rounded-xl border text-xs text-amber-50 hover:brightness-110 flex items-center gap-1.5 shadow-[0_0_16px_rgba(217,145,50,0.35)] transition cursor-pointer shrink-0">
               <span>🔔</span>
-              <strong id="orbit-gas-gwei" class="text-white font-mono">18 Gwei</strong>
+              <strong id="orbit-gas-gwei" class="text-white font-mono font-extrabold">1 Gwei</strong>
             </button>
           </div>
         </div>
@@ -694,10 +1034,10 @@
             <button id="cyber-tab-3" onclick="switchCyberAppTab('nft-studio')"
                     class="cyber-tab-btn px-2.5 sm:px-4 py-2.5 rounded-xl font-mono text-left flex items-center justify-between gap-2 cursor-pointer">
               <div class="min-w-0">
-                <div class="text-[9.5px] uppercase tracking-widest text-[#ff2a85] font-bold truncate">TAB 03 // VAULT &amp; SNIPER</div>
+                <div class="text-[9.5px] uppercase tracking-widest text-orange-400 font-bold truncate">TAB 03 // VAULT &amp; SNIPER</div>
                 <div class="text-xs sm:text-sm font-extrabold truncate">🧬 NFT Command Studio</div>
               </div>
-              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded bg-pink-500/20 border border-pink-400/40 text-pink-300 text-[10px] font-bold shrink-0">144 HELD • 0 TARGETS</span>
+              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded bg-orange-500/25 border border-orange-400/50 text-amber-200 text-[10px] font-bold shrink-0">144 HELD • 0 TARGETS</span>
             </button>
           </div>
 
@@ -2171,34 +2511,34 @@
         <!-- 🛸 CYBERPUNK TACTICAL NFT COMMAND STUDIO: LIVE BURN TELEMETRY + INTERACTIVE CARD GRID -->
         <div id="cyber-nft-studio-deck" class="space-y-4">
 
-          <!-- 1. LIVE ON-CHAIN BURN & AUCTION TELEMETRY BANNER (burn.invisiblefriends.io + TOS Staking Freeze) -->
+          <!-- 1. LIVE ON-CHAIN BURN & AUCTION TELEMETRY BANNER (Google Flow Amber/Copper Edition) -->
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 font-mono text-xs">
-            <div class="lg:col-span-7 bg-[#090d16] border border-[#00f5d4]/40 rounded-xl p-3 flex flex-col justify-between gap-2">
+            <div class="lg:col-span-7 bg-[#121c22] border border-amber-500/35 rounded-xl p-3 flex flex-col justify-between gap-2 shadow-inner">
               <div class="flex items-center justify-between flex-wrap gap-1">
                 <div class="flex items-center gap-2">
-                  <span class="px-2 py-0.5 rounded bg-[#00f5d4]/20 text-[#00f5d4] font-bold text-[10px]">🔥 LIVE MANIFOLD BURN AUCTION</span>
-                  <span class="font-bold text-white">24" Large Invisible Friend + 8" IF.01.SHORT Raffle</span>
+                  <span class="px-2.5 py-0.5 rounded bg-amber-500/25 border border-amber-400/50 text-amber-300 font-bold text-[10px]">🔥 LIVE MANIFOLD BURN AUCTION</span>
+                  <span class="font-bold text-slate-100">24" Large Invisible Friend + 8" IF.01.SHORT Raffle</span>
                 </div>
-                <a href="https://burn.invisiblefriends.io" target="_blank" class="text-[#00f5d4] hover:underline text-[11px] font-bold">burn.invisiblefriends.io ↗</a>
+                <a href="https://burn.invisiblefriends.io" target="_blank" class="text-amber-300 hover:underline text-[11px] font-bold">burn.invisiblefriends.io ↗</a>
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
-                <div class="bg-[#111726] border border-white/10 rounded-lg p-2">
+                <div class="bg-[#0b1115] border border-white/10 rounded-lg p-2.5">
                   <div class="text-[9.5px] text-slate-400">TOP BID LOCKED</div>
-                  <div id="nft-studio-top-bid" class="text-sm font-extrabold text-[#10f1b6]">72 Walks</div>
-                  <div id="nft-studio-bid-count" class="text-[9.5px] text-slate-400">38 Bids • 5 Whales</div>
+                  <div id="nft-studio-top-bid" class="text-sm font-extrabold text-amber-300">83 Walks</div>
+                  <div id="nft-studio-bid-count" class="text-[9.5px] text-slate-400">52 Bids • 13 Whales</div>
                 </div>
-                <div class="bg-[#111726] border border-white/10 rounded-lg p-2">
+                <div class="bg-[#0b1115] border border-white/10 rounded-lg p-2.5">
                   <div class="text-[9.5px] text-slate-400">THE WALK #1 SUPPLY</div>
                   <div class="text-sm font-extrabold text-white">16,969 Left</div>
-                  <div class="text-[9.5px] text-rose-400">3,454+ Burned Forever</div>
+                  <div class="text-[9.5px] text-orange-400">3,454+ Burned Forever</div>
                 </div>
-                <div class="bg-[#111726] border border-white/10 rounded-lg p-2">
+                <div class="bg-[#0b1115] border border-white/10 rounded-lg p-2.5">
                   <div class="text-[9.5px] text-slate-400">THE BALLER (#2)</div>
-                  <div class="text-sm font-extrabold text-cyan-300">1,727 Minted</div>
+                  <div class="text-sm font-extrabold text-slate-100">1,727 Minted</div>
                   <div class="text-[9.5px] text-slate-400">2x Walks Burned Each</div>
                 </div>
-                <div class="bg-[#111726] border border-emerald-500/30 rounded-lg p-2">
-                  <div class="text-[9.5px] text-emerald-300">YOUR VAULT STACK</div>
+                <div class="bg-[#0b1115] border border-amber-500/30 rounded-lg p-2.5">
+                  <div class="text-[9.5px] text-amber-300">YOUR VAULT STACK</div>
                   <div class="text-sm font-extrabold text-emerald-400">3x Walk #1</div>
                   <div class="text-[9.5px] text-slate-300">Floor $5.33 (~$16.00)</div>
                 </div>
@@ -2206,28 +2546,28 @@
             </div>
 
             <!-- TOS - The Other Side Nostalgia & Supply Lock Telemetry Card -->
-            <div class="lg:col-span-5 bg-[#090d16] border border-[#ff2a85]/40 rounded-xl p-3 flex flex-col justify-between gap-2">
+            <div class="lg:col-span-5 bg-[#121c22] border border-orange-500/35 rounded-xl p-3 flex flex-col justify-between gap-2 shadow-inner">
               <div class="flex items-center justify-between flex-wrap gap-1">
                 <div class="flex items-center gap-2">
-                  <span class="px-2 py-0.5 rounded bg-[#ff2a85]/20 text-[#ff2a85] font-bold text-[10px]">🌙 THE OTHER SIDE (TOS)</span>
-                  <span class="font-bold text-white">2022 Full-Circle Vault Sweep</span>
+                  <span class="px-2.5 py-0.5 rounded bg-orange-500/25 border border-orange-400/50 text-orange-300 font-bold text-[10px]">🌙 THE OTHER SIDE (TOS)</span>
+                  <span class="font-bold text-slate-100">2022 Full-Circle Vault Sweep</span>
                 </div>
-                <a href="https://opensea.io/collection/tos-theotherside" target="_blank" class="text-pink-400 hover:underline text-[11px] font-bold">OpenSea ↗</a>
+                <a href="https://opensea.io/collection/tos-theotherside" target="_blank" class="text-orange-300 hover:underline text-[11px] font-bold">OpenSea ↗</a>
               </div>
               <div class="grid grid-cols-3 gap-2 text-[11px]">
-                <div class="bg-[#111726] border border-pink-500/30 rounded-lg p-2">
+                <div class="bg-[#0b1115] border border-orange-500/30 rounded-lg p-2.5">
                   <div class="text-[9.5px] text-slate-400">HELD IN VAULT</div>
-                  <div class="text-sm font-extrabold text-pink-300">#1650 &amp; #1002</div>
+                  <div class="text-sm font-extrabold text-orange-300">#1650 &amp; #1002</div>
                   <div class="text-[9.5px] text-emerald-400">Paid 0.0021 ETH ($4.29)</div>
                 </div>
-                <div class="bg-[#111726] border border-white/10 rounded-lg p-2">
+                <div class="bg-[#0b1115] border border-white/10 rounded-lg p-2.5">
                   <div class="text-[9.5px] text-slate-400">FEB 2022 SPENT</div>
                   <div class="text-sm font-extrabold text-amber-300">0.937 ETH</div>
                   <div class="text-[9.5px] text-slate-400">#2699 &amp; #613 ($2,628)</div>
                 </div>
-                <div class="bg-[#111726] border border-white/10 rounded-lg p-2">
+                <div class="bg-[#0b1115] border border-white/10 rounded-lg p-2.5">
                   <div class="text-[9.5px] text-slate-400">STAKING FROZEN</div>
-                  <div class="text-sm font-extrabold text-cyan-300">2,581 / 8,888</div>
+                  <div class="text-sm font-extrabold text-slate-100">2,581 / 8,888</div>
                   <div class="text-[9.5px] text-slate-400">29% Locked in Contract</div>
                 </div>
               </div>
@@ -2244,11 +2584,11 @@
                 </h3>
                 <p class="text-[11px] text-slate-400">Instant visual inspection of your held Vault NFTs (The Other Side #1650 &amp; #1002, 3x The Walk #1, 133 Mini Supers, OG Vault Relics) &amp; Custom Sniper Watchlist</p>
               </div>
-              <div class="flex items-center gap-1 bg-[#111726] border border-white/10 rounded-lg p-1 text-[11px] font-mono font-bold flex-wrap">
-                <button id="nft-filter-all" onclick="filterCyberNftGrid('all')" class="px-2.5 py-1 rounded bg-[#00f5d4] text-black cursor-pointer transition">ALL CARDS (8)</button>
-                <button id="nft-filter-vault" onclick="filterCyberNftGrid('vault')" class="px-2.5 py-1 rounded text-slate-300 hover:text-white cursor-pointer transition">🦊 MY VAULT (144 NFTs)</button>
-                <button id="nft-filter-targets" onclick="filterCyberNftGrid('targets')" class="px-2.5 py-1 rounded text-slate-300 hover:text-white cursor-pointer transition">🎯 SNIPER TARGETS (0)</button>
-                <button id="nft-filter-tos" onclick="filterCyberNftGrid('tos')" class="px-2.5 py-1 rounded text-pink-400 hover:text-white cursor-pointer transition">🌙 THE OTHER SIDE (2)</button>
+              <div class="flex items-center gap-1.5 bg-[#0e161b] border border-white/10 rounded-xl p-1 text-[11px] font-mono font-bold flex-wrap">
+                <button id="nft-filter-all" onclick="filterCyberNftGrid('all')" class="px-3 py-1 rounded-lg bg-[#1b2830] border border-white/30 text-white cursor-pointer transition">ALL CARDS (9)</button>
+                <button id="nft-filter-vault" onclick="filterCyberNftGrid('vault')" class="px-3 py-1 rounded-lg bg-[#236b56] border border-emerald-400/50 text-emerald-100 hover:brightness-110 cursor-pointer transition">🦊 MY VAULT (144 NFTs)</button>
+                <button id="nft-filter-targets" onclick="filterCyberNftGrid('targets')" class="px-3 py-1 rounded-lg bg-[#141e24] border border-white/10 text-slate-300 hover:text-white cursor-pointer transition">🎯 SNIPER TARGETS (0)</button>
+                <button id="nft-filter-tos" onclick="filterCyberNftGrid('tos')" class="px-3 py-1 rounded-lg bg-[#592b1b] border border-orange-400/50 text-orange-200 hover:brightness-110 cursor-pointer transition">🌙 THE OTHER SIDE (2)</button>
               </div>
             </div>
 
@@ -2710,6 +3050,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
     </section>
   </main>
 
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -9336,22 +9678,24 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           <div onclick="${clickHandler}"
                class="cyber-nft-card ${isSel ? 'cyber-nft-card-active' : ''} p-2.5 flex flex-col justify-between cursor-pointer group">
             <div>
-              <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-[#060911] border border-white/10 mb-2">
-                <img src="${c.media}" alt="${c.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                <span style="background:rgba(6,8,15,0.92);backdrop-filter:blur(6px);" class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded border text-[9px] font-mono font-extrabold shadow-md ${c.tagCls}">
-                  ${c.tag}
-                </span>
-                ${removeBtn}
+              <div class="relative w-full aspect-square overflow-hidden cyber-nft-img-mat mb-2.5">
+                <div class="relative w-full h-full overflow-hidden rounded-[6px] bg-[#0d1317]">
+                  <img src="${c.media}" alt="${c.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <span style="background:rgba(14,22,27,0.92);backdrop-filter:blur(6px);" class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded border text-[9px] font-mono font-extrabold shadow-md ${c.tagCls}">
+                    ${c.tag}
+                  </span>
+                  ${removeBtn}
+                </div>
               </div>
-              <div class="font-mono font-bold text-white text-xs truncate group-hover:text-[#00f5d4] transition">${c.title}</div>
-              <div class="text-[10.5px] text-slate-400 truncate mt-0.5">${c.sub}</div>
+              <div class="font-mono font-extrabold text-slate-100 text-xs truncate group-hover:text-[#5eead4] transition px-0.5">${c.title}</div>
+              <div class="text-[10.5px] text-slate-400 truncate mt-0.5 px-0.5">${c.sub}</div>
             </div>
-            <div class="mt-2 pt-2 border-t border-white/10 space-y-1">
+            <div class="mt-2.5 bg-[#0e151a] border border-white/10 rounded-lg px-2 py-1.5 space-y-0.5 shadow-inner">
               <div class="flex items-center justify-between font-mono text-[10.5px]">
-                <span class="text-slate-300">${c.metricLeft}</span>
-                <span class="font-bold text-[#10f1b6]">${c.metricRight}</span>
+                <span class="text-slate-300 font-semibold">${c.metricLeft}</span>
+                <span class="font-extrabold text-[#34d399]">${c.metricRight}</span>
               </div>
-              <div class="text-[9.5px] text-cyan-300/90 font-mono truncate" title="${c.receipt}">${c.receipt}</div>
+              <div class="text-[9.5px] text-slate-400 font-mono truncate" title="${c.receipt}">${c.receipt}</div>
             </div>
           </div>
         `;
@@ -9360,12 +9704,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
 
     function filterCyberNftGrid(mode) {
       ACTIVE_NFT_GRID_FILTER = mode || 'all';
+      const styles = {
+        all:     { on: 'px-3 py-1 rounded-lg bg-[#24343f] border-2 border-white/60 text-white cursor-pointer transition', off: 'px-3 py-1 rounded-lg bg-[#162027] border border-white/20 text-slate-300 hover:text-white cursor-pointer transition' },
+        vault:   { on: 'px-3 py-1 rounded-lg bg-[#2a856b] border-2 border-emerald-300 text-white cursor-pointer transition shadow-[0_0_12px_rgba(52,211,153,0.35)]', off: 'px-3 py-1 rounded-lg bg-[#236b56] border border-emerald-400/50 text-emerald-100 hover:brightness-110 cursor-pointer transition' },
+        targets: { on: 'px-3 py-1 rounded-lg bg-[#1f2e38] border-2 border-cyan-400 text-cyan-200 cursor-pointer transition', off: 'px-3 py-1 rounded-lg bg-[#141e24] border border-white/10 text-slate-300 hover:text-white cursor-pointer transition' },
+        tos:     { on: 'px-3 py-1 rounded-lg bg-[#7c3a21] border-2 border-amber-300 text-amber-100 cursor-pointer transition shadow-[0_0_12px_rgba(245,158,11,0.35)]', off: 'px-3 py-1 rounded-lg bg-[#592b1b] border border-orange-400/50 text-orange-200 hover:brightness-110 cursor-pointer transition' }
+      };
       ['all', 'vault', 'targets', 'tos'].forEach(m => {
         const b = document.getElementById('nft-filter-' + m);
-        if (b) {
-          b.className = m === ACTIVE_NFT_GRID_FILTER
-            ? 'px-2.5 py-1 rounded bg-[#00f5d4] text-black cursor-pointer transition'
-            : (m === 'tos' ? 'px-2.5 py-1 rounded text-pink-400 hover:text-white cursor-pointer transition' : 'px-2.5 py-1 rounded text-slate-300 hover:text-white cursor-pointer transition');
+        if (b && styles[m]) {
+          b.className = (m === ACTIVE_NFT_GRID_FILTER) ? styles[m].on : styles[m].off;
         }
       });
       renderCyberNftCardsGrid();
@@ -9536,7 +9884,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       setInterval(pollLiveWalkBurnAuction, 30000);
       try {
         const params = new URLSearchParams(window.location.search);
-        const qTab = params.get('tab');
+        const qTab = params.get('tab') || 'nft-studio';
         const qNft = params.get('nft') || params.get('stage');
         if (qTab) switchCyberAppTab(qTab);
         if (qNft && typeof loadPresetNft === 'function') { loadPresetNft(qNft); renderCyberNftCardsGrid(); }
