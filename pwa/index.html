@@ -1342,183 +1342,6 @@
           </div>
 
         </section>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================================
-       🛸 SWOOZ // MATRIX TERMINAL DEX v5.0 (ULTRA-WIDE CYBERPUNK CRT DUAL-PANE WORKSTATION)
-       Toggled via the [🖥️ CRT v5.0] button whenever desired
-       ========================================================================================== -->
-  <section id="crt-v5-workstation" class="hidden max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none transition duration-300 blur-2xl pointer-events-none opacity-10">
-    <div class="bg-[#020503] border-2 border-[#2a3830] p-2 sm:p-3 shadow-[0_0_90px_rgba(0,0,0,0.98)] relative overflow-hidden"
-         style="background-image: linear-gradient(to right, rgba(0,255,65,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,65,0.04) 1px, transparent 1px); background-size: 20px 20px;">
-
-      <!-- Top Tablet Hardware Bezel Status Bar (Battery Left + 5G / Bluetooth / Clock Right) -->
-      <div class="flex items-center justify-between text-[10px] text-[#9bb5a8] pb-2 px-1 border-b border-[#223029] mb-2">
-        <div class="flex items-center gap-2">
-          <!-- Battery Icon -->
-          <span class="inline-flex items-center border border-[#9bb5a8] px-1 py-0.5 text-[8px] leading-none">
-            <span class="w-3.5 h-2 bg-[#d8e8df] inline-block mr-0.5"></span>
-          </span>
-          <span class="text-[#00FF41] font-bold tracking-widest">SWOOZ // MATRIX TERMINAL DEX v5.0</span>
-          <span id="crt-matrix-mode-badge" class="hidden sm:inline text-[#00F0FF] text-[9.5px]">[9-LEG LIVE KRAKEN + COINBASE SYNC]</span>
-        </div>
-        <div class="flex items-center gap-2.5">
-          <button type="button" onclick="toggleCrtMatrixDataMode()" id="btn-crt-data-mode"
-                  class="px-2 py-0.5 border border-[#00FF41]/60 bg-black text-[#00FF41] hover:bg-[#00FF41] hover:text-black text-[9px] font-bold uppercase cursor-pointer transition">
-            MODE: LIVE ORDERS ⇄ OPTIONS SPEC
-          </button>
-          <span class="text-[#d8e8df] font-bold">⏰ 5G ▮▮▮</span>
-        </div>
-      </div>
-
-      <!-- DUAL-PANE 16:10 SPLIT-SCREEN WORKSPACE WITH CENTER FOLD HINGE -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 relative items-stretch">
-
-        <!-- ================= LEFT PANE (6 Cols): SWOOZ // DEX_TERMINAL — 9-LEG STRADDLE MATRIX ================= -->
-        <div class="lg:col-span-6 bg-[#030705]/95 border border-[#3a4d42] p-2.5 flex flex-col justify-between relative">
-          <!-- Left Pane Top Title Bar -->
-          <div class="flex items-center justify-between border border-[#3a4d42] bg-black/90 px-2.5 py-1.5 mb-2 text-xs tracking-wider">
-            <span class="text-[#c8dcd2] font-bold uppercase">SWOOZ // DEX_TERMINAL</span>
-            <span class="text-[#9bb5a8] font-bold uppercase">9-LEG STRADDLE MATRIX</span>
-          </div>
-
-          <!-- 9-Leg Straddle Matrix Table -->
-          <div class="border border-[#3a4d42] bg-black/90 flex-1 overflow-x-auto">
-            <table class="w-full border-collapse text-[10.5px] leading-[1.22] font-mono">
-              <thead>
-                <tr class="border-b border-[#3a4d42] text-[#8fa89b] text-[10px] uppercase">
-                  <th class="py-1.5 px-2 text-left border-r border-[#2a3830] w-[76px]"></th>
-                  <th class="py-1.5 px-1.5 text-right">STRIKE</th>
-                  <th class="py-1.5 px-1.5 text-center">EXPIRY</th>
-                  <th class="py-1.5 px-1.5 text-right">IV</th>
-                  <th class="py-1.5 px-1.5 text-right">DELTA</th>
-                  <th class="py-1.5 px-1.5 text-right">THETA</th>
-                  <th class="py-1.5 px-1.5 text-right border-r border-[#3a4d42]">VEGA</th>
-                  <th class="py-1.5 px-1.5 text-center border-r border-[#3a4d42] w-[36px]">SPLIT</th>
-                  <th class="py-1.5 px-1.5 text-center w-[36px]">FEE</th>
-                </tr>
-              </thead>
-              <tbody id="crt-9leg-tbody" class="divide-y divide-[#25332b]">
-                <!-- Populated dynamically by renderCrt9LegMatrix() with all 9 legs + SVG waveforms -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- CENTER FOLDABLE HINGE BAR (Visible on Desktop / Unfolded Fold 8) -->
-        <div class="hidden lg:flex flex-col items-center justify-center pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 z-20">
-          <div class="w-[2px] h-full bg-[#223029] flex items-center justify-center">
-            <div class="w-1.5 h-16 bg-[#b8f4ff] shadow-[0_0_12px_#00f0ff] rounded-full"></div>
-          </div>
-        </div>
-
-        <!-- ================= RIGHT PANE (6 Cols): GLOWE 3D HOLOGRAPHIC NFT STAGE + TRAIT INSPECTOR + ETH/USDC ASCII CHART ================= -->
-        <div class="lg:col-span-6 flex flex-col justify-between gap-2.5">
-
-          <!-- TOP RIGHT WINDOW: TRUE METADATA NFT VIEWER -->
-          <div class="border border-[#3a4d42] bg-[#05080c] p-2.5 relative overflow-hidden flex flex-col justify-between min-h-[305px]">
-
-            <!-- Stage Header Bar + Specimen Selector Pills -->
-            <div class="flex items-center justify-between flex-wrap gap-1.5 border-b border-white/10 pb-1.5 relative z-20">
-              <div class="text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2">
-                <span id="crt-stage-active-label" class="text-white">INVISIBLE FRIENDS #1506</span>
-                <span id="crt-stage-active-rank" class="text-[10px] text-emerald-400 font-mono">RANK #1,621 / 5,000</span>
-                <span id="crt-stage-active-bid" class="text-[10px] text-amber-400 font-mono">TARGET: 0.210 WETH</span>
-              </div>
-              <div class="flex items-center flex-wrap gap-1 text-[9px] font-mono">
-                <button type="button" onclick="selectCrtStageSpecimen('if-1506')" id="crt-spec-if-1506" class="px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer">IF #1506</button>
-                <button type="button" onclick="selectCrtStageSpecimen('beast-2313-full')" id="crt-spec-beast-2313-full" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">BEAST #2313</button>
-                <button type="button" onclick="selectCrtStageSpecimen('if-1286')" id="crt-spec-if-1286" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #1286</button>
-                <button type="button" onclick="selectCrtStageSpecimen('if-140')" id="crt-spec-if-140" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #140</button>
-                <button type="button" onclick="selectCrtStageSpecimen('if-42')" id="crt-spec-if-42" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #42</button>
-                <button type="button" onclick="selectCrtStageSpecimen('clonex-9143')" id="crt-spec-clonex-9143" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">CLONEX #9143</button>
-                <button type="button" onclick="selectCrtStageSpecimen('ms-6915')" id="crt-spec-ms-6915" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">MINI #6915</button>
-                <button type="button" onclick="selectCrtStageSpecimen('walk-1')" id="crt-spec-walk-1" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">WALK #1</button>
-              </div>
-            </div>
-
-            <!-- PURE TRUE-METADATA NFT SHOWCASE (No Grid, Rings, Overlays, or Filters) -->
-            <div class="relative w-full h-[255px] flex items-center justify-center my-auto pt-2">
-              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif?v=57" alt="NFT Specimen"
-                   class="h-full max-h-[245px] w-auto object-contain rounded-lg" />
-            </div>
-          </div>
-
-          <!-- BOTTOM RIGHT SPLIT: TRAIT INSPECTOR (Left) + ETH/USDC ASCII CHART (Right) -->
-          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 flex-1">
-
-            <!-- BOTTOM-LEFT WINDOW: TRAIT INSPECTOR (13 On-Chain Attributes) -->
-            <div class="sm:col-span-6 border border-[#3a4d42] bg-[#030705]/95 p-2.5 flex flex-col justify-between">
-              <div class="flex items-center justify-between border-b border-[#3a4d42] pb-1.5 mb-2 text-xs">
-                <span class="text-[#c8dcd2] font-bold uppercase tracking-wider">TRAIT INSPECTOR</span>
-                <span id="crt-trait-subtitle" class="text-[9.5px] text-[#00FF41]">13 ATTRIBUTES</span>
-              </div>
-              <div id="crt-trait-inspector-list" class="space-y-0.5 text-[10.5px] leading-[1.28] font-mono overflow-y-auto max-h-[215px] pr-1">
-                <!-- Populated dynamically by renderCrtTraitInspector() -->
-              </div>
-            </div>
-
-            <!-- BOTTOM-RIGHT WINDOW: ETH/USDC ASCII CHART -->
-            <div class="sm:col-span-6 border border-[#3a4d42] bg-[#030705]/95 p-2.5 flex flex-col justify-between">
-              <div class="flex items-center justify-between border-b border-[#3a4d42] pb-1.5 mb-1.5 text-xs">
-                <span id="crt-ascii-chart-title" class="text-[#c8dcd2] font-bold uppercase tracking-wider">ETH/USDC ASCII CHART</span>
-                <button type="button" onclick="toggleCrtAsciiRenderMode()" id="btn-crt-ascii-mode"
-                        class="px-1.5 py-0.5 border border-[#00F0FF]/50 text-[#00F0FF] hover:bg-[#00F0FF] hover:text-black text-[9px] font-bold uppercase cursor-pointer">
-                  BLOCKS ⇄ CANDLES
-                </button>
-              </div>
-
-              <!-- High-Contrast Cyan (#00F0FF) & Red (#FF3B30) Terminal Candlestick Canvas -->
-              <div id="crt-mini-canvas-wrap" class="relative w-full flex-1 flex items-center justify-center">
-                <canvas id="crt-mini-candle-canvas" width="360" height="205" class="w-full h-[195px] block"></canvas>
-              </div>
-
-              <!-- Raw Block-Character ASCII Candlestick Matrix View (Toggled via BLOCKS ⇄ CANDLES) -->
-              <div id="crt-raw-ascii-wrap" class="hidden ascii-chart-grid text-[9.5px] select-none p-1 bg-black border border-matrix/20 overflow-x-auto text-[#00FF41]">
-$2650 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>
-$2550 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span>
-$2500 | <span class="candle-wick">░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span>
-$2450 | <span class="candle-wick">░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░░░░</span>
-$2400 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░</span><span class="candle-red">█</span><span class="candle-wick">░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░</span>
-$2350 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░</span><span class="candle-red">▀█▀</span><span class="candle-wick">░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░</span>
-$2300 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░</span>
-$2250 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░░░░░░░░░░░░</span>
---------------------------------------
-      | 200   250   500   750   ..</div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- ================= BOTTOM FULL-WIDTH SPLIT FOOTER: SWOOZ_DEX_ROOT > CLI + AMBER TELEMETRY [ACTIVE] ================= -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 mt-2.5 items-stretch">
-        <!-- Bottom-Left (6 Cols): Always-Visible Interactive SWOOZ_DEX_ROOT > Command Prompt -->
-        <div class="lg:col-span-6 border border-[#3a4d42] bg-black px-3 py-2.5 flex flex-col justify-center">
-          <div class="flex items-center gap-2 text-xs sm:text-sm font-mono">
-            <span class="text-[#9bb5a8] font-bold shrink-0">SWOOZ_DEX_ROOT &gt;</span>
-            <input id="crt-inline-cli-input" type="text" value="REBALANCE_STRADDLE_09 --FORCE"
-                   class="bg-black text-[#00FF41] font-bold flex-grow outline-none border-none p-0 focus:ring-0 uppercase tracking-wider"
-                    style="text-shadow: 0 0 8px rgba(0,255,65,0.45);"
-                   placeholder="REBALANCE_STRADDLE_09 --FORCE OR /SWAP 1.0 ETH USDC" />
-            <span class="w-2 h-4 bg-[#00F0FF] animate-pulse shrink-0"></span>
-          </div>
-          <div id="crt-inline-cli-feedback" class="text-[10px] text-[#FFB000] mt-1 hidden font-mono"></div>
-        </div>
-
-        <!-- Bottom-Right (6 Cols): AMBER TELEMETRY [ACTIVE] 3-Line Diagnostics Matrix -->
-        <div class="lg:col-span-6 border border-[#b45309] bg-[#0a0602] px-3 py-1.5 flex flex-col justify-center text-[10px] leading-[1.35] font-mono text-[#FFB000]"
-             style="text-shadow: 0 0 6px rgba(255, 176, 0, 0.35);">
-          <div id="crt-amber-line-1" class="truncate">AMBER TELEMETRY [ACTIVE] | SYS_OK | KRN_PING: 32ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
-          <div id="crt-amber-line-2" class="truncate opacity-85">DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: 31ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
-          <div id="crt-amber-line-3" class="truncate opacity-75">DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: 32ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- Main Adaptive Container: Tabbed Single-Screen by default, or Dual-Pane on Fold 8 Split -->
   <main id="dex-container" class="max-w-[1600px] mx-auto p-3 grid grid-cols-1 gap-4 transition duration-300 blur-2xl pointer-events-none opacity-10">
@@ -2945,6 +2768,185 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       </div>
     </section>
   </main>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================================
+       🛸 SWOOZ // MATRIX TERMINAL DEX v5.0 (ULTRA-WIDE CYBERPUNK CRT DUAL-PANE WORKSTATION)
+       Toggled via the [🖥️ CRT v5.0] button whenever desired
+       ========================================================================================== -->
+  <section id="crt-v5-workstation" class="hidden max-w-[1600px] mx-auto px-3 pt-2.5 pb-2 font-mono select-none transition duration-300 blur-2xl pointer-events-none opacity-10">
+    <div class="bg-[#020503] border-2 border-[#2a3830] p-2 sm:p-3 shadow-[0_0_90px_rgba(0,0,0,0.98)] relative overflow-hidden"
+         style="background-image: linear-gradient(to right, rgba(0,255,65,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,255,65,0.04) 1px, transparent 1px); background-size: 20px 20px;">
+
+      <!-- Top Tablet Hardware Bezel Status Bar (Battery Left + 5G / Bluetooth / Clock Right) -->
+      <div class="flex items-center justify-between text-[10px] text-[#9bb5a8] pb-2 px-1 border-b border-[#223029] mb-2">
+        <div class="flex items-center gap-2">
+          <!-- Battery Icon -->
+          <span class="inline-flex items-center border border-[#9bb5a8] px-1 py-0.5 text-[8px] leading-none">
+            <span class="w-3.5 h-2 bg-[#d8e8df] inline-block mr-0.5"></span>
+          </span>
+          <span class="text-[#00FF41] font-bold tracking-widest">SWOOZ // MATRIX TERMINAL DEX v5.0</span>
+          <span id="crt-matrix-mode-badge" class="hidden sm:inline text-[#00F0FF] text-[9.5px]">[9-LEG LIVE KRAKEN + COINBASE SYNC]</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <button type="button" onclick="toggleCrtMatrixDataMode()" id="btn-crt-data-mode"
+                  class="px-2 py-0.5 border border-[#00FF41]/60 bg-black text-[#00FF41] hover:bg-[#00FF41] hover:text-black text-[9px] font-bold uppercase cursor-pointer transition">
+            MODE: LIVE ORDERS ⇄ OPTIONS SPEC
+          </button>
+          <span class="text-[#d8e8df] font-bold">⏰ 5G ▮▮▮</span>
+        </div>
+      </div>
+
+      <!-- DUAL-PANE 16:10 SPLIT-SCREEN WORKSPACE WITH CENTER FOLD HINGE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 relative items-stretch">
+
+        <!-- ================= LEFT PANE (6 Cols): SWOOZ // DEX_TERMINAL — 9-LEG STRADDLE MATRIX ================= -->
+        <div class="lg:col-span-6 bg-[#030705]/95 border border-[#3a4d42] p-2.5 flex flex-col justify-between relative">
+          <!-- Left Pane Top Title Bar -->
+          <div class="flex items-center justify-between border border-[#3a4d42] bg-black/90 px-2.5 py-1.5 mb-2 text-xs tracking-wider">
+            <span class="text-[#c8dcd2] font-bold uppercase">SWOOZ // DEX_TERMINAL</span>
+            <span class="text-[#9bb5a8] font-bold uppercase">9-LEG STRADDLE MATRIX</span>
+          </div>
+
+          <!-- 9-Leg Straddle Matrix Table -->
+          <div class="border border-[#3a4d42] bg-black/90 flex-1 overflow-x-auto">
+            <table class="w-full border-collapse text-[10.5px] leading-[1.22] font-mono">
+              <thead>
+                <tr class="border-b border-[#3a4d42] text-[#8fa89b] text-[10px] uppercase">
+                  <th class="py-1.5 px-2 text-left border-r border-[#2a3830] w-[76px]"></th>
+                  <th class="py-1.5 px-1.5 text-right">STRIKE</th>
+                  <th class="py-1.5 px-1.5 text-center">EXPIRY</th>
+                  <th class="py-1.5 px-1.5 text-right">IV</th>
+                  <th class="py-1.5 px-1.5 text-right">DELTA</th>
+                  <th class="py-1.5 px-1.5 text-right">THETA</th>
+                  <th class="py-1.5 px-1.5 text-right border-r border-[#3a4d42]">VEGA</th>
+                  <th class="py-1.5 px-1.5 text-center border-r border-[#3a4d42] w-[36px]">SPLIT</th>
+                  <th class="py-1.5 px-1.5 text-center w-[36px]">FEE</th>
+                </tr>
+              </thead>
+              <tbody id="crt-9leg-tbody" class="divide-y divide-[#25332b]">
+                <!-- Populated dynamically by renderCrt9LegMatrix() with all 9 legs + SVG waveforms -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CENTER FOLDABLE HINGE BAR (Visible on Desktop / Unfolded Fold 8) -->
+        <div class="hidden lg:flex flex-col items-center justify-center pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 z-20">
+          <div class="w-[2px] h-full bg-[#223029] flex items-center justify-center">
+            <div class="w-1.5 h-16 bg-[#b8f4ff] shadow-[0_0_12px_#00f0ff] rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- ================= RIGHT PANE (6 Cols): GLOWE 3D HOLOGRAPHIC NFT STAGE + TRAIT INSPECTOR + ETH/USDC ASCII CHART ================= -->
+        <div class="lg:col-span-6 flex flex-col justify-between gap-2.5">
+
+          <!-- TOP RIGHT WINDOW: TRUE METADATA NFT VIEWER -->
+          <div class="border border-[#3a4d42] bg-[#05080c] p-2.5 relative overflow-hidden flex flex-col justify-between min-h-[305px]">
+
+            <!-- Stage Header Bar + Specimen Selector Pills -->
+            <div class="flex items-center justify-between flex-wrap gap-1.5 border-b border-white/10 pb-1.5 relative z-20">
+              <div class="text-xs sm:text-sm font-bold tracking-wider uppercase flex items-center gap-2">
+                <span id="crt-stage-active-label" class="text-white">INVISIBLE FRIENDS #1506</span>
+                <span id="crt-stage-active-rank" class="text-[10px] text-emerald-400 font-mono">RANK #1,621 / 5,000</span>
+                <span id="crt-stage-active-bid" class="text-[10px] text-amber-400 font-mono">TARGET: 0.210 WETH</span>
+              </div>
+              <div class="flex items-center flex-wrap gap-1 text-[9px] font-mono">
+                <button type="button" onclick="selectCrtStageSpecimen('if-1506')" id="crt-spec-if-1506" class="px-1.5 py-0.5 border border-[#00F0FF] bg-[#00F0FF] text-black font-bold uppercase cursor-pointer">IF #1506</button>
+                <button type="button" onclick="selectCrtStageSpecimen('beast-2313-full')" id="crt-spec-beast-2313-full" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">BEAST #2313</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-1286')" id="crt-spec-if-1286" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #1286</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-140')" id="crt-spec-if-140" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #140</button>
+                <button type="button" onclick="selectCrtStageSpecimen('if-42')" id="crt-spec-if-42" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">IF #42</button>
+                <button type="button" onclick="selectCrtStageSpecimen('clonex-9143')" id="crt-spec-clonex-9143" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">CLONEX #9143</button>
+                <button type="button" onclick="selectCrtStageSpecimen('ms-6915')" id="crt-spec-ms-6915" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">MINI #6915</button>
+                <button type="button" onclick="selectCrtStageSpecimen('walk-1')" id="crt-spec-walk-1" class="px-1.5 py-0.5 border border-[#00F0FF]/40 bg-black/80 text-[#00F0FF] hover:bg-[#00F0FF]/20 uppercase cursor-pointer">WALK #1</button>
+              </div>
+            </div>
+
+            <!-- PURE TRUE-METADATA NFT SHOWCASE (No Grid, Rings, Overlays, or Filters) -->
+            <div class="relative w-full h-[255px] flex items-center justify-center my-auto pt-2">
+              <img id="crt-holo-specimen-img" src="nft-media/if_1506.gif?v=57" alt="NFT Specimen"
+                   class="h-full max-h-[245px] w-auto object-contain rounded-lg" />
+            </div>
+          </div>
+
+          <!-- BOTTOM RIGHT SPLIT: TRAIT INSPECTOR (Left) + ETH/USDC ASCII CHART (Right) -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 flex-1">
+
+            <!-- BOTTOM-LEFT WINDOW: TRAIT INSPECTOR (13 On-Chain Attributes) -->
+            <div class="sm:col-span-6 border border-[#3a4d42] bg-[#030705]/95 p-2.5 flex flex-col justify-between">
+              <div class="flex items-center justify-between border-b border-[#3a4d42] pb-1.5 mb-2 text-xs">
+                <span class="text-[#c8dcd2] font-bold uppercase tracking-wider">TRAIT INSPECTOR</span>
+                <span id="crt-trait-subtitle" class="text-[9.5px] text-[#00FF41]">13 ATTRIBUTES</span>
+              </div>
+              <div id="crt-trait-inspector-list" class="space-y-0.5 text-[10.5px] leading-[1.28] font-mono overflow-y-auto max-h-[215px] pr-1">
+                <!-- Populated dynamically by renderCrtTraitInspector() -->
+              </div>
+            </div>
+
+            <!-- BOTTOM-RIGHT WINDOW: ETH/USDC ASCII CHART -->
+            <div class="sm:col-span-6 border border-[#3a4d42] bg-[#030705]/95 p-2.5 flex flex-col justify-between">
+              <div class="flex items-center justify-between border-b border-[#3a4d42] pb-1.5 mb-1.5 text-xs">
+                <span id="crt-ascii-chart-title" class="text-[#c8dcd2] font-bold uppercase tracking-wider">ETH/USDC ASCII CHART</span>
+                <button type="button" onclick="toggleCrtAsciiRenderMode()" id="btn-crt-ascii-mode"
+                        class="px-1.5 py-0.5 border border-[#00F0FF]/50 text-[#00F0FF] hover:bg-[#00F0FF] hover:text-black text-[9px] font-bold uppercase cursor-pointer">
+                  BLOCKS ⇄ CANDLES
+                </button>
+              </div>
+
+              <!-- High-Contrast Cyan (#00F0FF) & Red (#FF3B30) Terminal Candlestick Canvas -->
+              <div id="crt-mini-canvas-wrap" class="relative w-full flex-1 flex items-center justify-center">
+                <canvas id="crt-mini-candle-canvas" width="360" height="205" class="w-full h-[195px] block"></canvas>
+              </div>
+
+              <!-- Raw Block-Character ASCII Candlestick Matrix View (Toggled via BLOCKS ⇄ CANDLES) -->
+              <div id="crt-raw-ascii-wrap" class="hidden ascii-chart-grid text-[9.5px] select-none p-1 bg-black border border-matrix/20 overflow-x-auto text-[#00FF41]">
+$2650 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>
+$2550 | <span class="candle-wick">░░░░░░░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span>
+$2500 | <span class="candle-wick">░░░░░░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░░░░</span>
+$2450 | <span class="candle-wick">░░░░░░░░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">█</span><span class="candle-wick">░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░░░░</span>
+$2400 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▄█▄</span><span class="candle-wick">░░░</span><span class="candle-red">█</span><span class="candle-wick">░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░</span>
+$2350 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░</span><span class="candle-red">▀█▀</span><span class="candle-wick">░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░</span>
+$2300 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">███</span><span class="candle-wick">░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░</span>
+$2250 | <span class="candle-wick">░░░░░░░░░░</span><span class="candle-green">▀█▀</span><span class="candle-wick">░░░░░░░░░░░░░░░░░</span>
+--------------------------------------
+      | 200   250   500   750   ..</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= BOTTOM FULL-WIDTH SPLIT FOOTER: SWOOZ_DEX_ROOT > CLI + AMBER TELEMETRY [ACTIVE] ================= -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2.5 mt-2.5 items-stretch">
+        <!-- Bottom-Left (6 Cols): Always-Visible Interactive SWOOZ_DEX_ROOT > Command Prompt -->
+        <div class="lg:col-span-6 border border-[#3a4d42] bg-black px-3 py-2.5 flex flex-col justify-center">
+          <div class="flex items-center gap-2 text-xs sm:text-sm font-mono">
+            <span class="text-[#9bb5a8] font-bold shrink-0">SWOOZ_DEX_ROOT &gt;</span>
+            <input id="crt-inline-cli-input" type="text" value="REBALANCE_STRADDLE_09 --FORCE"
+                   class="bg-black text-[#00FF41] font-bold flex-grow outline-none border-none p-0 focus:ring-0 uppercase tracking-wider"
+                    style="text-shadow: 0 0 8px rgba(0,255,65,0.45);"
+                   placeholder="REBALANCE_STRADDLE_09 --FORCE OR /SWAP 1.0 ETH USDC" />
+            <span class="w-2 h-4 bg-[#00F0FF] animate-pulse shrink-0"></span>
+          </div>
+          <div id="crt-inline-cli-feedback" class="text-[10px] text-[#FFB000] mt-1 hidden font-mono"></div>
+        </div>
+
+        <!-- Bottom-Right (6 Cols): AMBER TELEMETRY [ACTIVE] 3-Line Diagnostics Matrix -->
+        <div class="lg:col-span-6 border border-[#b45309] bg-[#0a0602] px-3 py-1.5 flex flex-col justify-center text-[10px] leading-[1.35] font-mono text-[#FFB000]"
+             style="text-shadow: 0 0 6px rgba(255, 176, 0, 0.35);">
+          <div id="crt-amber-line-1" class="truncate">AMBER TELEMETRY [ACTIVE] | SYS_OK | KRN_PING: 32ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
+          <div id="crt-amber-line-2" class="truncate opacity-85">DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: 31ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
+          <div id="crt-amber-line-3" class="truncate opacity-75">DEBUG DATA | DEBUG [DMI] | SYS_OK | KRN_PING: 32ms | CB_PING: 45ms | BLOCK: #18932402 | GAS: 34 GWEI</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 
   <!-- Install Drawer Modal (Triggered ONLY from Bottom Dock '📲 Install' button!) -->
   <div id="install-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-3">
@@ -9208,7 +9210,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             <div>
               <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-[#060911] border border-white/10 mb-2">
                 <img src="${c.media}" alt="${c.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded border text-[9px] font-mono font-bold ${c.tagCls}">
+                <span style="background:rgba(6,8,15,0.92);backdrop-filter:blur(6px);" class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded border text-[9px] font-mono font-extrabold shadow-md ${c.tagCls}">
                   ${c.tag}
                 </span>
               </div>
@@ -9286,7 +9288,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (orbitBento) orbitBento.classList.add('hidden');
         if (container) {
           container.classList.remove('hidden');
-          container.className = 'max-w-[1640px] mx-auto px-2 sm:px-4 pb-8 grid grid-cols-1 gap-4';
+          container.className = 'w-full pb-8 grid grid-cols-1 gap-4';
         }
         if (left) left.className = 'col-span-1 space-y-4';
         if (right) right.className = 'hidden';
@@ -9299,10 +9301,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         if (orbitBento) orbitBento.classList.add('hidden');
         if (container) {
           container.classList.remove('hidden');
-          container.className = 'max-w-[1640px] mx-auto px-2 sm:px-4 pb-8 grid grid-cols-1 gap-4';
+          container.className = 'w-full pb-8 flex flex-col gap-4';
         }
-        if (left) left.className = 'col-span-1 space-y-4';
-        if (right) right.className = 'col-span-1 space-y-4';
+        if (right) right.className = 'w-full space-y-4 order-1';
+        if (left) left.className = 'w-full space-y-4 order-2';
         if (secPnl) secPnl.classList.add('hidden');
         [secViewer, secTargets, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
         renderCyberNftCardsGrid();
@@ -9353,7 +9355,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const qTab = params.get('tab');
         const qNft = params.get('nft');
         if (qTab) switchCyberAppTab(qTab);
-        if (qNft && typeof selectNftModel === 'function') selectNftModel(qNft);
+        if (qNft && typeof loadPresetNft === 'function') { loadPresetNft(qNft); renderCyberNftCardsGrid(); }
       } catch (e) {}
     }, 120);
 
