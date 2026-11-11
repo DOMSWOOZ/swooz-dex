@@ -1,10 +1,11 @@
-const CACHE_NAME = 'swooz-dex-v77';
+const CACHE_NAME = 'swooz-dex-v77-1';
 const ASSETS = [
   './',
   'index.html',
   'strategy_explainer_visual.html',
   'manifest.json',
   'logo.png',
+  'swooz_dex_logo.png',
   'icon-192.png',
   'icon-512.png',
   'icon.svg',
