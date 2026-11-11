@@ -697,7 +697,7 @@
                 <div class="text-[9.5px] uppercase tracking-widest text-[#ff2a85] font-bold truncate">TAB 03 // VAULT &amp; SNIPER</div>
                 <div class="text-xs sm:text-sm font-extrabold truncate">🧬 NFT Command Studio</div>
               </div>
-              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded bg-pink-500/20 border border-pink-400/40 text-pink-300 text-[10px] font-bold shrink-0">144 HELD • 5 TARGETS</span>
+              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded bg-pink-500/20 border border-pink-400/40 text-pink-300 text-[10px] font-bold shrink-0">144 HELD • 0 TARGETS</span>
             </button>
           </div>
 
@@ -2045,7 +2045,7 @@
           <span id="chart-kpi-target-lbl"></span><span id="chart-kpi-target"></span><span id="chart-kpi-dist"></span>
           <span id="chart-kpi-rebuy-lbl"></span><span id="chart-kpi-rebuy"></span><span id="chart-kpi-rebuy-note"></span>
           <span id="pnl-total-eth"></span><span id="pnl-total-usd"></span><span id="pnl-cost-usd"></span><span id="pnl-avg-entry"></span>
-          <span id="pnl-fiat-diff"></span><span id="pnl-breakeven"></span><span id="pnl-nft-gain"></span>
+          <span id="pnl-fiat-diff"></span><span id="pnl-breakeven"></span><span id="pnl-nft-gain"></span><span id="status-1506"></span><span id="status-1286"></span><span id="status-140"></span><span id="status-42"></span><span id="status-beast2313"></span>
           <table><tbody id="wallet-pnl-rows"></tbody></table>
           <div id="add-wallet-form">
             <input id="new-w-label" /><input id="new-w-addr" /><input id="new-w-eth" /><input id="new-w-cost" />
@@ -2053,139 +2053,89 @@
         </div>
       </div>
 
-      <!-- 2. Specific Target Token Sniper Watchlist (With Animated Walking Thumbnails & 1-Tap Wallet Deep Links) -->
-      <div id="sec-targets" class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
-        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--border)] pb-2.5">
+      <!-- 2. Interactive Floor Scout & Custom Target Sniper Watchlist -->
+      <div id="sec-targets" class="hud-bracket-card p-4 shadow-sm space-y-3.5">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-white/10 pb-2.5">
           <div>
-            <h2 class="text-sm font-bold text-[var(--foreground)]">🎯 Target Sniper Watchlist (5 / 5 Unmoved)</h2>
-            <p class="text-xs text-[var(--muted-foreground)]">Tap any animated character to inspect on the <strong>🎬 Live Walking Stage</strong> or open in <strong>OpenSea / Blur / MetaMask</strong></p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded bg-[#00f5d4]/20 border border-[#00f5d4]/50 text-[#00f5d4] font-mono text-[10px] font-bold">🎯 CUSTOM SNIPER WATCHLIST</span>
+              <h2 id="sniper-watchlist-heading" class="text-sm font-extrabold font-mono text-white">0 Active Sniper Targets • Ready for Floor Scouting</h2>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5">Browse the live collection floors below, then paste any OpenSea/Blur link or enter a Token ID to add targets to your Sniper Watchlist &amp; Tactical Grid.</p>
           </div>
-          <span class="text-xs font-mono text-emerald-500 font-semibold">Live ownerOf() Verified</span>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-emerald-400 font-semibold">Live ownerOf() + IPFS RPC</span>
+            <button onclick="clearAllSniperTargets()" class="px-2 py-1 rounded bg-rose-500/15 hover:bg-rose-500/30 border border-rose-500/30 text-rose-300 font-mono text-[10.5px] font-bold cursor-pointer transition">
+              🗑️ Clear Watchlist
+            </button>
+          </div>
         </div>
 
-        <div class="space-y-2.5 text-xs">
-          <!-- Target 1: IF #1506 -->
-          <div class="bg-[var(--secondary)] border border-emerald-500/40 rounded-lg p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div class="flex items-center gap-3">
-              <img src="nft-media/if_1506.gif" alt="IF #1506 Walking" onclick="loadPresetNft('if-1506'); scrollToSec('sec-viewer');"
-                   class="w-16 h-16 rounded-lg object-cover border border-emerald-500/50 cursor-pointer shrink-0 hover:scale-105 transition" />
-              <div class="space-y-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="px-2 py-0.5 rounded bg-emerald-500 text-white font-bold">PRIMARY SNIPE</span>
-                  <span class="font-mono font-bold text-sm text-[var(--foreground)]">Invisible Friends #1506</span>
-                  <span class="text-[var(--muted-foreground)] font-mono">(Rank #1,621 / 5,000)</span>
-                </div>
-                <div class="text-[var(--muted-foreground)]">
-                  Cream Fannypack (0.98%) • Lt/Dk Blue Hoodie Up (0.90%) • Boomer Glasses (1.92%)
-                </div>
-                <div class="font-mono text-emerald-500 font-semibold">
-                  <span id="status-1506">✅ Unmoved (0xC1eB...1880)</span> • Target Offer: <strong>0.210 WETH ($474.44 USD)</strong>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center gap-1.5 flex-wrap shrink-0">
-              <button onclick="loadPresetNft('if-1506'); scrollToSec('sec-viewer');"
-                      class="px-2.5 py-1.5 rounded bg-emerald-500 text-white hover:opacity-90 font-semibold">
-                🎬 Walk
-              </button>
-              <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
-                 class="px-2.5 py-1.5 rounded bg-[var(--card)] hover:opacity-80 border border-[var(--border)] font-semibold">
-                🌊 OpenSea
-              </a>
-              <a href="https://blur.io/eth/asset/0x59468516a8259058bad1ca5f8f4bff190d30e066/1506" target="_blank"
-                 class="px-2.5 py-1.5 rounded bg-amber-500/15 text-amber-500 hover:opacity-80 border border-amber-500/30 font-semibold">
-                ⚡ Blur
-              </a>
-            </div>
+        <!-- Quick Floor Scout Launchers (OpenSea & Blur Floors Sorted Low -> High) -->
+        <div class="bg-[#090d16] border border-white/10 rounded-xl p-3 space-y-2">
+          <div class="flex items-center justify-between flex-wrap gap-1 text-[11px] font-mono">
+            <span class="text-[#00f5d4] font-bold">🌊 STEP 1 // BROWSE LIVE COLLECTION FLOORS (OPENSEA &amp; BLUR):</span>
+            <span class="text-slate-400">Spot a token ID you like, then add it below ↓</span>
           </div>
-
-          <!-- Target 2: BEAST #2313 -->
-          <div class="bg-[var(--secondary)] border border-amber-500/40 rounded-lg p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div class="flex items-center gap-3">
-              <img src="nft-media/beast_2313_pfp.png" alt="BEAST #2313" onclick="loadPresetNft('beast-2313-full'); scrollToSec('sec-viewer');"
-                   class="w-16 h-16 rounded-lg object-cover border border-amber-500/50 cursor-pointer shrink-0 hover:scale-105 transition" />
-              <div class="space-y-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="px-2 py-0.5 rounded bg-amber-500 text-white font-bold">AKCB TARGET</span>
-                  <span class="font-mono font-bold text-sm text-[var(--foreground)]">BEAST #2313</span>
-                  <span class="text-[var(--muted-foreground)] font-mono">(a KID called BEAST)</span>
-                </div>
-                <div class="text-[var(--muted-foreground)]">
-                  Beat Street • Black Raccoon Balaclava • Orange Puffer Jacket • Pink Rect Glasses
-                </div>
-                <div class="font-mono text-emerald-500 font-semibold">
-                  <span id="status-beast2313">✅ Unmoved (0x4140...CF1F)</span> • Target Offer: <strong>0.060 WETH ($135.55 USD)</strong>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center gap-1.5 flex-wrap shrink-0">
-              <button onclick="loadPresetNft('beast-2313-full'); scrollToSec('sec-viewer');"
-                      class="px-2.5 py-1.5 rounded bg-amber-500 text-white hover:opacity-90 font-semibold">
-                🎬 3D View
-              </button>
-              <a href="https://opensea.io/assets/ethereum/0x77372a4cc66063575b05b44481f059be356964a4/2313" target="_blank"
-                 class="px-2.5 py-1.5 rounded bg-[var(--card)] hover:opacity-80 border border-[var(--border)] font-semibold">
-                🌊 OpenSea
-              </a>
-              <a href="https://blur.io/eth/asset/0x77372a4cc66063575b05b44481f059be356964a4/2313" target="_blank"
-                 class="px-2.5 py-1.5 rounded bg-amber-500/15 text-amber-500 hover:opacity-80 border border-amber-500/30 font-semibold">
-                ⚡ Blur
-              </a>
-            </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-[11px] font-mono font-bold">
+            <a href="https://opensea.io/collection/invisiblefriends" target="_blank"
+               class="px-2.5 py-2 rounded-lg bg-[#111726] hover:bg-[#00f5d4]/15 border border-white/10 hover:border-[#00f5d4]/50 text-white flex items-center justify-between transition">
+              <span>🧥 Invisible Friends</span><span class="text-[#00f5d4]">↗</span>
+            </a>
+            <a href="https://opensea.io/collection/tos-theotherside" target="_blank"
+               class="px-2.5 py-2 rounded-lg bg-[#111726] hover:bg-pink-500/15 border border-white/10 hover:border-pink-400/50 text-pink-300 flex items-center justify-between transition">
+              <span>🌙 The Other Side</span><span class="text-pink-400">↗</span>
+            </a>
+            <a href="https://opensea.io/collection/invisible-friends-editions" target="_blank"
+               class="px-2.5 py-2 rounded-lg bg-[#111726] hover:bg-emerald-500/15 border border-white/10 hover:border-emerald-400/50 text-emerald-300 flex items-center justify-between transition">
+              <span>🚶 Walk / Baller</span><span class="text-emerald-400">↗</span>
+            </a>
+            <a href="https://opensea.io/collection/minisupers" target="_blank"
+               class="px-2.5 py-2 rounded-lg bg-[#111726] hover:bg-amber-500/15 border border-white/10 hover:border-amber-400/50 text-amber-300 flex items-center justify-between transition">
+              <span>🦸 Mini Supers</span><span class="text-amber-400">↗</span>
+            </a>
+            <a href="https://opensea.io/collection/akidcalledbeast" target="_blank"
+               class="px-2.5 py-2 rounded-lg bg-[#111726] hover:bg-purple-500/15 border border-white/10 hover:border-purple-400/50 text-purple-300 flex items-center justify-between transition">
+              <span>👹 AKCB Beasts</span><span class="text-purple-400">↗</span>
+            </a>
+            <a href="https://opensea.io/collection/clonex" target="_blank"
+               class="px-2.5 py-2 rounded-lg bg-[#111726] hover:bg-sky-500/15 border border-white/10 hover:border-sky-400/50 text-sky-300 flex items-center justify-between transition">
+              <span>🧬 CloneX RTFKT</span><span class="text-sky-400">↗</span>
+            </a>
           </div>
-
-          <!-- Compact Row for the 3 Sibling IF Backups (#1286, #140, #42) with Animated Walking GIFs -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 flex items-center gap-2.5">
-              <img src="nft-media/if_1286.gif" alt="IF #1286" onclick="loadPresetNft('if-1286'); scrollToSec('sec-viewer');"
-                   class="w-12 h-12 rounded-lg object-cover border border-[var(--border)] cursor-pointer shrink-0 hover:scale-105 transition" />
-              <div class="space-y-0.5 flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <span class="font-mono font-bold text-[var(--foreground)]">IF #1286</span>
-                  <span id="status-1286" class="text-emerald-500 font-semibold">✅ Safe</span>
-                </div>
-                <div class="text-[var(--muted-foreground)] truncate">Rank #1,367 • Hood Up</div>
-                <div class="flex items-center justify-between pt-0.5">
-                  <button onclick="loadPresetNft('if-1286'); scrollToSec('sec-viewer');" class="text-emerald-500 font-semibold hover:underline">🎬 Walk</button>
-                  <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/1286" target="_blank" class="text-[var(--muted-foreground)] underline">OS ↗</a>
-                </div>
-              </div>
-            </div>
-            <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 flex items-center gap-2.5">
-              <img src="nft-media/if_140.gif" alt="IF #140" onclick="loadPresetNft('if-140'); scrollToSec('sec-viewer');"
-                   class="w-12 h-12 rounded-lg object-cover border border-[var(--border)] cursor-pointer shrink-0 hover:scale-105 transition" />
-              <div class="space-y-0.5 flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <span class="font-mono font-bold text-[var(--foreground)]">IF #140</span>
-                  <span id="status-140" class="text-emerald-500 font-semibold">✅ Safe</span>
-                </div>
-                <div class="text-[var(--muted-foreground)] truncate">Rank #814 • Gold Stake</div>
-                <div class="flex items-center justify-between pt-0.5">
-                  <button onclick="loadPresetNft('if-140'); scrollToSec('sec-viewer');" class="text-emerald-500 font-semibold hover:underline">🎬 Walk</button>
-                  <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/140" target="_blank" class="text-[var(--muted-foreground)] underline">OS ↗</a>
-                </div>
-              </div>
-            </div>
-            <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-2.5 flex items-center gap-2.5">
-              <img src="nft-media/if_42.gif" alt="IF #42" onclick="loadPresetNft('if-42'); scrollToSec('sec-viewer');"
-                   class="w-12 h-12 rounded-lg object-cover border border-[var(--border)] cursor-pointer shrink-0 hover:scale-105 transition" />
-              <div class="space-y-0.5 flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <span class="font-mono font-bold text-[var(--foreground)]">IF #42</span>
-                  <span id="status-42" class="text-emerald-500 font-semibold">✅ Safe</span>
-                </div>
-                <div class="text-[var(--muted-foreground)] truncate">Rank #489 • Brain</div>
-                <div class="flex items-center justify-between pt-0.5">
-                  <button onclick="loadPresetNft('if-42'); scrollToSec('sec-viewer');" class="text-emerald-500 font-semibold hover:underline">🎬 Walk</button>
-                  <a href="https://opensea.io/assets/ethereum/0x59468516a8259058bad1ca5f8f4bff190d30e066/42" target="_blank" class="text-[var(--muted-foreground)] underline">OS ↗</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Dynamic User-Pinned Watchlist Tokens -->
-          <div id="custom-targets-list" class="space-y-2"></div>
         </div>
+
+        <!-- Instant Sniper Target Adder Bar (Supports OpenSea/Blur URL OR Collection + Token ID + Target Bid) -->
+        <div class="bg-[#090d16] border border-[#00f5d4]/35 rounded-xl p-3 space-y-2.5 text-xs">
+          <div class="flex items-center justify-between flex-wrap gap-1 font-mono text-[11px]">
+            <span class="text-[#00f5d4] font-bold">🎯 STEP 2 // ADD NEW TOKEN TO SNIPER WATCHLIST:</span>
+            <span id="sniper-add-status" class="text-emerald-400">Paste an OpenSea/Blur item URL or select Collection + Token #</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+            <select id="sniper-add-collection"
+                    class="sm:col-span-4 px-2.5 py-2 rounded-lg bg-[#111726] border border-white/15 text-white font-semibold font-mono text-xs">
+              <option value="0x59468516a8259058baD1cA5F8f4BFF190d30E066">🧥 Invisible Friends (#1–5000)</option>
+              <option value="0xcB4307F1c3B5556256748DDF5B86E81258990B3C">🌙 The Other Side (#1–8888)</option>
+              <option value="0x0905b2277Df5c7dD6C5e3399Ece8a36621aebE85">🚶 IF Editions: Walk (#1) / Baller (#2)</option>
+              <option value="0xe935E764DA0F1a2597F9C1bF13a64515BfF9F7D7">🦸 Mini Supers (#1–6969)</option>
+              <option value="0x77372a4cc66063575b05b44481f059be356964a4">👹 a KID called BEAST (#1–10000)</option>
+              <option value="0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B">🧬 CloneX (#1–20000)</option>
+            </select>
+            <input id="sniper-add-token-input" type="text"
+                   placeholder="Token # (e.g. 2450) OR paste full OpenSea URL..."
+                   class="sm:col-span-4 px-2.5 py-2 rounded-lg bg-[#111726] border border-white/15 font-mono text-white text-xs" />
+            <input id="sniper-add-bid-input" type="text"
+                   placeholder="Target Bid (optional, e.g. 0.18 WETH)"
+                   class="sm:col-span-2 px-2.5 py-2 rounded-lg bg-[#111726] border border-white/15 font-mono text-white text-xs" />
+            <button onclick="addCustomSniperTargetFromBar()"
+                    class="sm:col-span-2 px-3 py-2 rounded-lg bg-[#00f5d4] hover:opacity-90 text-slate-950 font-mono font-extrabold text-xs cursor-pointer transition shadow-[0_0_12px_rgba(0,245,212,0.3)]">
+              🎯 + Add Target
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic User-Pinned Watchlist Tokens -->
+        <div id="custom-targets-list" class="space-y-2"></div>
       </div>
     </section>
 
@@ -2292,12 +2242,12 @@
                   <span>🖼️ Interactive Tactical NFT Card Grid</span>
                   <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">TAP ANY CARD TO INSPECT ON STAGE ↓</span>
                 </h3>
-                <p class="text-[11px] text-slate-400">Instant visual inspection of your held NFTs (The Other Side #1650 &amp; #1002, 3x The Walk #1, 133 Mini Supers, 6 OG Relics) &amp; 5 Sniper Targets</p>
+                <p class="text-[11px] text-slate-400">Instant visual inspection of your held Vault NFTs (The Other Side #1650 &amp; #1002, 3x The Walk #1, 133 Mini Supers, OG Vault Relics) &amp; Custom Sniper Watchlist</p>
               </div>
               <div class="flex items-center gap-1 bg-[#111726] border border-white/10 rounded-lg p-1 text-[11px] font-mono font-bold flex-wrap">
-                <button id="nft-filter-all" onclick="filterCyberNftGrid('all')" class="px-2.5 py-1 rounded bg-[#00f5d4] text-black cursor-pointer transition">ALL CARDS (12)</button>
+                <button id="nft-filter-all" onclick="filterCyberNftGrid('all')" class="px-2.5 py-1 rounded bg-[#00f5d4] text-black cursor-pointer transition">ALL CARDS (8)</button>
                 <button id="nft-filter-vault" onclick="filterCyberNftGrid('vault')" class="px-2.5 py-1 rounded text-slate-300 hover:text-white cursor-pointer transition">🦊 MY VAULT (144 NFTs)</button>
-                <button id="nft-filter-targets" onclick="filterCyberNftGrid('targets')" class="px-2.5 py-1 rounded text-slate-300 hover:text-white cursor-pointer transition">🎯 SNIPER TARGETS (5)</button>
+                <button id="nft-filter-targets" onclick="filterCyberNftGrid('targets')" class="px-2.5 py-1 rounded text-slate-300 hover:text-white cursor-pointer transition">🎯 SNIPER TARGETS (0)</button>
                 <button id="nft-filter-tos" onclick="filterCyberNftGrid('tos')" class="px-2.5 py-1 rounded text-pink-400 hover:text-white cursor-pointer transition">🌙 THE OTHER SIDE (2)</button>
               </div>
             </div>
@@ -2307,34 +2257,31 @@
           </div>
         </div>
 
-        <!-- Quick-Select Carousel of Followed & Target NFTs -->
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-semibold">
-          <button onclick="loadPresetNft('if-1506')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 shrink-0 hover:opacity-80">
-            🧥 IF #1506 (Walk)
+        <!-- Quick-Select Carousel of Held Vault NFTs & Custom Pinned Sniper Targets -->
+        <div id="stage-quick-select-strip" class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-semibold">
+          <button onclick="loadPresetNft('tos-1650')" class="px-2.5 py-1.5 rounded-lg bg-pink-500/15 text-pink-300 border border-pink-500/40 shrink-0 hover:opacity-80 cursor-pointer">
+            🌟 TOS #1650 (Celestial)
           </button>
-          <button onclick="loadPresetNft('if-1286')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            🧥 IF #1286
+          <button onclick="loadPresetNft('tos-1002')" class="px-2.5 py-1.5 rounded-lg bg-pink-500/15 text-pink-300 border border-pink-500/40 shrink-0 hover:opacity-80 cursor-pointer">
+            🌙 TOS #1002 (Skulls)
           </button>
-          <button onclick="loadPresetNft('if-140')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            🧥 IF #140
+          <button onclick="loadPresetNft('walk-1')" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 shrink-0 hover:opacity-80 cursor-pointer">
+            🚶 "The Walk" #1 (3x Held)
           </button>
-          <button onclick="loadPresetNft('if-42')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            🧥 IF #42
+          <button onclick="loadPresetNft('ms-6915')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/40 shrink-0 hover:opacity-80 cursor-pointer">
+            🦸 Mini Super #6915 (#2 Whale)
           </button>
-          <button onclick="loadPresetNft('beast-2313-full')" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 text-amber-500 border border-amber-500/30 shrink-0 hover:opacity-80">
-            👹 BEAST #2313 (3D)
+          <button onclick="loadPresetNft('ms-305')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80 cursor-pointer">
+            🦸 Mini Super #305
           </button>
-          <button onclick="loadPresetNft('beast-2313-pfp')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            👹 BEAST #2313 (PFP)
+          <button onclick="loadPresetNft('ms-928')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80 cursor-pointer">
+            🦸 Mini Super #928
           </button>
-          <button onclick="loadPresetNft('clonex-9143')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            🧬 CloneX #9143
+          <button onclick="loadPresetNft('supers-84')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80 cursor-pointer">
+            ⚡ Supers #84 (OG)
           </button>
-          <button onclick="loadPresetNft('ms-6915')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            🦸 Mini Super #6915 (Yours)
-          </button>
-          <button onclick="loadPresetNft('walk-1')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80">
-            🚶 "The Walk" #1
+          <button onclick="loadPresetNft('enso-146')" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] shrink-0 hover:opacity-80 cursor-pointer">
+            🌀 Enso #146 (OG)
           </button>
         </div>
 
@@ -2357,7 +2304,7 @@
             </select>
             <input id="inspect-custom-contract" type="text" placeholder="Paste 0x... Contract Address"
                    class="hidden sm:col-span-4 px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
-            <input id="inspect-token-id" type="number" min="1" max="999999" value="1506" placeholder="Token # (e.g. 1506)"
+            <input id="inspect-token-id" type="number" min="1" max="999999" value="1650" placeholder="Token # (e.g. 1650)"
                    class="sm:col-span-3 px-2.5 py-1.5 rounded bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]" />
             <div class="sm:col-span-4 flex items-center gap-1.5">
               <button onclick="inspectOnChainToken()" class="flex-1 px-3 py-1.5 rounded bg-emerald-500 text-white font-bold hover:opacity-90">
@@ -2377,7 +2324,7 @@
           <div class="sm:col-span-5 bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2.5 flex flex-col justify-between space-y-2">
             <!-- Pure NFT Artwork Container -->
             <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-[var(--card)] flex items-center justify-center">
-              <img id="stage-nft-img" src="nft-media/if_1506.gif?v=57" alt="NFT Artwork"
+              <img id="stage-nft-img" src="nft-media/tos_1650.png?v=73" alt="NFT Artwork"
                    class="w-full h-full object-contain rounded-lg" />
             </div>
 
@@ -2401,13 +2348,13 @@
           <div class="sm:col-span-7 space-y-2.5 text-xs">
             <div class="bg-[var(--secondary)] border border-[var(--border)] rounded-lg p-3 space-y-1">
               <div class="flex items-center justify-between gap-2 flex-wrap">
-                <span id="stage-collection-name" class="text-emerald-500 font-bold uppercase tracking-wider">Invisible Friends (OG)</span>
-                <span id="stage-token-rank" class="font-mono px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-semibold">Rank #1,621 / 5,000</span>
+                <span id="stage-collection-name" class="text-emerald-500 font-bold uppercase tracking-wider">The Other Side (TOS)</span>
+                <span id="stage-token-rank" class="font-mono px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-semibold">🌟 Celestial Moonwalker (Genesis Tier)</span>
               </div>
-              <h3 id="stage-nft-title" class="text-base font-bold font-mono text-[var(--foreground)]">Invisible Friends #1506</h3>
+              <h3 id="stage-nft-title" class="text-base font-bold font-mono text-[var(--foreground)]">The Other Side #1650 (Celestial)</h3>
               <div class="flex items-center justify-between flex-wrap gap-1 pt-1 text-[var(--muted-foreground)] font-mono">
-                <span>Owner: <strong id="stage-nft-owner" class="text-[var(--foreground)]">0xC1eBE1...1880</strong></span>
-                <span id="stage-nft-price" class="text-emerald-500 font-bold">Target Bid: 0.210 WETH ($474.44)</span>
+                <span>Owner: <strong id="stage-nft-owner" class="text-[var(--foreground)]">Primary Vault (Owned)</strong></span>
+                <span id="stage-nft-price" class="text-emerald-500 font-bold">Sniped Nov 10: 0.0009 ETH ($1.84) • 2022 Pair: 0.937 ETH</span>
               </div>
             </div>
 
@@ -2423,40 +2370,40 @@
           </div>
         </div>
 
-        <!-- TAB 2: 4-Up Walking Squad Compare (All 4 Target Invisible Friends Walking Together!) -->
+        <!-- TAB 2: 4-Up Vault & Sniper Squad Compare -->
         <div id="viewer-tab-squad" class="hidden space-y-2.5 text-xs">
           <div class="flex items-center justify-between flex-wrap gap-1">
-            <span class="font-bold text-[var(--foreground)]">🚶‍♂️ 4-Up Live Walking Comparison: Your Primary Target (#1506) vs. 3 Sibling Backups</span>
-            <span class="text-emerald-500 font-mono">All 4 Share Cream Fannypack (0.98%) + Blue Hoodie</span>
+            <span class="font-bold text-[var(--foreground)]">🚶‍♂️ 4-Up Flagship Vault Squad: The Other Side (#1650 &amp; #1002) + The Walk #1 + Mini Supers #6915</span>
+            <span class="text-emerald-500 font-mono">144 Total NFTs Held Across Vaults</span>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <div onclick="loadPresetNft('if-1506'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-emerald-500/50 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
-              <img src="nft-media/if_1506.gif" alt="IF #1506" class="w-full aspect-square rounded-lg object-cover" />
+          <div id="squad-4up-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div onclick="loadPresetNft('tos-1650'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-pink-500/50 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+              <img src="nft-media/tos_1650.png?v=73" alt="TOS #1650" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
-                <span>#1506</span><span class="text-emerald-500">PRIMARY</span>
+                <span>TOS #1650</span><span class="text-pink-400">CELESTIAL</span>
               </div>
-              <div class="text-[11px] text-[var(--muted-foreground)]">Hood Up • Boomer Glasses • Pipe</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Skulls Chrome Retro • Seabreeze Hex</div>
             </div>
-            <div onclick="loadPresetNft('if-1286'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
-              <img src="nft-media/if_1286.gif" alt="IF #1286" class="w-full aspect-square rounded-lg object-cover" />
+            <div onclick="loadPresetNft('tos-1002'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-pink-500/40 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+              <img src="nft-media/tos_1002.png?v=73" alt="TOS #1002" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
-                <span>#1286</span><span class="text-[var(--muted-foreground)]">Rank #1,367</span>
+                <span>TOS #1002</span><span class="text-pink-400">STARBOY</span>
               </div>
-              <div class="text-[11px] text-[var(--muted-foreground)]">Hood Up • Red Glasses •Dart</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Passionfruit Glitter • Butterflies</div>
             </div>
-            <div onclick="loadPresetNft('if-140'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
-              <img src="nft-media/if_140.gif" alt="IF #140" class="w-full aspect-square rounded-lg object-cover" />
+            <div onclick="loadPresetNft('walk-1'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-emerald-500/40 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+              <img src="nft-media/the_walk_1.gif" alt="The Walk #1" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
-                <span>#140</span><span class="text-[var(--muted-foreground)]">Rank #814</span>
+                <span>Walk #1</span><span class="text-emerald-400">3x HELD</span>
               </div>
-              <div class="text-[11px] text-[var(--muted-foreground)]">Hood Down • Gold Stake</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Markus Magnusson • Burn Currency</div>
             </div>
-            <div onclick="loadPresetNft('if-42'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-[var(--border)] rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
-              <img src="nft-media/if_42.gif" alt="IF #42" class="w-full aspect-square rounded-lg object-cover" />
+            <div onclick="loadPresetNft('ms-6915'); switchViewerTab('stage');" class="holo-pod-card bg-[var(--secondary)] border border-amber-500/40 rounded-xl p-2 cursor-pointer hover:opacity-90 space-y-1.5">
+              <img src="nft-media/minisupers_6915.png" alt="Mini Supers #6915" class="w-full aspect-square rounded-lg object-cover" />
               <div class="font-mono font-bold text-[var(--foreground)] flex justify-between">
-                <span>#42</span><span class="text-amber-500">Rank #489</span>
+                <span>MS #6915</span><span class="text-amber-400">133x WHALE</span>
               </div>
-              <div class="text-[11px] text-[var(--muted-foreground)]">Hood Down • Exposed Brain</div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Chun Pink • Launcher • Home Team</div>
             </div>
           </div>
         </div>
@@ -2467,14 +2414,8 @@
             <div class="flex items-center justify-between flex-wrap gap-1">
               <span class="font-bold text-[var(--foreground)]">🖼️ Universal Wallet NFT Scanner (For You or Any User)</span>
               <div class="flex items-center gap-1">
-                <button onclick="scanOwnerOrCustomWallet()" class="owner-only hidden px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 font-semibold">
-                  🦊 My Vault Wallet
-                </button>
-                <button onclick="scanWalletNfts('0xC1eBE1C004F41E674953215395841b516A381880')" class="px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-semibold">
-                  🧥 #1506 Owner
-                </button>
-                <button onclick="scanWalletNfts('0x4140DB722AABeC52C0d2b28d27d838BB3F25CF1F')" class="px-2 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] font-semibold">
-                  👹 #2313 Owner
+                <button onclick="scanOwnerOrCustomWallet()" class="owner-only hidden px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 font-semibold cursor-pointer">
+                  🦊 My Primary Vault
                 </button>
               </div>
             </div>
@@ -2667,14 +2608,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             🎯 Bid Both + 5 Walk (0.355 ETH / $811)
           </button>
           <button onclick="applyPreset(0.210, 0.000, 0.060, 5)" class="px-2.5 py-1.5 rounded-lg bg-[var(--secondary)] hover:opacity-80 border border-[var(--border)] font-semibold">
-            👹 IF #1506 (0.210) + BEAST #2313 (0.060) + 5 Walk = 0.280 ETH ($640)
+            👹 IF Target (0.210) + AKCB Target (0.060) + 5 Walk = 0.280 ETH ($640)
           </button>
         </div>
 
         <!-- 4 Interactive Bid Inputs -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
           <div class="space-y-1">
-            <label class="font-medium text-[var(--muted-foreground)]">IF #1506 (WETH)</label>
+            <label class="font-medium text-[var(--muted-foreground)]">Invisible Friends Bid (WETH)</label>
             <input id="in-if" type="number" step="0.005" min="0" max="0.375" value="0.2143"
                    class="w-full px-2.5 py-2 rounded-lg bg-[var(--secondary)] border border-[var(--border)] font-mono text-sm text-[var(--foreground)]" />
             <div id="lbl-if-usd" class="font-mono text-emerald-500 font-semibold">$489.54 USD</div>
@@ -2686,7 +2627,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
             <div id="lbl-cx-usd" class="font-mono text-emerald-500 font-semibold">$334.66 USD</div>
           </div>
           <div class="space-y-1">
-            <label class="font-medium text-[var(--muted-foreground)]">BEAST #2313 (WETH)</label>
+            <label class="font-medium text-[var(--muted-foreground)]">AKCB / Custom Bid (WETH)</label>
             <input id="in-beast" type="number" step="0.005" min="0" max="0.20" value="0.000"
                    class="w-full px-2.5 py-2 rounded-lg bg-[var(--secondary)] border border-[var(--border)] font-mono text-sm text-[var(--foreground)]" />
             <div id="lbl-beast-usd" class="font-mono text-[var(--muted-foreground)] font-semibold">$0.00 USD</div>
@@ -3055,7 +2996,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=73', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=74', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -3349,7 +3290,40 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       }
     };
 
-    let CURRENT_STAGE_NFT = PRESET_NFTS['if-1506'];
+    PRESET_NFTS['supers-84'] = {
+      collection: 'Supers (OG Vault Relic)',
+      contract: '0x3bC93Bf16C5916E8414dE9a0C4559ad9d72Da7F2',
+      tokenId: 84,
+      title: 'Supers #84 (OG Vault)',
+      rank: '⚡ Held in Vault • Companion to #144',
+      owner: 'Primary Vault (Owned)',
+      priceNote: 'Held alongside Supers #144 & 133 Mini Supers',
+      mediaUrl: 'nft-media/supers_84.png',
+      badge: '⚡ SUPERS OG VAULT',
+      traits: [
+        { trait_type: 'Collection', value: 'Supers (Home Team Companion)' },
+        { trait_type: 'Vault Companions', value: 'Supers #84 & #144' },
+        { trait_type: 'Status', value: 'Held in Cold Vault' }
+      ]
+    };
+    PRESET_NFTS['enso-146'] = {
+      collection: 'Enso (OG Vault Relic)',
+      contract: '0x3bC93Bf16C5916E8414dE9a0C4559ad9d72Da7F2',
+      tokenId: 146,
+      title: 'Enso #146 (OG Vault)',
+      rank: '🌀 Held in Vault • Companion to #190',
+      owner: 'Primary Vault (Owned)',
+      priceNote: 'Held alongside Enso #190 in Vault',
+      mediaUrl: 'nft-media/enso_146.png',
+      badge: '🌀 ENSO OG VAULT',
+      traits: [
+        { trait_type: 'Collection', value: 'Enso (OG Vault)' },
+        { trait_type: 'Vault Companions', value: 'Enso #146 & #190' },
+        { trait_type: 'Status', value: 'Held in Cold Vault' }
+      ]
+    };
+
+    let CURRENT_STAGE_NFT = PRESET_NFTS['tos-1650'];
 
     function resolveMediaUri(uri) {
       if (!uri) return '';
@@ -3549,6 +3523,26 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         }
       } catch (e) {}
 
+      // Fallback direct deterministic IPFS URL for The Other Side (#1-8888)
+      if (contract.toLowerCase() === '0xcb4307f1c3b5556256748ddf5b86e81258990b3c') {
+        if (tokenId === 1650) { loadPresetNft('tos-1650'); return; }
+        if (tokenId === 1002) { loadPresetNft('tos-1002'); return; }
+        renderStageNft({
+          collection: 'The Other Side (TOS)',
+          contract,
+          tokenId,
+          title: `The Other Side #${tokenId}`,
+          rank: `Moonwalker #${tokenId} / 8,888`,
+          owner: 'Verified via Mainnet RPC',
+          priceNote: `29% Staking Frozen • Floor ~0.0012 ETH`,
+          mediaUrl: `https://gateway.pinata.cloud/ipfs/QmVfc8WggDDELmW2xXzy1R5cS9bDDTwQnsmL9gNP6aVBMc/${tokenId}.png`,
+          badge: '🌙 MOONWALKER NFT',
+          traits: [{ trait_type: 'Collection', value: 'The Other Side (TOS)' }, { trait_type: 'Token ID', value: `#${tokenId}` }]
+        });
+        badge.textContent = `✅ Loaded The Other Side #${tokenId}`;
+        return;
+      }
+
       // Fallback direct deterministic URL for Invisible Friends (#1-5000)
       if (contract.toLowerCase() === '0x59468516a8259058bad1ca5f8f4bff190d30e066') {
         renderStageNft({
@@ -3667,28 +3661,39 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
 
     function renderPinnedTokens() {
       const container = document.getElementById('custom-targets-list');
+      if (typeof updateSniperTargetCountsUI === 'function') updateSniperTargetCountsUI();
       if (!container) return;
       if (!PINNED_NFTS.length) {
-        container.innerHTML = '';
+        container.innerHTML = `
+          <div class="bg-[#090d16] border border-dashed border-white/15 rounded-xl p-4 text-center font-mono text-xs text-slate-400">
+            No active sniper targets pinned yet. Browse any collection floor above and add the tokens you want to watch!
+          </div>
+        `;
         return;
       }
       container.innerHTML = PINNED_NFTS.map((p, idx) => `
-        <div class="bg-[var(--secondary)] border border-emerald-500/30 rounded-lg p-2.5 flex items-center justify-between gap-2.5">
-          <div class="flex items-center gap-2.5 min-w-0">
+        <div class="bg-[#090d16] border border-[#00f5d4]/40 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+          <div class="flex items-center gap-3 min-w-0">
             <img src="${p.mediaUrl}" alt="${p.title}" onclick="inspectOnChainToken('${p.contract}', '${p.tokenId}'); scrollToSec('sec-viewer');"
-                 class="w-12 h-12 rounded-lg object-cover border border-[var(--border)] cursor-pointer shrink-0" />
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-500 font-bold text-[10px]">📌 PINNED</span>
-                <span class="font-mono font-bold text-[var(--foreground)] truncate">${p.title}</span>
+                 class="w-14 h-14 rounded-lg object-cover border border-[#00f5d4]/50 cursor-pointer shrink-0 hover:scale-105 transition" />
+            <div class="min-w-0 space-y-0.5">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2 py-0.5 rounded bg-[#00f5d4]/20 border border-[#00f5d4]/50 text-[#00f5d4] font-mono font-bold text-[10px]">🎯 SNIPER TARGET #${idx + 1}</span>
+                <span class="font-mono font-bold text-sm text-white truncate">${p.title}</span>
+                ${p.targetBid ? `<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono font-bold text-[10px]">Target: ${p.targetBid}</span>` : ''}
               </div>
-              <div class="text-[var(--muted-foreground)] font-mono truncate">Owner: ${p.owner}</div>
+              <div class="text-slate-400 font-mono text-[11px] truncate">Contract: ${p.contract} • Owner: <span class="text-emerald-400">${p.owner}</span></div>
             </div>
           </div>
-          <div class="flex items-center gap-1.5 shrink-0">
+          <div class="flex items-center gap-1.5 flex-wrap shrink-0 font-mono">
             <button onclick="inspectOnChainToken('${p.contract}', '${p.tokenId}'); scrollToSec('sec-viewer');"
-                    class="px-2 py-1 rounded bg-emerald-500 text-white font-semibold">🎬 View</button>
-            <button onclick="unpinNft(${idx})" class="px-2 py-1 rounded bg-[var(--card)] text-rose-400 border border-[var(--border)] font-bold">✕</button>
+                    class="px-2.5 py-1.5 rounded bg-[#00f5d4] text-slate-950 font-extrabold cursor-pointer">🎬 Stage</button>
+            <a href="https://opensea.io/assets/ethereum/${p.contract}/${p.tokenId}" target="_blank"
+               class="px-2.5 py-1.5 rounded bg-[#111726] border border-white/15 text-white font-bold hover:border-[#00f5d4]">🌊 OpenSea</a>
+            <a href="https://blur.io/eth/asset/${p.contract}/${p.tokenId}" target="_blank"
+               class="px-2.5 py-1.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-bold">⚡ Blur</a>
+            <button onclick="unpinNft(${idx})" title="Remove Target"
+                    class="px-2.5 py-1.5 rounded bg-rose-500/15 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 font-bold cursor-pointer">✕ Remove</button>
           </div>
         </div>
       `).join('');
@@ -3701,20 +3706,23 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         PINNED_NFTS.push({
           contract: CURRENT_STAGE_NFT.contract,
           tokenId: CURRENT_STAGE_NFT.tokenId,
+          collection: CURRENT_STAGE_NFT.collection || 'Ethereum NFT',
           title: CURRENT_STAGE_NFT.title,
           owner: CURRENT_STAGE_NFT.owner,
           mediaUrl: CURRENT_STAGE_NFT.mediaUrl
         });
         savePinnedTokens(PINNED_NFTS);
         renderPinnedTokens();
+        if (typeof renderCyberNftCardsGrid === 'function') renderCyberNftCardsGrid();
       }
-      document.getElementById('viewer-sync-badge').textContent = `📌 Pinned ${CURRENT_STAGE_NFT.title} to Watchlist!`;
+      document.getElementById('viewer-sync-badge').textContent = `📌 Pinned ${CURRENT_STAGE_NFT.title} to Sniper Watchlist!`;
     }
 
     function unpinNft(idx) {
       PINNED_NFTS.splice(idx, 1);
       savePinnedTokens(PINNED_NFTS);
       renderPinnedTokens();
+      if (typeof renderCyberNftCardsGrid === 'function') renderCyberNftCardsGrid();
     }
 
     // 🔐 Encrypted Multi-Vault (Owner #1506 + Partner Fold 8 #1716) & Blank Guest Mode Architecture
@@ -6515,7 +6523,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         try {
           if ('caches' in window) {
             const keys = await caches.keys();
-            await Promise.all(keys.filter(k => k !== 'swooz-dex-v73').map(k => caches.delete(k)));
+            await Promise.all(keys.filter(k => k !== 'swooz-dex-v74').map(k => caches.delete(k)));
           }
           if ('serviceWorker' in navigator) {
             const regs = await navigator.serviceWorker.getRegistrations();
@@ -6593,7 +6601,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       if (localStorage.getItem('swooz_vcd_theme_v1') === 'zion') applyVcdTheme(true);
     } catch (e) {}
     loadPartnerCalculatorState();
-    renderStageNft(PRESET_NFTS['if-1506']);
+    renderStageNft(PRESET_NFTS['tos-1650']);
     renderPinnedTokens();
     renderWalletPnl();
     updateCalc();
@@ -9059,14 +9067,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         sub: 'Celestial Moonwalker • Chrome Retro',
         metricLeft: 'Paid: 0.0009 ETH',
         metricRight: '$1.84 USD',
-        receipt: '2022 Pair Cost: 0.937 ETH ($2,628) → Re-Sniped @ 99.8% Discount',
+        receipt: '2022 Pair Cost: 0.937 ETH ($2,628) -> 2026 Sweep!',
         media: 'nft-media/tos_1650.png?v=73'
       },
       {
         key: 'tos-1002',
         cat: ['vault', 'tos'],
         tag: '🌙 VAULT HELD',
-        tagCls: 'bg-pink-500/20 border-pink-400/60 text-pink-300',
+        tagCls: 'bg-pink-500/25 border-pink-400 text-pink-200',
         title: 'The Other Side #1002',
         sub: 'Skulls01 Starboy • Passionfruit Glitter',
         metricLeft: 'Paid: 0.0012 ETH',
@@ -9083,7 +9091,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         sub: 'Markus Magnusson • Burn Currency',
         metricLeft: 'Floor: 0.0026 ETH',
         metricRight: '$16.00 (3x)',
-        receipt: 'Large Friend Auction at 72 Walks (38 Bids) • 3,454+ Burned',
+        receipt: 'Large Friend Auction Live • 3,454+ Burned Forever',
         media: 'nft-media/the_walk_1.gif'
       },
       {
@@ -9123,89 +9131,104 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         media: 'nft-media/minisupers_6915.png'
       },
       {
-        key: 'if-1506',
-        cat: ['targets'],
-        tag: '🎯 PRIMARY SNIPE',
-        tagCls: 'bg-[#00f5d4]/25 border-[#00f5d4] text-[#00f5d4]',
-        title: 'Invisible Friends #1506',
-        sub: 'Cream Fannypack (0.98%) • Blue Hoodie',
-        metricLeft: 'Bid: 0.210 WETH',
-        metricRight: 'Floor: 0.2149',
-        receipt: 'Only 0.0049 ETH ($9.90) Away From Target Bid!',
-        media: 'nft-media/if_1506.gif?v=57'
-      },
-      {
-        key: 'beast-2313-full',
-        cat: ['targets'],
-        tag: '👹 AKCB TARGET',
-        tagCls: 'bg-amber-500/25 border-amber-400 text-amber-300',
-        title: 'BEAST #2313 (3D)',
-        sub: 'Beat Street • Black Raccoon Balaclava',
-        metricLeft: 'Bid: 0.060 WETH',
-        metricRight: 'Floor: 0.0598',
-        receipt: 'Owner 0x4140...CF1F Unmoved • 3D AR Ready',
-        media: 'nft-media/beast_2313_full.png'
-      },
-      {
-        key: 'if-1286',
-        cat: ['targets'],
-        tag: '🧥 SIBLING #1',
+        key: 'supers-84',
+        cat: ['vault'],
+        tag: '⚡ OG VAULT',
         tagCls: 'bg-sky-500/20 border-sky-400/60 text-sky-200',
-        title: 'Invisible Friends #1286',
-        sub: 'Rank #1,367 • Cream Fannypack + Bucket Hat',
-        metricLeft: 'Bid: 0.200 WETH',
-        metricRight: 'Safe ✓',
-        receipt: 'Backup Sibling #1 • Unmoved On-Chain',
-        media: 'nft-media/if_1286.gif?v=57'
+        title: 'Supers #84 & #144',
+        sub: 'Home Team OG Companion Pair',
+        metricLeft: 'Held in Vault',
+        metricRight: '2x Supers',
+        receipt: 'Companion to 133 Mini Supers Stack',
+        media: 'nft-media/supers_84.png'
       },
       {
-        key: 'if-140',
-        cat: ['targets'],
-        tag: '🧥 SIBLING #2',
-        tagCls: 'bg-sky-500/20 border-sky-400/60 text-sky-200',
-        title: 'Invisible Friends #140',
-        sub: 'Rank #814 • Big Hat • Stick Bag',
-        metricLeft: 'Bid: 0.200 WETH',
-        metricRight: 'Safe ✓',
-        receipt: 'Backup Sibling #2 • Unmoved On-Chain',
-        media: 'nft-media/if_140.gif?v=57'
-      },
-      {
-        key: 'if-42',
-        cat: ['targets'],
-        tag: '🧥 SIBLING #3',
-        tagCls: 'bg-sky-500/20 border-sky-400/60 text-sky-200',
-        title: 'Invisible Friends #42',
-        sub: 'Rank #489 • Early Mint #42 • Thief Mask',
-        metricLeft: 'Bid: 0.200 WETH',
-        metricRight: 'Safe ✓',
-        receipt: 'Backup Sibling #3 • Unmoved On-Chain',
-        media: 'nft-media/if_42.gif?v=57'
-      },
-      {
-        key: 'clonex-9143',
-        cat: ['targets'],
-        tag: '🧬 RTFKT RADAR',
-        tagCls: 'bg-purple-500/20 border-purple-400/60 text-purple-200',
-        title: 'CloneX #9143',
-        sub: 'RTFKT x Takashi Murakami Drip',
-        metricLeft: 'Floor: 0.145 ETH',
-        metricRight: 'Bid: 0.125 W',
-        receipt: 'Tracked Blue-Chip Companion Collection',
-        media: 'nft-media/clonex_9143.png'
+        key: 'enso-146',
+        cat: ['vault'],
+        tag: '🌀 OG VAULT',
+        tagCls: 'bg-indigo-500/20 border-indigo-400/60 text-indigo-200',
+        title: 'Enso #146 & #190',
+        sub: 'OG Vault Collector Pair',
+        metricLeft: 'Held in Vault',
+        metricRight: '2x Enso',
+        receipt: 'Long-Term Collector Hold',
+        media: 'nft-media/enso_146.png'
       }
     ];
+
+    function getCombinedCyberCards() {
+      const sniperCards = (PINNED_NFTS || []).map((p, idx) => ({
+        key: `pinned-${idx}`,
+        isPinned: true,
+        pinIdx: idx,
+        contract: p.contract,
+        tokenId: p.tokenId,
+        cat: ['targets'],
+        tag: '🎯 SNIPER TARGET',
+        tagCls: 'bg-[#00f5d4]/25 border-[#00f5d4] text-[#00f5d4]',
+        title: p.title || `Token #${p.tokenId}`,
+        sub: p.collection || `Contract ${String(p.contract || '').slice(0, 6)}...`,
+        metricLeft: p.targetBid ? `Bid: ${p.targetBid}` : `Token #${p.tokenId}`,
+        metricRight: 'Watched ✓',
+        receipt: `Owner: ${p.owner || 'On-Chain Verified'}`,
+        media: p.mediaUrl || 'nft-media/the_walk_1.gif'
+      }));
+      return [...CYBER_NFT_CARDS, ...sniperCards];
+    }
+
+    function updateSniperTargetCountsUI() {
+      const n = (PINNED_NFTS || []).length;
+      const totalCards = CYBER_NFT_CARDS.length + n;
+      const btnAll = document.getElementById('nft-filter-all');
+      const btnTgt = document.getElementById('nft-filter-targets');
+      const tabBadge = document.getElementById('cyber-tab3-count-badge');
+      const heading = document.getElementById('sniper-watchlist-heading');
+      if (btnAll) btnAll.textContent = `ALL CARDS (${totalCards})`;
+      if (btnTgt) btnTgt.textContent = `🎯 SNIPER TARGETS (${n})`;
+      if (tabBadge) tabBadge.textContent = `144 HELD • ${n} TARGET${n === 1 ? '' : 'S'}`;
+      if (heading) {
+        heading.textContent = n === 0
+          ? '0 Active Sniper Targets • Ready for Floor Scouting'
+          : `${n} Active Sniper Target${n === 1 ? '' : 's'} Armed on Watchlist`;
+      }
+    }
 
     function renderCyberNftCardsGrid() {
       const grid = document.getElementById('cyber-nft-cards-grid');
       if (!grid) return;
-      const filtered = CYBER_NFT_CARDS.filter(c => ACTIVE_NFT_GRID_FILTER === 'all' || c.cat.includes(ACTIVE_NFT_GRID_FILTER));
-      const activeKey = Object.keys(PRESET_NFTS).find(k => PRESET_NFTS[k] === CURRENT_STAGE_NFT) || 'if-1506';
+      updateSniperTargetCountsUI();
+      const allCards = getCombinedCyberCards();
+      const filtered = allCards.filter(c => ACTIVE_NFT_GRID_FILTER === 'all' || c.cat.includes(ACTIVE_NFT_GRID_FILTER));
+      const activeKey = Object.keys(PRESET_NFTS).find(k => PRESET_NFTS[k] === CURRENT_STAGE_NFT) || 'tos-1650';
+
+      if (filtered.length === 0 && ACTIVE_NFT_GRID_FILTER === 'targets') {
+        grid.innerHTML = `
+          <div class="col-span-full bg-[#060911] border border-dashed border-[#00f5d4]/40 rounded-xl p-6 text-center space-y-2.5 font-mono">
+            <div class="text-sm font-extrabold text-[#00f5d4]">🎯 SNIPER WATCHLIST SLOTS CLEAR (0 ACTIVE TARGETS)</div>
+            <p class="text-xs text-slate-400 max-w-2xl mx-auto">
+              All previous sniper targets have been cleared so you can scout fresh floors. Use the <b class="text-white">Universal On-Chain Token Inspector</b> below (and click <b class="text-emerald-400">📌 Pin</b>) or scroll to the <b class="text-[#00f5d4]">Custom Sniper Watchlist &amp; Floor Scout</b> section to add new tokens by ID or OpenSea URL!
+            </p>
+            <div class="flex items-center justify-center gap-2 flex-wrap pt-1 text-[11px]">
+              <a href="https://opensea.io/collection/invisiblefriends" target="_blank" class="px-3 py-1.5 rounded-lg bg-[#111726] border border-[#00f5d4]/40 text-[#00f5d4] font-bold hover:bg-[#00f5d4]/15 transition">🧥 Browse Invisible Friends ↗</a>
+              <a href="https://opensea.io/collection/tos-theotherside" target="_blank" class="px-3 py-1.5 rounded-lg bg-[#111726] border border-pink-400/40 text-pink-300 font-bold hover:bg-pink-500/15 transition">🌙 Browse The Other Side ↗</a>
+              <a href="https://opensea.io/collection/invisible-friends-editions" target="_blank" class="px-3 py-1.5 rounded-lg bg-[#111726] border border-emerald-400/40 text-emerald-300 font-bold hover:bg-emerald-500/15 transition">🚶 Browse Walk / Baller ↗</a>
+              <button onclick="document.getElementById('sniper-add-token-input')?.focus(); document.getElementById('sec-targets')?.scrollIntoView({behavior:'smooth'});" class="px-3 py-1.5 rounded-lg bg-[#00f5d4] text-slate-950 font-extrabold cursor-pointer transition">🎯 + Add Sniper Target ↓</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
 
       grid.innerHTML = filtered.map(c => {
         const isSel = c.key === activeKey;
+        const clickHandler = c.isPinned
+          ? `inspectOnChainToken('${c.contract}', '${c.tokenId}')`
+          : `selectCyberNftCard('${c.key}')`;
+        const removeBtn = c.isPinned
+          ? `<button onclick="event.stopPropagation(); unpinNft(${c.pinIdx});" title="Remove from Sniper Watchlist" style="background:rgba(6,8,15,0.92);" class="absolute top-1.5 right-1.5 w-6 h-6 rounded border border-rose-500/50 text-rose-400 hover:bg-rose-500 hover:text-white text-xs font-bold flex items-center justify-center cursor-pointer transition">✕</button>`
+          : '';
         return `
-          <div onclick="selectCyberNftCard('${c.key}')"
+          <div onclick="${clickHandler}"
                class="cyber-nft-card ${isSel ? 'cyber-nft-card-active' : ''} p-2.5 flex flex-col justify-between cursor-pointer group">
             <div>
               <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-[#060911] border border-white/10 mb-2">
@@ -9213,6 +9236,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 <span style="background:rgba(6,8,15,0.92);backdrop-filter:blur(6px);" class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded border text-[9px] font-mono font-extrabold shadow-md ${c.tagCls}">
                   ${c.tag}
                 </span>
+                ${removeBtn}
               </div>
               <div class="font-mono font-bold text-white text-xs truncate group-hover:text-[#00f5d4] transition">${c.title}</div>
               <div class="text-[10.5px] text-slate-400 truncate mt-0.5">${c.sub}</div>
@@ -9247,6 +9271,61 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       renderCyberNftCardsGrid();
       const stageEl = document.getElementById('viewer-tab-stage');
       if (stageEl) stageEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    async function addCustomSniperTargetFromBar() {
+      const colSel = document.getElementById('sniper-add-collection');
+      const rawIn = (document.getElementById('sniper-add-token-input')?.value || '').trim();
+      const bidIn = (document.getElementById('sniper-add-bid-input')?.value || '').trim();
+      const statusEl = document.getElementById('sniper-add-status');
+      if (!rawIn) {
+        if (statusEl) statusEl.textContent = '⚠️ Enter a Token # (e.g. 2450) or paste an OpenSea URL first!';
+        return;
+      }
+      let contract = colSel ? colSel.value : '0x59468516a8259058baD1cA5F8f4BFF190d30E066';
+      let tokenId = parseInt(rawIn, 10);
+
+      // Parse OpenSea or Blur URL if pasted (e.g. https://opensea.io/item/ethereum/0x.../1234 or /assets/ethereum/0x.../1234)
+      const urlMatch = rawIn.match(/(0x[a-fA-F0-9]{40})\/(\d+)/);
+      if (urlMatch) {
+        contract = urlMatch[1];
+        tokenId = parseInt(urlMatch[2], 10);
+      }
+      if (!tokenId || isNaN(tokenId)) {
+        if (statusEl) statusEl.textContent = '⚠️ Could not parse Token ID from input.';
+        return;
+      }
+      if (statusEl) statusEl.textContent = `⏳ Loading #${tokenId} from Mainnet & Pinning to Watchlist...`;
+      await inspectOnChainToken(contract, tokenId);
+      if (CURRENT_STAGE_NFT) {
+        const exists = PINNED_NFTS.some(p => p.contract.toLowerCase() === contract.toLowerCase() && Number(p.tokenId) === Number(tokenId));
+        if (!exists) {
+          PINNED_NFTS.push({
+            contract: CURRENT_STAGE_NFT.contract || contract,
+            tokenId: CURRENT_STAGE_NFT.tokenId || tokenId,
+            collection: CURRENT_STAGE_NFT.collection || 'Ethereum NFT',
+            title: CURRENT_STAGE_NFT.title || `Token #${tokenId}`,
+            owner: CURRENT_STAGE_NFT.owner || 'On-Chain Holder',
+            targetBid: bidIn || '',
+            mediaUrl: CURRENT_STAGE_NFT.mediaUrl
+          });
+          savePinnedTokens(PINNED_NFTS);
+        }
+        renderPinnedTokens();
+        renderCyberNftCardsGrid();
+        if (statusEl) statusEl.textContent = `✅ Added ${CURRENT_STAGE_NFT.title} to your Sniper Watchlist!`;
+        const inp = document.getElementById('sniper-add-token-input');
+        if (inp) inp.value = '';
+      }
+    }
+
+    function clearAllSniperTargets() {
+      PINNED_NFTS = [];
+      savePinnedTokens(PINNED_NFTS);
+      renderPinnedTokens();
+      renderCyberNftCardsGrid();
+      const statusEl = document.getElementById('sniper-add-status');
+      if (statusEl) statusEl.textContent = '🗑️ Cleared all Sniper Watchlist targets.';
     }
 
     function switchCyberAppTab(tab) {
