@@ -9343,6 +9343,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
       } catch (e) {}
     }
 
+    window.switchCyberTab = switchCyberAppTab;
     setTimeout(() => {
       renderCyberNftCardsGrid();
       pollLiveWalkBurnAuction();
@@ -9351,7 +9352,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░░░░░░�
         const params = new URLSearchParams(window.location.search);
         const qTab = params.get('tab');
         const qNft = params.get('nft');
-        if (qTab) switchCyberTab(qTab);
+        if (qTab) switchCyberAppTab(qTab);
         if (qNft && typeof selectNftModel === 'function') selectNftModel(qNft);
       } catch (e) {}
     }, 120);
