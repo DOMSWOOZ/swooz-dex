@@ -648,121 +648,136 @@
 
   
     /* ============================================================================
-       🌤️ SWOOZ DEX v77.0 // FROSTED DAYLIGHT ALABASTER & PASTEL BENTO DESIGN SYSTEM
-       Exact Match to New Google Flow Render (media_1794370061123_8e194e3f.jpg)
+       🌑 SWOOZ DEX v78.0 // OBSIDIAN MIDNIGHT & NEON-GLASS DARK MODE BENTO SYSTEM
+       Google Flow Bento Architecture + @Dom_Swooz Emblem + $75.72 ETH Carve-Out Sync
        ============================================================================ */
     html, body {
-      background: linear-gradient(145deg, #e2ebf5 0%, #ebf1f8 50%, #dfe8f3 100%) !important;
-      color: #0f172a !important;
+      background: radial-gradient(circle at 18% 10%, #0f172a 0%, #070b14 55%, #04070d 100%) !important;
+      color: #f8fafc !important;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
     }
 
     /* Hide any legacy X-TRADER hardware bezels or stands */
     .xtrader-top-bezel,
-    .xtrader-bottom-stand {
+    .xtrader-bottom-stand,
+    .xtrader-corner-clamp,
+    .xtrader-side-clamp,
+    .xtrader-monitor-neck,
+    .xtrader-monitor-stand-base,
+    .xtrader-bolt {
       display: none !important;
     }
 
-    #xtrader-hardware-shell {
+    #xtrader-hardware-shell,
+    #xtrader-chassis-shell,
+    .xtrader-chassis-shell,
+    .xtrader-screen-viewport {
       max-width: 1700px !important;
-      margin: 12px auto !important;
-      background: #eaf0f8 !important;
-      border-radius: 28px !important;
-      border: 1.5px solid #ffffff !important;
-      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.09), 0 4px 14px rgba(15, 23, 42, 0.04) !important;
-      overflow: hidden !important;
-    }
-
-    #xtrader-screen-bezel {
+      margin: 8px auto !important;
       background: transparent !important;
       border: none !important;
-      padding: 0 !important;
+      box-shadow: none !important;
+      padding: 4px !important;
+      border-radius: 28px !important;
     }
 
-    /* Left Sidebar Frosted Alabaster Styling */
+    /* Deep Obsidian Midnight Workspace Surface */
+    .xtrader-screen-surface {
+      background: linear-gradient(145deg, #0b111e 0%, #0d1526 50%, #080d18 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.18) !important;
+      border-radius: 28px !important;
+      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.72), 0 0 45px rgba(16, 185, 129, 0.06) !important;
+      padding: 18px !important;
+    }
+    .xtrader-screen-surface::before,
+    .xtrader-screen-surface::after {
+      display: none !important;
+    }
+
+    /* Left Sidebar Obsidian Carbon-Glass Styling */
     #orbit-sidebar-aside {
-      background: linear-gradient(180deg, #f3f7fc 0%, #e9f0f8 100%) !important;
-      border: 1px solid #dbe4f0 !important;
+      background: linear-gradient(180deg, #101829 0%, #0a0f1c 100%) !important;
+      border: 1px solid rgba(148, 163, 184, 0.16) !important;
       border-radius: 24px !important;
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
-      color: #334155 !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+      color: #cbd5e1 !important;
     }
 
-    /* Active Sidebar Nav Pill: Luminous Sky-Blue Gradient Pill (Matches Google Flow Render) */
+    /* Active Sidebar Nav Pill: Luminous Cyan-Emerald Dark Neon Pill */
     #orbit-sidebar-aside .orbit-nav-active {
-      background: linear-gradient(90deg, #bae6fd 0%, #7dd3fc 100%) !important;
-      border: 1px solid #38bdf8 !important;
-      color: #0c4a6e !important;
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0.24) 0%, rgba(56, 189, 248, 0.24) 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.55) !important;
+      color: #f8fafc !important;
       font-weight: 800 !important;
-      box-shadow: 0 6px 16px rgba(56, 189, 248, 0.28) !important;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.22) !important;
     }
 
     #orbit-sidebar-aside nav button:not(.orbit-nav-active) {
-      color: #475569 !important;
+      color: #94a3b8 !important;
       font-weight: 600 !important;
     }
     #orbit-sidebar-aside nav button:not(.orbit-nav-active):hover {
-      background: rgba(255, 255, 255, 0.75) !important;
-      color: #0f172a !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      color: #f8fafc !important;
     }
 
-    /* Elevated Pure-White Bento Cards */
+    /* Elevated Obsidian Slate Bento Cards */
     .orbit-card {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
+      background: linear-gradient(180deg, #11192b 0%, #0c1322 100%) !important;
+      border: 1px solid rgba(148, 163, 184, 0.16) !important;
       border-radius: 24px !important;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045), 0 2px 6px rgba(15, 23, 42, 0.025) !important;
-      color: #0f172a !important;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+      color: #f8fafc !important;
     }
 
     /* Top Search Bar, All Networks Toggle, Connected Portfolio Pill & 1 Gwei Pill */
     #orbit-global-search {
-      background: #ffffff !important;
-      border: 1px solid #dbe4f0 !important;
+      background: #0d1424 !important;
+      border: 1px solid rgba(148, 163, 184, 0.2) !important;
       border-radius: 9999px !important;
-      color: #0f172a !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+      color: #f8fafc !important;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35) !important;
     }
     #orbit-global-search::placeholder {
       color: #64748b !important;
     }
 
     #orbit-chains-bar {
-      background: #ffffff !important;
-      border: 1px solid #dbe4f0 !important;
+      background: #0d1424 !important;
+      border: 1px solid rgba(148, 163, 184, 0.2) !important;
       border-radius: 9999px !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     }
     #orbit-active-chain-pill {
-      color: #0f172a !important;
+      color: #f8fafc !important;
       font-weight: 700 !important;
     }
     #orbit-all-net-toggle {
-      background: #10b981 !important;
-      border-color: #059669 !important;
+      background: rgba(16, 185, 129, 0.28) !important;
+      border-color: #10f1b6 !important;
     }
     #orbit-all-net-toggle span {
-      background: #ffffff !important;
+      background: #10f1b6 !important;
     }
 
     #orbit-wallet-pill-box {
-      background: #ffffff !important;
-      border: 1px solid #dbe4f0 !important;
+      background: #0d1424 !important;
+      border: 1px solid rgba(148, 163, 184, 0.2) !important;
       border-radius: 9999px !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     }
     #orbit-wallet-select {
-      color: #0f172a !important;
+      color: #f8fafc !important;
       font-weight: 700 !important;
     }
     #btn-privacy-eye-top {
-      background: #ffffff !important;
-      border: 1px solid #dbe4f0 !important;
+      background: #0d1424 !important;
+      border: 1px solid rgba(148, 163, 184, 0.2) !important;
       border-radius: 9999px !important;
-      color: #334155 !important;
+      color: #cbd5e1 !important;
     }
 
-    /* Segmented Pill Workspace Tabs */
+    /* Segmented Pill Workspace Tabs (Dark Mode) */
     #cyber-command-deck-bar {
       background: transparent !important;
       border: none !important;
@@ -776,138 +791,59 @@
     #cyber-command-deck-bar .cyber-tab-btn {
       background: transparent !important;
       border: 1px solid transparent !important;
-      color: #475569 !important;
+      color: #94a3b8 !important;
       box-shadow: none !important;
     }
+    #cyber-command-deck-bar .cyber-tab-btn:hover {
+      color: #f8fafc !important;
+    }
     #cyber-command-deck-bar .cyber-tab-btn.cyber-tab-active {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      color: #0f172a !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+      background: linear-gradient(90deg, #1e293b 0%, #111827 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.45) !important;
+      color: #38bdf8 !important;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2) !important;
     }
 
-    /* Card 2 Header Buttons in Daylight Theme */
+    /* Card 2 Header Buttons in Dark Mode */
     #orbit-card2-btn-plan {
-      color: #0f172a !important;
-      border-bottom-color: #10b981 !important;
+      color: #f8fafc !important;
+      border-bottom-color: #10f1b6 !important;
     }
     #orbit-card2-btn-briefing,
     #orbit-card2-btn-tokens {
-      color: #64748b !important;
+      color: #94a3b8 !important;
     }
 
-    /* Exchange Allocation & NFT Vault Cards in Crisp Daylight Style */
-    #orbit-bento-right .orbit-card .text-\[\#e2e8f0\],
-    #orbit-bento-right .orbit-card .text-white {
-      color: #0f172a !important;
-    }
-    #orbit-bento-right .orbit-card .text-\[\#34d399\] {
-      color: #059669 !important;
-    }
-    #orbit-bento-right .orbit-card .border-white\/10 {
-      border-color: #e2e8f0 !important;
-    }
-
-    /* NFT Vaults Tab (Tab 03) Clean Daylight Gallery Styling */
-    #sec-viewer h2,
-    #sec-viewer .text-white {
-      color: #0f172a !important;
-    }
-    #sec-viewer .bg-\[\#0b111e\],
-    #sec-viewer .bg-\[\#070b12\],
-    #sec-viewer .bg-\[\#0d1424\],
-    #sec-viewer .bg-\[\#101726\] {
-      background: #f8fafc !important;
-      border-color: #e2e8f0 !important;
-      color: #0f172a !important;
-    }
-    .cyber-nft-card {
-      background: #ffffff !important;
-      border: 1.5px solid #e2e8f0 !important;
-      border-radius: 18px !important;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06) !important;
-    }
-    .cyber-nft-card:hover {
-      border-color: #10b981 !important;
-      box-shadow: 0 12px 28px rgba(16, 185, 129, 0.15) !important;
-    }
-    .cyber-nft-card .text-white {
-      color: #0f172a !important;
-    }
-    .cyber-nft-card .text-emerald-300,
-    .cyber-nft-card .text-emerald-400 {
-      color: #059669 !important;
-    }
-    .cyber-nft-card .text-cyan-300,
-    .cyber-nft-card .text-amber-300 {
-      color: #0369a1 !important;
-    }
-    .cyber-nft-card .aspect-square {
-      background: #f1f5f9 !important;
-      border: 1px solid #e2e8f0 !important;
-    }
-
-    /* Bottom Left Sidebar Unlock Button */
+    /* Bottom Left Sidebar Unlock Button (Dark Emerald Glow) */
     #btn-vault-lock {
-      background: #ecfdf5 !important;
-      border: 1px solid #6ee7b7 !important;
-      color: #065f46 !important;
+      background: rgba(16, 185, 129, 0.14) !important;
+      border: 1px solid rgba(16, 241, 182, 0.4) !important;
+      color: #34d399 !important;
       font-weight: 700 !important;
     }
 
-
-    /* Remove Legacy Dark X-TRADER Monitor Frame & Clamps Completely */
-    #xtrader-chassis-shell,
-    .xtrader-chassis-shell,
-    .xtrader-screen-viewport {
-      background: linear-gradient(145deg, #e5edf7 0%, #edf2f9 50%, #e1eaf5 100%) !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 6px !important;
-      border-radius: 28px !important;
-    }
-    .xtrader-corner-clamp,
-    .xtrader-side-clamp,
-    .xtrader-top-bezel,
-    .xtrader-monitor-neck,
-    .xtrader-monitor-stand-base,
-    .xtrader-bolt {
-      display: none !important;
-    }
-
-
-    /* Frosted Cool-Alabaster Workspace Surface (Exact Match to Google Flow Render) */
-    .xtrader-screen-surface {
-      background: linear-gradient(145deg, #e5edf7 0%, #edf2f9 50%, #e1eaf5 100%) !important;
-      border: 1.5px solid #ffffff !important;
-      border-radius: 28px !important;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03) !important;
-      padding: 18px !important;
-    }
-    .xtrader-screen-surface::before,
-    .xtrader-screen-surface::after {
-      display: none !important;
-    }
-
-    /* Make Tab 03 (#sec-viewer) and Tab 02 (#sec-pnl) Elevated White Cards in Daylight Theme */
+    /* Tab 03 (#sec-viewer) and Tab 02 (#sec-pnl) Elevated Obsidian Cards in Dark Mode */
     #sec-viewer,
     #sec-pnl {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
+      background: linear-gradient(180deg, #11192b 0%, #0c1322 100%) !important;
+      border: 1px solid rgba(148, 163, 184, 0.18) !important;
       border-radius: 24px !important;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045) !important;
-      color: #0f172a !important;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5) !important;
+      color: #f8fafc !important;
     }
-    #sec-viewer .hud-bracket-card,
-    #sec-viewer .vcd-pod {
-      background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
-      color: #0f172a !important;
-      box-shadow: none !important;
+    .cyber-nft-card {
+      background: #0d1424 !important;
+      border: 1.5px solid rgba(148, 163, 184, 0.18) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45) !important;
     }
-    #sec-viewer .text-slate-300,
-    #sec-viewer .text-slate-400 {
-      color: #475569 !important;
+    .cyber-nft-card:hover {
+      border-color: #10f1b6 !important;
+      box-shadow: 0 12px 28px rgba(16, 241, 182, 0.2) !important;
+    }
+    .cyber-nft-card .aspect-square {
+      background: #070b14 !important;
+      border: 1px solid rgba(148, 163, 184, 0.14) !important;
     }
 
   </style>
@@ -928,20 +864,20 @@
       <!-- ================= ADAPTIVE NAVIGATION (Compact Single-Row Ribbon on Cover & Inner Fold, Left Sidebar on Desktop >=1180px) ================= -->
       <aside id="orbit-sidebar-aside" class="w-full xl:w-[225px] shrink-0 orbit-card p-3.5 flex flex-col justify-between xl:min-h-[810px]">
         <div>
-                    <!-- Brand Header: Newly Designed SWOOZ DEX Emblem (Reflecting @Dom_Swooz Twitter Avi + Frosted Daylight Aesthetic) -->
-          <div id="orbit-sidebar-brand-row" class="flex xl:flex-col items-center justify-between xl:justify-center gap-2 pb-2 xl:pb-4 mb-2 xl:mb-3 border-b border-slate-200/80">
+                    <!-- Brand Header: Newly Designed SWOOZ DEX Emblem (Reflecting @Dom_Swooz Twitter Avi + Obsidian Dark Mode) -->
+          <div id="orbit-sidebar-brand-row" class="flex xl:flex-col items-center justify-between xl:justify-center gap-2 pb-2 xl:pb-4 mb-2 xl:mb-3 border-b border-slate-800">
             <div class="flex xl:flex-col items-center gap-2.5 cursor-pointer select-none" onclick="switchOrbitSidebar('orbit')" title="SWOOZ DEX // Institutional Multi-Chain &amp; Quant Workstation">
               <div class="relative flex items-center justify-center pt-1 group">
-                <img src="logo.png?v=77" alt="SWOOZ DEX Logo"
-                     class="w-12 h-12 xl:w-[92px] xl:h-[92px] rounded-2xl xl:rounded-[24px] shadow-[0_10px_25px_rgba(15,23,42,0.14)] border-2 border-white transition-transform duration-200 group-hover:scale-105" />
-                <span class="hidden xl:flex absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#10b981] border-2 border-white text-white text-[11px] font-bold items-center justify-center shadow-sm" title="SwoozyBoy Verified Workstation">✌️</span>
+                <img src="logo.png?v=78" alt="SWOOZ DEX Logo"
+                     class="w-12 h-12 xl:w-[92px] xl:h-[92px] rounded-2xl xl:rounded-[24px] shadow-[0_10px_28px_rgba(0,0,0,0.65),0_0_20px_rgba(56,189,248,0.22)] border-2 border-cyan-400/40 transition-transform duration-200 group-hover:scale-105" />
+                <span class="hidden xl:flex absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#10b981] border-2 border-[#0f172a] text-white text-[11px] font-bold items-center justify-center shadow-sm" title="SwoozyBoy Verified Workstation">✌️</span>
               </div>
               <div class="xl:text-center mt-1">
-                <div class="text-base xl:text-[19px] font-extrabold tracking-tight text-[#0f172a] font-sans leading-none flex items-center xl:justify-center gap-1.5">
+                <div class="text-base xl:text-[19px] font-extrabold tracking-tight text-white font-sans leading-none flex items-center xl:justify-center gap-1.5">
                   <span>SWOOZ</span>
-                  <span class="px-1.5 py-0.5 rounded-md bg-gradient-to-r from-[#10b981] to-[#38bdf8] text-white text-[10px] xl:text-[11px] font-extrabold tracking-wider shadow-2xs">DEX</span>
+                  <span class="px-1.5 py-0.5 rounded-md bg-gradient-to-r from-[#10b981] to-[#38bdf8] text-slate-950 text-[10px] xl:text-[11px] font-extrabold tracking-wider shadow-2xs">DEX</span>
                 </div>
-                <div class="text-[9px] font-mono text-[#64748b] tracking-wider uppercase font-semibold mt-1">SWOOZY WORLD ORDER // QUANT</div>
+                <div class="text-[9px] font-mono text-slate-400 tracking-wider uppercase font-semibold mt-1">SWOOZY WORLD ORDER // QUANT</div>
               </div>
             </div>
 
@@ -1126,9 +1062,9 @@
         </div>
 
         
-                <!-- ================= 🎛️ FROSTED DAYLIGHT SEGMENTED PILL WORKSPACE SWITCHER ================= -->
+                <!-- ================= 🎛️ OBSIDIAN DARK SEGMENTED PILL WORKSPACE SWITCHER ================= -->
         <div id="cyber-command-deck-bar" class="flex flex-wrap items-center justify-between gap-2.5">
-          <div class="inline-flex flex-wrap items-center gap-1 bg-[#dce5f0] p-1.5 rounded-full border border-[#cbd5e1]/90 shadow-inner">
+          <div class="inline-flex flex-wrap items-center gap-1 bg-[#090e1a] p-1.5 rounded-full border border-slate-800 shadow-inner">
             <button id="cyber-tab-1" onclick="switchCyberAppTab('portfolio')"
                     class="cyber-tab-btn cyber-tab-active px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-bold transition cursor-pointer flex items-center gap-2">
               <span>⚡ Trading Command</span>
@@ -1142,19 +1078,24 @@
             <button id="cyber-tab-3" onclick="switchCyberAppTab('nft-studio')"
                     class="cyber-tab-btn px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-semibold transition cursor-pointer flex items-center gap-2">
               <span>🗄️ NFT Vaults</span>
-              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-900 text-[10px] font-bold">144 Held</span>
+              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-[10px] font-bold">144 Held</span>
             </button>
           </div>
 
           <!-- Right Quick Tactical Status & Split-Screen Toggle -->
-          <div class="flex items-center gap-2 font-mono text-[11px]">
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
+          <div class="flex items-center gap-2 font-mono text-[11px] flex-wrap">
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 font-bold shadow-2xs">
+              <span>🔓 $75.72 (0.0368 ETH) UNLOCKED FOR CB</span>
+              <span class="text-slate-500">•</span>
+              <span>5/5 LEGS ARMED</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0d1424] border border-slate-800 shadow-2xs">
               <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-              <span class="text-slate-500 font-semibold">BURN AUCTION:</span>
-              <a href="https://burn.invisiblefriends.io" target="_blank" id="cyber-walk-auction-pill" class="text-[#059669] font-bold hover:underline">83 WALKS (52 BIDS) ↗</a>
+              <span class="text-slate-400 font-semibold">BURN AUCTION:</span>
+              <a href="https://burn.invisiblefriends.io" target="_blank" id="cyber-walk-auction-pill" class="text-[#34d399] font-bold hover:underline">83 WALKS (52 BIDS) ↗</a>
             </div>
             <button id="cyber-tab-split" onclick="switchCyberAppTab('split')" title="View All 3 Workspaces Simultaneously"
-                    class="cyber-tab-btn px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200/90 text-[11px] font-semibold text-slate-700 cursor-pointer shadow-2xs shrink-0">
+                    class="cyber-tab-btn px-3.5 py-1.5 rounded-full bg-[#0d1424] hover:bg-slate-800 border border-slate-700 text-[11px] font-semibold text-slate-300 cursor-pointer shadow-2xs shrink-0">
               🖥️ All-In-One
             </button>
           </div>
@@ -1166,26 +1107,27 @@
           <!-- LEFT COLUMN (7 Cols): MULTI-CHAIN PORTFOLIO CARD + ASSET TRACKER TABLE -->
           <div id="orbit-bento-left" class="md:col-span-7 flex flex-col gap-3 sm:gap-4 justify-between min-w-0">
 
-                                    <!-- CARD 1: Multi-Chain Portfolio Net Worth + Light-Grid Dual-Spline Chart (Google Flow Daylight Spec) -->
+                                    <!-- CARD 1: Multi-Chain Portfolio Net Worth + Dark-Grid Dual-Spline Chart (SWOOZ DEX v78.0 Dark Mode) -->
             <div class="orbit-card p-6 space-y-3">
               <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
                 <!-- Left 5 Cols: Multi-Chain Portfolio Net Worth & 2x2 Asset Cards -->
                 <div class="lg:col-span-5 space-y-3 min-w-0">
-                  <div class="flex items-center justify-between gap-2">
-                    <h2 class="text-lg sm:text-xl font-extrabold text-[#0f172a] tracking-tight whitespace-nowrap">Multi-Chain Portfolio</h2>
+                  <div class="flex items-center justify-between gap-2 flex-wrap">
+                    <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight whitespace-nowrap">Multi-Chain Portfolio</h2>
+                    <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-400/35 text-cyan-300 font-mono text-[10px] font-bold">🔓 $75.72 ETH Free</span>
                   </div>
                   <div id="orbit-chart-title-lbl" class="hidden">Active DEX Capital (Kraken Pro + Coinbase)</div>
 
                   <!-- Big Net Worth + Mint Percentage Pill + Privacy Eye -->
                   <div class="flex items-center gap-2.5 flex-wrap">
-                    <div id="orbit-networth-val" class="text-4xl sm:text-[42px] font-extrabold text-[#0f172a] tracking-tight font-sans leading-none">$686.51</div>
-                    <div id="orbit-networth-badge" class="px-3 py-1 rounded-full bg-[#bbf7d0] text-[#059669] text-xs font-extrabold flex items-center gap-1 shadow-2xs">
-                      <span>+9.03%</span>
+                    <div id="orbit-networth-val" class="text-4xl sm:text-[42px] font-extrabold text-white tracking-tight font-sans leading-none">$685.20</div>
+                    <div id="orbit-networth-badge" class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-extrabold flex items-center gap-1 shadow-2xs">
+                      <span>+8.85%</span>
                     </div>
                     <button id="btn-privacy-eye-hero" onclick="togglePrivacyHideMode()" title="Hide / Show Total Net Worth &amp; Sensitive Info"
                             aria-label="Hide or Show Total Net Worth"
-                            class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer shrink-0 active:scale-95">
-                      <span id="privacy-eye-icon-hero" class="flex items-center justify-center w-4 h-4">
+                            class="w-8 h-8 rounded-full bg-[#0b111e] hover:bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center transition cursor-pointer shrink-0 active:scale-95">
+                      <span id="privacy-eye-icon-hero" class="flex items-center justify-center w-4 h-4 text-[#00f5d4]">
                         <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                           <circle cx="12" cy="12" r="3"></circle>
@@ -1194,96 +1136,96 @@
                     </button>
                   </div>
 
-                  <!-- Warm Champagne Pill for swooz.eth + 133 NFTs + ETH -->
-                  <div id="orbit-metamask-sub-row" class="px-3.5 py-1.5 rounded-full bg-[#fef3c7]/95 border border-[#fde68a] inline-flex items-center gap-2 text-xs font-semibold text-slate-800 whitespace-nowrap max-w-full overflow-hidden shadow-2xs">
+                  <!-- Dark Amber-Gold Pill for swooz.eth + 133 NFTs + ETH -->
+                  <div id="orbit-metamask-sub-row" class="px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/35 inline-flex items-center gap-2 text-xs font-semibold text-amber-100 whitespace-nowrap max-w-full overflow-hidden shadow-2xs">
                     <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 shrink-0 shadow-xs"></span>
-                    <span id="orbit-metamask-sub-lbl" class="text-slate-900 font-bold shrink-0">swooz.eth:</span>
-                    <span id="orbit-metamask-sub-val" class="text-slate-700 font-semibold truncate">$402.49 • 133 NFTs + ETH</span>
+                    <span id="orbit-metamask-sub-lbl" class="text-amber-300 font-bold shrink-0">swooz.eth:</span>
+                    <span id="orbit-metamask-sub-val" class="text-amber-100 font-semibold truncate">$402.49 • 133 NFTs + ETH</span>
                   </div>
-                  <span id="hdr-total-eth" class="hidden">0.3275 ETH ($675.27)</span>
+                  <span id="hdr-total-eth" class="hidden">0.3276 ETH ($673.96)</span>
                   <span id="orbit-live-eth-pill" class="hidden"></span>
 
-                  <!-- 2x2 Asset Mini-Cards (Exact Match to Google Flow Render — Full Numbers, Zero Truncation) -->
+                  <!-- 2x2 Asset Mini-Cards (Obsidian Dark Slate — Full Numbers, Zero Truncation) -->
                   <div class="grid grid-cols-2 gap-2.5 pt-0.5">
                     <!-- ETH Card -->
-                    <div class="p-2.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 flex items-center gap-2.5 shadow-2xs">
-                      <span class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-xs">⟠</span>
+                    <div class="p-2.5 rounded-2xl bg-[#090e1a] border border-slate-800/90 flex items-center gap-2.5 shadow-2xs">
+                      <span class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 text-cyan-300 flex items-center justify-center text-sm font-bold shrink-0 shadow-xs">⟠</span>
                       <div class="min-w-0">
-                        <div class="text-xs font-extrabold text-slate-900 leading-tight">ETH</div>
-                        <div id="orbit-pill-eth-val" class="text-[11px] font-mono font-bold text-[#059669] whitespace-nowrap">$675.27</div>
+                        <div class="text-xs font-extrabold text-white leading-tight">ETH</div>
+                        <div id="orbit-pill-eth-val" class="text-[11px] font-mono font-bold text-[#34d399] whitespace-nowrap">0.3276 ($674)</div>
                       </div>
                     </div>
                     <!-- SOL Card -->
-                    <div class="p-2.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 flex items-center gap-2.5 shadow-2xs">
-                      <span class="w-8 h-8 rounded-full bg-slate-900 text-[#14f1b6] flex items-center justify-center text-sm font-bold shrink-0 shadow-xs">◎</span>
+                    <div class="p-2.5 rounded-2xl bg-[#090e1a] border border-slate-800/90 flex items-center gap-2.5 shadow-2xs">
+                      <span class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-[#14f1b6] flex items-center justify-center text-sm font-bold shrink-0 shadow-xs">◎</span>
                       <div class="min-w-0">
-                        <div class="text-xs font-extrabold text-slate-900 leading-tight">SOL</div>
-                        <div id="orbit-pill-sol-val" class="text-[11px] font-mono font-bold text-[#059669] whitespace-nowrap">$11.12</div>
+                        <div class="text-xs font-extrabold text-white leading-tight">SOL</div>
+                        <div id="orbit-pill-sol-val" class="text-[11px] font-mono font-bold text-[#34d399] whitespace-nowrap">0.133 ($11.11)</div>
                       </div>
                     </div>
-                    <!-- CB Card -->
-                    <div class="p-2.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 flex items-center gap-2.5 shadow-2xs">
-                      <span class="w-8 h-8 rounded-xl bg-[#2563eb] text-white flex items-center justify-center text-xs font-extrabold shrink-0 shadow-xs">🔵</span>
+                    <!-- CB + Free ETH Card -->
+                    <div class="p-2.5 rounded-2xl bg-[#090e1a] border border-cyan-500/35 flex items-center gap-2.5 shadow-2xs" title="0.0368 ETH ($75.72) Unlocked on Kraken for Coinbase + 0.0051 ETH ($10.57) on Coinbase">
+                      <span class="w-8 h-8 rounded-xl bg-[#2563eb] text-white flex items-center justify-center text-xs font-extrabold shrink-0 shadow-xs">🔓</span>
                       <div class="min-w-0">
-                        <div class="text-xs font-extrabold text-slate-900 leading-tight">CB</div>
-                        <div id="orbit-pill-alts-val" class="text-[11px] font-mono font-bold text-[#059669] whitespace-nowrap">$10.55</div>
+                        <div class="text-xs font-extrabold text-cyan-300 leading-tight">CB + Free</div>
+                        <div id="orbit-pill-alts-val" class="text-[11px] font-mono font-bold text-[#34d399] whitespace-nowrap">$86.29 Free</div>
                       </div>
                     </div>
                     <!-- NFTs Card -->
-                    <div class="p-2.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 flex items-center gap-2.5 shadow-2xs">
-                      <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 border border-indigo-200 flex items-center justify-center text-xs font-extrabold shrink-0">🖼️</span>
+                    <div class="p-2.5 rounded-2xl bg-[#090e1a] border border-slate-800/90 flex items-center gap-2.5 shadow-2xs">
+                      <span class="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 flex items-center justify-center text-xs font-extrabold shrink-0">🖼️</span>
                       <div class="min-w-0">
-                        <div class="text-xs font-extrabold text-slate-900 leading-tight">NFTs</div>
-                        <div id="orbit-pill-nfts-val" class="text-[11px] font-mono font-bold text-[#059669] whitespace-nowrap">133 ($400.33)</div>
+                        <div class="text-xs font-extrabold text-white leading-tight">NFTs</div>
+                        <div id="orbit-pill-nfts-val" class="text-[11px] font-mono font-bold text-[#34d399] whitespace-nowrap">133 ($400.33)</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Right 7 Cols: Light-Grid Spline Chart + Compact Scope/Mode Bar + Bottom LIVE FEED Strip -->
+                <!-- Right 7 Cols: Dark-Grid Spline Chart + Compact Scope/Mode Bar + Bottom LIVE FEED Strip -->
                 <div class="lg:col-span-7 flex flex-col gap-2 min-w-0">
                   <div class="flex flex-wrap items-center justify-between gap-1.5">
                     <div class="relative">
                       <select id="orbit-portfolio-scope" onchange="setOrbitPortfolioScope(this.value)" aria-label="Portfolio Scope"
-                              class="bg-slate-100 hover:bg-slate-200/70 border border-slate-200 rounded-full px-3 py-1 text-[11px] font-semibold text-slate-700 focus:outline-none cursor-pointer pr-6 appearance-none">
-                        <option id="orbit-scope-opt-swooz" value="swooz" selected>Active Trading DEX ($686.51)</option>
-                        <option id="orbit-scope-opt-dex" value="kraken">Kraken Pro 5-Leg ($675.96)</option>
-                        <option value="coinbase">Coinbase ETH ($10.55)</option>
+                              class="bg-[#090e1a] hover:bg-slate-800 border border-slate-700 rounded-full px-3 py-1 text-[11px] font-semibold text-slate-200 focus:outline-none cursor-pointer pr-6 appearance-none">
+                        <option id="orbit-scope-opt-swooz" value="swooz" selected>Active Trading DEX ($685.20)</option>
+                        <option id="orbit-scope-opt-dex" value="kraken">Kraken Pro 5-Leg ($674.63)</option>
+                        <option value="coinbase">Coinbase + Free ETH ($86.29)</option>
                         <option id="orbit-scope-opt-vaults" value="vaults">MetaMask &amp; Vaults ($402.49)</option>
                       </select>
-                      <span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-slate-500">▾</span>
+                      <span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-slate-400">▾</span>
                     </div>
 
                     <div class="flex items-center gap-1.5 flex-wrap">
-                      <div class="flex items-center bg-slate-100 border border-slate-200 rounded-full p-0.5 text-[10.5px] font-mono font-semibold">
-                        <button onclick="setOrbitChartTf('3m')" id="orbit-tf-3m" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">3m</button>
-                        <button onclick="setOrbitChartTf('5m')" id="orbit-tf-5m" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">5m</button>
-                        <button onclick="setOrbitChartTf('15m')" id="orbit-tf-15m" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">15m</button>
-                        <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-2.5 py-0.5 rounded-full bg-white text-slate-900 shadow-2xs transition cursor-pointer">24h</button>
-                        <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">7d</button>
+                      <div class="flex items-center bg-[#090e1a] border border-slate-800 rounded-full p-0.5 text-[10.5px] font-mono font-semibold">
+                        <button onclick="setOrbitChartTf('3m')" id="orbit-tf-3m" class="px-2 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">3m</button>
+                        <button onclick="setOrbitChartTf('5m')" id="orbit-tf-5m" class="px-2 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">5m</button>
+                        <button onclick="setOrbitChartTf('15m')" id="orbit-tf-15m" class="px-2 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">15m</button>
+                        <button onclick="setOrbitChartTf('1D')" id="orbit-tf-1D" class="px-2.5 py-0.5 rounded-full bg-slate-800 text-cyan-300 border border-cyan-500/30 shadow-2xs transition cursor-pointer">24h</button>
+                        <button onclick="setOrbitChartTf('1W')" id="orbit-tf-1W" class="px-2 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">7d</button>
                       </div>
-                      <div class="flex items-center bg-slate-100 border border-slate-200 rounded-full p-0.5 text-[10.5px] font-semibold">
-                        <button onclick="setOrbitChartMode('networth')" id="orbit-cmode-networth" class="px-2.5 py-0.5 rounded-full bg-white text-emerald-700 font-bold shadow-2xs transition cursor-pointer">📈 Curve</button>
-                        <button onclick="setOrbitChartMode('ta')" id="orbit-cmode-ta" class="px-2.5 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">📐 TA</button>
-                        <button onclick="setOrbitChartMode('straddle')" id="orbit-cmode-straddle" class="px-2.5 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">🎯 Zones</button>
-                        <button onclick="setOrbitChartMode('candles')" id="orbit-cmode-candles" class="px-2.5 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition cursor-pointer">🕯️</button>
+                      <div class="flex items-center bg-[#090e1a] border border-slate-800 rounded-full p-0.5 text-[10.5px] font-semibold">
+                        <button onclick="setOrbitChartMode('networth')" id="orbit-cmode-networth" class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/35 font-bold shadow-2xs transition cursor-pointer">📈 Curve</button>
+                        <button onclick="setOrbitChartMode('ta')" id="orbit-cmode-ta" class="px-2.5 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">📐 TA</button>
+                        <button onclick="setOrbitChartMode('straddle')" id="orbit-cmode-straddle" class="px-2.5 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">🎯 Zones</button>
+                        <button onclick="setOrbitChartMode('candles')" id="orbit-cmode-candles" class="px-2.5 py-0.5 rounded-full text-slate-400 hover:text-white transition cursor-pointer">🕯️</button>
                       </div>
                     </div>
                   </div>
 
-                  <div class="relative w-full h-[184px] sm:h-[192px] rounded-2xl overflow-hidden border border-slate-200/80 bg-[#f8fafc]">
+                  <div class="relative w-full h-[184px] sm:h-[192px] rounded-2xl overflow-hidden border border-slate-800 bg-[#070b14]">
                     <canvas id="orbit-networth-canvas" width="540" height="192" class="w-full h-full block"></canvas>
                   </div>
 
-                  <!-- Bottom LIVE FEED Ticker Bar (Matches Google Flow Render) -->
-                  <div class="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-mono overflow-x-auto no-scrollbar whitespace-nowrap">
+                  <!-- Bottom LIVE FEED Ticker Bar (Obsidian Dark Mode) -->
+                  <div class="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-xl bg-[#090e1a] border border-slate-800 text-xs font-mono overflow-x-auto no-scrollbar whitespace-nowrap">
                     <div class="flex items-center gap-2.5">
-                      <span class="px-2.5 py-0.5 rounded-full bg-[#bbf7d0] text-[#065f46] font-extrabold text-[10.5px] tracking-wide">LIVE FEED</span>
-                      <span class="font-bold text-slate-800">L1B ETH <span class="text-[#059669]">▲ +9.03%</span></span>
-                      <span class="font-semibold text-purple-600">▼ SOL <span id="orbit-feed-sol-lbl" class="text-slate-800 font-bold">$83.44</span></span>
-                      <span class="font-bold text-slate-800">$402.49 <span class="text-[#059669] text-[11px]">▼ Vaults</span></span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/35 text-emerald-300 font-extrabold text-[10.5px] tracking-wide">LIVE FEED</span>
+                      <span class="font-bold text-slate-200">L1B ETH <span class="text-[#34d399]">▲ +8.85%</span></span>
+                      <span class="font-semibold text-purple-400">▼ SOL <span id="orbit-feed-sol-lbl" class="text-slate-200 font-bold">$83.40</span></span>
+                      <span class="font-bold text-cyan-300">🔓 $75.72 Free</span>
                     </div>
-                    <span id="orbit-feed-eth-lbl" class="text-[11px] font-bold text-[#059669]">ETH $2,061.74 • 5 Legs Armed ✓</span>
+                    <span id="orbit-feed-eth-lbl" class="text-[11px] font-bold text-[#34d399]">ETH $2,057.54 • 5 Legs Armed ✓</span>
                   </div>
                 </div>
               </div>
@@ -1314,102 +1256,102 @@
                 </div>
               </div>
 
-                            <!-- TAB A (DEFAULT FOREFRONT): 3 Pastel Bento Cards (Exact Match to Google Flow Render) -->
+                            <!-- TAB A (DEFAULT FOREFRONT): 3 Dark-Neon Bento Cards (SWOOZ DEX v78.0 Dark Mode + $75.72 Carve-Out Sync) -->
               <div id="orbit-card2-plan-view" class="pt-1">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
-                  <!-- Pastel Card 1: Mint-Emerald (Fast ETH Scrapers • +$7.95/swing) -->
-                  <div class="p-4 rounded-2xl bg-gradient-to-b from-[#bbf7d0] to-[#a7f3d0] border border-[#6ee7b7] text-[#064e3b] flex flex-col justify-between shadow-xs space-y-3">
+                  <!-- Dark-Neon Card 1: Emerald Glass (Fast ETH Scrapers • +$7.95/swing) -->
+                  <div class="p-4 rounded-2xl bg-gradient-to-b from-[#064e3b]/65 to-[#022c22]/85 border border-[#10b981]/45 text-emerald-100 flex flex-col justify-between shadow-lg space-y-3">
                     <div class="space-y-2.5">
-                      <div class="font-bold text-xs text-[#064e3b] tracking-tight">Fast ETH Scrapers • +$7.95/swing</div>
-                      <div class="grid grid-cols-3 text-[11px] font-semibold text-[#047857] border-b border-[#059669]/20 pb-1">
+                      <div class="font-bold text-xs text-emerald-200 tracking-tight">Fast ETH Scrapers • +$7.95/swing</div>
+                      <div class="grid grid-cols-3 text-[11px] font-semibold text-emerald-400/90 border-b border-emerald-500/25 pb-1">
                         <span>Card</span>
                         <span class="text-center">Price</span>
                         <span class="text-right">Net Yield</span>
                       </div>
-                      <div class="space-y-1.5 font-mono text-[11.5px] font-bold text-[#064e3b]">
-                        <div onclick="selectProTunerLeg('L1B', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L1B ETH</span>
+                      <div class="space-y-1.5 font-mono text-[11.5px] font-bold text-white">
+                        <div onclick="selectProTunerLeg('L1B', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-emerald-300">L1B ETH</span>
                           <span class="text-center">$2,162</span>
-                          <span class="text-right">+$3.18</span>
+                          <span class="text-right text-emerald-300">+$3.18</span>
                         </div>
-                        <div onclick="selectProTunerLeg('L2', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L2 ETH</span>
+                        <div onclick="selectProTunerLeg('L2', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-emerald-300">L2 ETH</span>
                           <span class="text-center">$2,208</span>
-                          <span class="text-right">+$2.02</span>
+                          <span class="text-right text-emerald-300">+$2.02</span>
                         </div>
-                        <div onclick="selectProTunerLeg('L4', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L4 ETH</span>
+                        <div onclick="selectProTunerLeg('L4', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-sky-300">L4 ETH</span>
                           <span class="text-center">$2,272</span>
-                          <span class="text-right">+$2.75</span>
+                          <span class="text-right text-emerald-300">+$2.75</span>
                         </div>
                       </div>
                     </div>
                     <div class="flex justify-end pt-1">
-                      <span class="px-3 py-1 rounded-full bg-[#6ee7b7]/85 text-[#064e3b] font-bold text-[11px] shadow-2xs">+$7.95 Net Yield</span>
+                      <span class="px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-400/40 text-emerald-200 font-bold text-[11px] shadow-2xs">+$7.95 Net Yield</span>
                     </div>
                   </div>
 
-                  <!-- Pastel Card 2: Warm Amber-Gold (Channel ETH Walls • +$12.58/swing) -->
-                  <div class="p-4 rounded-2xl bg-gradient-to-b from-[#fde68a] to-[#fcd34d] border border-[#f59e0b]/40 text-[#451a03] flex flex-col justify-between shadow-xs space-y-3">
+                  <!-- Dark-Neon Card 2: Amber-Gold Glass (Channel ETH Walls + $75.72 Carve-Out) -->
+                  <div class="p-4 rounded-2xl bg-gradient-to-b from-[#78350f]/65 to-[#451a03]/85 border border-[#f59e0b]/45 text-amber-100 flex flex-col justify-between shadow-lg space-y-3">
                     <div class="space-y-2.5">
-                      <div class="font-bold text-xs text-[#451a03] tracking-tight">Channel ETH Walls • +$12.58/swing</div>
-                      <div class="grid grid-cols-3 text-[11px] font-semibold text-[#92400e] border-b border-[#b45309]/20 pb-1">
+                      <div class="font-bold text-xs text-amber-200 tracking-tight">Channel ETH Walls + $75 Carve-Out</div>
+                      <div class="grid grid-cols-3 text-[11px] font-semibold text-amber-300/90 border-b border-amber-500/25 pb-1">
                         <span>Card</span>
                         <span class="text-center">Price</span>
-                        <span class="text-right">Net Yield</span>
+                        <span class="text-right">Status</span>
                       </div>
-                      <div class="space-y-1.5 font-mono text-[11.5px] font-bold text-[#451a03]">
-                        <div onclick="selectProTunerLeg('L1A', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L1A ETH</span>
+                      <div class="space-y-1.5 font-mono text-[11.5px] font-bold text-white">
+                        <div onclick="selectProTunerLeg('L1A', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-amber-300">L1A ETH</span>
                           <span class="text-center">$2,284</span>
-                          <span class="text-right">+$6.47</span>
+                          <span class="text-right text-amber-300">+$6.47</span>
                         </div>
-                        <div onclick="selectProTunerLeg('L1C', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L1C ETH</span>
+                        <div onclick="selectProTunerLeg('L1C', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition" title="Re-armed 0.03688806 ETH @ $2,312.00 (OPNWFF-MU4OB-5SYBPI)">
+                          <span class="text-amber-300">L1C ETH</span>
                           <span class="text-center">$2,312</span>
-                          <span class="text-right">+$3.09</span>
+                          <span class="text-right text-amber-300">+$1.99</span>
                         </div>
-                        <div onclick="setOrbitPortfolioScope('coinbase')" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>CB ETH</span>
-                          <span class="text-center">$2,312</span>
-                          <span class="text-right">+$3.02</span>
+                        <div onclick="setOrbitPortfolioScope('coinbase')" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition" title="0.03680000 ETH ($75.72) 100% Unlocked in Kraken Spot for Coinbase Withdrawal">
+                          <span class="text-cyan-300">🔓 Free ETH</span>
+                          <span class="text-center">0.0368</span>
+                          <span class="text-right text-cyan-300">$75.72</span>
                         </div>
                       </div>
                     </div>
                     <div class="flex justify-end pt-1">
-                      <span class="px-3 py-1 rounded-full bg-[#d97706]/30 text-[#451a03] font-bold text-[11px] shadow-2xs">+$12.58 Net Yield</span>
+                      <span class="px-3 py-1 rounded-full bg-amber-500/25 border border-amber-400/40 text-amber-200 font-bold text-[11px] shadow-2xs">+$11.48 + $75 Free</span>
                     </div>
                   </div>
 
-                  <!-- Pastel Card 3: Soft Lavender-Violet (Multi-Asset Scrapers • +$5.09/swing) -->
-                  <div class="p-4 rounded-2xl bg-gradient-to-b from-[#e9d5ff] to-[#ddd6fe] border border-[#c084fc]/45 text-[#3b0764] flex flex-col justify-between shadow-xs space-y-3">
+                  <!-- Dark-Neon Card 3: Violet-Lavender Glass (Multi-Asset Scrapers • +$5.09/swing) -->
+                  <div class="p-4 rounded-2xl bg-gradient-to-b from-[#4c1d95]/65 to-[#2e1065]/85 border border-[#a855f7]/45 text-purple-100 flex flex-col justify-between shadow-lg space-y-3">
                     <div class="space-y-2.5">
-                      <div class="font-bold text-xs text-[#3b0764] tracking-tight">Multi-Asset Scrapers • +$5.09/swing</div>
-                      <div class="grid grid-cols-3 text-[11px] font-semibold text-[#6b21a8] border-b border-[#7e22ce]/20 pb-1">
+                      <div class="font-bold text-xs text-purple-200 tracking-tight">Multi-Asset Scrapers • +$5.09/swing</div>
+                      <div class="grid grid-cols-3 text-[11px] font-semibold text-purple-300/90 border-b border-purple-500/25 pb-1">
                         <span>Card</span>
                         <span class="text-center">Price</span>
                         <span class="text-right">Net Yield</span>
                       </div>
-                      <div class="space-y-1.5 font-mono text-[11.5px] font-bold text-[#3b0764]">
-                        <div onclick="selectProTunerLeg('L3', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L3 SOL</span>
+                      <div class="space-y-1.5 font-mono text-[11.5px] font-bold text-white">
+                        <div onclick="selectProTunerLeg('L3', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-purple-300">L3 SOL</span>
                           <span class="text-center">$90.40</span>
-                          <span class="text-right">+$0.85</span>
+                          <span class="text-right text-purple-300">+$0.85</span>
                         </div>
-                        <div onclick="selectProTunerLeg('L6', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L6 BTC</span>
+                        <div onclick="selectProTunerLeg('L6', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-amber-300">L6 BTC</span>
                           <span class="text-center">$76,800</span>
-                          <span class="text-right">+$2.25</span>
+                          <span class="text-right text-purple-300">+$2.25</span>
                         </div>
-                        <div onclick="selectProTunerLeg('L7', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/35 cursor-pointer transition">
-                          <span>L7 LINK</span>
+                        <div onclick="selectProTunerLeg('L7', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition">
+                          <span class="text-sky-300">L7 LINK</span>
                           <span class="text-center">$11.05</span>
-                          <span class="text-right">+$1.99</span>
+                          <span class="text-right text-purple-300">+$1.99</span>
                         </div>
                       </div>
                     </div>
                     <div class="flex justify-end pt-1">
-                      <span class="px-3 py-1 rounded-full bg-[#a855f7]/25 text-[#3b0764] font-bold text-[11px] shadow-2xs">+$5.09 Net Yield</span>
+                      <span class="px-3 py-1 rounded-full bg-purple-500/25 border border-purple-400/40 text-purple-200 font-bold text-[11px] shadow-2xs">+$5.09 Net Yield</span>
                     </div>
                   </div>
                 </div>
@@ -1617,94 +1559,97 @@
           <!-- RIGHT COLUMN (5 Cols): LIVE AUTOMATED PROFIT-SCRAPER ENGINE + CONNECTED EXCHANGES -->
           <div id="orbit-bento-right" class="md:col-span-5 flex flex-col gap-3 sm:gap-4 justify-between min-w-0">
 
-                        <!-- CARD 3: Profit-Scraper Engine (Exact Match to Google Flow Daylight Render) -->
+                        <!-- CARD 3: Profit-Scraper Engine (SWOOZ DEX v78.0 Obsidian Dark Mode) -->
             <div class="orbit-card p-6 space-y-4">
               <div class="flex items-center justify-between">
-                <h3 class="text-lg font-extrabold text-[#0f172a] tracking-tight">Profit-Scraper Engine</h3>
-                <button onclick="switchCyberAppTab('charts')" class="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold cursor-pointer transition" title="Open Full 4-Asset Pro Charts &amp; Order Tuner">•••</button>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg font-extrabold text-white tracking-tight">Profit-Scraper Engine</h3>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/35 text-emerald-300 font-mono text-[10px] font-bold">5/5 KRAKEN ARMED</span>
+                </div>
+                <button onclick="switchCyberAppTab('charts')" class="px-2.5 py-1 rounded-full bg-[#090e1a] hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold cursor-pointer transition" title="Open Full 4-Asset Pro Charts &amp; Order Tuner">•••</button>
               </div>
 
-              <!-- 2 Pastel KPI Tiles: Mint Banked Profit + Warm Gold Cycle Yield -->
+              <!-- 2 Dark-Neon KPI Tiles: Emerald Banked Profit + Amber-Gold Cycle Yield -->
               <div class="grid grid-cols-2 gap-3.5">
-                <div class="p-4 rounded-2xl bg-gradient-to-br from-[#bbf7d0] to-[#6ee7b7] border border-[#34d399]/50 text-[#064e3b] shadow-xs space-y-1">
-                  <div class="text-[11px] font-bold uppercase tracking-wider text-[#047857]">KPI</div>
-                  <div id="orbit-kpi-banked-usd" class="text-xl sm:text-2xl font-extrabold font-sans text-[#064e3b] tracking-tight">+$18.86 <span class="text-sm font-bold">USD</span></div>
-                  <div id="orbit-kpi-banked-eth" class="text-[11px] font-semibold text-[#065f46]">Banked Realized Profit</div>
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-[#064e3b]/75 to-[#022c22]/90 border border-[#10b981]/45 text-emerald-100 shadow-lg space-y-1">
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">KPI // BANKED</div>
+                  <div id="orbit-kpi-banked-usd" class="text-xl sm:text-2xl font-extrabold font-sans text-white tracking-tight">+$18.86 <span class="text-sm font-bold text-emerald-300">USD</span></div>
+                  <div id="orbit-kpi-banked-eth" class="text-[11px] font-semibold text-emerald-300/90">Banked Realized Profit</div>
                 </div>
-                <div class="p-4 rounded-2xl bg-gradient-to-br from-[#fde68a] to-[#f59e0b]/85 border border-[#f59e0b]/45 text-[#451a03] shadow-xs space-y-1">
-                  <div class="text-[11px] font-bold uppercase tracking-wider text-[#92400e]">KPI</div>
-                  <div id="orbit-kpi-cycle-usd" class="text-xl sm:text-2xl font-extrabold font-sans text-[#451a03] tracking-tight">+$14.93 <span class="text-sm font-bold">USD</span></div>
-                  <div id="orbit-kpi-cycle-sub" class="text-[11px] font-semibold text-[#78350f]">Yield Per Cycle</div>
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-[#78350f]/75 to-[#451a03]/90 border border-[#f59e0b]/45 text-amber-100 shadow-lg space-y-1">
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-amber-400">KPI // CYCLE + FREE</div>
+                  <div id="orbit-kpi-cycle-usd" class="text-xl sm:text-2xl font-extrabold font-sans text-white tracking-tight">+$13.83 <span class="text-sm font-bold text-amber-300">USD</span></div>
+                  <div id="orbit-kpi-cycle-sub" class="text-[11px] font-semibold text-amber-300/90">Cycle Yield • $75.72 ETH Free</div>
                 </div>
               </div>
 
-              <!-- 4 Elevated White Fill-Proximity Cards with Pastel Percentage Pills & Pill Tune Buttons -->
+              <!-- 4 Elevated Dark-Obsidian Fill-Proximity Cards with Glowing Percentage Pills & Tune Buttons -->
               <div class="space-y-3">
                 <!-- Card Row 1: L1B ETH -->
-                <div onclick="selectProTunerLeg('L1B', true)" class="p-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 shadow-2xs hover:border-emerald-400 transition cursor-pointer space-y-2">
+                <div onclick="selectProTunerLeg('L1B', true)" class="p-3.5 rounded-2xl bg-[#090e1a] border border-slate-800/95 shadow-2xs hover:border-emerald-400/60 transition cursor-pointer space-y-2">
                   <div class="flex items-center justify-between">
                     <div>
-                      <span class="text-sm font-extrabold text-slate-900">L1B ETH</span>
-                      <span id="topfill-dist-1" class="ml-2 text-[11px] font-mono text-slate-500">@ $2,162.00</span>
+                      <span class="text-sm font-extrabold text-white">L1B ETH</span>
+                      <span id="topfill-dist-1" class="ml-2 text-[11px] font-mono text-slate-400">@ $2,162.00</span>
                     </div>
-                    <span class="px-2.5 py-0.5 rounded-lg bg-[#bbf7d0] text-[#065f46] font-mono text-xs font-extrabold">95%</span>
+                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-500/20 border border-emerald-400/35 text-emerald-300 font-mono text-xs font-extrabold">95%</span>
                   </div>
                   <div class="flex items-center gap-3">
-                    <div class="flex-1 h-3 rounded-full bg-slate-200/90 overflow-hidden p-0.5">
-                      <div id="topfill-bar-1" class="h-full bg-gradient-to-r from-[#6ee7b7] via-[#10b981] to-[#059669] rounded-full transition-all duration-300" style="width: 95%"></div>
+                    <div class="flex-1 h-3 rounded-full bg-slate-900 border border-slate-800 overflow-hidden p-0.5">
+                      <div id="topfill-bar-1" class="h-full bg-gradient-to-r from-[#34d399] via-[#10b981] to-[#059669] rounded-full transition-all duration-300" style="width: 95%"></div>
                     </div>
-                    <button type="button" class="px-4 py-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
+                    <button type="button" class="px-4 py-1.5 rounded-xl bg-[#11192b] hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
                   </div>
                 </div>
 
                 <!-- Card Row 2: L6 BTC -->
-                <div onclick="selectProTunerLeg('L6', true)" class="p-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 shadow-2xs hover:border-amber-400 transition cursor-pointer space-y-2">
+                <div onclick="selectProTunerLeg('L6', true)" class="p-3.5 rounded-2xl bg-[#090e1a] border border-slate-800/95 shadow-2xs hover:border-amber-400/60 transition cursor-pointer space-y-2">
                   <div class="flex items-center justify-between">
                     <div>
-                      <span class="text-sm font-extrabold text-slate-900">L6 BTC</span>
-                      <span id="topfill-dist-2" class="ml-2 text-[11px] font-mono text-slate-500">@ $76,800</span>
+                      <span class="text-sm font-extrabold text-white">L6 BTC</span>
+                      <span id="topfill-dist-2" class="ml-2 text-[11px] font-mono text-slate-400">@ $76,800</span>
                     </div>
-                    <span class="px-2.5 py-0.5 rounded-lg bg-[#fde68a] text-[#78350f] font-mono text-xs font-extrabold">76%</span>
+                    <span class="px-2.5 py-0.5 rounded-lg bg-amber-500/20 border border-amber-400/35 text-amber-300 font-mono text-xs font-extrabold">76%</span>
                   </div>
                   <div class="flex items-center gap-3">
-                    <div class="flex-1 h-3 rounded-full bg-slate-200/90 overflow-hidden p-0.5">
-                      <div id="topfill-bar-2" class="h-full bg-gradient-to-r from-[#6ee7b7] via-[#fcd34d] to-[#f97316] rounded-full transition-all duration-300" style="width: 76%"></div>
+                    <div class="flex-1 h-3 rounded-full bg-slate-900 border border-slate-800 overflow-hidden p-0.5">
+                      <div id="topfill-bar-2" class="h-full bg-gradient-to-r from-[#34d399] via-[#fbbf24] to-[#f97316] rounded-full transition-all duration-300" style="width: 76%"></div>
                     </div>
-                    <button type="button" class="px-4 py-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
+                    <button type="button" class="px-4 py-1.5 rounded-xl bg-[#11192b] hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
                   </div>
                 </div>
 
                 <!-- Card Row 3: L2 ETH -->
-                <div onclick="selectProTunerLeg('L2', true)" class="p-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 shadow-2xs hover:border-purple-400 transition cursor-pointer space-y-2">
+                <div onclick="selectProTunerLeg('L2', true)" class="p-3.5 rounded-2xl bg-[#090e1a] border border-slate-800/95 shadow-2xs hover:border-purple-400/60 transition cursor-pointer space-y-2">
                   <div class="flex items-center justify-between">
                     <div>
-                      <span class="text-sm font-extrabold text-slate-900">L2 ETH</span>
-                      <span id="topfill-dist-3" class="ml-2 text-[11px] font-mono text-slate-500">@ $2,208.00</span>
+                      <span class="text-sm font-extrabold text-white">L2 ETH</span>
+                      <span id="topfill-dist-3" class="ml-2 text-[11px] font-mono text-slate-400">@ $2,208.00</span>
                     </div>
-                    <span class="px-2.5 py-0.5 rounded-lg bg-[#ddd6fe] text-[#4c1d95] font-mono text-xs font-extrabold">70%</span>
+                    <span class="px-2.5 py-0.5 rounded-lg bg-purple-500/20 border border-purple-400/35 text-purple-300 font-mono text-xs font-extrabold">70%</span>
                   </div>
                   <div class="flex items-center gap-3">
-                    <div class="flex-1 h-3 rounded-full bg-slate-200/90 overflow-hidden p-0.5">
-                      <div id="topfill-bar-3" class="h-full bg-gradient-to-r from-[#6ee7b7] via-[#60a5fa] to-[#8b5cf6] rounded-full transition-all duration-300" style="width: 70%"></div>
+                    <div class="flex-1 h-3 rounded-full bg-slate-900 border border-slate-800 overflow-hidden p-0.5">
+                      <div id="topfill-bar-3" class="h-full bg-gradient-to-r from-[#34d399] via-[#38bdf8] to-[#8b5cf6] rounded-full transition-all duration-300" style="width: 70%"></div>
                     </div>
-                    <button type="button" class="px-4 py-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
+                    <button type="button" class="px-4 py-1.5 rounded-xl bg-[#11192b] hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
                   </div>
                 </div>
 
-                <!-- Card Row 4: L4 ETH -->
-                <div onclick="selectProTunerLeg('L4', true)" class="p-3.5 rounded-2xl bg-[#f8fafc] border border-slate-200/90 shadow-2xs hover:border-indigo-400 transition cursor-pointer space-y-2">
+                <!-- Card Row 4: L1C ETH (Re-Armed After $75.72 Carve-Out) -->
+                <div onclick="selectProTunerLeg('L1C', true)" class="p-3.5 rounded-2xl bg-[#090e1a] border border-slate-800/95 shadow-2xs hover:border-cyan-400/60 transition cursor-pointer space-y-2" title="Re-armed 0.03688806 ETH @ $2,312.00 (OPNWFF) + 0.0368 ETH ($75.72) Unlocked for Coinbase">
                   <div class="flex items-center justify-between">
                     <div>
-                      <span class="text-sm font-extrabold text-slate-900">L4 ETH</span>
-                      <span id="topfill-dist-4" class="ml-2 text-[11px] font-mono text-slate-500">@ $2,272.00</span>
+                      <span class="text-sm font-extrabold text-white">L1C ETH</span>
+                      <span id="topfill-dist-4" class="ml-2 text-[11px] font-mono text-cyan-300">@ $2,312.00 (OPNWFF • $75.72 Free)</span>
                     </div>
-                    <span class="px-2.5 py-0.5 rounded-lg bg-[#e9d5ff] text-[#581c87] font-mono text-xs font-extrabold">75%</span>
+                    <span class="px-2.5 py-0.5 rounded-lg bg-cyan-500/20 border border-cyan-400/35 text-cyan-300 font-mono text-xs font-extrabold">75%</span>
                   </div>
                   <div class="flex items-center gap-3">
-                    <div class="flex-1 h-3 rounded-full bg-slate-200/90 overflow-hidden p-0.5">
-                      <div id="topfill-bar-4" class="h-full bg-gradient-to-r from-[#818cf8] via-[#c084fc] to-[#7c3aed] rounded-full transition-all duration-300" style="width: 75%"></div>
+                    <div class="flex-1 h-3 rounded-full bg-slate-900 border border-slate-800 overflow-hidden p-0.5">
+                      <div id="topfill-bar-4" class="h-full bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] rounded-full transition-all duration-300" style="width: 75%"></div>
                     </div>
-                    <button type="button" class="px-4 py-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
+                    <button type="button" class="px-4 py-1.5 rounded-xl bg-[#11192b] hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-bold shadow-2xs transition shrink-0">Tune</button>
                   </div>
                 </div>
               </div>
@@ -1734,23 +1679,23 @@
                   <div class="flex items-center gap-2.5 min-w-0">
                     <span class="w-6 h-6 rounded-full bg-[#4f6ef7]/25 border border-[#4f6ef7] text-[#60a5fa] flex items-center justify-center text-xs font-bold shrink-0">🦑</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span id="orbit-plat-kraken-sub" class="text-[#8b95a9] font-normal">(0.3225 ETH / $685 + 0.1332 SOL / $12)</span></div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs: ETH @ $2,162 • $2,208 • $2,284 • $2,312 + SOL @ $90.40 (+$14.93/cycle)</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Kraken Pro <span id="orbit-plat-kraken-sub" class="text-[#8b95a9] font-normal">(0.2857 ETH Armed + 0.0368 ETH Free + 0.1332 SOL)</span></div>
+                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">5 Legs Armed ($2,162 • $2,208 • $2,284 • $2,312 OPNWFF • $90.40 SOL)</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$696.74</div>
+                  <div id="orbit-plat-kraken-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$674.63</div>
                 </div>
 
-                <!-- Platform 2: Coinbase Advanced (Unlocked) -->
+                <!-- Platform 2: Coinbase Advanced + $75.72 Unlocked Kraken ETH Carve-Out -->
                 <div onclick="setOrbitPortfolioScope('coinbase')" class="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition cursor-pointer">
                   <div class="flex items-center gap-2.5 min-w-0">
-                    <span class="w-6 h-6 rounded-full bg-[#a855f7]/25 border border-[#a855f7] text-[#c084fc] flex items-center justify-center text-xs font-bold shrink-0">🔵</span>
+                    <span class="w-6 h-6 rounded-full bg-cyan-500/25 border border-cyan-400 text-cyan-300 flex items-center justify-center text-xs font-bold shrink-0">🔓</span>
                     <div class="min-w-0">
-                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Adv <span id="orbit-plat-cb-sub" class="text-[#8b95a9] font-normal">(0.0051 ETH + $0.19 Reserve)</span></div>
-                      <div class="text-[10.5px] text-[#34d399] font-mono truncate">100% Unlocked ETH Reserve (0 Hold • Ready for WETH Sniper Bids)</div>
+                      <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Transfer Carve-Out <span id="orbit-plat-cb-sub" class="text-cyan-300 font-normal">(0.0368 ETH / $75.72 Unlocked + 0.0051 CB ETH)</span></div>
+                      <div class="text-[10.5px] text-cyan-300 font-mono truncate">0.03680000 ETH ($75.72) Unlocked at $0 Fee • Ready to Withdraw to Coinbase</div>
                     </div>
                   </div>
-                  <div id="orbit-plat-cb-val" class="font-mono font-bold text-white text-sm shrink-0 pl-2">$10.92</div>
+                  <div id="orbit-plat-cb-val" class="font-mono font-bold text-cyan-300 text-sm shrink-0 pl-2">$86.29</div>
                 </div>
 
                 <!-- Platform 3: Background Ethereum Vaults -->
@@ -2403,12 +2348,12 @@
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OQ64GT) • ⚙️ Tune</td>
                     </tr>
                     <tr onclick="selectProTunerLeg('L1C')" class="bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer transition">
-                      <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🦑 L1C Kraken ETH Upper Channel Scraper</td>
+                      <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🦑 L1C Kraken ETH Upper Channel Scraper (+0.0368 ETH / $75.72 Unlocked)</td>
                       <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $2,312.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.0817 ETH ($182.66)</td>
-                      <td class="py-1.5 px-2 text-emerald-400 font-bold">$188.86 USD</td>
-                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,258.00 (+0.00195 ETH / +$4.41)</td>
-                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OKTWE3) • ⚙️ Tune</td>
+                      <td class="py-1.5 px-2 font-bold">0.0369 ETH ($75.90)</td>
+                      <td class="py-1.5 px-2 text-emerald-400 font-bold">$85.29 USD</td>
+                      <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,258.00 (+0.00088 ETH / +$1.99)</td>
+                      <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OPNWFF) • ⚙️ Tune</td>
                     </tr>
                     <tr onclick="selectProTunerLeg('L3')" class="bg-purple-500/10 hover:bg-purple-500/20 cursor-pointer transition">
                       <td class="py-1.5 pr-2 font-sans font-bold text-purple-400">🦑 L3 Kraken SOL Fast Reverse-Grid</td>
@@ -5439,10 +5384,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
 
     const PRO_10_LEGS = {
       L1B: { id: 'L1B', name: '🦑 L1B ETH Ultra-Fast', title: 'Leg #1B — ETH Ultra-Fast Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.08168805, sell: 2162.00, buy: 2112.00, defaultSell: 2162.00, defaultBuy: 2112.00, minS: 2140, maxS: 2360, minB: 2080, maxB: 2165, step: 1, decimals: 2, color: '#00f5d4', orderId: 'OOLCJI' },
-      L2:  { id: 'L2',  name: '🦑 L2 ETH Fast Grid',   title: 'Leg #2 — ETH Fast Reverse-Grid',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.05085957, sell: 2208.00, buy: 2158.00, defaultSell: 2208.00, defaultBuy: 2158.00, minS: 2170, maxS: 2360, minB: 2110, maxB: 2208, step: 1, decimals: 2, color: '#10f1b6', orderId: 'OZ2YCA' },
+      L2:  { id: 'L2',  name: '🦑 L2 ETH Fast Grid',   title: 'Leg #2 — ETH Fast Reverse-Grid',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.05200000, sell: 2208.00, buy: 2158.00, defaultSell: 2208.00, defaultBuy: 2158.00, minS: 2170, maxS: 2360, minB: 2110, maxB: 2208, step: 1, decimals: 2, color: '#10f1b6', orderId: 'OZ2YCA' },
       L4:  { id: 'L4',  name: '🔵 L4 ETH Local Grid',  title: 'Leg #4 — Coinbase ETH Reverse-Grid', exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.04357500, sell: 2272.00, buy: 2222.00, defaultSell: 2272.00, defaultBuy: 2222.00, minS: 2240, maxS: 2370, minB: 2175, maxB: 2260, step: 1, decimals: 2, color: '#38bdf8', orderId: 'e4a92d0b' },
-      L1A: { id: 'L1A', name: '🦑 L1A ETH Mid Wall',   title: 'Leg #1A — ETH Mid Channel Wall',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.16337609, sell: 2284.00, buy: 2210.00, defaultSell: 2284.00, defaultBuy: 2210.00, minS: 2245, maxS: 2380, minB: 2170, maxB: 2270, step: 1, decimals: 2, color: '#34d399', orderId: 'OQ64GT' },
-      L1C: { id: 'L1C', name: '🦑 L1C ETH Upper Wall', title: 'Leg #1C — ETH Upper Channel Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.07368805, sell: 2312.00, buy: 2258.00, defaultSell: 2312.00, defaultBuy: 2258.00, minS: 2255, maxS: 2400, minB: 2190, maxB: 2295, step: 1, decimals: 2, color: '#fbbf24', orderId: 'OVWGRG' },
+      L1A: { id: 'L1A', name: '🦑 L1A ETH Mid Wall',   title: 'Leg #1A — ETH Mid Channel Wall',     exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.11508569, sell: 2284.00, buy: 2210.00, defaultSell: 2284.00, defaultBuy: 2210.00, minS: 2245, maxS: 2380, minB: 2170, maxB: 2270, step: 1, decimals: 2, color: '#34d399', orderId: 'OQ64GT' },
+      L1C: { id: 'L1C', name: '🦑 L1C ETH Upper Wall', title: 'Leg #1C — ETH Upper Channel Scraper', exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'ETHUSD', asset: 'ETH', size: 0.03688806, sell: 2312.00, buy: 2258.00, defaultSell: 2312.00, defaultBuy: 2258.00, minS: 2255, maxS: 2400, minB: 2190, maxB: 2295, step: 1, decimals: 2, color: '#fbbf24', orderId: 'OPNWFF' },
       L3:  { id: 'L3',  name: '🦑 L3 SOL Fast Grid',   title: 'Leg #3 — Kraken SOL Fast Scraper',   exchange: 'KRAKEN', exBadge: '🦑 KRAKEN PRO • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.13324100, sell: 90.40,   buy: 88.40,   defaultSell: 90.40,   defaultBuy: 88.40,   minS: 89.0, maxS: 99.0, minB: 85.0, maxB: 90.2, step: 0.05,decimals: 2, color: '#a855f7', orderId: 'OMK4TX' },
       L9:  { id: 'L9',  name: '🔵 L9 SOL Mid Grid',    title: 'Leg #9 — Coinbase SOL Mid Scraper',  exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.30250000, sell: 90.95,   buy: 88.60,   defaultSell: 90.95,   defaultBuy: 88.60,   minS: 89.2, maxS: 99.5, minB: 85.5, maxB: 90.7, step: 0.05,decimals: 2, color: '#c084fc', orderId: '9bef2d80' },
       L5:  { id: 'L5',  name: '🔵 L5 SOL Upper Grid',  title: 'Leg #5 — Coinbase SOL Upper Wall',   exchange: 'COINBASE', exBadge: '🔵 COINBASE ADV • POST-ONLY', pairKey: 'SOLUSD', asset: 'SOL', size: 0.28494619, sell: 94.80,   buy: 91.20,   defaultSell: 94.80,   defaultBuy: 91.20,   minS: 90.5, maxS: 102.0, minB: 86.0, maxB: 94.0, step: 0.1, decimals: 2, color: '#818cf8', orderId: '8aeeb1b6' },
@@ -8271,11 +8216,22 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           ? '$••••'
           : `${krkSolQty.toFixed(3)} ($${(krkSolQty * LIVE_SOL_RATE).toFixed(2)})`;
       }
+      const unlockedCarveoutEth = 0.0368;
+      const freeEthCombined = cbEthQty + unlockedCarveoutEth;
+      const freeUsdCombined = cbTotal + (unlockedCarveoutEth * ethSpot);
       const pillAltsEl = document.getElementById('orbit-pill-alts-val');
       if (pillAltsEl) {
         pillAltsEl.textContent = PRIVACY_HIDE_MODE
           ? '$••••'
-          : `${cbEthQty.toFixed(4)} ($${cbTotal.toFixed(2)})`;
+          : `${freeEthCombined.toFixed(4)} ($${freeUsdCombined.toFixed(2)})`;
+      }
+      const cbValEl2 = document.getElementById('orbit-plat-cb-val');
+      if (cbValEl2 && !PRIVACY_HIDE_MODE) {
+        cbValEl2.textContent = '$' + freeUsdCombined.toFixed(2);
+      }
+      const cbSubEl2 = document.getElementById('orbit-plat-cb-sub');
+      if (cbSubEl2 && !PRIVACY_HIDE_MODE) {
+        cbSubEl2.textContent = `(0.0368 ETH / $${(unlockedCarveoutEth * ethSpot).toFixed(2)} Unlocked + ${cbEthQty.toFixed(4)} CB ETH)`;
       }
       const pillNftsEl = document.getElementById('orbit-pill-nfts-val');
       if (pillNftsEl) {
@@ -8324,12 +8280,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         const cW = Math.max(120, cRight - cLeft);
         const cH = Math.max(60, cBot - cTop);
 
-        // 1. Light Alabaster Chart Background & Subtle Architectural Grid Squares (Google Flow Spec)
-        ctx.fillStyle = '#f8fafc';
+        // 1. Obsidian Dark Chart Background & Subtle Architectural Grid Squares (SWOOZ DEX v78.0 Dark Mode)
+        ctx.fillStyle = '#070b14';
         ctx.fillRect(0, 0, W, H);
 
         ctx.save();
-        ctx.strokeStyle = '#e2e8f0';
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
         ctx.lineWidth = 1;
         const nRows = 5;
         const nCols = 9;
@@ -8404,15 +8360,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           const frac = idx / (xLabels.length - 1);
           const x = cLeft + 6 + frac * (cW - 12);
           ctx.textAlign = idx === 0 ? 'left' : idx === xLabels.length - 1 ? 'right' : 'center';
-          ctx.fillStyle = idx === xLabels.length - 1 ? '#059669' : idx === 3 ? '#0284c7' : '#64748b';
+          ctx.fillStyle = idx === xLabels.length - 1 ? '#34d399' : idx === 3 ? '#38bdf8' : '#94a3b8';
           ctx.fillText(lbl, x, H - 6);
         });
 
-        // 3. Soft Mint & Lavender Area Fills under Green and Purple Curves
+        // 3. Luminous Neon-Emerald & Violet Area Fills under Green and Purple Curves
         const areaGrad = ctx.createLinearGradient(0, cTop, 0, cBot);
-        areaGrad.addColorStop(0, 'rgba(16, 185, 129, 0.32)');
+        areaGrad.addColorStop(0, 'rgba(16, 241, 182, 0.28)');
         areaGrad.addColorStop(0.55, 'rgba(168, 85, 247, 0.16)');
-        areaGrad.addColorStop(1, 'rgba(248, 250, 252, 0.02)');
+        areaGrad.addColorStop(1, 'rgba(7, 11, 20, 0.02)');
 
         ctx.save();
         ctx.beginPath();
