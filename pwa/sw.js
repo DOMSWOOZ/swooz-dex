@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swooz-dex-v74';
+const CACHE_NAME = 'swooz-dex-v75';
 const ASSETS = [
   './',
   'index.html',
@@ -16,6 +16,9 @@ const ASSETS = [
   'nft-media/beast_2313_pfp.png',
   'nft-media/clonex_9143.png',
   'nft-media/minisupers_6915.png',
+  'nft-media/minisupers_6539.png',
+  'nft-media/minisupers_305.png',
+  'nft-media/minisupers_928.png',
   'nft-media/the_walk_1.gif',
   'nft-media/supers_84.png',
   'nft-media/supers_144.png',
