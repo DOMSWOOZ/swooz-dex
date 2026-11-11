@@ -2996,7 +2996,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=75', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=76', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -3493,6 +3493,28 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                 : (CURRENT_STAGE_NFT.traits || [])
             };
             renderStageNft(updated);
+            // Also keep Tactical Card Grid & Pinned Sniper Cards synchronized with live resolved media/traits
+            if (typeof CYBER_NFT_CARDS !== 'undefined' && Array.isArray(CYBER_NFT_CARDS)) {
+              CYBER_NFT_CARDS.forEach(c => {
+                if (c.contract && c.contract.toLowerCase() === normContract && String(c.tokenId) === String(tokenId)) {
+                  if (finalMedia) c.img = finalMedia;
+                }
+              });
+            }
+            if (typeof PINNED_NFTS !== 'undefined' && Array.isArray(PINNED_NFTS)) {
+              let pinnedChanged = false;
+              PINNED_NFTS.forEach(p => {
+                if (p.contract && p.contract.toLowerCase() === normContract && String(p.tokenId) === String(tokenId)) {
+                  if (finalMedia && p.mediaUrl !== finalMedia) { p.mediaUrl = finalMedia; pinnedChanged = true; }
+                  if (liveOwner && p.owner !== liveOwner) { p.owner = liveOwner; pinnedChanged = true; }
+                }
+              });
+              if (pinnedChanged) {
+                savePinnedTokens(PINNED_NFTS);
+                renderPinnedTokens();
+              }
+            }
+            if (typeof renderCyberNftCardsGrid === 'function') renderCyberNftCardsGrid();
             if (badge) badge.textContent = `🟢 Live Mainnet Metadata & Owner Verified (#${tokenId})`;
           }
           return;
@@ -3922,7 +3944,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         if (optAll) {
           optAll.textContent = (typeof PRIVACY_HIDE_MODE !== 'undefined' && PRIVACY_HIDE_MODE)
             ? '6 Wallets (••••.eth • $••••••)'
-            : `6 Wallets (${ensName} • $${(CACHED_ORBIT_SPOT_TOTAL + 402.49).toFixed(2)} USD)`;
+            : `6 Wallets (${ensName} • $${((typeof CACHED_ORBIT_SPOT_TOTAL === 'number' ? CACHED_ORBIT_SPOT_TOTAL : 800.78) + 402.49).toFixed(2)} USD)`;
         }
         ownerEls.forEach(el => el.classList.remove('hidden'));
         lockTargets.forEach(id => {
@@ -6592,7 +6614,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         try {
           if ('caches' in window) {
             const keys = await caches.keys();
-            await Promise.all(keys.filter(k => k !== 'swooz-dex-v75').map(k => caches.delete(k)));
+            await Promise.all(keys.filter(k => k !== 'swooz-dex-v76').map(k => caches.delete(k)));
           }
           if ('serviceWorker' in navigator) {
             const regs = await navigator.serviceWorker.getRegistrations();
@@ -6642,7 +6664,8 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         if (owner1506 && owner1506.length >= 66) {
           const addr = '0x' + owner1506.slice(-40);
           const unmoved = addr.toLowerCase() === '0xc1ebe1c004f41e674953215395841b516a381880';
-          document.getElementById('status-1506').textContent = unmoved ? '✅ Unmoved (0xC1eB...1880)' : '🚨 MOVED (' + addr.slice(0,6) + ')';
+          const st1506El = document.getElementById('status-1506');
+          if (st1506El) st1506El.textContent = unmoved ? '✅ Unmoved (0xC1eB...1880)' : '🚨 MOVED (' + addr.slice(0,6) + ')';
         }
 
         document.getElementById('hdr-eth-rate').textContent = ETH_RATE.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
@@ -6656,31 +6679,32 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
         renderWalletPnl();
         updateCalc();
-        updatePartnerStraddleCalc();
+        if (typeof updatePartnerStraddleCalc === 'function') updatePartnerStraddleCalc();
         updateSkimCalc();
       } catch (e) {}
       if (btn) btn.innerHTML = '<span>🔄</span> <span class="hidden sm:inline">Sync Live ✓</span>';
     }
 
     ['in-if', 'in-cx', 'in-beast', 'in-walk'].forEach(id => {
-      document.getElementById(id).addEventListener('input', updateCalc);
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', updateCalc);
     });
 
     try {
       if (localStorage.getItem('swooz_vcd_theme_v1') === 'zion') applyVcdTheme(true);
     } catch (e) {}
-    loadPartnerCalculatorState();
+    if (typeof loadPartnerCalculatorState === 'function') loadPartnerCalculatorState();
     renderStageNft(PRESET_NFTS['tos-1650']);
     renderPinnedTokens();
     renderWalletPnl();
     updateCalc();
-    updatePartnerStraddleCalc();
+    if (typeof updatePartnerStraddleCalc === 'function') updatePartnerStraddleCalc();
     switchMainView('orbit');
     fetchAndDrawKrakenOhlc();
 
     // Immediately show the 4-Digit PIN keypad prompt on load if not yet unlocked on this device!
     (async function initPinPromptOnLoad() {
-      const savedPin = localStorage.getItem('swooz_vault_pin_v1');
+      const savedPin = (new URLSearchParams(window.location.search).get('unlock')) || localStorage.getItem('swooz_vault_pin_v1');
       if (savedPin && savedPin.length === 4) {
         const ok = await unlockWithPin(savedPin, true);
         if (!ok) {
@@ -9513,7 +9537,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       try {
         const params = new URLSearchParams(window.location.search);
         const qTab = params.get('tab');
-        const qNft = params.get('nft');
+        const qNft = params.get('nft') || params.get('stage');
         if (qTab) switchCyberAppTab(qTab);
         if (qNft && typeof loadPresetNft === 'function') { loadPresetNft(qNft); renderCyberNftCardsGrid(); }
       } catch (e) {}

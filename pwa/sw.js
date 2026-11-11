@@ -1,4 +1,4 @@
-const CACHE_NAME = 'swooz-dex-v75';
+const CACHE_NAME = 'swooz-dex-v76';
 const ASSETS = [
   './',
   'index.html',
@@ -44,6 +44,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
   if (
     event.request.mode === 'navigate' ||
     event.request.url.endsWith('.html') ||
@@ -56,7 +57,7 @@ self.addEventListener('fetch', event => {
       fetch(event.request, { cache: 'no-store' })
         .then(res => {
           const clone = res.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone)).catch(() => {});
           return res;
         })
         .catch(() => caches.match(event.request))
