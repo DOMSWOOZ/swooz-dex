@@ -1093,7 +1093,7 @@
           <!-- Right Quick Tactical Status & Split-Screen Toggle -->
           <div class="flex items-center gap-2 font-mono text-[11px] flex-wrap">
             <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 font-bold shadow-2xs">
-              <span>🔓 $75.72 (0.0368 ETH) UNLOCKED FOR CB</span>
+              <span>✅ $75.53 (0.0367 ETH) SENT TO COINBASE ✓</span>
               <span class="text-slate-500">•</span>
               <span>5/5 LEGS ARMED</span>
             </div>
@@ -1122,7 +1122,7 @@
                 <div class="lg:col-span-5 space-y-3 min-w-0">
                   <div class="flex items-center justify-between gap-2 flex-wrap">
                     <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight whitespace-nowrap">Multi-Chain Portfolio</h2>
-                    <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-400/35 text-cyan-300 font-mono text-[10px] font-bold">🔓 $75.72 ETH Free</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-400/35 text-cyan-300 font-mono text-[10px] font-bold">✅ $75.53 Sent to CB ✓</span>
                   </div>
                   <div id="orbit-chart-title-lbl" class="hidden">Active DEX Capital (Kraken Pro + Coinbase)</div>
 
@@ -1700,7 +1700,7 @@
                     <span class="w-6 h-6 rounded-full bg-cyan-500/25 border border-cyan-400 text-cyan-300 flex items-center justify-center text-xs font-bold shrink-0">🔓</span>
                     <div class="min-w-0">
                       <div class="text-[#e2e8f0] font-semibold truncate">Coinbase Transfer Carve-Out <span id="orbit-plat-cb-sub" class="text-cyan-300 font-normal">(0.0368 ETH / $75.72 Unlocked + 0.0051 CB ETH)</span></div>
-                      <div class="text-[10.5px] text-cyan-300 font-mono truncate">0.03680000 ETH ($75.72) Unlocked at $0 Fee • Ready to Withdraw to Coinbase</div>
+                      <div class="text-[10.5px] text-cyan-300 font-mono truncate">✅ 0.03666 ETH ($75.53) Withdrawn to Coinbase (tx 0xabf08681... Success)</div>
                     </div>
                   </div>
                   <div id="orbit-plat-cb-val" class="font-mono font-bold text-cyan-300 text-sm shrink-0 pl-2">$86.29</div>
@@ -8085,17 +8085,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
 
     function updateOrbitPortfolioTotals() {
       applyPrivacyEyeIcons();
-      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2125.00;
-      const krkEthQty = UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? 0.322462;
-      const krkSolQty = UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.133241;
+      const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2060.39;
+      const krkEthQty = UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? 0.285662;
+      const krkSolQty = UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.133250;
       const krkZusd = UNLOCKED_VAULT_DATA?.kraken?.usd_balance ?? 0.0022;
-      const cbEthQty = UNLOCKED_VAULT_DATA?.coinbase?.eth_balance ?? 0.005061;
+      const baseCbEth = UNLOCKED_VAULT_DATA?.coinbase?.eth_balance ?? 0.005061;
+      const withdrawnToCbEth = UNLOCKED_VAULT_DATA?.kraken?.recent_eth_withdrawal?.amount ?? 0.036660;
+      const cbEthQty = (krkEthQty < 0.30 && baseCbEth < 0.02) ? (baseCbEth + withdrawnToCbEth) : baseCbEth;
       const cbCash = UNLOCKED_VAULT_DATA?.coinbase?.usdc_balance ?? 0.19;
 
       const krkTotal = krkEthQty * ethSpot + krkSolQty * LIVE_SOL_RATE + krkZusd;
       const cbTotal = cbEthQty * ethSpot + cbCash;
       const dexSpotTotal = krkTotal + cbTotal;
-      const krkTargetUsd = 724.65 + 12.05 + krkZusd; // $736.70 across 5 Kraken legs
+      const krkTargetUsd = 639.58 + 12.05 + krkZusd; // $651.63 across 5 armed Kraken legs
       const cbTargetUsd = (cbEthQty * 2312.00) + cbCash;
       const dexTargetTotal = krkTargetUsd + cbTargetUsd;
       const vaultsTotal = 402.49; // 133 Mini Supers ($400.33) + 4 MetaMask On-Chain ETH ($2.16)
@@ -8224,22 +8226,19 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           ? '$••••'
           : `${krkSolQty.toFixed(3)} ($${(krkSolQty * LIVE_SOL_RATE).toFixed(2)})`;
       }
-      const unlockedCarveoutEth = 0.0368;
-      const freeEthCombined = cbEthQty + unlockedCarveoutEth;
-      const freeUsdCombined = cbTotal + (unlockedCarveoutEth * ethSpot);
       const pillAltsEl = document.getElementById('orbit-pill-alts-val');
       if (pillAltsEl) {
         pillAltsEl.textContent = PRIVACY_HIDE_MODE
           ? '$••••'
-          : `${freeEthCombined.toFixed(4)} ($${freeUsdCombined.toFixed(2)})`;
+          : `${cbEthQty.toFixed(4)} ($${cbTotal.toFixed(2)})`;
       }
       const cbValEl2 = document.getElementById('orbit-plat-cb-val');
       if (cbValEl2 && !PRIVACY_HIDE_MODE) {
-        cbValEl2.textContent = '$' + freeUsdCombined.toFixed(2);
+        cbValEl2.textContent = '$' + cbTotal.toFixed(2);
       }
       const cbSubEl2 = document.getElementById('orbit-plat-cb-sub');
       if (cbSubEl2 && !PRIVACY_HIDE_MODE) {
-        cbSubEl2.textContent = `(0.0368 ETH / $${(unlockedCarveoutEth * ethSpot).toFixed(2)} Unlocked + ${cbEthQty.toFixed(4)} CB ETH)`;
+        cbSubEl2.textContent = `(${cbEthQty.toFixed(4)} ETH / $${cbTotal.toFixed(2)} • Incl. +0.0367 ETH Transfer ✓)`;
       }
       const pillNftsEl = document.getElementById('orbit-pill-nfts-val');
       if (pillNftsEl) {
