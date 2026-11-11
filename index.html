@@ -841,6 +841,14 @@
       border-color: #10f1b6 !important;
       box-shadow: 0 12px 28px rgba(16, 241, 182, 0.2) !important;
     }
+    #orbit-networth-val {
+      color: #f8fafc !important;
+    }
+    .cyber-nft-img-mat {
+      background: #070b14 !important;
+      border: 1px solid rgba(148, 163, 184, 0.2) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+    }
     .cyber-nft-card .aspect-square {
       background: #070b14 !important;
       border: 1px solid rgba(148, 163, 184, 0.14) !important;
@@ -9372,10 +9380,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         if (nwEl && prevNw > 0 && Math.abs(PREV_NETWORTH_USD - prevNw) >= 0.01) {
           const isUp = PREV_NETWORTH_USD >= prevNw;
           nwEl.style.transition = 'color 0.25s ease, text-shadow 0.25s ease';
-          nwEl.style.color = '#0f172a';
-          nwEl.style.textShadow = 'none';
+          nwEl.style.color = isUp ? '#10f1b6' : '#f8fafc';
+          nwEl.style.textShadow = isUp ? '0 0 18px rgba(16, 241, 182, 0.35)' : 'none';
           setTimeout(() => {
-            nwEl.style.color = '#0f172a';
+            nwEl.style.color = '#f8fafc';
             nwEl.style.textShadow = 'none';
           }, 900);
         }
@@ -9744,15 +9752,15 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
                   ${removeBtn}
                 </div>
               </div>
-              <div class="font-mono font-extrabold text-slate-900 text-xs truncate group-hover:text-[#059669] transition px-0.5">${c.title}</div>
-              <div class="text-[10.5px] text-slate-600 font-medium truncate mt-0.5 px-0.5">${c.sub}</div>
+              <div class="font-mono font-extrabold text-white text-xs truncate group-hover:text-[#10f1b6] transition px-0.5">${c.title}</div>
+              <div class="text-[10.5px] text-slate-400 font-medium truncate mt-0.5 px-0.5">${c.sub}</div>
             </div>
-            <div class="mt-2.5 bg-[#f8fafc] border border-slate-200/90 rounded-xl px-2.5 py-1.5 space-y-0.5">
+            <div class="mt-2.5 bg-[#070b14] border border-slate-800 rounded-xl px-2.5 py-1.5 space-y-0.5">
               <div class="flex items-center justify-between font-mono text-[10.5px]">
-                <span class="text-slate-700 font-bold">${c.metricLeft}</span>
-                <span class="font-extrabold text-[#059669]">${c.metricRight}</span>
+                <span class="text-slate-300 font-bold">${c.metricLeft}</span>
+                <span class="font-extrabold text-[#34d399]">${c.metricRight}</span>
               </div>
-              <div class="text-[9.5px] text-slate-500 font-mono truncate" title="${c.receipt}">${c.receipt}</div>
+              <div class="text-[9.5px] text-slate-400 font-mono truncate" title="${c.receipt}">${c.receipt}</div>
             </div>
           </div>
         `;
