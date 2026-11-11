@@ -357,18 +357,7 @@
       }
     }
 
-    body.bezel-compact-mode .xtrader-chassis-shell {
-      padding: 8px !important;
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-    body.bezel-compact-mode .xtrader-top-bezel,
-    body.bezel-compact-mode .xtrader-corner-clamp,
-    body.bezel-compact-mode .xtrader-side-clamp,
-    body.bezel-compact-mode .xtrader-bottom-stand {
-      display: none !important;
-    }
+
 
     /* Machined Corner Gusset Clamps */
     .xtrader-corner-clamp {
@@ -726,14 +715,12 @@
           </div>
         </div>
 
-        <!-- Right Diagonal Cooling Louvers + AUTOMATED Stencil + Bezel Toggle -->
+        <!-- Right Diagonal Cooling Louvers + Permanent AUTOMATED Stencil Plate -->
         <div class="flex items-center gap-3">
           <div class="xtrader-louver-box hidden xl:block"></div>
-          <button type="button" onclick="document.body.classList.toggle('bezel-compact-mode')"
-                  title="Click to Toggle Ruggedized Hardware Chassis Bezel"
-                  class="px-2.5 py-1 rounded bg-[#181d22] hover:bg-[#222930] border border-[#3a434c] font-mono text-[10px] font-extrabold tracking-[0.2em] text-slate-300 hover:text-amber-300 transition cursor-pointer">
+          <span class="px-2.5 py-1 rounded bg-[#181d22] border border-[#3a434c] font-mono text-[10px] font-extrabold tracking-[0.2em] text-slate-300 select-none">
             AUTOMATED
-          </button>
+          </span>
         </div>
       </div>
 
@@ -812,13 +799,13 @@
               <span class="whitespace-nowrap">4-Asset Charts</span>
             </button>
 
-            <button id="orbit-nav-plan" onclick="switchOrbitSidebar('orbit'); switchOrbitCard2Tab('plan');"
+            <button id="orbit-nav-plan" onclick="switchOrbitSidebar('plan')"
                     class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
               <span class="text-sm shrink-0">🤖</span>
               <span class="whitespace-nowrap">10-Leg Bot Plan</span>
             </button>
 
-            <button id="orbit-nav-briefing" onclick="switchOrbitSidebar('orbit'); switchOrbitCard2Tab('briefing');"
+            <button id="orbit-nav-briefing" onclick="switchOrbitSidebar('briefing')"
                     class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
               <span class="text-sm shrink-0">🧠</span>
               <span class="whitespace-nowrap">Quant Briefing</span>
@@ -830,56 +817,12 @@
               <span class="whitespace-nowrap">NFT Vaults</span>
             </button>
 
-            <button id="orbit-nav-targets-mob" onclick="switchOrbitSidebar('targets')"
-                    class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
-              <span class="text-xs shrink-0">🎯</span>
-              <span class="whitespace-nowrap">Watchlist</span>
-            </button>
-
-            <button id="orbit-nav-markets-mob" onclick="switchOrbitSidebar('markets')"
-                    class="xl:hidden flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0">
-              <span class="text-xs shrink-0">📊</span>
-              <span class="whitespace-nowrap">Floors</span>
-            </button>
-
             <button id="orbit-nav-install" onclick="toggleInstallModal()"
-                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-amber-400 hover:text-white hover:bg-amber-500/15 text-left transition cursor-pointer shrink-0">
+                    class="flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-amber-400 hover:text-white hover:bg-amber-500/15 text-left transition cursor-pointer shrink-0 mt-1">
               <span class="text-sm shrink-0">📲</span>
               <span class="whitespace-nowrap">Install App</span>
             </button>
           </nav>
-
-          <!-- Background Archive Section: Full Vertical List on XL Desktop -->
-          <div class="hidden xl:block mt-4 pt-3 border-t border-white/10">
-            <div class="text-[9.5px] font-mono uppercase tracking-wider text-[#8b95a9]/70 px-2 pb-1 font-semibold">
-              🗄️ Background NFT Archive
-            </div>
-            <div class="grid grid-cols-1 gap-1 text-[11.5px] font-medium">
-              <button onclick="switchOrbitSidebar('viewer')"
-                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-                <span class="text-xs shrink-0">🗄️</span>
-                <span>NFT Vaults (Bg)</span>
-              </button>
-
-              <button id="orbit-nav-targets" onclick="switchOrbitSidebar('targets')"
-                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-                <span class="text-xs shrink-0">🎯</span>
-                <span>Legacy Watchlist</span>
-              </button>
-
-              <button id="orbit-nav-markets" onclick="switchOrbitSidebar('markets')"
-                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-                <span class="text-xs shrink-0">📊</span>
-                <span>NFT Floors (Bg)</span>
-              </button>
-
-              <button id="orbit-nav-calc" onclick="switchOrbitSidebar('calc')"
-                      class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[#8b95a9]/75 hover:text-white hover:bg-white/5 text-left transition cursor-pointer">
-                <span class="text-xs shrink-0">🧮</span>
-                <span>Legacy Bid Calc</span>
-              </button>
-            </div>
-          </div>
 
           <span id="hdr-eth-rate" class="hidden">2,250.41</span>
         </div>
@@ -1034,10 +977,10 @@
             <button id="cyber-tab-3" onclick="switchCyberAppTab('nft-studio')"
                     class="cyber-tab-btn px-2.5 sm:px-4 py-2.5 rounded-xl font-mono text-left flex items-center justify-between gap-2 cursor-pointer">
               <div class="min-w-0">
-                <div class="text-[9.5px] uppercase tracking-widest text-orange-400 font-bold truncate">TAB 03 // VAULT &amp; SNIPER</div>
-                <div class="text-xs sm:text-sm font-extrabold truncate">🧬 NFT Command Studio</div>
+                <div class="text-[9.5px] uppercase tracking-widest text-orange-400 font-bold truncate">TAB 03 // ON-CHAIN WALLETS</div>
+                <div class="text-xs sm:text-sm font-extrabold truncate">🗄️ NFT Vaults</div>
               </div>
-              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded bg-orange-500/25 border border-orange-400/50 text-amber-200 text-[10px] font-bold shrink-0">144 HELD • 0 TARGETS</span>
+              <span id="cyber-tab3-count-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded bg-orange-500/25 border border-orange-400/50 text-amber-200 text-[10px] font-bold shrink-0">144 HELD IN WALLETS</span>
             </button>
           </div>
 
@@ -2574,20 +2517,20 @@
             </div>
           </div>
 
-          <!-- 2. INTERACTIVE VISUAL NFT CARD GALLERY (Filterable: All | My Held Vault | Target Sniper Watchlist | 2022 Relics) -->
-          <div class="bg-[#090d16] border border-white/10 rounded-xl p-3.5 space-y-3">
+          <!-- 2. ON-CHAIN WALLET NFT VAULTS GALLERY (Displays Current NFTs Held Across Your Wallets) -->
+          <div class="bg-[#0d161c] border border-white/10 rounded-xl p-3.5 space-y-3">
             <div class="flex items-center justify-between flex-wrap gap-2 border-b border-white/10 pb-2.5">
               <div>
                 <h3 class="text-xs sm:text-sm font-extrabold font-mono text-white uppercase tracking-wider flex items-center gap-2">
-                  <span>🖼️ Interactive Tactical NFT Card Grid</span>
-                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">TAP ANY CARD TO INSPECT ON STAGE ↓</span>
+                  <span>🗄️ On-Chain NFT Vaults — Current Wallet Holdings</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">TAP ANY HELD NFT TO INSPECT LIVE ON-CHAIN ↓</span>
                 </h3>
-                <p class="text-[11px] text-slate-400">Instant visual inspection of your held Vault NFTs (The Other Side #1650 &amp; #1002, 3x The Walk #1, 133 Mini Supers, OG Vault Relics) &amp; Custom Sniper Watchlist</p>
+                <p class="text-[11px] text-slate-400">Live view of all NFTs currently held in your connected wallets (Primary Vault swooz.eth &amp; 4 Cold Vault Wallets: 144 Total NFTs)</p>
               </div>
-              <div class="flex items-center gap-1.5 bg-[#0e161b] border border-white/10 rounded-xl p-1 text-[11px] font-mono font-bold flex-wrap">
-                <button id="nft-filter-all" onclick="filterCyberNftGrid('all')" class="px-3 py-1 rounded-lg bg-[#1b2830] border border-white/30 text-white cursor-pointer transition">ALL CARDS (9)</button>
-                <button id="nft-filter-vault" onclick="filterCyberNftGrid('vault')" class="px-3 py-1 rounded-lg bg-[#236b56] border border-emerald-400/50 text-emerald-100 hover:brightness-110 cursor-pointer transition">🦊 MY VAULT (144 NFTs)</button>
-                <button id="nft-filter-targets" onclick="filterCyberNftGrid('targets')" class="px-3 py-1 rounded-lg bg-[#141e24] border border-white/10 text-slate-300 hover:text-white cursor-pointer transition">🎯 SNIPER TARGETS (0)</button>
+              <div class="flex items-center gap-1.5 bg-[#0a1115] border border-white/10 rounded-xl p-1 text-[11px] font-mono font-bold flex-wrap">
+                <button id="nft-filter-all" onclick="filterCyberNftGrid('all')" class="px-3 py-1 rounded-lg bg-[#236b56] border-2 border-emerald-300 text-white cursor-pointer transition shadow-[0_0_12px_rgba(52,211,153,0.3)]">🗄️ ALL HELD IN WALLETS (144 NFTs)</button>
+                <button id="nft-filter-primary" onclick="filterCyberNftGrid('primary')" class="px-3 py-1 rounded-lg bg-[#162027] border border-white/15 text-slate-300 hover:text-white cursor-pointer transition">🦊 PRIMARY WALLET (swooz.eth)</button>
+                <button id="nft-filter-cold" onclick="filterCyberNftGrid('cold')" class="px-3 py-1 rounded-lg bg-[#162027] border border-white/15 text-slate-300 hover:text-white cursor-pointer transition">🔐 COLD VAULTS (133x Stack &amp; OG)</button>
                 <button id="nft-filter-tos" onclick="filterCyberNftGrid('tos')" class="px-3 py-1 rounded-lg bg-[#592b1b] border border-orange-400/50 text-orange-200 hover:brightness-110 cursor-pointer transition">🌙 THE OTHER SIDE (2)</button>
               </div>
             </div>
@@ -3338,7 +3281,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         }).catch(() => {});
       }
 
-    navigator.serviceWorker.register('sw.js?v=76', { updateViaCache: 'none' }).then(reg => {
+    navigator.serviceWorker.register('sw.js?v=77', { updateViaCache: 'none' }).then(reg => {
         reg.update();
       }).catch(() => {});
       if (window.caches) {
@@ -6956,7 +6899,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         try {
           if ('caches' in window) {
             const keys = await caches.keys();
-            await Promise.all(keys.filter(k => k !== 'swooz-dex-v76').map(k => caches.delete(k)));
+            await Promise.all(keys.filter(k => k !== 'swooz-dex-v77').map(k => caches.delete(k)));
           }
           if ('serviceWorker' in navigator) {
             const regs = await navigator.serviceWorker.getRegistrations();
@@ -9243,22 +9186,20 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       switchMainView('viewer');
     }
 
+    function highlightSidebarCategory(activeNavId) {
+      ['orbit', 'trade', 'plan', 'briefing', 'viewer'].forEach(k => {
+        const btn = document.getElementById('orbit-nav-' + k);
+        if (!btn) return;
+        if (k === activeNavId) {
+          btn.className = 'orbit-nav-active flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-left transition cursor-pointer shrink-0';
+        } else {
+          btn.className = 'flex items-center gap-2 xl:gap-3 px-3 xl:px-3.5 py-2 xl:py-2.5 rounded-xl text-[#8b95a9] hover:text-white hover:bg-white/5 text-left transition cursor-pointer shrink-0';
+        }
+      });
+    }
+
     function switchOrbitSidebar(navKey) {
       if (typeof window.playBeep === 'function') window.playBeep();
-      const map = {
-        dashboard: 'orbit',
-        orbit: 'orbit',
-        swap: 'trade',
-        trade: 'trade',
-        targets: 'targets',
-        history: 'targets',
-        nft: 'viewer',
-        viewer: 'viewer',
-        bridge: 'markets',
-        markets: 'markets',
-        liquidity: 'calc',
-        calc: 'calc'
-      };
       if (navKey === 'settings') {
         onVaultButtonClick();
         return;
@@ -9267,7 +9208,31 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
         toggleInstallModal();
         return;
       }
-      switchMainView(map[navKey] || 'orbit');
+      if (navKey === 'plan') {
+        switchCyberAppTab('portfolio');
+        if (typeof switchOrbitCard2Tab === 'function') switchOrbitCard2Tab('plan');
+        highlightSidebarCategory('plan');
+        return;
+      }
+      if (navKey === 'briefing') {
+        switchCyberAppTab('portfolio');
+        if (typeof switchOrbitCard2Tab === 'function') switchOrbitCard2Tab('briefing');
+        highlightSidebarCategory('briefing');
+        return;
+      }
+      if (navKey === 'trade' || navKey === 'swap') {
+        switchCyberAppTab('charts');
+        highlightSidebarCategory('trade');
+        return;
+      }
+      if (navKey === 'viewer' || navKey === 'nft') {
+        switchCyberAppTab('nft-studio');
+        highlightSidebarCategory('viewer');
+        return;
+      }
+      switchCyberAppTab('portfolio');
+      if (typeof switchOrbitCard2Tab === 'function') switchOrbitCard2Tab('tokens');
+      highlightSidebarCategory('orbit');
     }
 
     // 5-Second High-Frequency Live Kraken Multi-Asset Ticker Stream (ETH, SOL, BTC, LINK)
@@ -9495,43 +9460,43 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
     const CYBER_NFT_CARDS = [
       {
         key: 'tos-1650',
-        cat: ['vault', 'tos'],
+        cat: ['vault', 'primary', 'tos'],
         tag: '🌟 GENESIS HELD',
         tagCls: 'bg-pink-500/25 border-pink-400 text-pink-200',
         title: 'The Other Side #1650',
         sub: 'Celestial Moonwalker • Chrome Retro',
         metricLeft: 'Paid: 0.0009 ETH',
         metricRight: '$1.84 USD',
-        receipt: '2022 Pair Cost: 0.937 ETH ($2,628) -> 2026 Sweep!',
+        receipt: 'Held in swooz.eth • 2022 Pair Cost: 0.937 ETH',
         media: 'nft-media/tos_1650.png?v=73'
       },
       {
         key: 'tos-1002',
-        cat: ['vault', 'tos'],
+        cat: ['vault', 'primary', 'tos'],
         tag: '🌙 VAULT HELD',
         tagCls: 'bg-pink-500/25 border-pink-400 text-pink-200',
         title: 'The Other Side #1002',
         sub: 'Skulls01 Starboy • Passionfruit Glitter',
         metricLeft: 'Paid: 0.0012 ETH',
         metricRight: '$2.45 USD',
-        receipt: '2,581 / 8,888 (29%) Frozen in 2022 Staking Contract',
+        receipt: 'Held in swooz.eth • 29% Supply Frozen in Staking',
         media: 'nft-media/tos_1002.png?v=73'
       },
       {
         key: 'walk-1',
-        cat: ['vault'],
+        cat: ['vault', 'primary'],
         tag: '🔥 3x HELD IN VAULT',
         tagCls: 'bg-emerald-500/25 border-emerald-400 text-emerald-200',
         title: '"The Walk" #1 (3-Pack)',
         sub: 'Markus Magnusson • Burn Currency',
         metricLeft: 'Floor: 0.0026 ETH',
         metricRight: '$16.00 (3x)',
-        receipt: 'Large Friend Auction Live • 3,454+ Burned Forever',
+        receipt: 'Held in swooz.eth • Large Friend Auction Live',
         media: 'nft-media/the_walk_1.gif'
       },
       {
         key: 'ms-6915',
-        cat: ['vault'],
+        cat: ['vault', 'cold'],
         tag: '🏆 #2 WHALE (133x)',
         tagCls: 'bg-amber-500/25 border-amber-400 text-amber-200',
         title: 'Mini Supers #6915',
@@ -9543,43 +9508,43 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       },
       {
         key: 'ms-6539',
-        cat: ['vault'],
+        cat: ['vault', 'primary'],
         tag: '🦊 PRIMARY VAULT',
         tagCls: 'bg-cyan-500/20 border-cyan-400/60 text-cyan-200',
         title: 'Mini Supers #6539',
         sub: 'Baddie Blue • Higher Double • Bikini Yellow',
         metricLeft: 'Floor: 0.0013 ETH',
         metricRight: '$3.01 USD',
-        receipt: 'Held in Primary Vault • Metal Plain + 5 Accessories',
+        receipt: 'Held in swooz.eth • Metal Plain + 5 Accessories',
         media: 'nft-media/minisupers_6539.png?v=75'
       },
       {
         key: 'ms-305',
-        cat: ['vault'],
+        cat: ['vault', 'primary'],
         tag: '🌸 DREAM BLOOM',
         tagCls: 'bg-pink-500/20 border-pink-400/60 text-pink-200',
         title: 'Mini Supers #305',
         sub: 'Dream Bloom • AK • Moto Black',
         metricLeft: 'Floor: 0.0013 ETH',
         metricRight: '$3.01 USD',
-        receipt: 'Baby Pink Plain • Look Blue • 6 Accessories',
+        receipt: 'Held in swooz.eth • Baby Pink Plain • Look Blue',
         media: 'nft-media/minisupers_305.png?v=75'
       },
       {
         key: 'ms-928',
-        cat: ['vault'],
+        cat: ['vault', 'cold'],
         tag: '🦸 BRAIDS ORANGE',
         tagCls: 'bg-purple-500/20 border-purple-400/60 text-purple-200',
         title: 'Mini Supers #928',
         sub: 'Ninja White • Tactical Tan • Braids Orange',
         metricLeft: 'Floor: 0.0013 ETH',
         metricRight: '$3.01 USD',
-        receipt: 'Purple Multi Background • High Green Eyebrows',
+        receipt: 'Cold Vault • Purple Multi Background • High Green',
         media: 'nft-media/minisupers_928.png?v=75'
       },
       {
         key: 'supers-84',
-        cat: ['vault'],
+        cat: ['vault', 'cold'],
         tag: '⚡ OG VAULT',
         tagCls: 'bg-sky-500/20 border-sky-400/60 text-sky-200',
         title: 'Supers #84 & #144',
@@ -9591,7 +9556,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       },
       {
         key: 'enso-146',
-        cat: ['vault'],
+        cat: ['vault', 'cold'],
         tag: '🌀 OG VAULT',
         tagCls: 'bg-indigo-500/20 border-indigo-400/60 text-indigo-200',
         title: 'Enso #146 & #190',
@@ -9604,40 +9569,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
     ];
 
     function getCombinedCyberCards() {
-      const sniperCards = (PINNED_NFTS || []).map((p, idx) => ({
-        key: `pinned-${idx}`,
-        isPinned: true,
-        pinIdx: idx,
-        contract: p.contract,
-        tokenId: p.tokenId,
-        cat: ['targets'],
-        tag: '🎯 SNIPER TARGET',
-        tagCls: 'bg-[#00f5d4]/25 border-[#00f5d4] text-[#00f5d4]',
-        title: p.title || `Token #${p.tokenId}`,
-        sub: p.collection || `Contract ${String(p.contract || '').slice(0, 6)}...`,
-        metricLeft: p.targetBid ? `Bid: ${p.targetBid}` : `Token #${p.tokenId}`,
-        metricRight: 'Watched ✓',
-        receipt: `Owner: ${p.owner || 'On-Chain Verified'}`,
-        media: p.mediaUrl || 'nft-media/the_walk_1.gif'
-      }));
-      return [...CYBER_NFT_CARDS, ...sniperCards];
+      return CYBER_NFT_CARDS;
     }
 
     function updateSniperTargetCountsUI() {
-      const n = (PINNED_NFTS || []).length;
-      const totalCards = CYBER_NFT_CARDS.length + n;
-      const btnAll = document.getElementById('nft-filter-all');
-      const btnTgt = document.getElementById('nft-filter-targets');
       const tabBadge = document.getElementById('cyber-tab3-count-badge');
-      const heading = document.getElementById('sniper-watchlist-heading');
-      if (btnAll) btnAll.textContent = `ALL CARDS (${totalCards})`;
-      if (btnTgt) btnTgt.textContent = `🎯 SNIPER TARGETS (${n})`;
-      if (tabBadge) tabBadge.textContent = `144 HELD • ${n} TARGET${n === 1 ? '' : 'S'}`;
-      if (heading) {
-        heading.textContent = n === 0
-          ? '0 Active Sniper Targets • Ready for Floor Scouting'
-          : `${n} Active Sniper Target${n === 1 ? '' : 's'} Armed on Watchlist`;
-      }
+      if (tabBadge) tabBadge.textContent = '144 HELD IN WALLETS';
     }
 
     function renderCyberNftCardsGrid() {
@@ -9705,12 +9642,12 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
     function filterCyberNftGrid(mode) {
       ACTIVE_NFT_GRID_FILTER = mode || 'all';
       const styles = {
-        all:     { on: 'px-3 py-1 rounded-lg bg-[#24343f] border-2 border-white/60 text-white cursor-pointer transition', off: 'px-3 py-1 rounded-lg bg-[#162027] border border-white/20 text-slate-300 hover:text-white cursor-pointer transition' },
-        vault:   { on: 'px-3 py-1 rounded-lg bg-[#2a856b] border-2 border-emerald-300 text-white cursor-pointer transition shadow-[0_0_12px_rgba(52,211,153,0.35)]', off: 'px-3 py-1 rounded-lg bg-[#236b56] border border-emerald-400/50 text-emerald-100 hover:brightness-110 cursor-pointer transition' },
-        targets: { on: 'px-3 py-1 rounded-lg bg-[#1f2e38] border-2 border-cyan-400 text-cyan-200 cursor-pointer transition', off: 'px-3 py-1 rounded-lg bg-[#141e24] border border-white/10 text-slate-300 hover:text-white cursor-pointer transition' },
+        all:     { on: 'px-3 py-1 rounded-lg bg-[#236b56] border-2 border-emerald-300 text-white cursor-pointer transition shadow-[0_0_12px_rgba(52,211,153,0.3)]', off: 'px-3 py-1 rounded-lg bg-[#162027] border border-white/15 text-slate-300 hover:text-white cursor-pointer transition' },
+        primary: { on: 'px-3 py-1 rounded-lg bg-[#1f3b4d] border-2 border-cyan-300 text-white cursor-pointer transition', off: 'px-3 py-1 rounded-lg bg-[#162027] border border-white/15 text-slate-300 hover:text-white cursor-pointer transition' },
+        cold:    { on: 'px-3 py-1 rounded-lg bg-[#2d2648] border-2 border-purple-300 text-white cursor-pointer transition', off: 'px-3 py-1 rounded-lg bg-[#162027] border border-white/15 text-slate-300 hover:text-white cursor-pointer transition' },
         tos:     { on: 'px-3 py-1 rounded-lg bg-[#7c3a21] border-2 border-amber-300 text-amber-100 cursor-pointer transition shadow-[0_0_12px_rgba(245,158,11,0.35)]', off: 'px-3 py-1 rounded-lg bg-[#592b1b] border border-orange-400/50 text-orange-200 hover:brightness-110 cursor-pointer transition' }
       };
-      ['all', 'vault', 'targets', 'tos'].forEach(m => {
+      ['all', 'primary', 'cold', 'tos'].forEach(m => {
         const b = document.getElementById('nft-filter-' + m);
         if (b && styles[m]) {
           b.className = (m === ACTIVE_NFT_GRID_FILTER) ? styles[m].on : styles[m].off;
@@ -9811,12 +9748,14 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       const secSales = document.getElementById('sec-sales');
 
       if (ACTIVE_CYBER_TAB === 'portfolio') {
+        if (typeof highlightSidebarCategory === 'function') highlightSidebarCategory('orbit');
         if (orbitBento) orbitBento.classList.remove('hidden');
         if (container) container.classList.add('hidden');
         setTimeout(() => {
           if (typeof drawOrbitNetworthChart === 'function') drawOrbitNetworthChart();
         }, 25);
       } else if (ACTIVE_CYBER_TAB === 'charts') {
+        if (typeof highlightSidebarCategory === 'function') highlightSidebarCategory('trade');
         if (orbitBento) orbitBento.classList.add('hidden');
         if (container) {
           container.classList.remove('hidden');
@@ -9830,15 +9769,16 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
           if (typeof drawKrakenChart === 'function') drawKrakenChart();
         }, 30);
       } else if (ACTIVE_CYBER_TAB === 'nft-studio') {
+        if (typeof highlightSidebarCategory === 'function') highlightSidebarCategory('viewer');
         if (orbitBento) orbitBento.classList.add('hidden');
         if (container) {
           container.classList.remove('hidden');
-          container.className = 'w-full pb-8 flex flex-col gap-4';
+          container.className = 'w-full pb-6 flex flex-col gap-4';
         }
         if (right) right.className = 'w-full space-y-4 order-1';
-        if (left) left.className = 'w-full space-y-4 order-2';
-        if (secPnl) secPnl.classList.add('hidden');
-        [secViewer, secTargets, secMarkets, secCalc, secSales].forEach(el => el && el.classList.remove('hidden'));
+        if (left) left.className = 'hidden';
+        [secPnl, secTargets, secMarkets, secCalc, secSales].forEach(el => el && el.classList.add('hidden'));
+        if (secViewer) secViewer.classList.remove('hidden');
         renderCyberNftCardsGrid();
       } else if (ACTIVE_CYBER_TAB === 'split') {
         if (orbitBento) orbitBento.classList.remove('hidden');
