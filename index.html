@@ -1314,7 +1314,7 @@
                           <span class="text-center">$2,284</span>
                           <span class="text-right text-amber-300">+$6.47</span>
                         </div>
-                        <div onclick="selectProTunerLeg('L1C', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition" title="Re-armed 0.03688806 ETH @ $2,312.00 (OPNWFF-MU4OB-5SYBPI)">
+                        <div onclick="selectProTunerLeg('L1C', true)" class="grid grid-cols-3 items-center py-0.5 rounded hover:bg-white/10 cursor-pointer transition" title="Re-armed 0.01238806 ETH @ $2,312.00 (OVOTMC-S3A4Y-AT5UYH)">
                           <span class="text-amber-300">L1C ETH</span>
                           <span class="text-center">$2,312</span>
                           <span class="text-right text-amber-300">+$1.99</span>
@@ -1645,7 +1645,7 @@
                 </div>
 
                 <!-- Card Row 4: L1C ETH (Re-Armed After $75.72 Carve-Out) -->
-                <div onclick="selectProTunerLeg('L1C', true)" class="p-3.5 rounded-2xl bg-[#090e1a] border border-slate-800/95 shadow-2xs hover:border-cyan-400/60 transition cursor-pointer space-y-2" title="Re-armed 0.03688806 ETH @ $2,312.00 (OPNWFF) + 0.0368 ETH ($75.72) Unlocked for Coinbase">
+                <div onclick="selectProTunerLeg('L1C', true)" class="p-3.5 rounded-2xl bg-[#090e1a] border border-slate-800/95 shadow-2xs hover:border-cyan-400/60 transition cursor-pointer space-y-2" title="Re-armed 0.01238806 ETH @ $2,312.00 (OPNWFF) + 0.0368 ETH ($75.72) Unlocked for Coinbase">
                   <div class="flex items-center justify-between">
                     <div>
                       <span class="text-sm font-extrabold text-white">L1C ETH</span>
@@ -2358,7 +2358,7 @@
                     <tr onclick="selectProTunerLeg('L1C')" class="bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer transition">
                       <td class="py-1.5 pr-2 font-sans font-bold text-amber-400">🦑 L1C Kraken ETH Upper Channel Scraper (+0.0368 ETH / $75.72 Unlocked)</td>
                       <td class="py-1.5 px-2 font-bold text-emerald-400">SELL @ $2,312.00</td>
-                      <td class="py-1.5 px-2 font-bold">0.0369 ETH ($75.90)</td>
+                      <td class="py-1.5 px-2 font-bold">0.0124 ETH ($75.90)</td>
                       <td class="py-1.5 px-2 text-emerald-400 font-bold">$85.29 USD</td>
                       <td class="py-1.5 px-2 font-bold text-amber-400">Buys @ $2,258.00 (+0.00088 ETH / +$1.99)</td>
                       <td class="py-1.5 pl-2 font-sans font-bold text-emerald-400">🟢 OPEN (OPNWFF) • ⚙️ Tune</td>
@@ -8155,7 +8155,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       const ethPill = document.getElementById('orbit-live-eth-pill');
       if (ethPill) {
         const upsideToGrid = Math.max(0, 2162.00 - ethSpot).toFixed(2);
-        ethPill.textContent = `ETH $${ethSpot.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 5 Kraken Legs Armed ✓ • +$${upsideToGrid} to $2,162`;
+        ethPill.textContent = `ETH $${ethSpot.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} • 4 Kraken ETH Legs Armed ✓ • +$${upsideToGrid} to $2,162`;
       }
 
       // Top Dropdowns (Connected Wallets + Scope)
