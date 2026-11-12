@@ -8086,10 +8086,10 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
     function updateOrbitPortfolioTotals() {
       applyPrivacyEyeIcons();
       const ethSpot = (typeof ETH_RATE === 'number' && ETH_RATE > 500) ? ETH_RATE : 2060.39;
-      // Always prefer live post-withdrawal Kraken ETH (0.285662 ETH)
-      const rawKrkEth = LATEST_SNAPSHOT?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? 0.285662;
-      const krkEthQty = rawKrkEth > 0.30 ? 0.285662 : rawKrkEth;
-      const krkSolQty = LATEST_SNAPSHOT?.kraken?.sol_balance ?? UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.133250;
+      // Always prefer live post-withdrawal Kraken ETH (0.186300 ETH, 0.0000 SOL)
+      const rawKrkEth = LATEST_SNAPSHOT?.kraken?.eth_balance ?? LATEST_SNAPSHOT?.kraken_eth ?? UNLOCKED_VAULT_DATA?.kraken?.eth_balance ?? 0.186300;
+      const krkEthQty = rawKrkEth > 0.27 ? 0.186300 : rawKrkEth;
+      const krkSolQty = LATEST_SNAPSHOT?.kraken?.sol_balance ?? UNLOCKED_VAULT_DATA?.kraken?.sol_balance ?? 0.0;
       const krkZusd = LATEST_SNAPSHOT?.kraken?.usd_balance ?? UNLOCKED_VAULT_DATA?.kraken?.usd_balance ?? 0.0022;
       const cbEthQty = UNLOCKED_VAULT_DATA?.coinbase?.eth_balance ?? 0.005061;
       const cbCash = UNLOCKED_VAULT_DATA?.coinbase?.usdc_balance ?? 0.19;
@@ -8097,7 +8097,7 @@ $2250 | <span class="candle-wick">░░░░░░░░░░</span><span cla
       const krkTotal = krkEthQty * ethSpot + krkSolQty * LIVE_SOL_RATE + krkZusd;
       const cbTotal = cbEthQty * ethSpot + cbCash;
       const dexSpotTotal = krkTotal; // Match Kraken Pro Portfolio Total 1:1 on main dashboard!
-      const krkTargetUsd = 639.58 + 12.05 + krkZusd; // $651.63 across 5 armed Kraken legs
+      const krkTargetUsd = 411.88 + krkZusd; // $411.88 across 4 armed Kraken ETH legs
       const cbTargetUsd = (cbEthQty * 2312.00) + cbCash;
       const dexTargetTotal = krkTargetUsd;
       const vaultsTotal = 402.49; // 133 Mini Supers ($400.33) + 4 MetaMask On-Chain ETH ($2.16)
